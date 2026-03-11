@@ -182,8 +182,8 @@ describe("Content source coverage", () => {
       })
     );
 
-    cy.wrap(Promise.all(checks)).then((results: boolean[]) => {
-      expect(results.some(Boolean)).to.be.true;
+    cy.wrap(Promise.all(checks)).then((results) => {
+      expect((results as boolean[]).some(Boolean)).to.be.true;
     });
   });
 

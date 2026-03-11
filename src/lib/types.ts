@@ -7,6 +7,19 @@ export interface Retailer {
   description: string;
   affiliateUrl?: string;
   category: RetailerCategory;
+  seo: RetailerSeo;
+}
+
+export interface RetailerSeo {
+  folderDay: string;
+  folderDayDetail: string;
+  storeCount: string;
+  pricePositioning: string;
+  loyalty: string;
+  appName?: string;
+  openingHours: string;
+  priceGuarantee?: string;
+  uniqueSellingPoint: string;
 }
 
 export type RetailerCategory =

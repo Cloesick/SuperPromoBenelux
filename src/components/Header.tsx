@@ -23,6 +23,9 @@ export function Header() {
           <Link href="/folders" className="text-gray-700 hover:text-blue-700 transition font-medium">
             Folders
           </Link>
+          <Link href="/veelgestelde-vragen" className="text-gray-700 hover:text-blue-700 transition font-medium">
+            FAQ
+          </Link>
           <Link href="/over-ons" className="text-gray-700 hover:text-blue-700 transition font-medium">
             Over Ons
           </Link>
@@ -52,6 +55,13 @@ export function Header() {
             onClick={() => setMobileOpen(false)}
           >
             Folders
+          </Link>
+          <Link
+            href="/veelgestelde-vragen"
+            className="block text-gray-700 hover:text-blue-700 font-medium"
+            onClick={() => setMobileOpen(false)}
+          >
+            FAQ
           </Link>
           <Link
             href="/over-ons"

@@ -1,15 +1,25 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd, createBreadcrumbJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Over Ons",
   description:
     "Leer meer over SuperPromo België. Onze missie is jou voorzien van de beste kortingen en deals in België.",
+  alternates: {
+    canonical: "/over-ons",
+  },
 };
 
 export default function OverOnsPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+      <JsonLd
+        data={createBreadcrumbJsonLd([
+          { name: "Home", url: "https://www.superpromobelgie.be" },
+          { name: "Over Ons", url: "https://www.superpromobelgie.be/over-ons" },
+        ])}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-blue-700">
           Home

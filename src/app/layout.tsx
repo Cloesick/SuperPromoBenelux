@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description:
     "Bespaar elke dag op je boodschappen. Bekijk dagelijks de nieuwste folders van je favoriete winkels in België.",
   metadataBase: new URL("https://www.superpromobelgie.be"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "nl_BE",

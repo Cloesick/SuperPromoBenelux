@@ -27,6 +27,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/veelgestelde-vragen" className="hover:text-white transition">
+                Veelgestelde vragen
+              </Link>
+            </li>
+            <li>
               <Link href="/over-ons" className="hover:text-white transition">
                 Over Ons
               </Link>
@@ -63,8 +68,12 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-gray-800 text-center text-sm py-4 text-gray-500">
-        &copy; {new Date().getFullYear()} SuperPromo België. Alle rechten voorbehouden.
+      <div className="border-t border-gray-800 text-center text-sm py-4 text-gray-500 space-y-2">
+        <p>&copy; {new Date().getFullYear()} SuperPromo België. Alle rechten voorbehouden.</p>
+        <p className="text-xs text-gray-600">
+          Sommige links op deze website zijn affiliate links. Dit betekent dat wij een kleine commissie
+          kunnen ontvangen als je via onze links een aankoop doet, zonder extra kosten voor jou.
+        </p>
       </div>
     </footer>
   );

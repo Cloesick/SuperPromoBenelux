@@ -41,6 +41,11 @@ export function getCurrentFolder(retailerSlug: string): Folder | null {
   return current ?? folders[0];
 }
 
+export function getScrapedAt(retailerSlug: string): Date | null {
+  const data = readScrapedData(retailerSlug);
+  return data?.scrapedAt ? new Date(data.scrapedAt) : null;
+}
+
 export function getAllCurrentFolders(): { slug: string; folder: Folder }[] {
   if (!fs.existsSync(DATA_DIR)) return [];
 

@@ -4,7 +4,7 @@ import { retailers, getRetailerBySlug } from "@/lib/retailers";
 import { getCurrentFolder } from "@/lib/folders";
 import { getAffiliateUrl } from "@/lib/affiliate";
 import { FolderViewer } from "@/components/FolderViewer";
-import { JsonLd, createRetailerFolderJsonLd, createFAQJsonLd } from "@/components/JsonLd";
+import { JsonLd, createRetailerFolderJsonLd, createFAQJsonLd, createBreadcrumbJsonLd } from "@/components/JsonLd";
 import { Facebook, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,6 +25,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${retailer.name} folder deze week`,
     description: retailer.description,
+    alternates: {
+      canonical: `/folders/${slug}`,
+    },
     openGraph: {
       title: `${retailer.name} folder deze week | SuperPromo België`,
       description: retailer.description,
@@ -43,18 +46,47 @@ export default async function RetailerPage({ params }: PageProps) {
   const currentFolder = getCurrentFolder(slug);
   const affiliateUrl = getAffiliateUrl(slug);
 
+  const { seo } = retailer;
   const faqItems = [
     {
-      question: `Waar kan ik de ${retailer.name} folder van deze week vinden?`,
-      answer: `Op SuperPromo België kun je altijd de actuele ${retailer.name} folder bekijken. We updaten de folders elke week zodat je altijd de nieuwste promoties vindt.`,
-    },
-    {
       question: `Wanneer verschijnt de nieuwe ${retailer.name} folder?`,
-      answer: `De nieuwe ${retailer.name} folder verschijnt doorgaans aan het begin van de week. Wij plaatsen de folder zo snel mogelijk online zodra deze beschikbaar is.`,
+      answer: seo.folderDayDetail,
     },
     {
-      question: `Zijn de promoties geldig in heel België?`,
-      answer: `Ja, alle ${retailer.name} promoties die we tonen zijn geldig in de Belgische winkels. Sommige promoties kunnen regionaal variëren.`,
+      question: `Hoeveel ${retailer.name} winkels zijn er in België?`,
+      answer: `${retailer.name} heeft ${seo.storeCount}.`,
+    },
+    {
+      question: `Wat zijn de openingsuren van ${retailer.name}?`,
+      answer: seo.openingHours,
+    },
+    {
+      question: `Is ${retailer.name} goedkoop?`,
+      answer: seo.pricePositioning,
+    },
+    {
+      question: `Heeft ${retailer.name} een klantenkaart of loyaliteitsprogramma?`,
+      answer: seo.loyalty,
+    },
+    ...(seo.appName
+      ? [
+          {
+            question: `Heeft ${retailer.name} een app?`,
+            answer: `Ja, ${retailer.name} biedt de ${seo.appName} aan. Hiermee kun je de folder digitaal bekijken, boodschappenlijstjes maken en extra kortingen ontvangen.`,
+          },
+        ]
+      : []),
+    ...(seo.priceGuarantee
+      ? [
+          {
+            question: `Wat is de laagste prijzen garantie van ${retailer.name}?`,
+            answer: seo.priceGuarantee,
+          },
+        ]
+      : []),
+    {
+      question: `Waar kan ik de ${retailer.name} folder online bekijken?`,
+      answer: `Op SuperPromo België kun je altijd de actuele ${retailer.name} folder gratis bekijken. We updaten de folder elke ${seo.folderDay} zodat je altijd de nieuwste promoties vindt.`,
     },
   ];
 
@@ -69,6 +101,13 @@ export default async function RetailerPage({ params }: PageProps) {
         )}
       />
       <JsonLd data={createFAQJsonLd(faqItems)} />
+      <JsonLd
+        data={createBreadcrumbJsonLd([
+          { name: "Home", url: "https://www.superpromobelgie.be" },
+          { name: "Folders", url: "https://www.superpromobelgie.be/folders" },
+          { name: `${retailer.name} folder`, url: `https://www.superpromobelgie.be/folders/${slug}` },
+        ])}
+      />
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-blue-700">
@@ -119,7 +158,7 @@ export default async function RetailerPage({ params }: PageProps) {
         <a
           href={affiliateUrl}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer sponsored"
           className="inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-lg transition"
         >
           <ExternalLink className="w-4 h-4" />
