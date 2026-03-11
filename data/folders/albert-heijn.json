@@ -1,0 +1,27 @@
+{
+  "retailer": "albert-heijn",
+  "folders": [
+    {
+      "id": "albert-heijn-2026-w11-folder",
+      "retailerSlug": "albert-heijn",
+      "title": "Albert Heijn Bonusfolder",
+      "validFrom": "2026-03-09",
+      "validUntil": "2026-03-15",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/ah/bonus-week-11-2026/page/1?publitas_embed=embedded",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-03-11T06:53:44.120Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-03-11T06:53:45.615Z",
+  "sourceUrls": [
+    "https://www.ah.be/bonus/folder",
+    "https://www.ah.be/bonus/folder#start-of-content"
+  ],
+  "methods": [
+    "publitas"
+  ]
+}

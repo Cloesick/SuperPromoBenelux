@@ -1,0 +1,27 @@
+{
+  "retailer": "delhaize",
+  "folders": [
+    {
+      "id": "delhaize-2026-w11-folder",
+      "retailerSlug": "delhaize",
+      "title": "Delhaize folder van de week",
+      "validFrom": "2026-03-09",
+      "validUntil": "2026-03-15",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/delhaize-belgium-nl/w10-2026-nl/page/1?publitas_embed=embedded&prop11=nl&prop17=not%20logged&consent=1.1.1.1.1.1",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-03-11T06:53:59.979Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-03-11T06:54:02.891Z",
+  "sourceUrls": [
+    "https://www.delhaize.be/nl/folder",
+    "https://www.delhaize.be/nl/folder#main-content"
+  ],
+  "methods": [
+    "publitas"
+  ]
+}

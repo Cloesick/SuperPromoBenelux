@@ -1,0 +1,26 @@
+{
+  "retailer": "colruyt",
+  "folders": [
+    {
+      "id": "colruyt-2026-w11-folder",
+      "retailerSlug": "colruyt",
+      "title": "Colruyt folder van de week",
+      "validFrom": "2026-03-09",
+      "validUntil": "2026-03-15",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://e.issuu.com/embed.html?d=colruyt_laagste_prijzen_-_digitale_folder&u=colruytgroup&pageNumber=1&backgroundColor=%23353535&backgroundColorFullscreen=%23353535&pageLayout=doublePage&hideIssuuLogo=true&allowDownload=true&hideShareButton=true&ts=1773213538058",
+      "contentSource": "issuu",
+      "scrapedAt": "2026-03-11T07:19:01.540Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-03-11T07:19:02.398Z",
+  "sourceUrls": [
+    "https://www.colruyt.be/nl/folders"
+  ],
+  "methods": [
+    "issuu"
+  ]
+}
