@@ -19,6 +19,8 @@
   "license": "ISC",
   "description": "SuperPromo België - Alle folders en promoties van je favoriete winkels",
   "dependencies": {
+    "@vercel/analytics": "^2.0.0",
+    "@vercel/speed-insights": "^2.0.0",
     "cheerio": "^1.2.0",
     "lucide-react": "^0.577.0",
     "next": "^16.1.6",
