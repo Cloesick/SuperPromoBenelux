@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="96" ry="96" fill="url(#bg)"/>
+  <!-- Bold S letterform -->
+  <path d="M 316 148 C 316 148 290 108 226 108 C 162 108 118 148 118 196 C 118 296 312 248 312 332 C 312 376 272 404 226 404 C 168 404 132 368 132 368" stroke="white" stroke-width="56" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Price tag / percentage dot top-right -->
+  <circle cx="370" cy="130" r="32" fill="#fbbf24"/>
+  <!-- Spark lines for deals emphasis -->
+  <line x1="370" y1="80" x2="370" y2="60" stroke="#fbbf24" stroke-width="12" stroke-linecap="round"/>
+  <line x1="410" y1="100" x2="426" y2="88" stroke="#fbbf24" stroke-width="12" stroke-linecap="round"/>
+  <line x1="420" y1="140" x2="440" y2="140" stroke="#fbbf24" stroke-width="12" stroke-linecap="round"/>
+</svg>

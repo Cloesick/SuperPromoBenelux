@@ -1,0 +1,67 @@
+interface JsonLdProps {
+  data: Record<string, unknown>;
+}
+
+export function JsonLd({ data }: JsonLdProps) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+export function createWebsiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "SuperPromo België",
+    url: "https://www.superpromobelgie.be",
+    description:
+      "Bespaar elke dag op je boodschappen. Bekijk dagelijks de nieuwste folders van je favoriete winkels in België.",
+    inLanguage: "nl-BE",
+  };
+}
+
+export function createRetailerFolderJsonLd(
+  retailerName: string,
+  slug: string,
+  validFrom?: string,
+  validUntil?: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: `${retailerName} folder deze week`,
+    url: `https://www.superpromobelgie.be/folders/${slug}`,
+    description: `Bekijk de actuele ${retailerName} folder en ontdek de beste promoties van deze week in België.`,
+    inLanguage: "nl-BE",
+    ...(validFrom && validUntil
+      ? {
+          temporalCoverage: `${validFrom}/${validUntil}`,
+        }
+      : {}),
+    isPartOf: {
+      "@type": "WebSite",
+      name: "SuperPromo België",
+      url: "https://www.superpromobelgie.be",
+    },
+  };
+}
+
+export function createFAQJsonLd(
+  questions: { question: string; answer: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: questions.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: q.answer,
+      },
+    })),
+  };
+}
