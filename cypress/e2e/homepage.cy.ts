@@ -18,7 +18,7 @@ describe("Homepage", () => {
   });
 
   it("displays all retailer cards", () => {
-    const retailers = ["Albert Heijn", "Lidl", "Delhaize", "Colruyt"];
+    const retailers = ["Albert Heijn", "Lidl", "Delhaize", "Colruyt", "ALDI", "Action"];
 
     retailers.forEach((name) => {
       cy.contains(name).should("be.visible");

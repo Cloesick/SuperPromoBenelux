@@ -15,7 +15,7 @@ describe("Folders overview page", () => {
   it("displays supermarket retailer cards", () => {
     cy.contains("h2", "Supermarkten").should("be.visible");
 
-    const retailers = ["Albert Heijn", "Lidl", "Delhaize", "Colruyt"];
+    const retailers = ["Albert Heijn", "Lidl", "Delhaize", "Colruyt", "ALDI"];
     retailers.forEach((name) => {
       cy.contains(name).should("be.visible");
     });

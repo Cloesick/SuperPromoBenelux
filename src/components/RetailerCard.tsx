@@ -9,6 +9,8 @@ interface RetailerCardProps {
 }
 
 export function RetailerCard({ retailer, folderCount }: RetailerCardProps) {
+  const isSvgLogo = retailer.logo.toLowerCase().endsWith(".svg");
+
   return (
     <Link
       href={`/folders/${retailer.slug}`}
@@ -20,13 +22,24 @@ export function RetailerCard({ retailer, folderCount }: RetailerCardProps) {
       />
       <div className="p-6">
         <div className="flex items-center gap-3 mb-3">
-          <Image
-            src={retailer.logo}
-            alt={`${retailer.name} logo`}
-            width={48}
-            height={48}
-            className="w-12 h-12 rounded-lg object-cover"
-          />
+          {isSvgLogo ? (
+            <img
+              src={retailer.logo}
+              alt={`${retailer.name} logo`}
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-lg object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <Image
+              src={retailer.logo}
+              alt={`${retailer.name} logo`}
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-lg object-cover"
+            />
+          )}
           <div>
             <h3 className="font-bold text-gray-900 group-hover:text-blue-700 transition">
               {retailer.name}

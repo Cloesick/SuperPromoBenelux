@@ -46,6 +46,8 @@ export default async function RetailerPage({ params }: PageProps) {
   const currentFolder = getCurrentFolder(slug);
   const affiliateUrl = getAffiliateUrl(slug);
 
+  const isSvgLogo = retailer.logo.toLowerCase().endsWith(".svg");
+
   const { seo } = retailer;
   const faqItems = [
     {
@@ -123,13 +125,24 @@ export default async function RetailerPage({ params }: PageProps) {
 
       {/* Retailer header */}
       <div className="flex items-center gap-4 mb-8">
-        <Image
-          src={retailer.logo}
-          alt={`${retailer.name} logo`}
-          width={56}
-          height={56}
-          className="w-14 h-14 rounded-xl object-cover"
-        />
+        {isSvgLogo ? (
+          <img
+            src={retailer.logo}
+            alt={`${retailer.name} logo`}
+            width={56}
+            height={56}
+            className="w-14 h-14 rounded-xl object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <Image
+            src={retailer.logo}
+            alt={`${retailer.name} logo`}
+            width={56}
+            height={56}
+            className="w-14 h-14 rounded-xl object-cover"
+          />
+        )}
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
             {retailer.name} folder deze week

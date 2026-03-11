@@ -5,7 +5,7 @@
  * and contain the required content for each retailer.
  */
 
-const retailerSlugs = ["albert-heijn", "lidl", "delhaize", "colruyt"];
+const retailerSlugs = ["albert-heijn", "lidl", "delhaize", "colruyt", "aldi", "action"];
 
 const validContentSources = [
   "publitas",

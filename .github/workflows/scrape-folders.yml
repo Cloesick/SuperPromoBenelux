@@ -1,0 +1,54 @@
+name: Scrape folders
+
+on:
+  schedule:
+    # Daily (UTC). Adjust if you want retailer-day-specific runs.
+    - cron: "30 4 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape-folders
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Scrape
+        env:
+          # GitHub-hosted runners have Chrome installed.
+          # We use it because puppeteer_skip_download=true disables bundled Chromium.
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+        run: npm run scrape
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/folders public/screenshots || true
+          git commit -m "chore: update scraped folders"
+          git push

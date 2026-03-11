@@ -48,6 +48,18 @@ const affiliateConfigs: AffiliateConfig[] = [
     baseUrl: "https://www.colruyt.be/nl/promoties",
     envKey: "AFFILIATE_COLRUYT",
   },
+  {
+    retailerSlug: "aldi",
+    network: "none",
+    baseUrl: "https://www.aldi.be/nl/onze-folders.html",
+    envKey: "AFFILIATE_ALDI",
+  },
+  {
+    retailerSlug: "action",
+    network: "none",
+    baseUrl: "https://www.action.com/nl-be/folder/",
+    envKey: "AFFILIATE_ACTION",
+  },
 ];
 
 /**

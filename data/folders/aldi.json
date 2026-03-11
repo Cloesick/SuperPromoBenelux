@@ -1,0 +1,26 @@
+{
+  "retailer": "aldi",
+  "folders": [
+    {
+      "id": "aldi-2026-w11-folder",
+      "retailerSlug": "aldi",
+      "title": "ALDI folder van de week",
+      "validFrom": "2026-03-09",
+      "validUntil": "2026-03-15",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://folder.aldi.be/import-folder/2026/2611-nl/?HideStandardUI=true&HideNavigationBars=true",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-03-11T10:16:00.286Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-03-11T10:16:00.286Z",
+  "sourceUrls": [
+    "https://www.aldi.be/nl/onze-folders/folder-van-deze-week.html"
+  ],
+  "methods": [
+    "unknown"
+  ]
+}

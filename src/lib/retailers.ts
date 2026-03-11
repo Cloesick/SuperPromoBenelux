@@ -82,6 +82,56 @@ export const retailers: Retailer[] = [
       uniqueSellingPoint: "Laagste prijzen garantie in België, geen reclame-franje: geen muziek, geen fancy inrichting, alles gericht op de laagste prijs voor de klant.",
     },
   },
+  {
+    slug: "aldi",
+    name: "ALDI",
+    logo: "/retailers/aldi.svg",
+    color: "#0B5AA2",
+    website: "https://www.aldi.be",
+    description:
+      "Bekijk de ALDI folder van deze week en ontdek de nieuwste promoties en straffe specials.",
+    category: "supermarkt",
+    seo: {
+      folderDay: "wekelijks",
+      folderDayDetail:
+        "ALDI publiceert elke week een nieuwe folder met verrassende promo’s en straffe specials. Bekijk ook de folder van volgende week om je boodschappen vooruit te plannen.",
+      storeCount: "meer dan 445 winkels in België",
+      pricePositioning:
+        "ALDI is een discountsupermarkt met een focus op hoge kwaliteit aan de laagst mogelijke prijs, met wekelijks wisselende acties naast het vaste assortiment.",
+      loyalty:
+        "ALDI-punten via de ALDI-app (spaarprogramma met voordelen en acties).",
+      appName: "ALDI app",
+      openingHours:
+        "Maandag t/m zaterdag doorgaans 8:00–20:00 (verschilt per vestiging). ALDI is meestal gesloten op zondag.",
+      uniqueSellingPoint:
+        "Sterk in scherpe prijzen, compacte winkels en wekelijkse acties (Specials) naast dagelijkse basisproducten.",
+    },
+  },
+  {
+    slug: "action",
+    name: "Action",
+    logo: "/retailers/action.svg",
+    color: "#0046AD",
+    website: "https://www.action.com/nl-be",
+    description:
+      "Bekijk de Action folder en weekactie aanbiedingen in België met kleine prijzen en grote glimlach.",
+    category: "discounter",
+    seo: {
+      folderDay: "woensdag",
+      folderDayDetail:
+        "De nieuwe Action-folder verschijnt elke woensdag met weekdeals, nieuwe producten en basics voor elke dag.",
+      storeCount: "meer dan 3000 winkels in Europa (ook in België)",
+      pricePositioning:
+        "Action is een non-food discounter met een breed en snel wisselend assortiment tegen zeer lage prijzen, met veel producten onder 1 euro.",
+      loyalty:
+        "Geen klassieke klantenkaart; je kunt wel een Action-account gebruiken voor favorieten en productinformatie.",
+      appName: "Action app",
+      openingHours:
+        "Maandag t/m zaterdag doorgaans 9:00–19:00, vaak ook open op zondag (verschilt per winkel).",
+      uniqueSellingPoint:
+        "Elke week nieuwe non-food deals (huishouden, decoratie, hobby, multimedia) met extreem scherpe prijzen.",
+    },
+  },
 ];
 
 export function getRetailerBySlug(slug: string): Retailer | undefined {

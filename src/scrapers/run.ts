@@ -2,6 +2,8 @@ import { AlbertHeijnScraper } from "./albert-heijn";
 import { LidlScraper } from "./lidl";
 import { DelhaizeScraper } from "./delhaize";
 import { ColruytScraper } from "./colruyt";
+import { AldiScraper } from "./aldi";
+import { ActionScraper } from "./action";
 import { BaseScraper } from "./base";
 
 const scrapers: BaseScraper[] = [
@@ -9,6 +11,8 @@ const scrapers: BaseScraper[] = [
   new LidlScraper(),
   new DelhaizeScraper(),
   new ColruytScraper(),
+  new AldiScraper(),
+  new ActionScraper(),
 ];
 
 async function main() {

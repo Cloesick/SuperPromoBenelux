@@ -3,6 +3,8 @@ const retailers = [
   { slug: "lidl", name: "Lidl" },
   { slug: "delhaize", name: "Delhaize" },
   { slug: "colruyt", name: "Colruyt" },
+  { slug: "aldi", name: "ALDI" },
+  { slug: "action", name: "Action" },
 ];
 
 describe("Retailer folder pages", () => {

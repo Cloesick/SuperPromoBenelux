@@ -24,6 +24,7 @@ export interface RetailerSeo {
 
 export type RetailerCategory =
   | "supermarkt"
+  | "discounter"
   | "warenhuis"
   | "electronica"
   | "doe-het-zelf"

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 export default function FoldersPage() {
   const supermarkten = retailers.filter((r) => r.category === "supermarkt");
+  const discounters = retailers.filter((r) => r.category === "discounter");
 
   const faqItems = [
     {
@@ -29,7 +30,7 @@ export default function FoldersPage() {
     {
       question: "Welke supermarkten staan op SuperPromo België?",
       answer:
-        "Momenteel verzamelen we de folders van Albert Heijn, Lidl, Delhaize en Colruyt — de vier grootste supermarktketens in België. We breiden regelmatig uit met nieuwe winkels.",
+        "Momenteel verzamelen we de folders van Albert Heijn, Lidl, Delhaize en Colruyt. We breiden regelmatig uit met nieuwe winkels en discounters zoals Action.",
     },
     {
       question: "Kan ik de folder ook op mijn smartphone bekijken?",
@@ -71,6 +72,17 @@ export default function FoldersPage() {
         </div>
       </div>
 
+      {discounters.length > 0 && (
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Discounters</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {discounters.map((retailer) => (
+              <RetailerCard key={retailer.slug} retailer={retailer} />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* SEO content */}
       <section className="mt-8 mb-12">
         <h2 className="text-xl font-bold text-gray-900 mb-4">
@@ -79,9 +91,9 @@ export default function FoldersPage() {
         <div className="prose prose-gray max-w-none text-sm leading-relaxed text-gray-600 space-y-3">
           <p>
             Op SuperPromo België vind je elke week de nieuwste reclamefolders van de grootste
-            supermarkten in België. Of je nu op zoek bent naar de Albert Heijn Bonusfolder, de Lidl
-            weekaanbiedingen, de Delhaize promoties of de Colruyt Laagste Prijzen folder — hier vind
-            je ze allemaal op één plek.
+            supermarkten en discounters in België. Of je nu op zoek bent naar de Albert Heijn
+            Bonusfolder, de Lidl weekaanbiedingen, de Delhaize promoties, de Colruyt Laagste Prijzen
+            folder of de Action folder — hier vind je ze allemaal op één plek.
           </p>
           <p>
             Elke supermarkt heeft een vaste dag waarop de nieuwe folder verschijnt. Albert Heijn en

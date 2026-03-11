@@ -111,6 +111,7 @@ export abstract class BaseScraper {
 
     const browser = await puppeteer.launch({
       headless: true,
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
 
@@ -247,9 +248,9 @@ export abstract class BaseScraper {
           if (!ctx.methods.includes(apiDeals.source)) ctx.methods.push(apiDeals.source);
         }
 
-        // Step 7: Screenshot fallback (only if no embed/pdf/deals found)
+        // Step 7: Screenshot fallback (when no embed/pdf is available)
         let screenshots: ScreenshotResult | null = null;
-        if (!embed && !pdf && allDeals.length === 0) {
+        if (!embed && !pdf) {
           screenshots = await this.takeScreenshots(ctx);
           if (screenshots.pages.length > 0 && !ctx.methods.includes("screenshot")) {
             ctx.methods.push("screenshot");
@@ -323,6 +324,18 @@ export abstract class BaseScraper {
 
       if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
       const filePath = path.join(DATA_DIR, `${this.retailerSlug}.json`);
+
+      const existing = this.readExistingData(filePath);
+      if (existing) {
+        const same =
+          JSON.stringify(this.normalizeForComparison(existing)) ===
+          JSON.stringify(this.normalizeForComparison(data));
+        if (same) {
+          this.log("No changes detected; skipping JSON write");
+          return;
+        }
+      }
+
       fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
       this.log(`Saved to ${filePath}`);
     } catch (error) {
@@ -736,7 +749,7 @@ export abstract class BaseScraper {
 
     if (!fs.existsSync(SCREENSHOT_DIR)) fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
 
-    const filename = `${this.retailerSlug}-${Date.now()}.png`;
+    const filename = `${this.generateFolderId("screenshot-p1")}.png`;
     const filepath = path.join(SCREENSHOT_DIR, filename);
 
     await page.screenshot({ path: filepath, fullPage: true });
@@ -883,5 +896,28 @@ export abstract class BaseScraper {
 
   protected log(msg: string): void {
     console.log(`[${this.retailerName}] ${msg}`);
+  }
+
+  private readExistingData(filePath: string): ScrapedData | null {
+    if (!fs.existsSync(filePath)) return null;
+    try {
+      const raw = fs.readFileSync(filePath, "utf-8");
+      return JSON.parse(raw) as ScrapedData;
+    } catch {
+      return null;
+    }
+  }
+
+  private normalizeForComparison(data: ScrapedData): unknown {
+    return {
+      retailer: data.retailer,
+      sourceUrls: data.sourceUrls,
+      methods: data.methods,
+      folders: data.folders.map((f) => {
+        const { scrapedAt: _folderScrapedAt, ...rest } = f as any;
+        return rest;
+      }),
+      deals: data.deals,
+    };
   }
 }

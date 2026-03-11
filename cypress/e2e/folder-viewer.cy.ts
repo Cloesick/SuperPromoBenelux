@@ -10,6 +10,8 @@ const viewerRetailers = [
   { slug: "lidl", name: "Lidl" },
   { slug: "delhaize", name: "Delhaize" },
   { slug: "colruyt", name: "Colruyt" },
+  { slug: "aldi", name: "ALDI" },
+  { slug: "action", name: "Action" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -124,7 +126,7 @@ describe("Image page viewer navigation", () => {
   let pageCount = 0;
 
   before(() => {
-    const slugs = ["lidl", "colruyt", "delhaize", "albert-heijn"];
+    const slugs = ["lidl", "colruyt", "delhaize", "albert-heijn", "aldi", "action"];
 
     cy.wrap(slugs)
       .each((slug: string) => {
