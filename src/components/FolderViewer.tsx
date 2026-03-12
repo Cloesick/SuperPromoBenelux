@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Calendar, FileText, Maximize2 } from "lucide-react";
 import { Folder, Retailer } from "@/lib/types";
@@ -16,6 +16,9 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
   const hasPages = folder.pages.length > 0;
   const [isIOS, setIsIOS] = useState(false);
 
+  const [trackingEnabled, setTrackingEnabled] = useState(false);
+  const sentRef = useRef<Set<string>>(new Set());
+
   const [currentPage, setCurrentPage] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [mode, setMode] = useState<"embed" | "pdf" | "pages">(() => {
@@ -23,6 +26,99 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
     if (hasPages) return "pages";
     return "pdf";
   });
+
+  useEffect(() => {
+    const hasConsent = () => {
+      if (typeof document === "undefined") return false;
+      return document.cookie
+        .split(";")
+        .map((c) => c.trim())
+        .some((c) => c === "sp_cookie_consent=accepted" || c.startsWith("sp_cookie_consent=accepted"));
+    };
+
+    const update = () => setTrackingEnabled(hasConsent());
+    update();
+
+    window.addEventListener("sp_consent_changed", update);
+    window.addEventListener("storage", update);
+    return () => {
+      window.removeEventListener("sp_consent_changed", update);
+      window.removeEventListener("storage", update);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!trackingEnabled) return;
+    if (typeof window === "undefined") return;
+
+    const send = (event: string, key: string) => {
+      if (sentRef.current.has(key)) return;
+      sentRef.current.add(key);
+
+      void fetch("/api/engagement", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          event,
+          retailer: retailer.slug,
+          path: window.location.pathname,
+        }),
+        keepalive: true,
+      }).catch(() => {
+        return;
+      });
+    };
+
+    send("folder_view", "folder_view");
+
+    const t = window.setTimeout(() => {
+      send("folder_engaged_15s", "folder_engaged_15s");
+    }, 15000);
+
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      if (max <= 0) return;
+      const pct = (window.scrollY / max) * 100;
+      if (pct >= 50) send("folder_scroll_50", "folder_scroll_50");
+      if (pct >= 90) send("folder_scroll_90", "folder_scroll_90");
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [trackingEnabled, retailer.slug]);
+
+  useEffect(() => {
+    if (!trackingEnabled) return;
+    if (mode !== "pages") return;
+    if (typeof window === "undefined") return;
+
+    const key = `folder_page_turn:${currentPage}`;
+    if (sentRef.current.has(key)) return;
+    sentRef.current.add(key);
+
+    void fetch("/api/engagement", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        event: "folder_page_turn",
+        retailer: retailer.slug,
+        path: window.location.pathname,
+      }),
+      keepalive: true,
+    }).catch(() => {
+      return;
+    });
+  }, [trackingEnabled, mode, currentPage, retailer.slug]);
 
   useEffect(() => {
     const ua = navigator.userAgent;
