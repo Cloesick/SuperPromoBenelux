@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Calendar, FileText, Maximize2 } from "lucide-react";
 import { Folder, Retailer } from "@/lib/types";
@@ -11,8 +11,26 @@ interface FolderViewerProps {
 }
 
 export function FolderViewer({ folder, retailer }: FolderViewerProps) {
+  const hasEmbed = !!folder.embedUrl;
+  const hasPdf = !!folder.pdfUrl;
+  const hasPages = folder.pages.length > 0;
+  const [isIOS, setIsIOS] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [mode, setMode] = useState<"embed" | "pdf" | "pages">(() => {
+    if (hasEmbed) return "embed";
+    if (hasPages) return "pages";
+    return "pdf";
+  });
+
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    const detectedIOS = /iP(hone|od|ad)/.test(ua);
+    setIsIOS(detectedIOS);
+
+    if (detectedIOS && hasPdf) setMode("pdf");
+  }, [hasPdf]);
 
   const validFrom = new Date(folder.validFrom).toLocaleDateString("nl-BE", {
     day: "numeric",
@@ -24,10 +42,6 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
     month: "long",
     year: "numeric",
   });
-
-  const hasEmbed = !!folder.embedUrl;
-  const hasPdf = !!folder.pdfUrl;
-  const hasPages = folder.pages.length > 0;
 
   return (
     <div>
@@ -55,14 +69,96 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
         </div>
       </div>
 
+      {(hasEmbed || hasPdf || hasPages) && (
+        <div className="flex flex-wrap items-center gap-2 mb-4">
+          {hasEmbed && (
+            <button
+              type="button"
+              onClick={() => setMode("embed")}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition ${
+                mode === "embed"
+                  ? "bg-blue-700 text-white border-blue-700"
+                  : "bg-white text-gray-700 border-gray-200 hover:border-gray-300"
+              }`}
+            >
+              Online
+            </button>
+          )}
+          {hasPdf && (
+            <button
+              type="button"
+              onClick={() => setMode("pdf")}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition ${
+                mode === "pdf"
+                  ? "bg-blue-700 text-white border-blue-700"
+                  : "bg-white text-gray-700 border-gray-200 hover:border-gray-300"
+              }`}
+            >
+              PDF
+            </button>
+          )}
+          {hasPages && (
+            <button
+              type="button"
+              onClick={() => setMode("pages")}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition ${
+                mode === "pages"
+                  ? "bg-blue-700 text-white border-blue-700"
+                  : "bg-white text-gray-700 border-gray-200 hover:border-gray-300"
+              }`}
+            >
+              Pagina&apos;s
+            </button>
+          )}
+
+          <div className="flex-1" />
+
+          {mode === "embed" && hasEmbed && (
+            <a
+              href={folder.embedUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-600 hover:text-blue-700 transition"
+            >
+              Open in nieuw tabblad
+            </a>
+          )}
+          {mode === "pdf" && hasPdf && (
+            <a
+              href={folder.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-600 hover:text-blue-700 transition"
+            >
+              Open PDF
+            </a>
+          )}
+        </div>
+      )}
+
       {/* Primary: Embedded folder viewer (iframe) */}
-      {hasEmbed ? (
+      {mode === "embed" && hasEmbed ? (
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
           <div className={`relative ${isFullscreen ? "fixed inset-0 z-50 bg-white" : ""}`}>
+            {isIOS && !hasPdf && !hasPages && !isFullscreen && (
+              <div className="sm:hidden px-6 py-4 border-b border-gray-100 bg-gray-50">
+                <p className="text-sm text-gray-600 mb-3">
+                  Op iPhone wordt de online folder soms geblokkeerd in deze pagina.
+                </p>
+                <a
+                  href={folder.embedUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+                >
+                  Open in nieuw tabblad
+                </a>
+              </div>
+            )}
             {isFullscreen && (
               <button
                 onClick={() => setIsFullscreen(false)}
-                className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 shadow-lg transition"
+                className="absolute top-[calc(env(safe-area-inset-top)+1rem)] right-[calc(env(safe-area-inset-right)+1rem)] z-10 bg-white/90 hover:bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 shadow-lg transition"
               >
                 Sluiten
               </button>
@@ -70,7 +166,11 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
             <iframe
               src={folder.embedUrl}
               title={`${retailer.name} folder`}
-              className={`w-full border-0 ${isFullscreen ? "h-full" : "h-[600px] sm:h-[750px] lg:h-[900px]"}`}
+              className={`w-full border-0 ${
+                isFullscreen
+                  ? "h-full"
+                  : "h-[70dvh] sm:h-[750px] lg:h-[900px]"
+              }`}
               allow="fullscreen"
               loading="lazy"
               sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-top-navigation"
@@ -88,17 +188,32 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
             </div>
           )}
         </div>
-      ) : hasPdf ? (
-        /* Fallback: PDF viewer via iframe */
+      ) : mode === "pdf" && hasPdf ? (
+        /* Fallback: PDF viewer */
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <div className="sm:hidden p-6 text-center">
+            <p className="text-sm text-gray-600 mb-3">
+              Op sommige mobiele browsers wordt een PDF niet altijd correct in de pagina getoond.
+            </p>
+            <a
+              href={folder.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+            >
+              <FileText className="w-4 h-4" />
+              Open PDF
+            </a>
+          </div>
+
           <iframe
             src={folder.pdfUrl}
             title={`${retailer.name} folder PDF`}
-            className="w-full h-[600px] sm:h-[750px] lg:h-[900px] border-0"
+            className="hidden sm:block w-full h-[750px] lg:h-[900px] border-0"
             loading="lazy"
           />
         </div>
-      ) : hasPages ? (
+      ) : mode === "pages" && hasPages ? (
         /* Fallback: Image page viewer */
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
           <div className="relative aspect-3/4 bg-gray-50">
@@ -145,7 +260,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
       )}
 
       {/* Page thumbnails (only for image mode) */}
-      {!hasEmbed && !hasPdf && folder.pages.length > 1 && (
+      {mode === "pages" && !hasEmbed && !hasPdf && folder.pages.length > 1 && (
         <div className="mt-4 flex gap-2 overflow-x-auto pb-2">
           {folder.pages.map((page, i) => (
             <button

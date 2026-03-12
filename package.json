@@ -11,8 +11,8 @@
     "scrape": "tsx src/scrapers/run.ts",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test:e2e": "start-server-and-test dev http://localhost:3000 cy:run",
-    "test:e2e:open": "start-server-and-test dev http://localhost:3000 cy:open"
+    "test:e2e": "node scripts/run-e2e.mjs",
+    "test:e2e:open": "node scripts/run-e2e.mjs --open"
   },
   "keywords": [],
   "author": "",

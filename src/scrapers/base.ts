@@ -6,6 +6,9 @@ import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
 
+const DEFAULT_USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+
 // ---------------------------------------------------------------------------
 // Intermediary result types used during the scrape pipeline
 // ---------------------------------------------------------------------------
@@ -117,9 +120,7 @@ export abstract class BaseScraper {
 
     try {
       const page = await browser.newPage();
-      await page.setUserAgent(
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-      );
+      await page.setUserAgent(DEFAULT_USER_AGENT);
       await page.setViewport({ width: 1440, height: 900 });
 
       const intercepted = this.createInterceptedUrls();
@@ -225,7 +226,14 @@ export abstract class BaseScraper {
         }
 
         // Step 3: Try PDF detection
-        const pdf = await this.findPdf(ctx);
+        let pdf = await this.findPdf(ctx);
+
+        // If we found an embed but no PDF on the outer page, try the embed URL directly.
+        // This helps for viewers that only expose PDF links/requests from inside the viewer.
+        if (!pdf && embed?.url) {
+          const pdfFromEmbed = await this.findPdfFromEmbedUrl(ctx, embed.url);
+          if (pdfFromEmbed) pdf = pdfFromEmbed;
+        }
 
         // Step 4: Try JSON-LD structured data extraction
         const jsonLdDeals = await this.extractJsonLd(ctx);
@@ -561,6 +569,26 @@ export abstract class BaseScraper {
     return null;
   }
 
+  protected async findPdfFromEmbedUrl(ctx: ScrapeContext, embedUrl: string): Promise<PdfResult | null> {
+    const intercepted = this.createInterceptedUrls();
+    const page = await ctx.browser.newPage();
+    try {
+      await page.setUserAgent(DEFAULT_USER_AGENT);
+      await page.setViewport({ width: 1440, height: 900 });
+      this.setupNetworkInterception(page, intercepted);
+
+      await page.goto(embedUrl, { waitUntil: "networkidle2", timeout: 30000 });
+      await this.dismissCookieConsent(page);
+      await page.waitForNetworkIdle({ timeout: 5000 }).catch(() => {});
+
+      return await this.findPdf({ ...ctx, page, interceptedUrls: intercepted });
+    } catch {
+      return null;
+    } finally {
+      await page.close().catch(() => {});
+    }
+  }
+
   // ---- Step 3: PDF detection ---------------------------------------------
 
   protected async findPdf(ctx: ScrapeContext): Promise<PdfResult | null> {
@@ -767,7 +795,7 @@ export abstract class BaseScraper {
 
   // ---- Network interception setup ----------------------------------------
 
-  private setupNetworkInterception(page: Page, intercepted: InterceptedUrls): void {
+  protected setupNetworkInterception(page: Page, intercepted: InterceptedUrls): void {
     page.on("response", (response) => {
       const url = response.url();
       const contentType = response.headers()["content-type"] || "";
@@ -832,7 +860,7 @@ export abstract class BaseScraper {
 
   // ---- Helpers -----------------------------------------------------------
 
-  private createInterceptedUrls(): InterceptedUrls {
+  protected createInterceptedUrls(): InterceptedUrls {
     return { pdfs: [], publitas: [], ipaper: [], yumpu: [], issuu: [], apiJson: [], images: [] };
   }
 
