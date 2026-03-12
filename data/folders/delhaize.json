@@ -10,18 +10,19 @@
       "pageCount": 0,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/delhaize-belgium-nl/w10-2026-nl/page/1?publitas_embed=embedded&prop11=nl&prop17=not%20logged&consent=1.1.1.1.1.1",
+      "embedUrl": "https://view.publitas.com/delhaize-belgium-nl/w11-2026-nl/page/1?publitas_embed=embedded&prop11=nl&prop17=not%20logged&consent=1.1.1.1.1.1",
+      "pdfUrl": "https://view.publitas.com/11013/2903275/pdfs/0d8037ed-8f80-4490-ad51-458003e0dbb8.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W11-2026-NL.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-03-11T06:53:59.979Z"
+      "scrapedAt": "2026-03-12T05:38:27.388Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-03-11T06:54:02.891Z",
+  "scrapedAt": "2026-03-12T05:38:31.197Z",
   "sourceUrls": [
-    "https://www.delhaize.be/nl/folder",
-    "https://www.delhaize.be/nl/folder#main-content"
+    "https://www.delhaize.be/nl/folder"
   ],
   "methods": [
-    "publitas"
+    "publitas",
+    "pdf"
   ]
 }
