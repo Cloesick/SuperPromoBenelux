@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { retailers, getRetailerBySlug } from "@/lib/retailers";
 import { getCurrentFolder } from "@/lib/folders";
-import { getAffiliateUrl } from "@/lib/affiliate";
 import { FolderViewer } from "@/components/FolderViewer";
 import { JsonLd, createRetailerFolderJsonLd, createFAQJsonLd, createBreadcrumbJsonLd } from "@/components/JsonLd";
 import { Facebook, ExternalLink } from "lucide-react";
@@ -44,7 +43,7 @@ export default async function RetailerPage({ params }: PageProps) {
   }
 
   const currentFolder = getCurrentFolder(slug);
-  const affiliateUrl = getAffiliateUrl(slug);
+  const outboundUrl = `/out/${slug}`;
 
   const isSvgLogo = retailer.logo.toLowerCase().endsWith(".svg");
 
@@ -169,7 +168,7 @@ export default async function RetailerPage({ params }: PageProps) {
       {/* Actions */}
       <div className="flex flex-col sm:flex-row gap-4 mt-8">
         <a
-          href={affiliateUrl}
+          href={outboundUrl}
           target="_blank"
           rel="noopener noreferrer sponsored"
           className="inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-lg transition"

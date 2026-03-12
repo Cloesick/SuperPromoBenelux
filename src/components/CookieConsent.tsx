@@ -32,6 +32,16 @@ function loadClarity(projectId: string) {
   })(window, document, "clarity", "script", projectId);
 }
 
+function captureAttributionFromUrlIfPresent() {
+  if (typeof window === "undefined") return;
+  const qs = window.location.search;
+  if (!qs || !qs.includes("utm_")) return;
+
+  fetch(`/api/attribution${qs}`, { credentials: "include" }).catch(() => {
+    // ignore
+  });
+}
+
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
   const [consent, setConsent] = useState<ConsentValue>(null);
@@ -47,6 +57,8 @@ export function CookieConsent() {
     if (stored === "accepted") {
       const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
       if (clarityId) loadClarity(clarityId);
+
+      captureAttributionFromUrlIfPresent();
     }
   }, []);
 
@@ -57,6 +69,8 @@ export function CookieConsent() {
 
     const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
     if (clarityId) loadClarity(clarityId);
+
+    captureAttributionFromUrlIfPresent();
   }, []);
 
   const handleDecline = useCallback(() => {
