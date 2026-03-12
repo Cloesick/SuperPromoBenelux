@@ -17,6 +17,49 @@ export type UtmAttribution = {
   utm_content?: string;
 };
 
+export type RecentEvent = {
+  created_at: string;
+  event_name: string;
+  path: string | null;
+  retailer: string | null;
+  destination_url: string | null;
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  utm_content: string | null;
+};
+
+export async function getRecentEvents(limit = 100): Promise<RecentEvent[]> {
+  const sql = getSql();
+  if (!sql) return [];
+
+  const safeLimit = Number.isFinite(limit) ? Math.min(Math.max(Math.floor(limit), 1), 500) : 100;
+
+  try {
+    const result = await sql`
+      SELECT
+        created_at,
+        event_name,
+        path,
+        retailer,
+        destination_url,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_content
+      FROM sp_events
+      ORDER BY created_at DESC
+      LIMIT ${safeLimit}
+    `;
+
+    if (!Array.isArray(result)) return [];
+    if (result.length > 0 && Array.isArray(result[0])) return [];
+    return result as unknown as RecentEvent[];
+  } catch {
+    return [];
+  }
+}
+
 export async function logEventToDb(args: {
   eventName: string;
   path?: string;
