@@ -1,6 +1,6 @@
 import { Retailer } from "./types";
 
-export const retailers: Retailer[] = [
+export const retailersBe: Retailer[] = [
   {
     slug: "albert-heijn",
     name: "Albert Heijn",
@@ -134,8 +134,54 @@ export const retailers: Retailer[] = [
   },
 ];
 
+export const nlBorderRetailers: Retailer[] = [
+  {
+    slug: "albert-heijn-nl",
+    name: "Albert Heijn (NL)",
+    logo: "/retailers/albert-heijn.png",
+    color: "#00A0E2",
+    website: "https://www.ah.nl",
+    description: "Bekijk de nieuwste Albert Heijn aanbiedingen in Nederland (grensstreek).",
+    category: "supermarkt",
+    seo: {
+      folderDay: "wekelijks",
+      folderDayDetail: "Albert Heijn publiceert wekelijks nieuwe aanbiedingen. Bekijk de actuele folder voor de nieuwste deals.",
+      storeCount: "winkels in Nederland (grensstreek)",
+      pricePositioning: "Albert Heijn NL heeft wekelijks wisselende Bonus-aanbiedingen en acties.",
+      loyalty: "Bonuskaart",
+      appName: "Albert Heijn app",
+      openingHours: "Openingstijden verschillen per winkel.",
+      uniqueSellingPoint: "Bonus-aanbiedingen en breed assortiment.",
+    },
+  },
+  {
+    slug: "jumbo-nl",
+    name: "Jumbo (NL)",
+    logo: "/retailers/jumbo.svg",
+    color: "#FFD200",
+    website: "https://www.jumbo.com",
+    description: "Bekijk de nieuwste Jumbo aanbiedingen in Nederland (grensstreek).",
+    category: "supermarkt",
+    seo: {
+      folderDay: "wekelijks",
+      folderDayDetail: "Jumbo publiceert wekelijks nieuwe aanbiedingen. Bekijk de actuele folder voor de nieuwste deals.",
+      storeCount: "winkels in Nederland (grensstreek)",
+      pricePositioning: "Jumbo staat bekend om scherpe acties op A-merken en huismerken.",
+      loyalty: "Jumbo Extra's",
+      openingHours: "Openingstijden verschillen per winkel.",
+      uniqueSellingPoint: "Wekelijkse acties en breed assortiment.",
+    },
+  },
+];
+
+export const retailers: Retailer[] = retailersBe;
+
+export function getNlBorderRetailerBySlug(slug: string): Retailer | undefined {
+  return nlBorderRetailers.find((r) => r.slug === slug);
+}
+
 export function getRetailerBySlug(slug: string): Retailer | undefined {
-  return retailers.find((r) => r.slug === slug);
+  return retailersBe.find((r) => r.slug === slug) ?? nlBorderRetailers.find((r) => r.slug === slug);
 }
 
 export function getRetailersByCategory(
