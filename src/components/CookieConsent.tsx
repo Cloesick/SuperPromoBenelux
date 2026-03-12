@@ -37,9 +37,14 @@ function captureAttributionFromUrlIfPresent() {
   const qs = window.location.search;
   if (!qs || !qs.includes("utm_")) return;
 
-  fetch(`/api/attribution${qs}`, { credentials: "include" }).catch(() => {
-    // ignore
-  });
+  fetch(`/api/attribution${qs}`, { credentials: "include" }).catch(() => {});
+}
+
+function setConsentCookie(value: Exclude<ConsentValue, null>) {
+  if (typeof window === "undefined") return;
+  const secure = window.location.protocol === "https:" ? "; Secure" : "";
+  document.cookie = `sp_cookie_consent=${value}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax${secure}`;
+  window.dispatchEvent(new Event("sp_consent_changed"));
 }
 
 export function CookieConsent() {
@@ -55,10 +60,15 @@ export function CookieConsent() {
     }
 
     if (stored === "accepted") {
+      setConsentCookie("accepted");
       const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
       if (clarityId) loadClarity(clarityId);
 
       captureAttributionFromUrlIfPresent();
+    }
+
+    if (stored === "declined") {
+      setConsentCookie("declined");
     }
   }, []);
 
@@ -66,6 +76,8 @@ export function CookieConsent() {
     localStorage.setItem(CONSENT_KEY, "accepted");
     setConsent("accepted");
     setVisible(false);
+
+    setConsentCookie("accepted");
 
     const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
     if (clarityId) loadClarity(clarityId);
@@ -77,6 +89,8 @@ export function CookieConsent() {
     localStorage.setItem(CONSENT_KEY, "declined");
     setConsent("declined");
     setVisible(false);
+
+    setConsentCookie("declined");
   }, []);
 
   if (!visible) return null;
@@ -101,8 +115,8 @@ export function CookieConsent() {
 
         <p className="text-sm text-gray-600 mb-4 leading-relaxed">
           Wij gebruiken analytische cookies om te begrijpen hoe bezoekers onze website gebruiken.
-          Dit helpt ons de website te verbeteren. Basisstatistieken worden altijd anoniem verzameld
-          zonder cookies. Heatmaps en sessie-opnames worden alleen ingeschakeld als je hiermee akkoord gaat.
+          Dit helpt ons de website te verbeteren. Analyses (zoals heatmaps en sessie-opnames) worden
+          alleen ingeschakeld als je hiermee akkoord gaat.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3">

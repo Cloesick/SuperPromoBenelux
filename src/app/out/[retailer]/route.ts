@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { getAffiliateUrl } from "@/lib/affiliate";
 import { getRetailerBySlug } from "@/lib/retailers";
+import { isConsentAccepted } from "@/lib/consent";
+import { parseAttributionCookie } from "@/lib/attribution";
+import { logEventToDb } from "@/lib/eventsDb";
 
 export async function GET(
   request: Request,
@@ -13,9 +16,10 @@ export async function GET(
   }
 
   const affiliateUrl = getAffiliateUrl(retailer);
+  const rawDestination = affiliateUrl === "#" ? known.website : affiliateUrl;
   let dest: URL;
   try {
-    dest = new URL(affiliateUrl);
+    dest = new URL(rawDestination);
   } catch {
     return new NextResponse("Invalid destination", { status: 400 });
   }
@@ -26,29 +30,26 @@ export async function GET(
 
   const reqUrl = new URL(request.url);
 
-  // Server-side log for attribution and funnel measurement.
-  // We deliberately keep this minimal (no PII) and rely on first-party cookies.
-  const attribCookie = request.headers
-    .get("cookie")
-    ?.split(";")
-    .map((c) => c.trim())
-    .find((c) => c.startsWith("sp_attrib="));
+  const cookieHeader = request.headers.get("cookie");
+  if (isConsentAccepted(cookieHeader)) {
+    const rawAttrib = cookieHeader
+      ?.split(";")
+      .map((c) => c.trim())
+      .find((c) => c.startsWith("sp_attrib="))
+      ?.split("=")[1];
 
-  const attribSample = attribCookie
-    ? attribCookie.slice(0, 80)
-    : null;
+    const utm = parseAttributionCookie(rawAttrib ?? undefined);
 
-  console.log(
-    JSON.stringify({
-      event: "outbound_click",
-      retailer,
-      affiliateUrl: dest.toString(),
+    await logEventToDb({
+      eventName: "outbound_click",
       path: reqUrl.pathname,
-      ts: new Date().toISOString(),
-      hasAttrib: Boolean(attribCookie),
-      attribSample,
-    })
-  );
+      retailer,
+      destinationUrl: dest.toString(),
+      utm: utm ?? undefined,
+      userAgent: request.headers.get("user-agent"),
+      referrer: request.headers.get("referer"),
+    });
+  }
 
   return NextResponse.redirect(dest.toString(), 302);
 }

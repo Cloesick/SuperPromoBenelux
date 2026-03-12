@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd, createWebsiteJsonLd } from "@/components/JsonLd";
 import { CookieConsent } from "@/components/CookieConsent";
+import { AnalyticsGate } from "@/components/AnalyticsGate";
 
 export const metadata: Metadata = {
   title: {
@@ -42,8 +41,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieConsent />
-        <Analytics />
-        <SpeedInsights />
+        <AnalyticsGate />
       </body>
     </html>
   );
