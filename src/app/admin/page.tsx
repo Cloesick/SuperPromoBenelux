@@ -31,6 +31,14 @@ export default function AdminHomePage() {
         </Link>
 
         <Link
+          href="/admin/engagement"
+          className="block border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition"
+        >
+          <div className="font-semibold">Engagement</div>
+          <div className="text-sm text-gray-600 mt-1">Folder engagement metrics</div>
+        </Link>
+
+        <Link
           href="/admin/posts"
           className="block border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition"
         >
