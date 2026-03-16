@@ -2,21 +2,21 @@
   "retailer": "action",
   "folders": [
     {
-      "id": "action-2026-w11-folder",
+      "id": "action-2026-w12-folder",
       "retailerSlug": "action",
       "title": "Action folder van de week",
-      "validFrom": "2026-03-09",
-      "validUntil": "2026-03-15",
+      "validFrom": "2026-03-16",
+      "validUntil": "2026-03-22",
       "pageCount": 0,
       "thumbnailUrl": "",
       "pages": [],
       "embedUrl": "https://be.publications.action.com/?publitas_embed=embedded",
       "contentSource": "publitas",
-      "scrapedAt": "2026-03-11T10:16:29.597Z"
+      "scrapedAt": "2026-03-16T06:09:41.569Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-03-11T10:16:29.598Z",
+  "scrapedAt": "2026-03-16T06:09:41.569Z",
   "sourceUrls": [
     "https://www.action.com/nl-be/folder/"
   ],

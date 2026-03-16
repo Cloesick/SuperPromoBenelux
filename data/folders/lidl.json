@@ -2,22 +2,22 @@
   "retailer": "lidl",
   "folders": [
     {
-      "id": "lidl-2026-w11-folder",
+      "id": "lidl-2026-w12-folder",
       "retailerSlug": "lidl",
       "title": "Lidl folder van de week",
-      "validFrom": "2026-03-09",
-      "validUntil": "2026-03-15",
+      "validFrom": "2026-03-16",
+      "validUntil": "2026-03-22",
       "pageCount": 0,
       "thumbnailUrl": "",
       "pages": [],
       "embedUrl": "https://folder-nl.lidl.be/nl-folder-11-03-17-03",
       "pdfUrl": "https://folder-nl.lidl.be/97031/2865706/pdfs/b654a9da-04a4-413d-aa8c-49d21fe55b2d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252011-03-17-03.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-03-13T05:36:05.216Z"
+      "scrapedAt": "2026-03-16T06:08:50.632Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-03-13T05:36:08.947Z",
+  "scrapedAt": "2026-03-16T06:08:54.546Z",
   "sourceUrls": [
     "https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
     "https://folder-nl.lidl.be/nl-folder-11-03-17-03"

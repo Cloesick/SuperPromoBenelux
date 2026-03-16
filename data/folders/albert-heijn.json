@@ -2,22 +2,22 @@
   "retailer": "albert-heijn",
   "folders": [
     {
-      "id": "albert-heijn-2026-w11-folder",
+      "id": "albert-heijn-2026-w12-folder",
       "retailerSlug": "albert-heijn",
       "title": "Albert Heijn Bonusfolder",
-      "validFrom": "2026-03-09",
-      "validUntil": "2026-03-15",
+      "validFrom": "2026-03-16",
+      "validUntil": "2026-03-22",
       "pageCount": 0,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/ah/bonus-week-11-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/126/2868835/pdfs/7c86540a-45de-4135-b01a-e969b8029886.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-11-2026.pdf",
+      "embedUrl": "https://view.publitas.com/ah/bonus-week-12-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/126/2882435/pdfs/6134e98c-f819-476e-8a1d-f8845cf22ede.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-12-2026.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-03-12T04:41:53.892Z"
+      "scrapedAt": "2026-03-16T06:08:21.471Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-03-12T04:41:56.598Z",
+  "scrapedAt": "2026-03-16T06:08:25.123Z",
   "sourceUrls": [
     "https://www.ah.be/bonus/folder"
   ],

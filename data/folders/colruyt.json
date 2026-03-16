@@ -2,26 +2,26 @@
   "retailer": "colruyt",
   "folders": [
     {
-      "id": "colruyt-2026-w11-folder",
+      "id": "colruyt-2026-w12-folder",
       "retailerSlug": "colruyt",
       "title": "Colruyt folder van de week",
-      "validFrom": "2026-03-09",
-      "validUntil": "2026-03-15",
+      "validFrom": "2026-03-16",
+      "validUntil": "2026-03-22",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/colruyt-2026-w11-screenshot-p1.png",
+      "thumbnailUrl": "/screenshots/colruyt-2026-w12-screenshot-p1.png",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/colruyt-2026-w11-screenshot-p1.png",
+          "imageUrl": "/screenshots/colruyt-2026-w12-screenshot-p1.png",
           "deals": []
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-03-12T05:38:44.625Z"
+      "scrapedAt": "2026-03-16T06:09:22.169Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-03-12T05:38:46.628Z",
+  "scrapedAt": "2026-03-16T06:09:23.753Z",
   "sourceUrls": [
     "https://www.colruyt.be/nl/folders"
   ],
