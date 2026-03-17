@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { retailers } from "@/lib/retailers";
-import { RetailerCard } from "@/components/RetailerCard";
 import { JsonLd, createBreadcrumbJsonLd, createFAQJsonLd } from "@/components/JsonLd";
+import { FoldersClient } from "./FoldersClient";
 
 export const metadata: Metadata = {
   title: "Alle Folders",
@@ -13,9 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function FoldersPage() {
-  const supermarkten = retailers.filter((r) => r.category === "supermarkt");
-  const discounters = retailers.filter((r) => r.category === "discounter");
-
   const faqItems = [
     {
       question: "Hoe vaak worden de folders bijgewerkt?",
@@ -63,25 +60,7 @@ export default function FoldersPage() {
         Bekijk de actuele reclamefolders van je favoriete winkels in België. Elke week bijgewerkt.
       </p>
 
-      <div>
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Supermarkten</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {supermarkten.map((retailer) => (
-            <RetailerCard key={retailer.slug} retailer={retailer} />
-          ))}
-        </div>
-      </div>
-
-      {discounters.length > 0 && (
-        <div>
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Discounters</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {discounters.map((retailer) => (
-              <RetailerCard key={retailer.slug} retailer={retailer} />
-            ))}
-          </div>
-        </div>
-      )}
+      <FoldersClient retailers={retailers} />
 
       {/* SEO content */}
       <section className="mt-8 mb-12">
