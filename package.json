@@ -9,6 +9,10 @@
 		"start": "next start",
 		"lint": "eslint -c .eslintrc.json --ext .js,.jsx,.ts,.tsx .",
 		"scrape": "tsx src/scrapers/run.ts",
+		"monitor": "tsx src/scrapers/monitor.ts",
+		"test": "vitest run",
+		"test:unit": "vitest run",
+		"test:unit:watch": "vitest",
 		"cy:open": "cypress open",
 		"cy:run": "cypress run",
 		"test:e2e": "node scripts/run-e2e.mjs",
@@ -20,6 +24,7 @@
 	"description": "SuperPromo België - Alle folders en promoties van je favoriete winkels",
 	"dependencies": {
 		"@neondatabase/serverless": "^1.0.2",
+		"@supabase/supabase-js": "^2.57.4",
 		"@vercel/analytics": "^2.0.0",
 		"@vercel/speed-insights": "^2.0.0",
 		"lucide-react": "^0.577.0",
@@ -36,12 +41,13 @@
 		"cheerio": "^1.2.0",
 		"cypress": "^15.11.0",
 		"puppeteer": "^24.39.0",
-		"eslint": "^8.57.0",
+		"eslint": "^9.0.0",
 		"eslint-config-next": "^16.1.6",
 		"postcss": "^8.5.8",
 		"start-server-and-test": "^2.1.5",
 		"tailwindcss": "^4.2.1",
 		"tsx": "^4.21.0",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"vitest": "^2.1.9"
 	}
 }
