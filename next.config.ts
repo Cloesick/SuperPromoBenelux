@@ -60,6 +60,9 @@ const nextConfig: NextConfig = {
 			},
 		],
 	},
+	outputFileTracingIncludes: {
+		"/*": ["./data/folders/*.json"],
+	},
 };
 
 export default nextConfig;
