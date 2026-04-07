@@ -2,30 +2,87 @@
   "retailer": "colruyt",
   "folders": [
     {
-      "id": "colruyt-2026-w12-folder",
+      "id": "colruyt-2026-w15-folder",
       "retailerSlug": "colruyt",
       "title": "Colruyt folder van de week",
-      "validFrom": "2026-03-16",
-      "validUntil": "2026-03-22",
-      "pageCount": 1,
-      "thumbnailUrl": "/screenshots/colruyt-2026-w12-screenshot-p1.png",
+      "validFrom": "2026-04-06",
+      "validUntil": "2026-04-12",
+      "pageCount": 12,
+      "thumbnailUrl": "/screenshots/colruyt-2026-w15-viewerimg-p1.png",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/colruyt-2026-w12-screenshot-p1.png",
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p1.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p2.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p3.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p4.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p5.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p6.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p7.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p8.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p9.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p10.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p11.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p12.png",
           "deals": []
         }
       ],
-      "contentSource": "screenshot",
-      "scrapedAt": "2026-03-16T06:09:22.169Z"
+      "contentSource": "issuu",
+      "scrapedAt": "2026-04-06T17:21:56.244Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-03-16T06:09:23.753Z",
+  "scrapedAt": "2026-04-06T17:22:26.249Z",
   "sourceUrls": [
-    "https://www.colruyt.be/nl/folders"
+    "https://www.colruyt.be/nl/folders",
+    "https://e.issuu.com/embed.html?d=colruyt_laagste_prijzen_-_alle_acti_61cb0d932d295f&u=colruytgroup&pageNumber=1&backgroundColor=%23353535&backgroundColorFullscreen=%23353535&pageLayout=doublePage&hideIssuuLogo=true&allowDownload=true&hideShareButton=true&ts=1775495938000"
   ],
   "methods": [
+    "issuu",
     "screenshot"
   ]
 }

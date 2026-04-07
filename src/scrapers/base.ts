@@ -104,6 +104,88 @@ export abstract class BaseScraper {
 		return this.config.slug;
 	}
 
+	protected async preparePage(page: Page): Promise<void> {
+		await page.setUserAgent(DEFAULT_USER_AGENT);
+		await page.setViewport({ width: 1440, height: 900 });
+		try {
+			await page.evaluateOnNewDocument(() => {
+				// Basic webdriver evasion
+				Object.defineProperty(navigator, "webdriver", { get: () => false });
+				// Pretend to have some plugins and languages
+				Object.defineProperty(navigator, "plugins", {
+					get: () => [1, 2, 3],
+				});
+				Object.defineProperty(navigator, "languages", {
+					get: () => ["nl-BE", "nl", "en"],
+				});
+			});
+		} catch {
+			// ignore
+		}
+	}
+
+	protected async isEmbeddableViewerUrl(url: string): Promise<boolean> {
+		// Determine if a viewer URL is embeddable inside an iframe.
+		// If it sets X-Frame-Options or CSP frame-ancestors that would block our site,
+		// the frontend "Online" iframe will break and we should fall back to screenshots.
+		const controller = new AbortController();
+		const t = setTimeout(() => controller.abort(), 10000);
+		try {
+			const resp = await fetch(url, {
+				method: "HEAD",
+				redirect: "follow",
+				signal: controller.signal,
+			});
+			const xfo = (resp.headers.get("x-frame-options") || "").toLowerCase();
+			if (xfo.includes("deny")) return false;
+			if (xfo.includes("sameorigin")) return false;
+
+			const csp = (
+				resp.headers.get("content-security-policy") || ""
+			).toLowerCase();
+			if (csp.includes("frame-ancestors")) {
+				const m = csp.match(/frame-ancestors\s+([^;]+)/i);
+				const rule = (m?.[1] || "").trim();
+				if (rule.includes("'none'")) return false;
+				if (rule.includes("'self'")) return false;
+				// If it doesn't explicitly include our origin, assume it's not embeddable.
+				if (
+					rule &&
+					!rule.includes("*") &&
+					!rule.includes("http://localhost") &&
+					!rule.includes("https://www.superpromobelgie.be")
+				) {
+					return false;
+				}
+			}
+
+			return true;
+		} catch {
+			// If we can't determine headers, don't block scraping. The offline fallback
+			// and runtime logs will still guide improvements.
+			return true;
+		} finally {
+			clearTimeout(t);
+		}
+	}
+
+	protected async isBotChallengePage(page: Page): Promise<boolean> {
+		try {
+			const text = await page.evaluate(() => document.body?.innerText ?? "");
+			const t = String(text).toLowerCase();
+			return (
+				t.includes("sorry voor de onderbreking") ||
+				t.includes("click to verify") ||
+				t.includes("captcha") ||
+				t.includes("colruytgroup") ||
+				t.includes("je een bot") ||
+				t.includes("onmiddellijk weer toegang")
+			);
+		} catch {
+			return false;
+		}
+	}
+
 	async probeFingerprint(): Promise<{
 		fingerprint: string;
 		embedUrl?: string;
@@ -113,13 +195,17 @@ export abstract class BaseScraper {
 		const browser = await puppeteer.launch({
 			headless: true,
 			executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
-			args: ["--no-sandbox", "--disable-setuid-sandbox"],
+			args: [
+				"--no-sandbox",
+				"--disable-setuid-sandbox",
+				"--disable-blink-features=AutomationControlled",
+				"--disable-dev-shm-usage",
+			],
 		});
 
 		try {
 			const page = await browser.newPage();
-			await page.setUserAgent(DEFAULT_USER_AGENT);
-			await page.setViewport({ width: 1440, height: 900 });
+			await this.preparePage(page);
 
 			const intercepted = this.createInterceptedUrls();
 			this.setupNetworkInterception(page, intercepted);
@@ -140,6 +226,9 @@ export abstract class BaseScraper {
 			await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 			ctx.sourceUrls.push(url);
 			await this.dismissCookieConsent(page);
+			if (await this.isBotChallengePage(page)) {
+				return { fingerprint: "blocked", source: "unknown" };
+			}
 
 			const embed = await this.findEmbed(ctx);
 			let pdf = await this.findPdf(ctx);
@@ -174,13 +263,17 @@ export abstract class BaseScraper {
 		const browser = await puppeteer.launch({
 			headless: true,
 			executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
-			args: ["--no-sandbox", "--disable-setuid-sandbox"],
+			args: [
+				"--no-sandbox",
+				"--disable-setuid-sandbox",
+				"--disable-blink-features=AutomationControlled",
+				"--disable-dev-shm-usage",
+			],
 		});
 
 		try {
 			const page = await browser.newPage();
-			await page.setUserAgent(DEFAULT_USER_AGENT);
-			await page.setViewport({ width: 1440, height: 900 });
+			await this.preparePage(page);
 
 			const intercepted = this.createInterceptedUrls();
 			this.setupNetworkInterception(page, intercepted);
@@ -212,6 +305,12 @@ export abstract class BaseScraper {
 
 				// Step 0: Dismiss cookie consent
 				await this.dismissCookieConsent(page);
+				if (await this.isBotChallengePage(page)) {
+					this.log(
+						"Bot/captcha challenge detected; skipping this URL without saving screenshots",
+					);
+					continue;
+				}
 
 				// Step 1: Follow folder-specific links iteratively (up to 3 levels)
 				//         Stop early if an embed is found at the current page.
@@ -303,6 +402,32 @@ export abstract class BaseScraper {
 					if (pdfFromEmbed) pdf = pdfFromEmbed;
 				}
 
+				// Step 3a: If the embed exists but is not embeddable (X-Frame-Options/CSP),
+				//          generate renderable pages[] so the frontend does not show a broken iframe.
+				let screenshots: ScreenshotResult | null = null;
+				let embedNotEmbeddable = false;
+				if (embed?.url) {
+					const embeddable = await this.isEmbeddableViewerUrl(embed.url);
+					if (!embeddable) {
+						embedNotEmbeddable = true;
+						const candidateUrl = pdf?.url || embed.url;
+						this.log(
+							`Embed is not embeddable; falling back to screenshots from ${candidateUrl}`,
+						);
+						try {
+							screenshots = await this.takeScreenshots(ctx, candidateUrl);
+						} catch (e) {
+							this.log(`Screenshot fallback skipped: ${e}`);
+						}
+						if (
+							screenshots?.pages.length &&
+							!ctx.methods.includes("screenshot")
+						) {
+							ctx.methods.push("screenshot");
+						}
+					}
+				}
+
 				// Step 4: Try JSON-LD structured data extraction
 				const jsonLdDeals = await this.extractJsonLd(ctx);
 				if (jsonLdDeals.deals.length > 0) {
@@ -327,12 +452,116 @@ export abstract class BaseScraper {
 						ctx.methods.push(apiDeals.source);
 				}
 
+				// Step 3b: If the embed itself is "offline", generate renderable pages[]
+				//          so the frontend does not show an unusable iframe.
+				let embedWasOffline = false;
+				if (!screenshots && embed?.url) {
+					const offline = await this.isOfflinePublicationUrl(ctx, embed.url);
+					if (offline.isOffline) {
+						embedWasOffline = true;
+						this.log(
+							`Embed appears offline; attempting rediscovery (redirect=${offline.redirectUrl || "none"})`,
+						);
+
+						// If the offline message points to a generic page (e.g. retailer homepage),
+						// try to re-discover the actual viewer/PDF from there.
+						if (offline.redirectUrl && offline.redirectUrl !== embed.url) {
+							try {
+								// Clear existing intercepted buckets so we only consider the redirect page.
+								ctx.interceptedUrls.pdfs.length = 0;
+								ctx.interceptedUrls.publitas.length = 0;
+								ctx.interceptedUrls.ipaper.length = 0;
+								ctx.interceptedUrls.yumpu.length = 0;
+								ctx.interceptedUrls.issuu.length = 0;
+								ctx.interceptedUrls.apiJson.length = 0;
+
+								await page.goto(offline.redirectUrl, {
+									waitUntil: "networkidle2",
+									timeout: 30000,
+								});
+								await this.dismissCookieConsent(page);
+								if (await this.isBotChallengePage(page)) {
+									throw new Error("Blocked by bot/captcha challenge");
+								}
+								ctx.sourceUrls.push(offline.redirectUrl);
+								await page
+									.waitForNetworkIdle({ timeout: 5000 })
+									.catch(() => {});
+
+								const redirectedEmbed = await this.findEmbed(ctx);
+								if (redirectedEmbed?.url) {
+									this.log(
+										`Rediscovered embed from redirect: ${redirectedEmbed.url}`,
+									);
+									embed = redirectedEmbed;
+								}
+
+								let redirectedPdf = await this.findPdf(ctx);
+								if (!redirectedPdf && embed?.url) {
+									const pdfFromEmbed = await this.findPdfFromEmbedUrl(
+										ctx,
+										embed.url,
+									);
+									if (pdfFromEmbed) redirectedPdf = pdfFromEmbed;
+								}
+								if (redirectedPdf?.url) {
+									this.log(
+										`Rediscovered PDF from redirect: ${redirectedPdf.url}`,
+									);
+									pdf = redirectedPdf;
+								}
+							} catch {
+								// ignore rediscovery failures
+							}
+						}
+
+						// If the (possibly updated) embed is still offline, render screenshots from
+						// the best available URL.
+						const candidateUrl =
+							pdf?.url || embed?.url || offline.redirectUrl || embed.url;
+						this.log(
+							`Embed still offline; falling back to screenshots from ${candidateUrl}`,
+						);
+						try {
+							screenshots = await this.takeScreenshots(ctx, candidateUrl);
+						} catch (e) {
+							this.log(`Screenshot fallback skipped: ${e}`);
+						}
+						if (
+							screenshots &&
+							screenshots.pages.length > 0 &&
+							!ctx.methods.includes("screenshot")
+						) {
+							ctx.methods.push("screenshot");
+						}
+					}
+				}
+
 				// Step 7: Render fallback (Instance 1)
 				// If we can't get an embed/pdf, render a screenshot so we still have a folder.
-				let screenshots: ScreenshotResult | null = null;
-				if (!embed && !pdf) {
-					screenshots = await this.takeScreenshots(ctx);
+				if (!screenshots && embed?.url && !pdf) {
+					this.log("Rendering pages from discovered embed URL");
+					try {
+						screenshots = await this.takeScreenshots(ctx, embed.url);
+						if (
+							screenshots &&
+							screenshots.pages.length > 0 &&
+							!ctx.methods.includes("screenshot")
+						) {
+							ctx.methods.push("screenshot");
+						}
+					} catch (e) {
+						this.log(`Embed screenshot render skipped: ${e}`);
+					}
+				}
+				if (!screenshots && !embed && !pdf) {
+					try {
+						screenshots = await this.takeScreenshots(ctx);
+					} catch (e) {
+						this.log(`Screenshot fallback skipped: ${e}`);
+					}
 					if (
+						screenshots &&
 						screenshots.pages.length > 0 &&
 						!ctx.methods.includes("screenshot")
 					) {
@@ -371,7 +600,12 @@ export abstract class BaseScraper {
 					pageCount: folderPages.length,
 					thumbnailUrl: folderPages[0]?.imageUrl || "",
 					pages: folderPages,
-					embedUrl: embed?.url,
+					embedUrl:
+						embedWasOffline ||
+						embedNotEmbeddable ||
+						(embed?.source === "issuu" && folderPages.length > 0)
+							? undefined
+							: embed?.url,
 					pdfUrl: pdf?.url,
 					contentSource,
 					scrapedAt: new Date().toISOString(),
@@ -391,6 +625,12 @@ export abstract class BaseScraper {
 					try {
 						await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 						await this.dismissCookieConsent(page);
+						if (await this.isBotChallengePage(page)) {
+							this.log(
+								"Bot/captcha challenge detected; skipping final screenshot fallback",
+							);
+							return;
+						}
 						successfulFolderUrl = url;
 						ctx.sourceUrls.push(url);
 
@@ -434,16 +674,33 @@ export abstract class BaseScraper {
 				for (const dealUrl of this.config.dealUrls) {
 					this.log(`Scraping deals from ${dealUrl}`);
 					try {
+						await page.setExtraHTTPHeaders({
+							// Add some basic anti-bot headers
+							"User-Agent":
+								"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.3",
+							Accept:
+								"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+							"Accept-Language": "en-US,en;q=0.9",
+							"Accept-Encoding": "gzip, deflate, br",
+						});
+
 						await page.goto(dealUrl, {
 							waitUntil: "networkidle2",
 							timeout: 30000,
 						});
 						await this.dismissCookieConsent(page);
+						if (await this.isBotChallengePage(page)) {
+							this.log(
+								"Bot/captcha challenge detected; skipping products fallback render",
+							);
+							break;
+						}
 
 						const htmlDeals = await this.extractDealsFromHtml(ctx);
 						allDeals.push(...htmlDeals.deals);
 
 						const jsonLdDeals = await this.extractJsonLd(ctx);
+						// ... (rest of the code remains the same)
 						allDeals.push(...jsonLdDeals.deals);
 					} catch {
 						this.log(`Failed to scrape deals from ${dealUrl}`);
@@ -472,6 +729,12 @@ export abstract class BaseScraper {
 								timeout: 30000,
 							});
 							await this.dismissCookieConsent(page);
+							if (await this.isBotChallengePage(page)) {
+								this.log(
+									"Bot/captcha challenge detected; skipping products fallback render",
+								);
+								throw new Error("Blocked by bot/captcha challenge");
+							}
 
 							const screenshots = await this.takeScreenshots(ctx);
 							if (
@@ -500,6 +763,12 @@ export abstract class BaseScraper {
 			this.log(
 				`Results: ${folders.length} folder(s), ${uniqueDeals.length} deal(s), methods: [${ctx.methods.join(", ")}]`,
 			);
+			if (folders.length === 0 && uniqueDeals.length === 0) {
+				this.log(
+					"No folders/deals extracted (likely blocked). Skipping JSON write to avoid overwriting existing data.",
+				);
+				return;
+			}
 
 			const data: ScrapedData = {
 				retailer: this.retailerSlug,
@@ -850,28 +1119,23 @@ export abstract class BaseScraper {
 		const { page } = ctx;
 		const dates = this.getCurrentWeekDates();
 
-		const deals = await page.evaluate(
-			(retailerSlug: string, validFrom: string, validUntil: string) => {
-				const results: any[] = [];
-				const scripts = document.querySelectorAll(
-					'script[type="application/ld+json"]',
-				);
-
-				scripts.forEach((script) => {
+		const fnSrc = `(
+			function (retailerSlug, validFrom, validUntil) {
+				const results = [];
+				const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+				for (let si = 0; si < scripts.length; si++) {
+					const script = scripts[si];
 					try {
 						const data = JSON.parse(script.textContent || "");
 						const items = Array.isArray(data) ? data : [data];
-
-						for (const item of items) {
-							// Product schema
+						for (let ii = 0; ii < items.length; ii++) {
+							const item = items[ii];
 							if (item["@type"] === "Product" || item["@type"] === "Offer") {
 								const offer = item.offers || item;
 								results.push({
-									id: `jsonld-${results.length}`,
+									id: 'jsonld-' + results.length,
 									product: item.name || offer.name || "Unknown",
-									originalPrice: offer.highPrice
-										? parseFloat(offer.highPrice)
-										: undefined,
+									originalPrice: offer.highPrice ? parseFloat(offer.highPrice) : undefined,
 									promoPrice: offer.price ? parseFloat(offer.price) : undefined,
 									discount: offer.discount || undefined,
 									description: item.description || undefined,
@@ -881,22 +1145,17 @@ export abstract class BaseScraper {
 									retailerSlug,
 								});
 							}
-
-							// ItemList with offers
 							if (item["@type"] === "ItemList" && item.itemListElement) {
-								for (const listItem of item.itemListElement) {
+								for (let li = 0; li < item.itemListElement.length; li++) {
+									const listItem = item.itemListElement[li];
 									const product = listItem.item || listItem;
 									const offer = product.offers || product;
-									if (product.name) {
+									if (product && product.name) {
 										results.push({
-											id: `jsonld-${results.length}`,
+											id: 'jsonld-' + results.length,
 											product: product.name,
-											originalPrice: offer.highPrice
-												? parseFloat(offer.highPrice)
-												: undefined,
-											promoPrice: offer.price
-												? parseFloat(offer.price)
-												: undefined,
+											originalPrice: offer.highPrice ? parseFloat(offer.highPrice) : undefined,
+											promoPrice: offer.price ? parseFloat(offer.price) : undefined,
 											description: product.description || undefined,
 											imageUrl: product.image || undefined,
 											validFrom,
@@ -908,20 +1167,28 @@ export abstract class BaseScraper {
 							}
 						}
 					} catch {
-						// Invalid JSON-LD, skip
+						// skip
 					}
-				});
-
+				}
 				return results;
+			}
+		)`;
+
+		const dealsRaw = await page.evaluate(
+			(src: string, args: string[]) => {
+				const fn = (0, eval)(src) as (...a: any[]) => any;
+				return fn(args[0], args[1], args[2]);
 			},
-			this.retailerSlug,
-			dates.from,
-			dates.until,
+			fnSrc,
+			[this.retailerSlug, dates.from, dates.until],
 		);
 
+		const deals = Array.isArray(dealsRaw)
+			? (dealsRaw as Deal[])
+			: ([] as Deal[]);
 		if (deals.length > 0)
 			this.log(`Extracted ${deals.length} deal(s) from JSON-LD`);
-		return { deals: deals as Deal[], source: "html" };
+		return { deals, source: "html" };
 	}
 
 	// ---- Step 5: HTML deal extraction --------------------------------------
@@ -935,78 +1202,67 @@ export abstract class BaseScraper {
 
 		const dates = this.getCurrentWeekDates();
 
-		const deals = await page.evaluate(
-			(
-				cardSel: string,
-				nameSel: string,
-				origPriceSel: string | undefined,
-				promoPriceSel: string | undefined,
-				discountSel: string | undefined,
-				imageSel: string | undefined,
-				descSel: string | undefined,
-				catSel: string | undefined,
-				retailerSlug: string,
-				validFrom: string,
-				validUntil: string,
-			) => {
+		const fnSrc = `(
+			function (cardSel, nameSel, origPriceSel, promoPriceSel, discountSel, imageSel, descSel, catSel, retailerSlug, validFrom, validUntil) {
 				const cards = document.querySelectorAll(cardSel);
-				const results: any[] = [];
-
-				cards.forEach((card, i) => {
+				const results = [];
+				for (let i = 0; i < cards.length; i++) {
+					const card = cards[i];
 					const nameEl = card.querySelector(nameSel);
-					const name = nameEl?.textContent?.trim();
-					if (!name) return;
+					const name = nameEl && nameEl.textContent ? nameEl.textContent.trim() : "";
+					if (!name) continue;
 
-					const parsePrice = (el: Element | null): number | undefined => {
+					const parsePrice = (el) => {
 						if (!el) return undefined;
-						const text =
-							el.textContent?.replace(/[^\d.,]/g, "").replace(",", ".") || "";
+						const text = String(el.textContent || "").replace(/[^\d.,]/g, "").replace(",", ".");
 						const val = parseFloat(text);
 						return isNaN(val) ? undefined : val;
 					};
 
 					const origEl = origPriceSel ? card.querySelector(origPriceSel) : null;
-					const promoEl = promoPriceSel
-						? card.querySelector(promoPriceSel)
-						: null;
-					const discountEl = discountSel
-						? card.querySelector(discountSel)
-						: null;
+					const promoEl = promoPriceSel ? card.querySelector(promoPriceSel) : null;
+					const discountEl = discountSel ? card.querySelector(discountSel) : null;
 					const imageEl = imageSel ? card.querySelector(imageSel) : null;
 					const descEl = descSel ? card.querySelector(descSel) : null;
 					const catEl = catSel ? card.querySelector(catSel) : null;
 
 					results.push({
-						id: `html-${i}`,
+						id: 'html-' + i,
 						product: name,
 						originalPrice: parsePrice(origEl),
 						promoPrice: parsePrice(promoEl),
-						discount: discountEl?.textContent?.trim() || undefined,
-						description: descEl?.textContent?.trim() || undefined,
-						category: catEl?.textContent?.trim() || undefined,
-						imageUrl: imageEl
-							? (imageEl as HTMLImageElement).src ||
-								(imageEl as HTMLImageElement).dataset.src
-							: undefined,
+						discount: discountEl && discountEl.textContent ? discountEl.textContent.trim() : undefined,
+						description: descEl && descEl.textContent ? descEl.textContent.trim() : undefined,
+						category: catEl && catEl.textContent ? catEl.textContent.trim() : undefined,
+						imageUrl: imageEl ? (imageEl.src || (imageEl.dataset ? imageEl.dataset.src : undefined)) : undefined,
 						validFrom,
 						validUntil,
 						retailerSlug,
 					});
-				});
-
+				}
 				return results;
+			}
+		)`;
+
+		const deals = await page.evaluate(
+			(src: string, args: any[]) => {
+				const fn = (0, eval)(src) as (...a: any[]) => any;
+				return fn(...args);
 			},
-			ps.card,
-			ps.name,
-			ps.originalPrice,
-			ps.promoPrice,
-			ps.discount,
-			ps.image,
-			ps.description,
-			ps.category,
-			this.retailerSlug,
-			dates.from,
-			dates.until,
+			fnSrc,
+			[
+				ps.card,
+				ps.name,
+				ps.originalPrice,
+				ps.promoPrice,
+				ps.discount,
+				ps.image,
+				ps.description,
+				ps.category,
+				this.retailerSlug,
+				dates.from,
+				dates.until,
+			],
 		);
 
 		if (deals.length > 0)
@@ -1022,21 +1278,340 @@ export abstract class BaseScraper {
 		return { deals: [], source: "api" };
 	}
 
+	protected async isOfflinePublicationUrl(
+		ctx: ScrapeContext,
+		url: string,
+	): Promise<{ isOffline: boolean; redirectUrl?: string }> {
+		const page = await ctx.browser.newPage();
+		try {
+			await page.setUserAgent(DEFAULT_USER_AGENT);
+			await page.setViewport({ width: 1440, height: 900 });
+			await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
+			await this.dismissCookieConsent(page);
+			await page.waitForNetworkIdle({ timeout: 5000 }).catch(() => {});
+
+			const text = await page
+				.evaluate(() => document.body?.innerText ?? "")
+				.catch(() => "");
+			const t = String(text).toLowerCase();
+			const isOffline =
+				t.includes("deze publicatie is offline") ||
+				t.includes("this publication is offline");
+			if (!isOffline) return { isOffline: false };
+
+			const redirectUrl =
+				String(text).match(/https?:\/\/[^\s)\]]+/i)?.[0] || undefined;
+			return { isOffline: true, redirectUrl };
+		} catch {
+			return { isOffline: false };
+		} finally {
+			await page.close().catch(() => {});
+		}
+	}
+
 	// ---- Step 7: Screenshot fallback ---------------------------------------
 
 	protected async takeScreenshots(
 		ctx: ScrapeContext,
+		overrideUrl?: string,
 	): Promise<ScreenshotResult> {
 		const { page } = ctx;
 		this.log("Taking screenshot fallback...");
+		if (!overrideUrl && (await this.isBotChallengePage(page))) {
+			throw new Error("Blocked by bot/captcha challenge");
+		}
 
 		if (!fs.existsSync(SCREENSHOT_DIR))
 			fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
 
-		const filename = `${this.generateFolderId("screenshot-p1")}.png`;
+		if (overrideUrl) {
+			try {
+				await page.goto(overrideUrl, {
+					waitUntil: "networkidle2",
+					timeout: 30000,
+				});
+				await this.dismissCookieConsent(page);
+				if (await this.isBotChallengePage(page)) {
+					throw new Error("Blocked by bot/captcha challenge");
+				}
+				ctx.sourceUrls.push(overrideUrl);
+			} catch (e) {
+				throw e;
+			}
+		}
+
+		const isPdfUrl = (u: string): boolean => {
+			const s = u.toLowerCase();
+			return s.includes(".pdf") || s.includes("/pdfs/");
+		};
+
+		const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
+
+		// If we're looking at a PDF URL, try to generate page-like screenshots by
+		// scrolling the browser PDF renderer and capturing viewport slices.
+		// This is a best-effort fallback to avoid broken "publication offline" embeds.
+		const currentUrl = overrideUrl ?? page.url();
+		if (currentUrl && isPdfUrl(currentUrl)) {
+			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const view = page.viewport();
+			const width = view?.width ?? 1440;
+			const height = view?.height ?? 900;
+
+			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
+				const y = (i - 1) * height;
+				try {
+					await page.evaluate((yy) => window.scrollTo(0, yy), y);
+					await page.waitForNetworkIdle({ timeout: 2000 }).catch(() => {});
+					await new Promise((r) => setTimeout(r, 250));
+				} catch {
+					// ignore
+				}
+
+				let scrollY = 0;
+				try {
+					scrollY = await page.evaluate(() => window.scrollY || 0);
+				} catch {
+					// ignore
+				}
+
+				// If we can't scroll further (or PDF renderer doesn't scroll), stop.
+				if (i > 1 && scrollY < y - 5) break;
+
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filepath = path.join(SCREENSHOT_DIR, filename);
+				await page.screenshot({
+					path: filepath,
+					clip: { x: 0, y: scrollY, width, height },
+				});
+				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
+			}
+
+			return { pages };
+		}
+
+		const isIssuuEmbed =
+			(typeof overrideUrl === "string" &&
+				overrideUrl.includes("e.issuu.com/embed.html")) ||
+			page.url().includes("e.issuu.com/embed.html");
+		const isPublitasEmbed =
+			(typeof overrideUrl === "string" &&
+				(overrideUrl.includes("view.publitas.com/") ||
+					overrideUrl.includes("publitas_embed="))) ||
+			page.url().includes("view.publitas.com/") ||
+			page.url().includes("publitas_embed=");
+
+		const getViewerClip = async (): Promise<{
+			x: number;
+			y: number;
+			width: number;
+			height: number;
+		} | null> => {
+			if (typeof (page as any).$ !== "function") return null;
+			const candidates = [
+				"iframe",
+				"embed",
+				"canvas",
+				"img",
+				"main",
+				"article",
+			];
+			let best: {
+				x: number;
+				y: number;
+				width: number;
+				height: number;
+				area: number;
+			} | null = null;
+
+			for (const sel of candidates) {
+				try {
+					const el = await page.$(sel);
+					if (!el) continue;
+					const box = await el.boundingBox();
+					if (!box) continue;
+					const area = Math.max(0, box.width) * Math.max(0, box.height);
+					if (!best || area > best.area) {
+						best = {
+							x: box.x,
+							y: box.y,
+							width: box.width,
+							height: box.height,
+							area,
+						};
+					}
+				} catch {
+					// ignore
+				}
+			}
+
+			if (!best) return null;
+			if (best.width < 50 || best.height < 50) return null;
+
+			const view = page.viewport();
+			if (view) {
+				const minArea = (view.width * view.height) / 8;
+				if (best.area < minArea) return null;
+			}
+
+			return {
+				x: Math.max(0, best.x),
+				y: Math.max(0, best.y),
+				width: Math.max(1, best.width),
+				height: Math.max(1, best.height),
+			};
+		};
+
+		const waitForViewer = async (): Promise<void> => {
+			try {
+				if (typeof (page as any).waitForSelector === "function") {
+					await (page as any)
+						.waitForSelector("iframe, embed, canvas, img", { timeout: 10000 })
+						.catch(() => {});
+				}
+			} catch {
+				// ignore
+			}
+			await new Promise((r) => setTimeout(r, 1200));
+		};
+
+		const isOfflinePublication = async (): Promise<boolean> => {
+			try {
+				if (typeof (page as any).evaluate !== "function") return false;
+				const text = await (page as any).evaluate(
+					() => document.body?.innerText ?? "",
+				);
+				const t = String(text).toLowerCase();
+				return (
+					t.includes("deze publicatie is offline") ||
+					t.includes("this publication is offline")
+				);
+			} catch {
+				return false;
+			}
+		};
+
+		if (isIssuuEmbed) {
+			const baseUrl = overrideUrl ?? page.url();
+			const pages: { pageNumber: number; imagePath: string }[] = [];
+
+			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
+				let u: URL;
+				try {
+					u = new URL(baseUrl);
+				} catch {
+					break;
+				}
+
+				u.searchParams.set("pageNumber", String(i));
+				const url = u.toString();
+
+				try {
+					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
+					await waitForViewer();
+				} catch {
+					break;
+				}
+
+				if (await isOfflinePublication()) {
+					throw new Error(
+						"Publication is offline; refusing to generate screenshots",
+					);
+				}
+
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filepath = path.join(SCREENSHOT_DIR, filename);
+				const clip = await getViewerClip();
+				if (clip) {
+					await page.screenshot({ path: filepath, clip });
+				} else {
+					await page.screenshot({ path: filepath, fullPage: true });
+				}
+				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
+			}
+
+			if (pages.length > 0) {
+				this.log(`Screenshots saved: ${pages.length} page(s)`);
+				return { pages };
+			}
+		}
+
+		if (isPublitasEmbed) {
+			const baseUrl = overrideUrl ?? page.url();
+			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
+			const pages: { pageNumber: number; imagePath: string }[] = [];
+
+			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
+				let u: URL;
+				try {
+					u = new URL(baseUrl);
+				} catch {
+					break;
+				}
+
+				if (
+					u.pathname.includes("/page/") ||
+					/\/page\/\d+(\/)?$/.test(u.pathname)
+				) {
+					u.pathname = u.pathname.replace(/\/page\/\d+(\/)?$/, `/page/${i}`);
+					if (!u.pathname.includes("/page/")) {
+						u.pathname = u.pathname.replace(/\/+$/, "") + `/page/${i}`;
+					}
+				} else {
+					u.searchParams.set("page", String(i));
+					u.searchParams.set("pageNumber", String(i));
+				}
+				const url = u.toString();
+
+				try {
+					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
+					await waitForViewer();
+				} catch {
+					break;
+				}
+
+				if (await isOfflinePublication()) {
+					throw new Error(
+						"Publication is offline; refusing to generate screenshots",
+					);
+				}
+
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filepath = path.join(SCREENSHOT_DIR, filename);
+				const clip = await getViewerClip();
+				if (clip) {
+					await page.screenshot({ path: filepath, clip });
+				} else {
+					await page.screenshot({ path: filepath, fullPage: true });
+				}
+				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
+			}
+
+			if (pages.length > 0) {
+				this.log(`Screenshots saved: ${pages.length} page(s)`);
+				return { pages };
+			}
+		}
+
+		const filename = `${this.generateFolderId("viewerimg-p1")}.png`;
 		const filepath = path.join(SCREENSHOT_DIR, filename);
 
-		await page.screenshot({ path: filepath, fullPage: true });
+		if (await isOfflinePublication()) {
+			throw new Error(
+				"Publication is offline; refusing to generate screenshots",
+			);
+		}
+
+		try {
+			await waitForViewer();
+			const clip = await getViewerClip();
+			if (clip) {
+				await page.screenshot({ path: filepath, clip });
+			} else {
+				await page.screenshot({ path: filepath, fullPage: true });
+			}
+		} catch {
+			await page.screenshot({ path: filepath, fullPage: true });
+		}
 		this.log(`Screenshot saved: ${filepath}`);
 
 		return {
