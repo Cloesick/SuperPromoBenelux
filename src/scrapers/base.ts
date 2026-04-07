@@ -526,6 +526,14 @@ export abstract class BaseScraper {
 							screenshots = await this.takeScreenshots(ctx, candidateUrl);
 						} catch (e) {
 							this.log(`Screenshot fallback skipped: ${e}`);
+							// If the embed is offline/unavailable (or blocked) we still want to
+							// produce a renderable folder. Fall back to screenshots from the
+							// current (outer) retailer page.
+							try {
+								screenshots = await this.takeScreenshots(ctx);
+							} catch (e2) {
+								this.log(`Outer-page screenshot fallback skipped: ${e2}`);
+							}
 						}
 						if (
 							screenshots &&
@@ -1296,7 +1304,10 @@ export abstract class BaseScraper {
 			const t = String(text).toLowerCase();
 			const isOffline =
 				t.includes("deze publicatie is offline") ||
-				t.includes("this publication is offline");
+				t.includes("this publication is offline") ||
+				t.includes("deze publicatie is niet gevonden") ||
+				t.includes("this publication was not found") ||
+				t.includes("publication not found");
 			if (!isOffline) return { isOffline: false };
 
 			const redirectUrl =
@@ -1483,7 +1494,10 @@ export abstract class BaseScraper {
 				const t = String(text).toLowerCase();
 				return (
 					t.includes("deze publicatie is offline") ||
-					t.includes("this publication is offline")
+					t.includes("this publication is offline") ||
+					t.includes("deze publicatie is niet gevonden") ||
+					t.includes("this publication was not found") ||
+					t.includes("publication not found")
 				);
 			} catch {
 				return false;
@@ -1514,7 +1528,7 @@ export abstract class BaseScraper {
 
 				if (await isOfflinePublication()) {
 					throw new Error(
-						"Publication is offline; refusing to generate screenshots",
+						"Publication is offline/unavailable; refusing to generate screenshots",
 					);
 				}
 
@@ -1571,7 +1585,7 @@ export abstract class BaseScraper {
 
 				if (await isOfflinePublication()) {
 					throw new Error(
-						"Publication is offline; refusing to generate screenshots",
+						"Publication is offline/unavailable; refusing to generate screenshots",
 					);
 				}
 
@@ -1597,7 +1611,7 @@ export abstract class BaseScraper {
 
 		if (await isOfflinePublication()) {
 			throw new Error(
-				"Publication is offline; refusing to generate screenshots",
+				"Publication is offline/unavailable; refusing to generate screenshots",
 			);
 		}
 
