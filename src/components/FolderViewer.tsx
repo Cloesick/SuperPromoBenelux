@@ -33,8 +33,8 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 	const [isFullscreen, setIsFullscreen] = useState(false);
 	const [mode, setMode] = useState<"embed" | "pdf" | "pages">(() => {
 		if (forcePagesOnly) return "pages";
-		if (hasEmbedEffective) return "embed";
 		if (hasPages) return "pages";
+		if (hasEmbedEffective) return "embed";
 		if (hasPdfEffective) return "pdf";
 		return "pdf";
 	});
@@ -47,12 +47,12 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 			setMode("pages");
 			return;
 		}
-		if (hasEmbedEffective) {
-			setMode("embed");
-			return;
-		}
 		if (hasPages) {
 			setMode("pages");
+			return;
+		}
+		if (hasEmbedEffective) {
+			setMode("embed");
 			return;
 		}
 		if (hasPdfEffective) {
