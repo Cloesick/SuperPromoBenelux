@@ -527,10 +527,11 @@ export abstract class BaseScraper {
 						} catch (e) {
 							this.log(`Screenshot fallback skipped: ${e}`);
 							// If the embed is offline/unavailable (or blocked) we still want to
-							// produce a renderable folder. Fall back to screenshots from the
-							// current (outer) retailer page.
+							// produce a renderable folder. IMPORTANT: the page may currently be
+							// on the embed URL, so we must navigate back to the outer retailer
+							// folder page to avoid screenshotting the embed error screen again.
 							try {
-								screenshots = await this.takeScreenshots(ctx);
+								screenshots = await this.takeScreenshots(ctx, url);
 							} catch (e2) {
 								this.log(`Outer-page screenshot fallback skipped: ${e2}`);
 							}
