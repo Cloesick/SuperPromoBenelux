@@ -546,6 +546,28 @@ export abstract class BaseScraper {
 
 				// Step 7: Render fallback (Instance 1)
 				// If we can't get an embed/pdf, render a screenshot so we still have a folder.
+				// Aldi's viewer is embeddable but does not provide controllable next/prev in our UI.
+				// We force-render screenshot pages so the site always has working navigation.
+				if (!screenshots && this.retailerSlug === "aldi" && embed?.url) {
+					this.log("Aldi: forcing screenshot page rendering for navigation");
+					try {
+						const screenshotUrl = embed.url
+							.replace(/([?&])HideStandardUI=true(&|$)/i, "$1")
+							.replace(/([?&])HideNavigationBars=true(&|$)/i, "$1")
+							.replace(/\?&/, "?")
+							.replace(/[?&]$/, "");
+						screenshots = await this.takeScreenshots(ctx, screenshotUrl);
+						if (
+							screenshots &&
+							screenshots.pages.length > 0 &&
+							!ctx.methods.includes("screenshot")
+						) {
+							ctx.methods.push("screenshot");
+						}
+					} catch (e) {
+						this.log(`Aldi screenshot render skipped: ${e}`);
+					}
+				}
 				if (!screenshots && embed?.url && !pdf) {
 					this.log("Rendering pages from discovered embed URL");
 					try {
@@ -1399,6 +1421,67 @@ export abstract class BaseScraper {
 			return { pages };
 		}
 
+		// iPaper (used by Aldi) renders each page as a signed Zoom.jpg URL. These are
+		// much easier to capture reliably than attempting to click through a canvas-based
+		// viewer UI. When detected, fetch pages directly and save them to /public/screenshots.
+		try {
+			await page.waitForNetworkIdle({ timeout: 5000 }).catch(() => {});
+			await new Promise((r) => setTimeout(r, 1200));
+		} catch {
+			// ignore
+		}
+		const iPaperMatch = (ctx.interceptedUrls.images || []).find((u) =>
+			/ipaper\.io\/iPaper\/Papers\/.+\/Pages\/\d+\/Zoom\.jpg/i.test(u),
+		);
+		if (iPaperMatch) {
+			const m = iPaperMatch.match(
+				/(https?:\/\/[^\s]+?\/iPaper\/Papers\/([^/]+)\/Pages\/)\d+(\/Zoom\.jpg)(\?[^\s]+)?/i,
+			);
+			if (m) {
+				const base = m[1];
+				const paperId = m[2];
+				const suffix = m[3];
+				const query = m[4] || "";
+				this.log(
+					`iPaper detected (paperId=${paperId}). Fetching pages directly...`,
+				);
+
+				const pages: { pageNumber: number; imagePath: string }[] = [];
+				const max = Number.isFinite(maxPages) ? maxPages : 12;
+				for (let i = 1; i <= max; i++) {
+					const url = `${base}${i}${suffix}${query}`;
+					const controller = new AbortController();
+					const t = setTimeout(() => controller.abort(), 15000);
+					try {
+						const resp = await fetch(url, {
+							method: "GET",
+							redirect: "follow",
+							signal: controller.signal,
+						});
+						if (!resp.ok) break;
+						const buf = Buffer.from(await resp.arrayBuffer());
+						if (buf.length < 1000) break;
+
+						const filename = `${this.generateFolderId("viewerimg-p" + i)}.jpg`;
+						const filepath = path.join(SCREENSHOT_DIR, filename);
+						fs.writeFileSync(filepath, buf);
+						pages.push({
+							pageNumber: i,
+							imagePath: `/screenshots/${filename}`,
+						});
+					} catch {
+						break;
+					} finally {
+						clearTimeout(t);
+					}
+				}
+
+				if (pages.length > 0) {
+					return { pages };
+				}
+			}
+		}
+
 		const isIssuuEmbed =
 			(typeof overrideUrl === "string" &&
 				overrideUrl.includes("e.issuu.com/embed.html")) ||
@@ -1739,6 +1822,14 @@ export abstract class BaseScraper {
 		page.on("response", (response) => {
 			const url = response.url();
 			const contentType = response.headers()["content-type"] || "";
+
+			// Images (used for iPaper, and as general signals for screenshot-based capture)
+			if (
+				contentType.startsWith("image/") ||
+				url.match(/\.(png|jpe?g|webp|gif)(?:$|\?)/i)
+			) {
+				if (!intercepted.images.includes(url)) intercepted.images.push(url);
+			}
 
 			// PDFs
 			if (
