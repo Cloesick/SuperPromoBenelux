@@ -1616,6 +1616,65 @@ export abstract class BaseScraper {
 			);
 		}
 
+		const genericPages: { pageNumber: number; imagePath: string }[] = [];
+		const clickNext = async (): Promise<boolean> => {
+			const candidates = [
+				"button[aria-label*='Volgende']",
+				"button[aria-label*='Next']",
+				"button[title*='Volgende']",
+				"button[title*='Next']",
+				"a[aria-label*='Volgende']",
+				"a[aria-label*='Next']",
+				".swiper-button-next",
+				".slick-next",
+				".next",
+			];
+			for (const sel of candidates) {
+				try {
+					const el = await page.$(sel);
+					if (!el) continue;
+					await el.click().catch(() => {});
+					await page.waitForNetworkIdle({ timeout: 3000 }).catch(() => {});
+					await new Promise((r) => setTimeout(r, 600));
+					return true;
+				} catch {
+					// ignore
+				}
+			}
+			return false;
+		};
+
+		try {
+			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
+			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
+				await waitForViewer();
+				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const perPageFilepath = path.join(SCREENSHOT_DIR, perPageFilename);
+				const clip = await getViewerClip();
+				if (clip) {
+					await page.screenshot({ path: perPageFilepath, clip });
+				} else {
+					await page.screenshot({ path: perPageFilepath, fullPage: true });
+				}
+				genericPages.push({
+					pageNumber: i,
+					imagePath: `/screenshots/${perPageFilename}`,
+				});
+
+				if (i >= (Number.isFinite(maxPages) ? maxPages : 12)) break;
+				const didClick = await clickNext();
+				if (!didClick) break;
+			}
+		} catch {
+			// ignore and fall back to single screenshot
+		}
+		if (genericPages.length > 1) {
+			this.log(
+				`Screenshots saved (generic viewer): ${genericPages.length} page(s)`,
+			);
+			return { pages: genericPages };
+		}
+
 		try {
 			await waitForViewer();
 			const clip = await getViewerClip();
