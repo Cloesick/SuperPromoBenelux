@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { JsonLd, createWebsiteJsonLd } from "@/components/JsonLd";
 import { CookieConsent } from "@/components/CookieConsent";
 import { AnalyticsGate } from "@/components/AnalyticsGate";
+import { getSiteBaseUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
 	title: {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 	},
 	description:
 		"Bespaar elke dag op je boodschappen. Bekijk dagelijks de nieuwste folders van je favoriete winkels in België.",
-	metadataBase: new URL("https://www.superpromobelgie.be"),
+	metadataBase: new URL(getSiteBaseUrl()),
 	alternates: {
 		canonical: "/",
 	},

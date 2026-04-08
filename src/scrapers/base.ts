@@ -146,14 +146,12 @@ export abstract class BaseScraper {
 			if (csp.includes("frame-ancestors")) {
 				const m = csp.match(/frame-ancestors\s+([^;]+)/i);
 				const rule = (m?.[1] || "").trim();
-				if (rule.includes("'none'")) return false;
-				if (rule.includes("'self'")) return false;
-				// If it doesn't explicitly include our origin, assume it's not embeddable.
+				if (rule.includes("'none'") || rule.includes("'self'")) return false;
 				if (
 					rule &&
 					!rule.includes("*") &&
 					!rule.includes("http://localhost") &&
-					!rule.includes("https://www.superpromobelgie.be")
+					!rule.includes("https://superpromobelgie.com")
 				) {
 					return false;
 				}

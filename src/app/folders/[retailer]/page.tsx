@@ -12,6 +12,7 @@ import {
 import { Facebook, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { getSiteBaseUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -47,6 +48,7 @@ export async function generateMetadata({
 export default async function RetailerPage({ params }: PageProps) {
 	const { retailer: slug } = await params;
 	const retailer = getRetailerBySlug(slug);
+	const baseUrl = getSiteBaseUrl();
 
 	if (!retailer) {
 		notFound();
@@ -114,11 +116,11 @@ export default async function RetailerPage({ params }: PageProps) {
 			<JsonLd data={createFAQJsonLd(faqItems)} />
 			<JsonLd
 				data={createBreadcrumbJsonLd([
-					{ name: "Home", url: "https://www.superpromobelgie.be" },
-					{ name: "Folders", url: "https://www.superpromobelgie.be/folders" },
+					{ name: "Home", url: baseUrl },
+					{ name: "Folders", url: `${baseUrl}/folders` },
 					{
 						name: `${retailer.name} folder`,
-						url: `https://www.superpromobelgie.be/folders/${slug}`,
+						url: `${baseUrl}/folders/${slug}`,
 					},
 				])}
 			/>

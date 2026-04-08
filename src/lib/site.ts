@@ -13,7 +13,9 @@ function env(name: string): string | undefined {
 }
 
 export function getSiteConfig(): SiteConfig {
-	const verticalRaw = (env("NEXT_PUBLIC_RETAIL_VERTICAL") ?? "supermarket").toLowerCase();
+	const verticalRaw = (
+		env("NEXT_PUBLIC_RETAIL_VERTICAL") ?? "supermarket"
+	).toLowerCase();
 	const vertical: RetailVertical =
 		verticalRaw === "pet"
 			? "pet"
@@ -25,7 +27,7 @@ export function getSiteConfig(): SiteConfig {
 
 	const name = env("NEXT_PUBLIC_SITE_NAME") ?? "SuperPromo";
 	const regionLabel = env("NEXT_PUBLIC_SITE_REGION") ?? "België";
-	const domain = env("NEXT_PUBLIC_SITE_DOMAIN") ?? "www.superpromobelgie.be";
+	const domain = env("NEXT_PUBLIC_SITE_DOMAIN") ?? "superpromobelgie.com";
 	const facebookGroupUrl =
 		env("NEXT_PUBLIC_FACEBOOK_GROUP_URL") ??
 		"https://www.facebook.com/groups/superpromobelgie";
