@@ -1407,10 +1407,8 @@ export abstract class BaseScraper {
 			page.url().includes("e.issuu.com/embed.html");
 		const isPublitasEmbed =
 			(typeof overrideUrl === "string" &&
-				(overrideUrl.includes("view.publitas.com/") ||
-					overrideUrl.includes("publitas_embed="))) ||
-			page.url().includes("view.publitas.com/") ||
-			page.url().includes("publitas_embed=");
+				overrideUrl.includes("view.publitas.com/")) ||
+			page.url().includes("view.publitas.com/");
 
 		const getViewerClip = async (): Promise<{
 			x: number;
@@ -1640,6 +1638,42 @@ export abstract class BaseScraper {
 				} catch {
 					// ignore
 				}
+			}
+
+			try {
+				const iframes = await page.$$("iframe");
+				let bestFrame: any = null;
+				let bestArea = 0;
+				for (const iframe of iframes) {
+					const box = await iframe.boundingBox().catch(() => null);
+					if (!box) continue;
+					const area = Math.max(0, box.width) * Math.max(0, box.height);
+					if (area > bestArea) {
+						bestArea = area;
+						bestFrame = iframe;
+					}
+				}
+				if (bestFrame) {
+					const frame = await bestFrame.contentFrame().catch(() => null);
+					if (frame) {
+						for (const sel of candidates) {
+							try {
+								const el = await frame.$(sel);
+								if (!el) continue;
+								await el.click().catch(() => {});
+								await page
+									.waitForNetworkIdle({ timeout: 3000 })
+									.catch(() => {});
+								await new Promise((r) => setTimeout(r, 600));
+								return true;
+							} catch {
+								// ignore
+							}
+						}
+					}
+				}
+			} catch {
+				// ignore
 			}
 			return false;
 		};
