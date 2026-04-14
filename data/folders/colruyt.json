@@ -2,84 +2,84 @@
   "retailer": "colruyt",
   "folders": [
     {
-      "id": "colruyt-2026-w15-folder",
+      "id": "colruyt-2026-w16-folder",
       "retailerSlug": "colruyt",
       "title": "Colruyt folder van de week",
-      "validFrom": "2026-04-06",
-      "validUntil": "2026-04-12",
+      "validFrom": "2026-04-13",
+      "validUntil": "2026-04-19",
       "pageCount": 12,
-      "thumbnailUrl": "/screenshots/colruyt-2026-w15-viewerimg-p1.png",
+      "thumbnailUrl": "/screenshots/colruyt-2026-w16-viewerimg-p1.png",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p1.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p1.png",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p2.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p2.png",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p3.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p3.png",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p4.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p4.png",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p5.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p5.png",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p6.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p6.png",
           "deals": []
         },
         {
           "pageNumber": 7,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p7.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p7.png",
           "deals": []
         },
         {
           "pageNumber": 8,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p8.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p8.png",
           "deals": []
         },
         {
           "pageNumber": 9,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p9.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p9.png",
           "deals": []
         },
         {
           "pageNumber": 10,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p10.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p10.png",
           "deals": []
         },
         {
           "pageNumber": 11,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p11.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p11.png",
           "deals": []
         },
         {
           "pageNumber": 12,
-          "imageUrl": "/screenshots/colruyt-2026-w15-viewerimg-p12.png",
+          "imageUrl": "/screenshots/colruyt-2026-w16-viewerimg-p12.png",
           "deals": []
         }
       ],
       "contentSource": "issuu",
-      "scrapedAt": "2026-04-06T17:21:56.244Z"
+      "scrapedAt": "2026-04-14T13:25:34.023Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-04-06T17:22:26.249Z",
+  "scrapedAt": "2026-04-14T13:25:36.190Z",
   "sourceUrls": [
     "https://www.colruyt.be/nl/folders",
-    "https://e.issuu.com/embed.html?d=colruyt_laagste_prijzen_-_alle_acti_61cb0d932d295f&u=colruytgroup&pageNumber=1&backgroundColor=%23353535&backgroundColorFullscreen=%23353535&pageLayout=doublePage&hideIssuuLogo=true&allowDownload=true&hideShareButton=true&ts=1775495938000"
+    "https://e.issuu.com/embed.html?d=colruyt_laagste_prijzen_-_digitale_861cc280ab78ec&u=colruytgroup&pageNumber=1&backgroundColor=%23353535&backgroundColorFullscreen=%23353535&pageLayout=doublePage&hideIssuuLogo=true&allowDownload=true&hideShareButton=true&ts=1776172948994"
   ],
   "methods": [
     "issuu",
