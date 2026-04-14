@@ -2,25 +2,62 @@
   "retailer": "lidl",
   "folders": [
     {
-      "id": "lidl-2026-w12-folder",
+      "id": "lidl-2026-w16-folder",
       "retailerSlug": "lidl",
       "title": "Lidl folder van de week",
-      "validFrom": "2026-03-16",
-      "validUntil": "2026-03-22",
+      "validFrom": "2026-04-13",
+      "validUntil": "2026-04-19",
       "pageCount": 0,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://folder-nl.lidl.be/nl-folder-11-03-17-03",
-      "pdfUrl": "https://folder-nl.lidl.be/97031/2865706/pdfs/b654a9da-04a4-413d-aa8c-49d21fe55b2d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252011-03-17-03.pdf",
+      "embedUrl": "https://folder-nl.lidl.be/nl-folder-13-04-18-04",
+      "pdfUrl": "https://folder-nl.lidl.be/97031/2961502/pdfs/1974a1b3-5d61-41b9-a164-616cd8cead22.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252013-04-18-04.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-03-16T06:08:50.632Z"
+      "scrapedAt": "2026-04-14T10:37:47.383Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-03-16T06:08:54.546Z",
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "Accu 20 V, 4 Ah PARKSIDE® PAP204",
+      "discount": "Ook in de winkel van 10/04 - 23/04",
+      "validFrom": "2026-04-13",
+      "validUntil": "2026-04-19",
+      "retailerSlug": "lidl"
+    },
+    {
+      "id": "html-8",
+      "product": "Vervangspoelen voor grastrimmer",
+      "validFrom": "2026-04-13",
+      "validUntil": "2026-04-19",
+      "retailerSlug": "lidl"
+    },
+    {
+      "id": "html-14",
+      "product": "Elektrische tuinfrees PARKSIDE® PEBH1500",
+      "validFrom": "2026-04-13",
+      "validUntil": "2026-04-19",
+      "retailerSlug": "lidl"
+    },
+    {
+      "id": "html-21",
+      "product": "Accu-compressor, 20 V PARKSIDE® PAKT20",
+      "validFrom": "2026-04-13",
+      "validUntil": "2026-04-19",
+      "retailerSlug": "lidl"
+    },
+    {
+      "id": "html-28",
+      "product": "Accubosmaaier en grastrimmer, 40 V PARKSIDE PERFORMANCE® PPAFS40",
+      "validFrom": "2026-04-13",
+      "validUntil": "2026-04-19",
+      "retailerSlug": "lidl"
+    }
+  ],
+  "scrapedAt": "2026-04-14T10:37:51.443Z",
   "sourceUrls": [
     "https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
-    "https://folder-nl.lidl.be/nl-folder-11-03-17-03"
+    "https://folder-nl.lidl.be/nl-folder-13-04-18-04"
   ],
   "methods": [
     "publitas",
