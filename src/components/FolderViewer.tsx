@@ -21,8 +21,37 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 	const hasPdf = !!folder.pdfUrl;
 	const hasPages = folder.pages.length > 0;
 	const forcePagesOnly = retailer.slug === "colruyt" && hasPages;
-	const hasEmbedEffective = forcePagesOnly ? false : hasEmbed;
-	const hasPdfEffective = forcePagesOnly ? false : hasPdf;
+
+	// Detect expired folders — Publitas embeds go offline after validUntil
+	const isExpired = (() => {
+		try {
+			const until = new Date(folder.validUntil + "T23:59:59");
+			return until < new Date();
+		} catch {
+			return false;
+		}
+	})();
+
+	// When expired, treat embed/PDF from known-offline hosts as unavailable
+	const isEmbedOfflineRisk =
+		isExpired &&
+		!!folder.embedUrl &&
+		/publitas\.com|folderz\.be/i.test(folder.embedUrl);
+	const isPdfOfflineRisk =
+		isExpired &&
+		!!folder.pdfUrl &&
+		/publitas\.com|folderz\.be/i.test(folder.pdfUrl);
+
+	const hasEmbedEffective = forcePagesOnly
+		? false
+		: isEmbedOfflineRisk
+			? false
+			: hasEmbed;
+	const hasPdfEffective = forcePagesOnly
+		? false
+		: isPdfOfflineRisk
+			? false
+			: hasPdf;
 	const [isIOS, setIsIOS] = useState(false);
 	const thumbsRef = useRef<HTMLDivElement | null>(null);
 
@@ -454,6 +483,25 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 							</button>
 						</div>
 					</div>
+				</div>
+			) : isExpired ? (
+				<div className="bg-amber-50 border border-amber-200 rounded-xl p-8 sm:p-12 text-center">
+					<p className="text-amber-800 font-medium mb-2">
+						Deze folder is verlopen
+					</p>
+					<p className="text-amber-700 text-sm mb-4">
+						De nieuwe {retailer.name} folder wordt binnenkort verwacht.
+					</p>
+					{retailer.website && (
+						<a
+							href={retailer.website}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+						>
+							Bekijk de website van {retailer.name}
+						</a>
+					)}
 				</div>
 			) : (
 				<div className="bg-gray-50 border border-gray-200 rounded-xl p-12 text-center">
