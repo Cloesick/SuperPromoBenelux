@@ -34,6 +34,8 @@ jobs:
           cache: npm
 
       - name: Install dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
         run: npm ci --legacy-peer-deps
 
       - name: Scrape
@@ -42,6 +44,29 @@ jobs:
           # We use it because puppeteer_skip_download=true disables bundled Chromium.
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: npm run scrape
+
+      - name: Health check
+        run: |
+          if [ ! -f data/health.json ]; then
+            echo "⚠ No health manifest found"
+            exit 0
+          fi
+
+          echo "=== Data Health Report ==="
+          node -e "
+            const h = require('./data/health.json');
+            const s = h.summary;
+            console.log('Fresh: ' + s.fresh + ' | Fallback: ' + s.fallback + ' | Stale: ' + s.stale + ' | Missing: ' + s.missing);
+            if (s.withDeadUrls > 0) console.log('⚠ Dead URLs stripped: ' + s.withDeadUrls + ' retailer(s)');
+            if (s.withErrors > 0) console.log('⚠ Validation errors: ' + s.withErrors + ' retailer(s)');
+            for (const r of h.retailers) {
+              const issues = r.validationIssues.filter(i => i.severity === 'error');
+              if (issues.length > 0) console.log('  ✗ ' + r.slug + ': ' + issues.map(i => i.message).join('; '));
+              const dead = r.probeResults.filter(p => !p.live);
+              if (dead.length > 0) console.log('  ⚠ ' + r.slug + ': dead URLs — ' + dead.map(d => d.url + ' (' + d.status + ')').join('; '));
+            }
+            if (s.missing > 0) { console.error(s.missing + ' retailer(s) have NO data!'); process.exit(1); }
+          "
 
       - name: Commit and push if changed
         run: |
@@ -53,6 +78,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/folders public/screenshots || true
+          git add data/folders data/health.json public/screenshots || true
           git commit -m "chore: update scraped folders"
           git push

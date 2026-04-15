@@ -32,6 +32,10 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		}
 	})();
 
+	// Detect stale data — warn users when scraped data is old
+	const [dataAgeHours, setDataAgeHours] = useState<number | null>(null);
+	const isStale = dataAgeHours !== null && dataAgeHours > 72; // > 3 days
+
 	// When expired, treat embed/PDF from known-offline hosts as unavailable
 	const isEmbedOfflineRisk =
 		isExpired &&
@@ -97,6 +101,16 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		hasPdfEffective,
 		hasPages,
 	]);
+
+	useEffect(() => {
+		try {
+			const age =
+				(Date.now() - new Date(folder.scrapedAt).getTime()) / 3_600_000;
+			setDataAgeHours(age);
+		} catch {
+			setDataAgeHours(null);
+		}
+	}, [folder.scrapedAt]);
 
 	useEffect(() => {
 		if (!forcePagesOnly) return;
@@ -259,6 +273,29 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 					)}
 				</div>
 			</div>
+
+			{isStale && !isExpired && (
+				<div className="flex items-center gap-2 mb-4 px-3 py-2 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-700">
+					<Calendar className="w-4 h-4 shrink-0" suppressHydrationWarning />
+					<span>
+						Laatst bijgewerkt{" "}
+						{dataAgeHours !== null && dataAgeHours >= 24
+							? `${Math.round(dataAgeHours / 24)} dagen geleden`
+							: "meer dan 3 dagen geleden"}
+						.{" "}
+						{retailer.website && (
+							<a
+								href={retailer.website}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="font-medium underline hover:text-blue-800"
+							>
+								Bekijk {retailer.name} voor de nieuwste aanbiedingen
+							</a>
+						)}
+					</span>
+				</div>
+			)}
 
 			{(hasEmbedEffective || hasPdfEffective || hasPages) && (
 				<div className="flex flex-wrap items-center gap-2 mb-4">

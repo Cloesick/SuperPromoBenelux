@@ -6,9 +6,14 @@ import {
 	checkLocalData,
 	checkFolderExpiry,
 	stripOfflineEmbeds,
+	validateScrapedData,
+	generateHealthManifest,
 	formatAge,
 	MAX_RETRIES,
 	STALE_THRESHOLD_HOURS,
+	type ScraperResult,
+	type ValidationIssue,
+	type ProbeResult,
 } from "./run-helpers";
 
 // ---------------------------------------------------------------------------
@@ -362,5 +367,327 @@ describe("stripOfflineEmbeds", () => {
 
 		const result = stripOfflineEmbeds(tmpDir, "test");
 		expect(result).toBe(false);
+	});
+});
+
+// ---------------------------------------------------------------------------
+// validateScrapedData
+// ---------------------------------------------------------------------------
+
+describe("validateScrapedData", () => {
+	it("returns error when file does not exist", () => {
+		const issues = validateScrapedData(tmpDir, "nonexistent");
+		expect(issues).toHaveLength(1);
+		expect(issues[0].severity).toBe("error");
+		expect(issues[0].field).toBe("file");
+	});
+
+	it("returns error for invalid JSON", () => {
+		fs.writeFileSync(path.join(tmpDir, "bad.json"), "{ invalid json");
+		const issues = validateScrapedData(tmpDir, "bad");
+		expect(issues).toHaveLength(1);
+		expect(issues[0].message).toBe("Invalid JSON");
+	});
+
+	it("returns error when folders is not an array", () => {
+		writeTmpJson("test", { retailer: "test", folders: "not-array" });
+		const issues = validateScrapedData(tmpDir, "test");
+		expect(
+			issues.some((i) => i.field === "folders" && i.severity === "error"),
+		).toBe(true);
+	});
+
+	it("returns warning for empty folders array", () => {
+		writeTmpJson("test", { retailer: "test", folders: [] });
+		const issues = validateScrapedData(tmpDir, "test");
+		expect(
+			issues.some((i) => i.field === "folders" && i.severity === "warning"),
+		).toBe(true);
+	});
+
+	it("returns no issues for well-formed data", () => {
+		writeTmpJson("test", {
+			retailer: "test",
+			folders: [
+				{
+					id: "f1",
+					title: "Test folder",
+					validFrom: "2026-01-01",
+					validUntil: "2026-01-07",
+					pageCount: 1,
+					pages: [{ pageNumber: 1, imageUrl: "/p1.png", deals: [] }],
+					embedUrl: "https://example.com/embed",
+				},
+			],
+			scrapedAt: new Date().toISOString(),
+		});
+		const issues = validateScrapedData(tmpDir, "test");
+		expect(issues).toHaveLength(0);
+	});
+
+	it("detects missing title", () => {
+		writeTmpJson("test", {
+			retailer: "test",
+			folders: [
+				{
+					id: "f1",
+					validFrom: "2026-01-01",
+					validUntil: "2026-01-07",
+					pageCount: 0,
+					pages: [],
+				},
+			],
+		});
+		const issues = validateScrapedData(tmpDir, "test");
+		expect(
+			issues.some((i) => i.field.includes("title") && i.severity === "error"),
+		).toBe(true);
+	});
+
+	it("detects invalid date format", () => {
+		writeTmpJson("test", {
+			retailer: "test",
+			folders: [
+				{
+					id: "f1",
+					title: "Test",
+					validFrom: "not-a-date",
+					validUntil: "2026-01-07",
+					pageCount: 0,
+					pages: [],
+				},
+			],
+		});
+		const issues = validateScrapedData(tmpDir, "test");
+		expect(
+			issues.some(
+				(i) => i.field.includes("validFrom") && i.severity === "error",
+			),
+		).toBe(true);
+	});
+
+	it("detects pageCount mismatch", () => {
+		writeTmpJson("test", {
+			retailer: "test",
+			folders: [
+				{
+					id: "f1",
+					title: "Test",
+					validFrom: "2026-01-01",
+					validUntil: "2026-01-07",
+					pageCount: 5,
+					pages: [],
+				},
+			],
+		});
+		const issues = validateScrapedData(tmpDir, "test");
+		expect(
+			issues.some(
+				(i) => i.field.includes("pageCount") && i.severity === "warning",
+			),
+		).toBe(true);
+	});
+
+	it("warns when folder has no content (no embed, pdf, or pages)", () => {
+		writeTmpJson("test", {
+			retailer: "test",
+			folders: [
+				{
+					id: "f1",
+					title: "Test",
+					validFrom: "2026-01-01",
+					validUntil: "2026-01-07",
+					pageCount: 0,
+					pages: [],
+				},
+			],
+		});
+		const issues = validateScrapedData(tmpDir, "test");
+		expect(
+			issues.some((i) => i.message.includes("no embed, PDF, or pages")),
+		).toBe(true);
+	});
+
+	it("warns on invalid embedUrl", () => {
+		writeTmpJson("test", {
+			retailer: "test",
+			folders: [
+				{
+					id: "f1",
+					title: "Test",
+					validFrom: "2026-01-01",
+					validUntil: "2026-01-07",
+					pageCount: 0,
+					pages: [],
+					embedUrl: "not-a-url",
+				},
+			],
+		});
+		const issues = validateScrapedData(tmpDir, "test");
+		expect(issues.some((i) => i.field.includes("embedUrl"))).toBe(true);
+	});
+});
+
+// ---------------------------------------------------------------------------
+// generateHealthManifest
+// ---------------------------------------------------------------------------
+
+describe("generateHealthManifest", () => {
+	it("generates a manifest with correct summary counts", () => {
+		writeTmpJson("fresh-retailer", {
+			retailer: "fresh-retailer",
+			folders: [
+				{
+					id: "f1",
+					title: "Test",
+					validFrom: "2026-01-01",
+					validUntil: "2026-01-07",
+					pageCount: 0,
+					pages: [],
+					embedUrl: "https://example.com/embed",
+				},
+			],
+			deals: [{ id: "d1" }],
+			scrapedAt: new Date().toISOString(),
+		});
+
+		const results: ScraperResult[] = [
+			{ slug: "fresh-retailer", name: "Fresh", status: "fresh", attempts: 1 },
+			{
+				slug: "missing-retailer",
+				name: "Missing",
+				status: "missing",
+				attempts: 3,
+				error: "timeout",
+			},
+		];
+
+		const validationMap = new Map<string, ValidationIssue[]>();
+		validationMap.set("fresh-retailer", []);
+		validationMap.set("missing-retailer", [
+			{ field: "file", message: "Data file does not exist", severity: "error" },
+		]);
+
+		const probeMap = new Map<string, ProbeResult[]>();
+		probeMap.set("fresh-retailer", [
+			{ url: "https://example.com/embed", status: 200, live: true },
+		]);
+
+		const manifest = generateHealthManifest(
+			tmpDir,
+			results,
+			validationMap,
+			probeMap,
+		);
+
+		expect(manifest.summary.total).toBe(2);
+		expect(manifest.summary.fresh).toBe(1);
+		expect(manifest.summary.missing).toBe(1);
+		expect(manifest.summary.withErrors).toBe(1);
+		expect(manifest.summary.withDeadUrls).toBe(0);
+		expect(manifest.retailers).toHaveLength(2);
+		expect(manifest.generatedAt).toBeTruthy();
+	});
+
+	it("writes health.json to parent of dataDir", () => {
+		writeTmpJson("test", {
+			retailer: "test",
+			folders: [],
+			deals: [],
+			scrapedAt: new Date().toISOString(),
+		});
+
+		const results: ScraperResult[] = [
+			{ slug: "test", name: "Test", status: "fresh", attempts: 1 },
+		];
+
+		generateHealthManifest(tmpDir, results, new Map(), new Map());
+
+		const healthPath = path.join(tmpDir, "..", "health.json");
+		expect(fs.existsSync(healthPath)).toBe(true);
+
+		const written = JSON.parse(fs.readFileSync(healthPath, "utf-8"));
+		expect(written.summary.total).toBe(1);
+
+		// Clean up
+		fs.unlinkSync(healthPath);
+	});
+
+	it("tracks dead URLs in summary", () => {
+		writeTmpJson("dead", {
+			retailer: "dead",
+			folders: [{ id: "f1", embedUrl: "https://dead.example.com" }],
+			deals: [],
+			scrapedAt: new Date().toISOString(),
+		});
+
+		const results: ScraperResult[] = [
+			{ slug: "dead", name: "Dead", status: "fresh", attempts: 1 },
+		];
+
+		const probeMap = new Map<string, ProbeResult[]>();
+		probeMap.set("dead", [
+			{ url: "https://dead.example.com", status: 404, live: false },
+		]);
+
+		const manifest = generateHealthManifest(
+			tmpDir,
+			results,
+			new Map(),
+			probeMap,
+		);
+		expect(manifest.summary.withDeadUrls).toBe(1);
+
+		// Clean up health.json
+		const healthPath = path.join(tmpDir, "..", "health.json");
+		if (fs.existsSync(healthPath)) fs.unlinkSync(healthPath);
+	});
+
+	it("includes retailer details (folderCount, dealCount, hasEmbed, etc.)", () => {
+		writeTmpJson("detail", {
+			retailer: "detail",
+			folders: [
+				{
+					id: "f1",
+					title: "Test",
+					validFrom: "2026-01-01",
+					validUntil: "2026-01-07",
+					pageCount: 2,
+					pages: [{ pageNumber: 1 }, { pageNumber: 2 }],
+					embedUrl: "https://example.com/embed",
+					pdfUrl: "https://example.com/file.pdf",
+				},
+			],
+			deals: [{ id: "d1" }, { id: "d2" }, { id: "d3" }],
+			scrapedAt: new Date().toISOString(),
+		});
+
+		const results: ScraperResult[] = [
+			{
+				slug: "detail",
+				name: "Detail",
+				status: "fresh",
+				attempts: 1,
+				dataAge: "0m",
+			},
+		];
+
+		const manifest = generateHealthManifest(
+			tmpDir,
+			results,
+			new Map(),
+			new Map(),
+		);
+		const entry = manifest.retailers[0];
+		expect(entry.folderCount).toBe(1);
+		expect(entry.dealCount).toBe(3);
+		expect(entry.hasEmbed).toBe(true);
+		expect(entry.hasPdf).toBe(true);
+		expect(entry.hasPages).toBe(true);
+		expect(entry.dataAge).toBe("0m");
+
+		// Clean up
+		const healthPath = path.join(tmpDir, "..", "health.json");
+		if (fs.existsSync(healthPath)) fs.unlinkSync(healthPath);
 	});
 });
