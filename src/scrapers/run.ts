@@ -1,156 +1,19 @@
-import fs from "node:fs";
 import path from "node:path";
 import { scrapers } from "./scrapers";
+import {
+	MAX_RETRIES,
+	RETRY_DELAY_MS,
+	STALE_THRESHOLD_HOURS,
+	sleep,
+	checkLocalData,
+	checkFolderExpiry,
+	stripOfflineEmbeds,
+	formatAge,
+	type Status,
+	type ScraperResult,
+} from "./run-helpers";
 
-// ---------------------------------------------------------------------------
-// Configuration
-// ---------------------------------------------------------------------------
-
-const MAX_RETRIES = 2; // total attempts = 1 + MAX_RETRIES
-const RETRY_DELAY_MS = 5_000;
-const STALE_THRESHOLD_HOURS = 168; // 7 days
 const DATA_DIR = path.resolve(process.cwd(), "data", "folders");
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-type Status =
-	| "fresh"
-	| "retry_success"
-	| "fallback_local"
-	| "stale"
-	| "missing";
-
-interface ScraperResult {
-	slug: string;
-	name: string;
-	status: Status;
-	attempts: number;
-	error?: string;
-	dataAge?: string;
-}
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-function sleep(ms: number): Promise<void> {
-	return new Promise((r) => setTimeout(r, ms));
-}
-
-function getDataFilePath(slug: string): string {
-	return path.join(DATA_DIR, `${slug}.json`);
-}
-
-function checkLocalData(slug: string): {
-	valid: boolean;
-	ageHours: number | null;
-} {
-	const filePath = getDataFilePath(slug);
-	if (!fs.existsSync(filePath)) return { valid: false, ageHours: null };
-
-	try {
-		const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-		if (!Array.isArray(data.folders)) return { valid: false, ageHours: null };
-
-		const scrapedAt = data.scrapedAt ? new Date(data.scrapedAt) : null;
-		const ageHours = scrapedAt
-			? (Date.now() - scrapedAt.getTime()) / 3_600_000
-			: null;
-
-		return { valid: true, ageHours };
-	} catch {
-		return { valid: false, ageHours: null };
-	}
-}
-
-function formatAge(hours: number | null): string {
-	if (hours === null) return "unknown age";
-	if (hours < 1) return `${Math.round(hours * 60)}m`;
-	if (hours < 24) return `${Math.round(hours)}h`;
-	return `${Math.round(hours / 24)}d`;
-}
-
-/**
- * Check if the most recent folder in existing data has expired.
- * Expired folders mean the embed/PDF is likely offline (Publitas takes them down).
- */
-function checkFolderExpiry(slug: string): {
-	expired: boolean;
-	latestValidUntil: string | null;
-} {
-	const filePath = getDataFilePath(slug);
-	if (!fs.existsSync(filePath))
-		return { expired: false, latestValidUntil: null };
-
-	try {
-		const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-		if (!Array.isArray(data.folders) || data.folders.length === 0)
-			return { expired: false, latestValidUntil: null };
-
-		const latest = data.folders[0];
-		const vu = latest.validUntil;
-		if (!vu) return { expired: false, latestValidUntil: null };
-
-		const until = new Date(vu + "T23:59:59");
-		return { expired: until < new Date(), latestValidUntil: vu };
-	} catch {
-		return { expired: false, latestValidUntil: null };
-	}
-}
-
-/**
- * After a scrape, strip embed/PDF URLs from expired folders when they point to
- * hosts that are known to take publications offline (Publitas, Folderz).
- * This prevents the frontend from rendering a dead iframe.
- */
-function stripOfflineEmbeds(slug: string): void {
-	const filePath = getDataFilePath(slug);
-	if (!fs.existsSync(filePath)) return;
-
-	try {
-		const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-		if (!Array.isArray(data.folders)) return;
-
-		let modified = false;
-		const now = new Date();
-
-		for (const folder of data.folders) {
-			if (!folder.validUntil) continue;
-			try {
-				const until = new Date(folder.validUntil + "T23:59:59");
-				if (until >= now) continue;
-			} catch {
-				continue;
-			}
-
-			if (
-				folder.embedUrl &&
-				/publitas\.com|folderz\.be/i.test(folder.embedUrl)
-			) {
-				console.log(
-					`  [${slug}] Stripping offline embed from expired folder: ${folder.embedUrl}`,
-				);
-				folder.embedUrl = "";
-				modified = true;
-			}
-			if (folder.pdfUrl && /publitas\.com|folderz\.be/i.test(folder.pdfUrl)) {
-				console.log(
-					`  [${slug}] Stripping offline PDF from expired folder: ${folder.pdfUrl}`,
-				);
-				folder.pdfUrl = "";
-				modified = true;
-			}
-		}
-
-		if (modified) {
-			fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-		}
-	} catch {
-		// ignore
-	}
-}
 
 // ---------------------------------------------------------------------------
 // Main
@@ -183,7 +46,7 @@ async function main() {
 		let attempts = 0;
 
 		// If existing data has expired folders, use extra retries
-		const expiry = checkFolderExpiry(slug);
+		const expiry = checkFolderExpiry(DATA_DIR, slug);
 		const maxRetries = expiry.expired ? MAX_RETRIES + 1 : MAX_RETRIES;
 		if (expiry.expired) {
 			console.log(
@@ -213,7 +76,7 @@ async function main() {
 
 		if (succeeded) {
 			// Post-scrape: strip offline embeds from expired folders
-			stripOfflineEmbeds(slug);
+			stripOfflineEmbeds(DATA_DIR, slug);
 
 			results.push({
 				slug,
@@ -231,9 +94,9 @@ async function main() {
 		);
 
 		// Strip offline embeds from local data even when scraper failed
-		stripOfflineEmbeds(slug);
+		stripOfflineEmbeds(DATA_DIR, slug);
 
-		const local = checkLocalData(slug);
+		const local = checkLocalData(DATA_DIR, slug);
 		if (local.valid) {
 			const isStale =
 				local.ageHours !== null && local.ageHours > STALE_THRESHOLD_HOURS;
