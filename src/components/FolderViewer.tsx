@@ -522,6 +522,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								sizes="(max-width: 768px) 100vw, 900px"
 								className="w-full h-auto object-contain bg-white"
 								priority={currentPage === 0}
+								unoptimized
 								suppressHydrationWarning
 							/>
 						</div>
@@ -617,6 +618,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 									width={64}
 									height={88}
 									className="object-cover w-full h-full"
+									unoptimized
 									suppressHydrationWarning
 								/>
 							</button>
