@@ -36,6 +36,27 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 	const [dataAgeHours, setDataAgeHours] = useState<number | null>(null);
 	const isStale = dataAgeHours !== null && dataAgeHours > 72; // > 3 days
 
+	// Detect embed host for X-Frame-Options / CSP blocking
+	const embedHost = (() => {
+		if (!folder.embedUrl) return null;
+		try {
+			return new URL(folder.embedUrl).hostname;
+		} catch {
+			return null;
+		}
+	})();
+
+	// Block embeds from hosts known to reject iframes (X-Frame-Options: SAMEORIGIN/DENY)
+	const isEmbedBlocked =
+		!!embedHost &&
+		(retailer.slug === "delhaize" ||
+			embedHost === "ah.be" ||
+			embedHost.endsWith(".ah.be") ||
+			embedHost === "folder.aldi.be" ||
+			embedHost.endsWith(".folder.aldi.be") ||
+			embedHost === "view.publitas.com" ||
+			embedHost.endsWith(".publitas.com"));
+
 	// When expired, treat embed/PDF from known-offline hosts as unavailable
 	const isEmbedOfflineRisk =
 		isExpired &&
@@ -48,7 +69,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 
 	const hasEmbedEffective = forcePagesOnly
 		? false
-		: isEmbedOfflineRisk
+		: isEmbedBlocked || isEmbedOfflineRisk
 			? false
 			: hasEmbed;
 	const hasPdfEffective = forcePagesOnly
@@ -56,7 +77,6 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		: isPdfOfflineRisk
 			? false
 			: hasPdf;
-	const [isIOS, setIsIOS] = useState(false);
 	const thumbsRef = useRef<HTMLDivElement | null>(null);
 
 	const [trackingEnabled, setTrackingEnabled] = useState(false);
@@ -214,12 +234,6 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		});
 	}, [trackingEnabled, mode, currentPage, retailer.slug]);
 
-	useEffect(() => {
-		const ua = navigator.userAgent;
-		const detectedIOS = /iP(hone|od|ad)/.test(ua);
-		setIsIOS(detectedIOS);
-	}, []);
-
 	const validFrom = new Date(folder.validFrom).toLocaleDateString("nl-BE", {
 		day: "numeric",
 		month: "long",
@@ -370,20 +384,33 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 					<div
 						className={`relative ${isFullscreen ? "fixed inset-0 z-50 bg-white" : ""}`}
 					>
-						{isIOS && !hasPdf && !hasPages && !isFullscreen && (
+						{!isFullscreen && (
 							<div className="sm:hidden px-6 py-4 border-b border-gray-100 bg-gray-50">
 								<p className="text-sm text-gray-600 mb-3">
-									Op iPhone wordt de online folder soms geblokkeerd in deze
+									Op mobiel wordt de online folder soms geblokkeerd in deze
 									pagina.
 								</p>
-								<a
-									href={folder.embedUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
-								>
-									Open in nieuw tabblad
-								</a>
+								<div className="flex flex-wrap gap-3">
+									<a
+										href={folder.embedUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+									>
+										Open in nieuw tabblad
+									</a>
+									{hasPdf && (
+										<a
+											href={folder.pdfUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+										>
+											<FileText className="w-4 h-4" suppressHydrationWarning />
+											Download PDF
+										</a>
+									)}
+								</div>
 							</div>
 						)}
 						{isFullscreen && (
