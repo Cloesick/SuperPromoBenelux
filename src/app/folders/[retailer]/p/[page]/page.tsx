@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { getRetailerBySlug } from "@/lib/retailers";
-import { getCurrentFolder, getDealsForRetailer } from "@/lib/folders";
+import { getCurrentFolder } from "@/lib/folders";
 import { AdPlacements } from "@/components/AdPlacements";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,7 +46,6 @@ export default async function RetailerFolderPage({ params }: PageProps) {
 
 	if (pageNumber > currentFolder.pages.length) notFound();
 
-	const deals = await getDealsForRetailer(slug);
 	const idx = pageNumber - 1;
 	const img = currentFolder.pages[idx];
 
@@ -90,6 +89,7 @@ export default async function RetailerFolderPage({ params }: PageProps) {
 						fill
 						className="object-contain"
 						priority
+						unoptimized
 						suppressHydrationWarning
 					/>
 				</div>
