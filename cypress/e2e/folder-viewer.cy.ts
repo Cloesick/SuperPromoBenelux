@@ -6,12 +6,64 @@
  */
 
 const viewerRetailers = [
-	{ slug: "albert-heijn", name: "Albert Heijn" },
-	{ slug: "lidl", name: "Lidl" },
-	{ slug: "delhaize", name: "Delhaize" },
-	{ slug: "colruyt", name: "Colruyt" },
-	{ slug: "aldi", name: "ALDI" },
-	{ slug: "action", name: "Action" },
+	// General
+	{ slug: "albert-heijn", name: "Albert Heijn", path: "/folders/albert-heijn" },
+	{ slug: "lidl", name: "Lidl", path: "/folders/lidl" },
+	{ slug: "delhaize", name: "Delhaize", path: "/folders/delhaize" },
+	{ slug: "colruyt", name: "Colruyt", path: "/folders/colruyt" },
+	{ slug: "aldi", name: "ALDI", path: "/folders/aldi" },
+	{ slug: "action", name: "Action", path: "/folders/action" },
+	// Pet
+	{ slug: "maxi-zoo", name: "Maxi Zoo", path: "/pet/folders/maxi-zoo" },
+	{ slug: "tom-co", name: "Tom&Co", path: "/pet/folders/tom-co" },
+	{ slug: "zooplus", name: "Zooplus", path: "/pet/folders/zooplus" },
+	{ slug: "aveve", name: "AVEVE", path: "/pet/folders/aveve" },
+	{ slug: "medpets", name: "Medpets", path: "/pet/folders/medpets" },
+	// Electro
+	{
+		slug: "mediamarkt",
+		name: "MediaMarkt",
+		path: "/electro/folders/mediamarkt",
+	},
+	{ slug: "coolblue", name: "Coolblue", path: "/electro/folders/coolblue" },
+	{
+		slug: "vanden-borre",
+		name: "Vanden Borre",
+		path: "/electro/folders/vanden-borre",
+	},
+	{ slug: "krefel", name: "Krëfel", path: "/electro/folders/krefel" },
+	{ slug: "bol", name: "bol", path: "/electro/folders/bol" },
+	// Fashion
+	{ slug: "hm", name: "H&M", path: "/fashion/folders/hm" },
+	{ slug: "zalando", name: "Zalando", path: "/fashion/folders/zalando" },
+	// Home & Garden
+	{ slug: "ikea", name: "IKEA", path: "/home-garden/folders/ikea" },
+	{ slug: "gamma", name: "Gamma", path: "/home-garden/folders/gamma" },
+	// Beauty
+	{ slug: "kruidvat", name: "Kruidvat", path: "/beauty/folders/kruidvat" },
+	{
+		slug: "ici-paris-xl",
+		name: "ICI PARIS XL",
+		path: "/beauty/folders/ici-paris-xl",
+	},
+	{ slug: "douglas", name: "Douglas", path: "/beauty/folders/douglas" },
+	{ slug: "di", name: "Di", path: "/beauty/folders/di" },
+	{ slug: "etos", name: "Etos", path: "/beauty/folders/etos" },
+	{ slug: "boots", name: "Boots", path: "/beauty/folders/boots" },
+	{ slug: "muller", name: "Müller", path: "/beauty/folders/muller" },
+	{ slug: "rossmann", name: "Rossmann", path: "/beauty/folders/rossmann" },
+	{ slug: "treac", name: "Trekpleister", path: "/beauty/folders/treac" },
+	{ slug: "rituals", name: "Rituals", path: "/beauty/folders/rituals" },
+	{
+		slug: "yves-rocher",
+		name: "Yves Rocher",
+		path: "/beauty/folders/yves-rocher",
+	},
+	{
+		slug: "the-body-shop",
+		name: "The Body Shop",
+		path: "/beauty/folders/the-body-shop",
+	},
 ];
 
 function isRecordValue(v: unknown): v is Record<string, unknown> {
@@ -40,7 +92,7 @@ function dismissCookieConsentIfPresent() {
 // ---------------------------------------------------------------------------
 
 describe("Folder viewer rendering", () => {
-	viewerRetailers.forEach(({ slug, name }) => {
+	viewerRetailers.forEach(({ slug, name, path }) => {
 		describe(`${name} folder viewer`, () => {
 			let folderData: { folders: unknown[] };
 
@@ -51,7 +103,7 @@ describe("Folder viewer rendering", () => {
 			});
 
 			beforeEach(() => {
-				cy.visit(`/folders/${slug}`);
+				cy.visit(path);
 			});
 
 			it("renders the folder title", () => {
@@ -194,22 +246,15 @@ describe("Image page viewer navigation", () => {
 		});
 	}
 
-	let pageSlug: string | null = null;
+	let pagePath: string | null = null;
 	let pageCount = 0;
 
 	before(() => {
-		const slugs = [
-			"lidl",
-			"colruyt",
-			"delhaize",
-			"albert-heijn",
-			"aldi",
-			"action",
-		];
+		const candidates = viewerRetailers;
 
-		cy.wrap(slugs).each((slug: string) => {
-			if (pageSlug) return;
-			cy.readFile(`data/folders/${slug}.json`).then((data) => {
+		cy.wrap(candidates).each((item: { slug: string; path: string }) => {
+			if (pagePath) return;
+			cy.readFile(`data/folders/${item.slug}.json`).then((data) => {
 				// We only need pages; embed/pdf may also exist but FolderViewer will still
 				// use pages mode when pages are present.
 				const folders: unknown[] = Array.isArray(data?.folders)
@@ -221,7 +266,7 @@ describe("Image page viewer navigation", () => {
 					return pages.length > 1;
 				});
 				if (folder) {
-					pageSlug = slug;
+					pagePath = item.path;
 					if (!isRecordValue(folder)) return;
 					const pages = Array.isArray(folder.pages) ? folder.pages : [];
 					pageCount = pages.length;
@@ -231,8 +276,8 @@ describe("Image page viewer navigation", () => {
 	});
 
 	beforeEach(function () {
-		if (!pageSlug) this.skip();
-		cy.visit(`/folders/${pageSlug}`);
+		if (!pagePath) this.skip();
+		cy.visit(pagePath);
 		dismissCookieBanners();
 	});
 
@@ -282,11 +327,11 @@ describe("Image page viewer navigation", () => {
 // ---------------------------------------------------------------------------
 
 describe("PDF link availability", () => {
-	viewerRetailers.forEach(({ slug, name }) => {
+	viewerRetailers.forEach(({ slug, name, path }) => {
 		it(`${name}: shows PDF link when pdfUrl exists`, () => {
 			cy.readFile(`data/folders/${slug}.json`).then((data) => {
 				const folder = data.folders[0];
-				cy.visit(`/folders/${slug}`);
+				cy.visit(path);
 
 				if (folder && folder.pdfUrl) {
 					cy.contains("PDF").should("be.visible");

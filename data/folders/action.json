@@ -1,0 +1,89 @@
+{
+  "retailer": "action",
+  "folders": [
+    {
+      "id": "action-2026-w20-folder",
+      "retailerSlug": "action",
+      "title": "Action folder van de week",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 12,
+      "thumbnailUrl": "/screenshots/action-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p1.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p2.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p3.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p4.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p5.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p6.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p7.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p8.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p9.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p10.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p11.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p12.png",
+          "deals": []
+        }
+      ],
+      "embedUrl": "https://be.publications.action.com/?publitas_embed=embedded",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-05-12T09:40:19.858Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-05-12T09:40:22.567Z",
+  "sourceUrls": [
+    "https://www.action.com/nl-be/folder/",
+    "https://be.publications.action.com/?publitas_embed=embedded"
+  ],
+  "methods": [
+    "publitas",
+    "screenshot"
+  ]
+}

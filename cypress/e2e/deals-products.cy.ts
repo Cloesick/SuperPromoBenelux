@@ -6,10 +6,44 @@
  */
 
 const dealRetailers = [
+	// Shared (general)
 	{ slug: "albert-heijn", name: "Albert Heijn" },
 	{ slug: "lidl", name: "Lidl" },
 	{ slug: "delhaize", name: "Delhaize" },
 	{ slug: "colruyt", name: "Colruyt" },
+	{ slug: "aldi", name: "ALDI" },
+	{ slug: "action", name: "Action" },
+	// Pet
+	{ slug: "maxi-zoo", name: "Maxi Zoo" },
+	{ slug: "tom-co", name: "Tom&Co" },
+	{ slug: "zooplus", name: "Zooplus" },
+	{ slug: "aveve", name: "AVEVE" },
+	{ slug: "medpets", name: "Medpets" },
+	// Electro
+	{ slug: "mediamarkt", name: "MediaMarkt" },
+	{ slug: "coolblue", name: "Coolblue" },
+	{ slug: "vanden-borre", name: "Vanden Borre" },
+	{ slug: "krefel", name: "Krëfel" },
+	{ slug: "bol", name: "bol" },
+	// Fashion
+	{ slug: "hm", name: "H&M" },
+	{ slug: "zalando", name: "Zalando" },
+	// Home & Garden
+	{ slug: "ikea", name: "IKEA" },
+	{ slug: "gamma", name: "Gamma" },
+	// Beauty
+	{ slug: "kruidvat", name: "Kruidvat" },
+	{ slug: "ici-paris-xl", name: "ICI PARIS XL" },
+	{ slug: "douglas", name: "Douglas" },
+	{ slug: "di", name: "Di" },
+	{ slug: "etos", name: "Etos" },
+	{ slug: "boots", name: "Boots" },
+	{ slug: "muller", name: "Müller" },
+	{ slug: "rossmann", name: "Rossmann" },
+	{ slug: "treac", name: "Trekpleister" },
+	{ slug: "rituals", name: "Rituals" },
+	{ slug: "yves-rocher", name: "Yves Rocher" },
+	{ slug: "the-body-shop", name: "The Body Shop" },
 ];
 
 type DealsFile = {

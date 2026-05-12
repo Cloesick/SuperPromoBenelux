@@ -1,0 +1,769 @@
+{
+  "retailer": "albert-heijn",
+  "folders": [
+    {
+      "id": "albert-heijn-2026-w20-folder",
+      "retailerSlug": "albert-heijn",
+      "title": "Albert Heijn Bonusfolder",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/ah/bonus-week-20-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/126/3036004/pdfs/27b13c61-3f34-4d3e-bc55-046005df79ec.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-20-2026.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-05-12T09:36:47.562Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-6",
+      "product": "Geen alternatieven gevonden voor dit product.",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-8",
+      "product": "Kies een product",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-0",
+      "product": "AH Gekruide bakaardappeltjes 450 gram",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-19",
+      "product": "AH Avocado eetrijp 2 stuks",
+      "discount": "voor1.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-38",
+      "product": "AH Cherrytomaten 250 gram",
+      "discount": "Bonus",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-55",
+      "product": "AH Verspakketten voor 2 personen",
+      "discount": "€1korting",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-74",
+      "product": "AH Snoepgroente 175-250 gram",
+      "discount": "3 voor5.00",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_43545239393430323031?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-93",
+      "product": "AH Ananas zonder kroon",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-99",
+      "product": "uitgelicht",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-113",
+      "product": "AH Mango",
+      "discount": "voor1.49",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-132",
+      "product": "AH Frambozen 125 gram",
+      "discount": "voor1.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-151",
+      "product": "AH Verse meloenmix 225 gram of ananas 250 gram",
+      "discount": "voor1.99",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_43545239393131313033?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-170",
+      "product": "AH Ice tea cold brewed of raw lemonade",
+      "discount": "voor1.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-189",
+      "product": "AH Groenteshots",
+      "discount": "5+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313835373932?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-208",
+      "product": "AH Verse pinsa's",
+      "discount": "2 voor10.00",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-227",
+      "product": "AH Verse pizza's",
+      "discount": "2 voor12.00",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-246",
+      "product": "AH Verse maaltijden",
+      "discount": "2 voor12.00",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-265",
+      "product": "AH Salade erbij",
+      "discount": "2 voor7.00",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4b376d5f626e744754314f395f3150764e5f656a5f77?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-284",
+      "product": "AH BBQ-spareribs gemarineerd",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-304",
+      "product": "AH Scharrelkipblokjes 300 gram",
+      "discount": "€1korting",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4c416d736b7052375437574b5576776c44544a6d6d51?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-323",
+      "product": "AH BBQ-garnalenspiezen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-343",
+      "product": "AH Verse zalmfilet op huid*",
+      "discount": "per 100 gram2.19",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-363",
+      "product": "Herta Superieur natuur 3 sneden",
+      "discount": "voor1.49",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-382",
+      "product": "Herta Finesse",
+      "discount": "voor1.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-401",
+      "product": "AH Paté kleinverpakking",
+      "discount": "2 voor2.50",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_43545239393038353935?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-420",
+      "product": "Galbani mozzarella 225 gram",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-439",
+      "product": "Eru 100 gram",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-458",
+      "product": "AH Goudse plakken",
+      "discount": "2 voor5.50",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4c647559797a646453324b4944384c4b715354484667?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-477",
+      "product": "ísey skyr cups 125-170 gram",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-497",
+      "product": "Starbucks ijskoffie 220-250 ml",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-516",
+      "product": "Danio Duo en kindertoetjes",
+      "discount": "voor0.79",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-535",
+      "product": "Campina High protein yoghurt Greek style 450 gram",
+      "discount": "voor1.99",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_515a6d66474a6343536e6d66777334516934456e4167?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-554",
+      "product": "AH Petit Patisserie banket (ongekoeld)",
+      "discount": "2 voor6.00",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_7339714753764d5553574b2d652d5033686847686951?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-573",
+      "product": "AH Petit Patisserie gebak (gekoeld)",
+      "discount": "2 voor7.00",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_74706c547561374152374330766761654339467a6451?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-592",
+      "product": "Doritos, Duyvis en Quaker: gratis levering bij 12 euro",
+      "discount": "gratisleveringbij 12 euro",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-607",
+      "product": "Pringles 40 gram",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-626",
+      "product": "Croky*",
+      "discount": "voor1.19",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-646",
+      "product": "Doritos en Cheetos value-packs",
+      "discount": "voor1.49",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-665",
+      "product": "AH Scrocchi, Picos en Borreltoast",
+      "discount": "2 voor4.00",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_5778325452705a4c515143726f354c53733258516277?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-684",
+      "product": "AH Borrel kleintjes",
+      "discount": "3 voor3.00",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_5f6436464e59713153384f3376316734416f68766341?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-703",
+      "product": "AH Multimix",
+      "discount": "3 voor4.00",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313936313034?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-724",
+      "product": "De Cecco",
+      "discount": "voor1.89",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-743",
+      "product": "Blue Elephant kruidenpasta's 70 gram",
+      "discount": "voor1.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-762",
+      "product": "Verstegen kruidenmixen en zakjes",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303434353130?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-782",
+      "product": "Nongshim",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-802",
+      "product": "Heinz basistomatenproducten 350-500 gram",
+      "discount": "voor0.89",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313839373631?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-821",
+      "product": "King pepermunt original 5 rollen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-841",
+      "product": "Milka chocolade 87-100 gram",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-860",
+      "product": "Lotus Biscoff koek",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-879",
+      "product": "Haribo 160-260 gram",
+      "discount": "voor1.69",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-898",
+      "product": "Kinder koek",
+      "discount": "voor1.59",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-917",
+      "product": "HiPRO bars 45 gram of knijpzakjes 200 gram",
+      "discount": "voor1.99",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313537363535?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-936",
+      "product": "KitKat en Smarties*",
+      "discount": "voor1.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-956",
+      "product": "Côte d'Or Biscoff en  Bouchée truffée noir",
+      "discount": "2ehalve prijs",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_422d43364750412d534c7948626975316d35725f4777?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-975",
+      "product": "Kelloggs",
+      "discount": "2 voor4.89",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4666745a7741456f546e434e5557334b464446697477?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-994",
+      "product": "Quaker Cruesli 375-450 gram",
+      "discount": "2 voor4.99",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313439353937?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1013",
+      "product": "FUEL10K",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1032",
+      "product": "Ola Raket 9 stuks of Twister mini pineapple 6 stuks",
+      "discount": "voor1.99",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4e4253576f51753851495742364439454e4a53704851?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1051",
+      "product": "Crosta Mollica diepvries",
+      "discount": "25%korting",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1070",
+      "product": "Douwe Egberts of L'OR capsules voor Nespresso® 20 stuks",
+      "discount": "25%korting",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_396d357650544f4153764b6630497161656636344577?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1089",
+      "product": "Nescafeoploskoffie 100 & 200gr",
+      "discount": "25%korting",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_684d70436867366853507955312d4d555a48684f5a77?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1108",
+      "product": "Royal Club, Crystal Clear en Sourcy Vitaminwater: gratis levering bij 1 stuk",
+      "discount": "gratisleveringbij 1 stuk",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1123",
+      "product": "Red Bull energy drink regular of sugar free 0.25 literblikjes*",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313538363634?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1144",
+      "product": "Red Bull energy drink regular of sugar free 6 x 0.25 literblikjes",
+      "discount": "voor5.34",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313837313534?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1163",
+      "product": "Spa Reine of Intense literflessen",
+      "discount": "voor0.69",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1182",
+      "product": "Mogu Mogu 0.32 literflesjes",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1201",
+      "product": "Arizona 0.5 literflesjes",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1220",
+      "product": "Pepsi  1,5L",
+      "discount": "2ehalve prijs",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303534313938?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1239",
+      "product": "Rose wijnen",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313831323432?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1259",
+      "product": "Duvel blond 4-pack BEL",
+      "discount": "voor3.96",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_43545239373134343131?revLabel=3&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1278",
+      "product": "Scarlet zero",
+      "discount": "1+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4557706736304335546d366f635338755a7252675567?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1297",
+      "product": "Dash platinum",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_5a61687a5a6875775236715037526b444e4b645a4477?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1317",
+      "product": "Edet toiletpapier 16 & 24 rollen en Nalys",
+      "discount": "1+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303430313836?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1336",
+      "product": "Dreft wasmiddel en wasverzachters",
+      "discount": "1+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313738353934?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1355",
+      "product": "Lenor",
+      "discount": "3 voor15.00",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303336383838?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1374",
+      "product": "Page vochtig toiletpapier 38 stuks",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1393",
+      "product": "Kleenex tissues",
+      "discount": "voor0.99",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1412",
+      "product": "Alle Sun vaatwascaps & Finish",
+      "discount": "1+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130323033323737?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1431",
+      "product": "Ambi Pur toiletblokken single-packs of -reinigers 750 ml",
+      "discount": "voor1.59",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_6254776d616a613353352d5949364f3642467a675241?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1450",
+      "product": "Ariel vloeibaar en pods+",
+      "discount": "1+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_37694d5772355077516979504875595866644e516c67?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1469",
+      "product": "Organix en Goodies: gratis levering bij 12 euro",
+      "discount": "gratisleveringbij 12 euro",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1484",
+      "product": "Olvarit maaltijdpotjes 125-250 gram of knijpzakjes 100 gram",
+      "discount": "voor0.99",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313932353734?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1503",
+      "product": "Pampers luiers en broekjes",
+      "discount": "3 voor29.99",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303431333034?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1522",
+      "product": "Gourmet Gold 85 gram",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1542",
+      "product": "Always single-packs",
+      "discount": "voor1.49",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1561",
+      "product": "L'Oreal en Garnier",
+      "discount": "1+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_43545239373134393530?revLabel=3&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1580",
+      "product": "Alle Dove Axe Rexo deodouche",
+      "discount": "2+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_337870734f59755f54363277794c79446c5473515767?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1599",
+      "product": "Gillette scheermesjes",
+      "discount": "1+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_792d32456f7a6357523579494c64737375535f554a67?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-1618",
+      "product": "Nivea Sun",
+      "discount": "2+1gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_43545239363835353933?revLabel=3&rendition=400x400_JPG_Q85&fileType=binary",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "albert-heijn"
+    }
+  ],
+  "scrapedAt": "2026-05-12T09:36:53.080Z",
+  "sourceUrls": [
+    "https://www.ah.be/bonus/folder"
+  ],
+  "methods": [
+    "publitas",
+    "pdf",
+    "html"
+  ]
+}

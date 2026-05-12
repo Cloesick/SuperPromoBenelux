@@ -6,12 +6,44 @@
  */
 
 const retailerSlugs = [
+	// Shared (general)
 	"albert-heijn",
 	"lidl",
 	"delhaize",
 	"colruyt",
 	"aldi",
 	"action",
+	// Pet
+	"maxi-zoo",
+	"tom-co",
+	"zooplus",
+	"aveve",
+	"medpets",
+	// Electro
+	"mediamarkt",
+	"coolblue",
+	"vanden-borre",
+	"krefel",
+	"bol",
+	// Fashion
+	"hm",
+	"zalando",
+	// Home & Garden
+	"ikea",
+	"gamma",
+	// Beauty
+	"kruidvat",
+	"ici-paris-xl",
+	"douglas",
+	"di",
+	"etos",
+	"boots",
+	"muller",
+	"rossmann",
+	"treac",
+	"rituals",
+	"yves-rocher",
+	"the-body-shop",
 ];
 
 const validContentSources = [

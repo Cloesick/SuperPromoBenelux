@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-05-12T09:40:24.695Z",
+  "retailers": [
+    {
+      "slug": "action",
+      "name": "Action",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T09:40:22.567Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://be.publications.action.com/?publitas_embed=embedded",
+          "status": 200,
+          "live": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "fresh": 1,
+    "fallback": 0,
+    "stale": 0,
+    "missing": 0,
+    "withErrors": 0,
+    "withDeadUrls": 0
+  }
+}
