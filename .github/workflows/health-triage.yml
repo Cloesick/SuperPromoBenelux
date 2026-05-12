@@ -1,0 +1,110 @@
+# Nightly health triage — inspired by Claude Code "scheduled routines" pattern.
+# Runs on a schedule, reads the health manifest, and auto-creates GitHub issues
+# when retailer data is stale, missing, or has validation errors.
+# This acts as an autonomous background agent for data quality monitoring.
+
+name: Nightly health triage
+
+on:
+  schedule:
+    # Every day at 06:00 UTC (after the 04:30 scrape finishes)
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Triage health manifest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ ! -f data/health.json ]; then
+            echo "No health manifest found — skipping triage"
+            exit 0
+          fi
+
+          node -e "
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+            const h = JSON.parse(fs.readFileSync('data/health.json', 'utf8'));
+            const s = h.summary;
+
+            console.log('=== Nightly Health Triage ===');
+            console.log('Fresh: ' + s.fresh + ' | Fallback: ' + s.fallback + ' | Stale: ' + s.stale + ' | Missing: ' + s.missing);
+
+            const problems = [];
+
+            for (const r of h.retailers) {
+              const issues = [];
+              if (r.status === 'missing') issues.push('NO DATA — all fallbacks exhausted');
+              if (r.status === 'stale') issues.push('Data is stale (' + r.dataAge + ' old)');
+              const errors = r.validationIssues.filter(i => i.severity === 'error');
+              if (errors.length > 0) issues.push(errors.length + ' validation error(s): ' + errors.map(e => e.message).join('; '));
+              const dead = r.probeResults.filter(p => !p.live);
+              if (dead.length > 0) issues.push(dead.length + ' dead URL(s): ' + dead.map(d => d.url).join(', '));
+
+              if (issues.length > 0) {
+                problems.push({ slug: r.slug, name: r.name, issues });
+              }
+            }
+
+            if (problems.length === 0) {
+              console.log('All retailers healthy — no issues to create.');
+              process.exit(0);
+            }
+
+            console.log(problems.length + ' retailer(s) need attention:');
+            for (const p of problems) {
+              console.log('  - ' + p.slug + ': ' + p.issues.join(' | '));
+            }
+
+            // Create a single GitHub issue summarizing all problems
+            const title = '[Auto] Data health: ' + problems.length + ' retailer(s) need attention (' + new Date().toISOString().split('T')[0] + ')';
+            const body = [
+              '## Nightly Health Triage Report',
+              '',
+              'Generated: ' + new Date().toISOString(),
+              '',
+              '| Retailer | Issues |',
+              '|----------|--------|',
+              ...problems.map(p => '| **' + p.name + '** (' + p.slug + ') | ' + p.issues.join('<br>') + ' |'),
+              '',
+              '### Summary',
+              '- Fresh: ' + s.fresh,
+              '- Fallback: ' + s.fallback,
+              '- Stale: ' + s.stale,
+              '- Missing: ' + s.missing,
+              '- Dead URLs: ' + s.withDeadUrls,
+              '- Validation errors: ' + s.withErrors,
+              '',
+              '> This issue was auto-created by the nightly health triage workflow.',
+            ].join('\n');
+
+            try {
+              execSync('gh issue create --title \"' + title.replace(/\"/g, '\\\"') + '\" --body \"' + body.replace(/\"/g, '\\\"').replace(/\n/g, '\\n') + '\" --label \"data-health\"', { stdio: 'inherit' });
+              console.log('Issue created successfully.');
+            } catch (e) {
+              // Label might not exist yet — try without it
+              try {
+                execSync('gh issue create --title \"' + title.replace(/\"/g, '\\\"') + '\" --body \"' + body.replace(/\"/g, '\\\"').replace(/\n/g, '\\n') + '\"', { stdio: 'inherit' });
+                console.log('Issue created (without label).');
+              } catch (e2) {
+                console.error('Failed to create issue: ' + e2.message);
+                process.exit(1);
+              }
+            }
+          "

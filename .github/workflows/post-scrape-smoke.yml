@@ -1,0 +1,137 @@
+# Post-scrape smoke test — inspired by Claude Code "API trigger" pattern.
+# Fires automatically after the scrape-folders workflow completes.
+# Validates that all retailer JSON files are well-formed, that every retailer
+# has at least one content source (pages, embed, or PDF), and that screenshot
+# images referenced in the data actually exist in the repo.
+# Acts as an autonomous quality gate after each scraper run.
+
+name: Post-scrape smoke test
+
+on:
+  workflow_run:
+    workflows: ["Scrape folders"]
+    types: [completed]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate retailer data
+        run: |
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+
+            const dataDir = path.resolve('data', 'folders');
+            if (!fs.existsSync(dataDir)) {
+              console.error('data/folders directory not found');
+              process.exit(1);
+            }
+
+            const files = fs.readdirSync(dataDir).filter(f => f.endsWith('.json'));
+            if (files.length === 0) {
+              console.error('No retailer JSON files found');
+              process.exit(1);
+            }
+
+            let errors = 0;
+            let warnings = 0;
+
+            console.log('=== Post-Scrape Smoke Test ===');
+            console.log('Checking ' + files.length + ' retailer file(s)...\n');
+
+            for (const file of files) {
+              const slug = file.replace('.json', '');
+              const filePath = path.join(dataDir, file);
+
+              try {
+                const raw = fs.readFileSync(filePath, 'utf8');
+                const data = JSON.parse(raw);
+
+                // Check basic structure
+                if (!Array.isArray(data.folders)) {
+                  console.error('  ✗ ' + slug + ': folders is not an array');
+                  errors++;
+                  continue;
+                }
+
+                if (data.folders.length === 0) {
+                  console.error('  ✗ ' + slug + ': no folders in data');
+                  errors++;
+                  continue;
+                }
+
+                const f = data.folders[0];
+
+                // Check content sources
+                const hasPages = Array.isArray(f.pages) && f.pages.length > 0;
+                const hasEmbed = !!f.embedUrl;
+                const hasPdf = !!f.pdfUrl;
+
+                if (!hasPages && !hasEmbed && !hasPdf) {
+                  console.error('  ✗ ' + slug + ': no content source (pages/embed/pdf)');
+                  errors++;
+                  continue;
+                }
+
+                // Check screenshot images exist
+                if (hasPages) {
+                  let missingImages = 0;
+                  for (const page of f.pages) {
+                    const imgPath = path.join('public', page.imageUrl);
+                    if (!fs.existsSync(imgPath)) {
+                      missingImages++;
+                    }
+                  }
+                  if (missingImages > 0) {
+                    console.warn('  ⚠ ' + slug + ': ' + missingImages + '/' + f.pages.length + ' screenshot image(s) missing');
+                    warnings++;
+                  }
+                }
+
+                // Check dates
+                const dateRe = /^\d{4}-\d{2}-\d{2}$/;
+                if (!dateRe.test(f.validFrom) || !dateRe.test(f.validUntil)) {
+                  console.warn('  ⚠ ' + slug + ': invalid date format');
+                  warnings++;
+                }
+
+                // Check scrapedAt freshness
+                if (f.scrapedAt) {
+                  const ageH = (Date.now() - new Date(f.scrapedAt).getTime()) / 3600000;
+                  if (ageH > 168) {
+                    console.warn('  ⚠ ' + slug + ': data is ' + Math.round(ageH / 24) + ' days old');
+                    warnings++;
+                  }
+                }
+
+                const src = hasPages ? f.pages.length + 'p' : hasEmbed ? 'embed' : 'pdf';
+                console.log('  ✓ ' + slug + ' (' + src + ')');
+
+              } catch (e) {
+                console.error('  ✗ ' + slug + ': ' + e.message);
+                errors++;
+              }
+            }
+
+            console.log('\n' + files.length + ' file(s) checked — ' + errors + ' error(s), ' + warnings + ' warning(s)');
+
+            if (errors > 0) {
+              console.error('\nSmoke test FAILED: ' + errors + ' retailer(s) with errors');
+              process.exit(1);
+            }
+          "
