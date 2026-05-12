@@ -20,6 +20,13 @@ type CheckResult = {
 	filePath?: string;
 };
 
+type InspectorDataFile = {
+	folders?: unknown;
+	deals?: unknown;
+	methods?: unknown;
+	scrapedAt?: unknown;
+};
+
 const PROJECTS = [
 	"Superpromobelgiebram",
 	"BeautySuperPromoBeneluxBram",
@@ -30,7 +37,7 @@ const PROJECTS = [
 	"DIYSuperpromoBelgiumBram",
 ] as const;
 
-function safeReadJson(filePath: string): any | null {
+function safeReadJson(filePath: string): unknown | null {
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
 		return JSON.parse(raw);
@@ -124,14 +131,18 @@ function parseScraperBasics(
 	return map;
 }
 
-function pickCurrentFolder(data: any): any | null {
-	const folders: any[] = Array.isArray(data?.folders) ? data.folders : [];
+function pickCurrentFolder(data: InspectorDataFile): unknown | null {
+	const folders: unknown[] = Array.isArray(data?.folders)
+		? (data.folders as unknown[])
+		: [];
 	if (folders.length === 0) return null;
 
 	const now = new Date();
 	const current = folders.find((f) => {
-		const from = new Date(f?.validFrom);
-		const until = new Date(f?.validUntil);
+		if (typeof f !== "object" || !f) return false;
+		const ff = f as Record<string, unknown>;
+		const from = new Date(String(ff.validFrom ?? ""));
+		const until = new Date(String(ff.validUntil ?? ""));
 		if (Number.isNaN(from.getTime()) || Number.isNaN(until.getTime()))
 			return false;
 		return now >= from && now <= until;
@@ -139,17 +150,16 @@ function pickCurrentFolder(data: any): any | null {
 	return current ?? folders[0];
 }
 
-function isRenderableFolder(folder: any): boolean {
-	if (!folder) return false;
-	if (typeof folder.embedUrl === "string" && folder.embedUrl.length > 0)
-		return true;
-	if (typeof folder.pdfUrl === "string" && folder.pdfUrl.length > 0)
-		return true;
-	if (Array.isArray(folder.pages) && folder.pages.length > 0) return true;
+function isRenderableFolder(folder: unknown): boolean {
+	if (!folder || typeof folder !== "object") return false;
+	const f = folder as Record<string, unknown>;
+	if (typeof f.embedUrl === "string" && f.embedUrl.length > 0) return true;
+	if (typeof f.pdfUrl === "string" && f.pdfUrl.length > 0) return true;
+	if (Array.isArray(f.pages) && f.pages.length > 0) return true;
 	return false;
 }
 
-function hasProductLikeContent(currentFolder: any): boolean {
+function hasProductLikeContent(currentFolder: unknown): boolean {
 	// Option A: consider the folder itself as the "product" surface.
 	// If we can render the folder (embed/pdf/pages), the website still offers product-like browsing.
 	return isRenderableFolder(currentFolder);
@@ -171,10 +181,16 @@ export async function GET(request: Request) {
 			const basics = scraperBasics.get(slug);
 			const dataDir = path.join(projectRoot, "data", "folders");
 			const filePath = path.join(dataDir, `${slug}.json`);
-			const json = fs.existsSync(filePath) ? safeReadJson(filePath) : null;
+			const raw = fs.existsSync(filePath) ? safeReadJson(filePath) : null;
+			const json: InspectorDataFile | null =
+				raw && typeof raw === "object" ? (raw as InspectorDataFile) : null;
 
-			const folders: any[] = Array.isArray(json?.folders) ? json.folders : [];
-			const deals: any[] = Array.isArray(json?.deals) ? json.deals : [];
+			const folders: unknown[] = Array.isArray(json?.folders)
+				? (json.folders as unknown[])
+				: [];
+			const deals: unknown[] = Array.isArray(json?.deals)
+				? (json.deals as unknown[])
+				: [];
 			const currentFolder = json ? pickCurrentFolder(json) : null;
 			const failureReasons: string[] = [];
 			if (!basics?.hasScraper) failureReasons.push("missing_scraper");
@@ -201,14 +217,20 @@ export async function GET(request: Request) {
 				folderCount: folders.length,
 				hasCurrentFolder: Boolean(currentFolder),
 				renderable: isRenderableFolder(currentFolder),
-				contentSource:
-					typeof currentFolder?.contentSource === "string"
-						? currentFolder.contentSource
-						: undefined,
+				contentSource: (() => {
+					if (!currentFolder || typeof currentFolder !== "object")
+						return undefined;
+					const f = currentFolder as Record<string, unknown>;
+					return typeof f.contentSource === "string"
+						? f.contentSource
+						: undefined;
+				})(),
 				dealCount: deals.length,
 				failing,
 				failureReasons,
-				methods: Array.isArray(json?.methods) ? json.methods : undefined,
+				methods: Array.isArray(json?.methods)
+					? (json.methods as unknown[] as string[])
+					: undefined,
 				scrapedAt:
 					typeof json?.scrapedAt === "string" ? json.scrapedAt : undefined,
 				filePath: fs.existsSync(filePath) ? filePath : undefined,

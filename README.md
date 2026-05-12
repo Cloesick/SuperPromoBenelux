@@ -19,6 +19,32 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Tests
+
+Unit tests (Node):
+
+```bash
+npm run test:unit
+```
+
+Component tests (jsdom):
+
+```bash
+npm run test:components
+```
+
+Run both:
+
+```bash
+npm test
+```
+
+E2E tests (Cypress + auto-start dev server):
+
+```bash
+npm run test:e2e
+```
+
 ## Scrapers
 
 Scrape all retailers:

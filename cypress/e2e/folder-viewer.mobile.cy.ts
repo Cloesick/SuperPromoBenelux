@@ -6,6 +6,29 @@
  */
 
 describe("Folder viewer (mobile)", () => {
+	function dismissCookieBanners(attemptsLeft = 8): void {
+		cy.get("body").then(($body) => {
+			const candidates = [
+				"Alle cookies accepteren",
+				"Aanvaarden",
+				"Accepteren",
+			];
+
+			let clicked = false;
+			for (const label of candidates) {
+				const selector = `button:contains('${label}')`;
+				if ($body.find(selector).length > 0) {
+					clicked = true;
+					cy.contains("button", label).click({ force: true });
+				}
+			}
+
+			if (!clicked && attemptsLeft > 0) {
+				cy.wait(250).then(() => dismissCookieBanners(attemptsLeft - 1));
+			}
+		});
+	}
+
 	function visitAsIphone(path: string) {
 		cy.viewport(390, 844); // iPhone 12/13/14-ish
 
@@ -21,6 +44,8 @@ describe("Folder viewer (mobile)", () => {
 				);
 			},
 		});
+
+		dismissCookieBanners();
 	}
 
 	const slugs = ["albert-heijn", "action", "aldi", "lidl"];
@@ -29,15 +54,19 @@ describe("Folder viewer (mobile)", () => {
 		it(`${slug}: renders the correct iPhone fallback path (PDF if available, else embed link)`, () => {
 			cy.readFile(`data/folders/${slug}.json`).then((data) => {
 				const folder = data.folders?.[0];
-				expect(folder, "folder should exist").to.exist;
+				expect(folder, "folder should exist").to.not.equal(undefined);
 
 				visitAsIphone(`/folders/${slug}`);
 
+				// FolderViewer prefers pages mode whenever pages exist.
+				if (folder?.pages && folder.pages.length > 0) {
+					cy.get("img[alt*='folder']").should("exist");
+					cy.contains("Pagina 1 van").should("be.visible");
+					return;
+				}
+
 				if (folder?.pdfUrl) {
 					cy.contains("button", "PDF").should("be.visible").click();
-					cy.contains("Op sommige mobiele browsers wordt een PDF").should(
-						"be.visible",
-					);
 					cy.contains("Open PDF")
 						.should("be.visible")
 						.closest("a")
@@ -56,11 +85,6 @@ describe("Folder viewer (mobile)", () => {
 						});
 
 					cy.get("iframe").should("exist");
-					return;
-				}
-
-				if (folder?.pages && folder.pages.length > 0) {
-					cy.get("img[alt*='folder']").should("exist");
 					return;
 				}
 

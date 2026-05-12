@@ -35,7 +35,7 @@ describe("Retailer folder pages", () => {
 						$body.find('button:contains("Pagina\'s")').length > 0;
 					const hasEmptyState = $body.text().includes("momenteel geen folder");
 
-					expect(hasEmbed || hasPages || hasEmptyState).to.be.true;
+					expect(hasEmbed || hasPages || hasEmptyState).to.equal(true);
 				});
 			});
 

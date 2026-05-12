@@ -31,13 +31,13 @@ function isPortFree(port) {
 			.once("listening", () => {
 				server.close(() => resolve(true));
 			})
-			.listen(port, "127.0.0.1");
+			// Bind without host so we detect conflicts on any interface (IPv4/IPv6)
+			.listen(port);
 	});
 }
 
 async function findFreePort(start, end) {
 	for (let port = start; port <= end; port++) {
-		 
 		if (await isPortFree(port)) return port;
 	}
 	return null;
@@ -45,7 +45,7 @@ async function findFreePort(start, end) {
 
 async function waitForHttpOk(url, timeoutMs) {
 	const start = Date.now();
-	 
+
 	while (true) {
 		try {
 			const res = await fetch(url, { redirect: "follow" });

@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url);
 const nextCoreWebVitals = require("eslint-config-next/core-web-vitals");
 const nextTypeScript = require("eslint-config-next/typescript");
 
-export default [
+const config = [
 	...nextCoreWebVitals,
 	...nextTypeScript,
 	{
@@ -27,4 +27,12 @@ export default [
 			"@typescript-eslint/no-explicit-any": "off",
 		},
 	},
+	{
+		files: ["src/components/MetaPixelGate.tsx"],
+		rules: {
+			"@next/next/no-img-element": "off",
+		},
+	},
 ];
+
+export default config;

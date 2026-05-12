@@ -51,7 +51,7 @@ export function RetailerLogo({ retailer, size, className }: RetailerLogoProps) {
 	const isSvgLogo = logo.toLowerCase().endsWith(".svg");
 
 	return isSvgLogo ? (
-		<img
+		<Image
 			data-testid={testId}
 			data-retailer-slug={retailer.slug}
 			src={logo}
@@ -59,7 +59,7 @@ export function RetailerLogo({ retailer, size, className }: RetailerLogoProps) {
 			width={size}
 			height={size}
 			className={className}
-			loading="lazy"
+			unoptimized
 		/>
 	) : (
 		<Image

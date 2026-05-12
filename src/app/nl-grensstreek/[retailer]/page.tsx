@@ -65,13 +65,13 @@ export default async function NlBorderRetailerPage({ params }: PageProps) {
 
 			<div className="flex items-center gap-4 mb-8">
 				{isSvgLogo ? (
-					<img
+					<Image
 						src={retailer.logo}
 						alt={`${retailer.name} logo`}
 						width={56}
 						height={56}
 						className="w-14 h-14 rounded-xl object-cover"
-						loading="lazy"
+						unoptimized
 						suppressHydrationWarning
 					/>
 				) : (
