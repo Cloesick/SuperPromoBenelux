@@ -1,0 +1,950 @@
+{
+  "retailer": "rituals",
+  "folders": [
+    {
+      "id": "rituals-2026-w20-folder",
+      "retailerSlug": "rituals",
+      "title": "Rituals promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/rituals-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/rituals-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "embedUrl": "https://a40.usablenet.com/pt/c/rituals/switch",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-05-12T10:28:40.012Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "Nieuw",
+      "discount": "Product value €10,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1121278-rituals-ayurveda-ay26084-gwp:3-by-4?wid=600&hei=900&wid=798&hei=1064",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-13",
+      "product": "Ontdek meer",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-20",
+      "product": "Douchegels",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-25",
+      "product": "Doucheolie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-26",
+      "product": "Badproducten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-27",
+      "product": "Bodyscrub",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-28",
+      "product": "The Clean Beauty Bar",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-29",
+      "product": "Mini's",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-31",
+      "product": "Bodycrèmes & Olie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-34",
+      "product": "Massage Producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-35",
+      "product": "Deodorants",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-36",
+      "product": "Hair & Body Mists",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-37",
+      "product": "Navullingen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-40",
+      "product": "Shampoos & Conditioners",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-43",
+      "product": "Haarverzorging",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-44",
+      "product": "Haarverzorgingssets",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-51",
+      "product": "Cadeau Inspiratie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-55",
+      "product": "Home Fragrances",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-59",
+      "product": "Classic Geurstokjes",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-62",
+      "product": "Luxe Geurstokjes",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-64",
+      "product": "Mini Geurstokjes",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-65",
+      "product": "Voordeelverpakkingen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-67",
+      "product": "Classic Geurkaarsen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-70",
+      "product": "Luxe Geurkaarsen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-71",
+      "product": "Grote kaarsen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-72",
+      "product": "Herdenkingskaars",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-74",
+      "product": "Interieursprays",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-75",
+      "product": "The Perfume Genie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-78",
+      "product": "Diffusers",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-81",
+      "product": "Autoluchtverfrissers",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-84",
+      "product": "Autoparfums",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-85",
+      "product": "Car Gift Sets",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-86",
+      "product": "Autodoekjes",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-88",
+      "product": "Shop per kamer",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-89",
+      "product": "Handzeep & Handcrème",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-93",
+      "product": "Keukenaccessoires",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-94",
+      "product": "Thee",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-96",
+      "product": "Badjassen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-99",
+      "product": "Wasverzorging",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-100",
+      "product": "Badkamer Accessoires",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-101",
+      "product": "Handdoeken",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-102",
+      "product": "Badmatten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-104",
+      "product": "Kimonos",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-108",
+      "product": "Kleden",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-111",
+      "product": "Sierkussens",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-112",
+      "product": "Sierkussenslopen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-113",
+      "product": "Luxe Opbergdozen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-114",
+      "product": "Kantoorartikelen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-116",
+      "product": "Goodie Bags",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-119",
+      "product": "Reistassen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-120",
+      "product": "Paraplu's",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-121",
+      "product": "Toilettassen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-123",
+      "product": "Moisturizers",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-128",
+      "product": "Gezichtsreiniging",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-129",
+      "product": "Serums & boosters",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-130",
+      "product": "Gezichtsmaskers & Olie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-131",
+      "product": "Lipverzorging",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-132",
+      "product": "Oogcrèmes",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-136",
+      "product": "Baard",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-139",
+      "product": "Gezicht",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-140",
+      "product": "Shave",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-141",
+      "product": "Refills",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-144",
+      "product": "Damesparfum",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-147",
+      "product": "Herenparfum",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-149",
+      "product": "Mini parfum",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-161",
+      "product": "Shop op huidbehoefte",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-166",
+      "product": "Alle Cadeaupakketten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-171",
+      "product": "Small Gift Sets",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-172",
+      "product": "Medium Gift Sets",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-173",
+      "product": "Large Gift Sets",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-174",
+      "product": "Extra Large Gift Sets",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-176",
+      "product": "Huid- & haarverzorgingssets",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-180",
+      "product": "Body value packs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-182",
+      "product": "Online cadeaukaart",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-184",
+      "product": "Geprinte cadeaukaart",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-185",
+      "product": "B2B cadeaukaart",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-186",
+      "product": "Saldo van cadeaukaart",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-196",
+      "product": "Cadeaus per prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-215",
+      "product": "Collecties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-219",
+      "product": "The Ritual of Jing",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-222",
+      "product": "Limited Edition",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-225",
+      "product": "Seasonal Highlights",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-226",
+      "product": "The Ritual of Ayurveda",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-228",
+      "product": "Homme",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-229",
+      "product": "Private Collection",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-230",
+      "product": "Bestselling Collections",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-231",
+      "product": "The Ritual of Yozakura",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-232",
+      "product": "The Ritual of Sakura",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-233",
+      "product": "The Ritual of Mehr",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-234",
+      "product": "Amsterdam Collection",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-235",
+      "product": "Signature Collections",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-236",
+      "product": "Sport",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-237",
+      "product": "The Ritual of Karma",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-238",
+      "product": "The Soulful Collection",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-240",
+      "product": "The Ritual of Hammam",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-241",
+      "product": "Hair Care Collection",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-242",
+      "product": "The Iconic Collection",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-243",
+      "product": "Tiny Rituals",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-297",
+      "product": "Handen & voeten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-300",
+      "product": "Zonbescherming",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-303",
+      "product": "Baby",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-306",
+      "product": "Mannen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-413",
+      "product": "Make-up",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-426",
+      "product": "Sieraden",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-456",
+      "product": "Relatiegeschenken & Hospitality",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-471",
+      "product": "Cadeaus voor hem",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-476",
+      "product": "Shower & Body Care voor hem",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-487",
+      "product": "Home & Travel Essentials",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-563",
+      "product": "Shop op product",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-766",
+      "product": "Candle Surprise Box",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1122493-rituals-surprise-box-classic-candles-pack?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-781",
+      "product": "Hand Wash",
+      "discount": "Product value €10,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1120724-rituals-the-ritual-of-yozakura-hand-wash-300ml?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-797",
+      "product": "Velvety Foaming Shower Gel",
+      "discount": "Product value €10,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1119670-rituals-limited-intuitia-foaming-shower-gel?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-813",
+      "product": "Shower Oil",
+      "discount": "Product value €9,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1115332-rituals-jing-shower-oil-200ml?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-829",
+      "product": "25 Years Anniversary Set",
+      "discount": "Product value €59,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1120748-rituals-25th-anniversary-gift-set-xl-pack-closed?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-845",
+      "product": "Fragrance Sticks",
+      "discount": "Product value €32,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1119680-rituals-limited-intuitia-fragrance-sticks?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-861",
+      "product": "Anti-perspirant Spray",
+      "discount": "Product value €4,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1114185-antiperspirantspray-50ml?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-877",
+      "product": "Premium Home Gift Set",
+      "discount": "Product value €99,00",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1120226-rituals-private-floral-advent-2025-pack-inlay?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-910",
+      "product": "Gift Set L",
+      "discount": "Product value €49,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1118461-rituals-sakura-gift-set-l-pack-closed?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-926",
+      "product": "Body Lotion Mousse",
+      "discount": "Product value €13,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1117161-rituals-sakura-bodylotionmousse-150ml?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-943",
+      "product": "Shampoo",
+      "discount": "Product value €12,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1116346-rituals-ayurveda-elixir-shampoo-250ml?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-959",
+      "product": "Scented Candle",
+      "discount": "Product value €49,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1117836-rituals-jing-scented-candle-840g?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-991",
+      "product": "Shimmering Body Oil",
+      "discount": "Product value €22,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1115251-bodyoil-100ml?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-1007",
+      "product": "Body Cream",
+      "discount": "Product value €9,90",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1113672_bodycream-100ml?resMode=sharp2&fmt=webp-alpha&crop=1250,750,4500,4500&wid=800",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-188",
+      "product": "Cooling Shower Gel",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1116308-sport-coolingshowergel-200ml:3-by-4?fmt=webp-alpha&resMode=sharp2&wid=480&hei=640",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-190",
+      "product": "After Sun Ice Shower Gel",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1119982-rituals-karma-after-sun-ice-shower-gel-200ml:3-by-4?fmt=webp-alpha&resMode=sharp2&wid=480&hei=640",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-191",
+      "product": "Magnesium Body Spray",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/1118438-rituals-sport-magnesium-body-spray-115ml:3-by-4?fmt=webp-alpha&resMode=sharp2&wid=480&hei=640",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "rituals"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:28:51.155Z",
+  "sourceUrls": [
+    "https://www.rituals.com/nl-be/sale",
+    "https://a40.usablenet.com/pt/c/rituals/switch"
+  ],
+  "methods": [
+    "unknown",
+    "html",
+    "screenshot"
+  ]
+}

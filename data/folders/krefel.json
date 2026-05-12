@@ -1,0 +1,31 @@
+{
+  "retailer": "krefel",
+  "folders": [
+    {
+      "id": "krefel-2026-w20-folder",
+      "retailerSlug": "krefel",
+      "title": "Krëfel promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/krefel-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/krefel-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-05-12T10:16:04.449Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-05-12T10:16:06.587Z",
+  "sourceUrls": [
+    "https://www.krefel.be/nl/promoties"
+  ],
+  "methods": [
+    "screenshot"
+  ]
+}

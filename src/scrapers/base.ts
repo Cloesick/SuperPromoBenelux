@@ -830,7 +830,7 @@ export abstract class BaseScraper {
 			if (uniqueDeals.length > 0) {
 				try {
 					const vertical = process.env.NEXT_PUBLIC_RETAIL_VERTICAL ?? "general";
-					const synced = await syncDealsToDb({
+					const synced = syncDealsToDb({
 						retailerSlug: this.retailerSlug,
 						retailerName: this.retailerName,
 						vertical,

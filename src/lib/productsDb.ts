@@ -1,18 +1,60 @@
-import { neon } from "@neondatabase/serverless";
+import Database from "better-sqlite3";
+import path from "path";
 import { Deal, ContentSource } from "./types";
 
 // ---------------------------------------------------------------------------
-// Connection
+// Connection (SQLite)
 // ---------------------------------------------------------------------------
 
-let cachedSql: ReturnType<typeof neon> | null = null;
+const DB_PATH = path.join(process.cwd(), "data", "products.db");
 
-function getSql() {
-	if (cachedSql) return cachedSql;
-	const conn = process.env.POSTGRES_URL || process.env.POSTGRES_PRISMA_URL;
-	if (!conn) return null;
-	cachedSql = neon(conn);
-	return cachedSql;
+let cachedDb: Database.Database | null = null;
+
+function getDb(): Database.Database {
+	if (cachedDb) return cachedDb;
+	cachedDb = new Database(DB_PATH);
+	cachedDb.pragma("journal_mode = WAL");
+	cachedDb.pragma("busy_timeout = 5000");
+	initSchema(cachedDb);
+	return cachedDb;
+}
+
+function initSchema(db: Database.Database) {
+	db.exec(`
+		CREATE TABLE IF NOT EXISTS promo_products (
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			retailer_slug TEXT NOT NULL,
+			retailer_name TEXT NOT NULL,
+			vertical TEXT NOT NULL DEFAULT 'general',
+			product_name TEXT NOT NULL,
+			description TEXT,
+			category TEXT,
+			image_url TEXT,
+			affiliate_url TEXT,
+			original_price REAL,
+			promo_price REAL,
+			discount_label TEXT,
+			promo_type TEXT,
+			valid_from TEXT NOT NULL,
+			valid_until TEXT NOT NULL,
+			week_number INTEGER NOT NULL,
+			year INTEGER NOT NULL,
+			scraped_at TEXT NOT NULL,
+			source_method TEXT,
+			source_url TEXT,
+			folder_title TEXT,
+			created_at TEXT DEFAULT (datetime('now'))
+		);
+
+		CREATE UNIQUE INDEX IF NOT EXISTS idx_promo_unique
+			ON promo_products (retailer_slug, product_name, COALESCE(promo_price, -1), valid_from, valid_until, vertical);
+
+		CREATE INDEX IF NOT EXISTS idx_promo_retailer ON promo_products (retailer_slug);
+		CREATE INDEX IF NOT EXISTS idx_promo_week ON promo_products (week_number, year);
+		CREATE INDEX IF NOT EXISTS idx_promo_vertical ON promo_products (vertical);
+		CREATE INDEX IF NOT EXISTS idx_promo_category ON promo_products (category);
+		CREATE INDEX IF NOT EXISTS idx_promo_valid_until ON promo_products (valid_until);
+	`);
 }
 
 // ---------------------------------------------------------------------------
@@ -121,9 +163,8 @@ export interface SyncOptions {
 	folderTitle?: string;
 }
 
-export async function syncDealsToDb(opts: SyncOptions): Promise<number> {
-	const sql = getSql();
-	if (!sql) return 0;
+export function syncDealsToDb(opts: SyncOptions): number {
+	const db = getDb();
 
 	const {
 		deals,
@@ -138,56 +179,79 @@ export async function syncDealsToDb(opts: SyncOptions): Promise<number> {
 
 	if (deals.length === 0) return 0;
 
+	const stmt = db.prepare(`
+		INSERT INTO promo_products (
+			retailer_slug, retailer_name, vertical,
+			product_name, description, category, image_url, affiliate_url,
+			original_price, promo_price, discount_label, promo_type,
+			valid_from, valid_until, week_number, year,
+			scraped_at, source_method, source_url, folder_title
+		) VALUES (
+			@retailerSlug, @retailerName, @vertical,
+			@productName, @description, @category, @imageUrl, @affiliateUrl,
+			@originalPrice, @promoPrice, @discountLabel, @promoType,
+			@validFrom, @validUntil, @weekNumber, @year,
+			@scrapedAt, @sourceMethod, @sourceUrl, @folderTitle
+		)
+		ON CONFLICT (retailer_slug, product_name, COALESCE(promo_price, -1), valid_from, valid_until, vertical)
+		DO UPDATE SET
+			description     = excluded.description,
+			category        = excluded.category,
+			image_url       = excluded.image_url,
+			original_price  = excluded.original_price,
+			discount_label  = excluded.discount_label,
+			promo_type      = excluded.promo_type,
+			scraped_at      = excluded.scraped_at,
+			source_method   = excluded.source_method,
+			source_url      = excluded.source_url,
+			folder_title    = excluded.folder_title
+	`);
+
 	let synced = 0;
 
-	for (const deal of deals) {
-		try {
-			const validFrom = deal.validFrom;
-			const validUntil = deal.validUntil;
-			const fromDate = new Date(validFrom);
-			const weekNumber = getIsoWeek(fromDate);
-			const year = getIsoWeekYear(fromDate);
-			const promoType = inferPromoType(deal);
+	const insertMany = db.transaction((items: Deal[]) => {
+		for (const deal of items) {
+			try {
+				const validFrom = deal.validFrom;
+				const validUntil = deal.validUntil;
+				const fromDate = new Date(validFrom);
+				const weekNumber = getIsoWeek(fromDate);
+				const year = getIsoWeekYear(fromDate);
+				const promoType = inferPromoType(deal);
 
-			await sql`
-				INSERT INTO promo_products (
-					retailer_slug, retailer_name, vertical,
-					product_name, description, category, image_url, affiliate_url,
-					original_price, promo_price, discount_label, promo_type,
-					valid_from, valid_until, week_number, year,
-					scraped_at, source_method, source_url, folder_title
-				) VALUES (
-					${retailerSlug}, ${retailerName}, ${vertical},
-					${deal.product}, ${deal.description ?? null}, ${deal.category ?? null},
-					${deal.imageUrl ?? null}, ${deal.affiliateUrl ?? null},
-					${deal.originalPrice ?? null}, ${deal.promoPrice ?? null},
-					${deal.discount ?? null}, ${promoType},
-					${validFrom}, ${validUntil}, ${weekNumber}, ${year},
-					${scrapedAt}, ${sourceMethod ?? null}, ${sourceUrl ?? null}, ${folderTitle ?? null}
-				)
-				ON CONFLICT (retailer_slug, product_name, COALESCE(promo_price, -1), valid_from, valid_until, vertical)
-				DO UPDATE SET
-					description     = EXCLUDED.description,
-					category        = EXCLUDED.category,
-					image_url       = EXCLUDED.image_url,
-					original_price  = EXCLUDED.original_price,
-					discount_label  = EXCLUDED.discount_label,
-					promo_type      = EXCLUDED.promo_type,
-					scraped_at      = EXCLUDED.scraped_at,
-					source_method   = EXCLUDED.source_method,
-					source_url      = EXCLUDED.source_url,
-					folder_title    = EXCLUDED.folder_title
-			`;
-			synced++;
-		} catch (err) {
-			// Log but don't fail the entire sync for one bad row
-			console.error(
-				`[productsDb] Failed to sync deal "${deal.product}" for ${retailerSlug}:`,
-				err,
-			);
+				stmt.run({
+					retailerSlug,
+					retailerName,
+					vertical,
+					productName: deal.product,
+					description: deal.description ?? null,
+					category: deal.category ?? null,
+					imageUrl: deal.imageUrl ?? null,
+					affiliateUrl: deal.affiliateUrl ?? null,
+					originalPrice: deal.originalPrice ?? null,
+					promoPrice: deal.promoPrice ?? null,
+					discountLabel: deal.discount ?? null,
+					promoType,
+					validFrom,
+					validUntil,
+					weekNumber,
+					year,
+					scrapedAt,
+					sourceMethod: sourceMethod ?? null,
+					sourceUrl: sourceUrl ?? null,
+					folderTitle: folderTitle ?? null,
+				});
+				synced++;
+			} catch (err) {
+				console.error(
+					`[productsDb] Failed to sync deal "${deal.product}" for ${retailerSlug}:`,
+					err,
+				);
+			}
 		}
-	}
+	});
 
+	insertMany(deals);
 	return synced;
 }
 
@@ -216,167 +280,152 @@ export interface PromoProduct {
 	source_method: string | null;
 }
 
-export async function getProductsByRetailer(
+export function getProductsByRetailer(
 	retailerSlug: string,
 	opts?: { limit?: number; weekNumber?: number; year?: number },
-): Promise<PromoProduct[]> {
-	const sql = getSql();
-	if (!sql) return [];
-
+): PromoProduct[] {
+	const db = getDb();
 	const limit = Math.min(Math.max(opts?.limit ?? 500, 1), 5000);
 
 	try {
 		if (opts?.weekNumber && opts?.year) {
-			const result = await sql`
-				SELECT * FROM promo_products
-				WHERE retailer_slug = ${retailerSlug}
-				  AND week_number = ${opts.weekNumber}
-				  AND year = ${opts.year}
-				ORDER BY product_name ASC
-				LIMIT ${limit}
-			`;
-			return (result ?? []) as unknown as PromoProduct[];
+			return db
+				.prepare(
+					`SELECT * FROM promo_products
+					 WHERE retailer_slug = ? AND week_number = ? AND year = ?
+					 ORDER BY product_name ASC LIMIT ?`,
+				)
+				.all(retailerSlug, opts.weekNumber, opts.year, limit) as PromoProduct[];
 		}
 
-		const result = await sql`
-			SELECT * FROM promo_products
-			WHERE retailer_slug = ${retailerSlug}
-			ORDER BY scraped_at DESC, product_name ASC
-			LIMIT ${limit}
-		`;
-		return (result ?? []) as unknown as PromoProduct[];
+		return db
+			.prepare(
+				`SELECT * FROM promo_products
+				 WHERE retailer_slug = ?
+				 ORDER BY scraped_at DESC, product_name ASC LIMIT ?`,
+			)
+			.all(retailerSlug, limit) as PromoProduct[];
 	} catch {
 		return [];
 	}
 }
 
-export async function getProductsByWeek(
+export function getProductsByWeek(
 	weekNumber: number,
 	year: number,
 	opts?: { vertical?: string; limit?: number },
-): Promise<PromoProduct[]> {
-	const sql = getSql();
-	if (!sql) return [];
-
+): PromoProduct[] {
+	const db = getDb();
 	const limit = Math.min(Math.max(opts?.limit ?? 1000, 1), 10000);
 
 	try {
 		if (opts?.vertical) {
-			const result = await sql`
-				SELECT * FROM promo_products
-				WHERE week_number = ${weekNumber}
-				  AND year = ${year}
-				  AND vertical = ${opts.vertical}
-				ORDER BY retailer_slug ASC, product_name ASC
-				LIMIT ${limit}
-			`;
-			return (result ?? []) as unknown as PromoProduct[];
+			return db
+				.prepare(
+					`SELECT * FROM promo_products
+					 WHERE week_number = ? AND year = ? AND vertical = ?
+					 ORDER BY retailer_slug ASC, product_name ASC LIMIT ?`,
+				)
+				.all(weekNumber, year, opts.vertical, limit) as PromoProduct[];
 		}
 
-		const result = await sql`
-			SELECT * FROM promo_products
-			WHERE week_number = ${weekNumber}
-			  AND year = ${year}
-			ORDER BY retailer_slug ASC, product_name ASC
-			LIMIT ${limit}
-		`;
-		return (result ?? []) as unknown as PromoProduct[];
+		return db
+			.prepare(
+				`SELECT * FROM promo_products
+				 WHERE week_number = ? AND year = ?
+				 ORDER BY retailer_slug ASC, product_name ASC LIMIT ?`,
+			)
+			.all(weekNumber, year, limit) as PromoProduct[];
 	} catch {
 		return [];
 	}
 }
 
-export async function getProductsByCategory(
+export function getProductsByCategory(
 	category: string,
 	opts?: { limit?: number; days?: number },
-): Promise<PromoProduct[]> {
-	const sql = getSql();
-	if (!sql) return [];
-
+): PromoProduct[] {
+	const db = getDb();
 	const limit = Math.min(Math.max(opts?.limit ?? 500, 1), 5000);
 	const days = Math.min(Math.max(opts?.days ?? 30, 1), 365);
 	const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
 
 	try {
-		const result = await sql`
-			SELECT * FROM promo_products
-			WHERE LOWER(category) = LOWER(${category})
-			  AND scraped_at >= ${since}
-			ORDER BY promo_price ASC NULLS LAST, product_name ASC
-			LIMIT ${limit}
-		`;
-		return (result ?? []) as unknown as PromoProduct[];
+		return db
+			.prepare(
+				`SELECT * FROM promo_products
+				 WHERE category = ? COLLATE NOCASE AND scraped_at >= ?
+				 ORDER BY promo_price ASC, product_name ASC LIMIT ?`,
+			)
+			.all(category, since, limit) as PromoProduct[];
 	} catch {
 		return [];
 	}
 }
 
-export async function getProductStats(opts?: { days?: number }): Promise<{
+export function getProductStats(opts?: { days?: number }): {
 	total: number;
 	retailers: number;
 	categories: number;
 	latestScrape: string | null;
-}> {
-	const sql = getSql();
-	if (!sql)
-		return { total: 0, retailers: 0, categories: 0, latestScrape: null };
-
+} {
+	const db = getDb();
 	const days = Math.min(Math.max(opts?.days ?? 30, 1), 365);
 	const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
 
 	try {
-		const result = await sql`
-			SELECT
-				COUNT(*)::int AS total,
-				COUNT(DISTINCT retailer_slug)::int AS retailers,
-				COUNT(DISTINCT category)::int AS categories,
-				MAX(scraped_at)::text AS latest_scrape
-			FROM promo_products
-			WHERE scraped_at >= ${since}
-		`;
-		const row = ((result as unknown[])?.[0] ?? {}) as Record<string, unknown>;
+		const row = db
+			.prepare(
+				`SELECT
+					COUNT(*) AS total,
+					COUNT(DISTINCT retailer_slug) AS retailers,
+					COUNT(DISTINCT category) AS categories,
+					MAX(scraped_at) AS latest_scrape
+				 FROM promo_products
+				 WHERE scraped_at >= ?`,
+			)
+			.get(since) as Record<string, unknown> | undefined;
+
 		return {
-			total: (row.total as number) ?? 0,
-			retailers: (row.retailers as number) ?? 0,
-			categories: (row.categories as number) ?? 0,
-			latestScrape: (row.latest_scrape as string) ?? null,
+			total: (row?.total as number) ?? 0,
+			retailers: (row?.retailers as number) ?? 0,
+			categories: (row?.categories as number) ?? 0,
+			latestScrape: (row?.latest_scrape as string) ?? null,
 		};
 	} catch {
 		return { total: 0, retailers: 0, categories: 0, latestScrape: null };
 	}
 }
 
-export async function searchProducts(
+export function searchProducts(
 	query: string,
 	opts?: { limit?: number; vertical?: string },
-): Promise<PromoProduct[]> {
-	const sql = getSql();
-	if (!sql) return [];
-
+): PromoProduct[] {
+	const db = getDb();
 	const limit = Math.min(Math.max(opts?.limit ?? 100, 1), 1000);
 	const pattern = `%${query}%`;
+	const today = new Date().toISOString().slice(0, 10);
 
 	try {
 		if (opts?.vertical) {
-			const result = await sql`
-				SELECT * FROM promo_products
-				WHERE (product_name ILIKE ${pattern} OR description ILIKE ${pattern})
-				  AND vertical = ${opts.vertical}
-				  AND valid_until >= CURRENT_DATE
-				ORDER BY promo_price ASC NULLS LAST
-				LIMIT ${limit}
-			`;
-			return (result ?? []) as unknown as PromoProduct[];
+			return db
+				.prepare(
+					`SELECT * FROM promo_products
+					 WHERE (product_name LIKE ? OR description LIKE ?)
+					   AND vertical = ? AND valid_until >= ?
+					 ORDER BY promo_price ASC LIMIT ?`,
+				)
+				.all(pattern, pattern, opts.vertical, today, limit) as PromoProduct[];
 		}
 
-		const result = await sql`
-			SELECT * FROM promo_products
-			WHERE (product_name ILIKE ${pattern} OR description ILIKE ${pattern})
-			  AND valid_until >= CURRENT_DATE
-			ORDER BY promo_price ASC NULLS LAST
-			LIMIT ${limit}
-		`;
-		return (result ?? []) as unknown as PromoProduct[];
+		return db
+			.prepare(
+				`SELECT * FROM promo_products
+				 WHERE (product_name LIKE ? OR description LIKE ?)
+				   AND valid_until >= ?
+				 ORDER BY promo_price ASC LIMIT ?`,
+			)
+			.all(pattern, pattern, today, limit) as PromoProduct[];
 	} catch {
 		return [];
 	}

@@ -1,0 +1,100 @@
+{
+  "retailer": "the-body-shop",
+  "folders": [
+    {
+      "id": "the-body-shop-2026-w20-folder",
+      "retailerSlug": "the-body-shop",
+      "title": "The Body Shop promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/the-body-shop-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/the-body-shop-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "pdfUrl": "https://cdn.shopify.com/s/files/1/0840/6679/5785/files/The_Body_Shop_Gender_Pay_Gap_Report_2025.pdf?v=1775131633",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-05-12T10:30:04.652Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-2",
+      "product": "Ginger Anti-dandruff Shampoo",
+      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/ginger_temp_1.jpg?crop=center&height=1024&v=1758616917&width=1024",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "the-body-shop"
+    },
+    {
+      "id": "html-15",
+      "product": "Hemp Hand Protector",
+      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1025247_Hemp_Hand_Protector_30ml_BRNZ_INAEHPS050.jpg?crop=center&height=2048&v=1735923921&width=2048",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "the-body-shop"
+    },
+    {
+      "id": "html-27",
+      "product": "Vitamin E Moisture Day Cream",
+      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1026966_VITAMIN_E_DAY_CREAM_50ML_BRONZE_INAEHPS063_d99cc21f-6d8d-48d2-880f-4fb28cc8e015.jpg?crop=center&height=2048&v=1770047372&width=2048",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "the-body-shop"
+    },
+    {
+      "id": "html-39",
+      "product": "Camomile Sumptuous Makeup Cleansing Butter",
+      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1027049_CLEANSING_BUTTER_CAMOMILE_90ML_BRZ_INAEUPS014_FAFAFA_dfb3621a-7f51-4c69-999a-ba73582c7c9d.jpg?crop=center&height=2048&v=1756916412&width=2048",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "the-body-shop"
+    },
+    {
+      "id": "html-102",
+      "product": "Shea Body Butter",
+      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/RESIZED_1097370_SHEA_BODY_BUTTER_200ml_BRONZE_INECMPS090_7c48c3ba-6611-483b-bb8e-dfce53db150a.jpg?crop=center&height=2048&v=1770047372&width=2048",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "the-body-shop"
+    },
+    {
+      "id": "html-114",
+      "product": "We think you might like",
+      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1025247_Hemp_Hand_Protector_30ml_BRNZ_INAEHPS050.jpg?crop=center&height=240&v=1735923921&width=240",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "the-body-shop"
+    },
+    {
+      "id": "html-130",
+      "product": "Coconut Hand Balm",
+      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1031309_COCONUT_HAND_BALM_30ML_BRONZE_INAEHPS032_9c65d59a-cdb2-4c31-8f31-d1a1e650049c.jpg?crop=center&height=240&v=1764244578&width=240",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "the-body-shop"
+    },
+    {
+      "id": "html-144",
+      "product": "Shea Hand Balm",
+      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1031286_SHEA_HAND_BALM_30ML_BRONZ_INAEHPS029_c87fac2a-3dc8-4ef8-b513-b2201aacc0b9.jpg?crop=center&height=240&v=1744293959&width=240",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "the-body-shop"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:33:14.443Z",
+  "sourceUrls": [
+    "https://www.thebodyshop.com/en-gb/sale/c/c00005",
+    "https://cdn.shopify.com/s/files/1/0840/6679/5785/files/The_Body_Shop_Gender_Pay_Gap_Report_2025.pdf?v=1775131633"
+  ],
+  "methods": [
+    "unknown",
+    "pdf",
+    "screenshot"
+  ]
+}

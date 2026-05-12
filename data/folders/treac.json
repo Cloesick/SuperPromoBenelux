@@ -1,0 +1,214 @@
+{
+  "retailer": "treac",
+  "folders": [
+    {
+      "id": "treac-2026-w20-folder",
+      "retailerSlug": "treac",
+      "title": "Trekpleister promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://folder.trekpleister.nl/trekpleister-week-20-11-mei-2025-t-m-17-mei-2026/",
+      "pdfUrl": "https://folder.trekpleister.nl/26/2998004/pdfs/dd25021e-2231-4f68-95da-a8f02145b52b.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Trekpleister%2520-%2520Trekpleister%2520week%252020%2520-%252011%2520mei%25202025%2520t%252Fm%252017%2520mei%25202026.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-05-12T10:27:47.782Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-2",
+      "product": "Zoomniveau verhogen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-3",
+      "product": "Zoomniveau verlagen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-0",
+      "product": "Beauty",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-2",
+      "product": "Alle Beauty producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-3",
+      "product": "Verzorging",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-5",
+      "product": "Alle Verzorging producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-6",
+      "product": "Gezondheid",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-8",
+      "product": "Alle Gezondheid producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-9",
+      "product": "Baby",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-11",
+      "product": "Alle Baby producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-12",
+      "product": "Huishouden",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-14",
+      "product": "Alle Huishouden producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-15",
+      "product": "Speelgoed",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-17",
+      "product": "Alle Speelgoed producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-18",
+      "product": "Fashion",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-20",
+      "product": "Alle Fashion producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-21",
+      "product": "Elektronica",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-23",
+      "product": "Alle Elektronica producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-24",
+      "product": "Tickets",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-26",
+      "product": "Alle Tickets producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-27",
+      "product": "Eten en drinken",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-29",
+      "product": "Alle Eten en drinken producten",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-54",
+      "product": "Jouw privacy",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-55",
+      "product": "Noodzakelijke cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-56",
+      "product": "Functionele cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    },
+    {
+      "id": "html-57",
+      "product": "Reclame cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "treac"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:27:53.925Z",
+  "sourceUrls": [
+    "https://www.trekpleister.nl/aanbiedingen",
+    "https://www.trekpleister.nl/folders",
+    "https://folder.trekpleister.nl/trekpleister-week-20-11-mei-2025-t-m-17-mei-2026/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf",
+    "html"
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "retailer": "tom-co",
+  "folders": [
+    {
+      "id": "tom-co-2026-w20-folder",
+      "retailerSlug": "tom-co",
+      "title": "Tom&Co promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 12,
+      "thumbnailUrl": "/screenshots/tom-co-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p1.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p2.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p3.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p4.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p5.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p6.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p7.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p8.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p9.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p10.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p11.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/tom-co-2026-w20-viewerimg-p12.png",
+          "deals": []
+        }
+      ],
+      "contentSource": "issuu",
+      "scrapedAt": "2026-05-12T10:12:43.725Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-487",
+      "product": "Harnas gezocht: wat past het beste bij jouw hond?",
+      "imageUrl": "https://pharmapets.imgix.net/media/amasty/blog/cache/W/1/900/600/W15_harnassen_4.jpg?auto=format",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "tom-co"
+    },
+    {
+      "id": "html-488",
+      "product": "Legkip, wat heb je mooie eieren!",
+      "imageUrl": "https://pharmapets.imgix.net/media/amasty/blog/cache/L/e/900/600/Legkip_eieren.png?auto=format",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "tom-co"
+    },
+    {
+      "id": "html-489",
+      "product": "Kuikens in je kippenhok? Yes, met of zonder haan!",
+      "imageUrl": "https://pharmapets.imgix.net/media/amasty/blog/cache/K/u/900/600/Kuikens_bij_kippen_zetten.png?auto=format",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "tom-co"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:12:47.524Z",
+  "sourceUrls": [
+    "https://www.tomandco.com/nl-be/promoties",
+    "https://www.tomandco.com/nl-be/folder",
+    "https://e.issuu.com/embed.html?d=folder2026_mai_benl_web_2&u=tomandco6"
+  ],
+  "methods": [
+    "issuu",
+    "screenshot"
+  ]
+}

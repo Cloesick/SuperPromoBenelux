@@ -1,0 +1,34 @@
+{
+  "retailer": "boots",
+  "folders": [
+    {
+      "id": "boots-2026-w20-folder",
+      "retailerSlug": "boots",
+      "title": "Boots promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/boots-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/boots-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "embedUrl": "",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-05-12T10:25:23.428Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-05-12T10:25:26.262Z",
+  "sourceUrls": [
+    "https://www.boots.com/offers",
+    "https://www.boots.com/_Incapsula_Resource?CWUDNSAI=23&xinfo=45-23591282-0%20PNNN%20RT%281778581501905%202072%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%2814%2c0%2c0%29%20U5&incident_id=567000060354120958-111462033525244333&edet=15&cinfo=0e00000000c3&rpinfo=0&cip=193.74.248.194&mth=GET"
+  ],
+  "methods": [
+    "unknown",
+    "screenshot"
+  ]
+}

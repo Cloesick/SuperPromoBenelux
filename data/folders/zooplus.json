@@ -1,0 +1,35 @@
+{
+  "retailer": "zooplus",
+  "folders": [
+    {
+      "id": "zooplus-2026-w20-folder",
+      "retailerSlug": "zooplus",
+      "title": "Zooplus promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/zooplus-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/zooplus-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "embedUrl": "",
+      "pdfUrl": "https://media.zooplus.com/bilder/0/Formulairederetractation_FINAL_French_BE_3_1_0.pdf?utm-source=utm_source_teaser&analytics-id=qp85kbzn8noe-4nrsplIPDIK04oRbpJOwKD",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-05-12T10:13:02.286Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-05-12T10:13:14.580Z",
+  "sourceUrls": [
+    "https://www.zooplus.be/shop/acties"
+  ],
+  "methods": [
+    "unknown",
+    "pdf",
+    "screenshot"
+  ]
+}

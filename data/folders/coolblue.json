@@ -1,0 +1,31 @@
+{
+  "retailer": "coolblue",
+  "folders": [
+    {
+      "id": "coolblue-2026-w20-folder",
+      "retailerSlug": "coolblue",
+      "title": "Coolblue promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/coolblue-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/coolblue-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-05-12T10:15:14.522Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-05-12T10:15:16.776Z",
+  "sourceUrls": [
+    "https://www.coolblue.be/nl/aanbieding"
+  ],
+  "methods": [
+    "screenshot"
+  ]
+}

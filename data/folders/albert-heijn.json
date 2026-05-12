@@ -13,7 +13,7 @@
       "embedUrl": "https://view.publitas.com/ah/bonus-week-20-2026/page/1?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/126/3036004/pdfs/27b13c61-3f34-4d3e-bc55-046005df79ec.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-20-2026.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-05-12T09:36:47.562Z"
+      "scrapedAt": "2026-05-12T10:04:26.613Z"
     }
   ],
   "deals": [
@@ -337,7 +337,6 @@
       "id": "html-684",
       "product": "AH Borrel kleintjes",
       "discount": "3 voor3.00",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_5f6436464e59713153384f3376316734416f68766341?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "retailerSlug": "albert-heijn"
@@ -757,7 +756,7 @@
       "retailerSlug": "albert-heijn"
     }
   ],
-  "scrapedAt": "2026-05-12T09:36:53.080Z",
+  "scrapedAt": "2026-05-12T10:04:39.764Z",
   "sourceUrls": [
     "https://www.ah.be/bonus/folder"
   ],

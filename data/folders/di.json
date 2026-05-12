@@ -1,0 +1,123 @@
+{
+  "retailer": "di",
+  "folders": [
+    {
+      "id": "di-2026-w20-folder",
+      "retailerSlug": "di",
+      "title": "Di promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/di-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/di-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-05-12T10:24:17.425Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-33",
+      "product": "Retour",
+      "discount": "PN Selfgel Peel & Go Set + Free Cosmetic Bag",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/imagesSynchro/300/300/2d98722510115487551094fec2b51f11168c79f0_64416395-c498-4878-afba-front.jpeg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-39",
+      "product": "Voir tout",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-31",
+      "product": "Terug",
+      "discount": "PN Selfgel Peel & Go Set + Free Cosmetic Bag",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/imagesSynchro/300/300/2d98722510115487551094fec2b51f11168c79f0_64416395-c498-4878-afba-front.jpeg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-37",
+      "product": "Alles tonen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-627",
+      "product": "Make-up",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/images/2560/1600/632c68cb44ec8_cat_gorie_di_macaron_maquillage.png",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-628",
+      "product": "Bad & lichaam",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/images/2560/1600/632c6cc29f360_cat_gorie_di_corps_bain.png",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-629",
+      "product": "Gezichtsverzorging",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/images/2560/1600/632c6993bcb1b_cat_gorie_di_macaron_soins_visage.png",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-630",
+      "product": "Haarverzorging",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/images/2560/1600/632c68e61233e_cat_gorie_di_macaron_cheveux.png",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-631",
+      "product": "Afslanken",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/images/2560/1600/620f97a634c4d_cate_gorie_minceur.png",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-632",
+      "product": "April Make Up",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/images/2560/1600/626bda61cdbb5_APRIL_MAKE_UP.png",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    },
+    {
+      "id": "html-633",
+      "product": "HOME",
+      "imageUrl": "https://bogart-di-be-storage.omn.proximis.com/Imagestorage/images/2560/1600/626bdaa1e7d59_MAISON.png",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "di"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:24:18.989Z",
+  "sourceUrls": [
+    "https://www.di.be/nl/promoties",
+    "https://www.di.be/nl/folder/",
+    "https://di.be/fr/folder/"
+  ],
+  "methods": [
+    "html",
+    "screenshot"
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "retailer": "hm",
+  "folders": [
+    {
+      "id": "hm-2026-w20-folder",
+      "retailerSlug": "hm",
+      "title": "H&M sale",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/hm-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/hm-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "embedUrl": "https://tr.snapchat.com/cm/i?pid=70dc5fbe-40b7-48b1-be77-218c69bced5a&u_scsid=d4ec71aa-b761-4d1e-be74-b91fd5534f90&u_sclid=921e6b1e-91bd-4bab-8d5f-97cdc3b942b9",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-05-12T10:17:31.364Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "jsonld-0",
+      "product": "Gebreide peplumtop",
+      "promoPrice": 19.99,
+      "imageUrl": [
+        "https://image.hm.com/assets/hm/ac/5e/ac5e61b2acb8398a161704fad6a00b1be3ae1293.jpg",
+        "https://image.hm.com/assets/hm/ca/9c/ca9c6628d04c167165f9c0c00c926f73d1fdfb98.jpg",
+        "https://image.hm.com/assets/hm/27/71/2771d4be5283d641f059b764cb7a23e07f523acf.jpg",
+        "https://image.hm.com/assets/hm/04/89/04897b6764fbdd2ba07c2f0a10665bb57e9d0275.jpg",
+        "https://image.hm.com/assets/hm/4d/e1/4de1a5508526fc78f8bd04c625bd3c8fd6c9d1ab.jpg",
+        "https://image.hm.com/assets/hm/17/61/176160117b66837f4285c184e92e7cb6d7cb35ab.jpg"
+      ],
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "jsonld-1",
+      "product": "Panty met dessin",
+      "originalPrice": 12.99,
+      "imageUrl": [
+        "https://image.hm.com/assets/hm/64/b5/64b5ad78ed97331546f139ebc761898307a0c1c6.jpg",
+        "https://image.hm.com/assets/hm/72/d4/72d411b4796d71a1a9aa63ff1af9177feb559be1.jpg"
+      ],
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-8",
+      "product": "Je winkelmandje is leeg.",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-10",
+      "product": "Gebreide peplumtop",
+      "imageUrl": "https://image.hm.com/assets/hm/ac/5e/ac5e61b2acb8398a161704fad6a00b1be3ae1293.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-12",
+      "product": "3 paar enkelsokken",
+      "imageUrl": "https://www2.hm.com/nl_be/dames/sale/assets/hm/4c/3e/4c3e26d90bdfe403a2dd7b4bc309629ad0171d8a.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-13",
+      "product": "Ruimvallende geplooide mini-short",
+      "imageUrl": "https://media.weekday.com/assets/003/e6/ce/e6ce5f43cc150e5fcc980e02e3df41f5d0290e04.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-14",
+      "product": "Double-breasted blazer",
+      "imageUrl": "https://www2.hm.com/nl_be/dames/sale/assets/hm/4d/a9/4da9c895fc66752e317bc1111c13b2d529cd3992.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-15",
+      "product": "3 paar sneakersokken",
+      "imageUrl": "https://www2.hm.com/nl_be/dames/sale/assets/hm/d1/0a/d10a941c71c3445575f4e63d31702b8db069a989.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-16",
+      "product": "Panty met dessin - 20 denier",
+      "imageUrl": "https://www2.hm.com/nl_be/dames/sale/assets/hm/82/24/8224905f9d5474c294e821d779649f224579d47a.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-17",
+      "product": "Kanten panty",
+      "imageUrl": "https://www2.hm.com/nl_be/dames/sale/assets/hm/1c/73/1c732996021eca9a461cf3174568b2a480a5e104.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-18",
+      "product": "Oversized jurk met striklint",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-19",
+      "product": "Bloes met pofmouwen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-20",
+      "product": "Mesh bloes met plumetis",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-21",
+      "product": "Vest met kraag",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-22",
+      "product": "Plissé maxirok",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    },
+    {
+      "id": "html-23",
+      "product": "Barrel-leg broek van crinklestof",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "hm"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:17:46.632Z",
+  "sourceUrls": [
+    "https://www2.hm.com/nl_be/sale/dames/view-all.html",
+    "https://tr.snapchat.com/cm/i?pid=70dc5fbe-40b7-48b1-be77-218c69bced5a&u_scsid=d4ec71aa-b761-4d1e-be74-b91fd5534f90&u_sclid=921e6b1e-91bd-4bab-8d5f-97cdc3b942b9"
+  ],
+  "methods": [
+    "unknown",
+    "html",
+    "screenshot"
+  ]
+}

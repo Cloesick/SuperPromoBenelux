@@ -1,0 +1,73 @@
+{
+  "retailer": "kruidvat",
+  "folders": [
+    {
+      "id": "kruidvat-2026-w20-folder",
+      "retailerSlug": "kruidvat",
+      "title": "Kruidvat folder",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://folder.kruidvat.be/kruidvat-folder-20-11-mei-2026-t-m-24-mei-2026/",
+      "pdfUrl": "https://folder.kruidvat.be/190/3035094/pdfs/ec73551b-9e7e-443c-99c0-bdbd03c1ab70.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Kruidvat-BEvl%2520-%2520Kruidvat%2520folder%252020%2520-%252011%2520mei%25202026%2520t%252Fm%252024%2520mei%25202026.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-05-12T10:20:22.337Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-2",
+      "product": "Zoomniveau verhogen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "kruidvat"
+    },
+    {
+      "id": "html-3",
+      "product": "Zoomniveau verlagen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "kruidvat"
+    },
+    {
+      "id": "html-11",
+      "product": "Jouw privacy",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "kruidvat"
+    },
+    {
+      "id": "html-12",
+      "product": "Noodzakelijke cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "kruidvat"
+    },
+    {
+      "id": "html-13",
+      "product": "Functionele cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "kruidvat"
+    },
+    {
+      "id": "html-14",
+      "product": "Reclame cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "kruidvat"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:20:26.593Z",
+  "sourceUrls": [
+    "https://www.kruidvat.be/nl/folder",
+    "https://folder.kruidvat.be/kruidvat-folder-20-11-mei-2026-t-m-24-mei-2026/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf",
+    "html"
+  ]
+}

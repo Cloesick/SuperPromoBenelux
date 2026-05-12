@@ -1,0 +1,86 @@
+{
+  "retailer": "ici-paris-xl",
+  "folders": [
+    {
+      "id": "ici-paris-xl-2026-w20-folder",
+      "retailerSlug": "ici-paris-xl",
+      "title": "ICI PARIS XL promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 12,
+      "thumbnailUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p1.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p2.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p3.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p4.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p5.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p6.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p7.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p8.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p9.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p10.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p11.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/ici-paris-xl-2026-w20-viewerimg-p12.png",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-05-12T10:21:57.837Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-05-12T10:22:02.805Z",
+  "sourceUrls": [
+    "https://www.iciparisxl.be/nl/promotions"
+  ],
+  "methods": [
+    "screenshot"
+  ]
+}

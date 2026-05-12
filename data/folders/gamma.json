@@ -1,0 +1,44 @@
+{
+  "retailer": "gamma",
+  "folders": [
+    {
+      "id": "gamma-2026-w20-folder",
+      "retailerSlug": "gamma",
+      "title": "Gamma folder",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://folder.gamma.be/",
+      "pdfUrl": "https://folder.gamma.be/93348/3024415/pdfs/78208fba-da3b-415f-92cb-f53a91d127ed.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27GAMMA%2520BENL%2520-%2520GAMMA%2520BENL%2520week%252019%25202026.pdf",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-05-12T10:19:49.484Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-884",
+      "product": "Assortiment",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "gamma"
+    },
+    {
+      "id": "html-916",
+      "product": "Recent bekeken",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "gamma"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:19:52.371Z",
+  "sourceUrls": [
+    "https://www.gamma.be/nl/promo/acties/folder/folder-deze-week"
+  ],
+  "methods": [
+    "unknown",
+    "pdf",
+    "html"
+  ]
+}

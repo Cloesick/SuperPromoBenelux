@@ -1,0 +1,194 @@
+{
+  "retailer": "vanden-borre",
+  "folders": [
+    {
+      "id": "vanden-borre-2026-w20-folder",
+      "retailerSlug": "vanden-borre",
+      "title": "Vanden Borre promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "pdfUrl": "https://www.vandenborre.be/web/pdf/Bebat_Affiche_Artikel%2074_A4%20-%20NL.pdf",
+      "contentSource": "pdf",
+      "scrapedAt": "2026-05-12T10:15:35.865Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-1",
+      "product": "Tv en audio",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-65",
+      "product": "Groot elektro en inbouw",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-128",
+      "product": "Keuken",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-208",
+      "product": "Huishouden en wonen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-280",
+      "product": "Beauty en gezondheid",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-328",
+      "product": "Multimedia",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-412",
+      "product": "Telefonie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-471",
+      "product": "Foto en video",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-536",
+      "product": "Sport en outdoor",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-573",
+      "product": "Accessoires",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-652",
+      "product": "Populaire zoekresultaten",
+      "discount": "",
+      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/adler_miniwash-cr-8054_7815395_7.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-653",
+      "product": "ADLER MINIWASH CR-8054",
+      "discount": "",
+      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/adler_miniwash-cr-8054_7815395_7.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-677",
+      "product": "NILFISK SELECT WHITE WCL13P08A1",
+      "discount": "|Reviews",
+      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/nilfisk_select-classic-white-wcl_8481792_1.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-699",
+      "product": "BOSCH Serie 6 SelfCleaning condenser - WQG235DPFG",
+      "discount": "|Reviews",
+      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/bosch_wqg235dpfg_7881169_1.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-726",
+      "product": "APPLE IPHONE 15 128GB BLACK",
+      "discount": "|Reviews",
+      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/apple_iphone-15-128gb-black_7790422_1.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-752",
+      "product": "PHILIPS 1000-serie Airfryer met twee manden (NA154...",
+      "discount": "|Reviews",
+      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/philips_na154-00_7681607_1.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-989",
+      "product": "Je privacy",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-990",
+      "product": "Strikt noodzakelijke cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-991",
+      "product": "Functionele cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-992",
+      "product": "Prestatiecookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-993",
+      "product": "Doelgroepgerichte cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    },
+    {
+      "id": "html-994",
+      "product": "Conversationele cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "vanden-borre"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:15:38.173Z",
+  "sourceUrls": [
+    "https://www.vandenborre.be/nl/promoties"
+  ],
+  "methods": [
+    "pdf",
+    "html"
+  ]
+}

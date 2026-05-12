@@ -1,6 +1,120 @@
 {
-  "generatedAt": "2026-05-12T09:40:24.695Z",
+  "generatedAt": "2026-05-12T10:33:18.712Z",
   "retailers": [
+    {
+      "slug": "albert-heijn",
+      "name": "Albert Heijn",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:04:39.764Z",
+      "folderCount": 1,
+      "dealCount": 89,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://view.publitas.com/ah/bonus-week-20-2026/page/1?publitas_embed=embedded",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://view.publitas.com/126/3036004/pdfs/27b13c61-3f34-4d3e-bc55-046005df79ec.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-20-2026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "lidl",
+      "name": "Lidl",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T09:30:37.457Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder-nl.lidl.be/nl-folder-11-05-16-05",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder-nl.lidl.be/97031/3028948/pdfs/b7e291bd-34c4-4b2a-ad4c-57d31204b7f4.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252011-05-16-05.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "delhaize",
+      "name": "Delhaize",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T09:38:29.330Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://view.publitas.com/delhaize-belgium-nl/w19-2026-nl/page/1?publitas_embed=embedded",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://view.publitas.com/11013/3038254/pdfs/e698b8b0-5fc0-4552-9d17-2f723dda566a.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W19-2026-NL.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "colruyt",
+      "name": "Colruyt",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:09:59.296Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "aldi",
+      "name": "ALDI",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:10:23.011Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder.aldi.be/import-folder/2026/2620-prijsverlaging-nl/?HideStandardUI=true&HideNavigationBars=true",
+          "status": 404,
+          "live": false
+        }
+      ]
+    },
     {
       "slug": "action",
       "name": "Action",
@@ -21,15 +135,503 @@
           "live": true
         }
       ]
+    },
+    {
+      "slug": "maxi-zoo",
+      "name": "Maxi Zoo",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": null,
+      "folderCount": 0,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": false,
+      "validationIssues": [
+        {
+          "field": "file",
+          "message": "Data file does not exist",
+          "severity": "error"
+        }
+      ],
+      "probeResults": []
+    },
+    {
+      "slug": "tom-co",
+      "name": "Tom&Co",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:12:47.524Z",
+      "folderCount": 1,
+      "dealCount": 3,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "zooplus",
+      "name": "Zooplus",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:13:14.580Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://login.zooplus.be/auth/realms/zooplus/protocol/openid-connect/login-status-iframe.html",
+          "status": 405,
+          "live": false
+        },
+        {
+          "url": "https://media.zooplus.com/bilder/0/Formulairederetractation_FINAL_French_BE_3_1_0.pdf?utm-source=utm_source_teaser&analytics-id=qp85kbzn8noe-4nrsplIPDIK04oRbpJOwKD",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "aveve",
+      "name": "AVEVE",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:13:43.885Z",
+      "folderCount": 1,
+      "dealCount": 7,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "medpets",
+      "name": "Medpets",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:14:01.800Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "mediamarkt",
+      "name": "MediaMarkt",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:14:46.006Z",
+      "folderCount": 1,
+      "dealCount": 1,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "coolblue",
+      "name": "Coolblue",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:15:16.776Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "vanden-borre",
+      "name": "Vanden Borre",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:15:38.173Z",
+      "folderCount": 1,
+      "dealCount": 22,
+      "hasEmbed": false,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://www.vandenborre.be/web/pdf/Bebat_Affiche_Artikel%2074_A4%20-%20NL.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "krefel",
+      "name": "Krëfel",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:16:06.587Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "bol",
+      "name": "bol",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:16:35.927Z",
+      "folderCount": 1,
+      "dealCount": 4,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "hm",
+      "name": "H&M",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:17:46.632Z",
+      "folderCount": 1,
+      "dealCount": 16,
+      "hasEmbed": true,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://tr.snapchat.com/cm/i?pid=70dc5fbe-40b7-48b1-be77-218c69bced5a&u_scsid=d4ec71aa-b761-4d1e-be74-b91fd5534f90&u_sclid=921e6b1e-91bd-4bab-8d5f-97cdc3b942b9",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "zalando",
+      "name": "Zalando",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:18:40.941Z",
+      "folderCount": 1,
+      "dealCount": 129,
+      "hasEmbed": true,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://app.eu.usercentrics.eu/browser-sdk/4.62.3/cross-domain-bridge.html",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "ikea",
+      "name": "IKEA",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:19:35.504Z",
+      "folderCount": 1,
+      "dealCount": 32,
+      "hasEmbed": true,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://a11701662245.cdn-pci.optimizely.com/client_storage/a11701662245.html",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "gamma",
+      "name": "Gamma",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:19:52.371Z",
+      "folderCount": 1,
+      "dealCount": 2,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder.gamma.be/",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder.gamma.be/93348/3024415/pdfs/78208fba-da3b-415f-92cb-f53a91d127ed.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27GAMMA%2520BENL%2520-%2520GAMMA%2520BENL%2520week%252019%25202026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "kruidvat",
+      "name": "Kruidvat",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:20:26.593Z",
+      "folderCount": 1,
+      "dealCount": 6,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder.kruidvat.be/kruidvat-folder-20-11-mei-2026-t-m-24-mei-2026/",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder.kruidvat.be/190/3035094/pdfs/ec73551b-9e7e-443c-99c0-bdbd03c1ab70.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Kruidvat-BEvl%2520-%2520Kruidvat%2520folder%252020%2520-%252011%2520mei%25202026%2520t%252Fm%252024%2520mei%25202026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "ici-paris-xl",
+      "name": "ICI PARIS XL",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:22:02.805Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "douglas",
+      "name": "Douglas",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:23:44.023Z",
+      "folderCount": 1,
+      "dealCount": 2,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "di",
+      "name": "Di",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:24:18.989Z",
+      "folderCount": 1,
+      "dealCount": 11,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "etos",
+      "name": "Etos",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:25:05.589Z",
+      "folderCount": 1,
+      "dealCount": 32,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "boots",
+      "name": "Boots",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:25:26.262Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://www.boots.com/_Incapsula_Resource?CWUDNSAI=23&xinfo=45-23591282-0%20PNNN%20RT%281778581501905%202072%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%2814%2c0%2c0%29%20U5&incident_id=567000060354120958-111462033525244333&edet=15&cinfo=0e00000000c3&rpinfo=0&cip=193.74.248.194&mth=GET",
+          "status": 400,
+          "live": false
+        }
+      ]
+    },
+    {
+      "slug": "muller",
+      "name": "Müller",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:25:46.931Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "rossmann",
+      "name": "Rossmann",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:26:52.747Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://www.rossmann.de/dam/einkaufsportal/startseite/footer/Bio-Zertifikat.2025-09-22-14-48-11.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "treac",
+      "name": "Trekpleister",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:27:53.925Z",
+      "folderCount": 1,
+      "dealCount": 26,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder.trekpleister.nl/trekpleister-week-20-11-mei-2025-t-m-17-mei-2026/",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder.trekpleister.nl/26/2998004/pdfs/dd25021e-2231-4f68-95da-a8f02145b52b.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Trekpleister%2520-%2520Trekpleister%2520week%252020%2520-%252011%2520mei%25202025%2520t%252Fm%252017%2520mei%25202026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "rituals",
+      "name": "Rituals",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:28:51.155Z",
+      "folderCount": 1,
+      "dealCount": 126,
+      "hasEmbed": true,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://a40.usablenet.com/pt/c/rituals/switch",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "yves-rocher",
+      "name": "Yves Rocher",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:29:43.457Z",
+      "folderCount": 1,
+      "dealCount": 1,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "the-body-shop",
+      "name": "The Body Shop",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-12T10:33:14.443Z",
+      "folderCount": 1,
+      "dealCount": 8,
+      "hasEmbed": false,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0840/6679/5785/files/The_Body_Shop_Gender_Pay_Gap_Report_2025.pdf?v=1775131633",
+          "status": 200,
+          "live": true
+        }
+      ]
     }
   ],
   "summary": {
-    "total": 1,
-    "fresh": 1,
+    "total": 32,
+    "fresh": 32,
     "fallback": 0,
     "stale": 0,
     "missing": 0,
-    "withErrors": 0,
-    "withDeadUrls": 0
+    "withErrors": 1,
+    "withDeadUrls": 3
   }
 }

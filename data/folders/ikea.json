@@ -1,0 +1,291 @@
+{
+  "retailer": "ikea",
+  "folders": [
+    {
+      "id": "ikea-2026-w20-folder",
+      "retailerSlug": "ikea",
+      "title": "IKEA aanbiedingen",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/ikea-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/ikea-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "embedUrl": "https://a11701662245.cdn-pci.optimizely.com/client_storage/a11701662245.html",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-05-12T10:19:27.926Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-5",
+      "product": "Tot -70% Eindereeksaanbieding",
+      "imageUrl": "https://www.ikea.com/images/log-in-op-je-account-f1a9caa8f915d181a200c0b97f4fc0c0.jpg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-10",
+      "product": "IKEA Family prijsVÄSMAN Uittrekbare tafel, buiten, 135/190x74 cm€169,15€ 169,1515% korting, bespaar €29,85Normale prijs: €199€ 199Laagste prijs (afg 30 dagen): €199€ 199Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.3 van 5 sterren. Totaal beoordelingen: 107(107)",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-11",
+      "product": "VÄSMAN Uittrekbare tafel, buiten, 135/190x74 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-16",
+      "product": "Beperkte oplage",
+      "discount": "Beperkte oplage",
+      "imageUrl": "https://www.ikea.com/be/nl/images/products/soluppgang-klaptafel-eucalyptus__1501613_pe1007380_s5.jpg?f=xxs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-21",
+      "product": "IKEA Family prijsSOLUPPGÅNG Klaptafel, 82 cm€33,99€ 33,9915% korting, bespaar €6Normale prijs: €39,99€ 39,99Laagste prijs (afg 30 dagen): €39,99€ 39,99Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 5 van 5 sterren. Totaal beoordelingen: 1(1)",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-22",
+      "product": "SOLUPPGÅNG Klaptafel, 82 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-31",
+      "product": "IKEA Family prijsTORPÖN Klamboe, 900 cm€21,25€ 21,2515% korting, bespaar €3,75Normale prijs: €25€ 25Laagste prijs (afg 30 dagen): €25€ 25Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.6 van 5 sterren. Totaal beoordelingen: 35(35)",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-32",
+      "product": "TORPÖN Klamboe, 900 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-37",
+      "product": "Top seller",
+      "discount": "Top seller",
+      "imageUrl": "https://www.ikea.com/be/nl/images/products/naemmaroe-tafel-buiten-lichtbruin-gelazuurd__1138751_pe880051_s5.jpg?f=xxs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-42",
+      "product": "IKEA Family prijsNÄMMARÖ Tafel, buiten, 140x75 cm€101,15€ 101,1515% korting, bespaar €17,85Normale prijs: €119€ 119Laagste prijs (afg 30 dagen): €119€ 119Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.5 van 5 sterren. Totaal beoordelingen: 281(281)",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-43",
+      "product": "NÄMMARÖ Tafel, buiten, 140x75 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-52",
+      "product": "IKEA Family prijsGRILLSKÄR Open kast keukeneiland, 86x61 cm€194,65€ 194,6515% korting, bespaar €34,35Normale prijs: €229€ 229Laagste prijs (afg 30 dagen): €229€ 229Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4 van 5 sterren. Totaal beoordelingen: 146(146)",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-53",
+      "product": "GRILLSKÄR Open kast keukeneiland, 86x61 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-62",
+      "product": "IKEA Family prijsVÄSMAN / ENSHOLM Tafel+6 stoelen, buiten, 135/190x74 cm€322,09€ 322,0915% korting, bespaar €56,85Normale prijs: €378,94€ 378,94Laagste prijs (afg 30 dagen): €378,94€ 378,94Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 5 van 5 sterren. Totaal beoordelingen: 6(6)Meer opties",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-63",
+      "product": "VÄSMAN / ENSHOLM Tafel+6 stoelen, buiten, 135/190x74 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-72",
+      "product": "IKEA Family prijsESKILSTUNA 3-zitsbank met chaise longue€1.099€ 109935% korting, bespaar €600Normale prijs: €1.699€ 1699Laagste prijs (afg 30 dagen): €1.699€ 1699Prijs geldig van 16.03.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 2.7 van 5 sterren. Totaal beoordelingen: 214(214)Meer opties",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-73",
+      "product": "ESKILSTUNA 3-zitsbank met chaise longue",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-82",
+      "product": "IKEA Family prijsBÅTSKÄR Gesloten keukenblok, 120x60 cm€340€ 34015% korting, bespaar €60Normale prijs: €400€ 400Laagste prijs (afg 30 dagen): €400€ 400Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strekt",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-83",
+      "product": "BÅTSKÄR Gesloten keukenblok, 120x60 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-92",
+      "product": "IKEA Family prijsNÄMMARÖ Tafel+4 leunstoelen, buiten, 130 cm€345,65€ 345,6513% korting, bespaar €55,35Normale prijs: €401€ 401Laagste prijs (afg 30 dagen): €401€ 401Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.8 van 5 sterren. Totaal beoordelingen: 4(4)Meer opties",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-93",
+      "product": "NÄMMARÖ Tafel+4 leunstoelen, buiten, 130 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-102",
+      "product": "IKEA Family prijsVÄRMANSÖ Tafel, buiten, 224x93 cm€296,65€ 296,6515% korting, bespaar €52,35Normale prijs: €349€ 349Laagste prijs (afg 30 dagen): €349€ 349Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.3 van 5 sterren. Totaal beoordelingen: 95(95)",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-103",
+      "product": "VÄRMANSÖ Tafel, buiten, 224x93 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-113",
+      "product": "IKEA Family prijsSOLUPPGÅNG Barbecue, 21x43 cm€50,99€ 50,9915% korting, bespaar €9Normale prijs: €59,99€ 59,99Laagste prijs (afg 30 dagen): €59,99€ 59,99Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 5 van 5 sterren. Totaal beoordelingen: 2(2)",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-114",
+      "product": "SOLUPPGÅNG Barbecue, 21x43 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-123",
+      "product": "IKEA Family prijsNORRMANSÖ Tafel, buiten, 220x100 cm€339,15€ 339,1515% korting, bespaar €59,85Normale prijs: €399€ 399Laagste prijs (afg 30 dagen): €399€ 399Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 3.6 van 5 sterren. Totaal beoordelingen: 184(184)",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-124",
+      "product": "NORRMANSÖ Tafel, buiten, 220x100 cm",
+      "discount": "IKEA Family prijs",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-133",
+      "product": "Winkelen bij IKEA",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-143",
+      "product": "Klantenservice",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-152",
+      "product": "Dit is IKEA",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-159",
+      "product": "IKEA Family & IKEA Business",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-0",
+      "product": "Overgaan naar productlijst",
+      "discount": "Overslaan en naar hoofdinhoud gaan",
+      "imageUrl": "https://www.ikea.com/global/assets/logos/brand/ikea.svg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "ikea"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:19:35.504Z",
+  "sourceUrls": [
+    "https://www.ikea.com/be/nl/offers/",
+    "https://a11701662245.cdn-pci.optimizely.com/client_storage/a11701662245.html"
+  ],
+  "methods": [
+    "unknown",
+    "html",
+    "screenshot"
+  ]
+}

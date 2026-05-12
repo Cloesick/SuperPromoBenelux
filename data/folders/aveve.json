@@ -1,0 +1,94 @@
+{
+  "retailer": "aveve",
+  "folders": [
+    {
+      "id": "aveve-2026-w20-folder",
+      "retailerSlug": "aveve",
+      "title": "AVEVE promoties",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 3,
+      "thumbnailUrl": "/screenshots/aveve-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p1.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p2.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p3.png",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-05-12T10:13:43.883Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "Zoeken",
+      "imageUrl": "https://www.aveve.be/static/version1772115035/frontend/Arvesta/Hyva/nl_BE/images/logo.svg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-29",
+      "product": "BBQ's in de kijker: tijdelijk extra voordelig",
+      "imageUrl": "https://www.aveve.be/media/catalog/product/P/0/P060034738_2.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=242&width=242&canvas=242:242&format=jpeg",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-134",
+      "product": "Uw privacy",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-135",
+      "product": "Strikt noodzakelijke cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-136",
+      "product": "Functionele cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-137",
+      "product": "Prestatiecookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-138",
+      "product": "Doelgroepgerichte cookies",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "aveve"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:13:43.885Z",
+  "sourceUrls": [
+    "https://www.aveve.be/nl/promoties"
+  ],
+  "methods": [
+    "html",
+    "screenshot"
+  ]
+}

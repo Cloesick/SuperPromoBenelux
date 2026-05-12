@@ -1,0 +1,44 @@
+{
+  "retailer": "mediamarkt",
+  "folders": [
+    {
+      "id": "mediamarkt-2026-w20-folder",
+      "retailerSlug": "mediamarkt",
+      "title": "MediaMarkt folder",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/mediamarkt-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/mediamarkt-2026-w20-viewerimg-p1.png",
+          "deals": []
+        }
+      ],
+      "contentSource": "publitas",
+      "scrapedAt": "2026-05-12T10:14:39.736Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "Digitale flyer bij MediaMarkt",
+      "imageUrl": "https://cms-images.mmst.eu/nzwrdbjwhn3t/2BXXBGTUp2Mq7yFhx9NnVG/68a46a37adf5d12bbf5d290c8fe1aa36/mediamarkt-digitale-flyer.png?q=70&fm=webp&w=640&h=360",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "mediamarkt"
+    }
+  ],
+  "scrapedAt": "2026-05-12T10:14:46.006Z",
+  "sourceUrls": [
+    "https://www.mediamarkt.be/nl/shop/folder.html",
+    "https://www.mediamarkt.be/nl/campaign/folder#main-content",
+    "https://www.mediamarkt.be/nl/campaign/folder#main-content"
+  ],
+  "methods": [
+    "publitas",
+    "screenshot",
+    "html"
+  ]
+}
