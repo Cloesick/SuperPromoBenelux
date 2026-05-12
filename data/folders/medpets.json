@@ -17,33 +17,15 @@
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-05-12T15:54:48.703Z"
+      "scrapedAt": "2026-05-12T16:45:04.212Z"
     }
   ],
-  "deals": [
-    {
-      "id": "pagetext-0",
-      "product": "Gratis advies van onze dierenartsen",
-      "discount": "Gratis",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "medpets"
-    },
-    {
-      "id": "pagetext-1",
-      "product": "Gratis verzending v.a. €89,-",
-      "discount": "Gratis",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "medpets"
-    }
-  ],
-  "scrapedAt": "2026-05-12T15:54:50.738Z",
+  "deals": [],
+  "scrapedAt": "2026-05-12T16:45:07.610Z",
   "sourceUrls": [
     "https://www.medpets.be/acties"
   ],
   "methods": [
-    "screenshot",
-    "page-text"
+    "screenshot"
   ]
 }

@@ -7,31 +7,82 @@
       "title": "Rossmann promoties",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
-      "pageCount": 0,
-      "thumbnailUrl": "",
-      "pages": [],
+      "pageCount": 12,
+      "thumbnailUrl": "/screenshots/rossmann-2026-w20-viewerimg-p1.png",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p1.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p2.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p3.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p4.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p5.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p6.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p7.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p8.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p9.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p10.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p11.png",
+          "deals": []
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p12.png",
+          "deals": []
+        }
+      ],
       "pdfUrl": "https://www.rossmann.de/dam/einkaufsportal/startseite/footer/Bio-Zertifikat.2025-09-22-14-48-11.pdf",
       "contentSource": "pdf",
-      "scrapedAt": "2026-05-12T15:55:43.767Z"
+      "scrapedAt": "2026-05-12T16:45:23.137Z"
     }
   ],
-  "deals": [
-    {
-      "id": "rossmann-pdf-0-1778601351008",
-      "product": "AUSGESTELLT  II.1 Verzeichnis der Erzeugnisse Name des Erzeugnisses   Code-Nummer der Kombinierten Nomenklatur (KN-Code) gemäß der Verordnung (EWG) Nr. 2658/87 des Rates für Erzeugnisse im Geltungsbereich der Verordnung (EU) 2018/848  be-/ verarbeitete Lebensmittel; Heimtierfuttermittel; Saatgut   Ökologisch  II.2 Erzeugnismenge II.3 Informationen zur landwirtschaftlichen Fläche II.4 Liste der Betriebsstätten oder Einheiten, in denen der Unternehmer oder die Unternehmergruppe die Tätigkeiten durchführt II.5 Informationen über die Tätigkeit(en), die von dem Unternehmer oder der Unternehmergruppe ausgeübt wird bzw. werden, und Angaben dazu, ob die Tätigkeit(en) in eigener Angelegenheit oder als Subunternehmer, der die Tätigkeit(en) für einen anderen Unternehmer durchführt, ausgeübt wird bzw. werden, wobei der Subunternehmer für die ausgeübte(n) Tätigkeit(en) verantwortlich bleibt II.6 Informationen über vom Subunternehmer gemäß Artikel 34 Absatz 3 der Verordnung (EU) 2018/848 durchgeführte Tätigkeit(en) II.7 Liste der Subunternehmer, die für den Unternehmer oder die Unternehmergruppe gemäß Artikel 34 Absatz 3 der Verordnung (EU) 2018/848 (eine) Tätigkeit(en) ausüben, für die der Unternehmer oder die Unternehmergruppe in Bezug auf die ökologische/biologische Produktion verantwortlich bleibt und für die er/sie diese Verantwortung nicht auf den Subunternehmer übertragen hat II.8 Information über die Akkreditierung der Kontrollstelle gemäß Artikel 40 Absatz 3 der Verordnung (EU) 2018/848 Name der Akkreditierungsstelle   Deutsche Akkreditierungsstelle GmbH (DAkkS)  Hyperlink zur Akkreditierungsurkunde   https://www.dakks.de/de/akkreditierte-stelle.html?id=D-ZE-18003-01-00  II.9 Weitere Angaben  Kontrolldatum / date of inspection: .2025, .2025, .2025  Zertifikat gemäß Artikel 35 Absatz 1 der Verordnung (EU) 2018/848 über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen  de   https://webgate.ec.europa.eu/tracesnt/directory/publication/organic-operator/DE-ÖKO-039.276-0026456.2025.003.pdf   2   / 2  Teil II: Spezifische optionale Angaben",
-      "originalPrice": 30.04,
-      "promoPrice": 15.05,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "rossmann"
-    }
-  ],
-  "scrapedAt": "2026-05-12T15:55:51.009Z",
+  "deals": [],
+  "scrapedAt": "2026-05-12T16:46:19.111Z",
   "sourceUrls": [
     "https://www.rossmann.de/de/angebote"
   ],
   "methods": [
     "pdf",
-    "pdf-text"
+    "screenshot"
   ]
 }

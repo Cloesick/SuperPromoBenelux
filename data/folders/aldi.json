@@ -73,43 +73,17 @@
       ],
       "embedUrl": "https://folder.aldi.be/import-folder/2026/2620-prijsverlaging-nl/?HideStandardUI=true&HideNavigationBars=true",
       "contentSource": "unknown",
-      "scrapedAt": "2026-05-12T15:51:02.492Z"
+      "scrapedAt": "2026-05-12T16:42:38.281Z"
     }
   ],
-  "deals": [
-    {
-      "id": "pagetext-0",
-      "product": "Aanbiedingen",
-      "discount": "Aanbieding",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "aldi"
-    },
-    {
-      "id": "pagetext-1",
-      "product": "Service",
-      "discount": "Aanbieding",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "aldi"
-    },
-    {
-      "id": "pagetext-2",
-      "product": "Om onze gratis herinneringsservice te gebruiken, moet u zich authenticeren wanneer u er voor de eerste keer gebruik van ",
-      "discount": "gratis",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "aldi"
-    }
-  ],
-  "scrapedAt": "2026-05-12T15:51:05.276Z",
+  "deals": [],
+  "scrapedAt": "2026-05-12T16:42:40.736Z",
   "sourceUrls": [
     "https://www.aldi.be/nl/onze-folders/folder-van-deze-week.html",
     "https://folder.aldi.be/import-folder/2026/2620-prijsverlaging-nl/"
   ],
   "methods": [
     "unknown",
-    "screenshot",
-    "page-text"
+    "screenshot"
   ]
 }

@@ -1400,65 +1400,78 @@ export abstract class BaseScraper {
 
 		const fnSrc = `(
 			function (retailerSlug, validFrom, validUntil) {
-				// Get all text blocks from the page with their structural context
+				// Navigation / UI noise words — reject elements whose cleaned name matches these
+				const NOISE_RE = /^(menu|footer|header|nav|cookie|login|registr|winkel|winkels|jobs|bezorg|verzend|levering|service|advies|contact|klantenservice|openingsuren|over ons|alle (acties|categorie|product|promo)|acties voor jou|top promo|weekactie\\d|aanbiedingen|promotions? page|acties & promoties|gratis (ruilen|retour|advies|verzend)|voor \\d+u|download|volgende week|meer info|bekijk |lees meer|inloggen|uitloggen|mijn account|zoeken|categorie)/i;
+
+				// Only look at elements likely to be individual product cards (not containers)
 				const allElements = document.querySelectorAll(
-					'[class*="product"], [class*="Product"], [class*="promo"], [class*="Promo"], ' +
-					'[class*="deal"], [class*="Deal"], [class*="offer"], [class*="Offer"], ' +
-					'[class*="item"], [class*="card"], [class*="Card"], ' +
-					'article, li, [data-product], [data-item], [role="listitem"]'
+					'[class*="product-card"], [class*="productCard"], [class*="product-tile"], [class*="productTile"], ' +
+					'[class*="product-item"], [class*="productItem"], [class*="deal-card"], [class*="dealCard"], ' +
+					'[class*="offer-card"], [class*="offerCard"], [class*="promo-card"], [class*="promoCard"], ' +
+					'[data-product], [data-product-id], [data-item-id], [data-testid*="product"]'
+				);
+
+				// If specific selectors found nothing, try broader but size-limited approach
+				const elements = allElements.length > 0 ? allElements : document.querySelectorAll(
+					'article, [role="listitem"], [class*="product"]:not(nav):not(header):not(footer), ' +
+					'[class*="card"]:not(nav):not(header):not(footer)'
 				);
 
 				const results = [];
 				const seen = new Set();
 
-				for (const el of allElements) {
+				for (const el of elements) {
 					const text = (el.textContent || "").trim();
-					if (text.length < 10 || text.length > 500) continue;
+					// Product cards should be between 15-300 chars; longer = likely a container
+					if (text.length < 15 || text.length > 300) continue;
 
-					// Look for price patterns in this element
+					// MUST have at least one euro price — this is the key quality gate
 					const euroMatch = text.match(/€\\s*(\\d+[.,]\\d{2})/g);
-					const nakedMatch = text.match(/\\b(\\d{1,3}[.,]\\d{2})\\b/g);
-					const priceMatches = euroMatch || (nakedMatch && nakedMatch.length >= 2 ? nakedMatch : null);
-					
-					// Look for discount patterns
-					const discountMatch = text.match(
-						/(-\\d+\\s*%|\\d+\\s*\\+\\s*\\d+|gratis|korting|sale|actie|aanbieding|promo|réduction|½\\s*prijs|halve\\s*prijs)/i
-					);
+					if (!euroMatch || euroMatch.length === 0) continue;
 
-					if (!priceMatches && !discountMatch) continue;
+					// Also look for percentage discounts
+					const discountMatch = text.match(/(-\\d+\\s*%|\\d+\\s*\\+\\s*\\d+\\s*gratis|[234]e?\\s*(halve\\s*prijs|gratis)|1\\+1)/i);
 
-					// Extract product name: first meaningful text line
-					const lines = text.split(/\\n/).map(l => l.trim()).filter(l => l.length > 2);
+					// Extract product name: first text line that isn't a price or noise
+					const lines = text.split(/\\n/).map(l => l.trim()).filter(l => l.length > 3);
 					let productName = "";
 					for (const line of lines) {
-						// Skip lines that are mostly numbers/prices
-						const cleaned = line.replace(/€\\s*\\d+[.,]\\d{2}/g, "").replace(/\\b\\d{1,3}[.,]\\d{2}\\b/g, "").trim();
-						if (cleaned.length >= 3 && !cleaned.match(/^[\\d\\s%€,.+-]+$/)) {
-							productName = cleaned.slice(0, 120);
+						const cleaned = line
+							.replace(/€\\s*\\d+[.,]\\d{2}/g, "")
+							.replace(/\\b\\d{1,3}[.,]\\d{2}\\b/g, "")
+							.replace(/-?\\d+\\s*%/g, "")
+							.trim();
+						if (cleaned.length >= 5 && !cleaned.match(/^[\\d\\s%€,.+-]+$/) && !NOISE_RE.test(cleaned)) {
+							productName = cleaned.slice(0, 100);
 							break;
 						}
 					}
 
-					if (!productName || productName.length < 3) continue;
-					
-					// Deduplicate
-					const key = productName.toLowerCase().slice(0, 40);
+					if (!productName || productName.length < 5) continue;
+
+					// Deduplicate by normalized name
+					const key = productName.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 30);
 					if (seen.has(key)) continue;
 					seen.add(key);
 
 					// Parse prices
+					const prices = euroMatch.map(p =>
+						parseFloat(p.replace("€", "").replace(",", ".").trim())
+					).filter(p => !isNaN(p) && p > 0.01 && p < 50000);
+
+					if (prices.length === 0) continue;
+
 					let originalPrice, promoPrice;
-					if (priceMatches) {
-						const prices = priceMatches.map(p =>
-							parseFloat(p.replace("€", "").replace(",", ".").trim())
-						).filter(p => !isNaN(p) && p > 0 && p < 10000);
-						
-						if (prices.length >= 2) {
-							originalPrice = Math.max(...prices);
-							promoPrice = Math.min(...prices);
-						} else if (prices.length === 1) {
+					if (prices.length >= 2) {
+						originalPrice = Math.max(...prices);
+						promoPrice = Math.min(...prices);
+						// Sanity: original should be > promo
+						if (originalPrice <= promoPrice) {
 							promoPrice = prices[0];
+							originalPrice = undefined;
 						}
+					} else {
+						promoPrice = prices[0];
 					}
 
 					results.push({

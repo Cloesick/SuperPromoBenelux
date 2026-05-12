@@ -40,6 +40,11 @@ export async function extractDealsFromPdf(
 		const text = pages.join("\n");
 		doc.destroy();
 
+		// Sanity check: PDF should contain at least a few euro price patterns
+		// to be a product catalog (not a certificate, terms doc, etc.)
+		const priceCount = (text.match(/€\s*\d+[.,]\d{2}/g) || []).length;
+		if (priceCount < 2) return [];
+
 		return parseTextToDeals(text, retailerSlug, validFrom, validUntil, "pdf");
 	} catch (err) {
 		console.error(`[extractDealsFromPdf] Error for ${retailerSlug}:`, err);
