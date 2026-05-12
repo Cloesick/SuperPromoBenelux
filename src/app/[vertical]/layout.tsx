@@ -1,5 +1,10 @@
 import { notFound } from "next/navigation";
 import { VERTICALS, VERTICAL_CONFIGS, Vertical } from "@/lib/types";
+import { VerticalThemeProvider } from "@/components/VerticalThemeProvider";
+import { VerticalHeader } from "@/components/VerticalHeader";
+import { VerticalFooter } from "@/components/VerticalFooter";
+import { CookieConsent } from "@/components/CookieConsent";
+import { AnalyticsGate } from "@/components/AnalyticsGate";
 
 interface LayoutProps {
 	children: React.ReactNode;
@@ -10,15 +15,32 @@ export async function generateStaticParams() {
 	return VERTICALS.filter((v) => v !== "general").map((v) => ({ vertical: v }));
 }
 
-export default async function VerticalLayout({ children, params }: LayoutProps) {
+export default async function VerticalLayout({
+	children,
+	params,
+}: LayoutProps) {
 	const { vertical } = await params;
 	if (!VERTICALS.includes(vertical as Vertical) || vertical === "general") {
 		notFound();
 	}
-	return <>{children}</>;
+	const config = VERTICAL_CONFIGS[vertical as Vertical];
+
+	return (
+		<VerticalThemeProvider config={config}>
+			<VerticalHeader />
+			<main className="flex-1">{children}</main>
+			<VerticalFooter />
+			<CookieConsent />
+			<AnalyticsGate />
+		</VerticalThemeProvider>
+	);
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ vertical: string }> }) {
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ vertical: string }>;
+}) {
 	const { vertical } = await params;
 	const config = VERTICAL_CONFIGS[vertical as Vertical];
 	if (!config) return {};
@@ -27,6 +49,6 @@ export async function generateMetadata({ params }: { params: Promise<{ vertical:
 			default: `${config.name} - Folders en promoties`,
 			template: `%s | ${config.name}`,
 		},
-		description: config.description,
+		description: `${config.tagline}. Bekijk de nieuwste folders en promoties.`,
 	};
 }

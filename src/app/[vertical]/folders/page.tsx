@@ -1,6 +1,6 @@
 import { VERTICALS, VERTICAL_CONFIGS, Vertical } from "@/lib/types";
 import { getRetailersForVertical } from "@/lib/retailers";
-import { FoldersClient } from "@/app/folders/FoldersClient";
+import { FoldersClient } from "@/components/FoldersClient";
 import { getSiteBaseUrl } from "@/lib/site";
 import { JsonLd, createBreadcrumbJsonLd } from "@/components/JsonLd";
 
@@ -39,9 +39,13 @@ export default async function VerticalFoldersPage({ params }: PageProps) {
 				])}
 			/>
 			<nav className="text-sm text-gray-500 mb-6">
-				<a href="/" className="hover:text-blue-700">Home</a>
+				<a href="/" className="hover:text-blue-700">
+					Home
+				</a>
 				<span className="mx-2">&rsaquo;</span>
-				<a href={`/${vertical}`} className="hover:text-blue-700">{config.name}</a>
+				<a href={`/${vertical}`} className="hover:text-blue-700">
+					{config.name}
+				</a>
 				<span className="mx-2">&rsaquo;</span>
 				<span className="text-gray-900">Folders</span>
 			</nav>
@@ -50,7 +54,8 @@ export default async function VerticalFoldersPage({ params }: PageProps) {
 				{config.name} folders van deze week
 			</h1>
 			<p className="text-gray-600 mb-10">
-				Bekijk de actuele folders van {config.description.toLowerCase()}. Elke week bijgewerkt.
+				Bekijk de actuele folders van {config.description.toLowerCase()}. Elke
+				week bijgewerkt.
 			</p>
 
 			<FoldersClient retailers={retailers} basePath={`/${vertical}`} />

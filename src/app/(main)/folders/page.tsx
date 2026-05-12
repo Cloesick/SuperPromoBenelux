@@ -5,7 +5,7 @@ import {
 	createBreadcrumbJsonLd,
 	createFAQJsonLd,
 } from "@/components/JsonLd";
-import { FoldersClient } from "./FoldersClient";
+import { FoldersClient } from "@/components/FoldersClient";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
