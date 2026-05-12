@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import puppeteer, { Page, Browser } from "puppeteer";
 import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
+import { syncDealsToDb } from "../lib/productsDb";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
@@ -293,7 +294,7 @@ export abstract class BaseScraper {
 				this.log(`Navigating to ${url}`);
 				try {
 					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
-				} catch (e) {
+				} catch {
 					this.log(`Navigation failed for ${url}, trying next...`);
 					continue;
 				}
@@ -824,6 +825,28 @@ export abstract class BaseScraper {
 
 			fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
 			this.log(`Saved to ${filePath}`);
+
+			// ---- Sync deals to database ----
+			if (uniqueDeals.length > 0) {
+				try {
+					const vertical = process.env.NEXT_PUBLIC_RETAIL_VERTICAL ?? "general";
+					const synced = await syncDealsToDb({
+						retailerSlug: this.retailerSlug,
+						retailerName: this.retailerName,
+						vertical,
+						deals: uniqueDeals,
+						scrapedAt: data.scrapedAt,
+						sourceMethod: ctx.methods[0],
+						sourceUrl: ctx.sourceUrls[0],
+						folderTitle: folders[0]?.title,
+					});
+					this.log(
+						`Synced ${synced}/${uniqueDeals.length} deal(s) to database`,
+					);
+				} catch (dbErr) {
+					this.log(`Database sync failed (non-fatal): ${dbErr}`);
+				}
+			}
 		} catch (error) {
 			this.log(`Scrape failed: ${error}`);
 			throw error;
@@ -1296,12 +1319,14 @@ export abstract class BaseScraper {
 
 		if (deals.length > 0)
 			this.log(`Extracted ${deals.length} deal(s) from HTML`);
+
 		return { deals: deals as Deal[], source: "html" };
 	}
 
 	// ---- Step 6: API response extraction -----------------------------------
 
 	protected async extractDealsFromApi(ctx: ScrapeContext): Promise<DealResult> {
+		void ctx;
 		// Subclasses can override to parse intercepted API JSON
 		// Default implementation: no-op
 		return { deals: [], source: "api" };
@@ -1992,7 +2017,8 @@ export abstract class BaseScraper {
 			sourceUrls: data.sourceUrls,
 			methods: data.methods,
 			folders: data.folders.map((f) => {
-				const { scrapedAt: _folderScrapedAt, ...rest } = f as any;
+				const rest = { ...(f as unknown as Record<string, unknown>) };
+				delete rest.scrapedAt;
 				return rest;
 			}),
 			deals: data.deals,
