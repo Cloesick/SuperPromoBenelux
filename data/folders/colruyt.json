@@ -72,17 +72,84 @@
         }
       ],
       "contentSource": "issuu",
-      "scrapedAt": "2026-05-12T10:09:40.505Z"
+      "scrapedAt": "2026-05-12T15:50:11.233Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-05-12T10:09:59.296Z",
+  "deals": [
+    {
+      "id": "pagetext-0",
+      "product": "Alle acties",
+      "discount": "actie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "pagetext-1",
+      "product": "Acties voor jou",
+      "discount": "Actie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "pagetext-2",
+      "product": "TOP promo's",
+      "discount": "promo",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "pagetext-3",
+      "product": "Vers in promo",
+      "discount": "promo",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "pagetext-4",
+      "product": "BBQ acties",
+      "discount": "actie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "pagetext-5",
+      "product": "Prijsreacties",
+      "discount": "actie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "pagetext-6",
+      "product": "Terugroepacties",
+      "discount": "actie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "pagetext-7",
+      "product": ".st0{fill:#A6A6A6;}",
+      "originalPrice": 0.25,
+      "promoPrice": 0.12,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "colruyt"
+    }
+  ],
+  "scrapedAt": "2026-05-12T15:50:15.509Z",
   "sourceUrls": [
     "https://www.colruyt.be/nl/folders",
-    "https://e.issuu.com/embed.html?d=colruyt_laagste_prijzen_-_digitale_4107bb559fec9a&u=colruytgroup&pageNumber=1&backgroundColor=%23353535&backgroundColorFullscreen=%23353535&pageLayout=doublePage&hideIssuuLogo=true&allowDownload=true&hideShareButton=true&ts=1778580519664"
+    "https://e.issuu.com/embed.html?d=colruyt_laagste_prijzen_-_digitale_4107bb559fec9a&u=colruytgroup&pageNumber=1&backgroundColor=%23353535&backgroundColorFullscreen=%23353535&pageLayout=doublePage&hideIssuuLogo=true&allowDownload=true&hideShareButton=true&ts=1778600947939"
   ],
   "methods": [
     "issuu",
-    "screenshot"
+    "screenshot",
+    "page-text"
   ]
 }

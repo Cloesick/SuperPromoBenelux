@@ -223,7 +223,9 @@ export type ContentSource =
 	| "yumpu"
 	| "issuu"
 	| "pdf"
+	| "pdf-text"
 	| "html"
+	| "page-text"
 	| "screenshot"
 	| "api"
 	| "unknown";

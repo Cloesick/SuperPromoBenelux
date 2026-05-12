@@ -73,17 +73,35 @@
       ],
       "embedUrl": "https://be.publications.action.com/?publitas_embed=embedded",
       "contentSource": "publitas",
-      "scrapedAt": "2026-05-12T09:40:19.858Z"
+      "scrapedAt": "2026-05-12T15:47:34.542Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-05-12T09:40:22.567Z",
+  "deals": [
+    {
+      "id": "pagetext-0",
+      "product": "Weekactie06-05 t/m 12-05",
+      "discount": "actie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-1",
+      "product": "De weekactie van volgende week zien?Download onze app",
+      "discount": "actie",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "action"
+    }
+  ],
+  "scrapedAt": "2026-05-12T15:47:39.619Z",
   "sourceUrls": [
     "https://www.action.com/nl-be/folder/",
     "https://be.publications.action.com/?publitas_embed=embedded"
   ],
   "methods": [
     "publitas",
-    "screenshot"
+    "screenshot",
+    "page-text"
   ]
 }

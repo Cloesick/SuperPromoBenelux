@@ -7,29 +7,224 @@
       "title": "Zooplus promoties",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
-      "pageCount": 1,
-      "thumbnailUrl": "/screenshots/zooplus-2026-w20-viewerimg-p1.png",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "/screenshots/zooplus-2026-w20-viewerimg-p1.png",
-          "deals": []
-        }
-      ],
-      "embedUrl": "",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://login.zooplus.be/auth/realms/zooplus/protocol/openid-connect/login-status-iframe.html",
       "pdfUrl": "https://media.zooplus.com/bilder/0/Formulairederetractation_FINAL_French_BE_3_1_0.pdf?utm-source=utm_source_teaser&analytics-id=qp85kbzn8noe-4nrsplIPDIK04oRbpJOwKD",
       "contentSource": "unknown",
-      "scrapedAt": "2026-05-12T10:13:02.286Z"
+      "scrapedAt": "2026-05-12T15:56:04.915Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-05-12T10:13:14.580Z",
+  "deals": [
+    {
+      "id": "pagetext-0",
+      "product": "Promos et cadeaux",
+      "discount": "Promo",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-1",
+      "product": "-10 %This is a stars rating area from zero to 5: 4/5(408)Litière Cat's Best Original pour chat20 L (environ 8,6 kg)  € /",
+      "promoPrice": 0.84,
+      "discount": "-10 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-2",
+      "product": "€ / l",
+      "promoPrice": 0.84,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-3",
+      "product": "This is a stars rating area from zero to 5: 4/5(31)Almo Nature 6 x 70 g pour chatHFC Natural thon du PacifiquePrix conse",
+      "originalPrice": 18.31,
+      "promoPrice": 7.69,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-4",
+      "product": "Prix conseillé    € / kg",
+      "originalPrice": 18.31,
+      "promoPrice": 7.69,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-5",
+      "product": "€ / kg",
+      "promoPrice": 9.62,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-6",
+      "product": "Almo Nature HFC Natural 6 x 70 g pour chatthon du PacifiquePrix conseillé    € / kg",
+      "originalPrice": 18.31,
+      "promoPrice": 7.69,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-7",
+      "product": "-20 %This is a stars rating area from zero to 5: 5/5(10)Gourmet Gold Les Mousselines 12 x 85 g pour chatagneau, haricots",
+      "originalPrice": 7.69,
+      "promoPrice": 7.54,
+      "discount": "-20 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-8",
+      "product": "À l'unité    € / kg",
+      "originalPrice": 32.49,
+      "promoPrice": 5.8,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-9",
+      "product": "Outil deShedding FURminator poils longs, S pour chien-25% Prix conseillé   €This is a stars rating area from zero to 5: ",
+      "promoPrice": 14.77,
+      "discount": "-25%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-10",
+      "product": "-25% Prix conseillé   €This is a stars rating area from zero to 5: 5/5(16)",
+      "promoPrice": 14.77,
+      "discount": "-25%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-11",
+      "product": "-25% Prix conseillé   €",
+      "promoPrice": 14.77,
+      "discount": "-25%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-12",
+      "product": "-25% Prix conseillé  €",
+      "discount": "-25%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-13",
+      "product": "Outil deShedding FURminator poils courts, M pour chien-25% Prix conseillé   €This is a stars rating area from zero to 5:",
+      "promoPrice": 18.37,
+      "discount": "-25%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-14",
+      "product": "FURminator DeShedding Tool pour chat24,99  €This is a stars rating area from zero to 5: 5/5(263)",
+      "promoPrice": 18.74,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-15",
+      "product": "€This is a stars rating area from zero to 5: 5/5(263)",
+      "promoPrice": 18.74,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-16",
+      "product": "-15 %This is a stars rating area from zero to 5: 5/5(13)Friandises Vitakraft Cat Stick Classic pour chatdinde, agneau (1",
+      "originalPrice": 37.36,
+      "promoPrice": 2.69,
+      "discount": "-15 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-17",
+      "product": "-23 %This is a stars rating area from zero to 5: 4/5(32)Litière minérale Catsan Hygiène plus pour chat2 x 18 LÀ l'unité ",
+      "originalPrice": 30.99,
+      "promoPrice": 0.86,
+      "discount": "-23 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-18",
+      "product": "À l'unité    € / l",
+      "originalPrice": 30.99,
+      "promoPrice": 0.86,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-19",
+      "product": "Wolf of Wilderness Adult “Expedition” 6 x 400 g pour chienlot mixte15,49  € / kg",
+      "promoPrice": 6.45,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-20",
+      "product": "€ / pièce",
+      "promoPrice": 0.23,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-21",
+      "product": "Avantages zooplusProgramme bonusProgramme de protection des animaux Programme éleveursCodes de réductionNewsletterAction",
+      "discount": "réduction",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-22",
+      "product": "Codes de réduction",
+      "discount": "réduction",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "zooplus"
+    }
+  ],
+  "scrapedAt": "2026-05-12T15:56:12.774Z",
   "sourceUrls": [
     "https://www.zooplus.be/shop/acties"
   ],
   "methods": [
     "unknown",
     "pdf",
-    "screenshot"
+    "page-text"
   ]
 }

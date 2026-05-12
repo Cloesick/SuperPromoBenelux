@@ -16,16 +16,16 @@
           "deals": []
         }
       ],
-      "embedUrl": "",
+      "embedUrl": "https://www.boots.com/_Incapsula_Resource?CWUDNSAI=23&xinfo=53-178794335-0%20PNNN%20RT%281778601143619%201384%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%2814%2c0%2c0%29%20U5&incident_id=567000060371990349-840371395869737397&edet=15&cinfo=0e00000000c3&rpinfo=0&cip=193.74.248.194&mth=GET",
       "contentSource": "unknown",
-      "scrapedAt": "2026-05-12T10:25:23.428Z"
+      "scrapedAt": "2026-05-12T15:52:42.130Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-05-12T10:25:26.262Z",
+  "scrapedAt": "2026-05-12T15:52:47.231Z",
   "sourceUrls": [
     "https://www.boots.com/offers",
-    "https://www.boots.com/_Incapsula_Resource?CWUDNSAI=23&xinfo=45-23591282-0%20PNNN%20RT%281778581501905%202072%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%2814%2c0%2c0%29%20U5&incident_id=567000060354120958-111462033525244333&edet=15&cinfo=0e00000000c3&rpinfo=0&cip=193.74.248.194&mth=GET"
+    "https://www.boots.com/_Incapsula_Resource?CWUDNSAI=23&xinfo=53-178794335-0%20PNNN%20RT%281778601143619%201384%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%2814%2c0%2c0%29%20U5&incident_id=567000060371990349-840371395869737397&edet=15&cinfo=0e00000000c3&rpinfo=0&cip=193.74.248.194&mth=GET"
   ],
   "methods": [
     "unknown",

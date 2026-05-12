@@ -7,84 +7,88 @@
       "title": "Delhaize folder van de week",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
-      "pageCount": 12,
-      "thumbnailUrl": "/screenshots/delhaize-2026-w20-viewerimg-p1.png",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p1.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 2,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p2.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 3,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p3.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 4,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p4.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 5,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p5.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 6,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p6.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 7,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p7.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 8,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p8.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 9,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p9.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 10,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p10.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 11,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p11.png",
-          "deals": []
-        },
-        {
-          "pageNumber": 12,
-          "imageUrl": "/screenshots/delhaize-2026-w20-viewerimg-p12.png",
-          "deals": []
-        }
-      ],
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
       "embedUrl": "https://view.publitas.com/delhaize-belgium-nl/w19-2026-nl/page/1?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/11013/3038254/pdfs/e698b8b0-5fc0-4552-9d17-2f723dda566a.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W19-2026-NL.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-05-12T09:37:15.613Z"
+      "scrapedAt": "2026-05-12T15:48:06.957Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-05-12T09:38:29.330Z",
+  "deals": [
+    {
+      "id": "delhaize-pdf-0-1778600914960",
+      "product": "Gratis levering  5 PRODUCTEN = GRATIS LEVERING 2 PRODUCTEN = GRATIS LEVERING",
+      "discount": "1+1 GRATIS",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "delhaize"
+    },
+    {
+      "id": "delhaize-pdf-1-1778600914960",
+      "product": "Pralines  Guylian Combineer & profiteer Van 200 g tot 250 g Bijv.: 2 x zeevruchten, original, 250 g /kg       /2  Aardbeien  Schaal 500 g /kg  TOOLBOX: BELHAIZE AND MADE IN BEL LOGO  Chipolata  Combineer & profiteer Van 180 g tot 960 g of variabel gewicht Bijv.: 2 x varkenschipolata, 4 stuks, 300 g /kg       /2 schalen  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  2 99  1+1 SCHAAL GRATIS  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  MOEDERDAG   !  1+1 GRATIS  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER",
+      "discount": "1+2 GRATIS",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "delhaize"
+    },
+    {
+      "id": "delhaize-pdf-2-1778600914960",
+      "product": "Aardbeien  Schaal 500 g /kg Wandelen in het bos, ravotten met de kleinkinderen, na 2 jaar weer beginnen met sporten, dansen in de regen… Ja, volop leven begint bij Delhaize! Want bij ons vind je kraakverse groenten, heerlijk fris fruit en geweldige boosters die zorgen voor de nodige vitaliteit van ’s morgens vroeg tot ’s avonds laat. Zo haal je makkelijk meer uit elke dag.  Go, go, go** !  2 99 *  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  *   Aanbiedingen enkel geldig voor houders van een (al dan niet geregistreerde) Superplus kaart. Aanbieding geldig van 07/05/2026 tot en met 13/05/2026 in alle deelnemende Delhaize-winkels en op delhaize.be, zolang de voorraad strekt. Aanbieding niet cumuleerbaar met andere promoties. Informatie en voorwaarden beschikbaar in de winkel en op delhaize.be/superplus. **   Te gebruiken als onderdeel van een gevarieerde, evenwichtige voeding en een gezonde levensstijl. De aanbevolen dagelijkse dosis niet overschrijden.  VOLOP LEVEN START MET",
+      "discount": "-20 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "delhaize"
+    },
+    {
+      "id": "delhaize-pdf-3-1778600914960",
+      "product": "Broccoli  Stuk      -20 %  2 99  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  VOOR 2  * Te gebruiken als onderdeel van een gevarieerde, evenwichtige voeding en een gezonde levensstijl. De aanbevolen dagelijkse dosis niet overschrijden.  VOOR 2  €4  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  Yoghurt  Activia Combineer & profiteer 4 x 125 g Bijv.: 2 x vezels, muesli – 4/kg   Mango  Stuk – /stuk",
+      "discount": "-50 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "delhaize"
+    },
+    {
+      "id": "delhaize-pdf-4-1778600914960",
+      "product": "Corn ribs, zoete aardappel- of pompoenwedges  Combineer & profiteer Van 300 g tot 400 g Bijv.: 2 x corn ribs, 300 g - /kg       /2  Fruit  Holy Berry Combineer & profiteer 150 g of 300 g Bijv.: 2 x açai bowl, açaibessen/banaan/blauwe bessen, bio, 150 g - /kg       /2  * Te gebruiken als onderdeel van een gevarieerde, evenwichtige voeding en een gezonde levensstijl. De aanbevolen dagelijkse dosis niet overschrijden.  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  -50 % 2 DE  TEGEN  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  -50 % 2 DE  TEGEN",
+      "discount": "-50 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "delhaize"
+    },
+    {
+      "id": "delhaize-pdf-5-1778600914960",
+      "product": "Bereide schotel, salade of pasta  Foodmaker Combineer & profiteer Van 250 g tot 375 g Bijv.: 2 x noedels rund proteïne, 375 g - /kg       /2  Eiwitrijk product  XXL Nutrition of N'Joy Combineer & profiteer Van 55 g tot 500 g of van 310 ml tot 500 ml Bijv.: 2 x crunchy proteïnereep, gezouten karamel, XXL Nutrition, 60 g – /kg       /2  * Te gebruiken als onderdeel van een gevarieerde, evenwichtige voeding en een gezonde levensstijl. De aanbevolen dagelijkse dosis niet overschrijden.  Snel extra eiwitten voor beter spierherstel - 19 g eiwit per portie (60 g)  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  -50 % 2 DE  TEGEN",
+      "discount": "-50 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "delhaize"
+    },
+    {
+      "id": "delhaize-pdf-6-1778600914960",
+      "product": "Kerstrostomaten  350 g – /kg       /2  Ontdek tal van recepten met onze producten in de aanbieding!  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  -50 % 2 DE  TEGEN",
+      "discount": "-40 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "delhaize"
+    },
+    {
+      "id": "delhaize-pdf-7-1778600914960",
+      "product": "Rijst   (behalve gestoomde rijst) , zaden, dessert, rijsttoast of -repen  Bosto Combineer & profiteer Van 5 x 18 g tot 500 g Bijv.: 3 x rijstrepen, pure chocolade, 5 x 18 g – /kg       /3  Kabeljauwfilet  /kg   /kg   /2  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER!  -40 % 2 DE  TEGEN  2+1 GRATIS  GEEN FEEST ZONDER SUPERPLUS. SCAN HIER",
+      "discount": "-30 %",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "delhaize"
+    }
+  ],
+  "scrapedAt": "2026-05-12T15:48:34.964Z",
   "sourceUrls": [
     "https://www.delhaize.be/nl/folder"
   ],
   "methods": [
     "publitas",
     "pdf",
-    "screenshot"
+    "pdf-text"
   ]
 }

@@ -3,6 +3,7 @@ import path from "path";
 import puppeteer, { Page, Browser } from "puppeteer";
 import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 import { syncDealsToDb } from "../lib/productsDb";
+import { extractDealsFromPdf } from "./extractDealsFromText";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
@@ -738,6 +739,63 @@ export abstract class BaseScraper {
 				}
 			}
 
+			// ---- Alternative extraction fallbacks ----
+			if (allDeals.length === 0) {
+				// Fallback A: PDF text extraction (if a PDF URL was found)
+				const pdfUrl = folders[0]?.pdfUrl;
+				if (pdfUrl) {
+					this.log(`Trying PDF text extraction from ${pdfUrl.slice(0, 80)}...`);
+					try {
+						const dates = this.getCurrentWeekDates();
+						const pdfDeals = await extractDealsFromPdf(
+							pdfUrl,
+							this.retailerSlug,
+							dates.from,
+							dates.until,
+						);
+						if (pdfDeals.length > 0) {
+							allDeals.push(...pdfDeals);
+							if (!ctx.methods.includes("pdf-text"))
+								ctx.methods.push("pdf-text");
+							this.log(
+								`PDF text extraction yielded ${pdfDeals.length} deal(s)`,
+							);
+						}
+					} catch (e) {
+						this.log(`PDF text extraction failed: ${e}`);
+					}
+				}
+			}
+
+			if (allDeals.length === 0) {
+				// Fallback B: Generic page text extraction from dealUrls
+				const dealPages = this.config.dealUrls ?? [this.config.folderUrls[0]];
+				for (const dealUrl of dealPages) {
+					this.log(`Trying generic text extraction from ${dealUrl}`);
+					try {
+						await page.goto(dealUrl, {
+							waitUntil: "networkidle2",
+							timeout: 30000,
+						});
+						await this.dismissCookieConsent(page);
+						if (await this.isBotChallengePage(page)) break;
+
+						const pageDeals = await this.extractDealsFromPageText(ctx);
+						if (pageDeals.length > 0) {
+							allDeals.push(...pageDeals);
+							if (!ctx.methods.includes("page-text"))
+								ctx.methods.push("page-text");
+							this.log(
+								`Generic text extraction yielded ${pageDeals.length} deal(s) from ${dealUrl}`,
+							);
+							break;
+						}
+					} catch {
+						this.log(`Generic text extraction failed for ${dealUrl}`);
+					}
+				}
+			}
+
 			// ---- Deduplicate deals ----
 			const uniqueDeals = this.deduplicateDeals(allDeals);
 
@@ -1330,6 +1388,108 @@ export abstract class BaseScraper {
 		// Subclasses can override to parse intercepted API JSON
 		// Default implementation: no-op
 		return { deals: [], source: "api" };
+	}
+
+	// ---- Step 6b: Generic page text extraction (fallback) ------------------
+
+	protected async extractDealsFromPageText(
+		ctx: ScrapeContext,
+	): Promise<Deal[]> {
+		const { page } = ctx;
+		const dates = this.getCurrentWeekDates();
+
+		const fnSrc = `(
+			function (retailerSlug, validFrom, validUntil) {
+				// Get all text blocks from the page with their structural context
+				const allElements = document.querySelectorAll(
+					'[class*="product"], [class*="Product"], [class*="promo"], [class*="Promo"], ' +
+					'[class*="deal"], [class*="Deal"], [class*="offer"], [class*="Offer"], ' +
+					'[class*="item"], [class*="card"], [class*="Card"], ' +
+					'article, li, [data-product], [data-item], [role="listitem"]'
+				);
+
+				const results = [];
+				const seen = new Set();
+
+				for (const el of allElements) {
+					const text = (el.textContent || "").trim();
+					if (text.length < 10 || text.length > 500) continue;
+
+					// Look for price patterns in this element
+					const euroMatch = text.match(/€\\s*(\\d+[.,]\\d{2})/g);
+					const nakedMatch = text.match(/\\b(\\d{1,3}[.,]\\d{2})\\b/g);
+					const priceMatches = euroMatch || (nakedMatch && nakedMatch.length >= 2 ? nakedMatch : null);
+					
+					// Look for discount patterns
+					const discountMatch = text.match(
+						/(-\\d+\\s*%|\\d+\\s*\\+\\s*\\d+|gratis|korting|sale|actie|aanbieding|promo|réduction|½\\s*prijs|halve\\s*prijs)/i
+					);
+
+					if (!priceMatches && !discountMatch) continue;
+
+					// Extract product name: first meaningful text line
+					const lines = text.split(/\\n/).map(l => l.trim()).filter(l => l.length > 2);
+					let productName = "";
+					for (const line of lines) {
+						// Skip lines that are mostly numbers/prices
+						const cleaned = line.replace(/€\\s*\\d+[.,]\\d{2}/g, "").replace(/\\b\\d{1,3}[.,]\\d{2}\\b/g, "").trim();
+						if (cleaned.length >= 3 && !cleaned.match(/^[\\d\\s%€,.+-]+$/)) {
+							productName = cleaned.slice(0, 120);
+							break;
+						}
+					}
+
+					if (!productName || productName.length < 3) continue;
+					
+					// Deduplicate
+					const key = productName.toLowerCase().slice(0, 40);
+					if (seen.has(key)) continue;
+					seen.add(key);
+
+					// Parse prices
+					let originalPrice, promoPrice;
+					if (priceMatches) {
+						const prices = priceMatches.map(p =>
+							parseFloat(p.replace("€", "").replace(",", ".").trim())
+						).filter(p => !isNaN(p) && p > 0 && p < 10000);
+						
+						if (prices.length >= 2) {
+							originalPrice = Math.max(...prices);
+							promoPrice = Math.min(...prices);
+						} else if (prices.length === 1) {
+							promoPrice = prices[0];
+						}
+					}
+
+					results.push({
+						id: 'pagetext-' + results.length,
+						product: productName,
+						originalPrice,
+						promoPrice,
+						discount: discountMatch ? discountMatch[0].trim() : undefined,
+						validFrom,
+						validUntil,
+						retailerSlug,
+					});
+				}
+				return results;
+			}
+		)`;
+
+		try {
+			const deals = await page.evaluate(
+				(src: string, args: string[]) => {
+					const fn = (0, eval)(src) as (...a: any[]) => any;
+					return fn(args[0], args[1], args[2]);
+				},
+				fnSrc,
+				[this.retailerSlug, dates.from, dates.until],
+			);
+			return Array.isArray(deals) ? (deals as Deal[]) : [];
+		} catch (err) {
+			this.log(`Generic page text extraction error: ${err}`);
+			return [];
+		}
 	}
 
 	protected async isOfflinePublicationUrl(

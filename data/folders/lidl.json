@@ -7,30 +7,60 @@
       "title": "Lidl folder van de week",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
-      "pageCount": 1,
-      "thumbnailUrl": "/screenshots/lidl-2026-w20-viewerimg-p1.png",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "/screenshots/lidl-2026-w20-viewerimg-p1.png",
-          "deals": []
-        }
-      ],
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
       "embedUrl": "https://folder-nl.lidl.be/nl-folder-11-05-16-05",
       "pdfUrl": "https://folder-nl.lidl.be/97031/3028948/pdfs/b7e291bd-34c4-4b2a-ad4c-57d31204b7f4.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252011-05-16-05.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-05-12T09:30:24.537Z"
+      "scrapedAt": "2026-05-12T15:46:19.463Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-05-12T09:30:37.457Z",
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "Alleszuiger PARKSIDE® PWS20",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "lidl"
+    },
+    {
+      "id": "html-7",
+      "product": "Robotstofzuiger",
+      "discount": "Ook in de winkel van 08/05 - 21/05",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "lidl"
+    },
+    {
+      "id": "html-14",
+      "product": "Ultrasone marterverjager met flitslicht",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "lidl"
+    },
+    {
+      "id": "html-21",
+      "product": "Vervangspoelen voor grastrimmer",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "lidl"
+    },
+    {
+      "id": "html-28",
+      "product": "Campingtafel met 4 krukken",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "lidl"
+    }
+  ],
+  "scrapedAt": "2026-05-12T15:46:24.103Z",
   "sourceUrls": [
     "https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
     "https://folder-nl.lidl.be/nl-folder-11-05-16-05"
   ],
   "methods": [
     "publitas",
-    "pdf",
-    "screenshot"
+    "pdf"
   ]
 }
