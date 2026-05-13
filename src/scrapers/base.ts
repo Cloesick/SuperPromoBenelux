@@ -1426,7 +1426,7 @@ export abstract class BaseScraper {
 					if (text.length < 15 || text.length > 300) continue;
 
 					// MUST have at least one euro price — this is the key quality gate
-					const euroMatch = text.match(/€\\s*(\\d+[.,]\\d{2})/g);
+					const euroMatch = text.match(/€\\s*(\\d{1,3}(?:\\.\\d{3})*,\\d{2}|\\d+[,.]\\d{2})/g);
 					if (!euroMatch || euroMatch.length === 0) continue;
 
 					// Also look for percentage discounts
@@ -1437,7 +1437,7 @@ export abstract class BaseScraper {
 					let productName = "";
 					for (const line of lines) {
 						const cleaned = line
-							.replace(/€\\s*\\d+[.,]\\d{2}/g, "")
+							.replace(/€\\s*\\d{1,3}(?:\\.\\d{3})*[,.]\\d{2}/g, "")
 							.replace(/\\b\\d{1,3}[.,]\\d{2}\\b/g, "")
 							.replace(/-?\\d+\\s*%/g, "")
 							.trim();
