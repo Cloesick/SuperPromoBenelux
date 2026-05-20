@@ -2,88 +2,274 @@
   "retailer": "action",
   "folders": [
     {
-      "id": "action-2026-w16-folder",
+      "id": "action-2026-w21-folder",
       "retailerSlug": "action",
       "title": "Action folder van de week",
-      "validFrom": "2026-04-13",
-      "validUntil": "2026-04-19",
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
       "pageCount": 12,
-      "thumbnailUrl": "/screenshots/action-2026-w16-viewerimg-p1.png",
+      "thumbnailUrl": "/screenshots/action-2026-w21-viewerimg-p1.png",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p1.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p1.png",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p2.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p2.png",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p3.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p3.png",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p4.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p4.png",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p5.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p5.png",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p6.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p6.png",
           "deals": []
         },
         {
           "pageNumber": 7,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p7.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p7.png",
           "deals": []
         },
         {
           "pageNumber": 8,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p8.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p8.png",
           "deals": []
         },
         {
           "pageNumber": 9,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p9.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p9.png",
           "deals": []
         },
         {
           "pageNumber": 10,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p10.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p10.png",
           "deals": []
         },
         {
           "pageNumber": 11,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p11.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p11.png",
           "deals": []
         },
         {
           "pageNumber": 12,
-          "imageUrl": "/screenshots/action-2026-w16-viewerimg-p12.png",
+          "imageUrl": "/screenshots/action-2026-w21-viewerimg-p12.png",
           "deals": []
         }
       ],
       "embedUrl": "https://be.publications.action.com/?publitas_embed=embedded",
       "contentSource": "publitas",
-      "scrapedAt": "2026-04-14T13:21:28.400Z"
+      "scrapedAt": "2026-05-20T18:04:16.464Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-04-14T13:21:31.076Z",
+  "deals": [
+    {
+      "id": "pagetext-0",
+      "product": "Energizer alkaline batterijen AA10 stuks/st229Weekactie",
+      "promoPrice": 0.23,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-1",
+      "product": "Daili wasparfum White Musk150 ml/l249Weekactie",
+      "promoPrice": 16.6,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-2",
+      "product": "2-in-1 strandlaken en strandtas75 x 150 cm | diverse kleuren/m2795Weekactie",
+      "promoPrice": 7.04,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-3",
+      "product": "Bestway kinderzwembadØ 122 x 25 cm/st349Weekactie",
+      "promoPrice": 3.49,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-4",
+      "product": "Caribbean Bronze tanning lotionSPF 30 | 200 ml/l299Weekactie",
+      "promoPrice": 14.95,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-5",
+      "product": "Houten terrastegels4 stuks | 31 x 31 x 2,5 cm/st595Weekactie",
+      "promoPrice": 1.49,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-6",
+      "product": "WD-40 multispray175 ml/l299Weekactie",
+      "promoPrice": 17.09,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-7",
+      "product": "Lunea na-de-beet-crème75 ml/l122Weekactie",
+      "promoPrice": 16.27,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-8",
+      "product": "Caribbean Bronze aftersun gel200 ml/l249Weekactie",
+      "promoPrice": 12.45,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-9",
+      "product": "Draadloze XXL tuinlampØ 23,5 x 107 cm | 120 lumen/st2995Weekactie",
+      "promoPrice": 29.95,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-10",
+      "product": "3M duct tape50 mm x 25 m | diverse kleuren/m199Weekactie",
+      "promoPrice": 0.08,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-11",
+      "product": "Re-load solar powerbank20 watt | 20.000 mAh/st1395Weekactie",
+      "promoPrice": 13.95,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-12",
+      "product": "Diamond painting tas38,5 x 30 cm | diverse varianten/st249Weekactie",
+      "promoPrice": 2.49,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-13",
+      "product": "Sau'cee hot saus XL1 liter/kg339Weekactie",
+      "promoPrice": 3.48,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-14",
+      "product": "Rugzak10 x 26,5 x 39,5 cm | diverse kleuren/st699Weekactie",
+      "promoPrice": 6.99,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-15",
+      "product": "HaarklemmenDiverse varianten/st079Weekactie",
+      "promoPrice": 0.02,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-16",
+      "product": "Sau'cee knoflooksaus XL1 liter/kg339Weekactie",
+      "promoPrice": 3.48,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-17",
+      "product": "MAOAM Stripes Football Fun300 gram/kg199Weekactie",
+      "promoPrice": 6.63,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-18",
+      "product": "Lenor wasverzachter Ochtenddauw126 wasbeurten/l799Weekactie",
+      "promoPrice": 3.02,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-19",
+      "product": "Haribo F!ZZ Sour400 gram/kg229Weekactie",
+      "promoPrice": 5.73,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-20",
+      "product": "Daili wasparfum Lotus Dream150 ml/l249Weekactie",
+      "promoPrice": 16.6,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-21",
+      "product": "Alvira gezichtsreinigingsdoekjes Sensitive3 x 25 stuks/st159Weekactie",
+      "promoPrice": 0.02,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-22",
+      "product": "Lichtdoorlatend rolgordijn – 120 x 160 cm - witKettingbediening | breedte inkortbaar/m21995Op voorra",
+      "promoPrice": 10.39,
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "retailerSlug": "action"
+    }
+  ],
+  "scrapedAt": "2026-05-20T18:04:21.046Z",
   "sourceUrls": [
     "https://www.action.com/nl-be/folder/",
     "https://be.publications.action.com/?publitas_embed=embedded"
   ],
   "methods": [
     "publitas",
-    "screenshot"
+    "screenshot",
+    "page-text"
   ]
 }

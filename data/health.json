@@ -1,0 +1,157 @@
+{
+  "generatedAt": "2026-05-20T18:04:26.134Z",
+  "retailers": [
+    {
+      "slug": "albert-heijn",
+      "name": "Albert Heijn",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-20T17:55:45.408Z",
+      "folderCount": 1,
+      "dealCount": 74,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://view.publitas.com/ah/bonus-week-21-2026/page/1?publitas_embed=embedded",
+          "status": null,
+          "live": true,
+          "error": "fetch failed"
+        },
+        {
+          "url": "https://view.publitas.com/126/3057029/pdfs/f866d12b-f647-4979-8a86-63eb98d0c92e.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-21-2026.pdf",
+          "status": null,
+          "live": true,
+          "error": "fetch failed"
+        }
+      ]
+    },
+    {
+      "slug": "lidl",
+      "name": "Lidl",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-20T17:36:42.803Z",
+      "folderCount": 1,
+      "dealCount": 5,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder-nl.lidl.be/nl-folder-18-05-23-05",
+          "status": null,
+          "live": true,
+          "error": "fetch failed"
+        },
+        {
+          "url": "https://folder-nl.lidl.be/97031/3049044/pdfs/a42e13e0-7135-4d0d-a814-7183a82ba03d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252018-05-23-05.pdf",
+          "status": null,
+          "live": true,
+          "error": "fetch failed"
+        }
+      ]
+    },
+    {
+      "slug": "delhaize",
+      "name": "Delhaize",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-20T17:58:29.321Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://view.publitas.com/delhaize-belgium-nl/w20-2026-nl/page/1?publitas_embed=embedded",
+          "status": null,
+          "live": true,
+          "error": "fetch failed"
+        },
+        {
+          "url": "https://view.publitas.com/11013/3061696/pdfs/6ce16e60-c792-4b53-a9e1-b8122e941440.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W20-2026-NL.pdf",
+          "status": null,
+          "live": true,
+          "error": "fetch failed"
+        }
+      ]
+    },
+    {
+      "slug": "colruyt",
+      "name": "Colruyt",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-20T18:02:17.267Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "aldi",
+      "name": "ALDI",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-20T18:03:18.819Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder.aldi.be/import-folder/2026/2621-nl/?HideStandardUI=true&HideNavigationBars=true",
+          "status": null,
+          "live": true,
+          "error": "fetch failed"
+        }
+      ]
+    },
+    {
+      "slug": "action",
+      "name": "Action",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-05-20T18:04:21.046Z",
+      "folderCount": 1,
+      "dealCount": 23,
+      "hasEmbed": true,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://be.publications.action.com/?publitas_embed=embedded",
+          "status": null,
+          "live": true,
+          "error": "fetch failed"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "fresh": 6,
+    "fallback": 0,
+    "stale": 0,
+    "missing": 0,
+    "withErrors": 0,
+    "withDeadUrls": 0
+  }
+}

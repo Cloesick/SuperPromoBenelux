@@ -2,85 +2,30 @@
   "retailer": "aldi",
   "folders": [
     {
-      "id": "aldi-2026-w16-folder",
+      "id": "aldi-2026-w21-folder",
       "retailerSlug": "aldi",
       "title": "ALDI folder van de week",
-      "validFrom": "2026-04-13",
-      "validUntil": "2026-04-19",
-      "pageCount": 12,
-      "thumbnailUrl": "/screenshots/aldi-2026-w16-viewerimg-p1.jpg",
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/aldi-2026-w21-viewerimg-p1.png",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p1.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 2,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p2.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 3,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p3.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 4,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p4.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 5,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p5.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 6,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p6.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 7,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p7.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 8,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p8.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 9,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p9.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 10,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p10.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 11,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p11.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 12,
-          "imageUrl": "/screenshots/aldi-2026-w16-viewerimg-p12.jpg",
+          "imageUrl": "/screenshots/aldi-2026-w21-viewerimg-p1.png",
           "deals": []
         }
       ],
-      "embedUrl": "https://folder.aldi.be/import-folder/2026/2616-nl?HideStandardUI=true&HideNavigationBars=true",
+      "embedUrl": "https://folder.aldi.be/import-folder/2026/2621-nl/?HideStandardUI=true&HideNavigationBars=true",
       "contentSource": "unknown",
-      "scrapedAt": "2026-04-14T13:22:02.208Z"
+      "scrapedAt": "2026-05-20T18:03:15.183Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-04-14T13:22:03.638Z",
+  "scrapedAt": "2026-05-20T18:03:18.819Z",
   "sourceUrls": [
     "https://www.aldi.be/nl/onze-folders/folder-van-deze-week.html",
-    "https://folder.aldi.be/import-folder/2026/2616-nl"
+    "https://folder.aldi.be/import-folder/2026/2621-nl/"
   ],
   "methods": [
     "unknown",

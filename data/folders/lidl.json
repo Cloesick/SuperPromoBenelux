@@ -2,62 +2,64 @@
   "retailer": "lidl",
   "folders": [
     {
-      "id": "lidl-2026-w16-folder",
+      "id": "lidl-2026-w21-folder",
       "retailerSlug": "lidl",
       "title": "Lidl folder van de week",
-      "validFrom": "2026-04-13",
-      "validUntil": "2026-04-19",
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
       "pageCount": 0,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://folder-nl.lidl.be/nl-folder-13-04-18-04",
-      "pdfUrl": "https://folder-nl.lidl.be/97031/2961502/pdfs/1974a1b3-5d61-41b9-a164-616cd8cead22.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252013-04-18-04.pdf",
+      "embedUrl": "https://folder-nl.lidl.be/nl-folder-18-05-23-05",
+      "pdfUrl": "https://folder-nl.lidl.be/97031/3049044/pdfs/a42e13e0-7135-4d0d-a814-7183a82ba03d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252018-05-23-05.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-04-14T10:37:47.383Z"
+      "scrapedAt": "2026-05-20T17:36:28.070Z"
     }
   ],
   "deals": [
     {
       "id": "html-0",
-      "product": "Accu 20 V, 4 Ah PARKSIDE® PAP204",
-      "discount": "Ook in de winkel van 10/04 - 23/04",
-      "validFrom": "2026-04-13",
-      "validUntil": "2026-04-19",
+      "product": "Microvezel satijnen dekbedovertrek, draaibaar, 240 x 220 cm",
+      "discount": "Ook in de winkel van 22/05 - 04/06",
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
       "retailerSlug": "lidl"
     },
     {
-      "id": "html-8",
-      "product": "Vervangspoelen voor grastrimmer",
-      "validFrom": "2026-04-13",
-      "validUntil": "2026-04-19",
+      "id": "html-7",
+      "product": "Accu 20 V, 4 Ah PARKSIDE® PAP204",
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
       "retailerSlug": "lidl"
     },
     {
       "id": "html-14",
-      "product": "Elektrische tuinfrees PARKSIDE® PEBH1500",
-      "validFrom": "2026-04-13",
-      "validUntil": "2026-04-19",
+      "product": "Jersey hoeslaken, 180-200 x 200 cm",
+      "discount": "Ook in de winkel van 22/05 - 04/06",
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
       "retailerSlug": "lidl"
     },
     {
-      "id": "html-21",
-      "product": "Accu-compressor, 20 V PARKSIDE® PAKT20",
-      "validFrom": "2026-04-13",
-      "validUntil": "2026-04-19",
+      "id": "html-22",
+      "product": "Houtskoolbarbecue",
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
       "retailerSlug": "lidl"
     },
     {
-      "id": "html-28",
-      "product": "Accubosmaaier en grastrimmer, 40 V PARKSIDE PERFORMANCE® PPAFS40",
-      "validFrom": "2026-04-13",
-      "validUntil": "2026-04-19",
+      "id": "html-29",
+      "product": "Jersey hoeslaken, 140-160 x 200 cm",
+      "discount": "Ook in de winkel van 22/05 - 04/06",
+      "validFrom": "2026-05-18",
+      "validUntil": "2026-05-24",
       "retailerSlug": "lidl"
     }
   ],
-  "scrapedAt": "2026-04-14T10:37:51.443Z",
+  "scrapedAt": "2026-05-20T17:36:42.803Z",
   "sourceUrls": [
     "https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
-    "https://folder-nl.lidl.be/nl-folder-13-04-18-04"
+    "https://folder-nl.lidl.be/nl-folder-18-05-23-05"
   ],
   "methods": [
     "publitas",
