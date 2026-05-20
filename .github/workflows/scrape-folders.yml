@@ -4,6 +4,11 @@ on:
   schedule:
     # Daily (UTC). Adjust if you want retailer-day-specific runs.
     - cron: "30 4 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "src/scrapers/**"
+      - ".github/workflows/scrape-folders.yml"
   workflow_dispatch: {}
 
 permissions:
@@ -43,6 +48,7 @@ jobs:
           # GitHub-hosted runners have Chrome installed.
           # We use it because puppeteer_skip_download=true disables bundled Chromium.
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          NODE_TLS_REJECT_UNAUTHORIZED: "0"
         run: npm run scrape
 
       - name: Health check
