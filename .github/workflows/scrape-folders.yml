@@ -2,8 +2,9 @@ name: Scrape folders
 
 on:
   schedule:
-    # Daily (UTC). Adjust if you want retailer-day-specific runs.
+    # Morning + afternoon for redundancy (UTC)
     - cron: "30 4 * * *"
+    - cron: "30 14 * * *"
   push:
     branches: [main]
     paths:
