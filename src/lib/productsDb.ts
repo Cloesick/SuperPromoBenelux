@@ -25,15 +25,24 @@ export function inferPromoType(deal: Deal): string {
 	const combined = `${label} ${product}`;
 
 	// BOGO / multi-buy patterns (Dutch + French + English)
-	if (/\b(1\+1|2\+1|3\+1|koop \d+ betaal|achetez \d+ payez|buy \d+ get)\b/i.test(combined)) {
+	if (
+		/\b(1\+1|2\+1|3\+1|koop \d+ betaal|achetez \d+ payez|buy \d+ get)\b/i.test(
+			combined,
+		)
+	) {
 		return "bogo";
 	}
-	if (/\b(\d+\s*voor\s*€?\d|\d+\s*pour\s*€?\d|\d+\s*for\s*€?\d)/i.test(combined)) {
+	if (
+		/\b(\d+\s*voor\s*€?\d|\d+\s*pour\s*€?\d|\d+\s*for\s*€?\d)/i.test(combined)
+	) {
 		return "multi_buy";
 	}
 
 	// Percentage off
-	if (/-?\d+\s*%/.test(label) || /korting.*%|%.*korting|réduction.*%/i.test(combined)) {
+	if (
+		/-?\d+\s*%/.test(label) ||
+		/korting.*%|%.*korting|réduction.*%/i.test(combined)
+	) {
 		return "percentage_off";
 	}
 
@@ -58,7 +67,11 @@ export function inferPromoType(deal: Deal): string {
 	}
 
 	// Has a promo price that differs from original → fixed price promo
-	if (deal.promoPrice != null && deal.originalPrice != null && deal.promoPrice < deal.originalPrice) {
+	if (
+		deal.promoPrice != null &&
+		deal.originalPrice != null &&
+		deal.promoPrice < deal.originalPrice
+	) {
 		return "fixed_price";
 	}
 
@@ -75,7 +88,9 @@ export function inferPromoType(deal: Deal): string {
 // ---------------------------------------------------------------------------
 
 export function getIsoWeek(date: Date): number {
-	const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+	const d = new Date(
+		Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
+	);
 	const dayNum = d.getUTCDay() || 7;
 	d.setUTCDate(d.getUTCDate() + 4 - dayNum);
 	const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
@@ -83,7 +98,9 @@ export function getIsoWeek(date: Date): number {
 }
 
 export function getIsoWeekYear(date: Date): number {
-	const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+	const d = new Date(
+		Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
+	);
 	const dayNum = d.getUTCDay() || 7;
 	d.setUTCDate(d.getUTCDate() + 4 - dayNum);
 	return d.getUTCFullYear();
@@ -108,7 +125,16 @@ export async function syncDealsToDb(opts: SyncOptions): Promise<number> {
 	const sql = getSql();
 	if (!sql) return 0;
 
-	const { deals, retailerSlug, retailerName, vertical, scrapedAt, sourceMethod, sourceUrl, folderTitle } = opts;
+	const {
+		deals,
+		retailerSlug,
+		retailerName,
+		vertical,
+		scrapedAt,
+		sourceMethod,
+		sourceUrl,
+		folderTitle,
+	} = opts;
 
 	if (deals.length === 0) return 0;
 
@@ -155,7 +181,10 @@ export async function syncDealsToDb(opts: SyncOptions): Promise<number> {
 			synced++;
 		} catch (err) {
 			// Log but don't fail the entire sync for one bad row
-			console.error(`[productsDb] Failed to sync deal "${deal.product}" for ${retailerSlug}:`, err);
+			console.error(
+				`[productsDb] Failed to sync deal "${deal.product}" for ${retailerSlug}:`,
+				err,
+			);
 		}
 	}
 
@@ -282,16 +311,15 @@ export async function getProductsByCategory(
 	}
 }
 
-export async function getProductStats(opts?: {
-	days?: number;
-}): Promise<{
+export async function getProductStats(opts?: { days?: number }): Promise<{
 	total: number;
 	retailers: number;
 	categories: number;
 	latestScrape: string | null;
 }> {
 	const sql = getSql();
-	if (!sql) return { total: 0, retailers: 0, categories: 0, latestScrape: null };
+	if (!sql)
+		return { total: 0, retailers: 0, categories: 0, latestScrape: null };
 
 	const days = Math.min(Math.max(opts?.days ?? 30, 1), 365);
 	const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
@@ -306,7 +334,10 @@ export async function getProductStats(opts?: {
 			FROM promo_products
 			WHERE scraped_at >= ${since}
 		`;
-		const row = (result?.[0] ?? {}) as Record<string, unknown>;
+		const row = ((result as Record<string, unknown>[])?.[0] ?? {}) as Record<
+			string,
+			unknown
+		>;
 		return {
 			total: (row.total as number) ?? 0,
 			retailers: (row.retailers as number) ?? 0,
