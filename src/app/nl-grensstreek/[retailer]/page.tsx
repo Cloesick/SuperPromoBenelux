@@ -47,7 +47,7 @@ export default async function NlBorderRetailerPage({ params }: PageProps) {
 	const currentFolder = getCurrentFolder(slug);
 	const outboundUrl = `/out/${slug}`;
 
-	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".svg");
+	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".webp");
 
 	return (
 		<div className="max-w-6xl mx-auto px-4 py-12">

@@ -9,7 +9,7 @@ interface RetailerCardProps {
 }
 
 export function RetailerCard({ retailer, folderCount }: RetailerCardProps) {
-	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".svg");
+	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".webp");
 
 	return (
 		<Link

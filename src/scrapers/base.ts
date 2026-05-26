@@ -1607,7 +1607,7 @@ export abstract class BaseScraper {
 				// If we can't scroll further (or PDF renderer doesn't scroll), stop.
 				if (i > 1 && scrollY < y - 5) break;
 
-				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				await page.screenshot({
 					path: filepath,
@@ -1810,7 +1810,7 @@ export abstract class BaseScraper {
 					);
 				}
 
-				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
 				if (clip) {
@@ -1867,7 +1867,7 @@ export abstract class BaseScraper {
 					);
 				}
 
-				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
 				if (clip) {
@@ -1884,7 +1884,7 @@ export abstract class BaseScraper {
 			}
 		}
 
-		const filename = `${this.generateFolderId("viewerimg-p1")}.png`;
+		const filename = `${this.generateFolderId("viewerimg-p1")}.webp`;
 		const filepath = path.join(SCREENSHOT_DIR, filename);
 
 		if (await isOfflinePublication()) {
@@ -1961,7 +1961,7 @@ export abstract class BaseScraper {
 			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				await waitForViewer();
-				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const perPageFilepath = path.join(SCREENSHOT_DIR, perPageFilename);
 				const clip = await getViewerClip();
 				if (clip) {

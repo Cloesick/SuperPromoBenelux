@@ -25,7 +25,7 @@ vi.mock("next/image", () => {
 const baseRetailer: Retailer = {
 	slug: "test",
 	name: "Test",
-	logo: "/logo.png",
+	logo: "/logo.webp",
 	color: "#000000",
 	website: "https://example.com",
 	description: "Test retailer",
@@ -61,8 +61,8 @@ describe("FolderViewer", () => {
 	it("prefers pages mode when pages exist (even if embedUrl exists)", async () => {
 		const folder = makeFolder({
 			pages: [
-				{ pageNumber: 1, imageUrl: "/p1.png", deals: [] },
-				{ pageNumber: 2, imageUrl: "/p2.png", deals: [] },
+				{ pageNumber: 1, imageUrl: "/p1.webp", deals: [] },
+				{ pageNumber: 2, imageUrl: "/p2.webp", deals: [] },
 			],
 			pageCount: 2,
 			embedUrl: "https://example.com/embed",
@@ -78,8 +78,8 @@ describe("FolderViewer", () => {
 		const user = userEvent.setup();
 		const folder = makeFolder({
 			pages: [
-				{ pageNumber: 1, imageUrl: "/p1.png", deals: [] },
-				{ pageNumber: 2, imageUrl: "/p2.png", deals: [] },
+				{ pageNumber: 1, imageUrl: "/p1.webp", deals: [] },
+				{ pageNumber: 2, imageUrl: "/p2.webp", deals: [] },
 			],
 			pageCount: 2,
 		});
@@ -210,8 +210,8 @@ describe("FolderViewer fallback scenarios", () => {
 		const folder = makeFolder({
 			embedUrl: "https://view.publitas.com/x/y/page/1",
 			pages: [
-				{ pageNumber: 1, imageUrl: "/screenshots/p1.png", deals: [] },
-				{ pageNumber: 2, imageUrl: "/screenshots/p2.png", deals: [] },
+				{ pageNumber: 1, imageUrl: "/screenshots/p1.webp", deals: [] },
+				{ pageNumber: 2, imageUrl: "/screenshots/p2.webp", deals: [] },
 			],
 			pageCount: 2,
 		});
@@ -228,8 +228,8 @@ describe("FolderViewer fallback scenarios", () => {
 			validUntil: "2020-01-01",
 			embedUrl: "https://view.publitas.com/x/y/page/1",
 			pages: [
-				{ pageNumber: 1, imageUrl: "/screenshots/p1.png", deals: [] },
-				{ pageNumber: 2, imageUrl: "/screenshots/p2.png", deals: [] },
+				{ pageNumber: 1, imageUrl: "/screenshots/p1.webp", deals: [] },
+				{ pageNumber: 2, imageUrl: "/screenshots/p2.webp", deals: [] },
 			],
 			pageCount: 2,
 		});
@@ -249,7 +249,7 @@ describe("FolderViewer fallback scenarios", () => {
 		const folder = makeFolder({
 			retailerSlug: "colruyt",
 			embedUrl: "https://e.issuu.com/embed.html?u=colruyt&d=abc",
-			pages: [{ pageNumber: 1, imageUrl: "/p1.png", deals: [] }],
+			pages: [{ pageNumber: 1, imageUrl: "/p1.webp", deals: [] }],
 			pageCount: 1,
 		});
 
