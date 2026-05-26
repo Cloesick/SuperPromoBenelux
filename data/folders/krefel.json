@@ -8,42 +8,80 @@
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/krefel-2026-w20-viewerimg-p1.png",
+      "thumbnailUrl": "/screenshots/krefel-2026-w20-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/krefel-2026-w20-viewerimg-p1.png",
+          "imageUrl": "/screenshots/krefel-2026-w20-viewerimg-p1.webp",
           "deals": []
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-05-12T16:38:43.110Z"
+      "scrapedAt": "2026-05-12T17:38:00.353Z"
     }
   ],
   "deals": [
     {
       "id": "pagetext-0",
-      "product": "Promo4.7CashbackBosch Inbouw vaatwasser SMV6ZCX06E Serie 6 Zeolith®",
-      "originalPrice": 799,
-      "promoPrice": 1.49,
-      "discount": "-47%",
+      "product": "AEG Inbouw koelkast met diepvries TSC7G181DS",
+      "originalPrice": 1099,
+      "promoPrice": 999,
+      "discount": "-9%",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "retailerSlug": "krefel"
     },
     {
       "id": "pagetext-1",
-      "product": "Promo4.5CashbackSiemens Inbouw vaatwasser SN53ES22CE iQ300 Home Connect",
-      "originalPrice": 849,
-      "promoPrice": 1.19,
-      "discount": "-29%",
+      "product": "Bosch Inbouw vaatwasser SMV6ZCX06E Serie 6 Zeolith®",
+      "originalPrice": 1499,
+      "promoPrice": 799,
+      "discount": "-47%",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "retailerSlug": "krefel"
     },
     {
       "id": "pagetext-2",
-      "product": "Promo5CashbackSiemens Inbouw vaatwasser SN53ES04TE iQ300 Home Connect",
+      "product": "Miele Inbouw vaatwasser G 7260 SCVi",
+      "promoPrice": 1649,
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-3",
+      "product": "Miele Inbouw vaatwasser G 7080 SCVi AutoDos",
+      "originalPrice": 1749,
+      "promoPrice": 1299,
+      "discount": "-26%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-4",
+      "product": "Miele Wasmachine WWJ880 WCS",
+      "originalPrice": 1799,
+      "promoPrice": 1649,
+      "discount": "-8%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-5",
+      "product": "Siemens Inbouw vaatwasser SN53ES22CE iQ300 Home Connect",
+      "originalPrice": 1199,
+      "promoPrice": 849,
+      "discount": "-29%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-6",
+      "product": "5CashbackSiemens Inbouw vaatwasser SN53ES04TE iQ300 Home Connect",
       "originalPrice": 899,
       "promoPrice": 799,
       "discount": "-11%",
@@ -52,46 +90,18 @@
       "retailerSlug": "krefel"
     },
     {
-      "id": "pagetext-3",
-      "product": "Promo4.6CashbackMiele Inbouw vaatwasser G 7260 SCVi9,00",
-      "promoPrice": 1.64,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
-      "id": "pagetext-4",
-      "product": "PromoCashbackMiele Wasmachine WWJ880 WCS9,",
-      "originalPrice": 1.79,
-      "promoPrice": 1.64,
-      "discount": "-8%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
-      "id": "pagetext-5",
-      "product": "PromoCashbackMiele Inbouw vaatwasser G 5651 Vi Active9,00",
-      "originalPrice": 899,
-      "promoPrice": 1.14,
+      "id": "pagetext-7",
+      "product": "Miele Inbouw vaatwasser G 5651 Vi Active",
+      "originalPrice": 1149,
+      "promoPrice": 899,
       "discount": "-22%",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "retailerSlug": "krefel"
     },
     {
-      "id": "pagetext-6",
-      "product": "PromoCashbackAEG Inbouw koelkast met diepvries TSC7G181DS9,00",
-      "originalPrice": 999,
-      "promoPrice": 1.09,
-      "discount": "-9%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
-      "id": "pagetext-7",
-      "product": "Promo5Gratis ProductDe'Longhi Nespresso Koffiemachine Essenza Mini White",
+      "id": "pagetext-8",
+      "product": "5Gratis ProductDe'Longhi Nespresso Koffiemachine Essenza Mini White",
       "originalPrice": 109.95,
       "promoPrice": 89.95,
       "discount": "-18%",
@@ -100,68 +110,8 @@
       "retailerSlug": "krefel"
     },
     {
-      "id": "pagetext-8",
-      "product": "PromoCashbackSiemens Wasmachine WG56H2A6FG iQ500 i-Dos 10kg9,00",
-      "originalPrice": 849,
-      "promoPrice": 1.28,
-      "discount": "-34%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
       "id": "pagetext-9",
-      "product": "Promo4.8CashbackSiemens Wasmachine WG56H206FG iQ500 Home Connect 10 kg9,00",
-      "originalPrice": 999,
-      "promoPrice": 1.17,
-      "discount": "-15%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
-      "id": "pagetext-10",
-      "product": "Promo4.9CashbackBosch Wasmachine WGG244FPFG Serie 6 i-DOS 9 kg",
-      "originalPrice": 899,
-      "promoPrice": 674,
-      "discount": "-25%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
-      "id": "pagetext-11",
-      "product": "Promo4.6CashbackBosch Wasmachine WGG246ZPFG Serie 6 Iron Assist 9 kg",
-      "originalPrice": 849,
-      "promoPrice": 729,
-      "discount": "-14%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
-      "id": "pagetext-12",
-      "product": "PromoCashbackBosch Wasmachine WGG246FPFG Serie 6 i-DOS 9 kg",
-      "originalPrice": 999,
-      "promoPrice": 774,
-      "discount": "-23%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
-      "id": "pagetext-13",
-      "product": "Promo4.8CashbackSiemens Droogkast WQ46H2DPFG IQ500 selfCleaning condensor 9 kg9,00",
-      "originalPrice": 999,
-      "promoPrice": 1.28,
-      "discount": "-22%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "krefel"
-    },
-    {
-      "id": "pagetext-14",
-      "product": "Promo4.5CashbackAEG Wasmachine LR73R864 ProSteam",
+      "product": "AEG Wasmachine LR73R864 ProSteam",
       "originalPrice": 799,
       "promoPrice": 649,
       "discount": "-19%",
@@ -170,17 +120,107 @@
       "retailerSlug": "krefel"
     },
     {
-      "id": "pagetext-15",
-      "product": "Promo5CashbackAEG Amerikaanse koelkast RMB952D6VU9,",
-      "originalPrice": 1.79,
-      "promoPrice": 1.59,
+      "id": "pagetext-10",
+      "product": "AEG Wasmachine LR73R840 ProSteam",
+      "originalPrice": 749,
+      "promoPrice": 549,
+      "discount": "-27%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-11",
+      "product": "AEG Wasmachine LR76U964 ProSteam",
+      "originalPrice": 929,
+      "promoPrice": 739,
+      "discount": "-20%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-12",
+      "product": "5CashbackAEG Amerikaanse koelkast RMB952D6VU",
+      "originalPrice": 1799,
+      "promoPrice": 1599,
       "discount": "-11%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-13",
+      "product": "AEG Wasmachine LR87Q066 AUTODOSE",
+      "originalPrice": 1199,
+      "promoPrice": 899,
+      "discount": "-25%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-14",
+      "product": "AEG Wasmachine LTR75B73A",
+      "originalPrice": 799,
+      "promoPrice": 749,
+      "discount": "-6%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-15",
+      "product": "AEG Was-droogcombinatie LWR76UC164",
+      "originalPrice": 1199,
+      "promoPrice": 949,
+      "discount": "-21%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-16",
+      "product": "AEG Droogkast TR98V66C",
+      "originalPrice": 1349,
+      "promoPrice": 1199,
+      "discount": "-11%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-17",
+      "product": "AEG Was-droogcombinatie LWR97C068",
+      "originalPrice": 1699,
+      "promoPrice": 1599,
+      "discount": "-6%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-18",
+      "product": "AEG Droogkast TR88BHDC AbsoluteCare®",
+      "originalPrice": 999,
+      "promoPrice": 789,
+      "discount": "-21%",
+      "validFrom": "2026-05-11",
+      "validUntil": "2026-05-17",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-19",
+      "product": "AEG Wasmachine LR97C148 AbsoluteCare®",
+      "originalPrice": 1349,
+      "promoPrice": 1089,
+      "discount": "-19%",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "retailerSlug": "krefel"
     }
   ],
-  "scrapedAt": "2026-05-12T16:38:47.141Z",
+  "scrapedAt": "2026-05-12T17:38:04.594Z",
   "sourceUrls": [
     "https://www.krefel.be/nl/promoties"
   ],

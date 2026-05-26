@@ -57,7 +57,7 @@ export default async function RetailerPage({ params }: PageProps) {
 	const currentFolder = getCurrentFolder(slug);
 	const outboundUrl = `/out/${slug}`;
 
-	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".svg");
+	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".webp");
 
 	const { seo } = retailer;
 	const faqItems = [

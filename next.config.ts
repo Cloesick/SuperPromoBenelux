@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
 		return [
 			{
 				source: "/favicon.ico",
-				destination: "/icon.svg",
+				destination: "/icon.webp",
 				permanent: true,
 			},
 		];

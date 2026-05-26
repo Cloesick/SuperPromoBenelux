@@ -8,21 +8,21 @@
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "pageCount": 3,
-      "thumbnailUrl": "/screenshots/aveve-2026-w20-viewerimg-p1.png",
+      "thumbnailUrl": "/screenshots/aveve-2026-w20-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p1.png",
+          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p1.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p2.png",
+          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p2.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p3.png",
+          "imageUrl": "/screenshots/aveve-2026-w20-viewerimg-p3.webp",
           "deals": []
         }
       ],

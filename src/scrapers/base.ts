@@ -1426,7 +1426,8 @@ export abstract class BaseScraper {
 					if (text.length < 15 || text.length > 300) continue;
 
 					// MUST have at least one euro price — this is the key quality gate
-					const euroMatch = text.match(/€\\s*(\\d+[.,]\\d{2})/g);
+					// Supports European format: €1.499,00 and simple: €49,99 or €49.99
+					const euroMatch = text.match(/€\\s*(\\d{1,3}(?:\\.\\d{3})*,\\d{2}|\\d+[,.]\\d{2})/g);
 					if (!euroMatch || euroMatch.length === 0) continue;
 
 					// Also look for percentage discounts
@@ -1437,9 +1438,13 @@ export abstract class BaseScraper {
 					let productName = "";
 					for (const line of lines) {
 						const cleaned = line
-							.replace(/€\\s*\\d+[.,]\\d{2}/g, "")
-							.replace(/\\b\\d{1,3}[.,]\\d{2}\\b/g, "")
+							.replace(/€\\s*\\d{1,3}(?:\\.\\d{3})*[,.]\\d{2}/g, "")
+							.replace(/\\b\\d{1,3}(?:\\.\\d{3})*[,.]\\d{2}\\b/g, "")
 							.replace(/-?\\d+\\s*%/g, "")
+							// Strip rating/badge noise: "Promo4.7Cashback" prefix
+							.replace(/^(Promo|Sale|Actie|Nieuw|New|Aanbieding)\\s*/i, "")
+							.replace(/^\\d[.,]\\d\\s*/g, "")
+							.replace(/^(Cashback|Gratis|Korting|Bonus|Cadeau)\\s*/i, "")
 							.trim();
 						if (cleaned.length >= 5 && !cleaned.match(/^[\\d\\s%€,.+-]+$/) && !NOISE_RE.test(cleaned)) {
 							productName = cleaned.slice(0, 100);
@@ -1454,10 +1459,18 @@ export abstract class BaseScraper {
 					if (seen.has(key)) continue;
 					seen.add(key);
 
-					// Parse prices
-					const prices = euroMatch.map(p =>
-						parseFloat(p.replace("€", "").replace(",", ".").trim())
-					).filter(p => !isNaN(p) && p > 0.01 && p < 50000);
+					// Parse prices — handle European format (1.499,00 = 1499)
+					const prices = euroMatch.map(p => {
+						let s = p.replace("€", "").trim();
+						if (s.includes(",") && s.indexOf(".") < s.indexOf(",")) {
+							// European: dots are thousands, comma is decimal (1.499,00)
+							s = s.replace(/\\./g, "").replace(",", ".");
+						} else if (s.includes(",") && !s.includes(".")) {
+							// Comma only: comma is decimal (49,99)
+							s = s.replace(",", ".");
+						}
+						return parseFloat(s);
+					}).filter(p => !isNaN(p) && p > 0.01 && p < 50000);
 
 					if (prices.length === 0) continue;
 
@@ -1607,7 +1620,7 @@ export abstract class BaseScraper {
 				// If we can't scroll further (or PDF renderer doesn't scroll), stop.
 				if (i > 1 && scrollY < y - 5) break;
 
-				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				await page.screenshot({
 					path: filepath,
@@ -1810,7 +1823,7 @@ export abstract class BaseScraper {
 					);
 				}
 
-				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
 				if (clip) {
@@ -1867,7 +1880,7 @@ export abstract class BaseScraper {
 					);
 				}
 
-				const filename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
 				if (clip) {
@@ -1884,7 +1897,7 @@ export abstract class BaseScraper {
 			}
 		}
 
-		const filename = `${this.generateFolderId("viewerimg-p1")}.png`;
+		const filename = `${this.generateFolderId("viewerimg-p1")}.webp`;
 		const filepath = path.join(SCREENSHOT_DIR, filename);
 
 		if (await isOfflinePublication()) {
@@ -1961,7 +1974,7 @@ export abstract class BaseScraper {
 			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				await waitForViewer();
-				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.png`;
+				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const perPageFilepath = path.join(SCREENSHOT_DIR, perPageFilename);
 				const clip = await getViewerClip();
 				if (clip) {

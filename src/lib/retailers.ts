@@ -19,7 +19,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "albert-heijn",
 		name: "Albert Heijn",
-		logo: "/retailers/albert-heijn.png",
+		logo: "/retailers/albert-heijn.webp",
 		color: "#00A0E2",
 		website: "https://www.ah.be",
 		category: "supermarkt",
@@ -45,7 +45,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "lidl",
 		name: "Lidl",
-		logo: "/retailers/lidl.png",
+		logo: "/retailers/lidl.webp",
 		color: "#0050AA",
 		website: "https://www.lidl.be",
 		category: "supermarkt",
@@ -71,7 +71,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "delhaize",
 		name: "Delhaize",
-		logo: "/retailers/delhaize.png",
+		logo: "/retailers/delhaize.webp",
 		color: "#E31837",
 		website: "https://www.delhaize.be",
 		category: "supermarkt",
@@ -98,7 +98,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "colruyt",
 		name: "Colruyt",
-		logo: "/retailers/colruyt.png",
+		logo: "/retailers/colruyt.webp",
 		color: "#E94E1B",
 		website: "https://www.colruyt.be",
 		category: "supermarkt",
@@ -126,7 +126,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "aldi",
 		name: "ALDI",
-		logo: "/retailers/aldi.svg",
+		logo: "/retailers/aldi.webp",
 		color: "#0B5AA2",
 		website: "https://www.aldi.be",
 		category: "supermarkt",
@@ -152,7 +152,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "action",
 		name: "Action",
-		logo: "/retailers/action.svg",
+		logo: "/retailers/action.webp",
 		color: "#0046AD",
 		website: "https://www.action.com/nl-be",
 		category: "discounter",
@@ -180,7 +180,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "maxi-zoo",
 		name: "Maxi Zoo",
-		logo: "/retailers/maxi-zoo.svg",
+		logo: "/retailers/maxi-zoo.webp",
 		color: "#F97316",
 		website: "https://www.maxizoo.be",
 		category: "dierenwinkel",
@@ -202,7 +202,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "tom-co",
 		name: "Tom&Co",
-		logo: "/retailers/tom-co.svg",
+		logo: "/retailers/tom-co.webp",
 		color: "#16A34A",
 		website: "https://www.tomandco.com",
 		category: "dierenwinkel",
@@ -223,7 +223,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "zooplus",
 		name: "Zooplus",
-		logo: "/retailers/zooplus.svg",
+		logo: "/retailers/zooplus.webp",
 		color: "#2563EB",
 		website: "https://www.zooplus.be",
 		category: "dierenwinkel",
@@ -245,7 +245,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "aveve",
 		name: "AVEVE",
-		logo: "/retailers/aveve.svg",
+		logo: "/retailers/aveve.webp",
 		color: "#16A34A",
 		website: "https://www.aveve.be",
 		category: "dierenwinkel",
@@ -265,7 +265,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "medpets",
 		name: "Medpets",
-		logo: "/retailers/medpets.svg",
+		logo: "/retailers/medpets.webp",
 		color: "#111827",
 		website: "https://www.medpets.be",
 		category: "dierenwinkel",
@@ -288,7 +288,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "mediamarkt",
 		name: "MediaMarkt",
-		logo: "/retailers/mediamarkt.svg",
+		logo: "/retailers/mediamarkt.webp",
 		color: "#E3000F",
 		website: "https://www.mediamarkt.be",
 		category: "electronica",
@@ -311,7 +311,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "coolblue",
 		name: "Coolblue",
-		logo: "/retailers/coolblue.svg",
+		logo: "/retailers/coolblue.webp",
 		color: "#0090E3",
 		website: "https://www.coolblue.be",
 		category: "electronica",
@@ -334,7 +334,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "vanden-borre",
 		name: "Vanden Borre",
-		logo: "/retailers/vanden-borre.svg",
+		logo: "/retailers/vanden-borre.webp",
 		color: "#E3000F",
 		website: "https://www.vandenborre.be",
 		category: "electronica",
@@ -354,7 +354,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "krefel",
 		name: "Krëfel",
-		logo: "/retailers/krefel.svg",
+		logo: "/retailers/krefel.webp",
 		color: "#D70000",
 		website: "https://www.krefel.be",
 		category: "electronica",
@@ -374,7 +374,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "bol",
 		name: "bol",
-		logo: "/retailers/bol.svg",
+		logo: "/retailers/bol.webp",
 		color: "#2563EB",
 		website: "https://www.bol.com",
 		category: "electronica",
@@ -396,7 +396,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "hm",
 		name: "H&M",
-		logo: "/retailers/hm.svg",
+		logo: "/retailers/hm.webp",
 		color: "#E11D48",
 		website: "https://www2.hm.com/nl_be",
 		category: "mode",
@@ -417,7 +417,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "zalando",
 		name: "Zalando",
-		logo: "/retailers/zalando.svg",
+		logo: "/retailers/zalando.webp",
 		color: "#111827",
 		website: "https://www.zalando.be",
 		category: "mode",
@@ -439,7 +439,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "ikea",
 		name: "IKEA",
-		logo: "/retailers/ikea.svg",
+		logo: "/retailers/ikea.webp",
 		color: "#1D4ED8",
 		website: "https://www.ikea.com/be/nl",
 		category: "meubels",
@@ -460,7 +460,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "gamma",
 		name: "Gamma",
-		logo: "/retailers/gamma.svg",
+		logo: "/retailers/gamma.webp",
 		color: "#FFC107",
 		website: "https://www.gamma.be",
 		category: "bouwmarkt",
@@ -484,7 +484,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "kruidvat",
 		name: "Kruidvat",
-		logo: "/retailers/kruidvat.svg",
+		logo: "/retailers/kruidvat.webp",
 		color: "#E3000F",
 		website: "https://www.kruidvat.be",
 		category: "drogist",
@@ -507,7 +507,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "ici-paris-xl",
 		name: "ICI PARIS XL",
-		logo: "/retailers/ici-paris-xl.svg",
+		logo: "/retailers/ici-paris-xl.webp",
 		color: "#111827",
 		website: "https://www.iciparisxl.be",
 		category: "parfum",
@@ -528,7 +528,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "douglas",
 		name: "Douglas",
-		logo: "/retailers/douglas.svg",
+		logo: "/retailers/douglas.webp",
 		color: "#111827",
 		website: "https://www.douglas.be",
 		category: "beauty",
@@ -547,7 +547,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "di",
 		name: "Di",
-		logo: "/retailers/di.svg",
+		logo: "/retailers/di.webp",
 		color: "#EC4899",
 		website: "https://www.di.be",
 		category: "drogist",
@@ -566,7 +566,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "etos",
 		name: "Etos",
-		logo: "/retailers/etos.svg",
+		logo: "/retailers/etos.webp",
 		color: "#2563EB",
 		website: "https://www.etos.nl",
 		category: "drogist",
@@ -586,7 +586,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "boots",
 		name: "Boots",
-		logo: "/retailers/boots.svg",
+		logo: "/retailers/boots.webp",
 		color: "#FFC107",
 		website: "https://www.boots.com",
 		category: "beauty",
@@ -605,7 +605,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "muller",
 		name: "Müller",
-		logo: "/retailers/muller.svg",
+		logo: "/retailers/muller.webp",
 		color: "#FF69B4",
 		website: "https://www.muller.be",
 		category: "beauty",
@@ -624,7 +624,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "rossmann",
 		name: "Rossmann",
-		logo: "/retailers/rossmann.svg",
+		logo: "/retailers/rossmann.webp",
 		color: "#8BC34A",
 		website: "https://www.rossmann.nl",
 		category: "drogist",
@@ -644,7 +644,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "treac",
 		name: "Trekpleister",
-		logo: "/retailers/treac.svg",
+		logo: "/retailers/treac.webp",
 		color: "#4CAF50",
 		website: "https://www.trekpleister.nl",
 		category: "drogist",
@@ -665,7 +665,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "rituals",
 		name: "Rituals",
-		logo: "/retailers/rituals.svg",
+		logo: "/retailers/rituals.webp",
 		color: "#111827",
 		website: "https://www.rituals.com",
 		category: "beauty",
@@ -685,7 +685,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "yves-rocher",
 		name: "Yves Rocher",
-		logo: "/retailers/yves-rocher.svg",
+		logo: "/retailers/yves-rocher.webp",
 		color: "#16A34A",
 		website: "https://www.yves-rocher.be",
 		category: "beauty",
@@ -705,7 +705,7 @@ export const allRetailers: Retailer[] = [
 	{
 		slug: "the-body-shop",
 		name: "The Body Shop",
-		logo: "/retailers/the-body-shop.svg",
+		logo: "/retailers/the-body-shop.webp",
 		color: "#047857",
 		website: "https://www.thebodyshop.com",
 		category: "beauty",

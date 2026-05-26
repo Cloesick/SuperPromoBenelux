@@ -14,7 +14,7 @@ export function RetailerCard({
 	folderCount,
 	basePath = "",
 }: RetailerCardProps) {
-	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".svg");
+	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".webp");
 
 	return (
 		<Link

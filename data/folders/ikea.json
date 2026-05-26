@@ -8,11 +8,11 @@
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/ikea-2026-w20-viewerimg-p1.png",
+      "thumbnailUrl": "/screenshots/ikea-2026-w20-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/ikea-2026-w20-viewerimg-p1.png",
+          "imageUrl": "/screenshots/ikea-2026-w20-viewerimg-p1.webp",
           "deals": []
         }
       ],
@@ -272,7 +272,7 @@
       "id": "html-0",
       "product": "Overgaan naar productlijst",
       "discount": "Overslaan en naar hoofdinhoud gaan",
-      "imageUrl": "https://www.ikea.com/global/assets/logos/brand/ikea.svg",
+      "imageUrl": "https://www.ikea.com/global/assets/logos/brand/ikea.webp",
       "validFrom": "2026-05-11",
       "validUntil": "2026-05-17",
       "retailerSlug": "ikea"

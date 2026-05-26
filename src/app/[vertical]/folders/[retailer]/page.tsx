@@ -50,7 +50,7 @@ export default async function VerticalRetailerPage({ params }: PageProps) {
 	const config = VERTICAL_CONFIGS[vertical as Vertical];
 	const folder = getCurrentFolder(slug);
 	const baseUrl = getSiteBaseUrl();
-	const isSvgLogo = retailer!.logo.toLowerCase().endsWith(".svg");
+	const isSvgLogo = retailer!.logo.toLowerCase().endsWith(".webp");
 
 	return (
 		<div className="max-w-6xl mx-auto px-4 py-8">

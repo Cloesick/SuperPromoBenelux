@@ -415,7 +415,7 @@ describe("validateScrapedData", () => {
 					validFrom: "2026-01-01",
 					validUntil: "2026-01-07",
 					pageCount: 1,
-					pages: [{ pageNumber: 1, imageUrl: "/p1.png", deals: [] }],
+					pages: [{ pageNumber: 1, imageUrl: "/p1.webp", deals: [] }],
 					embedUrl: "https://example.com/embed",
 				},
 			],

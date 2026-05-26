@@ -48,7 +48,7 @@ export function RetailerLogo({ retailer, size, className }: RetailerLogoProps) {
 		);
 	}
 
-	const isSvgLogo = logo.toLowerCase().endsWith(".svg");
+	const isSvgLogo = logo.toLowerCase().endsWith(".webp");
 
 	return isSvgLogo ? (
 		<Image
