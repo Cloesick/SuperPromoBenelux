@@ -106,12 +106,22 @@ export async function generateMetadata({
 		openGraph: {
 			title: `${retailer.name} folder deze week | SuperPromo België`,
 			description,
+			url: `${baseUrl}/folders/${slug}`,
+			type: "website",
 			images: [
 				{
 					url: ogImage,
+					width: 1200,
+					height: 630,
 					alt: `${retailer.name} folder`,
 				},
 			],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: `${retailer.name} folder deze week | SuperPromo België`,
+			description,
+			images: [ogImage],
 		},
 	};
 }

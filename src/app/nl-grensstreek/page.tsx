@@ -6,9 +6,9 @@ import { nlBorderRetailers } from "@/lib/retailers";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-	title: "NL grensstreek",
+	title: "Nederlandse grensstreek folders | SuperPromoBelgië",
 	description:
-		"Promoties en folders in Nederland voor de Belgische grensstreek.",
+		"Supermarkt folders geldig in de Nederlandse grensstreek, interessant voor Belgen vlakbij de grens.",
 	robots: { index: false, follow: false },
 	alternates: {
 		canonical: "/nl-grensstreek",

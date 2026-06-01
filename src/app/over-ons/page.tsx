@@ -3,9 +3,9 @@ import Link from "next/link";
 import { JsonLd, createBreadcrumbJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Over Ons",
+  title: "Over ons | SuperPromoBelgië",
   description:
-    "Leer meer over SuperPromo België. Onze missie is jou voorzien van de beste kortingen en deals in België.",
+    "Lees meer over SuperPromoBelgië, jouw gids voor wekelijkse supermarkt aanbiedingen.",
   alternates: {
     canonical: "/over-ons",
   },

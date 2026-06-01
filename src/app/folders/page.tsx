@@ -10,9 +10,9 @@ import { AdBanner } from "@/components/AdBanner";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-	title: "Alle Folders",
+	title: "Alle folders | SuperPromoBelgië",
 	description:
-		"Bekijk alle actuele reclamefolders van supermarkten in België. Albert Heijn, Lidl, Delhaize, Colruyt en meer.",
+		"Bekijk alle actuele supermarkt folders van de week. Albert Heijn, Lidl, Colruyt, Delhaize, ALDI en Action.",
 	alternates: {
 		canonical: "/folders",
 	},

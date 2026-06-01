@@ -23,10 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		return d > latest ? d : latest;
 	}, new Date(0));
 
+	const today = new Date().toISOString().split("T")[0];
+	const staticPageDate = "2026-06-01";
+
 	return [
 		{
 			url: baseUrl,
-			lastModified: latestScrape.getTime() > 0 ? latestScrape : new Date(),
+			lastModified: today,
 			changeFrequency: "daily",
 			priority: 1,
 		},
@@ -38,16 +41,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		},
 		...retailerPages,
 		{
+			url: `${baseUrl}/nl-grensstreek`,
+			lastModified: today,
+			changeFrequency: "weekly",
+			priority: 0.6,
+		},
+		{
 			url: `${baseUrl}/veelgestelde-vragen`,
-			lastModified: new Date(),
+			lastModified: staticPageDate,
 			changeFrequency: "monthly",
 			priority: 0.7,
 		},
 		{
 			url: `${baseUrl}/over-ons`,
-			lastModified: new Date(),
+			lastModified: staticPageDate,
 			changeFrequency: "monthly",
 			priority: 0.3,
+		},
+		{
+			url: `${baseUrl}/privacy`,
+			lastModified: staticPageDate,
+			changeFrequency: "yearly",
+			priority: 0.2,
+		},
+		{
+			url: `${baseUrl}/contact`,
+			lastModified: staticPageDate,
+			changeFrequency: "yearly",
+			priority: 0.4,
 		},
 	];
 }

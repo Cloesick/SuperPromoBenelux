@@ -4,9 +4,9 @@ import { retailers } from "@/lib/retailers";
 import { JsonLd, createBreadcrumbJsonLd, createFAQJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Veelgestelde vragen over supermarkten in België",
+  title: "Veelgestelde vragen | SuperPromoBelgië",
   description:
-    "Antwoorden op de meest gestelde vragen over Belgische supermarkten: folders, openingsuren, klantenkaarten, prijsvergelijking en meer.",
+    "Antwoorden op de meest gestelde vragen over SuperPromoBelgië en onze folder service.",
   alternates: {
     canonical: "/veelgestelde-vragen",
   },

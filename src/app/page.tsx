@@ -1,8 +1,15 @@
+import { Metadata } from "next";
 import { retailers } from "@/lib/retailers";
 import { RetailerCard } from "@/components/RetailerCard";
 import { AdBanner } from "@/components/AdBanner";
 import { Facebook, TrendingDown, Bell, Zap } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "SuperPromoBelgië | Alle supermarkt folders op één plek",
+	description:
+		"Vergelijk de nieuwste folders van Albert Heijn, Lidl, Colruyt, Delhaize, ALDI en Action. Bespaar elke week op je boodschappen.",
+};
 
 export default function HomePage() {
   return (
