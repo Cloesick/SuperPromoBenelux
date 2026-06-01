@@ -58,6 +58,16 @@ export default async function RetailerPage({ params }: PageProps) {
 	const outboundUrl = `/out/${slug}`;
 
 	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".webp");
+	const relatedRetailers = (() => {
+		const others = retailers.filter((r) => r.slug !== slug);
+		const sameCategory = others
+			.filter((r) => r.category === retailer.category)
+			.sort((a, b) => a.name.localeCompare(b.name, "nl"));
+		const otherCategory = others
+			.filter((r) => r.category !== retailer.category)
+			.sort((a, b) => a.name.localeCompare(b.name, "nl"));
+		return [...sameCategory, ...otherCategory].slice(0, 6);
+	})();
 
 	const { seo } = retailer;
 	const faqItems = [
@@ -167,6 +177,28 @@ export default async function RetailerPage({ params }: PageProps) {
 				</div>
 			</div>
 
+			{/* Actions */}
+			<div className="flex flex-col sm:flex-row gap-4 mb-8">
+				<a
+					href={outboundUrl}
+					target="_blank"
+					rel="noopener noreferrer sponsored"
+					className="inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-lg transition"
+				>
+					<ExternalLink className="w-4 h-4" suppressHydrationWarning />
+					Bekijk promoties bij {retailer.name}
+				</a>
+				<a
+					href="https://www.facebook.com/groups/superpromobelgie"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-medium px-6 py-3 rounded-lg transition"
+				>
+					<Facebook className="w-4 h-4" suppressHydrationWarning />
+					Bekijk de beste deals in onze groep
+				</a>
+			</div>
+
 			{/* Folder viewer */}
 			{currentFolder ? (
 				<FolderViewer folder={currentFolder} retailer={retailer} />
@@ -182,26 +214,20 @@ export default async function RetailerPage({ params }: PageProps) {
 				</div>
 			)}
 
-			{/* Actions */}
-			<div className="flex flex-col sm:flex-row gap-4 mt-8">
-				<a
-					href={outboundUrl}
-					target="_blank"
-					rel="noopener noreferrer sponsored"
-					className="inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-lg transition"
-				>
-					<ExternalLink className="w-4 h-4" suppressHydrationWarning />
-					Bezoek {retailer.name}
-				</a>
-				<a
-					href="https://www.facebook.com/groups/superpromobelgie"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-medium px-6 py-3 rounded-lg transition"
-				>
-					<Facebook className="w-4 h-4" suppressHydrationWarning />
-					Bekijk de beste deals in onze groep
-				</a>
+			<div className="mt-12">
+				<h2 className="text-xl font-bold text-gray-900 mb-4">Bekijk ook</h2>
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+					{relatedRetailers.map((r) => (
+						<Link
+							key={r.slug}
+							href={`/folders/${r.slug}`}
+							className="flex items-center justify-between gap-3 bg-white border border-gray-200 rounded-lg px-4 py-3 hover:border-blue-300 hover:bg-blue-50 transition"
+						>
+							<span className="font-medium text-gray-900">{r.name}</span>
+							<span className="text-xs text-gray-500">Folder: {r.seo.folderDay}</span>
+						</Link>
+					))}
+				</div>
 			</div>
 
 			{/* FAQ / SEO content */}
