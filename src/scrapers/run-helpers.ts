@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { writeJsonAtomic } from "./atomic-write";
 
 // ---------------------------------------------------------------------------
 // Configuration
@@ -155,7 +156,7 @@ export async function probeEmbedLiveness(
 	}
 
 	if (modified) {
-		fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+		writeJsonAtomic(filePath, data);
 	}
 
 	return results;
@@ -430,7 +431,7 @@ export function generateHealthManifest(
 	const healthDir = path.resolve(dataDir, "..");
 	if (!fs.existsSync(healthDir)) fs.mkdirSync(healthDir, { recursive: true });
 	const healthPath = path.join(healthDir, "health.json");
-	fs.writeFileSync(healthPath, JSON.stringify(manifest, null, 2));
+	writeJsonAtomic(healthPath, manifest);
 
 	return manifest;
 }
@@ -473,7 +474,7 @@ export function stripOfflineEmbeds(dataDir: string, slug: string): boolean {
 		}
 
 		if (modified) {
-			fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+			writeJsonAtomic(filePath, data);
 		}
 
 		return modified;

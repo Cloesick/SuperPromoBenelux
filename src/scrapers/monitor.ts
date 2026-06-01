@@ -5,6 +5,7 @@ import path from "path";
 import { scrapers } from "./scrapers";
 import { getSupabaseAdmin } from "../lib/supabaseAdmin";
 import type { ScrapedData } from "../lib/types";
+import { writeJsonAtomic } from "./atomic-write";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 
@@ -24,7 +25,7 @@ function readScrapedJson(retailerSlug: string): ScrapedData {
 function writeScrapedJson(retailerSlug: string, data: ScrapedData): void {
 	if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 	const filePath = path.join(DATA_DIR, `${retailerSlug}.json`);
-	fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+	writeJsonAtomic(filePath, data);
 }
 
 async function fetchLastSuccessfulScrapedData(args: {

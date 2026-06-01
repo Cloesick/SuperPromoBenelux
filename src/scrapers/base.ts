@@ -4,6 +4,7 @@ import puppeteer, { Page, Browser } from "puppeteer";
 import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 import { syncDealsToDb } from "../lib/productsDb";
 import { extractDealsFromPdf } from "./extractDealsFromText";
+import { writeJsonAtomic } from "./atomic-write";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
@@ -855,7 +856,7 @@ export abstract class BaseScraper {
 				this.log(
 					"No folders/deals extracted (likely blocked). Skipping JSON write to avoid overwriting existing data.",
 				);
-				return;
+				throw new Error("No folders/deals extracted");
 			}
 
 			const data: ScrapedData = {
@@ -881,7 +882,7 @@ export abstract class BaseScraper {
 				}
 			}
 
-			fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+			writeJsonAtomic(filePath, data);
 			this.log(`Saved to ${filePath}`);
 
 			// ---- Sync deals to database ----
