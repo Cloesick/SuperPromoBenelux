@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -62,7 +62,7 @@ jobs:
           IFS=',' read -ra SLUGS <<< "${RETAILERS}"
           for slug in "${SLUGS[@]}"; do
             echo "\n=== SCRAPE: ${slug} ===\n"
-            npm run scrape -- "${slug}"
+            npm run scrape -- "${slug}" || echo "Scrape failed for ${slug}; continuing (best-effort)"
           done
 
       - name: Validate scrape output

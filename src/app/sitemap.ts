@@ -3,6 +3,9 @@ import { retailers } from "@/lib/retailers";
 import { getScrapedAt } from "@/lib/folders";
 import { getSiteBaseUrl } from "@/lib/site";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default function sitemap(): MetadataRoute.Sitemap {
 	const baseUrl = getSiteBaseUrl();
 	const retailerPages = retailers.map((r) => ({
