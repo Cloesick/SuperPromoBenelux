@@ -27,9 +27,12 @@ export default function NlBorderLandingPage() {
 			</nav>
 
 			<h1 className="text-3xl font-bold text-gray-900 mb-2">NL grensstreek</h1>
+			<p className="text-gray-600 mb-4">
+				Woon je vlakbij de Nederlandse grens? Bekijk hier de folders van Nederlandse supermarkten zoals Albert Heijn, Lidl en Aldi. 
+				Deze aanbiedingen zijn relevant voor Belgische shoppers die in de grensstreek wonen en graag profiteren van Nederlandse promoties.
+			</p>
 			<p className="text-gray-600 mb-10">
-				Een aparte sectie met Nederlandse folders voor de Belgische grensstreek
-				(MVP).
+				Alle folders worden wekelijks bijgewerkt zodat je altijd de nieuwste aanbiedingen ziet.
 			</p>
 
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

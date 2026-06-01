@@ -489,7 +489,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 				/* Fallback: Image page viewer */
 				<div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
 					<div className="bg-gray-50 px-4 py-5 sm:px-6 sm:py-6">
-						<div className="mx-auto w-full max-w-[900px] rounded-lg border border-gray-200 bg-white shadow-sm overflow-hidden relative">
+						<div className="mx-auto w-full max-w-[900px] min-h-[600px] rounded-lg border border-gray-200 bg-white shadow-sm overflow-visible relative">
 							<button
 								type="button"
 								onClick={goPrev}
@@ -535,7 +535,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								width={1200}
 								height={1600}
 								sizes="(max-width: 768px) 100vw, 900px"
-								className="w-full h-auto object-contain bg-white"
+								className="w-full h-auto max-w-full object-contain bg-white"
 								priority={currentPage === 0}
 								unoptimized
 								suppressHydrationWarning
