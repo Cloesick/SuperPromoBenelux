@@ -1,0 +1,91 @@
+name: Scrape folders
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      retailers:
+        description: "Comma-separated retailer slugs (optional)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape-folders
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine retailers to scrape
+        id: vars
+        shell: bash
+        run: |
+          DEFAULT_ALL="albert-heijn,lidl,delhaize,colruyt,aldi,action"
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.retailers }}" ]; then
+            echo "retailers=${{ inputs.retailers }}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" = "0 5 * * 1" ]; then
+            echo "retailers=albert-heijn,lidl" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "retailers=${DEFAULT_ALL}" >> "$GITHUB_OUTPUT"
+
+      - name: Run scrapers
+        shell: bash
+        env:
+          RETAILERS: ${{ steps.vars.outputs.retailers }}
+        run: |
+          echo "Scraping retailers: ${RETAILERS}"
+          IFS=',' read -ra SLUGS <<< "${RETAILERS}"
+          for slug in "${SLUGS[@]}"; do
+            echo "\n=== SCRAPE: ${slug} ===\n"
+            npm run scrape -- "${slug}"
+          done
+
+      - name: Validate scrape output
+        shell: bash
+        env:
+          RETAILERS: ${{ steps.vars.outputs.retailers }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          node scripts/validate-scrape.mjs --retailers "${RETAILERS}"
+
+      - name: Commit and push changes
+        shell: bash
+        env:
+          RETAILERS: ${{ steps.vars.outputs.retailers }}
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/folders
+          git commit -m "chore(scrape): update folders (${RETAILERS})"
+          git push

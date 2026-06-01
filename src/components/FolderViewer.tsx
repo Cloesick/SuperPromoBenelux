@@ -57,6 +57,9 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 			embedHost === "view.publitas.com" ||
 			embedHost.endsWith(".publitas.com"));
 
+	// Lidl (folder-nl.lidl.be) may block embeds behind a consent wall; prefer PDF when available
+	const preferPdf = hasPdf && embedHost === "folder-nl.lidl.be";
+
 	// When expired, treat embed/PDF from known-offline hosts as unavailable
 	const isEmbedOfflineRisk =
 		isExpired &&
@@ -87,6 +90,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 	const [mode, setMode] = useState<"embed" | "pdf" | "pages">(() => {
 		if (forcePagesOnly) return "pages";
 		if (hasPages) return "pages";
+		if (preferPdf && hasPdfEffective) return "pdf";
 		if (hasEmbedEffective) return "embed";
 		if (hasPdfEffective) return "pdf";
 		return "pdf";
@@ -102,6 +106,10 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		}
 		if (hasPages) {
 			setMode("pages");
+			return;
+		}
+		if (preferPdf && hasPdfEffective) {
+			setMode("pdf");
 			return;
 		}
 		if (hasEmbedEffective) {
@@ -120,6 +128,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		hasEmbedEffective,
 		hasPdfEffective,
 		hasPages,
+		preferPdf,
 	]);
 
 	useEffect(() => {
@@ -287,6 +296,12 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 					)}
 				</div>
 			</div>
+
+			{isExpired && (hasEmbedEffective || hasPdfEffective || hasPages) && (
+				<div className="mb-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl px-4 py-3 text-sm">
+					Deze folder is mogelijk verlopen. We tonen de laatst beschikbare versie.
+				</div>
+			)}
 
 			{isStale && !isExpired && (
 				<div className="flex items-center gap-2 mb-4 px-3 py-2 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-700">
