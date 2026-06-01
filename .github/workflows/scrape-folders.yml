@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -34,7 +34,7 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
           cache: npm
@@ -50,7 +50,7 @@ jobs:
           # We use it because puppeteer_skip_download=true disables bundled Chromium.
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
           NODE_TLS_REJECT_UNAUTHORIZED: "0"
-        run: npm run scrape
+        run: npm run scrape -- albert-heijn lidl delhaize colruyt aldi action
 
       - name: Health check
         run: |
