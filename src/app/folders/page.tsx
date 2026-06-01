@@ -6,6 +6,7 @@ import {
 	createFAQJsonLd,
 } from "@/components/JsonLd";
 import { FoldersClient } from "./FoldersClient";
+import { AdBanner } from "@/components/AdBanner";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -90,6 +91,9 @@ export default function FoldersPage() {
 					</p>
 				</div>
 			</section>
+
+			{/* Ad Banner */}
+			<AdBanner adSlot="0000000000" />
 
 			{/* FAQ */}
 			<section>

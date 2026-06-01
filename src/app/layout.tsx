@@ -36,6 +36,13 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="nl-BE" suppressHydrationWarning>
+			<head>
+				<script
+					async
+					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
+					crossOrigin="anonymous"
+				/>
+			</head>
 			<body className="min-h-screen flex flex-col" suppressHydrationWarning>
 				<JsonLd data={createWebsiteJsonLd()} />
 				<Header />

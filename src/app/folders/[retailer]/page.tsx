@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { retailers, getRetailerBySlug } from "@/lib/retailers";
 import { getCurrentFolder } from "@/lib/folders";
 import { FolderViewer } from "@/components/FolderViewer";
+import { AdBanner } from "@/components/AdBanner";
 import {
 	JsonLd,
 	createRetailerFolderJsonLd,
@@ -283,6 +284,9 @@ export default async function RetailerPage({ params }: PageProps) {
 					</p>
 				</div>
 			)}
+
+			{/* Ad Banner */}
+			<AdBanner adSlot="0000000000" />
 
 			<div className="mt-12">
 				<h2 className="text-xl font-bold text-gray-900 mb-4">Bekijk ook</h2>
