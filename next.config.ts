@@ -1,29 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	async redirects() {
-		return [
-			{
-				source: "/favicon.ico",
-				destination: "/icon.webp",
-				permanent: true,
-			},
-		];
-	},
-	images: {
-		dangerouslyAllowSVG: true,
-		contentDispositionType: "attachment",
-		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "**",
-			},
-		],
-	},
-	outputFileTracingIncludes: {
-		"/*": ["./data/folders/*.json"],
-	},
+	  output: "export",
+	  trailingSlash: true,
+	  images: {
+		      unoptimized: true,
+		      dangerouslyAllowSVG: true,
+		      contentDispositionType: "attachment",
+		      remotePatterns: [
+				  {
+					          protocol: "https",
+					          hostname: "**",
+				  },
+				      ],
+	  },
 };
 
 export default nextConfig;
