@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { JsonLd, createWebsiteJsonLd } from "@/components/JsonLd";
 import { CookieConsent } from "@/components/CookieConsent";
 import { AnalyticsGate } from "@/components/AnalyticsGate";
+import { AdSenseGate } from "@/components/AdSenseGate";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -27,6 +28,9 @@ export const metadata: Metadata = {
 		index: true,
 		follow: true,
 	},
+	verification: {
+		google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
+	},
 };
 
 export default function RootLayout({
@@ -36,13 +40,6 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="nl-BE" suppressHydrationWarning>
-			<head>
-				<script
-					async
-					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
-					crossOrigin="anonymous"
-				/>
-			</head>
 			<body className="min-h-screen flex flex-col" suppressHydrationWarning>
 				<JsonLd data={createWebsiteJsonLd()} />
 				<Header />
@@ -50,6 +47,7 @@ export default function RootLayout({
 				<Footer />
 				<CookieConsent />
 				<AnalyticsGate />
+				<AdSenseGate />
 			</body>
 		</html>
 	);
