@@ -41,7 +41,8 @@ jobs:
       - name: Remove server-only routes for static build
         run: |
           rm -rf src/app/api src/app/**/admin || true
-          find src/app -name "route.ts" -exec grep -l "force-dynamic\\|getEventsForExport\\|supabase\\|neon" {} \\; | xargs rm -f || true
+          rm -f src/app/sitemap.ts src/app/sitemap.xml src/app/robots.ts || true
+          find src/app -name "route.ts" | xargs grep -l "force-dynamic\\|neon\\|supabase\\|getEvents" 2>/dev/null | xargs rm -f || true
       - name: Build static export
         run: npm run build
       - name: Upload artifact
