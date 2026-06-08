@@ -43,6 +43,7 @@ jobs:
           rm -rf src/app/api || true
           find src/app -name "route.ts" -delete || true
           rm -f src/app/sitemap.ts src/app/sitemap.xml src/app/robots.ts || true
+          find src/app -type d -name "\[*\]" -exec sh -c 'grep -l "Retailer\[\] = \[\]" "$1/page.tsx" 2>/dev/null | xargs dirname | xargs rm -rf' _ {} \; || true
       - name: Build static export
         run: npm run build
       - name: Upload artifact
