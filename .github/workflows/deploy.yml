@@ -27,10 +27,23 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm install --legacy-peer-deps
+      - name: Patch next.config for static export
+        run: |
+          cat > next.config.ts << 'EOF'
+          import type { NextConfig } from "next";
+          const nextConfig: NextConfig = {
+            output: "export",
+            trailingSlash: true,
+            images: { unoptimized: true },
+          };
+          export default nextConfig;
+          EOF
+      - name: Remove server-only routes for static build
+        run: |
+          rm -rf src/app/api src/app/**/admin || true
+          find src/app -name "route.ts" -exec grep -l "force-dynamic\\|getEventsForExport\\|supabase\\|neon" {} \\; | xargs rm -f || true
       - name: Build static export
         run: npm run build
-        env:
-          STATIC_EXPORT: "true"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
