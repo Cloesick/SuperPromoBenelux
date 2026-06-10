@@ -1,4 +1,6 @@
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
+// pdfjs-dist 3.x legacy CJS build — tsx/esbuild-safe (no top-level await, which
+// the 4.x/5.x ESM legacy builds use and tsx cannot transpile to CJS).
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
 import { Deal } from "../lib/types";
 
 // ---------------------------------------------------------------------------
