@@ -40,6 +40,10 @@
     "cypress",
     "**/*.cy.ts",
     "**/*.cy.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "vitest.config.ts",
+    "vitest.components.config.ts",
     "diysuperpromobelgiebram",
     "src/scrapers"
   ]

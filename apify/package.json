@@ -1,0 +1,16 @@
+{
+  "name": "superpromo-folder-scraper",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Apify actor: scrape Belgian retailer promo folders into Airtable + dataset.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node src/main.js",
+    "push": "apify push",
+    "run:local": "apify run --purge"
+  },
+  "dependencies": {
+    "apify": "^3.2.6",
+    "crawlee": "^3.11.5"
+  }
+}

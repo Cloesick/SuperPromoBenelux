@@ -1,0 +1,48 @@
+{
+  "title": "SuperPromo Folder Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "retailers": {
+      "title": "Retailers",
+      "type": "array",
+      "description": "Slugs to scrape. Empty = all retailers marked active in retailers.js.",
+      "editor": "stringList",
+      "prefill": ["albert-heijn", "lidl", "delhaize", "colruyt", "aldi", "action"]
+    },
+    "pushToAirtable": {
+      "title": "Push to Airtable",
+      "type": "boolean",
+      "description": "Upsert folders + deals into the SuperPromo Airtable base.",
+      "default": true
+    },
+    "airtableToken": {
+      "title": "Airtable token",
+      "type": "string",
+      "description": "Personal access token (data.records:write). Leave blank to use the AIRTABLE_TOKEN env/secret.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "airtableBaseId": {
+      "title": "Airtable base id",
+      "type": "string",
+      "description": "Defaults to the SuperPromo Deals Engine base.",
+      "editor": "textfield",
+      "default": "appILxwPpKEWomToC"
+    },
+    "maxPagesPerRetailer": {
+      "title": "Max pages per retailer",
+      "type": "integer",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "proxyConfiguration": {
+      "title": "Proxy",
+      "type": "object",
+      "description": "Apify proxy. Residential/BE recommended for retailer sites.",
+      "editor": "proxy",
+      "default": { "useApifyProxy": true, "apifyProxyGroups": ["RESIDENTIAL"], "apifyProxyCountry": "BE" }
+    }
+  }
+}

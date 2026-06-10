@@ -1,0 +1,22 @@
+{
+  "actorSpecification": 1,
+  "name": "superpromo-folder-scraper",
+  "title": "SuperPromo — Belgian Folder Scraper",
+  "description": "Scrapes weekly promo folders from Belgian retailers (AH, Lidl, Delhaize, Colruyt, Aldi, Action, +electronics) and pushes structured deals to Airtable + dataset.",
+  "version": "0.1",
+  "dockerfile": "../Dockerfile",
+  "input": "./input_schema.json",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Scraped folders & deals",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": { "fields": ["retailer", "dealCount", "folder"] },
+          "display": { "component": "table" }
+        }
+      }
+    }
+  }
+}
