@@ -33,6 +33,7 @@
     "maxPagesPerRetailer": {
       "title": "Max pages per retailer",
       "type": "integer",
+      "description": "Maximum folder pages to crawl per retailer before moving on.",
       "default": 3,
       "minimum": 1,
       "maximum": 20
