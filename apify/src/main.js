@@ -61,9 +61,18 @@ const requests = targets.map((r) => ({
 const crawler = new PuppeteerCrawler({
   proxyConfiguration,
   maxRequestRetries: 2,
-  navigationTimeoutSecs: 45,
-  requestHandlerTimeoutSecs: 120,
+  navigationTimeoutSecs: 90,
+  requestHandlerTimeoutSecs: 150,
   launchContext: { launchOptions: { args: ['--no-sandbox'] } },
+  // Retail pages are tracker-heavy and rarely reach `load`/`networkidle`.
+  // Navigate on `domcontentloaded`; the per-retailer waitForSelector below
+  // then waits for the real content to render.
+  preNavigationHooks: [
+    async (_ctx, gotoOptions) => {
+      gotoOptions.waitUntil = 'domcontentloaded';
+      gotoOptions.timeout = 75000;
+    },
+  ],
   async requestHandler({ page, request, log }) {
     const { retailer, fallbacks } = request.userData;
     log.info(`[${retailer.slug}] ${request.url}`);
