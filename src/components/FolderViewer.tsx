@@ -8,6 +8,7 @@ import {
 	Calendar,
 	FileText,
 	Maximize2,
+	ExternalLink,
 } from "lucide-react";
 import { Folder, Retailer } from "@/lib/types";
 
@@ -298,8 +299,22 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 			</div>
 
 			{isExpired && (hasEmbedEffective || hasPdfEffective || hasPages) && (
-				<div className="mb-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl px-4 py-3 text-sm">
-					Deze folder is mogelijk verlopen. We tonen de laatst beschikbare versie.
+				<div className="mb-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl px-4 py-3 text-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+					<span>
+						Dit is de laatst beschikbare folder. {retailer.name} heeft mogelijk
+						al een nieuwere online.
+					</span>
+					{retailer.website && (
+						<a
+							href={retailer.website}
+							target="_blank"
+							rel="noopener noreferrer sponsored"
+							className="inline-flex items-center gap-1 font-medium underline whitespace-nowrap hover:text-amber-950"
+						>
+							Bekijk de actuele folder
+							<ExternalLink className="w-3.5 h-3.5" suppressHydrationWarning />
+						</a>
+					)}
 				</div>
 			)}
 
@@ -565,21 +580,23 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 					</div>
 				</div>
 			) : isExpired ? (
-				<div className="bg-amber-50 border border-amber-200 rounded-xl p-8 sm:p-12 text-center">
-					<p className="text-amber-800 font-medium mb-2">
-						Deze folder is verlopen
+				<div className="bg-white border border-gray-200 rounded-xl p-8 sm:p-12 text-center">
+					<p className="text-gray-900 font-semibold text-lg mb-2">
+						De nieuwe {retailer.name} folder komt eraan
 					</p>
-					<p className="text-amber-700 text-sm mb-4">
-						De nieuwe {retailer.name} folder wordt binnenkort verwacht.
+					<p className="text-gray-600 text-sm mb-6 max-w-md mx-auto">
+						We werken de folder van {retailer.name} bij. Bekijk intussen de
+						actuele aanbiedingen rechtstreeks bij {retailer.name}.
 					</p>
 					{retailer.website && (
 						<a
 							href={retailer.website}
 							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+							rel="noopener noreferrer sponsored"
+							className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-medium px-6 py-3 rounded-lg transition"
 						>
-							Bekijk de website van {retailer.name}
+							Bekijk de actuele {retailer.name} folder
+							<ExternalLink className="w-4 h-4" suppressHydrationWarning />
 						</a>
 					)}
 				</div>
