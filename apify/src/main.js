@@ -11,6 +11,7 @@
 //
 // Replaces the local `npm run scrape` with a scheduled, proxied cloud run.
 
+import crypto from 'node:crypto';
 import { Actor } from 'apify';
 import { PuppeteerCrawler, Dataset } from 'crawlee';
 import { resolveRetailers } from './retailers.js';
@@ -19,6 +20,10 @@ import { extractDealsFromPdf } from './extractPdf.js';
 import { Airtable } from './airtable.js';
 
 await Actor.init();
+
+// Named KV store (unlimited retention) for folder page screenshots — records are
+// publicly readable by URL, so the site can render them with no extra hosting.
+const kvStore = await Actor.openKeyValueStore('superpromo-folders');
 
 const input = (await Actor.getInput()) || {};
 const {
@@ -89,12 +94,63 @@ function buildPages(imageUrls) {
   return order.map((h, i) => ({ pageNumber: i + 1, imageUrl: best.get(h).url, deals: [] }));
 }
 
+// Universal capture: page through the viewer and SCREENSHOT each page, storing
+// each in the named KV store. Works for any viewer (Publitas/iPaper/Issuu/custom)
+// regardless of how it streams pages. Stops when a screenshot repeats (nav no
+// longer advances). Used as a fallback when page-image URL capture is too thin.
+async function captureByScreenshot(page, slug, week, log) {
+  const pages = [];
+  const seen = new Set();
+  const vp = page.viewport() || { width: 1100, height: 1500 };
+  const advance = async () => {
+    await page.keyboard.press('ArrowRight');
+    try {
+      await page.mouse.click(vp.width - 60, vp.height / 2); // click right edge (flipbooks)
+    } catch {
+      /* ignore */
+    }
+  };
+  // Focus the viewer, then rewind to the first page.
+  try {
+    await page.mouse.click(Math.round(vp.width / 2), Math.round(vp.height / 2));
+  } catch {
+    /* ignore */
+  }
+  for (let k = 0; k < 60; k++) await page.keyboard.press('ArrowLeft');
+  await new Promise((r) => setTimeout(r, 1200));
+
+  for (let i = 0; i < 45; i++) {
+    await new Promise((r) => setTimeout(r, 700));
+    let shot;
+    try {
+      shot = await page.screenshot({ type: 'jpeg', quality: 82 });
+    } catch {
+      break;
+    }
+    const h = crypto.createHash('md5').update(shot).digest('hex');
+    if (seen.has(h)) break; // unchanged → reached the end
+    seen.add(h);
+    const key = `${slug}-${week}-p${i + 1}.jpg`;
+    await kvStore.setValue(key, shot, { contentType: 'image/jpeg' });
+    pages.push({
+      pageNumber: i + 1,
+      imageUrl: `https://api.apify.com/v2/key-value-stores/${kvStore.id}/records/${key}`,
+      deals: [],
+    });
+    await advance();
+  }
+  log.info(`[${slug}] screenshot capture: ${pages.length} pages`);
+  return pages;
+}
+
 const crawler = new PuppeteerCrawler({
   proxyConfiguration,
   maxRequestRetries: 2,
   navigationTimeoutSecs: 90,
   requestHandlerTimeoutSecs: 180,
-  launchContext: { launchOptions: { args: ['--no-sandbox'] } },
+  launchContext: {
+    launchOptions: { args: ['--no-sandbox'], defaultViewport: { width: 1100, height: 1500 } },
+  },
   // Retail pages are tracker-heavy and rarely reach `load`/`networkidle`.
   // Navigate on `domcontentloaded`, and capture any PDF the embedded viewer
   // fetches via a response listener (fires for iframe subrequests too).
@@ -177,6 +233,8 @@ const crawler = new PuppeteerCrawler({
             null;
         }
         if (embedSrc) {
+          // Trim trailing JSON/HTML junk the greedy regex may have captured.
+          embedSrc = embedSrc.split('&quot;')[0].split('"')[0].split('\\')[0];
           embedSrc = (embedSrc.startsWith('http') ? embedSrc : `https://${embedSrc}`).replace(/&amp;/g, '&');
           log.info(`[${retailer.slug}] opening embed ${embedSrc.slice(0, 90)}`);
           try {
@@ -184,13 +242,32 @@ const crawler = new PuppeteerCrawler({
             await page.waitForNetworkIdle({ idleTime: 2000, timeout: 25000 }).catch(() => {});
             await scanForPdf(); // viewer HTML embeds the /pdfs/ URL
             request.userData.viewerUrl = embedSrc;
-            // Scroll through the viewer to trigger lazy-loaded full-size page images.
-            for (let i = 0; i < 30; i++) {
-              await page.evaluate(() => window.scrollBy(0, window.innerHeight));
-              await new Promise((r) => setTimeout(r, 450));
+            // Page THROUGH the viewer with arrow keys (+ a nudge scroll) so EVERY
+            // page's image loads — Publitas/iPaper stream pages on navigation, not
+            // on a single scroll. Stop when no new page image appears for a while.
+            const pageImgCount = () =>
+              (request.userData.imageUrls || []).filter((u) =>
+                /\/pages\/[A-Za-z0-9_-]+-at|ipaper\.io.*\/(?:Optimize|HighRes)\//i.test(u),
+              ).length;
+            try {
+              await page.mouse.click(700, 450); // focus the viewer for keyboard nav
+            } catch {
+              /* ignore */
             }
-            await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-            await page.waitForNetworkIdle({ idleTime: 1500, timeout: 20000 }).catch(() => {});
+            let last = -1;
+            let stagnant = 0;
+            for (let i = 0; i < 50 && stagnant < 6; i++) {
+              await page.keyboard.press('ArrowRight');
+              await page.evaluate(() => window.scrollBy(0, 700)).catch(() => {});
+              await new Promise((r) => setTimeout(r, 600));
+              const c = pageImgCount();
+              if (c <= last) stagnant++;
+              else {
+                stagnant = 0;
+                last = c;
+              }
+            }
+            await page.waitForNetworkIdle({ idleTime: 1200, timeout: 15000 }).catch(() => {});
             // Harvest the COMPLETE page-image list from the viewer HTML/JSON
             // (every page is referenced there, independent of lazy-scroll loading).
             try {
@@ -234,8 +311,23 @@ const crawler = new PuppeteerCrawler({
     }
     deals = deals.map((d) => ({ ...d, scrapedAt }));
 
-    // The folder PAGES (what the site renders) — full-size Publitas page images.
-    const pages = buildPages(request.userData.imageUrls || []);
+    // The folder PAGES (what the site renders) — full-size Publitas/iPaper images.
+    let pages = buildPages(request.userData.imageUrls || []);
+    let pageSource = pages.length ? 'images' : 'none';
+
+    // Fallback: if URL capture was thin and there's no usable PDF, screenshot
+    // every page directly from the viewer (works for any viewer type).
+    if (pages.length < 4 && !pdfUrl && request.userData.viewerUrl) {
+      try {
+        const shots = await captureByScreenshot(page, retailer.slug, isoWeek, log);
+        if (shots.length > pages.length) {
+          pages = shots;
+          pageSource = 'screenshot';
+        }
+      } catch (e) {
+        log.warning(`[${retailer.slug}] screenshot capture failed: ${e.message}`);
+      }
+    }
 
     // Only fall back to the next URL if we found NO content at all (no pages,
     // no PDF, no deals).
@@ -260,7 +352,8 @@ const crawler = new PuppeteerCrawler({
       sourceUrl: request.url,
       embedUrl: request.userData.viewerUrl || undefined,
       pdfUrl: pdfUrl || undefined,
-      contentSource: pages.length ? 'publitas' : pdfUrl ? 'pdf' : 'page-text',
+      contentSource:
+        pageSource === 'screenshot' ? 'screenshot' : pages.length ? 'publitas' : pdfUrl ? 'pdf' : 'page-text',
       scrapedAt,
     };
 
