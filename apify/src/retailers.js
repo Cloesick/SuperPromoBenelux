@@ -10,6 +10,9 @@ export const RETAILERS = {
   'albert-heijn': {
     name: 'Albert Heijn',
     category: 'Grocery',
+    // AH's folder page is a SPA that hides the Publitas viewer link, so navigate
+    // straight to the current-week Publitas publication ({WEEK} = ISO week no.).
+    viewerTemplate: 'https://view.publitas.com/ah/bonus-week-{WEEK}-2026/page/1',
     folderUrls: [
       'https://www.ah.be/bonus/folder',
       'https://www.ah.be/bonus',
