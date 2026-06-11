@@ -18,11 +18,14 @@ import { resolveRetailers } from './retailers.js';
 import { extractDeals } from './extractDeals.js';
 import { extractDealsFromPdf } from './extractPdf.js';
 import { Airtable } from './airtable.js';
+import { makeR2 } from './r2.js';
 
 await Actor.init();
 
-// Named KV store (unlimited retention) for folder page screenshots — records are
-// publicly readable by URL, so the site can render them with no extra hosting.
+// Page-screenshot hosting. Prefer Cloudflare R2 (public bucket) when configured;
+// otherwise fall back to the named KV store (note: KV records aren't public, so
+// R2 secrets are required for screenshot-based retailers to render).
+const r2 = makeR2();
 const kvStore = await Actor.openKeyValueStore('superpromo-folders');
 
 const input = (await Actor.getInput()) || {};
@@ -131,12 +134,14 @@ async function captureByScreenshot(page, slug, week, log) {
     if (seen.has(h)) break; // unchanged → reached the end
     seen.add(h);
     const key = `${slug}-${week}-p${i + 1}.jpg`;
-    await kvStore.setValue(key, shot, { contentType: 'image/jpeg' });
-    pages.push({
-      pageNumber: i + 1,
-      imageUrl: `https://api.apify.com/v2/key-value-stores/${kvStore.id}/records/${key}`,
-      deals: [],
-    });
+    let imageUrl;
+    if (r2) {
+      imageUrl = await r2.put(`folders/${key}`, shot, 'image/jpeg');
+    } else {
+      await kvStore.setValue(key, shot, { contentType: 'image/jpeg' });
+      imageUrl = `https://api.apify.com/v2/key-value-stores/${kvStore.id}/records/${key}`;
+    }
+    pages.push({ pageNumber: i + 1, imageUrl, deals: [] });
     await advance();
   }
   log.info(`[${slug}] screenshot capture: ${pages.length} pages`);
