@@ -503,8 +503,8 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 			) : mode === "pages" && hasPages ? (
 				/* Fallback: Image page viewer */
 				<div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-					<div className="bg-gray-50 px-4 py-5 sm:px-6 sm:py-6">
-						<div className="mx-auto w-full max-w-[900px] min-h-[600px] rounded-lg border border-gray-200 bg-white shadow-sm overflow-visible relative">
+					<div className="bg-gradient-to-b from-slate-100 to-slate-200 px-3 py-6 sm:px-8 sm:py-9">
+						<div className="relative mx-auto w-full max-w-[880px] overflow-hidden rounded-xl bg-white ring-1 ring-black/5 shadow-[0_16px_44px_-16px_rgba(15,23,42,0.5)]">
 							<button
 								type="button"
 								onClick={goPrev}
@@ -524,7 +524,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								type="button"
 								onClick={goPrev}
 								disabled={!canGoPrev}
-								className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-200 rounded-full p-2 shadow-sm disabled:opacity-30 disabled:hover:bg-white/90 disabled:cursor-not-allowed transition"
+								className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10 grid place-items-center w-11 h-11 sm:w-12 sm:h-12 bg-white/85 backdrop-blur border border-white/60 rounded-full shadow-lg hover:bg-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none transition"
 								aria-label="Vorige pagina"
 							>
 								<ChevronLeft
@@ -536,7 +536,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								type="button"
 								onClick={goNext}
 								disabled={!canGoNext}
-								className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-200 rounded-full p-2 shadow-sm disabled:opacity-30 disabled:hover:bg-white/90 disabled:cursor-not-allowed transition"
+								className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-10 grid place-items-center w-11 h-11 sm:w-12 sm:h-12 bg-white/85 backdrop-blur border border-white/60 rounded-full shadow-lg hover:bg-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none transition"
 								aria-label="Volgende pagina"
 							>
 								<ChevronRight
