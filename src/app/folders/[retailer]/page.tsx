@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { retailers, getRetailerBySlug } from "@/lib/retailers";
-import { getCurrentFolder } from "@/lib/folders";
-import { FolderViewer } from "@/components/FolderViewer";
+import { getCurrentFolder, getFoldersForRetailer } from "@/lib/folders";
+import { FolderSwitcher } from "@/components/FolderSwitcher";
 import { AdBanner } from "@/components/AdBanner";
 import {
 	JsonLd,
@@ -136,6 +136,7 @@ export default async function RetailerPage({ params }: PageProps) {
 	}
 
 	const currentFolder = getCurrentFolder(slug);
+	const folders = getFoldersForRetailer(slug);
 	const outboundUrl = `/out/${slug}`;
 
 	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".webp");
@@ -281,8 +282,8 @@ export default async function RetailerPage({ params }: PageProps) {
 			</div>
 
 			{/* Folder viewer */}
-			{currentFolder ? (
-				<FolderViewer folder={currentFolder} retailer={retailer} />
+			{folders.length > 0 ? (
+				<FolderSwitcher folders={folders} retailer={retailer} />
 			) : (
 				<div className="bg-amber-50 border border-amber-200 rounded-xl p-8 text-center mb-8">
 					<p className="text-amber-800 font-medium mb-2">
