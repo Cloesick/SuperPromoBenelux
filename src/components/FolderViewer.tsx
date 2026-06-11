@@ -493,12 +493,14 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 						</a>
 					</div>
 
-					<iframe
-						src={folder.pdfUrl}
-						title={`${retailer.name} folder PDF`}
-						className="hidden sm:block w-full h-[750px] lg:h-[900px] border-0"
-						loading="lazy"
-					/>
+					<div className="hidden sm:block bg-gradient-to-b from-slate-100 to-slate-200 px-3 py-6 sm:px-8 sm:py-9">
+						<iframe
+							src={folder.pdfUrl}
+							title={`${retailer.name} folder PDF`}
+							className="w-full h-[760px] lg:h-[900px] border-0 rounded-xl bg-white ring-1 ring-black/5 shadow-[0_16px_44px_-16px_rgba(15,23,42,0.5)]"
+							loading="lazy"
+						/>
+					</div>
 				</div>
 			) : mode === "pages" && hasPages ? (
 				/* Fallback: Image page viewer */
