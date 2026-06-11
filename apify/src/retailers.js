@@ -63,6 +63,8 @@ export const RETAILERS = {
   action: {
     name: 'Action',
     category: 'General',
+    // Action's Publitas publication (standard domain) for the current week.
+    viewerTemplate: 'https://view.publitas.com/action-benl/action-week-{WEEK}-2026/page/1',
     folderUrls: [
       'https://www.action.com/nl-be/weekactie/',
       'https://www.action.com/nl-be/folder/',

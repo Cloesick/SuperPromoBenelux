@@ -66,10 +66,22 @@ function buildPages(imageUrls) {
   const order = [];
   const best = new Map();
   for (const u of imageUrls) {
-    const m = u.match(/\/pages\/([A-Za-z0-9_-]+)-at(\d+)\.(?:jpe?g|webp|png)/i);
-    if (!m) continue;
-    const hash = m[1];
-    const size = parseInt(m[2], 10);
+    let hash;
+    let size = 0;
+    // Publitas: …/pages/{hash}-at{size}.jpg
+    let m = u.match(/\/pages\/([A-Za-z0-9_-]+)-at(\d+)\.(?:jpe?g|webp|png)/i);
+    if (m) {
+      hash = m[1];
+      size = parseInt(m[2], 10);
+    } else {
+      // iPaper (e.g. Aldi): …ipaper.io/.../(Optimize|HighRes|Thumbnails)/{hash}.jpg
+      m = u.match(/ipaper\.io\/.*?\/(Optimize|HighRes|Thumbnails|Files)\/([A-Za-z0-9-]+)\.(?:jpe?g|webp|png)/i);
+      if (m) {
+        hash = m[2];
+        size = /Optimize|HighRes/i.test(m[1]) ? 1000 : 200;
+      }
+    }
+    if (!hash) continue;
     if (!best.has(hash)) order.push(hash);
     const cur = best.get(hash);
     if (!cur || size > cur.size) best.set(hash, { url: u.split('?')[0], size });
@@ -179,6 +191,21 @@ const crawler = new PuppeteerCrawler({
             }
             await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
             await page.waitForNetworkIdle({ idleTime: 1500, timeout: 20000 }).catch(() => {});
+            // Harvest the COMPLETE page-image list from the viewer HTML/JSON
+            // (every page is referenced there, independent of lazy-scroll loading).
+            try {
+              const vhtml = await page.content();
+              const harvested =
+                vhtml.match(
+                  /https?:\/\/[^"'\s\\)]*(?:\/pages\/[A-Za-z0-9_-]+-at\d+|ipaper\.io\/[^"'\s\\)]*\/(?:Optimize|HighRes)\/[A-Za-z0-9-]+)\.(?:jpe?g|webp|png)/gi,
+                ) || [];
+              for (const u of harvested) {
+                const clean = u.replace(/&amp;/g, '&');
+                if (!request.userData.imageUrls.includes(clean)) request.userData.imageUrls.push(clean);
+              }
+            } catch {
+              /* ignore */
+            }
           } catch (e) {
             log.warning(`[${retailer.slug}] embed nav failed: ${e.message}`);
           }
