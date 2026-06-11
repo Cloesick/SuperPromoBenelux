@@ -2,89 +2,27 @@
   "retailer": "delhaize",
   "folders": [
     {
-      "id": "delhaize-2026-w21-folder",
+      "id": "delhaize-2026-w24-folder",
       "retailerSlug": "delhaize",
       "title": "Delhaize folder van de week",
-      "validFrom": "2026-05-18",
-      "validUntil": "2026-05-24",
-      "pageCount": 12,
-      "thumbnailUrl": "/screenshots/delhaize-2026-w21-viewerimg-p1.webp",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p1.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 2,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p2.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 3,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p3.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 4,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p4.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 5,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p5.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 6,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p6.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 7,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p7.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 8,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p8.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 9,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p9.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 10,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p10.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 11,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p11.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 12,
-          "imageUrl": "/screenshots/delhaize-2026-w21-viewerimg-p12.webp",
-          "deals": []
-        }
-      ],
-      "embedUrl": "https://view.publitas.com/delhaize-belgium-nl/w20-2026-nl/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/11013/3061696/pdfs/6ce16e60-c792-4b53-a9e1-b8122e941440.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W20-2026-NL.pdf",
+      "validFrom": "2026-06-09",
+      "validUntil": "2026-06-15",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/delhaize-belgium-nl/w24-2026-nl/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/11013/3139425/pdfs/ad27b702-08c7-4ff2-b3cf-a13e9080406d.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-05-20T17:57:13.105Z"
+      "scrapedAt": "2026-06-11T14:30:00.000Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-05-20T17:58:29.321Z",
+  "scrapedAt": "2026-06-11T14:30:00.000Z",
   "sourceUrls": [
     "https://www.delhaize.be/nl/folder"
   ],
   "methods": [
     "publitas",
-    "pdf",
-    "screenshot"
+    "pdf"
   ]
 }
