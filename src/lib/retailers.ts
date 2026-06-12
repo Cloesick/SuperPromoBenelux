@@ -154,6 +154,33 @@ export const retailersBe: Retailer[] = [
 				"Elke week nieuwe non-food deals (huishouden, decoratie, hobby, multimedia) met extreem scherpe prijzen.",
 		},
 	},
+	{
+		slug: "jumbo",
+		name: "Jumbo",
+		logo: "/retailers/jumbo.svg",
+		color: "#FDD800",
+		website: "https://www.jumbo.com",
+		description:
+			"Bekijk de Jumbo actiefolder van deze week met scherpe acties en de 7 zekerheden van Jumbo.",
+		category: "supermarkt",
+		seo: {
+			folderDay: "woensdag",
+			folderDayDetail:
+				"De nieuwe Jumbo actiefolder verschijnt wekelijks (loopt van woensdag tot en met dinsdag) met weekdeals en wisselende acties.",
+			storeCount: "29 winkels in België en honderden in Nederland",
+			pricePositioning:
+				"Jumbo combineert lage prijzen met service via de '7 zekerheden', waaronder de laagste prijs-garantie en vlotte kassa's.",
+			loyalty:
+				"Jumbo Extra's: digitaal spaarprogramma met persoonlijke acties via de Jumbo-app.",
+			appName: "Jumbo app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 8:00–20:00, veel winkels ook op zondag geopend.",
+			priceGuarantee:
+				"Via de '7 zekerheden' garandeert Jumbo de laagste prijs: vind je een product elders goedkoper, dan krijg je het verschil terug.",
+			uniqueSellingPoint:
+				"Nederlandse familieketen met sterke service (7 zekerheden), breed assortiment en een groeiend winkelnet in België.",
+		},
+	},
 ];
 
 export const nlBorderRetailers: Retailer[] = [];

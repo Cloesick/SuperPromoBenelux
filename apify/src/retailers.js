@@ -43,6 +43,8 @@ export const RETAILERS = {
   colruyt: {
     name: 'Colruyt',
     category: 'Grocery',
+    // Colruyt's folder lives on Issuu; this rolling slug serves the current one.
+    viewerTemplate: 'https://issuu.com/colruytgroup/docs/_colruyt_laagste_prijzen_-_folder',
     folderUrls: [
       'https://www.colruyt.be/nl/promoties',
       'https://www.colruyt.be/nl/folders',
@@ -69,6 +71,15 @@ export const RETAILERS = {
       'https://www.action.com/nl-be/weekactie/',
       'https://www.action.com/nl-be/folder/',
     ],
+    waitFor: 'body',
+    active: true,
+  },
+  jumbo: {
+    name: 'Jumbo',
+    category: 'Grocery',
+    // Jumbo (NL chain, 29 BE stores) publishes its weekly folder on Publitas.
+    viewerTemplate: 'https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-week-{WEEK}/page/1',
+    folderUrls: ['https://www.jumbo.com/aanbiedingen/folder', 'https://www.jumbo.com/folder'],
     waitFor: 'body',
     active: true,
   },
