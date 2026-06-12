@@ -25,7 +25,9 @@ export function AdSenseGate() {
 		};
 	}, []);
 
-	const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+	// Baked AdSense publisher id; env NEXT_PUBLIC_ADSENSE_CLIENT overrides if set.
+	const client =
+		process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-3766515514893974";
 	if (!enabled) return null;
 	if (!client) return null;
 
