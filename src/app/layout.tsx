@@ -29,7 +29,10 @@ export const metadata: Metadata = {
 		follow: true,
 	},
 	verification: {
-		google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
+		// Baked GSC token for superpromobelgie.com; env NEXT_PUBLIC_GSC_VERIFICATION overrides if set.
+		google:
+			process.env.NEXT_PUBLIC_GSC_VERIFICATION ||
+			"M2fnP_ZLlG9tgEx2CHdU_DWbGFl8g5uj3gggRkbLUdI",
 	},
 };
 
