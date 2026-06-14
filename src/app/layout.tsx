@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { JsonLd, createWebsiteJsonLd } from "@/components/JsonLd";
+import { CookieConsent } from "@/components/CookieConsent";
+import { AnalyticsGate } from "@/components/AnalyticsGate";
+import { AdSenseGate } from "@/components/AdSenseGate";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -38,6 +41,9 @@ export default function RootLayout({
 			<body className="min-h-screen flex flex-col" suppressHydrationWarning>
 				<JsonLd data={createWebsiteJsonLd()} />
 				{children}
+				<CookieConsent />
+				<AnalyticsGate />
+				<AdSenseGate />
 			</body>
 		</html>
 	);
