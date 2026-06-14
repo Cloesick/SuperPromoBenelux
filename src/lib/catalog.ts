@@ -132,6 +132,8 @@ export const catalog: CatalogShop[] = [
 	{ slug: "lidl", name: "Lidl", category: "supermarkt", countries: ["be", "nl"], website: "https://www.lidl.be", color: "#0050AA", source: "publitas", live: true },
 	{ slug: "aldi", name: "ALDI", category: "supermarkt", countries: ["be", "nl"], website: "https://www.aldi.be", color: "#0B5AA2", source: "ipaper", live: true },
 	{ slug: "jumbo", name: "Jumbo", category: "supermarkt", countries: ["be", "nl"], website: "https://www.jumbo.com", color: "#FDD800", source: "publitas", live: true },
+	{ slug: "boni", name: "Boni", category: "supermarkt", countries: ["nl", "be"], website: "https://www.boni.nl", color: "#008D36", source: "publitas" },
+	{ slug: "cora", name: "Cora", category: "supermarkt", countries: ["be"], website: "https://www.cora.be", color: "#E2001A", source: "publitas" },
 	{ slug: "carrefour", name: "Carrefour", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#004E9F", source: "own" },
 	{ slug: "carrefour-market", name: "Carrefour Market", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#E2231A", source: "own" },
 	{ slug: "intermarche", name: "Intermarché", category: "supermarkt", countries: ["be"], website: "https://www.intermarche.be", color: "#E2001A", source: null },
@@ -157,27 +159,27 @@ export const catalog: CatalogShop[] = [
 	{ slug: "trafic", name: "Trafic", category: "discounter", countries: ["be"], website: "https://www.trafic.be", color: "#E2001A", source: null },
 
 	// ── Doe-het-zelf & Bouwmarkt ──────────────────────────────────────────────
-	{ slug: "brico", name: "Brico", category: "doe-het-zelf", countries: ["be"], website: "https://www.brico.be", color: "#E2001A", source: "ipaper" },
+	{ slug: "brico", name: "Brico", category: "doe-het-zelf", countries: ["be"], website: "https://www.brico.be", color: "#E2001A", source: "publitas" },
 	{ slug: "brico-planit", name: "Brico Plan-It", category: "doe-het-zelf", countries: ["be"], website: "https://www.brico.be", color: "#005CA9", source: "ipaper" },
-	{ slug: "hubo", name: "Hubo", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.hubo.be", color: "#E2001A", source: "own" },
-	{ slug: "gamma", name: "Gamma", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.gamma.be", color: "#003DA5", source: "own" },
-	{ slug: "mr-bricolage", name: "Mr. Bricolage", category: "doe-het-zelf", countries: ["be"], website: "https://www.mr-bricolage.be", color: "#F39200", source: null },
+	{ slug: "hubo", name: "Hubo", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.hubo.be", color: "#E2001A", source: "publitas" },
+	{ slug: "gamma", name: "Gamma", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.gamma.be", color: "#003DA5", source: "publitas" },
+	{ slug: "mr-bricolage", name: "Mr. Bricolage", category: "doe-het-zelf", countries: ["be"], website: "https://www.mr-bricolage.be", color: "#F39200", source: "publitas" },
 	{ slug: "karwei", name: "Karwei", category: "doe-het-zelf", countries: ["nl"], website: "https://www.karwei.nl", color: "#E2001A", source: "own" },
 	{ slug: "praxis", name: "Praxis", category: "doe-het-zelf", countries: ["nl"], website: "https://www.praxis.nl", color: "#009A44", source: "own" },
 	{ slug: "hornbach", name: "Hornbach", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.hornbach.be", color: "#F7941E", source: "own" },
 	{ slug: "bauhaus", name: "Bauhaus", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.bauhaus.be", color: "#E2001A", source: "own" },
 
 	// ── Tuincentra ────────────────────────────────────────────────────────────
-	{ slug: "aveve", name: "Aveve", category: "tuin", countries: ["be"], website: "https://www.aveve.be", color: "#84BD00", source: "own" },
+	{ slug: "aveve", name: "Aveve", category: "tuin", countries: ["be"], website: "https://www.aveve.be", color: "#84BD00", source: "publitas" },
 	{ slug: "horta", name: "Horta", category: "tuin", countries: ["be"], website: "https://www.horta.be", color: "#76B82A", source: null },
 	{ slug: "oh-green", name: "Oh'Green", category: "tuin", countries: ["be"], website: "https://www.ohgreen.be", color: "#5B9E46", source: null },
-	{ slug: "intratuin", name: "Intratuin", category: "tuin", countries: ["nl", "be"], website: "https://www.intratuin.nl", color: "#5B9E46", source: "own" },
+	{ slug: "intratuin", name: "Intratuin", category: "tuin", countries: ["nl", "be"], website: "https://www.intratuin.nl", color: "#5B9E46", source: "publitas" },
 	{ slug: "welkoop", name: "Welkoop", category: "tuin", countries: ["nl"], website: "https://www.welkoop.nl", color: "#E30613", source: "own" },
 	{ slug: "groenrijk", name: "GroenRijk", category: "tuin", countries: ["nl"], website: "https://www.groenrijk.nl", color: "#5B9E46", source: null },
 
 	// ── Dierenwinkels ─────────────────────────────────────────────────────────
 	{ slug: "tom-and-co", name: "Tom&Co", category: "dierenwinkel", countries: ["be"], website: "https://www.tomandco.be", color: "#E2001A", source: null },
-	{ slug: "maxi-zoo", name: "Maxi Zoo", category: "dierenwinkel", countries: ["be", "nl"], website: "https://www.maxizoo.be", color: "#E2001A", source: "own" },
+	{ slug: "maxi-zoo", name: "Maxi Zoo", category: "dierenwinkel", countries: ["be", "nl"], website: "https://www.maxizoo.be", color: "#E2001A", source: "publitas" },
 	{ slug: "pets-place", name: "Pets Place", category: "dierenwinkel", countries: ["nl"], website: "https://www.petsplace.nl", color: "#F39200", source: "own" },
 	{ slug: "jumper", name: "Jumper", category: "dierenwinkel", countries: ["nl"], website: "https://www.jumper.nl", color: "#E2001A", source: null },
 
@@ -212,7 +214,7 @@ export const catalog: CatalogShop[] = [
 
 	// ── Warenhuizen & Variété ─────────────────────────────────────────────────
 	{ slug: "hema", name: "HEMA", category: "warenhuis", countries: ["be", "nl"], website: "https://www.hema.be", color: "#008CC1", source: "own" },
-	{ slug: "blokker", name: "Blokker", category: "warenhuis", countries: ["be", "nl"], website: "https://www.blokker.nl", color: "#E2001A", source: "own" },
+	{ slug: "blokker", name: "Blokker", category: "warenhuis", countries: ["be", "nl"], website: "https://www.blokker.nl", color: "#E2001A", source: "publitas" },
 	{ slug: "xenos", name: "Xenos", category: "warenhuis", countries: ["nl", "be"], website: "https://www.xenos.nl", color: "#C8102E", source: "own" },
 	{ slug: "casa", name: "Casa", category: "warenhuis", countries: ["be", "nl"], website: "https://www.casashops.com", color: "#E2001A", source: null },
 	{ slug: "flying-tiger", name: "Flying Tiger", category: "warenhuis", countries: ["be", "nl"], website: "https://flyingtiger.com", color: "#00A859", source: null },

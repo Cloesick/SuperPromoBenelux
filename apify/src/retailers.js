@@ -12,7 +12,7 @@ export const RETAILERS = {
     category: 'Grocery',
     // AH's folder page is a SPA that hides the Publitas viewer link, so navigate
     // straight to the current-week Publitas publication ({WEEK} = ISO week no.).
-    viewerTemplate: 'https://view.publitas.com/ah/bonus-week-{WEEK}-2026/page/1',
+    viewerTemplate: 'https://view.publitas.com/ah/bonus-week-{WEEK}-{YYYY}/page/1',
     folderUrls: [
       'https://www.ah.be/bonus/folder',
       'https://www.ah.be/bonus',
@@ -66,7 +66,7 @@ export const RETAILERS = {
     name: 'Action',
     category: 'General',
     // Action's Publitas publication (standard domain) for the current week.
-    viewerTemplate: 'https://view.publitas.com/action-benl/action-week-{WEEK}-2026/page/1',
+    viewerTemplate: 'https://view.publitas.com/action-benl/action-week-{WEEK}-{YYYY}/page/1',
     folderUrls: [
       'https://www.action.com/nl-be/weekactie/',
       'https://www.action.com/nl-be/folder/',
@@ -83,6 +83,101 @@ export const RETAILERS = {
     waitFor: 'body',
     active: true,
   },
+  // --- Publitas batch 2: accounts confirmed via indexed view.publitas.com URLs
+  // (June 2026). Only Hubo's weekly slug was validated against the CURRENT week
+  // (2624_nl loads); the others use the historical week-{WW}-{YYYY} slug as a
+  // fast-path hint. If that 404s, the actor self-heals by scraping the retailer's
+  // folder landing page (see fallback logic in main.js) to find the live viewer.
+  hubo: {
+    name: 'Hubo',
+    category: 'DIY',
+    // Validated current: slug is {2-digit year}{2-digit week}_nl, e.g. 2624_nl.
+    viewerTemplate: 'https://view.publitas.com/hubo-belgie-vl/{YY}{WEEK}_nl/page/1',
+    folderUrls: ['https://www.hubo.be/nl/folders', 'https://www.hubo.be/nl/folder'],
+    waitFor: 'body',
+    active: true,
+  },
+  gamma: {
+    name: 'Gamma',
+    category: 'DIY',
+    // e.g. gamma-24-week-2026
+    viewerTemplate: 'https://view.publitas.com/gamma/gamma-{WEEK}-week-{YYYY}/page/1',
+    folderUrls: ['https://www.gamma.be/nl/folder', 'https://www.gamma.be/nl/promoties'],
+    waitFor: 'body',
+    active: true,
+  },
+  blokker: {
+    name: 'Blokker',
+    category: 'General',
+    // e.g. blokker-folder-week-24-2026
+    viewerTemplate: 'https://view.publitas.com/blokker/blokker-folder-week-{WEEK}-{YYYY}/page/1',
+    folderUrls: ['https://www.blokker.nl/folder', 'https://www.blokker.be/nl/folder'],
+    waitFor: 'body',
+    active: true,
+  },
+  intratuin: {
+    name: 'Intratuin',
+    category: 'Garden',
+    // NL account; e.g. folder-week-24-2026-nl-dyn
+    viewerTemplate: 'https://view.publitas.com/intratuin-nl/folder-week-{WEEK}-{YYYY}-nl-dyn/page/1',
+    folderUrls: ['https://www.intratuin.nl/folder', 'https://www.intratuin.be/nl/folder'],
+    waitFor: 'body',
+    active: true,
+  },
+  boni: {
+    name: 'Boni',
+    category: 'Grocery',
+    // e.g. boni-folder-week-24-2026
+    viewerTemplate: 'https://view.publitas.com/boni-supermarkt/boni-folder-week-{WEEK}-{YYYY}/page/1',
+    folderUrls: ['https://www.boni.nl/folder'],
+    waitFor: 'body',
+    active: true,
+  },
+
+  // --- Publitas batch 2b: account verified, but the slug is period-based
+  // (campaign numbers / theme names), not a clean weekly pattern. Left inactive
+  // until the actor harvests the current slug from the folder landing page.
+  aveve: {
+    name: 'Aveve',
+    category: 'Garden',
+    // Account 'aveve'; slugs like vl-p08_folder_tuin_2026 (period-numbered).
+    folderUrls: ['https://www.aveve.be/folder', 'https://www.aveve.be/nl/folder'],
+    waitFor: 'body',
+    active: false,
+  },
+  brico: {
+    name: 'Brico',
+    category: 'DIY',
+    // Account 'brico-folder-extra-nl'; slugs like brico-benl-f14-2024 (campaign #).
+    folderUrls: ['https://www.brico.be/nl/folder', 'https://www.brico.be/nl/promoties'],
+    waitFor: 'body',
+    active: false,
+  },
+  'mr-bricolage': {
+    name: 'Mr. Bricolage',
+    category: 'DIY',
+    // Account 'mr-bricolage'; slugs like folder-8-2026 (monthly folder number).
+    folderUrls: ['https://www.mr-bricolage.be/nl/folder'],
+    waitFor: 'body',
+    active: false,
+  },
+  cora: {
+    name: 'Cora',
+    category: 'Grocery',
+    // Account 'cora'; hypermarket, period-based slugs.
+    folderUrls: ['https://www.cora.be/nl/folder'],
+    waitFor: 'body',
+    active: false,
+  },
+  'maxi-zoo': {
+    name: 'Maxi Zoo',
+    category: 'Pets',
+    // Account 'maxi-zoo-nl' seen historically; confirm current slug at scrape time.
+    folderUrls: ['https://www.maxizoo.be/nl/folder', 'https://www.maxizoo.nl/folder'],
+    waitFor: 'body',
+    active: false,
+  },
+
   mediamarkt: {
     name: 'MediaMarkt',
     category: 'Electronics',

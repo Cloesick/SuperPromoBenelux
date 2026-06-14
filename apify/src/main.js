@@ -59,11 +59,21 @@ const proxyConfiguration = await Actor.createProxyConfiguration(
 );
 
 // For retailers whose viewer is hidden behind a SPA, navigate straight to the
-// current-week viewer URL (built from the ISO week number) before the SPA pages.
+// current-week viewer URL before the SPA pages. Templates support:
+//   {WEEK} → zero-padded ISO week (e.g. "24")
+//   {YYYY} → 4-digit ISO-week year (e.g. "2026")
+//   {YY}   → 2-digit year (e.g. "26") — used by retailers like Hubo ({YY}{WEEK})
+const yyyy = isoWeek.split('-')[0];
+const yy = yyyy.slice(2);
 const weekNum = isoWeek.split('w')[1];
+const fillTemplate = (t) =>
+  t
+    .replace(/\{WEEK\}/g, weekNum)
+    .replace(/\{YYYY\}/g, yyyy)
+    .replace(/\{YY\}/g, yy);
 const requests = targets.map((r) => {
   const urls = [...r.folderUrls];
-  if (r.viewerTemplate) urls.unshift(r.viewerTemplate.replace('{WEEK}', weekNum));
+  if (r.viewerTemplate) urls.unshift(fillTemplate(r.viewerTemplate));
   return { url: urls[0], userData: { retailer: r, fallbacks: urls.slice(1) } };
 });
 
@@ -71,30 +81,35 @@ const requests = targets.map((r) => {
 // Publitas/flipbook page-image URLs the viewer loaded (…/pages/{hash}-at{size}.jpg).
 // Keeps the largest size captured per page, in first-seen (≈ page) order.
 function buildPages(imageUrls) {
-  const order = [];
-  const best = new Map();
+  const best = new Map(); // key -> { url, size, order }
+  let seq = 0;
   for (const u of imageUrls) {
-    let hash;
+    let key;
     let size = 0;
+    let order = null;
     // Publitas: …/pages/{hash}-at{size}.jpg
     let m = u.match(/\/pages\/([A-Za-z0-9_-]+)-at(\d+)\.(?:jpe?g|webp|png)/i);
     if (m) {
-      hash = m[1];
+      key = m[1];
       size = parseInt(m[2], 10);
-    } else {
-      // iPaper (e.g. Aldi): …ipaper.io/.../(Optimize|HighRes|Thumbnails)/{hash}.jpg
-      m = u.match(/ipaper\.io\/.*?\/(Optimize|HighRes|Thumbnails|Files)\/([A-Za-z0-9-]+)\.(?:jpe?g|webp|png)/i);
-      if (m) {
-        hash = m[2];
-        size = /Optimize|HighRes/i.test(m[1]) ? 1000 : 200;
-      }
+    } else if ((m = u.match(/ipaper\.io\/.*?\/(Optimize|HighRes|Thumbnails|Files)\/([A-Za-z0-9-]+)\.(?:jpe?g|webp|png)/i))) {
+      // iPaper (e.g. Aldi)
+      key = m[2];
+      size = /Optimize|HighRes/i.test(m[1]) ? 1000 : 200;
+    } else if ((m = u.match(/isu\.pub\/[^"'\s\\)]*\/jpg\/page_(\d+)/i))) {
+      // Issuu (e.g. Colruyt): image.isu.pub/{docId}/jpg/page_{N}.jpg — N gives order
+      key = `issuu-${m[1].padStart(4, '0')}`;
+      size = 1000;
+      order = parseInt(m[1], 10);
     }
-    if (!hash) continue;
-    if (!best.has(hash)) order.push(hash);
-    const cur = best.get(hash);
-    if (!cur || size > cur.size) best.set(hash, { url: u.split('?')[0], size });
+    if (!key) continue;
+    const cur = best.get(key);
+    if (!cur) best.set(key, { url: u.split('?')[0], size, order: order ?? seq++ });
+    else if (size > cur.size) best.set(key, { url: u.split('?')[0], size, order: cur.order });
   }
-  return order.map((h, i) => ({ pageNumber: i + 1, imageUrl: best.get(h).url, deals: [] }));
+  return [...best.values()]
+    .sort((a, b) => a.order - b.order)
+    .map((v, i) => ({ pageNumber: i + 1, imageUrl: v.url, deals: [] }));
 }
 
 // Universal capture: page through the viewer and SCREENSHOT each page, storing
@@ -177,7 +192,7 @@ const crawler = new PuppeteerCrawler({
             // Capture flipbook page images (Publitas/iPaper viewer hosts).
             if (
               (ct.startsWith('image/') || /\.(jpe?g|png|webp)(\?|$)/i.test(u)) &&
-              /publitas\.com|publications\.action|folder-nl\.lidl|folder\.aldi|ipaper/i.test(u)
+              /publitas\.com|publications\.action|folder-nl\.lidl|folder\.aldi|ipaper|isu\.pub|issuu/i.test(u)
             ) {
               if (!request.userData.imageUrls.includes(u)) request.userData.imageUrls.push(u);
             }
@@ -252,7 +267,7 @@ const crawler = new PuppeteerCrawler({
             // on a single scroll. Stop when no new page image appears for a while.
             const pageImgCount = () =>
               (request.userData.imageUrls || []).filter((u) =>
-                /\/pages\/[A-Za-z0-9_-]+-at|ipaper\.io.*\/(?:Optimize|HighRes)\//i.test(u),
+                /\/pages\/[A-Za-z0-9_-]+-at|ipaper\.io.*\/(?:Optimize|HighRes)\/|isu\.pub\/.*\/jpg\/page_/i.test(u),
               ).length;
             try {
               await page.mouse.click(700, 450); // focus the viewer for keyboard nav
@@ -279,7 +294,7 @@ const crawler = new PuppeteerCrawler({
               const vhtml = await page.content();
               const harvested =
                 vhtml.match(
-                  /https?:\/\/[^"'\s\\)]*(?:\/pages\/[A-Za-z0-9_-]+-at\d+|ipaper\.io\/[^"'\s\\)]*\/(?:Optimize|HighRes)\/[A-Za-z0-9-]+)\.(?:jpe?g|webp|png)/gi,
+                  /https?:\/\/[^"'\s\\)]*(?:\/pages\/[A-Za-z0-9_-]+-at\d+|ipaper\.io\/[^"'\s\\)]*\/(?:Optimize|HighRes)\/[A-Za-z0-9-]+|isu\.pub\/[^"'\s\\)]*\/jpg\/page_\d+)\.(?:jpe?g|webp|png)/gi,
                 ) || [];
               for (const u of harvested) {
                 const clean = u.replace(/&amp;/g, '&');
