@@ -2,25 +2,24 @@
   "retailer": "lidl",
   "folders": [
     {
-      "id": "lidl-2026-w24-folder",
+      "id": "lidl-2307055-folder",
       "retailerSlug": "lidl",
-      "title": "Lidl folder van de week",
-      "validFrom": "2026-06-08",
-      "validUntil": "2026-06-13",
-      "pageCount": 0,
-      "thumbnailUrl": "",
+      "title": "Lidl BE NL - nl folder 11-06-17-06",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 59,
+      "thumbnailUrl": "https://view.publitas.com/97031/2307055/pages/372b4739-fa17-4192-a055-99ed9aa84101-at800.jpg",
       "pages": [],
-      "embedUrl": "https://folder-nl.lidl.be/nl-folder-08-06-13-06",
-      "pdfUrl": "https://folder-nl.lidl.be/97031/3109438/pdfs/c9e5d516-b9cf-4004-a4bb-5e850864a0bc.pdf",
-      "contentSource": "pdf",
-      "scrapedAt": "2026-06-11T14:30:00.000Z"
+      "embedUrl": "https://folder-nl.lidl.be/nl-folder-11-06-17-06?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/97031/2307055/pdfs/ca544c88-f198-409d-a015-21c7c4654495.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:40:48.355Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-06-11T14:30:00.000Z",
+  "scrapedAt": "2026-06-14T23:40:48.355Z",
   "sourceUrls": [
-    "https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
-    "https://folder-nl.lidl.be/nl-folder-08-06-13-06"
+    "https://folder-nl.lidl.be/nl-folder-11-06-17-06"
   ],
   "methods": [
     "publitas",

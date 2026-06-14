@@ -47,7 +47,9 @@ export function extractManifest(html) {
 // HTML (other pages lazy-load via signed requests). Use it as the folder
 // thumbnail at a card-friendly size.
 export function coverThumbnail(html, size = 800) {
-  const m = html.match(/https?:\/\/view\.publitas\.com\/\d+\/\d+\/pages\/[0-9a-f-]{36}-at(\d+)\.(?:jpe?g|webp|png)/i);
+  // Works for view.publitas.com AND white-labeled Publitas domains
+  // (e.g. folder-nl.lidl.be) — match any host with the /{gid}/{pid}/pages/ shape.
+  const m = html.match(/https?:\/\/[a-z0-9.-]+\/\d+\/\d+\/pages\/[0-9a-f-]{36}-at(\d+)\.(?:jpe?g|webp|png)/i);
   if (!m) return '';
   return m[0].replace(/-at\d+\./, `-at${size}.`);
 }

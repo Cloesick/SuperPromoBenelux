@@ -67,7 +67,41 @@ const RETAILERS = {
   brico: { account: 'brico-folder-extra-nl' },
   bauhaus: { account: 'bauhaus-nederland' },
   gifi: { account: 'gifi' },
+  // Lidl runs a white-labeled Publitas on folder-nl.lidl.be with a date-range
+  // slug (nl-folder-DD-MM-DD-MM). No account root; generate plausible ranges for
+  // the current week (Mon–Sat main + Thu–Wed non-food) and harvest the first hit.
+  lidl: { urls: () => lidlSlugs() },
 };
+
+// dd-mm for a Date
+const dm = (d) => `${pad(d.getUTCDate())}-${pad(d.getUTCMonth() + 1)}`;
+function lidlSlugs() {
+  const now = new Date();
+  const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const ranges = [];
+  for (const offset of [-7, 0, 7]) {
+    const base = new Date(today + offset * 86400000);
+    const dow = (base.getUTCDay() + 6) % 7; // 0=Mon
+    const mon = new Date(base.getTime() - dow * 86400000);
+    const mk = (startDow, len) => {
+      const s = new Date(mon.getTime() + startDow * 86400000);
+      const e = new Date(s.getTime() + len * 86400000);
+      return { s, e };
+    };
+    ranges.push(mk(0, 5)); // Mon–Sat (main)
+    ranges.push(mk(3, 6)); // Thu–Wed (non-food)
+  }
+  // Drop ranges that already ended; prefer the one covering today, then soonest.
+  return ranges
+    .filter((r) => r.e.getTime() >= today - 86400000)
+    .sort((a, b) => {
+      const aCov = a.s.getTime() <= today && today <= a.e.getTime() ? 0 : 1;
+      const bCov = b.s.getTime() <= today && today <= b.e.getTime() ? 0 : 1;
+      return aCov - bCov || a.s - b.s;
+    })
+    .map((r) => `https://folder-nl.lidl.be/nl-folder-${dm(r.s)}-${dm(r.e)}`)
+    .filter((u, i, a) => a.indexOf(u) === i);
+}
 
 async function tryUrl(url) {
   const ac = new AbortController();
@@ -90,6 +124,7 @@ async function tryUrl(url) {
 async function harvest(slug, cfg) {
   const candidates = [];
   if (cfg.tpl) for (const { week, year } of WEEKS) candidates.push(cfg.tpl(pad(week), year));
+  if (cfg.urls) candidates.push(...cfg.urls());
   for (const acct of [].concat(cfg.account || [])) candidates.push(`https://view.publitas.com/${acct}`);
 
   for (const url of candidates) {
