@@ -1,0 +1,61 @@
+name: Harvest Publitas folders
+
+# Apify-free folder refresh. Pulls the current weekly folder (public PDF +
+# manifest) for every Publitas-hosted retailer via plain HTTP and commits the
+# updated data/folders/*.json. Runs daily because retailers publish on different
+# days (mon/wed/thu/sun); the harvester only overwrites a file on success, so a
+# missing folder for one retailer never wipes its last-good data.
+
+on:
+  schedule:
+    - cron: "20 5 * * *" # daily 05:20 UTC
+  push:
+    branches: [main]
+    paths:
+      - "apify/harvest-all.mjs"
+      - "apify/harvest-publitas.mjs"
+      - ".github/workflows/harvest-publitas.yml"
+  workflow_dispatch:
+    inputs:
+      retailers:
+        description: "Comma-separated slugs (optional, default all)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-publitas
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Harvest folders
+        shell: bash
+        run: |
+          echo "Harvesting Publitas folders: ${{ inputs.retailers }}"
+          node apify/harvest-all.mjs ${{ inputs.retailers }}
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          if git diff --quiet -- data/folders; then
+            echo "No folder changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/folders
+          git commit -m "chore(harvest): refresh Publitas folders [skip ci]"
+          git push
