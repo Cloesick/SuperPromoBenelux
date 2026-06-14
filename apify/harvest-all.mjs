@@ -15,6 +15,7 @@ import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { extractManifest, buildScrapedData, pdfUrlFromManifest } from './harvest-publitas.mjs';
+import { harvestIssuu } from './harvest-issuu.mjs';
 
 const UA = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
@@ -103,14 +104,32 @@ async function harvest(slug, cfg) {
   return { slug, ok: false, tried: candidates.length };
 }
 
+// Issuu-hosted retailers (rolling doc slug → always the current folder).
+const ISSUU = {
+  colruyt: 'https://issuu.com/colruytgroup/docs/_colruyt_laagste_prijzen_-_folder',
+};
+
 const want = process.argv.slice(2);
 const entries = Object.entries(RETAILERS).filter(([s]) => !want.length || want.includes(s));
-console.log(`ISO week ${cur.week}/${cur.year} (also trying ${next.week}/${next.year}) — ${entries.length} retailers\n`);
+const issuuEntries = Object.entries(ISSUU).filter(([s]) => !want.length || want.includes(s));
+console.log(`ISO week ${cur.week}/${cur.year} (also trying ${next.week}/${next.year}) — ${entries.length} Publitas + ${issuuEntries.length} Issuu\n`);
 const results = [];
 for (const [slug, cfg] of entries) {
   const r = await harvest(slug, cfg);
   results.push(r);
   console.log(r.ok ? `✓ ${slug.padEnd(14)} ${r.pages}p  ${r.title}  [${r.via}]` : `✗ ${slug.padEnd(14)} no PDF (${r.tried} tried)`);
+}
+for (const [slug, docUrl] of issuuEntries) {
+  try {
+    const data = await harvestIssuu(docUrl, slug);
+    writeFileSync(resolve(OUT_DIR, `${slug}.json`), JSON.stringify(data, null, 2));
+    const f = data.folders[0];
+    results.push({ slug, ok: true });
+    console.log(`✓ ${slug.padEnd(14)} ${f.pageCount}p  ${f.title}  [issuu]`);
+  } catch (e) {
+    results.push({ slug, ok: false });
+    console.log(`✗ ${slug.padEnd(14)} issuu failed: ${e.message}`);
+  }
 }
 const live = results.filter((r) => r.ok).map((r) => r.slug);
 console.log(`\n${live.length}/${results.length} harvested: ${live.join(', ')}`);
