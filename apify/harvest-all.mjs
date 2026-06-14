@@ -62,6 +62,10 @@ const RETAILERS = {
   hornbach: { account: 'hornbach-nl' },
   welkoop: { account: 'welkoop', tpl: (w, y) => `https://view.publitas.com/welkoop/welkoop-week-${w}-${y}/page/1` },
   e5: { account: 'e5-mode' },
+  // batch 4
+  brico: { account: 'brico-folder-extra-nl' },
+  bauhaus: { account: 'bauhaus-nederland' },
+  gifi: { account: 'gifi' },
 };
 
 async function tryUrl(url) {

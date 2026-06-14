@@ -1,0 +1,28 @@
+{
+  "retailer": "brico",
+  "folders": [
+    {
+      "id": "brico-3131030-folder",
+      "retailerSlug": "brico",
+      "title": "02. Brico Folder Extra NL - BRICO BENL F10 2026 bathroom",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 37,
+      "thumbnailUrl": "https://view.publitas.com/95978/3131030/pages/2586b4b9-6b9c-4cc8-b2f6-0c4dfed63d61-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/brico-folder-extra-nl/brico-benl-f10-2026-bathroom/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/95978/3131030/pdfs/38e4a82c-5558-4597-854e-abbb5d98e3df.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:30:02.066Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:30:02.066Z",
+  "sourceUrls": [
+    "https://view.publitas.com/brico-folder-extra-nl/brico-benl-f10-2026-bathroom/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

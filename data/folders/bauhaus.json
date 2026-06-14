@@ -1,0 +1,28 @@
+{
+  "retailer": "bauhaus",
+  "folders": [
+    {
+      "id": "bauhaus-3144310-folder",
+      "retailerSlug": "bauhaus",
+      "title": "BAUHAUS Nederland - BAUHAUS week 25-26 2026",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 34,
+      "thumbnailUrl": "https://view.publitas.com/42725/3144310/pages/0cf0e71b-3f89-47a4-92f9-7cd3d0c3ada7-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/bauhaus-nederland/bauhaus-week-25-26-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/42725/3144310/pdfs/a99ead49-750e-4d0c-b868-33efa047552a.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:30:02.408Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:30:02.408Z",
+  "sourceUrls": [
+    "https://view.publitas.com/bauhaus-nederland/bauhaus-week-25-26-2026/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

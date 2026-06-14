@@ -425,6 +425,78 @@ export const retailersBe: Retailer[] = [
 				"Belgische familiemode met betaalbare seizoenscollecties en frequente acties.",
 		},
 	},
+	{
+		slug: "brico",
+		name: "Brico",
+		logo: "/retailers/brico.svg",
+		color: "#E2001A",
+		website: "https://www.brico.be",
+		description:
+			"Bekijk de Brico folder met doe-het-zelf aanbiedingen, gereedschap, verf, tuin en sanitair.",
+		category: "doe-het-zelf",
+		seo: {
+			folderDay: "woensdag",
+			folderDayDetail:
+				"De Brico folder verschijnt periodiek met acties op klusmateriaal, tuin, verf en sanitair.",
+			storeCount: "meer dan 150 winkels in België",
+			pricePositioning:
+				"Brico is een toonaangevende Belgische doe-het-zelfketen met een breed assortiment en regelmatige acties.",
+			loyalty: "Brico Plus-kaart met spaarvoordeel en persoonlijke aanbiedingen.",
+			appName: "Brico app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 9:00–18:30, koopzondagen per locatie.",
+			uniqueSellingPoint:
+				"Breed doe-het-zelf assortiment met sterke acties op gereedschap, tuin en sanitair.",
+		},
+	},
+	{
+		slug: "bauhaus",
+		name: "Bauhaus",
+		logo: "/retailers/bauhaus.svg",
+		color: "#E2001A",
+		website: "https://www.bauhaus.be",
+		description:
+			"Bekijk de Bauhaus folder met aanbiedingen in werkplaats, huis, tuin en bouwmaterialen.",
+		category: "doe-het-zelf",
+		seo: {
+			folderDay: "maandag",
+			folderDayDetail:
+				"De Bauhaus folder verschijnt periodiek met acties op gereedschap, tuin, bouwen en sanitair.",
+			storeCount: "vestigingen in België en Nederland",
+			pricePositioning:
+				"Bauhaus is een specialist in werkplaats, huis en tuin met een zeer breed assortiment en lage prijzen.",
+			loyalty: "Bauhaus klantenvoordeel en app.",
+			appName: "Bauhaus app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 7:00–20:00; ruime openingsuren.",
+			uniqueSellingPoint:
+				"Zeer breed specialistenassortiment voor werkplaats, huis en tuin onder één dak.",
+		},
+	},
+	{
+		slug: "gifi",
+		name: "Gifi",
+		logo: "/retailers/gifi.svg",
+		color: "#E2001A",
+		website: "https://www.gifi.be",
+		description:
+			"Bekijk de Gifi folder met voordelige aanbiedingen in wonen, decoratie, opbergen en seizoensartikelen.",
+		category: "warenhuis",
+		seo: {
+			folderDay: "tweewekelijks",
+			folderDayDetail:
+				"De Gifi folder verschijnt tweewekelijks met scherpe acties op wonen, decoratie en huishoud.",
+			storeCount: "vestigingen in België en Frankrijk",
+			pricePositioning:
+				"Gifi is een voordeelwarenhuis met een breed assortiment huis-, woon- en decoratieartikelen tegen lage prijzen.",
+			loyalty: "Gifi-acties en nieuwsbrief met aanbiedingen.",
+			appName: "Gifi app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 9:00–18:30, koopzondagen per locatie.",
+			uniqueSellingPoint:
+				"Voordeelwarenhuis met breed woon- en decoratieassortiment tegen lage prijzen.",
+		},
+	},
 ];
 
 export const nlBorderRetailers: Retailer[] = [];

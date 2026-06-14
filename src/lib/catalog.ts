@@ -159,7 +159,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "trafic", name: "Trafic", category: "discounter", countries: ["be"], website: "https://www.trafic.be", color: "#E2001A", source: null },
 
 	// ── Doe-het-zelf & Bouwmarkt ──────────────────────────────────────────────
-	{ slug: "brico", name: "Brico", category: "doe-het-zelf", countries: ["be"], website: "https://www.brico.be", color: "#E2001A", source: "publitas" },
+	{ slug: "brico", name: "Brico", category: "doe-het-zelf", countries: ["be"], website: "https://www.brico.be", color: "#E2001A", source: "publitas", live: true },
 	{ slug: "brico-planit", name: "Brico Plan-It", category: "doe-het-zelf", countries: ["be"], website: "https://www.brico.be", color: "#005CA9", source: "ipaper" },
 	{ slug: "hubo", name: "Hubo", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.hubo.be", color: "#E2001A", source: "publitas", live: true },
 	{ slug: "gamma", name: "Gamma", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.gamma.be", color: "#003DA5", source: "publitas", live: true },
@@ -167,7 +167,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "karwei", name: "Karwei", category: "doe-het-zelf", countries: ["nl"], website: "https://www.karwei.nl", color: "#E2001A", source: "own" },
 	{ slug: "praxis", name: "Praxis", category: "doe-het-zelf", countries: ["nl"], website: "https://www.praxis.nl", color: "#009A44", source: "own" },
 	{ slug: "hornbach", name: "Hornbach", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.hornbach.be", color: "#F7941E", source: "publitas", live: true },
-	{ slug: "bauhaus", name: "Bauhaus", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.bauhaus.be", color: "#E2001A", source: "own" },
+	{ slug: "bauhaus", name: "Bauhaus", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.bauhaus.be", color: "#E2001A", source: "publitas", live: true },
 
 	// ── Tuincentra ────────────────────────────────────────────────────────────
 	{ slug: "aveve", name: "Aveve", category: "tuin", countries: ["be"], website: "https://www.aveve.be", color: "#84BD00", source: "publitas" },
@@ -219,6 +219,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "casa", name: "Casa", category: "warenhuis", countries: ["be", "nl"], website: "https://www.casashops.com", color: "#E2001A", source: null },
 	{ slug: "flying-tiger", name: "Flying Tiger", category: "warenhuis", countries: ["be", "nl"], website: "https://flyingtiger.com", color: "#00A859", source: null },
 	{ slug: "normal", name: "Normal", category: "warenhuis", countries: ["be", "nl"], website: "https://www.normal.be", color: "#1D1D1B", source: null },
+	{ slug: "gifi", name: "Gifi", category: "warenhuis", countries: ["be"], website: "https://www.gifi.be", color: "#E2001A", source: "publitas", live: true },
 
 	// ── Wonen & Meubelen ──────────────────────────────────────────────────────
 	{ slug: "ikea", name: "IKEA", category: "wonen", countries: ["be", "nl"], website: "https://www.ikea.com/be/nl", color: "#0058A3", source: "own" },
