@@ -16,13 +16,8 @@ import {
 	ChevronRight,
 	type LucideIcon,
 } from "lucide-react";
-import {
-	categories,
-	shopsByCategory,
-	catalogStats,
-	type CatalogShop,
-	type ShopCategory,
-} from "@/lib/catalog";
+import { categories, shopsByCategory, catalogStats, type ShopCategory } from "@/lib/catalog";
+import { ShopTile } from "@/components/ShopTile";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -58,57 +53,6 @@ export function generateMetadata(): Metadata {
 	};
 }
 
-function initials(name: string): string {
-	const cleaned = name.replace(/[^A-Za-z0-9 &]/g, "").trim();
-	const parts = cleaned.split(/[\s&]+/).filter(Boolean);
-	if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
-	return cleaned.slice(0, 2).toUpperCase();
-}
-
-function ShopTile({ shop }: { shop: CatalogShop }) {
-	const tile = (
-		<div className="flex items-center gap-3">
-			<div
-				className="grid h-11 w-11 shrink-0 place-items-center rounded-lg text-sm font-bold text-white shadow-sm"
-				style={{ backgroundColor: shop.color }}
-			>
-				{initials(shop.name)}
-			</div>
-			<div className="min-w-0">
-				<div className="flex items-center gap-1.5">
-					<span className="truncate font-semibold text-gray-900">{shop.name}</span>
-					<span className="text-xs" aria-hidden>
-						{shop.countries.includes("be") ? "🇧🇪" : ""}
-						{shop.countries.includes("nl") ? "🇳🇱" : ""}
-					</span>
-				</div>
-				{shop.live ? (
-					<span className="text-xs font-medium text-blue-700">Folder bekijken</span>
-				) : (
-					<span className="text-xs text-gray-400">Binnenkort</span>
-				)}
-			</div>
-			{shop.live && (
-				<ChevronRight className="ml-auto h-4 w-4 shrink-0 text-gray-300" suppressHydrationWarning />
-			)}
-		</div>
-	);
-
-	if (shop.live) {
-		return (
-			<Link
-				href={`/folders/${shop.slug}`}
-				className="block rounded-xl border border-gray-200 bg-white p-3 transition hover:border-blue-300 hover:bg-blue-50/40 hover:shadow-sm"
-			>
-				{tile}
-			</Link>
-		);
-	}
-	return (
-		<div className="rounded-xl border border-gray-100 bg-gray-50/60 p-3 opacity-75">{tile}</div>
-	);
-}
-
 export default function WinkelsPage() {
 	const { total, live, categories: catCount } = catalogStats();
 
@@ -127,9 +71,9 @@ export default function WinkelsPage() {
 					Alle winkelfolders op één plek
 				</h1>
 				<p className="mt-3 max-w-2xl text-gray-600">
-					Bekijk de wekelijkse folders en promoties van {total}+ winkels in{" "}
-					{catCount} categorieën — supermarkten, doe-het-zelf, dierenwinkels,
-					drogisterijen, elektronica en meer, voor België en Nederland.
+					Bekijk de wekelijkse folders en promoties van {total}+ winkels in {catCount}{" "}
+					categorieën — supermarkten, doe-het-zelf, dierenwinkels, drogisterijen,
+					elektronica en meer, voor België en Nederland.
 				</p>
 				<p className="mt-2 text-sm text-gray-400">
 					{live} winkels nu beschikbaar — de rest volgt binnenkort.
@@ -141,14 +85,14 @@ export default function WinkelsPage() {
 				{categories.map((c) => {
 					const Icon = ICONS[c.key];
 					return (
-						<a
+						<Link
 							key={c.key}
-							href={`#${c.key}`}
+							href={`/winkels/${c.key}`}
 							className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:border-blue-300 hover:bg-blue-50"
 						>
 							<Icon className="h-4 w-4 text-gray-500" suppressHydrationWarning />
 							{c.label}
-						</a>
+						</Link>
 					);
 				})}
 			</div>
@@ -161,15 +105,24 @@ export default function WinkelsPage() {
 					const Icon = ICONS[c.key];
 					return (
 						<section key={c.key} id={c.key} className="scroll-mt-24">
-							<div className="mb-4 flex items-start gap-3">
+							<Link
+								href={`/winkels/${c.key}`}
+								className="group mb-4 flex items-start gap-3"
+							>
 								<div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-700">
 									<Icon className="h-5 w-5" suppressHydrationWarning />
 								</div>
 								<div>
-									<h2 className="text-xl font-bold text-gray-900">{c.label}</h2>
+									<h2 className="flex items-center gap-1 text-xl font-bold text-gray-900 group-hover:text-blue-700">
+										{c.label}
+										<ChevronRight
+											className="h-5 w-5 text-gray-300 transition group-hover:translate-x-0.5 group-hover:text-blue-700"
+											suppressHydrationWarning
+										/>
+									</h2>
 									<p className="text-sm text-gray-500">{c.blurb}</p>
 								</div>
-							</div>
+							</Link>
 							<div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
 								{shops.map((shop) => (
 									<ShopTile key={shop.slug} shop={shop} />
