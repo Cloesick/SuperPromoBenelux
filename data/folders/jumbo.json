@@ -1,0 +1,28 @@
+{
+  "retailer": "jumbo",
+  "folders": [
+    {
+      "id": "jumbo-3149595-folder",
+      "retailerSlug": "jumbo",
+      "title": "Jumbo actiefolder - week 25 - 17 juni t/m 23 juni 2026",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 37,
+      "thumbnailUrl": "https://view.publitas.com/171/3149595/pages/10b88f5e-bd48-4607-9aea-f9ed9205c6c1-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-nfrp-25/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/171/3149595/pdfs/54b74667-41a1-4070-b5e0-4239271de5dc.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:07:28.438Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:07:28.438Z",
+  "sourceUrls": [
+    "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-nfrp-25/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

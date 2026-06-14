@@ -1,0 +1,28 @@
+{
+  "retailer": "mr-bricolage",
+  "folders": [
+    {
+      "id": "mr-bricolage-3132337-folder",
+      "retailerSlug": "mr-bricolage",
+      "title": "Mr.Bricolage Belgique - Folder 9 - 2026",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 25,
+      "thumbnailUrl": "https://view.publitas.com/23787/3132337/pages/3ae2b10e-19c5-46dc-897f-bd480478e460-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/mr-bricolage/folder-9-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/23787/3132337/pdfs/ef98fec7-8c2f-4687-8625-5123b4891f13.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:07:30.492Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:07:30.492Z",
+  "sourceUrls": [
+    "https://view.publitas.com/mr-bricolage/folder-9-2026/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

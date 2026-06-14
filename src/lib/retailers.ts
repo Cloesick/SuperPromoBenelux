@@ -181,6 +181,106 @@ export const retailersBe: Retailer[] = [
 				"Nederlandse familieketen met sterke service (7 zekerheden), breed assortiment en een groeiend winkelnet in België.",
 		},
 	},
+	{
+		slug: "plus",
+		name: "PLUS",
+		logo: "/retailers/plus.svg",
+		color: "#008D36",
+		website: "https://www.plus.nl",
+		description:
+			"Bekijk de PLUS folder van deze week met de actuele aanbiedingen en weekacties van PLUS supermarkt.",
+		category: "supermarkt",
+		seo: {
+			folderDay: "zondag",
+			folderDayDetail:
+				"De nieuwe PLUS folder verschijnt wekelijks en loopt doorgaans van zondag tot en met zaterdag.",
+			storeCount: "ruim 270 winkels in Nederland",
+			pricePositioning:
+				"PLUS is een servicesupermarkt in het middensegment met wekelijkse acties en een sterk vers-assortiment.",
+			loyalty:
+				"PLUS-app met digitale spaaracties, persoonlijke aanbiedingen en de Koopzegels-spaarregeling.",
+			appName: "PLUS app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 8:00–20:00, veel winkels ook op zondag geopend.",
+			uniqueSellingPoint:
+				"Coöperatieve servicesupermarkt met sterk vers- en streekassortiment en wekelijkse weekacties.",
+		},
+	},
+	{
+		slug: "hubo",
+		name: "Hubo",
+		logo: "/retailers/hubo.svg",
+		color: "#E2001A",
+		website: "https://www.hubo.be",
+		description:
+			"Bekijk de Hubo folder van deze week met doe-het-zelf aanbiedingen, gereedschap en tuinacties.",
+		category: "doe-het-zelf",
+		seo: {
+			folderDay: "woensdag",
+			folderDayDetail:
+				"De Hubo folder verschijnt wekelijks met wisselende doe-het-zelf-, tuin- en seizoensacties.",
+			storeCount: "meer dan 140 winkels in België",
+			pricePositioning:
+				"Hubo is een toegankelijke doe-het-zelfketen met scherpe weekacties en een breed klusassortiment.",
+			loyalty:
+				"Hubo Klantenkaart met spaarvoordeel en persoonlijke aanbiedingen.",
+			appName: "Hubo app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 9:00–18:00, openingsuren verschillen per zelfstandige winkel.",
+			uniqueSellingPoint:
+				"Lokale doe-het-zelfwinkels met persoonlijk advies, breed assortiment en wekelijkse klusacties.",
+		},
+	},
+	{
+		slug: "gamma",
+		name: "Gamma",
+		logo: "/retailers/gamma.svg",
+		color: "#003DA5",
+		website: "https://www.gamma.be",
+		description:
+			"Bekijk de Gamma folder van deze week met bouwmarkt-aanbiedingen, gereedschap, verf en tuin.",
+		category: "doe-het-zelf",
+		seo: {
+			folderDay: "woensdag",
+			folderDayDetail:
+				"De nieuwe Gamma folder verschijnt wekelijks met acties op gereedschap, verf, hout, tuin en sanitair.",
+			storeCount: "meer dan 80 winkels in België",
+			pricePositioning:
+				"Gamma is een grote bouwmarktketen met een compleet assortiment en wekelijkse promoties.",
+			loyalty:
+				"GAMMA plus-kaart met spaarpunten, persoonlijke acties en kortingsbonnen.",
+			appName: "GAMMA app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 8:00–19:00, veel winkels ook op zondag geopend.",
+			uniqueSellingPoint:
+				"Compleet bouwmarktassortiment onder één dak met sterke weekacties en doe-het-zelf advies.",
+		},
+	},
+	{
+		slug: "mr-bricolage",
+		name: "Mr. Bricolage",
+		logo: "/retailers/mr-bricolage.svg",
+		color: "#F39200",
+		website: "https://www.mr-bricolage.be",
+		description:
+			"Bekijk de Mr. Bricolage folder met doe-het-zelf aanbiedingen, gereedschap, tuin en decoratie.",
+		category: "doe-het-zelf",
+		seo: {
+			folderDay: "maandelijks",
+			folderDayDetail:
+				"De Mr. Bricolage folder verschijnt periodiek (per actiefolder) met klus-, tuin- en seizoensacties.",
+			storeCount: "meer dan 40 winkels in België",
+			pricePositioning:
+				"Mr. Bricolage is een doe-het-zelfketen met een breed assortiment en periodieke actiefolders.",
+			loyalty:
+				"Mr. Bricolage klantenkaart met voordelen en persoonlijke acties.",
+			appName: "Mr. Bricolage app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 9:00–18:30, openingsuren verschillen per winkel.",
+			uniqueSellingPoint:
+				"Doe-het-zelfwinkels met persoonlijk advies, breed klus- en tuinassortiment en periodieke acties.",
+		},
+	},
 ];
 
 export const nlBorderRetailers: Retailer[] = [];

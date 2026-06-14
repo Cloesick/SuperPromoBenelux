@@ -1,0 +1,28 @@
+{
+  "retailer": "hubo",
+  "folders": [
+    {
+      "id": "hubo-3086387-folder",
+      "retailerSlug": "hubo",
+      "title": "2624_NL",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 25,
+      "thumbnailUrl": "https://view.publitas.com/128/3086387/pages/d0045e7a-0986-42dc-9f81-0d6aef815952-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/hubo-belgie-vl/2624_nl/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/128/3086387/pdfs/ccc2fc0f-ca98-4ca5-adbf-ec2480d2ea4b.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:07:28.623Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:07:28.623Z",
+  "sourceUrls": [
+    "https://view.publitas.com/hubo-belgie-vl/2624_nl/page/1"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

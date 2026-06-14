@@ -2,25 +2,24 @@
   "retailer": "albert-heijn",
   "folders": [
     {
-      "id": "albert-heijn-2026-w24-folder",
+      "id": "albert-heijn-3139376-folder",
       "retailerSlug": "albert-heijn",
-      "title": "Albert Heijn Bonusfolder",
-      "validFrom": "2026-06-09",
-      "validUntil": "2026-06-15",
-      "pageCount": 0,
-      "thumbnailUrl": "",
+      "title": "AH - Bonus-week-25-2026",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 32,
+      "thumbnailUrl": "https://view.publitas.com/126/3139376/pages/c993f25d-9118-42a7-9c6d-cea2f5bbff8f-at800.jpg",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/ah/bonus-week-24-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/126/3117615/pdfs/1e290ebe-8fca-4b40-81a9-d4ea2b186957.pdf",
+      "embedUrl": "https://view.publitas.com/ah/bonus-week-25-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/126/3139376/pdfs/7fa57f22-e203-440d-9f28-a3aa045f742b.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-06-11T14:48:00.000Z"
+      "scrapedAt": "2026-06-14T23:07:26.850Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-06-11T14:48:00.000Z",
+  "scrapedAt": "2026-06-14T23:07:26.850Z",
   "sourceUrls": [
-    "https://www.ah.be/bonus/folder",
-    "https://view.publitas.com/ah/bonus-week-24-2026/page/1"
+    "https://view.publitas.com/ah/bonus-week-25-2026/page/1"
   ],
   "methods": [
     "publitas",
