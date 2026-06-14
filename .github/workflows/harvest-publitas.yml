@@ -43,9 +43,11 @@ jobs:
 
       - name: Harvest folders
         shell: bash
+        env:
+          RETAILERS: ${{ github.event.inputs.retailers }}
         run: |
-          echo "Harvesting Publitas folders: ${{ inputs.retailers }}"
-          node apify/harvest-all.mjs ${{ inputs.retailers }}
+          echo "Harvesting Publitas folders: ${RETAILERS:-<all>}"
+          node apify/harvest-all.mjs ${RETAILERS}
 
       - name: Commit and push changes
         shell: bash
