@@ -24,6 +24,9 @@ export function Header() {
           <Link href="/folders" className="text-gray-700 hover:text-blue-700 transition font-medium">
             Folders
           </Link>
+          <Link href="/winkels" className="text-gray-700 hover:text-blue-700 transition font-medium">
+            Winkels
+          </Link>
           {nlBorderEnabled ? (
             <Link
               href="/nl-grensstreek"
@@ -64,6 +67,13 @@ export function Header() {
             onClick={() => setMobileOpen(false)}
           >
             Folders
+          </Link>
+          <Link
+            href="/winkels"
+            className="block text-gray-700 hover:text-blue-700 font-medium"
+            onClick={() => setMobileOpen(false)}
+          >
+            Winkels
           </Link>
           {nlBorderEnabled ? (
             <Link
