@@ -67,6 +67,8 @@ const RETAILERS = {
   brico: { account: 'brico-folder-extra-nl' },
   bauhaus: { account: 'bauhaus-nederland' },
   gifi: { account: 'gifi' },
+  alvo: { account: 'alvo' },
+  'supra-bazar': { account: 'suprabazar' },
   // Lidl runs a white-labeled Publitas on folder-nl.lidl.be with a date-range
   // slug (nl-folder-DD-MM-DD-MM). No account root; generate plausible ranges for
   // the current week (Mon–Sat main + Thu–Wed non-food) and harvest the first hit.

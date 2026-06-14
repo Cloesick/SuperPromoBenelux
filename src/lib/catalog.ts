@@ -143,7 +143,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "cru", name: "Cru", category: "supermarkt", countries: ["be"], website: "https://www.cru.be", color: "#1D1D1B", source: null },
 	{ slug: "match", name: "Match", category: "supermarkt", countries: ["be"], website: "https://www.supermarchesmatch.be", color: "#E2001A", source: null },
 	{ slug: "smatch", name: "Smatch", category: "supermarkt", countries: ["be"], website: "https://www.smatch.be", color: "#E30613", source: null },
-	{ slug: "alvo", name: "Alvo", category: "supermarkt", countries: ["be"], website: "https://www.alvo.be", color: "#E2001A", source: null },
+	{ slug: "alvo", name: "Alvo", category: "supermarkt", countries: ["be"], website: "https://www.alvo.be", color: "#E2001A", source: "publitas", live: true },
 	{ slug: "plus", name: "PLUS", category: "supermarkt", countries: ["nl"], website: "https://www.plus.nl", color: "#008D36", source: "publitas", live: true },
 	{ slug: "dirk", name: "Dirk", category: "supermarkt", countries: ["nl"], website: "https://www.dirk.nl", color: "#E2001A", source: "own" },
 	{ slug: "coop", name: "Coop", category: "supermarkt", countries: ["nl"], website: "https://www.coop.nl", color: "#E2001A", source: "own" },
@@ -220,6 +220,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "flying-tiger", name: "Flying Tiger", category: "warenhuis", countries: ["be", "nl"], website: "https://flyingtiger.com", color: "#00A859", source: null },
 	{ slug: "normal", name: "Normal", category: "warenhuis", countries: ["be", "nl"], website: "https://www.normal.be", color: "#1D1D1B", source: null },
 	{ slug: "gifi", name: "Gifi", category: "warenhuis", countries: ["be"], website: "https://www.gifi.be", color: "#E2001A", source: "publitas", live: true },
+	{ slug: "supra-bazar", name: "Supra Bazar", category: "warenhuis", countries: ["be"], website: "https://www.suprabazar.be", color: "#0067B1", source: "publitas", live: true },
 
 	// ── Wonen & Meubelen ──────────────────────────────────────────────────────
 	{ slug: "ikea", name: "IKEA", category: "wonen", countries: ["be", "nl"], website: "https://www.ikea.com/be/nl", color: "#0058A3", source: "own" },

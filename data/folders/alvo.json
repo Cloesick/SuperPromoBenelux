@@ -1,0 +1,28 @@
+{
+  "retailer": "alvo",
+  "folders": [
+    {
+      "id": "alvo-3139198-folder",
+      "retailerSlug": "alvo",
+      "title": "Alvo - 26_ALVO_T08491 Gusto 3 2026_FR_WEB",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 76,
+      "thumbnailUrl": "https://view.publitas.com/96075/3139198/pages/99b21950-f816-4a73-9af1-ccb1203aa258-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/alvo/26_alvo_t08491-gusto-3-2026_fr_web/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/96075/3139198/pdfs/f9c55bc7-6290-468b-bced-9ecb0865a200.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:46:36.342Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:46:36.342Z",
+  "sourceUrls": [
+    "https://view.publitas.com/alvo/26_alvo_t08491-gusto-3-2026_fr_web/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

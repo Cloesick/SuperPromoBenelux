@@ -497,6 +497,54 @@ export const retailersBe: Retailer[] = [
 				"Voordeelwarenhuis met breed woon- en decoratieassortiment tegen lage prijzen.",
 		},
 	},
+	{
+		slug: "alvo",
+		name: "Alvo",
+		logo: "/retailers/alvo.svg",
+		color: "#E2001A",
+		website: "https://www.alvo.be",
+		description:
+			"Bekijk de Alvo folder van deze week met de actuele aanbiedingen van je Alvo buurtsupermarkt.",
+		category: "supermarkt",
+		seo: {
+			folderDay: "woensdag",
+			folderDayDetail:
+				"De Alvo folder verschijnt wekelijks met acties voor de zelfstandige buurtsupermarkt.",
+			storeCount: "ruim 100 zelfstandige winkels in België",
+			pricePositioning:
+				"Alvo is een Belgische groep van zelfstandige buurtsupermarkten met wekelijkse acties en lokale nabijheid.",
+			loyalty: "Alvo-getrouwheidskaart en acties per winkel.",
+			appName: "Alvo app",
+			openingHours:
+				"Dagelijks geopend met ruime openingsuren; verschilt per zelfstandige uitbater.",
+			uniqueSellingPoint:
+				"Zelfstandige Belgische buurtsupermarkten met lokale focus en wekelijkse acties.",
+		},
+	},
+	{
+		slug: "supra-bazar",
+		name: "Supra Bazar",
+		logo: "/retailers/supra-bazar.svg",
+		color: "#0067B1",
+		website: "https://www.suprabazar.be",
+		description:
+			"Bekijk de Supra Bazar folder met voordelige aanbiedingen in wonen, vrije tijd, dier en seizoen.",
+		category: "warenhuis",
+		seo: {
+			folderDay: "woensdag",
+			folderDayDetail:
+				"De Supra Bazar folder verschijnt periodiek met acties op een zeer breed bazar-assortiment.",
+			storeCount: "grote winkels in West- en Oost-Vlaanderen",
+			pricePositioning:
+				"Supra Bazar is een Belgisch megabazar met een enorm assortiment tegen voordeelprijzen.",
+			loyalty: "Supra Bazar klantenkaart en acties.",
+			appName: "Supra Bazar app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 9:00–18:00, koopzondagen per locatie.",
+			uniqueSellingPoint:
+				"Megabazar met extreem breed assortiment van wonen tot dier en vrije tijd tegen lage prijzen.",
+		},
+	},
 ];
 
 export const nlBorderRetailers: Retailer[] = [];

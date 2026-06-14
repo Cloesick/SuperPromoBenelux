@@ -1,57 +1,63 @@
-# Publitas account map (BE/NL retailers)
+# Folder harvesting — verified sources (Apify-free)
 
-Verified via indexed `view.publitas.com` URLs, June 2026. Publitas page-image
-CDN URLs (`/pages/{hash}-at{size}.jpg`) and PDFs (`/pdfs/{hash}.pdf`) are public,
-so any retailer on this list is cleanly scrapeable by the actor.
+Folders are harvested with plain HTTP (no Apify, no Puppeteer). Two harvesters:
 
-`viewerTemplate` tokens resolved in `apify/src/main.js`:
-`{WEEK}` = zero-padded ISO week · `{YYYY}` = 4-digit year · `{YY}` = 2-digit year.
+- **`harvest-publitas.mjs`** — Publitas embeds the full publication manifest +
+  a public PDF URL inline in the viewer HTML (`var data = {...}`,
+  `config.downloadPdfUrl`). Works for `view.publitas.com` **and white-labeled
+  Publitas domains** (e.g. `folder-nl.lidl.be`). Renders as PDF (per-page image
+  hashes are signed/lazy; only the cover is in static HTML).
+- **`harvest-issuu.mjs`** — Issuu oEmbed gives title + validity dates + docId
+  (from the thumbnail URL); full pages live at `image.isu.pub/{docId}/jpg/page_{N}.jpg`,
+  enumerable until the CDN 403s. Renders as a page-image flipbook.
 
-## Confirmed weekly slug (deterministic, run by default)
+**`harvest-all.mjs`** orchestrates both and writes `data/folders/{slug}.json`.
+Run: `NODE_TLS_REJECT_UNAUTHORIZED=0 node apify/harvest-all.mjs [slug ...]`
+(the TLS env var is only needed on this cert-proxied machine, NOT on CI).
+`discover-accounts.mjs` probes candidate account slugs to find new retailers.
 
-| Retailer | Account | Slug pattern | Validated |
-|----------|---------|--------------|-----------|
-| Albert Heijn | `ah` | `bonus-week-{WEEK}-{YYYY}` | live |
-| Action | `action-benl` | `action-week-{WEEK}-{YYYY}` | live |
-| Jumbo | `jumbo-supermarkten` | `jumbo-actiefolder-week-{WEEK}` | live |
-| **Hubo** | `hubo-belgie-vl` | `{YY}{WEEK}_nl` (e.g. `2624_nl`) | ✅ current week loads |
+## Discovery method
 
-## Account confirmed, weekly slug historical (fast-path hint + self-heal)
+Each Publitas account root `view.publitas.com/{account}` **302-redirects to its
+latest publication**. So harvest-all tries, in order: deterministic weekly-slug
+patterns → custom date slugs → the account root. First candidate with a PDF wins.
+A retailer with no current PDF keeps its last-good JSON (best-effort).
 
-These used `…week-{WW}-{YYYY}` in 2024/2025 but the **current** publication did
-not resolve at that exact slug on probe (some now carry a random hash suffix).
-The actor falls back to the retailer's folder landing page to find the live viewer.
+## Verified live sources (June 2026)
 
-| Retailer | Account | Historical slug pattern |
-|----------|---------|-------------------------|
-| Gamma | `gamma` | `gamma-{WEEK}-week-{YYYY}` |
-| Blokker | `blokker` | `blokker-folder-week-{WEEK}-{YYYY}` |
-| Intratuin (NL) | `intratuin-nl` | `folder-week-{WEEK}-{YYYY}-nl-dyn` |
-| Boni | `boni-supermarkt` | `boni-folder-week-{WEEK}-{YYYY}` |
+| Retailer | Platform | Account / pattern |
+|----------|----------|-------------------|
+| Albert Heijn | Publitas | `ah` · `bonus-week-{WW}-{YYYY}` |
+| Jumbo | Publitas | `jumbo-supermarkten` (root→latest) |
+| Delhaize | Publitas | (pre-harvested) |
+| PLUS | Publitas | `plus-folder-nl` · `plus-week-{WW}-{YYYY}` |
+| Spar | Publitas | `spar` (root→latest) |
+| Hoogvliet | Publitas | `hoogvliet` · `folder_{YYYY}_{WW}` |
+| Lidl | Publitas (custom domain) | `folder-nl.lidl.be/nl-folder-{DD-MM}-{DD-MM}` |
+| Colruyt | Issuu | `issuu.com/colruytgroup/docs/_colruyt_laagste_prijzen_-_folder` |
+| Action | Publitas (flipbook, no PDF) | `action-benl` (kept as page-images) |
+| Hubo | Publitas | `hubo-belgie-vl` · `{YY}{WW}_nl` |
+| Gamma | Publitas | `gamma` · `gamma-week-{WW}-{YYYY}` |
+| Brico | Publitas | `brico-folder-extra-nl` (root→latest) |
+| Mr. Bricolage | Publitas | `mr-bricolage` (root→latest) |
+| Bauhaus | Publitas | `bauhaus-nederland` (root→latest) |
+| Hornbach | Publitas | `hornbach-nl` (root→latest) |
+| Welkoop | Publitas | `welkoop` · `welkoop-week-{WW}-{YYYY}` |
+| Xenos | Publitas | `xenos` (root→latest) |
+| Gifi | Publitas | `gifi` (root→latest) |
+| e5 | Publitas | `e5-mode` (root→latest) |
 
-## Account confirmed, period-based slug (needs scrape-time discovery)
+## Not harvestable via static fetch (need the Apify actor / screenshots)
 
-Slugs are campaign/period numbers or theme names — not derivable from the week.
-Left `active: false`; enable once the actor harvests the live slug.
+- **Aldi** — `folder.aldi.be` is iPaper; per-page images are behind tokenized
+  manifests, no public PDF, embed is X-Frame-blocked. Stays on last-good data.
+- Carrefour (own viewer), Kruidvat (own), MediaMarkt (own), Intratuin/Boni/Aveve/
+  Cora (Publitas account exists but current pub has no PDF / is flipbook-only).
 
-| Retailer | Account | Example slug |
-|----------|---------|--------------|
-| Aveve | `aveve` | `vl-p08_folder_tuin_2026` |
-| Brico | `brico-folder-extra-nl` / `-fr` | `brico-benl-f14-2024-indian-summer` |
-| Mr. Bricolage | `mr-bricolage` | `folder-8-2026` (monthly no.) |
-| Cora | `cora` | period-based |
-| Maxi Zoo (NL) | `maxi-zoo-nl` | historical only — confirm current |
+## Adding a retailer
 
-## Not on Publitas (other platform / own viewer)
-
-Casa, PLUS, Dirk, Hoogvliet, Zeeman (current), Kruidvat, MediaMarkt → own viewer
-or iPaper/Issuu. Colruyt = Issuu (`colruytgroup`), Aldi = iPaper. Handle via the
-actor's screenshot-capture fallback rather than a Publitas template.
-
-## How to add the next retailer
-
-1. `WebSearch "{retailer} folder publitas"` (allow domain `view.publitas.com`).
-2. Read the account slug (first path segment) + the current slug format.
-3. Probe the **current** week's URL — only mark the weekly template "confirmed"
-   if it loads; otherwise add account note + leave `active: false`.
-4. Add to `apify/src/retailers.js`; ensure the slug exists in `src/lib/catalog.ts`.
+1. `node apify/discover-accounts.mjs` (or WebSearch `"{name} folder publitas"`).
+2. Add to `harvest-all.mjs` RETAILERS (Publitas) or ISSUU map.
+3. `node apify/harvest-all.mjs {slug}` → writes data/folders/{slug}.json.
+4. Add a full entry to `src/lib/retailers.ts` (+ `public/retailers/{slug}.svg`)
+   and set `live:true` in `src/lib/catalog.ts`.
