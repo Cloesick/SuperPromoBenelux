@@ -55,6 +55,13 @@ const RETAILERS = {
   aveve: { account: 'aveve' },
   cora: { account: 'cora' },
   blokker: { account: ['blokker', 'de-blokker-folder', 'de-blokker-folder-kiosk-be-vl'], tpl: (w, y) => `https://view.publitas.com/blokker/blokker-folder-week-${w}-${y}/page/1` },
+  // batch 3 — discovered via account-root probe (discover-accounts.mjs)
+  spar: { account: 'spar' },
+  hoogvliet: { account: 'hoogvliet', tpl: (w, y) => `https://view.publitas.com/hoogvliet/folder_${y}_${w}/page/1` },
+  xenos: { account: 'xenos' },
+  hornbach: { account: 'hornbach-nl' },
+  welkoop: { account: 'welkoop', tpl: (w, y) => `https://view.publitas.com/welkoop/welkoop-week-${w}-${y}/page/1` },
+  e5: { account: 'e5-mode' },
 };
 
 async function tryUrl(url) {

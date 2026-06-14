@@ -1,0 +1,28 @@
+{
+  "retailer": "spar",
+  "folders": [
+    {
+      "id": "spar-3126435-folder",
+      "retailerSlug": "spar",
+      "title": "SPAR - SPAR folder wk20262324",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 16,
+      "thumbnailUrl": "https://view.publitas.com/237/3126435/pages/0f8e166c-e7e0-4ac7-9369-e6311cf41635-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/spar/spar-folder-wk20262324/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/237/3126435/pdfs/15a2e237-61c9-4980-9083-2d037f402da4.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:13:40.316Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:13:40.316Z",
+  "sourceUrls": [
+    "https://view.publitas.com/spar/spar-folder-wk20262324/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

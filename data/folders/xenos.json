@@ -1,0 +1,28 @@
+{
+  "retailer": "xenos",
+  "folders": [
+    {
+      "id": "xenos-3125188-folder",
+      "retailerSlug": "xenos",
+      "title": "XENOS - Tuinmagazine",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 34,
+      "thumbnailUrl": "https://view.publitas.com/7981/3125188/pages/44e729ce-2864-45ab-8f03-99ff5a66b812-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/xenos/xenos-week-24-32-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/7981/3125188/pdfs/57108cc3-e1cb-43e3-a6ad-975144a81804.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:13:41.087Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:13:41.087Z",
+  "sourceUrls": [
+    "https://view.publitas.com/xenos/xenos-week-24-32-2026/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

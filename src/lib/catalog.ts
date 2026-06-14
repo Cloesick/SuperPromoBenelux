@@ -137,7 +137,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "carrefour", name: "Carrefour", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#004E9F", source: "own" },
 	{ slug: "carrefour-market", name: "Carrefour Market", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#E2231A", source: "own" },
 	{ slug: "intermarche", name: "Intermarché", category: "supermarkt", countries: ["be"], website: "https://www.intermarche.be", color: "#E2001A", source: null },
-	{ slug: "spar", name: "Spar", category: "supermarkt", countries: ["be", "nl"], website: "https://www.spar.be", color: "#009639", source: "issuu" },
+	{ slug: "spar", name: "Spar", category: "supermarkt", countries: ["be", "nl"], website: "https://www.spar.be", color: "#009639", source: "publitas", live: true },
 	{ slug: "okay", name: "OKay", category: "supermarkt", countries: ["be"], website: "https://www.okay.be", color: "#E30613", source: "issuu" },
 	{ slug: "bio-planet", name: "Bio-Planet", category: "supermarkt", countries: ["be"], website: "https://www.bioplanet.be", color: "#76B82A", source: "issuu" },
 	{ slug: "cru", name: "Cru", category: "supermarkt", countries: ["be"], website: "https://www.cru.be", color: "#1D1D1B", source: null },
@@ -148,7 +148,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "dirk", name: "Dirk", category: "supermarkt", countries: ["nl"], website: "https://www.dirk.nl", color: "#E2001A", source: "own" },
 	{ slug: "coop", name: "Coop", category: "supermarkt", countries: ["nl"], website: "https://www.coop.nl", color: "#E2001A", source: "own" },
 	{ slug: "vomar", name: "Vomar", category: "supermarkt", countries: ["nl"], website: "https://www.vomar.nl", color: "#E2001A", source: "own" },
-	{ slug: "hoogvliet", name: "Hoogvliet", category: "supermarkt", countries: ["nl"], website: "https://www.hoogvliet.com", color: "#D2007A", source: "own" },
+	{ slug: "hoogvliet", name: "Hoogvliet", category: "supermarkt", countries: ["nl"], website: "https://www.hoogvliet.com", color: "#D2007A", source: "publitas", live: true },
 	{ slug: "ekoplaza", name: "Ekoplaza", category: "supermarkt", countries: ["nl", "be"], website: "https://www.ekoplaza.nl", color: "#5B9E46", source: null },
 
 	// ── Discounters ───────────────────────────────────────────────────────────
@@ -166,7 +166,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "mr-bricolage", name: "Mr. Bricolage", category: "doe-het-zelf", countries: ["be"], website: "https://www.mr-bricolage.be", color: "#F39200", source: "publitas", live: true },
 	{ slug: "karwei", name: "Karwei", category: "doe-het-zelf", countries: ["nl"], website: "https://www.karwei.nl", color: "#E2001A", source: "own" },
 	{ slug: "praxis", name: "Praxis", category: "doe-het-zelf", countries: ["nl"], website: "https://www.praxis.nl", color: "#009A44", source: "own" },
-	{ slug: "hornbach", name: "Hornbach", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.hornbach.be", color: "#F7941E", source: "own" },
+	{ slug: "hornbach", name: "Hornbach", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.hornbach.be", color: "#F7941E", source: "publitas", live: true },
 	{ slug: "bauhaus", name: "Bauhaus", category: "doe-het-zelf", countries: ["be", "nl"], website: "https://www.bauhaus.be", color: "#E2001A", source: "own" },
 
 	// ── Tuincentra ────────────────────────────────────────────────────────────
@@ -174,7 +174,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "horta", name: "Horta", category: "tuin", countries: ["be"], website: "https://www.horta.be", color: "#76B82A", source: null },
 	{ slug: "oh-green", name: "Oh'Green", category: "tuin", countries: ["be"], website: "https://www.ohgreen.be", color: "#5B9E46", source: null },
 	{ slug: "intratuin", name: "Intratuin", category: "tuin", countries: ["nl", "be"], website: "https://www.intratuin.nl", color: "#5B9E46", source: "publitas" },
-	{ slug: "welkoop", name: "Welkoop", category: "tuin", countries: ["nl"], website: "https://www.welkoop.nl", color: "#E30613", source: "own" },
+	{ slug: "welkoop", name: "Welkoop", category: "tuin", countries: ["nl"], website: "https://www.welkoop.nl", color: "#E30613", source: "publitas", live: true },
 	{ slug: "groenrijk", name: "GroenRijk", category: "tuin", countries: ["nl"], website: "https://www.groenrijk.nl", color: "#5B9E46", source: null },
 
 	// ── Dierenwinkels ─────────────────────────────────────────────────────────
@@ -207,7 +207,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "jbc", name: "JBC", category: "mode", countries: ["be"], website: "https://www.jbc.be", color: "#E6007E", source: null },
 	{ slug: "zeb", name: "ZEB", category: "mode", countries: ["be"], website: "https://www.zeb.be", color: "#1D1D1B", source: null },
 	{ slug: "c-and-a", name: "C&A", category: "mode", countries: ["be", "nl"], website: "https://www.c-and-a.com", color: "#002F87", source: null },
-	{ slug: "e5", name: "e5", category: "mode", countries: ["be"], website: "https://www.e5.be", color: "#1D1D1B", source: null },
+	{ slug: "e5", name: "e5", category: "mode", countries: ["be"], website: "https://www.e5.be", color: "#1D1D1B", source: "publitas", live: true },
 	{ slug: "bel-and-bo", name: "Bel&Bo", category: "mode", countries: ["be"], website: "https://www.belenbo.be", color: "#E2001A", source: null },
 	{ slug: "veritas", name: "Veritas", category: "mode", countries: ["be"], website: "https://www.veritas.be", color: "#1D1D1B", source: null },
 	{ slug: "primark", name: "Primark", category: "mode", countries: ["be", "nl"], website: "https://www.primark.com", color: "#0089CF", source: null },
@@ -215,7 +215,7 @@ export const catalog: CatalogShop[] = [
 	// ── Warenhuizen & Variété ─────────────────────────────────────────────────
 	{ slug: "hema", name: "HEMA", category: "warenhuis", countries: ["be", "nl"], website: "https://www.hema.be", color: "#008CC1", source: "own" },
 	{ slug: "blokker", name: "Blokker", category: "warenhuis", countries: ["be", "nl"], website: "https://www.blokker.nl", color: "#E2001A", source: "publitas" },
-	{ slug: "xenos", name: "Xenos", category: "warenhuis", countries: ["nl", "be"], website: "https://www.xenos.nl", color: "#C8102E", source: "own" },
+	{ slug: "xenos", name: "Xenos", category: "warenhuis", countries: ["nl", "be"], website: "https://www.xenos.nl", color: "#C8102E", source: "publitas", live: true },
 	{ slug: "casa", name: "Casa", category: "warenhuis", countries: ["be", "nl"], website: "https://www.casashops.com", color: "#E2001A", source: null },
 	{ slug: "flying-tiger", name: "Flying Tiger", category: "warenhuis", countries: ["be", "nl"], website: "https://flyingtiger.com", color: "#00A859", source: null },
 	{ slug: "normal", name: "Normal", category: "warenhuis", countries: ["be", "nl"], website: "https://www.normal.be", color: "#1D1D1B", source: null },

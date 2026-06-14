@@ -1,0 +1,28 @@
+{
+  "retailer": "hornbach",
+  "folders": [
+    {
+      "id": "hornbach-3132309-folder",
+      "retailerSlug": "hornbach",
+      "title": "HORNBACH NL | Projectbouwmarkt en Tuincentrum | Vloeren leggen",
+      "validFrom": "2026-06-14",
+      "validUntil": "2026-06-24",
+      "pageCount": 44,
+      "thumbnailUrl": "https://view.publitas.com/88064/3132309/pages/0076057e-b347-4c1b-ae6f-119e41fe1d2a-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/hornbach-nl/hbv_0626_nl_kw25/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/88064/3132309/pdfs/97f73267-4a2c-43ab-8bf2-123926f134af.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-06-14T23:13:41.330Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-06-14T23:13:41.330Z",
+  "sourceUrls": [
+    "https://view.publitas.com/hornbach-nl/hbv_0626_nl_kw25/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

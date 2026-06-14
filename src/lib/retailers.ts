@@ -281,6 +281,150 @@ export const retailersBe: Retailer[] = [
 				"Doe-het-zelfwinkels met persoonlijk advies, breed klus- en tuinassortiment en periodieke acties.",
 		},
 	},
+	{
+		slug: "spar",
+		name: "Spar",
+		logo: "/retailers/spar.svg",
+		color: "#009639",
+		website: "https://www.spar.be",
+		description:
+			"Bekijk de Spar folder van deze week met de actuele buurtsupermarkt-aanbiedingen van Spar.",
+		category: "supermarkt",
+		seo: {
+			folderDay: "donderdag",
+			folderDayDetail:
+				"De Spar folder verschijnt wekelijks met acties voor de buurtsupermarkt.",
+			storeCount: "honderden buurtwinkels in België en Nederland",
+			pricePositioning:
+				"Spar is een buurtsupermarktketen met gemak, vers en wekelijkse acties dicht bij huis.",
+			loyalty: "Spar-app en spaaracties met persoonlijke aanbiedingen.",
+			appName: "Spar app",
+			openingHours:
+				"Dagelijks geopend met ruime openingsuren; verschilt per zelfstandige winkel.",
+			uniqueSellingPoint:
+				"Buurtsupermarkt met nadruk op gemak, vers assortiment en lokale nabijheid.",
+		},
+	},
+	{
+		slug: "hoogvliet",
+		name: "Hoogvliet",
+		logo: "/retailers/hoogvliet.svg",
+		color: "#D2007A",
+		website: "https://www.hoogvliet.com",
+		description:
+			"Bekijk de Hoogvliet folder van deze week met de scherpe weekaanbiedingen van Hoogvliet supermarkt.",
+		category: "supermarkt",
+		seo: {
+			folderDay: "zondag",
+			folderDayDetail:
+				"De nieuwe Hoogvliet folder verschijnt wekelijks met weekacties en versdeals.",
+			storeCount: "ruim 70 winkels in Nederland",
+			pricePositioning:
+				"Hoogvliet is een Nederlandse servicesupermarkt met scherpe weekacties en een sterk versaanbod.",
+			loyalty: "Hoogvliet-app met digitale acties en persoonlijke aanbiedingen.",
+			appName: "Hoogvliet app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 8:00–20:00, veel winkels ook op zondag geopend.",
+			uniqueSellingPoint:
+				"Regionale servicesupermarkt met sterke versafdelingen en wekelijkse weekacties.",
+		},
+	},
+	{
+		slug: "xenos",
+		name: "Xenos",
+		logo: "/retailers/xenos.svg",
+		color: "#C8102E",
+		website: "https://www.xenos.nl",
+		description:
+			"Bekijk de Xenos folder met aanbiedingen in woonaccessoires, decoratie, keuken en lekkernijen.",
+		category: "warenhuis",
+		seo: {
+			folderDay: "maandag",
+			folderDayDetail:
+				"De Xenos folder verschijnt periodiek met acties op wonen, decoratie, keuken en seizoensartikelen.",
+			storeCount: "meer dan 200 winkels in Nederland en België",
+			pricePositioning:
+				"Xenos is een woon- en lifestyle-warenhuis met betaalbare decoratie, keukenwaren en wereldse lekkernijen.",
+			loyalty: "Xenos-acties en nieuwsbrief met aanbiedingen.",
+			appName: "Xenos app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 9:00–18:00, koopzondagen per locatie.",
+			uniqueSellingPoint:
+				"Betaalbaar woon- en lifestyle-assortiment met sterk wisselende seizoenscollecties.",
+		},
+	},
+	{
+		slug: "hornbach",
+		name: "Hornbach",
+		logo: "/retailers/hornbach.svg",
+		color: "#F7941E",
+		website: "https://www.hornbach.be",
+		description:
+			"Bekijk de Hornbach folder met aanbiedingen in bouwmarkt, tuin, gereedschap en projectmateriaal.",
+		category: "doe-het-zelf",
+		seo: {
+			folderDay: "maandag",
+			folderDayDetail:
+				"De Hornbach folder verschijnt periodiek met acties op bouwmaterialen, tuin en gereedschap.",
+			storeCount: "megastores in België en Nederland",
+			pricePositioning:
+				"Hornbach is een projectbouwmarkt met een zeer breed assortiment en permanent lage prijzen.",
+			loyalty: "Hornbach ProfiCard en app met projectvoordeel.",
+			appName: "Hornbach app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 7:00–20:00; ruime openingsuren in megastores.",
+			uniqueSellingPoint:
+				"Projectbouwmarkt met enorm assortiment, drive-in en permanent lage prijsgarantie.",
+		},
+	},
+	{
+		slug: "welkoop",
+		name: "Welkoop",
+		logo: "/retailers/welkoop.svg",
+		color: "#E30613",
+		website: "https://www.welkoop.nl",
+		description:
+			"Bekijk de Welkoop folder met aanbiedingen voor tuin, dier en buitenleven.",
+		category: "doe-het-zelf",
+		seo: {
+			folderDay: "maandag",
+			folderDayDetail:
+				"De nieuwe Welkoop folder verschijnt wekelijks met acties voor tuin, dier en buitenleven.",
+			storeCount: "ruim 150 winkels in Nederland",
+			pricePositioning:
+				"Welkoop is dé winkel voor tuin, dier en boerenleven met wekelijkse acties.",
+			loyalty: "Welkoop-spaarprogramma en app met persoonlijke voordelen.",
+			appName: "Welkoop app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 9:00–18:00, koopzondagen per locatie.",
+			uniqueSellingPoint:
+				"Specialist in tuin, dier en buitenleven met breed assortiment en deskundig advies.",
+		},
+	},
+	{
+		slug: "e5",
+		name: "e5",
+		logo: "/retailers/e5.svg",
+		color: "#1D1D1B",
+		website: "https://www.e5.be",
+		description:
+			"Bekijk de e5 folder met de nieuwste mode-aanbiedingen en collecties voor het hele gezin.",
+		category: "mode",
+		seo: {
+			folderDay: "donderdag",
+			folderDayDetail:
+				"De e5 folder en magazines verschijnen per collectie met seizoens- en modeacties.",
+			storeCount: "meer dan 100 winkels in België",
+			pricePositioning:
+				"e5 is een Belgische modeketen met betaalbare collecties voor het hele gezin.",
+			loyalty: "e5 klantenkaart met punten, kortingen en persoonlijke acties.",
+			appName: "e5 app",
+			openingHours:
+				"Maandag t/m zaterdag doorgaans 9:30–18:00, koopzondagen per locatie.",
+			uniqueSellingPoint:
+				"Belgische familiemode met betaalbare seizoenscollecties en frequente acties.",
+		},
+	},
 ];
 
 export const nlBorderRetailers: Retailer[] = [];
