@@ -87,5 +87,5 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore: update scraped folders and screenshots"
+          git commit -m "chore: update scraped folders and screenshots [skip ci]"
           git push
