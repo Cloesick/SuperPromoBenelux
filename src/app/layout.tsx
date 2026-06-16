@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { JsonLd, createWebsiteJsonLd } from "@/components/JsonLd";
 import { CookieConsent } from "@/components/CookieConsent";
 import { AnalyticsGate } from "@/components/AnalyticsGate";
+import { ClickTracker } from "@/components/ClickTracker";
 import { AdSenseGate } from "@/components/AdSenseGate";
 import { getSiteBaseUrl } from "@/lib/site";
 
@@ -50,6 +51,7 @@ export default function RootLayout({
 				<Footer />
 				<CookieConsent />
 				<AnalyticsGate />
+				<ClickTracker />
 				<AdSenseGate />
 			</body>
 		</html>
