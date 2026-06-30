@@ -2,24 +2,24 @@
   "retailer": "jumbo",
   "folders": [
     {
-      "id": "jumbo-3149595-folder",
+      "id": "jumbo-3189021-folder",
       "retailerSlug": "jumbo",
-      "title": "Jumbo actiefolder - week 25 - 17 juni t/m 23 juni 2026",
-      "validFrom": "2026-06-14",
-      "validUntil": "2026-06-24",
-      "pageCount": 37,
-      "thumbnailUrl": "https://view.publitas.com/171/3149595/pages/10b88f5e-bd48-4607-9aea-f9ed9205c6c1-at800.jpg",
+      "title": "Jumbo actiefolder - week 27 - 1 juli t/m 7 juli 2026",
+      "validFrom": "2026-06-30",
+      "validUntil": "2026-07-10",
+      "pageCount": 39,
+      "thumbnailUrl": "https://view.publitas.com/171/3189021/pages/dab4f77b-654e-4652-9aeb-88909fe5dbfb-at800.jpg",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-nfrp-25/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/171/3149595/pdfs/54b74667-41a1-4070-b5e0-4239271de5dc.pdf",
+      "embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-qule-27/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/171/3189021/pdfs/85704ff4-a10a-4f8c-90af-f20ae4cbd9c9.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-06-14T23:36:34.116Z"
+      "scrapedAt": "2026-06-30T08:38:13.248Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-06-14T23:36:34.116Z",
+  "scrapedAt": "2026-06-30T08:38:13.248Z",
   "sourceUrls": [
-    "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-nfrp-25/"
+    "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-qule-27/"
   ],
   "methods": [
     "publitas",

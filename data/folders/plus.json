@@ -2,24 +2,24 @@
   "retailer": "plus",
   "folders": [
     {
-      "id": "plus-3119156-folder",
+      "id": "plus-3153330-folder",
       "retailerSlug": "plus",
-      "title": "PLUS - PLUS week 24 2026",
-      "validFrom": "2026-06-14",
-      "validUntil": "2026-06-24",
-      "pageCount": 49,
-      "thumbnailUrl": "https://view.publitas.com/96298/3119156/pages/6411c11d-e65d-4eee-9957-042ff804ff63-at800.jpg",
+      "title": "PLUS - PLUS week 26 2026",
+      "validFrom": "2026-06-30",
+      "validUntil": "2026-07-10",
+      "pageCount": 45,
+      "thumbnailUrl": "https://view.publitas.com/96298/3153330/pages/35d20814-f30f-4090-9be7-99df7d1ba4a5-at800.jpg",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/plus-folder-nl/plus-week-24-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/96298/3119156/pdfs/f1ba5c46-5996-4cd3-9955-1310c26ef7fe.pdf",
+      "embedUrl": "https://view.publitas.com/plus-folder-nl/plus-week-26-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/96298/3153330/pdfs/d4f590fe-69a4-422c-9983-a36fa0dff16e.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-06-14T23:36:36.826Z"
+      "scrapedAt": "2026-06-30T08:38:15.824Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-06-14T23:36:36.826Z",
+  "scrapedAt": "2026-06-30T08:38:15.824Z",
   "sourceUrls": [
-    "https://view.publitas.com/plus-folder-nl/plus-week-24-2026/page/1"
+    "https://view.publitas.com/plus-folder-nl/plus-week-26-2026/"
   ],
   "methods": [
     "publitas",
