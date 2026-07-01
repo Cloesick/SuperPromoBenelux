@@ -2,27 +2,46 @@
   "retailer": "albert-heijn",
   "folders": [
     {
-      "id": "albert-heijn-3174639-folder",
+      "id": "albert-heijn-2026-w27-folder",
       "retailerSlug": "albert-heijn",
-      "title": "AH - Bonus-week-27-2026",
-      "validFrom": "2026-07-01",
-      "validUntil": "2026-07-11",
-      "pageCount": 14,
-      "thumbnailUrl": "https://view.publitas.com/126/3174639/pages/c4dd28e8-faea-4435-aafa-5a0ac1f2fdf0-at800.jpg",
-      "pages": [],
-      "embedUrl": "https://view.publitas.com/ah/bonus-week-27-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/126/3174639/pdfs/29399453-1ff3-423d-b60b-f09e519d6b37.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-07-01T08:56:55.591Z"
+      "title": "Albert Heijn Bonusfolder",
+      "validFrom": "2026-06-29",
+      "validUntil": "2026-07-05",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/albert-heijn-2026-w27-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/albert-heijn-2026-w27-viewerimg-p1.webp",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-07-01T16:57:03.493Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-07-01T08:56:55.591Z",
+  "deals": [
+    {
+      "id": "html-6",
+      "product": "Geen alternatieven gevonden voor dit product.",
+      "validFrom": "2026-06-29",
+      "validUntil": "2026-07-05",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-11",
+      "product": "Geen producten gevonden",
+      "validFrom": "2026-06-29",
+      "validUntil": "2026-07-05",
+      "retailerSlug": "albert-heijn"
+    }
+  ],
+  "scrapedAt": "2026-07-01T16:57:09.207Z",
   "sourceUrls": [
-    "https://view.publitas.com/ah/bonus-week-27-2026/page/1"
+    "https://www.ah.be/bonus/folder"
   ],
   "methods": [
-    "publitas",
-    "pdf"
+    "html",
+    "screenshot"
   ]
 }
