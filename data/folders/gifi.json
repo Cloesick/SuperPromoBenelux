@@ -2,24 +2,24 @@
   "retailer": "gifi",
   "folders": [
     {
-      "id": "gifi-3182274-folder",
+      "id": "gifi-3197772-folder",
       "retailerSlug": "gifi",
-      "title": "Gifi - Gifi Jun-Jul 2026",
-      "validFrom": "2026-07-01",
-      "validUntil": "2026-07-11",
-      "pageCount": 10,
-      "thumbnailUrl": "https://view.publitas.com/103778/3182274/pages/a9042bb7-f245-4e8e-bd81-b92afd6ca82d-at800.jpg",
+      "title": "Gifi - Gifi Week 27-28",
+      "validFrom": "2026-07-02",
+      "validUntil": "2026-07-12",
+      "pageCount": 6,
+      "thumbnailUrl": "https://view.publitas.com/103778/3197772/pages/139b141d-c372-4a29-b56a-eebd8fc22b51-at800.jpg",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/gifi/gifi-jun-jul-2026/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/103778/3182274/pdfs/b3b39bb7-d48c-4669-8c25-c34d41806513.pdf",
+      "embedUrl": "https://view.publitas.com/gifi/gifi-week-27-28/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/103778/3197772/pdfs/d537cc30-bec8-4bb5-8759-a0f477728987.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-01T08:57:05.716Z"
+      "scrapedAt": "2026-07-02T08:25:48.587Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-01T08:57:05.716Z",
+  "scrapedAt": "2026-07-02T08:25:48.587Z",
   "sourceUrls": [
-    "https://view.publitas.com/gifi/gifi-jun-jul-2026/"
+    "https://view.publitas.com/gifi/gifi-week-27-28/"
   ],
   "methods": [
     "publitas",
