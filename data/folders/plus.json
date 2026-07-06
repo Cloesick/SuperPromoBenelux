@@ -5,21 +5,21 @@
       "id": "plus-3175737-folder",
       "retailerSlug": "plus",
       "title": "PLUS - PLUS week 27 2026",
-      "validFrom": "2026-07-05",
-      "validUntil": "2026-07-15",
+      "validFrom": "2026-07-06",
+      "validUntil": "2026-07-16",
       "pageCount": 47,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/plus-folder-nl/plus-week-27-2026/page/1?publitas_embed=embedded",
+      "embedUrl": "https://view.publitas.com/plus-folder-nl/plus-week-27-2026/?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/96298/3175737/pdfs/849ca1fe-1736-4632-8893-8df02689b3ef.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-05T08:19:15.662Z"
+      "scrapedAt": "2026-07-06T09:11:35.278Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-05T08:19:15.662Z",
+  "scrapedAt": "2026-07-06T09:11:35.278Z",
   "sourceUrls": [
-    "https://view.publitas.com/plus-folder-nl/plus-week-27-2026/page/1"
+    "https://view.publitas.com/plus-folder-nl/plus-week-27-2026/"
   ],
   "methods": [
     "publitas",

@@ -2,24 +2,24 @@
   "retailer": "xenos",
   "folders": [
     {
-      "id": "xenos-3166193-folder",
+      "id": "xenos-3204270-folder",
       "retailerSlug": "xenos",
-      "title": "XENOS - Xenos week 26-27 2026 (ma 22-6 t/m zo 5-7)",
-      "validFrom": "2026-07-05",
-      "validUntil": "2026-07-15",
-      "pageCount": 25,
-      "thumbnailUrl": "https://view.publitas.com/7981/3166193/pages/90edd7f3-2ab3-46b1-b84e-583bede46d11-at800.jpg",
+      "title": "XENOS - Xenos week 28-29 2026 (ma 6-7 t/m zo 19-7)",
+      "validFrom": "2026-07-06",
+      "validUntil": "2026-07-16",
+      "pageCount": 35,
+      "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/xenos/xenos-week-26-27-2026/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/7981/3166193/pdfs/62faaeb6-1cca-491c-b7ee-31ec5f23cd2e.pdf",
+      "embedUrl": "https://view.publitas.com/xenos/xenos-week-28-29/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/7981/3204270/pdfs/d09c4bcc-8f58-498c-bbd1-29488d955343.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-05T08:19:18.384Z"
+      "scrapedAt": "2026-07-06T09:11:37.517Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-05T08:19:18.384Z",
+  "scrapedAt": "2026-07-06T09:11:37.517Z",
   "sourceUrls": [
-    "https://view.publitas.com/xenos/xenos-week-26-27-2026/"
+    "https://view.publitas.com/xenos/xenos-week-28-29/"
   ],
   "methods": [
     "publitas",
