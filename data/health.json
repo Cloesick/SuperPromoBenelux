@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T08:48:42.925Z",
+  "generatedAt": "2026-07-06T17:22:15.880Z",
   "retailers": [
     {
       "slug": "albert-heijn",
@@ -7,7 +7,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-07-06T08:48:42.453Z",
+      "scrapedAt": "2026-07-06T17:22:15.485Z",
       "folderCount": 1,
       "dealCount": 66,
       "hasEmbed": true,
