@@ -2,24 +2,24 @@
   "retailer": "gifi",
   "folders": [
     {
-      "id": "gifi-3197768-folder",
+      "id": "gifi-3220850-folder",
       "retailerSlug": "gifi",
       "title": "Gifi - Gifi Bi-monthly",
-      "validFrom": "2026-07-07",
-      "validUntil": "2026-07-17",
-      "pageCount": 6,
-      "thumbnailUrl": "https://view.publitas.com/103778/3197768/pages/6a08edfa-7b8a-4e20-9448-cf3be849dc38-at800.jpg",
+      "validFrom": "2026-07-08",
+      "validUntil": "2026-07-18",
+      "pageCount": 24,
+      "thumbnailUrl": "https://view.publitas.com/103778/3220850/pages/f92d751f-c658-436e-8295-e587a3da0cd7-at800.jpg",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/gifi/gifi-bi-monthly-byr36v9ej8xk/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/103778/3197768/pdfs/732cdf96-ee3b-4e38-91aa-410fb53ef68a.pdf",
+      "embedUrl": "https://view.publitas.com/gifi/gifi-bi-monthly-xgdqkapoeblo/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/103778/3220850/pdfs/0a9eea3b-edb9-4f88-971f-2d6a158fb2de.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-07T08:44:39.750Z"
+      "scrapedAt": "2026-07-08T07:41:49.582Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-07T08:44:39.750Z",
+  "scrapedAt": "2026-07-08T07:41:49.582Z",
   "sourceUrls": [
-    "https://view.publitas.com/gifi/gifi-bi-monthly-byr36v9ej8xk/"
+    "https://view.publitas.com/gifi/gifi-bi-monthly-xgdqkapoeblo/"
   ],
   "methods": [
     "publitas",
