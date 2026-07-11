@@ -2,24 +2,24 @@
   "retailer": "jumbo",
   "folders": [
     {
-      "id": "jumbo-3204280-folder",
+      "id": "jumbo-3223043-folder",
       "retailerSlug": "jumbo",
-      "title": "Jumbo actiefolder - week 28 - 8 juli t/m 14 juli 2026",
-      "validFrom": "2026-07-10",
-      "validUntil": "2026-07-20",
-      "pageCount": 35,
+      "title": "Jumbo actiefolder - week 29 - 15 juli t/m 21 juli 2026",
+      "validFrom": "2026-07-11",
+      "validUntil": "2026-07-21",
+      "pageCount": 24,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-sbkx-28/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/171/3204280/pdfs/14318c1d-786b-48d0-bb54-132422e1ff5f.pdf",
+      "embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-week-28-15-juli-t-m-21-juli-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/171/3223043/pdfs/9e6aa46a-ece3-413a-ac54-aab9ae08ae36.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-10T06:32:04.360Z"
+      "scrapedAt": "2026-07-11T06:03:38.451Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-10T06:32:04.360Z",
+  "scrapedAt": "2026-07-11T06:03:38.451Z",
   "sourceUrls": [
-    "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-sbkx-28/"
+    "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-week-28-15-juli-t-m-21-juli-2026/"
   ],
   "methods": [
     "publitas",
