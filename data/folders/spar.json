@@ -4,20 +4,20 @@
     {
       "id": "spar-3241563-folder",
       "retailerSlug": "spar",
-      "title": "SPAR - buurt folder wk20262930",
-      "validFrom": "2026-07-16",
-      "validUntil": "2026-07-26",
+      "title": "SPAR - SPAR folder wk20262930",
+      "validFrom": "2026-07-17",
+      "validUntil": "2026-07-27",
       "pageCount": 16,
-      "thumbnailUrl": "",
+      "thumbnailUrl": "https://view.publitas.com/237/3241563/pages/1eee1733-a452-447a-85a0-87f2887677d5-at800.jpg",
       "pages": [],
       "embedUrl": "https://view.publitas.com/spar/buurt-folder-wk20262930/?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/237/3241563/pdfs/8fde3880-3ec0-4ba1-a1d2-cf438c63086a.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-16T06:05:50.784Z"
+      "scrapedAt": "2026-07-17T06:05:32.000Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-16T06:05:50.784Z",
+  "scrapedAt": "2026-07-17T06:05:32.000Z",
   "sourceUrls": [
     "https://view.publitas.com/spar/buurt-folder-wk20262930/"
   ],
