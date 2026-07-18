@@ -13,7 +13,7 @@
       "embedUrl": "https://view.publitas.com/ah/bonus-week-29-2026/page/1?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/126/3210266/pdfs/342a5ef7-8a2f-46b5-8943-9322eb77636f.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-29-2026.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-17T15:00:39.978Z"
+      "scrapedAt": "2026-07-18T05:21:07.518Z"
     }
   ],
   "deals": [
@@ -187,7 +187,7 @@
       "id": "html-334",
       "product": "AH Sour cream",
       "discount": "25%korting",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_396c543532707942534e696842735447494d31666c67?revLabel=1&rendition=400x400webp&fileType=binary",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_625f477279485972535f756c49624f42573354566b41?revLabel=1&rendition=400x400webp&fileType=binary",
       "validFrom": "2026-07-13",
       "validUntil": "2026-07-19",
       "retailerSlug": "albert-heijn"
@@ -485,7 +485,7 @@
       "retailerSlug": "albert-heijn"
     }
   ],
-  "scrapedAt": "2026-07-17T15:00:45.426Z",
+  "scrapedAt": "2026-07-18T05:21:13.358Z",
   "sourceUrls": [
     "https://www.ah.be/bonus/folder"
   ],
