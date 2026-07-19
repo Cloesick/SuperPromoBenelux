@@ -13,7 +13,7 @@
       "embedUrl": "https://view.publitas.com/ah/bonus-week-30-2026/page/1?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/126/3238077/pdfs/8825bfce-5445-409d-97bc-a2ecd8c0353d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-30-2026.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-18T14:49:26.594Z"
+      "scrapedAt": "2026-07-19T05:36:36.850Z"
     }
   ],
   "deals": [
@@ -40,7 +40,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-18",
+      "id": "html-20",
       "product": "AH Vastkokende aardappelen 1 kilo",
       "discount": "1+1gratis",
       "validFrom": "2026-07-13",
@@ -48,7 +48,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-37",
+      "id": "html-41",
       "product": "AH Verse sappen en smoothies 250 ml",
       "discount": "3 voor5.00",
       "validFrom": "2026-07-13",
@@ -56,7 +56,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-56",
+      "id": "html-62",
       "product": "AH Verse pizza's",
       "discount": "2 voor12.00",
       "validFrom": "2026-07-13",
@@ -64,7 +64,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-75",
+      "id": "html-83",
       "product": "AH Verse maaltijden",
       "discount": "2 voor12.00",
       "validFrom": "2026-07-13",
@@ -72,7 +72,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-94",
+      "id": "html-104",
       "product": "AH Verse pinsa's",
       "discount": "2 voor10.00",
       "validFrom": "2026-07-13",
@@ -80,21 +80,21 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-113",
+      "id": "html-125",
       "product": "AH Rundshamburger 2 stuks",
       "validFrom": "2026-07-13",
       "validUntil": "2026-07-19",
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-119",
+      "id": "html-131",
       "product": "uitgelicht",
       "validFrom": "2026-07-13",
       "validUntil": "2026-07-19",
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-133",
+      "id": "html-147",
       "product": "AH Scharrelkipworsten 300 gram",
       "discount": "2 voor6.99",
       "validFrom": "2026-07-13",
@@ -102,7 +102,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-152",
+      "id": "html-168",
       "product": "AH Flame roasted zalm",
       "discount": "25%korting",
       "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303937383333?revLabel=1&rendition=400x400webp&fileType=binary",
@@ -111,7 +111,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-171",
+      "id": "html-189",
       "product": "Cavinoir Imperial Selection",
       "discount": "25%korting",
       "validFrom": "2026-07-13",
@@ -119,7 +119,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-190",
+      "id": "html-210",
       "product": "AH Excellent salamini Italiani alla cacciatora",
       "discount": "25%korting",
       "validFrom": "2026-07-13",
@@ -127,7 +127,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-209",
+      "id": "html-231",
       "product": "AH Paté kleinverpakking",
       "discount": "2 voor2.50",
       "validFrom": "2026-07-13",
@@ -135,7 +135,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-228",
+      "id": "html-252",
       "product": "Galbani mozzarella en burrata",
       "discount": "25%korting",
       "validFrom": "2026-07-13",
@@ -143,7 +143,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-247",
+      "id": "html-273",
       "product": "Dodoni kaas",
       "discount": "25%korting",
       "validFrom": "2026-07-13",
@@ -151,7 +151,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-266",
+      "id": "html-294",
       "product": "Zanetti Stracciatella di burrata",
       "discount": "25%korting",
       "imageUrl": "https://static.ah.nl/dam/product/AHI_6f7a6253554e666c536a36456a457a7a6d6e4c664367?revLabel=1&rendition=400x400webp&fileType=binary",
@@ -160,7 +160,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-285",
+      "id": "html-315",
       "product": "Arla, Melkunie, Starbucks en Apetina: gratis levering bij 11 euro",
       "discount": "gratisleveringbij 11 euro",
       "validFrom": "2026-07-13",
@@ -168,7 +168,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-300",
+      "id": "html-330",
       "product": "Parrano, Campina, Optimel en Friesche Vlag: gratis levering bij 12 euro",
       "discount": "gratisleveringbij 12 euro",
       "validFrom": "2026-07-13",
@@ -176,7 +176,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-315",
+      "id": "html-347",
       "product": "Douwe Egberts, Upfront, Starbucks en Oatly! ijskoffie",
       "discount": "30%korting",
       "validFrom": "2026-07-13",
@@ -184,7 +184,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-334",
+      "id": "html-368",
       "product": "AH Sour cream",
       "discount": "25%korting",
       "imageUrl": "https://static.ah.nl/dam/product/AHI_625f477279485972535f756c49624f42573354566b41?revLabel=1&rendition=400x400webp&fileType=binary",
@@ -193,7 +193,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-353",
+      "id": "html-389",
       "product": "AH Petit Patisserie banket (ongekoeld)",
       "discount": "2 voor6.00",
       "validFrom": "2026-07-13",
@@ -201,7 +201,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-372",
+      "id": "html-410",
       "product": "Doritos, Lays en Cheetos: gratis levering bij 12 euro",
       "discount": "gratisleveringbij 12 euro",
       "validFrom": "2026-07-13",
@@ -209,7 +209,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-387",
+      "id": "html-425",
       "product": "Duyvis Borrelnootjes Lay's, Cheetos en Doritos",
       "discount": "1+1gratis",
       "validFrom": "2026-07-13",
@@ -217,7 +217,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-406",
+      "id": "html-446",
       "product": "AH Borrel kleintjes",
       "discount": "3 voor3.00",
       "validFrom": "2026-07-13",
@@ -225,7 +225,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-425",
+      "id": "html-467",
       "product": "AH Scrocchi, Picos en Borreltoast",
       "discount": "2 voor4.00",
       "validFrom": "2026-07-13",
@@ -233,7 +233,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-444",
+      "id": "html-488",
       "product": "Heinz: gratis levering bij 12 euro",
       "discount": "gratisleveringbij 12 euro",
       "validFrom": "2026-07-13",
@@ -241,7 +241,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-459",
+      "id": "html-503",
       "product": "AH Verse pasta en pastasauzen",
       "discount": "1+1gratis",
       "validFrom": "2026-07-13",
@@ -249,7 +249,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-478",
+      "id": "html-524",
       "product": "Costa Ligure of Mangiare pesto",
       "discount": "25%korting",
       "validFrom": "2026-07-13",
@@ -257,14 +257,14 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-497",
+      "id": "html-545",
       "product": "Pauwels mayonaise 415 gram",
       "validFrom": "2026-07-13",
       "validUntil": "2026-07-19",
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-517",
+      "id": "html-567",
       "product": "Verstegen mix voor mosselen",
       "discount": "voor0.99",
       "validFrom": "2026-07-13",
@@ -272,7 +272,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-536",
+      "id": "html-588",
       "product": "Mars, M&M's, Maltesers, Snickers, Twix, Bounty, Milky Way, BE-Kind e.a: gratis levering bij 11 euro",
       "discount": "gratisleveringbij 11 euro",
       "validFrom": "2026-07-13",
@@ -280,7 +280,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-551",
+      "id": "html-603",
       "product": "De Ruijter en Venz: gratis levering bij 12 euro",
       "discount": "gratisleveringbij 12 euro",
       "validFrom": "2026-07-13",
@@ -288,7 +288,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-566",
+      "id": "html-618",
       "product": "Kellogg's en Pringles: gratis levering bij 11 euro",
       "discount": "gratisleveringbij 11 euro",
       "validFrom": "2026-07-13",
@@ -296,14 +296,14 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-581",
+      "id": "html-635",
       "product": "Friends of Asia frozen desserts",
       "validFrom": "2026-07-13",
       "validUntil": "2026-07-19",
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-601",
+      "id": "html-657",
       "product": "Ben & Jerry's ijspints",
       "discount": "1+1gratis",
       "validFrom": "2026-07-13",
@@ -311,7 +311,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-620",
+      "id": "html-678",
       "product": "Kwekkeboom",
       "discount": "voor3.49",
       "validFrom": "2026-07-13",
@@ -319,7 +319,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-639",
+      "id": "html-699",
       "product": "Belviva Belgische frieten",
       "discount": "25%korting",
       "validFrom": "2026-07-13",
@@ -327,7 +327,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-658",
+      "id": "html-720",
       "product": "Nescafé Espresso concentraat: gratis levering bij 2 stuks",
       "discount": "gratisleveringbij 2 stuks",
       "validFrom": "2026-07-13",
@@ -335,14 +335,14 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-673",
+      "id": "html-735",
       "product": "Nescafé oploskoffie in doosjes",
       "validFrom": "2026-07-13",
       "validUntil": "2026-07-19",
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-693",
+      "id": "html-757",
       "product": "Spa Touch: gratis levering bij 12 euro",
       "discount": "gratisleveringbij 12 euro",
       "validFrom": "2026-07-13",
@@ -350,7 +350,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-708",
+      "id": "html-774",
       "product": "Spa intense en finesse: gratis levering bij 12 euro",
       "discount": "gratisleveringbij 12 euro",
       "validFrom": "2026-07-13",
@@ -358,7 +358,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-723",
+      "id": "html-789",
       "product": "Powerade Mountain blast 0.5 literflesje",
       "discount": "voor0.99",
       "validFrom": "2026-07-13",
@@ -366,7 +366,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-742",
+      "id": "html-810",
       "product": "PRIME Hydration zero",
       "discount": "50%korting",
       "validFrom": "2026-07-13",
@@ -374,7 +374,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-761",
+      "id": "html-831",
       "product": "AA Drink of Addmoore*",
       "discount": "voor0.89",
       "validFrom": "2026-07-13",
@@ -382,7 +382,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-781",
+      "id": "html-853",
       "product": "Martini Bellini 0.25 literblikjes",
       "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313932393134?revLabel=1&rendition=400x400webp&fileType=binary",
       "validFrom": "2026-07-13",
@@ -390,14 +390,14 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-801",
+      "id": "html-875",
       "product": "De Verhulstjes rosé bag-in-box",
       "validFrom": "2026-07-13",
       "validUntil": "2026-07-19",
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-821",
+      "id": "html-897",
       "product": "Ann Vermeersch Graffiti",
       "discount": "1+1gratis",
       "validFrom": "2026-07-13",
@@ -405,7 +405,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-840",
+      "id": "html-918",
       "product": "Torre del Doge Bianco vino spumante Brut",
       "discount": "1+1gratis",
       "validFrom": "2026-07-13",
@@ -413,7 +413,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-859",
+      "id": "html-939",
       "product": "Ambre Solaire: gratis levering bij 25 euro",
       "discount": "gratisleveringbij 25 euro",
       "validFrom": "2026-07-13",
@@ -421,7 +421,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-874",
+      "id": "html-954",
       "product": "Glorix toiletblokken",
       "discount": "1+2gratis",
       "validFrom": "2026-07-13",
@@ -429,7 +429,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-893",
+      "id": "html-975",
       "product": "Dreft Platinum Plus en Miracle vaatwascapsules",
       "discount": "2+3gratis",
       "validFrom": "2026-07-13",
@@ -437,7 +437,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-912",
+      "id": "html-996",
       "product": "Robijn wasmiddelen en Collections wasverzachters",
       "discount": "1+1gratis",
       "validFrom": "2026-07-13",
@@ -445,7 +445,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-931",
+      "id": "html-1017",
       "product": "Swirl en Toppits",
       "discount": "2ehalve prijs",
       "validFrom": "2026-07-13",
@@ -453,7 +453,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-950",
+      "id": "html-1038",
       "product": "Woolite",
       "discount": "1+1gratis",
       "validFrom": "2026-07-13",
@@ -461,7 +461,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-969",
+      "id": "html-1059",
       "product": "Nutrilon: gratis levering bij 1 stuk",
       "discount": "gratisleveringbij 1 stuk",
       "validFrom": "2026-07-13",
@@ -469,7 +469,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-984",
+      "id": "html-1074",
       "product": "Olvarit: gratis levering bij 15 euro",
       "discount": "gratisleveringbij 15 euro",
       "validFrom": "2026-07-13",
@@ -477,7 +477,7 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-999",
+      "id": "html-1089",
       "product": "Sheba maaltijdzakjes en Perfect Fit",
       "discount": "2+1gratis",
       "validFrom": "2026-07-13",
@@ -485,7 +485,7 @@
       "retailerSlug": "albert-heijn"
     }
   ],
-  "scrapedAt": "2026-07-18T14:49:32.729Z",
+  "scrapedAt": "2026-07-19T05:36:43.790Z",
   "sourceUrls": [
     "https://www.ah.be/bonus/folder"
   ],
