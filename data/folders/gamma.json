@@ -2,24 +2,24 @@
   "retailer": "gamma",
   "folders": [
     {
-      "id": "gamma-3204771-folder",
+      "id": "gamma-3242132-folder",
       "retailerSlug": "gamma",
-      "title": "GAMMA week 29 2026",
-      "validFrom": "2026-07-19",
-      "validUntil": "2026-07-29",
-      "pageCount": 58,
-      "thumbnailUrl": "https://view.publitas.com/66019/3204771/pages/3527c8b9-e94d-4bae-806b-c81513d79a8a-at800.jpg",
+      "title": "GAMMA  - GAMMA week 31 2026",
+      "validFrom": "2026-08-01",
+      "validUntil": "2026-08-11",
+      "pageCount": 56,
+      "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/gamma/gamma-week-29-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/66019/3204771/pdfs/cebbdf7c-c735-4856-8e9e-f9709495c4fa.pdf",
+      "embedUrl": "https://view.publitas.com/gamma/gamma-week-31-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/66019/3242132/pdfs/10d8bc9b-3d6a-436f-b85e-0f1cbc9b5b57.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-19T06:13:43.301Z"
+      "scrapedAt": "2026-08-01T06:14:35.039Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-19T06:13:43.301Z",
+  "scrapedAt": "2026-08-01T06:14:35.039Z",
   "sourceUrls": [
-    "https://view.publitas.com/gamma/gamma-week-29-2026/page/1"
+    "https://view.publitas.com/gamma/gamma-week-31-2026/page/1"
   ],
   "methods": [
     "publitas",

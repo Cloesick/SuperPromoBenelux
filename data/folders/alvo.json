@@ -2,24 +2,24 @@
   "retailer": "alvo",
   "folders": [
     {
-      "id": "alvo-3139198-folder",
+      "id": "alvo-3264722-folder",
       "retailerSlug": "alvo",
-      "title": "Alvo - 26_ALVO_T08491 Gusto 3 2026_FR_WEB",
-      "validFrom": "2026-07-19",
-      "validUntil": "2026-07-29",
+      "title": "Alvo - 26_ALVO_T08573 Gusto 4 2026_FR_WEB",
+      "validFrom": "2026-08-01",
+      "validUntil": "2026-08-11",
       "pageCount": 76,
-      "thumbnailUrl": "https://view.publitas.com/96075/3139198/pages/99b21950-f816-4a73-9af1-ccb1203aa258-at800.jpg",
+      "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/alvo/26_alvo_t08491-gusto-3-2026_fr_web/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/96075/3139198/pdfs/f9c55bc7-6290-468b-bced-9ecb0865a200.pdf",
+      "embedUrl": "https://view.publitas.com/alvo/26_alvo_t08573-gusto-4-2026_fr_web/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/96075/3264722/pdfs/3f3694bc-bd9e-4e60-8eb0-607056e03d83.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-19T06:13:51.769Z"
+      "scrapedAt": "2026-08-01T06:14:41.819Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-19T06:13:51.769Z",
+  "scrapedAt": "2026-08-01T06:14:41.819Z",
   "sourceUrls": [
-    "https://view.publitas.com/alvo/26_alvo_t08491-gusto-3-2026_fr_web/"
+    "https://view.publitas.com/alvo/26_alvo_t08573-gusto-4-2026_fr_web/"
   ],
   "methods": [
     "publitas",

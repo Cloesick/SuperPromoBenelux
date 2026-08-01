@@ -2,24 +2,24 @@
   "retailer": "spar",
   "folders": [
     {
-      "id": "spar-3241563-folder",
+      "id": "spar-3274721-folder",
       "retailerSlug": "spar",
-      "title": "SPAR - SPAR folder wk20262930",
-      "validFrom": "2026-07-19",
-      "validUntil": "2026-07-29",
+      "title": "SPAR - SPAR folder wk20263132",
+      "validFrom": "2026-08-01",
+      "validUntil": "2026-08-11",
       "pageCount": 16,
-      "thumbnailUrl": "https://view.publitas.com/237/3241563/pages/1eee1733-a452-447a-85a0-87f2887677d5-at800.jpg",
+      "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/spar/buurt-folder-wk20262930/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/237/3241563/pdfs/8fde3880-3ec0-4ba1-a1d2-cf438c63086a.pdf",
+      "embedUrl": "https://view.publitas.com/spar/spar-folder-wk20263132/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/237/3274721/pdfs/9b91bea5-f8d2-4e55-9521-23f50eace50d.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-07-19T06:13:48.026Z"
+      "scrapedAt": "2026-08-01T06:14:38.791Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-07-19T06:13:48.026Z",
+  "scrapedAt": "2026-08-01T06:14:38.791Z",
   "sourceUrls": [
-    "https://view.publitas.com/spar/buurt-folder-wk20262930/"
+    "https://view.publitas.com/spar/spar-folder-wk20263132/"
   ],
   "methods": [
     "publitas",
