@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T14:52:38.504Z",
+  "generatedAt": "2026-08-03T05:49:25.630Z",
   "retailers": [
     {
       "slug": "albert-heijn",
@@ -7,21 +7,21 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-02T14:52:37.855Z",
+      "scrapedAt": "2026-08-03T05:49:25.145Z",
       "folderCount": 1,
-      "dealCount": 27,
+      "dealCount": 24,
       "hasEmbed": true,
       "hasPdf": true,
       "hasPages": false,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://view.publitas.com/ah/bonus-week-31-2026/page/1?publitas_embed=embedded",
+          "url": "https://view.publitas.com/ah/bonus-week-32-2026/page/1?publitas_embed=embedded",
           "status": 200,
           "live": true
         },
         {
-          "url": "https://view.publitas.com/126/3245696/pdfs/9eb6a07a-192d-480a-8740-d058c234a18e.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-31-2026.pdf",
+          "url": "https://view.publitas.com/126/3263258/pdfs/c18d53a5-5905-46a2-bf97-6a1d029966cc.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-%2520week-32-2026.pdf",
           "status": 200,
           "live": true
         }
