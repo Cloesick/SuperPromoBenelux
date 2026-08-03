@@ -5,21 +5,21 @@
       "id": "plus-3243509-folder",
       "retailerSlug": "plus",
       "title": "PLUS -  PLUS week 31 2026",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-12",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-13",
       "pageCount": 40,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/plus-folder-nl/plus-week-31-2026/page/1?publitas_embed=embedded",
+      "embedUrl": "https://view.publitas.com/plus-folder-nl/plus-week-31-2026/?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/96298/3243509/pdfs/34b80416-f17b-4bce-9fba-cf08950c3a06.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-02T06:16:23.246Z"
+      "scrapedAt": "2026-08-03T06:28:59.820Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-02T06:16:23.246Z",
+  "scrapedAt": "2026-08-03T06:28:59.820Z",
   "sourceUrls": [
-    "https://view.publitas.com/plus-folder-nl/plus-week-31-2026/page/1"
+    "https://view.publitas.com/plus-folder-nl/plus-week-31-2026/"
   ],
   "methods": [
     "publitas",
