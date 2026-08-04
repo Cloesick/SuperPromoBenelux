@@ -1,6 +1,9 @@
 import fs from "fs";
 import path from "path";
-import puppeteer, { Page, Browser } from "puppeteer";
+// rebrowser-puppeteer is a drop-in Puppeteer fork that patches the CDP
+// `Runtime.Enable` leak — the main signal modern anti-bot services use to
+// detect automation, and one that navigator.webdriver patching cannot hide.
+import puppeteer, { Page, Browser } from "rebrowser-puppeteer";
 import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 import { syncDealsToDb } from "../lib/productsDb";
 import { extractDealsFromPdf } from "./extractDealsFromText";
@@ -104,6 +107,24 @@ export abstract class BaseScraper {
 
 	get retailerSlug(): string {
 		return this.config.slug;
+	}
+
+	/**
+	 * Pause between sequential navigations.
+	 *
+	 * Request *rate* is a stronger blocking signal than fingerprint for most
+	 * retailers — bursts of back-to-back `networkidle2` loads look nothing like
+	 * a human. Applied before each navigation in a multi-request loop.
+	 *
+	 * Configure with SCRAPE_DELAY_MS (default 1500). Set to 0 to disable,
+	 * e.g. in tests. Actual delay is randomised ±40% to avoid a fixed cadence.
+	 */
+	protected async politeDelay(): Promise<void> {
+		const base = parseInt(process.env.SCRAPE_DELAY_MS ?? "1500", 10);
+		if (!Number.isFinite(base) || base <= 0) return;
+		const jitter = base * 0.4;
+		const ms = Math.round(base - jitter + Math.random() * jitter * 2);
+		await new Promise((r) => setTimeout(r, ms));
 	}
 
 	protected async preparePage(page: Page): Promise<void> {
@@ -293,6 +314,7 @@ export abstract class BaseScraper {
 
 			for (const url of this.config.folderUrls) {
 				this.log(`Navigating to ${url}`);
+				await this.politeDelay();
 				try {
 					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 				} catch {
@@ -341,6 +363,7 @@ export abstract class BaseScraper {
 					);
 
 					this.log(`Following folder link: ${folderLink}`);
+					await this.politeDelay();
 					try {
 						await page.goto(folderLink, {
 							waitUntil: "networkidle2",
@@ -704,6 +727,7 @@ export abstract class BaseScraper {
 			if (this.config.dealUrls) {
 				for (const dealUrl of this.config.dealUrls) {
 					this.log(`Scraping deals from ${dealUrl}`);
+					await this.politeDelay();
 					try {
 						await page.setExtraHTTPHeaders({
 							// Add some basic anti-bot headers
@@ -772,6 +796,7 @@ export abstract class BaseScraper {
 				const dealPages = this.config.dealUrls ?? [this.config.folderUrls[0]];
 				for (const dealUrl of dealPages) {
 					this.log(`Trying generic text extraction from ${dealUrl}`);
+					await this.politeDelay();
 					try {
 						await page.goto(dealUrl, {
 							waitUntil: "networkidle2",
@@ -1564,6 +1589,25 @@ export abstract class BaseScraper {
 			throw new Error("Blocked by bot/captcha challenge");
 		}
 
+		// Leaflet captures are the only content source for viewer-only retailers,
+		// and they feed OCR rather than just the UI. At deviceScaleFactor 1 a
+		// 1440x900 capture of a double-page spread renders price text a few pixels
+		// tall, which OCRs at ~48% confidence — unusable. Raising the pixel ratio
+		// is what makes those retailers extractable at all.
+		const shotScale = (() => {
+			const n = parseInt(process.env.SCREENSHOT_SCALE ?? "3", 10);
+			return Number.isFinite(n) && n >= 1 && n <= 4 ? n : 3;
+		})();
+		try {
+			await page.setViewport({
+				width: 1440,
+				height: 900,
+				deviceScaleFactor: shotScale,
+			});
+		} catch {
+			// Non-fatal: fall back to whatever viewport is already set.
+		}
+
 		if (!fs.existsSync(SCREENSHOT_DIR))
 			fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
 
@@ -1808,9 +1852,13 @@ export abstract class BaseScraper {
 				}
 
 				u.searchParams.set("pageNumber", String(i));
+				// Issuu defaults to a two-page spread, which halves the effective
+				// resolution of each leaflet page and makes OCR unreliable.
+				u.searchParams.set("pageLayout", "singlePage");
 				const url = u.toString();
 
 				try {
+					await this.politeDelay();
 					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 					await waitForViewer();
 				} catch {
@@ -1868,6 +1916,7 @@ export abstract class BaseScraper {
 				const url = u.toString();
 
 				try {
+					await this.politeDelay();
 					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 					await waitForViewer();
 				} catch {

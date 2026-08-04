@@ -1,6 +1,7 @@
 import Database from "better-sqlite3";
 import path from "path";
 import { Deal, ContentSource } from "./types";
+import { sanitizeDeals } from "./dealValidation";
 
 // ---------------------------------------------------------------------------
 // Connection (SQLite)
@@ -179,6 +180,32 @@ export function syncDealsToDb(opts: SyncOptions): number {
 
 	if (deals.length === 0) return 0;
 
+	// Salvage recoverable prices, then drop anything that is not a real product.
+	// Historical price data is a truth claim — a wrong "lowest price ever" is
+	// worse than no claim, so unparseable rows are dropped, not guessed.
+	const { kept, rejected, salvagedCount } = sanitizeDeals(deals);
+
+	if (salvagedCount > 0) {
+		console.log(
+			`[productsDb] ${retailerSlug}: salvaged price from label for ${salvagedCount} deal(s)`,
+		);
+	}
+	if (rejected.length > 0) {
+		const byReason = rejected.reduce<Record<string, number>>((acc, r) => {
+			acc[r.reason] = (acc[r.reason] ?? 0) + 1;
+			return acc;
+		}, {});
+		const summary = Object.entries(byReason)
+			.sort((a, b) => b[1] - a[1])
+			.map(([reason, n]) => `${reason}=${n}`)
+			.join(", ");
+		console.log(
+			`[productsDb] ${retailerSlug}: rejected ${rejected.length}/${deals.length} deal(s) — ${summary}`,
+		);
+	}
+
+	if (kept.length === 0) return 0;
+
 	const stmt = db.prepare(`
 		INSERT INTO promo_products (
 			retailer_slug, retailer_name, vertical,
@@ -251,7 +278,7 @@ export function syncDealsToDb(opts: SyncOptions): number {
 		}
 	});
 
-	insertMany(deals);
+	insertMany(kept);
 	return synced;
 }
 

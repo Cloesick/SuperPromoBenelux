@@ -52,8 +52,11 @@
 		"jsdom": "^26.1.0",
 		"postcss": "^8.5.8",
 		"puppeteer": "^24.39.0",
+		"rebrowser-puppeteer": "^24.8.1",
+		"sharp": "^0.35.3",
 		"start-server-and-test": "^2.1.5",
 		"tailwindcss": "^4.2.1",
+		"tesseract.js": "^7.0.0",
 		"tsx": "^4.21.0",
 		"typescript": "^5.9.3",
 		"vitest": "^4.1.4"
