@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-12T10:33:18.712Z",
+  "generatedAt": "2026-08-05T22:30:54.424Z",
   "retailers": [
     {
       "slug": "albert-heijn",
@@ -7,21 +7,21 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:04:39.764Z",
+      "scrapedAt": "2026-08-05T20:58:16.951Z",
       "folderCount": 1,
-      "dealCount": 89,
+      "dealCount": 24,
       "hasEmbed": true,
       "hasPdf": true,
       "hasPages": false,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://view.publitas.com/ah/bonus-week-20-2026/page/1?publitas_embed=embedded",
+          "url": "https://view.publitas.com/ah/bonus-week-32-2026/page/1?publitas_embed=embedded",
           "status": 200,
           "live": true
         },
         {
-          "url": "https://view.publitas.com/126/3036004/pdfs/27b13c61-3f34-4d3e-bc55-046005df79ec.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-20-2026.pdf",
+          "url": "https://view.publitas.com/126/3263258/pdfs/c18d53a5-5905-46a2-bf97-6a1d029966cc.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-%2520week-32-2026.pdf",
           "status": 200,
           "live": true
         }
@@ -33,21 +33,16 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T09:30:37.457Z",
+      "scrapedAt": "2026-08-05T21:00:08.155Z",
       "folderCount": 1,
-      "dealCount": 0,
-      "hasEmbed": true,
+      "dealCount": 12,
+      "hasEmbed": false,
       "hasPdf": true,
-      "hasPages": true,
+      "hasPages": false,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://folder-nl.lidl.be/nl-folder-11-05-16-05",
-          "status": 200,
-          "live": true
-        },
-        {
-          "url": "https://folder-nl.lidl.be/97031/3028948/pdfs/b7e291bd-34c4-4b2a-ad4c-57d31204b7f4.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252011-05-16-05.pdf",
+          "url": "https://folder-nl.lidl.be/97031/3258474/pdfs/cd8f099e-ff05-43c1-8fba-71621313563c.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252003-08-08-08.pdf",
           "status": 200,
           "live": true
         }
@@ -59,7 +54,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T09:38:29.330Z",
+      "scrapedAt": "2026-08-05T21:17:45.253Z",
       "folderCount": 1,
       "dealCount": 0,
       "hasEmbed": true,
@@ -68,12 +63,12 @@
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://view.publitas.com/delhaize-belgium-nl/w19-2026-nl/page/1?publitas_embed=embedded",
+          "url": "https://view.publitas.com/delhaize-belgium-nl/w31-2026-nl/page/1?publitas_embed=embedded",
           "status": 200,
           "live": true
         },
         {
-          "url": "https://view.publitas.com/11013/3038254/pdfs/e698b8b0-5fc0-4552-9d17-2f723dda566a.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W19-2026-NL.pdf",
+          "url": "https://view.publitas.com/11013/3262804/pdfs/927e042f-82c9-4702-9384-3969137e467d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W31-2026-NL.pdf",
           "status": 200,
           "live": true
         }
@@ -85,9 +80,9 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:09:59.296Z",
+      "scrapedAt": "2026-08-05T21:26:38.176Z",
       "folderCount": 1,
-      "dealCount": 0,
+      "dealCount": 50,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
@@ -100,20 +95,14 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:10:23.011Z",
+      "scrapedAt": "2026-08-05T21:28:13.658Z",
       "folderCount": 1,
       "dealCount": 0,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": [
-        {
-          "url": "https://folder.aldi.be/import-folder/2026/2620-prijsverlaging-nl/?HideStandardUI=true&HideNavigationBars=true",
-          "status": 404,
-          "live": false
-        }
-      ]
+      "probeResults": []
     },
     {
       "slug": "action",
@@ -121,9 +110,9 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T09:40:22.567Z",
+      "scrapedAt": "2026-08-05T21:32:32.281Z",
       "folderCount": 1,
-      "dealCount": 0,
+      "dealCount": 25,
       "hasEmbed": true,
       "hasPdf": false,
       "hasPages": true,
@@ -163,7 +152,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:12:47.524Z",
+      "scrapedAt": "2026-08-05T21:33:48.631Z",
       "folderCount": 1,
       "dealCount": 3,
       "hasEmbed": false,
@@ -178,25 +167,14 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:13:14.580Z",
+      "scrapedAt": "2026-08-05T21:34:36.511Z",
       "folderCount": 1,
-      "dealCount": 0,
+      "dealCount": 6,
       "hasEmbed": false,
-      "hasPdf": true,
+      "hasPdf": false,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": [
-        {
-          "url": "https://login.zooplus.be/auth/realms/zooplus/protocol/openid-connect/login-status-iframe.html",
-          "status": 405,
-          "live": false
-        },
-        {
-          "url": "https://media.zooplus.com/bilder/0/Formulairederetractation_FINAL_French_BE_3_1_0.pdf?utm-source=utm_source_teaser&analytics-id=qp85kbzn8noe-4nrsplIPDIK04oRbpJOwKD",
-          "status": 200,
-          "live": true
-        }
-      ]
+      "probeResults": []
     },
     {
       "slug": "aveve",
@@ -204,7 +182,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:13:43.885Z",
+      "scrapedAt": "2026-08-05T21:35:21.591Z",
       "folderCount": 1,
       "dealCount": 7,
       "hasEmbed": false,
@@ -219,7 +197,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:14:01.800Z",
+      "scrapedAt": "2026-08-04T18:33:46.278Z",
       "folderCount": 1,
       "dealCount": 0,
       "hasEmbed": false,
@@ -234,7 +212,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:14:46.006Z",
+      "scrapedAt": "2026-08-05T21:36:59.428Z",
       "folderCount": 1,
       "dealCount": 1,
       "hasEmbed": false,
@@ -249,14 +227,20 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:15:16.776Z",
+      "scrapedAt": "2026-08-05T21:37:27.776Z",
       "folderCount": 1,
-      "dealCount": 0,
+      "dealCount": 22,
       "hasEmbed": false,
-      "hasPdf": false,
-      "hasPages": true,
+      "hasPdf": true,
+      "hasPages": false,
       "validationIssues": [],
-      "probeResults": []
+      "probeResults": [
+        {
+          "url": "https://product-energy-label-specifications.coolblue.de/7e/produkt_daten_blatt_974800.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
     },
     {
       "slug": "vanden-borre",
@@ -264,9 +248,9 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:15:38.173Z",
+      "scrapedAt": "2026-08-04T18:36:12.063Z",
       "folderCount": 1,
-      "dealCount": 22,
+      "dealCount": 21,
       "hasEmbed": false,
       "hasPdf": true,
       "hasPages": false,
@@ -285,9 +269,9 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:16:06.587Z",
+      "scrapedAt": "2026-08-05T21:40:16.943Z",
       "folderCount": 1,
-      "dealCount": 0,
+      "dealCount": 17,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
@@ -300,7 +284,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:16:35.927Z",
+      "scrapedAt": "2026-08-05T21:41:10.025Z",
       "folderCount": 1,
       "dealCount": 4,
       "hasEmbed": false,
@@ -315,20 +299,14 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:17:46.632Z",
+      "scrapedAt": "2026-08-05T21:42:58.146Z",
       "folderCount": 1,
-      "dealCount": 16,
-      "hasEmbed": true,
+      "dealCount": 1,
+      "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": [
-        {
-          "url": "https://tr.snapchat.com/cm/i?pid=70dc5fbe-40b7-48b1-be77-218c69bced5a&u_scsid=d4ec71aa-b761-4d1e-be74-b91fd5534f90&u_sclid=921e6b1e-91bd-4bab-8d5f-97cdc3b942b9",
-          "status": 200,
-          "live": true
-        }
-      ]
+      "probeResults": []
     },
     {
       "slug": "zalando",
@@ -336,9 +314,9 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:18:40.941Z",
+      "scrapedAt": "2026-08-04T18:39:39.382Z",
       "folderCount": 1,
-      "dealCount": 129,
+      "dealCount": 142,
       "hasEmbed": true,
       "hasPdf": false,
       "hasPages": true,
@@ -354,23 +332,17 @@
     {
       "slug": "ikea",
       "name": "IKEA",
-      "status": "fresh",
-      "attempts": 1,
+      "status": "retry_success",
+      "attempts": 2,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:19:35.504Z",
+      "scrapedAt": "2026-08-05T21:56:56.053Z",
       "folderCount": 1,
-      "dealCount": 32,
-      "hasEmbed": true,
+      "dealCount": 30,
+      "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": [
-        {
-          "url": "https://a11701662245.cdn-pci.optimizely.com/client_storage/a11701662245.html",
-          "status": 200,
-          "live": true
-        }
-      ]
+      "probeResults": []
     },
     {
       "slug": "gamma",
@@ -378,7 +350,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:19:52.371Z",
+      "scrapedAt": "2026-08-04T18:40:56.909Z",
       "folderCount": 1,
       "dealCount": 2,
       "hasEmbed": true,
@@ -392,7 +364,7 @@
           "live": true
         },
         {
-          "url": "https://folder.gamma.be/93348/3024415/pdfs/78208fba-da3b-415f-92cb-f53a91d127ed.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27GAMMA%2520BENL%2520-%2520GAMMA%2520BENL%2520week%252019%25202026.pdf",
+          "url": "https://folder.gamma.be/93348/3246421/pdfs/d2037e68-2c97-4373-b115-1bdb18ecd52d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27GAMMA%2520BENL%2520-%2520GAMMA%2520BENL%2520week%252031%25202026.pdf",
           "status": 200,
           "live": true
         }
@@ -404,7 +376,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:20:26.593Z",
+      "scrapedAt": "2026-08-04T18:41:37.471Z",
       "folderCount": 1,
       "dealCount": 6,
       "hasEmbed": true,
@@ -413,12 +385,12 @@
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://folder.kruidvat.be/kruidvat-folder-20-11-mei-2026-t-m-24-mei-2026/",
+          "url": "https://folder.kruidvat.be/kruidvat-folder-32-3-augustus-2026-t-m-16-augustus-2026/",
           "status": 200,
           "live": true
         },
         {
-          "url": "https://folder.kruidvat.be/190/3035094/pdfs/ec73551b-9e7e-443c-99c0-bdbd03c1ab70.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Kruidvat-BEvl%2520-%2520Kruidvat%2520folder%252020%2520-%252011%2520mei%25202026%2520t%252Fm%252024%2520mei%25202026.pdf",
+          "url": "https://folder.kruidvat.be/190/3241685/pdfs/ef3a1d9c-8fe8-4a72-b0f9-e1088b4a3b66.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Kruidvat-BEvl%2520-%2520Kruidvat%2520folder%252032%2520-%25203%2520augustus%25202026%2520t%252Fm%252016%2520augustus%25202026.pdf",
           "status": 200,
           "live": true
         }
@@ -430,9 +402,9 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:22:02.805Z",
+      "scrapedAt": "2026-08-05T22:10:59.999Z",
       "folderCount": 1,
-      "dealCount": 0,
+      "dealCount": 14,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
@@ -445,7 +417,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:23:44.023Z",
+      "scrapedAt": "2026-08-05T22:17:39.013Z",
       "folderCount": 1,
       "dealCount": 2,
       "hasEmbed": false,
@@ -460,7 +432,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:24:18.989Z",
+      "scrapedAt": "2026-08-05T22:18:26.172Z",
       "folderCount": 1,
       "dealCount": 11,
       "hasEmbed": false,
@@ -475,7 +447,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:25:05.589Z",
+      "scrapedAt": "2026-08-05T22:19:16.104Z",
       "folderCount": 1,
       "dealCount": 32,
       "hasEmbed": false,
@@ -490,16 +462,22 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:25:26.262Z",
+      "scrapedAt": "2026-08-05T22:19:45.749Z",
       "folderCount": 1,
-      "dealCount": 0,
+      "dealCount": 1,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
-      "validationIssues": [],
+      "validationIssues": [
+        {
+          "field": "folders",
+          "message": "Bot-protection challenge captured instead of leaflet content",
+          "severity": "error"
+        }
+      ],
       "probeResults": [
         {
-          "url": "https://www.boots.com/_Incapsula_Resource?CWUDNSAI=23&xinfo=45-23591282-0%20PNNN%20RT%281778581501905%202072%29%20q%280%20-1%20-1%20-1%29%20r%280%20-1%29%20B15%2814%2c0%2c0%29%20U5&incident_id=567000060354120958-111462033525244333&edet=15&cinfo=0e00000000c3&rpinfo=0&cip=193.74.248.194&mth=GET",
+          "url": "https://www.boots.com/_Incapsula_Resource?CWUDNSAI=23&xinfo=53-293644754-0%20PNNN%20RT%281785968357841%20685%29%20q%280%20-1%20-1%20-1%29%20r%281%20-1%29%20B15%2814%2c0%2c0%29%20U5&incident_id=567000140858897773-1368878348687049653&edet=15&cinfo=0e00000000c3&rpinfo=0&cip=193.74.248.194&mth=GET",
           "status": 400,
           "live": false
         }
@@ -511,9 +489,9 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:25:46.931Z",
+      "scrapedAt": "2026-08-05T22:20:11.143Z",
       "folderCount": 1,
-      "dealCount": 0,
+      "dealCount": 1,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
@@ -526,7 +504,7 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:26:52.747Z",
+      "scrapedAt": "2026-08-05T22:27:27.023Z",
       "folderCount": 1,
       "dealCount": 0,
       "hasEmbed": false,
@@ -535,7 +513,7 @@
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://www.rossmann.de/dam/einkaufsportal/startseite/footer/Bio-Zertifikat.2025-09-22-14-48-11.pdf",
+          "url": "https://www.rossmann.de/dam/einkaufsportal/startseite/footer/Bio-Zertifikat.2026-06-16-09-37-12.pdf",
           "status": 200,
           "live": true
         }
@@ -547,21 +525,21 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:27:53.925Z",
+      "scrapedAt": "2026-08-05T22:28:14.659Z",
       "folderCount": 1,
-      "dealCount": 26,
+      "dealCount": 27,
       "hasEmbed": true,
       "hasPdf": true,
       "hasPages": false,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://folder.trekpleister.nl/trekpleister-week-20-11-mei-2025-t-m-17-mei-2026/",
+          "url": "https://folder.trekpleister.nl/trekpleister-week-32-3-augustus-2026-t-m-9-augustus-2026-ldk9kgmlg98g/",
           "status": 200,
           "live": true
         },
         {
-          "url": "https://folder.trekpleister.nl/26/2998004/pdfs/dd25021e-2231-4f68-95da-a8f02145b52b.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Trekpleister%2520-%2520Trekpleister%2520week%252020%2520-%252011%2520mei%25202025%2520t%252Fm%252017%2520mei%25202026.pdf",
+          "url": "https://folder.trekpleister.nl/26/3221924/pdfs/db88bd3e-332d-4830-a43d-cc4de36df917.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Trekpleister%2520-%2520Trekpleister%2520week%252032%2520-%25203%2520augustus%25202026%2520t%252Fm%25209%2520augustus%25202026.pdf",
           "status": 200,
           "live": true
         }
@@ -573,20 +551,14 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:28:51.155Z",
+      "scrapedAt": "2026-08-05T22:29:01.877Z",
       "folderCount": 1,
-      "dealCount": 126,
-      "hasEmbed": true,
+      "dealCount": 12,
+      "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": [
-        {
-          "url": "https://a40.usablenet.com/pt/c/rituals/switch",
-          "status": 200,
-          "live": true
-        }
-      ]
+      "probeResults": []
     },
     {
       "slug": "yves-rocher",
@@ -594,9 +566,9 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:29:43.457Z",
+      "scrapedAt": "2026-08-05T22:30:13.593Z",
       "folderCount": 1,
-      "dealCount": 1,
+      "dealCount": 0,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
@@ -609,12 +581,12 @@
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-05-12T10:33:14.443Z",
+      "scrapedAt": "2026-08-05T22:30:52.127Z",
       "folderCount": 1,
-      "dealCount": 8,
+      "dealCount": 10,
       "hasEmbed": false,
       "hasPdf": true,
-      "hasPages": true,
+      "hasPages": false,
       "validationIssues": [],
       "probeResults": [
         {
@@ -631,7 +603,7 @@
     "fallback": 0,
     "stale": 0,
     "missing": 0,
-    "withErrors": 1,
-    "withDeadUrls": 3
+    "withErrors": 2,
+    "withDeadUrls": 1
   }
 }

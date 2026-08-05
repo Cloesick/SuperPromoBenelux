@@ -2,46 +2,329 @@
   "retailer": "delhaize",
   "folders": [
     {
-      "id": "delhaize-2026-w20-folder",
+      "id": "delhaize-2026-w32-folder",
       "retailerSlug": "delhaize",
       "title": "Delhaize folder van de week",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "pageCount": 0,
-      "thumbnailUrl": "",
-      "pages": [],
-      "embedUrl": "https://view.publitas.com/delhaize-belgium-nl/w19-2026-nl/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/11013/3038254/pdfs/e698b8b0-5fc0-4552-9d17-2f723dda566a.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W19-2026-NL.pdf",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 60,
+      "thumbnailUrl": "/screenshots/delhaize-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p1.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p2.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p3.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p4.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p5.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p6.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p7.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p8.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p9.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p10.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p11.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p12.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 13,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p13.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 14,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p14.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 15,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p15.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 16,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p16.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 17,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p17.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 18,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p18.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 19,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p19.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 20,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p20.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 21,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p21.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 22,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p22.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 23,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p23.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 24,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p24.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 25,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p25.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 26,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p26.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 27,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p27.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 28,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p28.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 29,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p29.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 30,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p30.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 31,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p31.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 32,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p32.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 33,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p33.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 34,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p34.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 35,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p35.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 36,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p36.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 37,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p37.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 38,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p38.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 39,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p39.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 40,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p40.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 41,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p41.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 42,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p42.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 43,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p43.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 44,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p44.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 45,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p45.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 46,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p46.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 47,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p47.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 48,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p48.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 49,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p49.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 50,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p50.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 51,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p51.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 52,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p52.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 53,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p53.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 54,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p54.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 55,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p55.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 56,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p56.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 57,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p57.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 58,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p58.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 59,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p59.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 60,
+          "imageUrl": "/screenshots/delhaize-2026-w32-viewerimg-p60.webp",
+          "deals": []
+        }
+      ],
+      "embedUrl": "https://view.publitas.com/delhaize-belgium-nl/w31-2026-nl/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/11013/3262804/pdfs/927e042f-82c9-4702-9384-3969137e467d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W31-2026-NL.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-05-12T16:41:45.901Z"
+      "scrapedAt": "2026-08-05T21:00:48.700Z"
     }
   ],
-  "deals": [
-    {
-      "id": "pagetext-0",
-      "product": "PromoDelhaize Zalmfilet | Zonder vel+/- 290 gr27,44 €/kg+/-  €+/-€796F19900313002494000009",
-      "promoPrice": 8.84,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "delhaize"
-    },
-    {
-      "id": "pagetext-1",
-      "product": "OnlineMilka Chocolade | Melkchocolade | Daim100 gr16,65 €/kg18,50 €/kg€166S202112270025203009612",
-      "promoPrice": 1.85,
-      "discount": "-10%",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "delhaize"
-    }
-  ],
-  "scrapedAt": "2026-05-12T16:42:20.369Z",
+  "deals": [],
+  "scrapedAt": "2026-08-05T21:17:45.253Z",
   "sourceUrls": [
     "https://www.delhaize.be/nl/folder"
   ],
   "methods": [
     "publitas",
     "pdf",
-    "page-text"
+    "screenshot"
   ]
 }

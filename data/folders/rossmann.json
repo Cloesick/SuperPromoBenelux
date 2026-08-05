@@ -2,82 +2,322 @@
   "retailer": "rossmann",
   "folders": [
     {
-      "id": "rossmann-2026-w20-folder",
+      "id": "rossmann-2026-w32-folder",
       "retailerSlug": "rossmann",
       "title": "Rossmann promoties",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "pageCount": 12,
-      "thumbnailUrl": "/screenshots/rossmann-2026-w20-viewerimg-p1.webp",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "pageCount": 60,
+      "thumbnailUrl": "/screenshots/rossmann-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p1.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p1.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p2.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p2.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p3.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p3.webp",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p4.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p4.webp",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p5.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p5.webp",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p6.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p6.webp",
           "deals": []
         },
         {
           "pageNumber": 7,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p7.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p7.webp",
           "deals": []
         },
         {
           "pageNumber": 8,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p8.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p8.webp",
           "deals": []
         },
         {
           "pageNumber": 9,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p9.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p9.webp",
           "deals": []
         },
         {
           "pageNumber": 10,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p10.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p10.webp",
           "deals": []
         },
         {
           "pageNumber": 11,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p11.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p11.webp",
           "deals": []
         },
         {
           "pageNumber": 12,
-          "imageUrl": "/screenshots/rossmann-2026-w20-viewerimg-p12.webp",
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p12.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 13,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p13.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 14,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p14.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 15,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p15.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 16,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p16.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 17,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p17.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 18,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p18.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 19,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p19.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 20,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p20.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 21,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p21.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 22,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p22.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 23,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p23.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 24,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p24.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 25,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p25.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 26,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p26.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 27,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p27.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 28,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p28.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 29,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p29.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 30,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p30.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 31,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p31.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 32,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p32.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 33,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p33.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 34,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p34.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 35,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p35.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 36,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p36.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 37,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p37.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 38,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p38.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 39,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p39.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 40,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p40.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 41,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p41.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 42,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p42.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 43,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p43.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 44,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p44.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 45,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p45.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 46,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p46.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 47,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p47.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 48,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p48.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 49,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p49.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 50,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p50.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 51,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p51.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 52,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p52.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 53,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p53.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 54,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p54.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 55,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p55.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 56,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p56.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 57,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p57.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 58,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p58.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 59,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p59.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 60,
+          "imageUrl": "/screenshots/rossmann-2026-w32-viewerimg-p60.webp",
           "deals": []
         }
       ],
-      "pdfUrl": "https://www.rossmann.de/dam/einkaufsportal/startseite/footer/Bio-Zertifikat.2025-09-22-14-48-11.pdf",
+      "pdfUrl": "https://www.rossmann.de/dam/einkaufsportal/startseite/footer/Bio-Zertifikat.2026-06-16-09-37-12.pdf",
       "contentSource": "pdf",
-      "scrapedAt": "2026-05-12T16:45:23.137Z"
+      "scrapedAt": "2026-08-05T22:20:33.135Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-05-12T16:46:19.111Z",
+  "scrapedAt": "2026-08-05T22:27:27.023Z",
   "sourceUrls": [
     "https://www.rossmann.de/de/angebote"
   ],

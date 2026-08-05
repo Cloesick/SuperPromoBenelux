@@ -2,30 +2,313 @@
   "retailer": "coolblue",
   "folders": [
     {
-      "id": "coolblue-2026-w20-folder",
+      "id": "coolblue-2026-w32-folder",
       "retailerSlug": "coolblue",
       "title": "Coolblue promoties",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "pageCount": 1,
-      "thumbnailUrl": "/screenshots/coolblue-2026-w20-viewerimg-p1.webp",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "/screenshots/coolblue-2026-w20-viewerimg-p1.webp",
-          "deals": []
-        }
-      ],
-      "contentSource": "screenshot",
-      "scrapedAt": "2026-05-12T16:38:15.076Z"
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 0,
+      "thumbnailUrl": "",
+      "pages": [],
+      "pdfUrl": "https://product-energy-label-specifications.coolblue.de/7e/produkt_daten_blatt_974800.pdf",
+      "contentSource": "pdf",
+      "scrapedAt": "2026-08-05T21:37:19.300Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-05-12T16:38:18.586Z",
+  "deals": [
+    {
+      "id": "jsonld-0",
+      "product": "Wisberg WBWC127FDZ",
+      "promoPrice": 599,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1964308259",
+        "https://image.coolblue.be/480x360/products/1964308259",
+        "https://image.coolblue.be/512x288/products/1964308259"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-1",
+      "product": "HP Pavilion SE 15-fd1955nb Azerty",
+      "promoPrice": 599,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/637938464",
+        "https://image.coolblue.be/480x360/products/637938464",
+        "https://image.coolblue.be/512x288/products/637938464"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-2",
+      "product": "Lenovo ThinkPad Hybride Usb C en Usb A Docking Station",
+      "promoPrice": 169,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1380735",
+        "https://image.coolblue.be/480x360/products/1380735",
+        "https://image.coolblue.be/512x288/products/1380735"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-3",
+      "product": "reMarkable Paper Pro + BlueBuilt Book Case Zwart",
+      "promoPrice": 782,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/313623756",
+        "https://image.coolblue.be/480x360/products/313623756",
+        "https://image.coolblue.be/512x288/products/313623756"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-4",
+      "product": "Rowenta Clean It IN5020",
+      "promoPrice": 149,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/2117114",
+        "https://image.coolblue.be/480x360/products/2117114",
+        "https://image.coolblue.be/512x288/products/2117114"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-5",
+      "product": "Apple AirTag 2 (1-Pack) + BlueBuilt Apple AirTag Sleutelhang",
+      "promoPrice": 52,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/70386525",
+        "https://image.coolblue.be/480x360/products/70386525",
+        "https://image.coolblue.be/512x288/products/70386525"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-6",
+      "product": "Qlima D216",
+      "promoPrice": 149,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/2204483",
+        "https://image.coolblue.be/480x360/products/2204483",
+        "https://image.coolblue.be/512x288/products/2204483"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-7",
+      "product": "Braun Silk-épil 9 9-080 Zilver",
+      "promoPrice": 136,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1521551647",
+        "https://image.coolblue.be/480x360/products/1521551647",
+        "https://image.coolblue.be/512x288/products/1521551647"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-8",
+      "product": "Insta360 X5 Essentials Bundle + Bluebuilt Charger",
+      "promoPrice": 638,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/251097217",
+        "https://image.coolblue.be/480x360/products/251097217",
+        "https://image.coolblue.be/512x288/products/251097217"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-9",
+      "product": "BlueBuilt Power Bank 20.000 mAh met Snelladen Zwart",
+      "promoPrice": 39.99,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/2236028",
+        "https://image.coolblue.be/480x360/products/2236028",
+        "https://image.coolblue.be/512x288/products/2236028"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-10",
+      "product": "Siemens CM776GKB1 Air Fry",
+      "promoPrice": 1249,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/2205785",
+        "https://image.coolblue.be/480x360/products/2205785",
+        "https://image.coolblue.be/512x288/products/2205785"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-11",
+      "product": "BlueBuilt Power Bank 20.000 met Snelladen 45 Watt",
+      "promoPrice": 43.99,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/2027008658",
+        "https://image.coolblue.be/480x360/products/2027008658",
+        "https://image.coolblue.be/512x288/products/2027008658"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-12",
+      "product": "BlueBuilt Qi2.2 Draadloze Oplader 25W Zwart",
+      "promoPrice": 33.99,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/283938427",
+        "https://image.coolblue.be/480x360/products/283938427",
+        "https://image.coolblue.be/512x288/products/283938427"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-13",
+      "product": "Sonos Beam Gen2 Zwart",
+      "promoPrice": 489,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1630672",
+        "https://image.coolblue.be/480x360/products/1630672",
+        "https://image.coolblue.be/512x288/products/1630672"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-14",
+      "product": "Samsung MS23K3513AK/EN",
+      "promoPrice": 140,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1378248",
+        "https://image.coolblue.be/480x360/products/1378248",
+        "https://image.coolblue.be/512x288/products/1378248"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-15",
+      "product": "SodaStream DUO Grijs",
+      "promoPrice": 94,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1650160",
+        "https://image.coolblue.be/480x360/products/1650160",
+        "https://image.coolblue.be/512x288/products/1650160"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-16",
+      "product": "BLACK+DECKER GTC1845L20-QW",
+      "promoPrice": 81,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1365297",
+        "https://image.coolblue.be/480x360/products/1365297",
+        "https://image.coolblue.be/512x288/products/1365297"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-17",
+      "product": "Dreame H14 Pro",
+      "promoPrice": 259,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/2088805",
+        "https://image.coolblue.be/480x360/products/2088805",
+        "https://image.coolblue.be/512x288/products/2088805"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-18",
+      "product": "Braun Silk Expert Pro 5 PL5234",
+      "promoPrice": 395,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/433379679",
+        "https://image.coolblue.be/480x360/products/433379679",
+        "https://image.coolblue.be/512x288/products/433379679"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-19",
+      "product": "Braun Series 9 BT9520",
+      "promoPrice": 98,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/2145542",
+        "https://image.coolblue.be/480x360/products/2145542",
+        "https://image.coolblue.be/512x288/products/2145542"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-20",
+      "product": "Eufy Home Alarm Kit 7-delig",
+      "promoPrice": 198,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1590686",
+        "https://image.coolblue.be/480x360/products/1590686",
+        "https://image.coolblue.be/512x288/products/1590686"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-21",
+      "product": "Mova Viax 300",
+      "promoPrice": 499,
+      "imageUrl": [
+        "https://image.coolblue.be/500x500/products/1768154649",
+        "https://image.coolblue.be/480x360/products/1768154649",
+        "https://image.coolblue.be/512x288/products/1768154649"
+      ],
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    }
+  ],
+  "scrapedAt": "2026-08-05T21:37:27.776Z",
   "sourceUrls": [
     "https://www.coolblue.be/nl/aanbieding"
   ],
   "methods": [
-    "screenshot"
+    "pdf",
+    "html"
   ]
 }

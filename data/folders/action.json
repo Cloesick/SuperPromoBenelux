@@ -2,267 +2,523 @@
   "retailer": "action",
   "folders": [
     {
-      "id": "action-2026-w20-folder",
+      "id": "action-2026-w32-folder",
       "retailerSlug": "action",
       "title": "Action folder van de week",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "pageCount": 12,
-      "thumbnailUrl": "/screenshots/action-2026-w20-viewerimg-p1.webp",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 60,
+      "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p1.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p1.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p2.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p2.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p3.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p3.webp",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p4.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p4.webp",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p5.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p5.webp",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p6.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p6.webp",
           "deals": []
         },
         {
           "pageNumber": 7,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p7.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p7.webp",
           "deals": []
         },
         {
           "pageNumber": 8,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p8.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p8.webp",
           "deals": []
         },
         {
           "pageNumber": 9,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p9.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p9.webp",
           "deals": []
         },
         {
           "pageNumber": 10,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p10.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p10.webp",
           "deals": []
         },
         {
           "pageNumber": 11,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p11.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p11.webp",
           "deals": []
         },
         {
           "pageNumber": 12,
-          "imageUrl": "/screenshots/action-2026-w20-viewerimg-p12.webp",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p12.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 13,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p13.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 14,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p14.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 15,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p15.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 16,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p16.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 17,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p17.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 18,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p18.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 19,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p19.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 20,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p20.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 21,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p21.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 22,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p22.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 23,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p23.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 24,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p24.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 25,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p25.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 26,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p26.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 27,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p27.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 28,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p28.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 29,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p29.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 30,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p30.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 31,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p31.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 32,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p32.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 33,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p33.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 34,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p34.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 35,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p35.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 36,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p36.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 37,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p37.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 38,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p38.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 39,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p39.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 40,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p40.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 41,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p41.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 42,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p42.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 43,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p43.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 44,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p44.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 45,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p45.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 46,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p46.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 47,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p47.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 48,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p48.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 49,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p49.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 50,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p50.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 51,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p51.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 52,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p52.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 53,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p53.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 54,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p54.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 55,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p55.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 56,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p56.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 57,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p57.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 58,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p58.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 59,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p59.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 60,
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p60.webp",
           "deals": []
         }
       ],
       "embedUrl": "https://be.publications.action.com/?publitas_embed=embedded",
       "contentSource": "publitas",
-      "scrapedAt": "2026-05-12T16:37:48.854Z"
+      "scrapedAt": "2026-08-05T21:32:15.137Z"
     }
   ],
   "deals": [
     {
       "id": "pagetext-0",
-      "product": "SchaalØ 11,5 x 5,5 cm | diverse varianten/st099Weekactie",
-      "promoPrice": 0.99,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "A Good Clean allesreiniger Rozemarijn & Gember750 ml/l128Weekactie",
+      "promoPrice": 1.71,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-1",
-      "product": "Varanti mini eau de toilette15 ml | diverse varianten/l084Weekactie",
-      "promoPrice": 56,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Heidrun opbergbox60 liter | 58,5 x 36 x 40 cm | diverse kleuren/st695Weekactie",
+      "promoPrice": 6.95,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-2",
-      "product": "A Good Clean allesreiniger Rozemarijn & Gember750 ml/l128Weekactie",
-      "promoPrice": 1.71,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Sologic oplaad- en datakabel USB-A naar USB-C1,5 meter | diverse kleuren/m117Weekactie",
+      "promoPrice": 0.78,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-3",
-      "product": "Drinkglas275 ml | diverse varianten/st078Weekactie",
-      "promoPrice": 0.78,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Pairz heren sneakersokkenMaten 39 - 46 | 3 paar/st148Weekactie",
+      "promoPrice": 0.49,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-4",
-      "product": "SneakersokkenMaten 39 - 46 | 7 paar/st199Weekactie",
-      "promoPrice": 0.28,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Fresh ’n Rebel draadloze koptelefoonDiverse kleuren/st998Weekactie",
+      "promoPrice": 9.98,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-5",
-      "product": "Snacks of the World chili & limoen mix Spicy200 gram/kg179Weekactie",
-      "promoPrice": 8.95,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Keukendoek50 x 50 cm | diverse varianten/st119Weekactie",
+      "promoPrice": 1.19,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-6",
-      "product": "Diep bordØ 19,5 x 4,5 cm | diverse varianten/st149Weekactie",
-      "promoPrice": 1.49,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Chupa Chups Eezy Freezzy waterijsjes12 x 50 ml/l076Weekactie",
+      "promoPrice": 1.27,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-7",
-      "product": "Takis Fuego200 gram/kg295Weekactie",
-      "promoPrice": 14.75,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Rugzak47 x 30 x 8 cm | diverse kleuren/st795Weekactie",
+      "promoPrice": 7.95,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-8",
-      "product": "Vivance geurstokjes150 ml | diverse varianten/l299Weekactie",
-      "promoPrice": 19.93,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Keramieken herfstbeeldjeDiverse varianten/st049Weekactie",
+      "promoPrice": 0.49,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-9",
-      "product": "Big Jeff kant-en-klare barbecue27,5 x 24,5 x 10,5 cm/st399Weekactie",
-      "promoPrice": 3.99,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Heidrun opbergbox42 liter | 49 x 36 x 35 cm | diverse kleuren/st495Weekactie",
+      "promoPrice": 4.95,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-10",
-      "product": "Atelier De Luxe Handzeep500 ml | diverse varianten/l249Weekactie",
-      "promoPrice": 4.98,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Zelfklevende wandtegels29,4 x 22,5 cm | diverse varianten/st299Weekactie",
+      "promoPrice": 2.99,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-11",
-      "product": "Tapo indoor wifi camera2K QHD/st1695Weekactie",
-      "promoPrice": 16.95,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Sologic laad- en datakabel 8-pins12 watt | 1,5 meter | diverse kleuren/m117Weekactie",
+      "promoPrice": 0.78,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-12",
-      "product": "Sau'cee Honing-mosterd500 ml/l199Weekactie",
-      "promoPrice": 3.98,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Sologic snelle laad- en datakabel USB-C naar USB-C1,5 meter | diverse kleuren/m117Weekactie",
+      "promoPrice": 0.78,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-13",
-      "product": "GebaksbordØ 16,5 x 2 cm | diverse varianten/st122Weekactie",
-      "promoPrice": 1.22,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Heidrun opbergbox100 liter | 59 x 45 x 50,5 cm | diverse kleuren/st895Weekactie",
+      "promoPrice": 8.95,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-14",
-      "product": "SchaalØ 14 x 6,5 cm | diverse varianten/st149Weekactie",
-      "promoPrice": 1.49,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Ribstof shortamaMaten S - XL | diverse varianten/st499Weekactie",
+      "promoPrice": 4.99,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-15",
-      "product": "Tapo slimme beveiligingscameraTCA41/st2595Weekactie",
-      "promoPrice": 25.95,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Hello Kitty haaksetDiverse varianten/st239Weekactie",
+      "promoPrice": 2.39,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-16",
-      "product": "Verkoelende matrasbeschermer90 x 200 cm/m21295Weekactie",
-      "promoPrice": 7.19,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Wandkussen30 x 30 cm/m2245Weekactie",
+      "promoPrice": 2.09,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-17",
-      "product": "Verkoelend easy dekbed240 x 200 cm | diverse varianten/m21895Weekactie",
-      "promoPrice": 3.95,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Dove Men deodorant Fresh300 ml/l299Weekactie",
+      "promoPrice": 9.97,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-18",
-      "product": "Nor-Tec drijvende kwal met ledØ 11,5 x 23 cm/st299Weekactie",
-      "promoPrice": 2.99,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Pampers babydoekjes Soft & Clean4 x 56 stuks/st439Weekactie",
+      "promoPrice": 0.02,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-19",
-      "product": "Sitecom 2-poorts wandlader GaN365 watt | diverse kleuren/st695Weekactie",
-      "promoPrice": 6.95,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Pompoen kussenØ 32 x 23 cm | diverse kleuren/st399Weekactie",
+      "promoPrice": 3.99,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-20",
-      "product": "Fresh ’n Rebel draadloze koptelefoonDiverse kleuren/st1295Weekactie",
-      "promoPrice": 12.95,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "TafellampØ 18 x 23 cm | diverse kleuren/st499Weekactie",
+      "promoPrice": 4.99,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-21",
-      "product": "L'Oréal Elseve conditioner Clean Control200 ml/l229Weekactie",
-      "promoPrice": 11.45,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Dove deodorant Fresh Care300 ml/l299Weekactie",
+      "promoPrice": 9.97,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     },
     {
       "id": "pagetext-22",
-      "product": "L'Oréal Elseve shampoo Clean Control250 ml/l229Weekactie",
-      "promoPrice": 9.16,
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "Dove deodorant Classic Fresh300 ml/l299Weekactie",
+      "promoPrice": 9.97,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-23",
+      "product": "Fauteuil teddy rib85 x 90 x 70 cm/st3995Op voorraadOnline deal",
+      "promoPrice": 39.95,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "action"
+    },
+    {
+      "id": "pagetext-24",
+      "product": "Lazy all-in-one dekbed Teddy fur - taupe240 x 200 cm | 2-persoons/m22995Op voorraadOnline deal",
+      "promoPrice": 6.24,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "action"
     }
   ],
-  "scrapedAt": "2026-05-12T16:37:54.156Z",
+  "scrapedAt": "2026-08-05T21:32:32.281Z",
   "sourceUrls": [
     "https://www.action.com/nl-be/folder/",
     "https://be.publications.action.com/?publitas_embed=embedded"

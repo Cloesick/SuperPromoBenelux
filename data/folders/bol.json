@@ -2,55 +2,55 @@
   "retailer": "bol",
   "folders": [
     {
-      "id": "bol-2026-w20-folder",
+      "id": "bol-2026-w32-folder",
       "retailerSlug": "bol",
       "title": "bol promoties",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/bol-2026-w20-viewerimg-p1.webp",
+      "thumbnailUrl": "/screenshots/bol-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/bol-2026-w20-viewerimg-p1.webp",
+          "imageUrl": "/screenshots/bol-2026-w32-viewerimg-p1.webp",
           "deals": []
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-05-12T10:16:33.801Z"
+      "scrapedAt": "2026-08-05T21:41:02.194Z"
     }
   ],
   "deals": [
     {
-      "id": "html-57",
+      "id": "html-105",
       "product": "Klantenservice",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "bol"
     },
     {
-      "id": "html-64",
+      "id": "html-135",
       "product": "Over bol",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "bol"
     },
     {
-      "id": "html-73",
+      "id": "html-144",
       "product": "Zakendoen met bol",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "bol"
     },
     {
-      "id": "html-79",
+      "id": "html-150",
       "product": "Wil je ons volgen?",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "bol"
     }
   ],
-  "scrapedAt": "2026-05-12T10:16:35.927Z",
+  "scrapedAt": "2026-08-05T21:41:10.025Z",
   "sourceUrls": [
     "https://www.bol.com/be/nl/deals/"
   ],

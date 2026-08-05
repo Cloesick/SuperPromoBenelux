@@ -2,22 +2,22 @@
   "retailer": "etos",
   "folders": [
     {
-      "id": "etos-2026-w20-folder",
+      "id": "etos-2026-w32-folder",
       "retailerSlug": "etos",
       "title": "Etos promoties",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/etos-2026-w20-viewerimg-p1.webp",
+      "thumbnailUrl": "/screenshots/etos-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/etos-2026-w20-viewerimg-p1.webp",
+          "imageUrl": "/screenshots/etos-2026-w32-viewerimg-p1.webp",
           "deals": []
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-05-12T10:24:56.655Z"
+      "scrapedAt": "2026-08-05T22:19:05.004Z"
     }
   ],
   "deals": [
@@ -25,63 +25,63 @@
       "id": "html-20",
       "product": "Acties per categorie",
       "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-nl-Library/default/dwf75e5603/Content/Home2Image/Merken%20logo/Etos.png?sw=120",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-21",
       "product": "Populair",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-22",
       "product": "Make-up",
       "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-nl-Library/default/dwf75e5603/Content/Home2Image/Merken%20logo/Etos.png?sw=120",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-23",
       "product": "Lichaamsverzorging",
       "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-nl-Library/default/dwf75e5603/Content/Home2Image/Merken%20logo/Etos.png?sw=120",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-24",
       "product": "Zelfzorg",
       "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-nl-Library/default/dwf75e5603/Content/Home2Image/Merken%20logo/Etos.png?sw=120",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-25",
       "product": "Verschonen",
       "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-nl-Library/default/dwf75e5603/Content/Home2Image/Merken%20logo/Etos.png?sw=120",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-26",
       "product": "Huishouden",
       "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-nl-Library/default/dwf75e5603/Content/Home2Image/Merken%20logo/Etos.png?sw=120",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-27",
       "product": "Cadeaus voor haar",
       "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-nl-Library/default/dwf75e5603/Content/Home2Image/Merken%20logo/Etos.png?sw=120",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
@@ -89,8 +89,8 @@
       "product": "Alle acties\n\n\n\n\nLichaamsverzorging",
       "discount": "Alle acties",
       "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dw4c4d9a0f/category-tile-icons/Lichaamsverzorging%202025.svg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
@@ -98,53 +98,53 @@
       "product": "Alle acties\n\n\n\n\nHaar",
       "discount": "Alle acties",
       "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dwe1a478a3/category-tile-icons/Haar%202025.svg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-63",
-      "product": "Alle acties\n\n\n\n\nGeuren",
+      "product": "Alle acties\n\n\n\n\nZonbescherming & Aftersun",
       "discount": "Alle acties",
-      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dw6aaaae35/category-tile-icons/Parfum%202025.svg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dwea542586/category-tile-icons/Zonnebrand%20en%20aftersun%202025.svg",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-65",
-      "product": "Alle acties\n\n\n\n\nMondhygiëne",
+      "product": "Alle acties\n\n\n\n\nGeuren",
       "discount": "Alle acties",
-      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dwf2ff0b1e/category-tile-icons/Mondhygiene%202025.svg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dw6aaaae35/category-tile-icons/Parfum%202025.svg",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-67",
-      "product": "Alle acties\n\n\n\n\nGezichtsverzorging",
+      "product": "Alle acties\n\n\n\n\nMondhygiëne",
       "discount": "Alle acties",
-      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dw3b68c635/category-tile-icons/gezichtsverzorging%202025.svg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dwf2ff0b1e/category-tile-icons/Mondhygiene%202025.svg",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-69",
-      "product": "Alle acties\n\n\n\n\nMake-up",
+      "product": "Alle acties\n\n\n\n\nGezichtsverzorging",
       "discount": "Alle acties",
-      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dw54d00bdc/category-tile-icons/Make-up%202025.svg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dw3b68c635/category-tile-icons/gezichtsverzorging%202025.svg",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
       "id": "html-71",
-      "product": "Alle acties\n\n\n\n\nVitamines",
+      "product": "Alle acties\n\n\n\n\nMake-up",
       "discount": "Alle acties",
-      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dwccf6e847/category-tile-icons/Vitamines%20en%20supplementen%202025.svg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dw54d00bdc/category-tile-icons/Make-up%202025.svg",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
@@ -152,150 +152,150 @@
       "product": "Alle acties\n\n\n\n\nVerschonen",
       "discount": "Alle acties",
       "imageUrl": "https://www.etos.nl/on/demandware.static/-/Sites-etos-storefront-catalog/default/dw0e2e5f62/category-tile-icons/Verschonen%202025.svg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-318",
+      "id": "html-338",
       "product": "Populaire aanbiedingen",
-      "discount": "1 voor33.50",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw1d80229e/images/120703261/8710198437596_9.jpg?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw9bec8070/images/120565671/120565671_e7f87e45-001a-45f2-a5a5-4bf45b059e1b.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-320",
-      "product": "Entreeticket Toverland Volwassenen v.a. 140 cm",
-      "discount": "1 voor33.50",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw1d80229e/images/120703261/8710198437596_9.jpg?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "id": "html-340",
+      "product": "WaterWipes Billendoekjes 12x60 stuks",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw9bec8070/images/120565671/120565671_e7f87e45-001a-45f2-a5a5-4bf45b059e1b.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-337",
+      "id": "html-359",
       "product": "Aantal stuks",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-390",
-      "product": "Entreeticket Toverland Kinderen 90-140 cm",
-      "discount": "1 voor25.00",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw1bf7e761/images/120703245/8710198437596_2.jpg?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "id": "html-363",
+      "product": "Pampers Premium Protection Voordeelbox Luiers Maat 5 11-16 kg 102 stuks + 4 Gratis Luierbroekjes",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw43705453/images/120906667/120906667_5b9a055e-c9dd-4b23-b898-26463ac7a0cc.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-457",
-      "product": "La Roche-Posay Cicaplast Balsem B5+ Gevoelige Huid 100 ML",
-      "discount": "20%korting",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw52c474cf/images/120558691/120558691_MCM_PACK_1311435.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "id": "html-384",
+      "product": "Pampers Premium Protection Voordeelbox Luiers Maat 4 9-14 kg 120 stuks + 4 Gratis Luierbroekjes",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwfe588960/images/120906659/120906659_ee74749f-f6f8-4035-a3ad-ddba4a205bec.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-484",
-      "product": "Page Kussenzacht Design Toiletpapier 4 stuks",
-      "discount": "2 voor3.00",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw93167699/images/120861251/120861251_9252c898-bebc-475a-84fd-a0195c323be6.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "etos"
-    },
-    {
-      "id": "html-552",
-      "product": "Etos Maxi Wattenschijfjes 50 stuks",
-      "discount": "2+1gratis",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwcb17c8c3/images/111183364/111183364_MCM_PACK_1306811.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "etos"
-    },
-    {
-      "id": "html-620",
-      "product": "Etos Wattenstaafjes 300 stuks",
-      "discount": "2+1gratis",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwda45276e/images/120530399/120530399_MCM_PACK_125654.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "etos"
-    },
-    {
-      "id": "html-688",
-      "product": "TENA Discreet Normal Incontinentieverband Duopack 2x12 stuks",
-      "discount": "2+2gratis",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw81b18855/images/120273169/120273169_MCM_PACK_1270891.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "etos"
-    },
-    {
-      "id": "html-756",
-      "product": "Etos Wattenschijfjes 140 stuks",
-      "discount": "2+1gratis",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw0b7d7e88/images/120525856/120525856_MCM_PACK_125655.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "etos"
-    },
-    {
-      "id": "html-824",
-      "product": "Oral-B iO 5s Roze Elektrische Tandenborstel",
-      "discount": "58%korting",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw50f97f0b/images/120621830/120621830_710f73eb-9df6-44ee-a48f-6f7893b2946b.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "etos"
-    },
-    {
-      "id": "html-856",
-      "product": "Pampers Premium Protection Voordeelbox Luiers Maat 5 11-16 kg 102 stuks",
+      "id": "html-407",
+      "product": "Etos Baby Waterdoekjes 60 stuks",
       "discount": "1+1gratis",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw1f14bc44/images/120906667/120906667_adbc1878-4bc8-4ff9-a50a-60ce50116f9d.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwcead5a0c/images/120563457/120563457_MCM_PACK_1371889.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-929",
-      "product": "Etos Wattenstaafjes Hout 100 stuks",
-      "discount": "2+1gratis",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwb023ac00/images/110202156/110202156_MCM_PACK_380721.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "etos"
-    },
-    {
-      "id": "html-999",
-      "product": "TENA Men Active Fit Protective Shield Extra Light Incontinentieverband 14 stuks",
+      "id": "html-428",
+      "product": "Pampers Premium Protection Luiers Maat 1 2-5 kg 41 stuks",
       "discount": "2+2gratis",
-      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw108c218a/images/120171541/120171541_MCM_PACK_1221419.png?sw=230",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw586b9a90/images/120904741/120904741_0a367330-955e-4f25-8e2b-2d7797ee0cf1.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-1074",
+      "id": "html-449",
+      "product": "Entreeticket Ouwehands Dierenpark",
+      "discount": "7.00korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw7c670945/Vouchers/8710198464530_1.jpg?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-467",
+      "product": "Pampers Baby Dry Voordeelbox Luiers Maat 5 11-16 kg 112 stuks",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwfab6ca0e/images/120906544/120906544_912dd620-cdd4-449e-9832-eafef78328a7.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-488",
+      "product": "Umberto Giannini Curl Jelly Scrunching Jelly 200 ML",
+      "discount": "1+1gratis",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw16b46c9f/images/120856057/120856057_MCM_PACK_1373723.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-510",
+      "product": "Etos Maxi Wattenschijfjes 50 stuks",
+      "discount": "2 voor1.40",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwcb17c8c3/images/111183364/111183364_MCM_PACK_1306811.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-529",
+      "product": "Pampers Premium Protection Voordeelbox Luiers Maat 2 4-8 kg 150 stuks + 10 Gratis Billendoekjes",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw7f2125ea/images/120906632/120906632_99032dac-3f62-4ab7-be0c-67279730d5f3.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-550",
+      "product": "Prodent Cool Mint Tandpasta 75 ML",
+      "discount": "2+2gratis",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwf9f4fafc/images/120117828/120117828_MCM_PACK_1375778.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-569",
+      "product": "Pampers Baby Dry Voordeelbox Luiers Maat 6 13-18 kg 94 stuks",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw4b6c1523/images/120906552/120906552_cbe9eb6a-3ed9-4175-843b-74206feea95d.png?sw=230",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-597",
       "product": "Privacy voorkeuren",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     },
     {
-      "id": "html-1076",
+      "id": "html-599",
       "product": "Toevoegen aan een lijstje",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
       "retailerSlug": "etos"
     }
   ],
-  "scrapedAt": "2026-05-12T10:25:05.589Z",
+  "scrapedAt": "2026-08-05T22:19:16.104Z",
   "sourceUrls": [
     "https://www.etos.nl/aanbiedingen"
   ],

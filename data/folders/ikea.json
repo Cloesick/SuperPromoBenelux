@@ -2,289 +2,564 @@
   "retailer": "ikea",
   "folders": [
     {
-      "id": "ikea-2026-w20-folder",
+      "id": "ikea-2026-w32-folder",
       "retailerSlug": "ikea",
       "title": "IKEA aanbiedingen",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "pageCount": 1,
-      "thumbnailUrl": "/screenshots/ikea-2026-w20-viewerimg-p1.webp",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 60,
+      "thumbnailUrl": "/screenshots/ikea-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/ikea-2026-w20-viewerimg-p1.webp",
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p1.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p2.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p3.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p4.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p5.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p6.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p7.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p8.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p9.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p10.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p11.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p12.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 13,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p13.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 14,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p14.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 15,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p15.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 16,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p16.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 17,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p17.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 18,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p18.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 19,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p19.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 20,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p20.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 21,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p21.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 22,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p22.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 23,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p23.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 24,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p24.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 25,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p25.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 26,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p26.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 27,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p27.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 28,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p28.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 29,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p29.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 30,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p30.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 31,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p31.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 32,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p32.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 33,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p33.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 34,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p34.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 35,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p35.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 36,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p36.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 37,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p37.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 38,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p38.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 39,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p39.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 40,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p40.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 41,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p41.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 42,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p42.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 43,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p43.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 44,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p44.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 45,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p45.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 46,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p46.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 47,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p47.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 48,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p48.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 49,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p49.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 50,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p50.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 51,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p51.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 52,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p52.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 53,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p53.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 54,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p54.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 55,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p55.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 56,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p56.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 57,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p57.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 58,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p58.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 59,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p59.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 60,
+          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p60.webp",
           "deals": []
         }
       ],
-      "embedUrl": "https://a11701662245.cdn-pci.optimizely.com/client_storage/a11701662245.html",
-      "contentSource": "unknown",
-      "scrapedAt": "2026-05-12T10:19:27.926Z"
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-05T21:56:46.372Z"
     }
   ],
   "deals": [
     {
       "id": "html-5",
-      "product": "Tot -70% Eindereeksaanbieding",
-      "imageUrl": "https://www.ikea.com/images/log-in-op-je-account-f1a9caa8f915d181a200c0b97f4fc0c0.jpg",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "product": "IKEA Family leden krijgen meer!",
+      "imageUrl": "https://www.ikea.com/images/mis-geen-enkel-voordeel-f1a9caa8f915d181a200c0b97f4fc0c0.jpg",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-10",
-      "product": "IKEA Family prijsVÄSMAN Uittrekbare tafel, buiten, 135/190x74 cm€169,15€ 169,1515% korting, bespaar €29,85Normale prijs: €199€ 199Laagste prijs (afg 30 dagen): €199€ 199Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.3 van 5 sterren. Totaal beoordelingen: 107(107)",
-      "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "id": "html-6",
+      "product": "Top seller",
+      "discount": "Top seller",
+      "imageUrl": "https://www.ikea.com/be/nl/images/products/brimnes-bedframe-met-opberger-en-bedeinde-wit__1151032_pe884763_s5.jpg?f=xxs",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
       "id": "html-11",
-      "product": "VÄSMAN Uittrekbare tafel, buiten, 135/190x74 cm",
+      "product": "IKEA Family prijsBRIMNES Bedframe met opberger en bedeinde, 160x200 cm€269€ 26915% korting, bespaar €50Normale prijs: €319€ 319Laagste prijs (afg 30 dagen): €319€ 319Prijs geldig van 01.07.26 tot 30.09.26 of zolang de voorraad strektBeoordeling: 4.2 van 5 sterren. Totaal beoordelingen: 1191(1191)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-16",
-      "product": "Beperkte oplage",
-      "discount": "Beperkte oplage",
-      "imageUrl": "https://www.ikea.com/be/nl/images/products/soluppgang-klaptafel-eucalyptus__1501613_pe1007380_s5.jpg?f=xxs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "ikea"
-    },
-    {
-      "id": "html-21",
-      "product": "IKEA Family prijsSOLUPPGÅNG Klaptafel, 82 cm€33,99€ 33,9915% korting, bespaar €6Normale prijs: €39,99€ 39,99Laagste prijs (afg 30 dagen): €39,99€ 39,99Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 5 van 5 sterren. Totaal beoordelingen: 1(1)",
+      "id": "html-12",
+      "product": "BRIMNES Bedframe met opberger en bedeinde, 160x200 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
       "id": "html-22",
-      "product": "SOLUPPGÅNG Klaptafel, 82 cm",
+      "product": "IKEA Family prijsALEX Ladeblok met lades, 36x70 cm€67,15€ 67,1515% korting, bespaar €11,85Normale prijs: €79€ 79Laagste prijs (afg 30 dagen): €79€ 79Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4.5 van 5 sterren. Totaal beoordelingen: 3599(3599)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-31",
-      "product": "IKEA Family prijsTORPÖN Klamboe, 900 cm€21,25€ 21,2515% korting, bespaar €3,75Normale prijs: €25€ 25Laagste prijs (afg 30 dagen): €25€ 25Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.6 van 5 sterren. Totaal beoordelingen: 35(35)",
+      "id": "html-23",
+      "product": "ALEX Ladeblok met lades, 36x70 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-32",
-      "product": "TORPÖN Klamboe, 900 cm",
+      "id": "html-33",
+      "product": "IKEA Family prijsMICKE Bureau, 105x50 cm€67,15€ 67,1515% korting, bespaar €11,85Normale prijs: €79€ 79Laagste prijs (afg 30 dagen): €79€ 79Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4.5 van 5 sterren. Totaal beoordelingen: 6398(6398)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-37",
-      "product": "Top seller",
-      "discount": "Top seller",
-      "imageUrl": "https://www.ikea.com/be/nl/images/products/naemmaroe-tafel-buiten-lichtbruin-gelazuurd__1138751_pe880051_s5.jpg?f=xxs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "ikea"
-    },
-    {
-      "id": "html-42",
-      "product": "IKEA Family prijsNÄMMARÖ Tafel, buiten, 140x75 cm€101,15€ 101,1515% korting, bespaar €17,85Normale prijs: €119€ 119Laagste prijs (afg 30 dagen): €119€ 119Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.5 van 5 sterren. Totaal beoordelingen: 281(281)",
+      "id": "html-34",
+      "product": "MICKE Bureau, 105x50 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-43",
-      "product": "NÄMMARÖ Tafel, buiten, 140x75 cm",
+      "id": "html-44",
+      "product": "IKEA Family prijsLAGKAPTEN / ALEX Bureau, 140x60 cm€159,79€ 159,7915% korting, bespaar €28,20Normale prijs: €187,99€ 187,99Laagste prijs (afg 30 dagen): €187,99€ 187,99Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4.5 van 5 sterren. Totaal beoordelingen: 757(757)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-52",
-      "product": "IKEA Family prijsGRILLSKÄR Open kast keukeneiland, 86x61 cm€194,65€ 194,6515% korting, bespaar €34,35Normale prijs: €229€ 229Laagste prijs (afg 30 dagen): €229€ 229Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4 van 5 sterren. Totaal beoordelingen: 146(146)",
+      "id": "html-45",
+      "product": "LAGKAPTEN / ALEX Bureau, 140x60 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-53",
-      "product": "GRILLSKÄR Open kast keukeneiland, 86x61 cm",
+      "id": "html-54",
+      "product": "IKEA Family prijsBRIMNES Bedframe met opberglades, 180x200 cm€199€ 19920% korting, bespaar €50Normale prijs: €249€ 249Laagste prijs (afg 30 dagen): €249€ 249Prijs geldig van 01.07.26 tot 30.09.26 of zolang de voorraad strektBeoordeling: 4.3 van 5 sterren. Totaal beoordelingen: 1877(1877)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-62",
-      "product": "IKEA Family prijsVÄSMAN / ENSHOLM Tafel+6 stoelen, buiten, 135/190x74 cm€322,09€ 322,0915% korting, bespaar €56,85Normale prijs: €378,94€ 378,94Laagste prijs (afg 30 dagen): €378,94€ 378,94Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 5 van 5 sterren. Totaal beoordelingen: 6(6)Meer opties",
+      "id": "html-55",
+      "product": "BRIMNES Bedframe met opberglades, 180x200 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-63",
-      "product": "VÄSMAN / ENSHOLM Tafel+6 stoelen, buiten, 135/190x74 cm",
+      "id": "html-65",
+      "product": "IKEA Family prijsVALEVÅG Pocketveringmatras, 160x200 cm€254,15€ 254,1515% korting, bespaar €44,85Normale prijs: €299€ 299Laagste prijs (afg 30 dagen): €299€ 299Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4 van 5 sterren. Totaal beoordelingen: 3463(3463)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-72",
-      "product": "IKEA Family prijsESKILSTUNA 3-zitsbank met chaise longue€1.099€ 109935% korting, bespaar €600Normale prijs: €1.699€ 1699Laagste prijs (afg 30 dagen): €1.699€ 1699Prijs geldig van 16.03.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 2.7 van 5 sterren. Totaal beoordelingen: 214(214)Meer opties",
+      "id": "html-66",
+      "product": "VALEVÅG Pocketveringmatras, 160x200 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-73",
-      "product": "ESKILSTUNA 3-zitsbank met chaise longue",
+      "id": "html-76",
+      "product": "IKEA Family prijsÅFJÄLL Foammatras, 90x200 cm€75,65€ 75,6515% korting, bespaar €13,35Normale prijs: €89€ 89Laagste prijs (afg 30 dagen): €89€ 89Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4 van 5 sterren. Totaal beoordelingen: 1160(1160)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-82",
-      "product": "IKEA Family prijsBÅTSKÄR Gesloten keukenblok, 120x60 cm€340€ 34015% korting, bespaar €60Normale prijs: €400€ 400Laagste prijs (afg 30 dagen): €400€ 400Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strekt",
+      "id": "html-77",
+      "product": "ÅFJÄLL Foammatras, 90x200 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-83",
-      "product": "BÅTSKÄR Gesloten keukenblok, 120x60 cm",
+      "id": "html-86",
+      "product": "IKEA Family prijsVEVELSTAD Bedframe, 140x200 cm€99€ 9923% korting, bespaar €30Normale prijs: €129€ 129Laagste prijs (afg 30 dagen): €129€ 129Prijs geldig van 01.07.26 tot 30.09.26 of zolang de voorraad strektBeoordeling: 4.4 van 5 sterren. Totaal beoordelingen: 279(279)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-92",
-      "product": "IKEA Family prijsNÄMMARÖ Tafel+4 leunstoelen, buiten, 130 cm€345,65€ 345,6513% korting, bespaar €55,35Normale prijs: €401€ 401Laagste prijs (afg 30 dagen): €401€ 401Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.8 van 5 sterren. Totaal beoordelingen: 4(4)Meer opties",
+      "id": "html-87",
+      "product": "VEVELSTAD Bedframe, 140x200 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-93",
-      "product": "NÄMMARÖ Tafel+4 leunstoelen, buiten, 130 cm",
+      "id": "html-96",
+      "product": "IKEA Family prijsMICKE Bureau, 105x50 cm€117,15€ 117,159% korting, bespaar €11,85Normale prijs: €129€ 129Laagste prijs (afg 30 dagen): €129€ 129Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4.6 van 5 sterren. Totaal beoordelingen: 1762(1762)",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-102",
-      "product": "IKEA Family prijsVÄRMANSÖ Tafel, buiten, 224x93 cm€296,65€ 296,6515% korting, bespaar €52,35Normale prijs: €349€ 349Laagste prijs (afg 30 dagen): €349€ 349Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 4.3 van 5 sterren. Totaal beoordelingen: 95(95)",
+      "id": "html-106",
+      "product": "IKEA Family prijsLAGKAPTEN Tafelblad, 160x80 cm€29,74€ 29,7415% korting, bespaar €5,25Normale prijs: €34,99€ 34,99Laagste prijs (afg 30 dagen): €34,99€ 34,99Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4.1 van 5 sterren. Totaal beoordelingen: 181(181)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-103",
-      "product": "VÄRMANSÖ Tafel, buiten, 224x93 cm",
+      "id": "html-107",
+      "product": "LAGKAPTEN Tafelblad, 160x80 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-113",
-      "product": "IKEA Family prijsSOLUPPGÅNG Barbecue, 21x43 cm€50,99€ 50,9915% korting, bespaar €9Normale prijs: €59,99€ 59,99Laagste prijs (afg 30 dagen): €59,99€ 59,99Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 5 van 5 sterren. Totaal beoordelingen: 2(2)",
+      "id": "html-117",
+      "product": "IKEA Family prijsVESTERÖY Pocketveringmatras, 160x200 cm€194,65€ 194,6515% korting, bespaar €34,35Normale prijs: €229€ 229Laagste prijs (afg 30 dagen): €229€ 229Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4.2 van 5 sterren. Totaal beoordelingen: 3163(3163)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-114",
-      "product": "SOLUPPGÅNG Barbecue, 21x43 cm",
+      "id": "html-118",
+      "product": "VESTERÖY Pocketveringmatras, 160x200 cm",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-123",
-      "product": "IKEA Family prijsNORRMANSÖ Tafel, buiten, 220x100 cm€339,15€ 339,1515% korting, bespaar €59,85Normale prijs: €399€ 399Laagste prijs (afg 30 dagen): €399€ 399Prijs geldig van 01.05.26 tot 31.05.26 of zolang de voorraad strektBeoordeling: 3.6 van 5 sterren. Totaal beoordelingen: 184(184)",
+      "id": "html-127",
+      "product": "IKEA Family prijsLAGKAPTEN / ALEX Bureau, 140x60 cm€101,14€ 101,1415% korting, bespaar €17,85Normale prijs: €118,99€ 118,99Laagste prijs (afg 30 dagen): €118,99€ 118,99Prijs geldig van 03.08.26 tot 23.08.26 of zolang de voorraad strektBeoordeling: 4.7 van 5 sterren. Totaal beoordelingen: 412(412)Meer opties",
       "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-124",
-      "product": "NORRMANSÖ Tafel, buiten, 220x100 cm",
-      "discount": "IKEA Family prijs",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
-      "retailerSlug": "ikea"
-    },
-    {
-      "id": "html-133",
+      "id": "html-136",
       "product": "Winkelen bij IKEA",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-143",
+      "id": "html-146",
       "product": "Klantenservice",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-152",
+      "id": "html-156",
       "product": "Dit is IKEA",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
-      "id": "html-159",
+      "id": "html-163",
       "product": "IKEA Family & IKEA Business",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     },
     {
       "id": "html-0",
       "product": "Overgaan naar productlijst",
       "discount": "Overslaan en naar hoofdinhoud gaan",
-      "imageUrl": "https://www.ikea.com/global/assets/logos/brand/ikea.webp",
-      "validFrom": "2026-05-11",
-      "validUntil": "2026-05-17",
+      "imageUrl": "https://www.ikea.com/global/assets/logos/brand/ikea.svg",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "ikea"
+    },
+    {
+      "id": "html-7",
+      "product": "Tuinmeubels & accessoires",
+      "imageUrl": "https://www.ikea.com/global/assets/range-categorisation/images/outdoor-products-od001.jpeg?imwidth=400",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "ikea"
     }
   ],
-  "scrapedAt": "2026-05-12T10:19:35.504Z",
+  "scrapedAt": "2026-08-05T21:56:56.053Z",
   "sourceUrls": [
-    "https://www.ikea.com/be/nl/offers/",
-    "https://a11701662245.cdn-pci.optimizely.com/client_storage/a11701662245.html"
+    "https://www.ikea.com/be/nl/offers/"
   ],
   "methods": [
-    "unknown",
     "html",
     "screenshot"
   ]
