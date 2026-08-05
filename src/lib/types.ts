@@ -227,6 +227,8 @@ export type ContentSource =
 	| "html"
 	| "page-text"
 	| "screenshot"
+	/** Deals recovered by OCR of leaflet screenshots (viewer-only retailers). */
+	| "ocr"
 	| "api"
 	| "unknown";
 

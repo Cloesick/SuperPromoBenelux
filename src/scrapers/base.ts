@@ -821,6 +821,36 @@ export abstract class BaseScraper {
 				}
 			}
 
+			// Fallback C: OCR the leaflet screenshots.
+			// For viewer-only retailers (Colruyt, Delhaize, ALDI) there is no PDF
+			// text layer and no product markup, so every earlier fallback returns
+			// nothing and the leaflet images are the only content that exists.
+			if (allDeals.length === 0 && (folders[0]?.pages?.length ?? 0) > 0) {
+				this.log("Trying OCR of leaflet screenshots...");
+				try {
+					const dates = this.getCurrentWeekDates();
+					const { extractDealsFromScreenshots } = await import("./ocr");
+					const ocrResult = await extractDealsFromScreenshots(
+						this.retailerSlug,
+						dates.from,
+						dates.until,
+						{
+							week: this.currentWeekTag(),
+							onProgress: (msg) => this.log(msg),
+						},
+					);
+					if (ocrResult.deals.length > 0) {
+						allDeals.push(...ocrResult.deals);
+						if (!ctx.methods.includes("ocr")) ctx.methods.push("ocr");
+						this.log(
+							`OCR yielded ${ocrResult.deals.length} deal(s) from ${ocrResult.pagesProcessed} page(s)`,
+						);
+					}
+				} catch (e) {
+					this.log(`OCR fallback skipped: ${e}`);
+				}
+			}
+
 			// ---- Deduplicate deals ----
 			const uniqueDeals = this.deduplicateDeals(allDeals);
 
@@ -919,7 +949,7 @@ export abstract class BaseScraper {
 						vertical,
 						deals: uniqueDeals,
 						scrapedAt: data.scrapedAt,
-						sourceMethod: ctx.methods[0],
+						sourceMethod: this.dealExtractionMethod(ctx.methods),
 						sourceUrl: ctx.sourceUrls[0],
 						folderTitle: folders[0]?.title,
 					});
@@ -2197,6 +2227,38 @@ export abstract class BaseScraper {
 		const now = new Date();
 		const week = this.getWeekNumber(now);
 		return `${this.retailerSlug}-${now.getFullYear()}-w${week}-${suffix}`;
+	}
+
+	/**
+	 * Week tag used in screenshot filenames, e.g. "2026-w32".
+	 * Mirrors generateFolderId() so OCR can locate this week's leaflet images.
+	 */
+	protected currentWeekTag(date: Date = new Date()): string {
+		return `${date.getFullYear()}-w${this.getWeekNumber(date)}`;
+	}
+
+	/**
+	 * Which method actually produced the deals, for provenance in the database.
+	 *
+	 * ctx.methods mixes two kinds of entry: how the folder was *found* (issuu,
+	 * publitas, screenshot) and how deals were *extracted* (html, pdf-text,
+	 * ocr). Recording the first entry attributed OCR-derived rows to "issuu",
+	 * which matters because confidence in a price depends on how it was read.
+	 * The last extraction method wins: fallbacks run in ascending order of
+	 * desperation, so the final one is the one that yielded the deals.
+	 */
+	protected dealExtractionMethod(methods: ContentSource[]): ContentSource {
+		const extraction: ContentSource[] = [
+			"html",
+			"api",
+			"pdf-text",
+			"page-text",
+			"ocr",
+		];
+		for (let i = methods.length - 1; i >= 0; i--) {
+			if (extraction.includes(methods[i])) return methods[i];
+		}
+		return methods[0] ?? "unknown";
 	}
 
 	protected getWeekNumber(date: Date): number {
