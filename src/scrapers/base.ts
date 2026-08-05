@@ -1882,9 +1882,13 @@ export abstract class BaseScraper {
 				}
 
 				u.searchParams.set("pageNumber", String(i));
-				// Issuu defaults to a two-page spread, which halves the effective
-				// resolution of each leaflet page and makes OCR unreliable.
-				u.searchParams.set("pageLayout", "singlePage");
+				// Deliberately keep Issuu's two-page spread. These captures are what
+				// the site renders to visitors: a spread fills the frame, and with
+				// MAX_SCREENSHOT_PAGES captures it covers roughly twice as much of
+				// the leaflet. Forcing singlePage shrank the content to ~40% of the
+				// frame, cut coverage, and doubled the bytes served. At
+				// deviceScaleFactor 3 each half of a spread is still ~2000px wide,
+				// which is ample for OCR.
 				const url = u.toString();
 
 				try {
