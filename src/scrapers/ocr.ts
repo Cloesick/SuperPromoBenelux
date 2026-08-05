@@ -91,26 +91,52 @@ export function findScreenshots(retailerSlug: string, week?: string): string[] {
 // Preprocessing
 // ---------------------------------------------------------------------------
 
+/** Width Tesseract reads leaflet text most reliably at. */
+export const OCR_TARGET_WIDTH = 2400;
+
+/**
+ * Ceiling on either dimension. Full-page captures of long scrolling pages run
+ * to 16000px tall; blindly upscaling those produced 280-megapixel images that
+ * Tesseract could not process at all, so those retailers silently yielded
+ * nothing.
+ */
+export const OCR_MAX_DIMENSION = 8000;
+
 /**
  * Prepare an image for OCR.
  *
- * Viewer screenshots are 1440x900 at ~25 dpi, well below the ~300 dpi Tesseract
- * expects. Upscaling, flattening to greyscale and normalising contrast lifts
- * recognition of leaflet price text substantially. Also converts WebP, which
- * Tesseract cannot decode natively.
+ * Scales *towards* a target width rather than by a fixed factor: small viewer
+ * captures are enlarged so price text clears Tesseract's minimum, and oversized
+ * full-page captures are reduced to stay tractable. Greyscale plus contrast
+ * normalisation and sharpening lift recognition further. Also converts WebP,
+ * which Tesseract cannot decode natively.
  */
-export async function preprocessForOcr(imagePath: string, scale = 2): Promise<Buffer> {
-	const img = sharp(imagePath);
+export async function preprocessForOcr(
+	imagePath: string,
+	targetWidth = OCR_TARGET_WIDTH,
+): Promise<Buffer> {
+	const img = sharp(imagePath, { limitInputPixels: false });
 	const meta = await img.metadata();
-	const width = meta.width ? Math.round(meta.width * scale) : undefined;
 
-	return img
-		.resize({ width, withoutEnlargement: false })
-		.greyscale()
-		.normalise()
-		.sharpen()
-		.png()
-		.toBuffer();
+	// Fit inside a bounded box: upscales narrow captures, downscales huge ones,
+	// and preserves aspect ratio in both directions.
+	const width = Math.min(targetWidth, OCR_MAX_DIMENSION);
+	const height = OCR_MAX_DIMENSION;
+
+	const needsResize =
+		!meta.width || !meta.height || meta.width !== width || meta.height > height;
+
+	let pipeline = img;
+	if (needsResize) {
+		pipeline = pipeline.resize({
+			width,
+			height,
+			fit: "inside",
+			withoutEnlargement: false,
+		});
+	}
+
+	return pipeline.greyscale().normalise().sharpen().png().toBuffer();
 }
 
 // ---------------------------------------------------------------------------

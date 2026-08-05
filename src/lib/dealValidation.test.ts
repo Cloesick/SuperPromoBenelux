@@ -256,6 +256,20 @@ describe("validateDeal", () => {
 		}
 	});
 
+	// Observed in ici-paris-xl OCR: gift-with-purchase thresholds, not prices.
+	it("rejects spend thresholds that would become fictional products", () => {
+		for (const threshold of [
+			"aan Biotherm producten",
+			"bij aankoop min",
+			"min. aan Saint Laurent producten",
+			"pour tout achat de parfum",
+		]) {
+			const r = validateDeal(deal({ product: threshold, promoPrice: 65 }));
+			expect(r.ok, `expected rejection for: ${threshold}`).toBe(false);
+			expect(r.reason).toBe("name_is_leaflet_fragment");
+		}
+	});
+
 	it("keeps products whose names merely contain a container noun", () => {
 		for (const good of [
 			"Kwak alle bieren in packs",

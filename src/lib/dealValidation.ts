@@ -264,6 +264,17 @@ const FRAGMENT_PREFIX_RE =
 	/^(?:(?:vb|bijv|bv|p\.?\s*ex)\.?\s*:|(?:in\s+je\s+winkel|combineer|vanaf|volledig\s+assortiment|uitgezonderd|geldig|per\s+stuk|statiegeld)\b)/i;
 
 /**
+ * Spend-threshold wording.
+ *
+ * Beauty retailers advertise "bij aankoop van min. EUR 65 aan Biotherm
+ * producten" — spend EUR 65, receive a gift. The number is a qualifying
+ * threshold, not the price of anything. Stored as a price it would invent a
+ * EUR 65 product and corrupt any lowest-price claim built on top of it.
+ */
+const SPEND_THRESHOLD_RE =
+	/^(?:aan\b|bij\s+aankoop|min\.?\s|minimum|vanaf\s+€|à\s+partir|dès\s+€|pour\s+tout\s+achat)/i;
+
+/**
  * Container and packaging nouns. On their own these are the unit a promo is
  * sold in, not the product — a card reading "bakken" is the tail of a promo
  * whose brand sits in an image the OCR never saw.
@@ -307,6 +318,7 @@ export function isLeafletFragment(name: string): boolean {
 	if (!trimmed) return true;
 
 	if (FRAGMENT_PREFIX_RE.test(trimmed)) return true;
+	if (SPEND_THRESHOLD_RE.test(trimmed)) return true;
 
 	// Every token is a generic container noun -> no product identity present.
 	const tokens = trimmed.toLowerCase().split(/\s+/).filter(Boolean);
