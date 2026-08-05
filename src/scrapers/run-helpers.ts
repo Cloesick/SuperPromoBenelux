@@ -211,6 +211,46 @@ export interface ValidationIssue {
  * Validate a retailer's scraped data for integrity issues.
  * Returns a list of issues found. Empty list = clean.
  */
+/**
+ * URL markers of bot-protection challenge pages.
+ *
+ * Boots sits behind Imperva/Incapsula: the scraper captures the challenge page,
+ * writes a folder, and the run reports a tick. Nothing renders for visitors,
+ * but it is indistinguishable from a healthy retailer in the summary — the
+ * worst kind of failure, because it never asks to be looked at.
+ */
+const BOT_PROTECTION_RE =
+	/_incapsula_resource|\/_sec\/|distil_r_captcha|__cf_chl|cdn-cgi\/challenge|datadome|perimeterx|px-captcha|akamai.*bot|challenge-platform/i;
+
+/**
+ * A folder renders for visitors when it has either page images or an embed URL
+ * to iframe. Without both, the page is empty however healthy the run looked.
+ */
+export function isFolderRenderable(folder: {
+	pages?: unknown[];
+	embedUrl?: string;
+	pdfUrl?: string;
+}): boolean {
+	const hasPages = Array.isArray(folder.pages) && folder.pages.length > 0;
+	const hasEmbed = typeof folder.embedUrl === "string" && folder.embedUrl.length > 0;
+	const hasPdf = typeof folder.pdfUrl === "string" && folder.pdfUrl.length > 0;
+	return hasPages || hasEmbed || hasPdf;
+}
+
+/** True when any URL recorded for this scrape points at a bot challenge. */
+export function looksBotBlocked(data: {
+	sourceUrls?: string[];
+	folders?: { embedUrl?: string; pdfUrl?: string }[];
+}): boolean {
+	const urls: string[] = [
+		...(data.sourceUrls ?? []),
+		...(data.folders ?? []).flatMap((f) =>
+			[f.embedUrl, f.pdfUrl].filter((u): u is string => typeof u === "string"),
+		),
+	];
+	return urls.some((u) => BOT_PROTECTION_RE.test(u));
+}
+
 export function validateScrapedData(
 	dataDir: string,
 	slug: string,
@@ -248,9 +288,28 @@ export function validateScrapedData(
 		});
 	}
 
+	// A scrape that captured a bot challenge produces a structurally valid
+	// folder that renders nothing. Surface it as an error rather than letting
+	// it pass as healthy.
+	if (looksBotBlocked(data)) {
+		issues.push({
+			field: "folders",
+			message: "Bot-protection challenge captured instead of leaflet content",
+			severity: "error",
+		});
+	}
+
 	for (let i = 0; i < data.folders.length; i++) {
 		const f = data.folders[i];
 		const prefix = `folders[${i}]`;
+
+		if (!isFolderRenderable(f)) {
+			issues.push({
+				field: `${prefix}`,
+				message: "Folder has no pages, embedUrl or pdfUrl — nothing will render",
+				severity: "error",
+			});
+		}
 
 		if (!f.title || typeof f.title !== "string") {
 			issues.push({

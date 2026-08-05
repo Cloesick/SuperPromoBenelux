@@ -47,7 +47,8 @@ describe("BaseScraper.takeScreenshots", () => {
 
 	it("iterates Issuu pageNumber when overrideUrl is an issuu embed", async () => {
 		const goto = vi.fn(async () => undefined);
-		const screenshot = vi.fn(async () => undefined);
+		let shot = 0;
+		const screenshot = vi.fn(async () => Buffer.from(`issuu-page-${++shot}`));
 		const url = vi.fn(
 			() => "https://e.issuu.com/embed.html?u=x&d=y&pageNumber=1",
 		);
@@ -82,9 +83,37 @@ describe("BaseScraper.takeScreenshots", () => {
 		expect(screenshot).toHaveBeenCalledTimes(3);
 	});
 
+	it("stops capturing once the viewer repeats a page", async () => {
+		// Viewers clamp navigation past the final page and re-render the last
+		// one. Three distinct pages then a repeat means the folder has 3 pages,
+		// however high the ceiling is set.
+		const goto = vi.fn(async () => undefined);
+		let shot = 0;
+		const screenshot = vi.fn(async () => {
+			shot++;
+			return Buffer.from(`page-${Math.min(shot, 3)}`);
+		});
+		const url = vi.fn(
+			() => "https://e.issuu.com/embed.html?u=x&d=y&pageNumber=1",
+		);
+		const page = { goto, screenshot, url } as any;
+
+		process.env.MAX_SCREENSHOT_PAGES = "20";
+
+		const scraper = new TestScraper();
+		const result = await scraper.takeScreenshotsPublic(
+			makeCtx(page),
+			"https://e.issuu.com/embed.html?u=x&d=y&pageNumber=1",
+		);
+
+		expect(result.pages).toHaveLength(3);
+		expect(screenshot).toHaveBeenCalledTimes(4);
+	});
+
 	it("iterates Publitas /page/<n> when overrideUrl is a publitas viewer", async () => {
 		const goto = vi.fn(async () => undefined);
-		const screenshot = vi.fn(async () => undefined);
+		let shot = 0;
+		const screenshot = vi.fn(async () => Buffer.from(`publitas-page-${++shot}`));
 		const url = vi.fn(
 			() => "https://view.publitas.com/x/y/page/1?publitas_embed=embedded",
 		);

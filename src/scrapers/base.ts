@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import crypto from "node:crypto";
 // rebrowser-puppeteer is a drop-in Puppeteer fork that patches the CDP
 // `Runtime.Enable` leak — the main signal modern anti-bot services use to
 // detect automation, and one that navigator.webdriver patching cannot hide.
@@ -1109,7 +1110,34 @@ export abstract class BaseScraper {
 				"hotjar",
 				"tealium",
 				"utag",
+				// Conversion pixels. Colruyt shipped ct.pinterest.com/ct.html as its
+				// folder embed, so the site iframed a tracking beacon instead of the
+				// leaflet.
+				"pinterest",
+				"criteo",
+				"taboola",
+				"outbrain",
+				"tiktok",
+				"snapchat",
+				"linkedin",
+				"bing.com",
+				"clarity.ms",
+				"adnxs",
+				"adsrvr",
+				"adservice",
+				"segment.",
+				"mixpanel",
+				"amplitude",
+				"/pixel",
+				"/beacon",
+				"/ct.html",
+				"/track",
 			];
+
+			// Size is the reliable discriminator: a conversion pixel renders at 0x0
+			// or 1x1, a leaflet viewer fills the page. Keyword lists never keep up
+			// with new ad networks; geometry does not need to.
+			const MIN_VIEWER_PX = 300;
 			const iframes = document.querySelectorAll("iframe[src]");
 
 			for (let i = 0; i < iframes.length; i++) {
@@ -1131,13 +1159,22 @@ export abstract class BaseScraper {
 				const src = iframe.src;
 				if (!src.startsWith("http")) continue;
 				let isTracking = false;
+				const lower = src.toLowerCase();
 				for (let k = 0; k < trackingKeywords.length; k++) {
-					if (src.includes(trackingKeywords[k])) {
+					if (lower.includes(trackingKeywords[k])) {
 						isTracking = true;
 						break;
 					}
 				}
-				if (!isTracking) return src;
+				if (isTracking) continue;
+
+				// Must be large enough to be a viewer rather than a pixel.
+				const rect = iframe.getBoundingClientRect();
+				const w = Math.max(rect.width, iframe.offsetWidth || 0);
+				const h = Math.max(rect.height, iframe.offsetHeight || 0);
+				if (w < MIN_VIEWER_PX || h < MIN_VIEWER_PX) continue;
+
+				return src;
 			}
 
 			return null;
@@ -1662,7 +1699,7 @@ export abstract class BaseScraper {
 			return s.includes(".pdf") || s.includes("/pdfs/");
 		};
 
-		const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
+		const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
 
 		// If we're looking at a PDF URL, try to generate page-like screenshots by
 		// scrolling the browser PDF renderer and capturing viewport slices.
@@ -1872,6 +1909,7 @@ export abstract class BaseScraper {
 		if (isIssuuEmbed) {
 			const baseUrl = overrideUrl ?? page.url();
 			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const seenPageHashes = new Set<string>();
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				let u: URL;
@@ -1908,10 +1946,16 @@ export abstract class BaseScraper {
 				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
-				if (clip) {
-					await page.screenshot({ path: filepath, clip });
-				} else {
-					await page.screenshot({ path: filepath, fullPage: true });
+				// A repeated image means the viewer clamped past the last page.
+				const isNew = await this.captureDedupedPage(
+					page,
+					filepath,
+					clip ?? null,
+					seenPageHashes,
+				);
+				if (!isNew) {
+					this.log(`Reached end of folder at page ${i}`);
+					break;
 				}
 				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
 			}
@@ -1924,8 +1968,9 @@ export abstract class BaseScraper {
 
 		if (isPublitasEmbed) {
 			const baseUrl = overrideUrl ?? page.url();
-			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
+			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
 			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const seenPageHashes = new Set<string>();
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				let u: URL;
@@ -1966,10 +2011,16 @@ export abstract class BaseScraper {
 				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
-				if (clip) {
-					await page.screenshot({ path: filepath, clip });
-				} else {
-					await page.screenshot({ path: filepath, fullPage: true });
+				// A repeated image means the viewer clamped past the last page.
+				const isNew = await this.captureDedupedPage(
+					page,
+					filepath,
+					clip ?? null,
+					seenPageHashes,
+				);
+				if (!isNew) {
+					this.log(`Reached end of folder at page ${i}`);
+					break;
 				}
 				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
 			}
@@ -2054,7 +2105,7 @@ export abstract class BaseScraper {
 		};
 
 		try {
-			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
+			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				await waitForViewer();
 				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
@@ -2231,6 +2282,38 @@ export abstract class BaseScraper {
 		const now = new Date();
 		const week = this.getWeekNumber(now);
 		return `${this.retailerSlug}-${now.getFullYear()}-w${week}-${suffix}`;
+	}
+
+	/**
+	 * Capture one viewer page, skipping it if it duplicates one already taken.
+	 *
+	 * Leaflet viewers clamp navigation past the final page: requesting page 30
+	 * of an 18-page folder re-renders page 18. Hashing the pixels detects that,
+	 * so capture can run to a generous ceiling and stop at the true end instead
+	 * of a hardcoded page count. Returns false once the folder is exhausted.
+	 */
+	protected async captureDedupedPage(
+		page: Page,
+		filepath: string,
+		clip: { x: number; y: number; width: number; height: number } | null,
+		seenHashes: Set<string>,
+	): Promise<boolean> {
+		const buffer = clip
+			? await page.screenshot({ clip })
+			: await page.screenshot({ fullPage: true });
+
+		// Defensive: a screenshot backend that returns nothing cannot be hashed.
+		// Treat the page as new rather than aborting the folder — capturing a
+		// possible duplicate is far cheaper than truncating the leaflet.
+		if (!buffer) return true;
+
+		const bytes = Buffer.from(buffer as Uint8Array);
+		const hash = crypto.createHash("sha1").update(bytes).digest("hex");
+		if (seenHashes.has(hash)) return false;
+
+		seenHashes.add(hash);
+		fs.writeFileSync(filepath, bytes);
+		return true;
 	}
 
 	/**
