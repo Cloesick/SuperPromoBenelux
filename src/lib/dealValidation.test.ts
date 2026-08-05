@@ -238,6 +238,37 @@ describe("validateDeal", () => {
 		}
 	});
 
+	// Observed in OCR output from colruyt-2026-w32 leaflet pages.
+	it("rejects leaflet annotation that reads as a product", () => {
+		for (const fragment of [
+			"vb.: Regular",
+			"in je winkel ElCoto Blanco",
+			"bokalen",
+			"bakken",
+			"statiegeld.",
+			"partyboxen",
+			"volledig assortiment",
+			"Combineer naar keuze",
+		]) {
+			const r = validateDeal(deal({ product: fragment, promoPrice: 9.99 }));
+			expect(r.ok, `expected rejection for: ${fragment}`).toBe(false);
+			expect(r.reason).toBe("name_is_leaflet_fragment");
+		}
+	});
+
+	it("keeps products whose names merely contain a container noun", () => {
+		for (const good of [
+			"Kwak alle bieren in packs",
+			"Leffe alle blikken",
+			"Duvel 4 flessen 33cl",
+		]) {
+			expect(
+				validateDeal(deal({ product: good, promoPrice: 12.99 })).ok,
+				`expected acceptance for: ${good}`,
+			).toBe(true);
+		}
+	});
+
 	it("accepts a well-formed discounted product", () => {
 		expect(
 			validateDeal(

@@ -227,6 +227,7 @@ export function validateDeal(deal: Deal): ValidationResult {
 	if (UI_NOISE_RE.test(name)) return { ok: false, reason: "name_is_ui_noise" };
 	if (LEGAL_RE.test(name)) return { ok: false, reason: "name_is_legal_boilerplate" };
 	if (looksLikeOcrNoise(name)) return { ok: false, reason: "name_is_ocr_noise" };
+	if (isLeafletFragment(name)) return { ok: false, reason: "name_is_leaflet_fragment" };
 
 	const hasPromo = isPlausiblePrice(deal.promoPrice);
 	const hasOriginal = isPlausiblePrice(deal.originalPrice);
@@ -254,6 +255,60 @@ export function validateDeal(deal: Deal): ValidationResult {
 	}
 
 	return { ok: true };
+}
+
+/** Leaflet furniture: annotations that surround a promo but never name it. */
+// The colon-terminated forms must not carry \b: the character after ":" is a
+// space, and a boundary between two non-word characters never matches.
+const FRAGMENT_PREFIX_RE =
+	/^(?:(?:vb|bijv|bv|p\.?\s*ex)\.?\s*:|(?:in\s+je\s+winkel|combineer|vanaf|volledig\s+assortiment|uitgezonderd|geldig|per\s+stuk|statiegeld)\b)/i;
+
+/**
+ * Container and packaging nouns. On their own these are the unit a promo is
+ * sold in, not the product — a card reading "bakken" is the tail of a promo
+ * whose brand sits in an image the OCR never saw.
+ */
+const CONTAINER_NOUNS = new Set([
+	"bokalen",
+	"bakken",
+	"blikken",
+	"flessen",
+	"verpakkingen",
+	"packs",
+	"partyboxen",
+	"stuks",
+	"stuk",
+	"dozen",
+	"zakken",
+	"potten",
+	"brikken",
+	"statiegeld",
+	"assortiment",
+	"bouteilles",
+	"boîtes",
+	"emballages",
+]);
+
+/**
+ * True when a name is leaflet annotation rather than a product.
+ *
+ * These survive every other rule: they are real Dutch or French words at
+ * plausible length with a healthy letter ratio. Only their meaning disqualifies
+ * them, so they are matched explicitly.
+ */
+export function isLeafletFragment(name: string): boolean {
+	const trimmed = name.trim().replace(/[.,;:]+$/, "");
+	if (!trimmed) return true;
+
+	if (FRAGMENT_PREFIX_RE.test(trimmed)) return true;
+
+	// Every token is a generic container noun -> no product identity present.
+	const tokens = trimmed.toLowerCase().split(/\s+/).filter(Boolean);
+	if (tokens.length > 0 && tokens.length <= 3 && tokens.every((t) => CONTAINER_NOUNS.has(t))) {
+		return true;
+	}
+
+	return false;
 }
 
 export interface SanitizeReport {

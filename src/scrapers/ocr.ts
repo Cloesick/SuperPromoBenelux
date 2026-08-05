@@ -4,6 +4,7 @@ import sharp from "sharp";
 import { createWorker, type Worker } from "tesseract.js";
 import { Deal } from "../lib/types";
 import { parseTextToDeals } from "./extractDealsFromText";
+import { dealsFromWords, type OcrWord } from "./ocrLayout";
 
 // ---------------------------------------------------------------------------
 // OCR for screenshot-only retailers
@@ -120,6 +121,39 @@ export interface OcrPageResult {
 	imagePath: string;
 	text: string;
 	confidence: number;
+	/** Word-level geometry, used to rebuild product cards spatially. */
+	words: OcrWord[];
+}
+
+/**
+ * Flatten Tesseract's block/paragraph/line/word hierarchy into a word list.
+ *
+ * On leaflet pages Tesseract's own layout analysis usually returns a single
+ * block spanning the whole spread, so the hierarchy above word level carries
+ * no useful structure — the geometry does.
+ */
+function flattenWords(blocks: unknown): OcrWord[] {
+	const out: OcrWord[] = [];
+	const blockList = Array.isArray(blocks) ? blocks : [];
+
+	for (const block of blockList as any[]) {
+		for (const para of block?.paragraphs ?? []) {
+			for (const line of para?.lines ?? []) {
+				for (const w of line?.words ?? []) {
+					const text = typeof w?.text === "string" ? w.text.trim() : "";
+					const bbox = w?.bbox;
+					if (!text || !bbox) continue;
+					out.push({
+						text,
+						bbox: { x0: bbox.x0, y0: bbox.y0, x1: bbox.x1, y1: bbox.y1 },
+						confidence: typeof w.confidence === "number" ? w.confidence : 0,
+					});
+				}
+			}
+		}
+	}
+
+	return out;
 }
 
 async function createOcrWorker(langs: string): Promise<Worker> {
@@ -146,7 +180,7 @@ export async function ocrImages(
 		for (const imagePath of targets) {
 			try {
 				const png = await preprocessForOcr(imagePath);
-				const { data } = await worker.recognize(png);
+				const { data } = await worker.recognize(png, {}, { blocks: true, text: true });
 				const confidence = data.confidence ?? 0;
 
 				if (confidence < MIN_CONFIDENCE) {
@@ -156,9 +190,10 @@ export async function ocrImages(
 					continue;
 				}
 
-				results.push({ imagePath, text: data.text ?? "", confidence });
+				const words = flattenWords((data as { blocks?: unknown }).blocks);
+				results.push({ imagePath, text: data.text ?? "", confidence, words });
 				onProgress?.(
-					`  OCR ${path.basename(imagePath)}: ${data.text?.length ?? 0} chars, confidence ${Math.round(confidence)}`,
+					`  OCR ${path.basename(imagePath)}: ${words.length} words, confidence ${Math.round(confidence)}`,
 				);
 			} catch (err) {
 				onProgress?.(`  OCR failed for ${path.basename(imagePath)}: ${err}`);
@@ -213,8 +248,31 @@ export async function extractDealsFromScreenshots(
 
 	if (pages.length === 0) return { deals: [], pagesProcessed: 0, averageConfidence: 0 };
 
-	const combined = pages.map((p) => p.text).join("\n");
-	const deals = parseTextToDeals(combined, retailerSlug, validFrom, validUntil, "ocr");
+	// Cluster per page: bounding boxes are page-local, so pooling words across
+	// pages would let a card on page 3 merge with one on page 4.
+	const deals: Deal[] = [];
+	for (const page of pages) {
+		const pageDeals = dealsFromWords(page.words, retailerSlug, validFrom, validUntil);
+		deals.push(
+			...pageDeals.map((d, i) => ({
+				...d,
+				id: `${retailerSlug}-ocr-${path.basename(page.imagePath, path.extname(page.imagePath))}-${i}`,
+			})),
+		);
+	}
+
+	// Fall back to flat text parsing only when geometry produced nothing —
+	// some pages carry a usable text layer but no reliable word boxes.
+	if (deals.length === 0) {
+		const combined = pages.map((p) => p.text).join("\n");
+		deals.push(
+			...parseTextToDeals(combined, retailerSlug, validFrom, validUntil, "ocr"),
+		);
+		if (deals.length > 0) {
+			opts.onProgress?.(`  OCR: geometry yielded nothing, fell back to flat text`);
+		}
+	}
+
 	const averageConfidence =
 		pages.reduce((sum, p) => sum + p.confidence, 0) / pages.length;
 
