@@ -16,6 +16,17 @@ const nextConfig: NextConfig = {
 			},
 		],
 	},
+	// Folder data is read from disk at request time by src/lib/folders.ts, so
+	// the JSON must be traced into the serverless functions that read it.
+	// Without this every retailer page degrades to "geen folder beschikbaar" —
+	// a graceful-looking state that hides a packaging failure.
+	//
+	// The key is "/**", not "/*": the reading routes are /folders/[retailer]
+	// and /folders/[retailer]/p/[page], and a single-star glob matches only one
+	// path segment.
+	outputFileTracingIncludes: {
+		"/**": ["./data/folders/*.json"],
+	},
 };
 
 export default nextConfig;

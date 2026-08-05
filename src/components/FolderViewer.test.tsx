@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { FolderViewer } from "./FolderViewer";
 import type { Folder, Retailer } from "@/lib/types";
@@ -30,6 +30,7 @@ const baseRetailer: Retailer = {
 	website: "https://example.com",
 	description: "Test retailer",
 	category: "supermarkt",
+	verticals: ["general"],
 	seo: {
 		folderDay: "maandag",
 		folderDayDetail: "Elke maandag",
@@ -273,5 +274,118 @@ describe("FolderViewer fallback scenarios", () => {
 		expect(
 			screen.getByText(/folderpagina.s worden binnenkort geladen/i),
 		).toBeInTheDocument();
+	});
+});
+
+// ---------------------------------------------------------------------------
+// Rendering failures that previously produced a page that looked healthy
+// ---------------------------------------------------------------------------
+
+describe("FolderViewer — silent failure modes", () => {
+	it("falls back to the placeholder when every page image 404s", async () => {
+		// public/ was never committed, so every /screenshots/* URL 404s in
+		// production. Without onError the counter, thumbnails and arrows render
+		// around an invisible image and the folder looks merely empty.
+		const folder = makeFolder({
+			pages: [
+				{ pageNumber: 1, imageUrl: "/missing-1.webp", deals: [] },
+				{ pageNumber: 2, imageUrl: "/missing-2.webp", deals: [] },
+			],
+			pageCount: 2,
+			validUntil: "2999-01-01",
+		});
+
+		render(<FolderViewer folder={folder} retailer={baseRetailer} />);
+		expect(screen.getByText(/Pagina 1 van 2/)).toBeInTheDocument();
+
+		for (const img of screen.getAllByRole("img")) {
+			fireEvent.error(img);
+		}
+
+		// Mode re-selection runs in an effect, so the fallback lands a tick later.
+		await waitFor(() => {
+			expect(screen.queryByText(/Pagina 1 van 2/)).not.toBeInTheDocument();
+		});
+		expect(screen.getByText(/worden binnenkort geladen/i)).toBeInTheDocument();
+	});
+
+	it("prefers a working embed over pages whose images all failed", async () => {
+		const folder = makeFolder({
+			pages: [{ pageNumber: 1, imageUrl: "/missing-1.webp", deals: [] }],
+			pageCount: 1,
+			embedUrl: "https://e.issuu.com/embed.html?d=x",
+			validUntil: "2999-01-01",
+		});
+
+		const { container } = render(
+			<FolderViewer folder={folder} retailer={baseRetailer} />,
+		);
+		expect(container.querySelector("iframe")).toBeNull();
+
+		for (const img of screen.getAllByRole("img")) {
+			fireEvent.error(img);
+		}
+
+		await waitFor(() => {
+			expect(container.querySelector("iframe")).not.toBeNull();
+		});
+	});
+
+	it("warns that an expired folder's prices may be stale, even in pages mode", () => {
+		// The expired card lower down is unreachable once pages exist, so an
+		// expired folder used to render last week's prices with no notice.
+		const folder = makeFolder({
+			pages: [{ pageNumber: 1, imageUrl: "/p1.webp", deals: [] }],
+			pageCount: 1,
+			validUntil: "2020-01-07",
+		});
+
+		render(<FolderViewer folder={folder} retailer={baseRetailer} />);
+		expect(screen.getByText(/Pagina 1 van 1/)).toBeInTheDocument();
+		expect(screen.getByText(/verlopen/i)).toBeInTheDocument();
+		expect(screen.getByText(/niet meer geldig/i)).toBeInTheDocument();
+	});
+
+	it("does not iframe a consent-manager or CDN URL recorded as an embed", () => {
+		// aldi carried a Usercentrics cross-domain-bridge and coolblue an
+		// Optimizely client_storage URL — both render a blank white iframe.
+		for (const junk of [
+			"https://app.usercentrics.eu/browser-sdk/x/cross-domain-bridge.html",
+			"https://a6689543890403328.cdn.optimizely.com/client_storage/x.html",
+		]) {
+			const { container, unmount } = render(
+				<FolderViewer
+					folder={makeFolder({ embedUrl: junk, validUntil: "2999-01-01" })}
+					retailer={baseRetailer}
+				/>,
+			);
+			expect(container.querySelector("iframe"), junk).toBeNull();
+			unmount();
+		}
+	});
+
+	it("does not iframe a PDF served as a forced download", () => {
+		// An attachment-disposition URL downloads instead of rendering, leaving
+		// a grey frame. Keep the link, drop the embedded viewer.
+		const folder = makeFolder({
+			pdfUrl:
+				"https://s3.example.com/folder.pdf?response-content-disposition=attachment",
+			validUntil: "2999-01-01",
+		});
+
+		const { container } = render(
+			<FolderViewer folder={folder} retailer={baseRetailer} />,
+		);
+		expect(container.querySelector("iframe")).toBeNull();
+	});
+
+	it("survives a folder JSON with no pages key at all", () => {
+		const folder = makeFolder({ validUntil: "2999-01-01" });
+		// Simulates malformed scraper output reaching a client component.
+		delete (folder as Partial<Folder>).pages;
+
+		expect(() =>
+			render(<FolderViewer folder={folder} retailer={baseRetailer} />),
+		).not.toThrow();
 	});
 });
