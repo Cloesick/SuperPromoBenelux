@@ -24,6 +24,18 @@ jobs:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: npm ci --legacy-peer-deps
 
+      # Catches the class of failure that took every retailer logo offline for
+      # months: assets referenced by data but absent from the repository. The
+      # unit suite mocks next/image, so broken image URLs are invisible to it.
+      #
+      # ALLOW_MISSING_PAGE_IMAGES is set while folder page images migrate to
+      # blob storage — they are deliberately not committed. Logos still hard-fail.
+      # Remove the flag once page URLs are absolute.
+      - name: Referenced assets exist
+        env:
+          ALLOW_MISSING_PAGE_IMAGES: "1"
+        run: node scripts/check-assets.mjs
+
       - name: Unit + component tests
         run: npm test
 

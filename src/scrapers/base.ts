@@ -1,6 +1,18 @@
 import fs from "fs";
 import path from "path";
 import crypto from "node:crypto";
+import { storePageImage } from "./pageStorage";
+
+/**
+ * Outcome of capturing one viewer page.
+ *  written   — a new page; `url` is what the folder JSON should render
+ *  duplicate — the viewer clamped past the last page; stop capturing
+ *  blank     — nothing painted; skip this page but keep going
+ */
+type CaptureResult =
+	| { status: "written"; url: string }
+	| { status: "duplicate" }
+	| { status: "blank" };
 // rebrowser-puppeteer is a drop-in Puppeteer fork that patches the CDP
 // `Runtime.Enable` leak — the main signal modern anti-bot services use to
 // detect automation, and one that navigator.webdriver patching cannot hide.
@@ -1961,17 +1973,20 @@ export abstract class BaseScraper {
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
 				// A repeated image means the viewer clamped past the last page.
-				const isNew = await this.captureDedupedPage(
+				const captured = await this.captureDedupedPage(
 					page,
 					filepath,
 					clip ?? null,
 					seenPageHashes,
 				);
-				if (!isNew) {
+				if (captured.status === "duplicate") {
 					this.log(`Reached end of folder at page ${i}`);
 					break;
 				}
-				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
+				// A blank page is skipped entirely: recording it would point the
+				// folder at a file that was never written.
+				if (captured.status === "blank") continue;
+				pages.push({ pageNumber: pages.length + 1, imagePath: captured.url });
 			}
 
 			if (pages.length > 0) {
@@ -2026,17 +2041,20 @@ export abstract class BaseScraper {
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
 				// A repeated image means the viewer clamped past the last page.
-				const isNew = await this.captureDedupedPage(
+				const captured = await this.captureDedupedPage(
 					page,
 					filepath,
 					clip ?? null,
 					seenPageHashes,
 				);
-				if (!isNew) {
+				if (captured.status === "duplicate") {
 					this.log(`Reached end of folder at page ${i}`);
 					break;
 				}
-				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
+				// A blank page is skipped entirely: recording it would point the
+				// folder at a file that was never written.
+				if (captured.status === "blank") continue;
+				pages.push({ pageNumber: pages.length + 1, imagePath: captured.url });
 			}
 
 			if (pages.length > 0) {
@@ -2376,7 +2394,7 @@ export abstract class BaseScraper {
 		filepath: string,
 		clip: { x: number; y: number; width: number; height: number } | null,
 		seenHashes: Set<string>,
-	): Promise<boolean> {
+	): Promise<CaptureResult> {
 		const buffer = clip
 			? await page.screenshot({ clip })
 			: await page.screenshot({ fullPage: true });
@@ -2384,7 +2402,7 @@ export abstract class BaseScraper {
 		// Defensive: a screenshot backend that returns nothing cannot be hashed.
 		// Treat the page as new rather than aborting the folder — capturing a
 		// possible duplicate is far cheaper than truncating the leaflet.
-		if (!buffer) return true;
+		if (!buffer) return { status: "blank" };
 
 		const raw = Buffer.from(buffer as Uint8Array);
 
@@ -2395,14 +2413,14 @@ export abstract class BaseScraper {
 		// far more reliably than file size.
 		if (await this.isBlankCapture(raw)) {
 			this.log("Skipped a blank page capture");
-			return true;
+			return { status: "blank" };
 		}
 
 		const bytes = await this.optimizePageImage(raw);
 
 		// Hash the delivered bytes so duplicate detection matches what is stored.
 		const hash = crypto.createHash("sha1").update(bytes).digest("hex");
-		if (seenHashes.has(hash)) return false;
+		if (seenHashes.has(hash)) return { status: "duplicate" };
 
 		seenHashes.add(hash);
 		fs.writeFileSync(filepath, bytes);
@@ -2421,7 +2439,10 @@ export abstract class BaseScraper {
 			// OCR source is an optimisation; failing to keep it must not fail a page.
 		}
 
-		return true;
+		const stored = await storePageImage(path.basename(filepath), bytes, (m) =>
+			this.log(m),
+		);
+		return { status: "written", url: stored.url };
 	}
 
 	/**
