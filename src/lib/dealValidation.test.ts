@@ -327,3 +327,35 @@ describe("sanitizeDeals", () => {
 		expect(sanitizeDeals([])).toEqual({ kept: [], rejected: [], salvagedCount: 0 });
 	});
 });
+
+describe("implausible discounts", () => {
+	// krefel stored seven appliances at "EUR 1.49, was EUR 799" — a thousands
+	// separator misread as the price. The OCR clusterer already bounded this;
+	// the HTML and page-text paths did not.
+	it("rejects a reduction steeper than the plausible bound", () => {
+		expect(
+			validateDeal({
+				product: "Bosch Inbouw vaatwasser SMV4HVX00E",
+				promoPrice: 1.49,
+				originalPrice: 799,
+			} as never),
+		).toEqual({ ok: false, reason: "discount_implausible" });
+	});
+
+	it("keeps a steep but genuine promotion", () => {
+		// 75% off is real in Belgian leaflets; 5x is the bound.
+		expect(
+			validateDeal({
+				product: "Yves Rocher douchegel",
+				promoPrice: 2.5,
+				originalPrice: 10,
+			} as never).ok,
+		).toBe(true);
+	});
+
+	it("ignores the bound when only one price is present", () => {
+		expect(
+			validateDeal({ product: "Nectarines", promoPrice: 2.5 } as never).ok,
+		).toBe(true);
+	});
+});

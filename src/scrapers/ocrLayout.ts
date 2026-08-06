@@ -216,7 +216,20 @@ export function clusterWords(words: OcrWord[], options: ClusterOptions = {}): Wo
  * Those are deliberately not matched: guessing the decimal position would
  * invent prices, and this data underpins historical-low claims.
  */
-const PRICE_RE = /€\s*\d{1,4}(?:[.,]\d{1,2})?|(?<!\d)\d{1,4}[.,]\d{2}(?!\d)/g;
+/*
+ * The lookarounds reject a group that is part of a longer dotted or
+ * comma-grouped number. Without them "Your IP: 193.74.248.194" yielded 193.74,
+ * and a Boots anti-bot block page was stored as a EUR 45.60 deal reduced from
+ * EUR 193.74 — built out of two IP addresses, and the only data that retailer
+ * had. Thousands separators broke the same way: "1.499,00" matched as 499,00,
+ * which is where krefel's EUR 1.49-from-EUR-799 rows came from.
+ *
+ * The cost is that a four-figure price printed without a euro sign now yields
+ * nothing rather than a wrong value. That is the correct trade here: a wrong
+ * price is worse than no price.
+ */
+const PRICE_RE =
+	/€\s*\d{1,4}(?:[.,]\d{1,2})?|(?<![\d.,])\d{1,4}[.,]\d{2}(?![.,]?\d)/g;
 
 export function findPricesInText(text: string): number[] {
 	const matches = text.match(PRICE_RE) ?? [];

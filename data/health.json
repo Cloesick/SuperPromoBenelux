@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-08-06T01:00:06.292Z",
+  "generatedAt": "2026-08-06T17:38:15.792Z",
   "retailers": [
     {
-      "slug": "colruyt",
-      "name": "Colruyt",
+      "slug": "douglas",
+      "name": "Douglas",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-06T01:00:05.894Z",
+      "scrapedAt": "2026-08-06T17:38:14.886Z",
       "folderCount": 1,
-      "dealCount": 54,
+      "dealCount": 18,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,

@@ -19,6 +19,8 @@ type CaptureResult =
 import puppeteer, { Page, Browser } from "rebrowser-puppeteer";
 import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 import { syncDealsToDb } from "../lib/productsDb";
+import { normalizeSchemaImage } from "../lib/schemaImage";
+import { looksLikeBotChallenge } from "./botChallenge";
 import { extractDealsFromPdf } from "./extractDealsFromText";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
@@ -210,15 +212,15 @@ export abstract class BaseScraper {
 	protected async isBotChallengePage(page: Page): Promise<boolean> {
 		try {
 			const text = await page.evaluate(() => document.body?.innerText ?? "");
-			const t = String(text).toLowerCase();
-			return (
-				t.includes("sorry voor de onderbreking") ||
-				t.includes("click to verify") ||
-				t.includes("captcha") ||
-				t.includes("colruytgroup") ||
-				t.includes("je een bot") ||
-				t.includes("onmiddellijk weer toegang")
-			);
+			// The URL matters as much as the body: Imperva serves its block from
+			// _Incapsula_Resource, which no leaflet URL ever contains.
+			let url = "";
+			try {
+				url = page.url();
+			} catch {
+				// A closed or crashed page has no URL; the body test still applies.
+			}
+			return looksLikeBotChallenge(String(text), url);
 		} catch {
 			return false;
 		}
@@ -1587,7 +1589,9 @@ export abstract class BaseScraper {
 									promoPrice: offer.price ? parseFloat(offer.price) : undefined,
 									discount: offer.discount || undefined,
 									description: item.description || undefined,
-									imageUrl: item.image || undefined,
+									// Raw schema.org image value; normalised after the evaluate
+									// boundary by normalizeSchemaImage.
+									imageUrl: item.image,
 									validFrom,
 									validUntil,
 									retailerSlug,
@@ -1605,7 +1609,7 @@ export abstract class BaseScraper {
 											originalPrice: offer.highPrice ? parseFloat(offer.highPrice) : undefined,
 											promoPrice: offer.price ? parseFloat(offer.price) : undefined,
 											description: product.description || undefined,
-											imageUrl: product.image || undefined,
+											imageUrl: product.image,
 											validFrom,
 											validUntil,
 											retailerSlug,
@@ -1631,9 +1635,17 @@ export abstract class BaseScraper {
 			[this.retailerSlug, dates.from, dates.until],
 		);
 
-		const deals = Array.isArray(dealsRaw)
-			? (dealsRaw as Deal[])
-			: ([] as Deal[]);
+		// schema.org `image` may be a string, an ImageObject, or an array of
+		// either — and the value crosses the evaluate boundary as `any`, so the
+		// declared `imageUrl: string` was never enforced. Normalising here rather
+		// than inside the browser body keeps it unit-testable and avoids the
+		// __name problem that named inner functions hit in evaluated code.
+		const deals = (Array.isArray(dealsRaw) ? (dealsRaw as Deal[]) : []).map(
+			(deal) => ({
+				...deal,
+				imageUrl: normalizeSchemaImage((deal as { imageUrl?: unknown }).imageUrl),
+			}),
+		);
 		if (deals.length > 0)
 			this.log(`Extracted ${deals.length} deal(s) from JSON-LD`);
 		return { deals, source: "html" };

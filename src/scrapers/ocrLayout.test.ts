@@ -184,6 +184,27 @@ describe("findPricesInText", () => {
 		expect(findPricesInText("EAN 5410228123456")).toEqual([]);
 	});
 
+	it("does not read an IP address as a price", () => {
+		// A Boots anti-bot block page was OCR'd and stored as a EUR 45.60 deal
+		// reduced from EUR 193.74 — both numbers sliced out of IP addresses, and
+		// the only data that retailer had.
+		expect(findPricesInText("Your IP: 193.74.248.194")).toEqual([]);
+		expect(findPricesInText("Proxy IP: 45.60.13.206 (ID 10567-100)")).toEqual([]);
+	});
+
+	it("does not read a thousands separator as a price", () => {
+		// "1.499,00" matched as "499,00", which is where krefel's EUR 1.49
+		// against EUR 799 rows came from.
+		expect(findPricesInText("Krefel 1.499,00")).toEqual([]);
+		expect(findPricesInText("Versie 1.2.3 kost 9,95")).toEqual([9.95]);
+	});
+
+	it("still reads ordinary leaflet prices", () => {
+		expect(findPricesInText("Hamburgers 4 stuks 5,49")).toEqual([5.49]);
+		expect(findPricesInText("Corona 6 x 33 cl € 5,99 1,33")).toEqual([5.99, 1.33]);
+		expect(findPricesInText("nu 12,50 i.p.v. 24,99")).toEqual([12.5, 24.99]);
+	});
+
 	it("still matches a price at the start of a token", () => {
 		expect(findPricesInText("5,99 per stuk")).toEqual([5.99]);
 	});

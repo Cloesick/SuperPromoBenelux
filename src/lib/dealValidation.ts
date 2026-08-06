@@ -30,6 +30,16 @@ export const MAX_PRICE = 50_000;
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 120;
 
+/**
+ * Largest original/promo ratio treated as a genuine discount (~80% off).
+ *
+ * Mirrors the bound the OCR clusterer applies. Belgian leaflets do run deep
+ * promotions, but past this point the pair is far more likely to be two
+ * unrelated numbers — a unit price against a pack price, or a thousands
+ * separator misparsed.
+ */
+export const MAX_DISCOUNT_RATIO = 5;
+
 // ---------------------------------------------------------------------------
 // European price parsing
 // ---------------------------------------------------------------------------
@@ -241,6 +251,20 @@ export function validateDeal(deal: Deal): ValidationResult {
 
 	if (hasPromo && hasOriginal && deal.promoPrice! > deal.originalPrice!) {
 		return { ok: false, reason: "promo_exceeds_original" };
+	}
+
+	// A reduction this steep is a parse artefact, not a promotion. The OCR
+	// clusterer already applies this bound, but nothing did on the HTML and
+	// page-text paths, so krefel stored seven appliances at "EUR 1.49, was EUR
+	// 799" — a thousands separator misread as the price. Applying it here covers
+	// every extraction path at once.
+	if (
+		hasPromo &&
+		hasOriginal &&
+		deal.promoPrice! > 0 &&
+		deal.originalPrice! / deal.promoPrice! > MAX_DISCOUNT_RATIO
+	) {
+		return { ok: false, reason: "discount_implausible" };
 	}
 
 	// Without a price, only a genuine non-price promo mechanic is worth storing
