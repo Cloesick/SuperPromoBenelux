@@ -10,7 +10,10 @@ describe("Homepage", () => {
 
   it("displays the CTA buttons", () => {
     cy.contains("a", "Bekijk alle folders")
-      .should("have.attr", "href", "/folders");
+      // next.config.ts sets trailingSlash, so the rendered href is "/folders/".
+      // Match the route rather than one spelling of it.
+      .should("have.attr", "href")
+      .and("match", /^\/folders\/?$/);
 
     cy.contains("a", "Facebook Groep")
       .should("have.attr", "href")

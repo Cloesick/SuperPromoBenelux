@@ -1,26 +1,20 @@
 {
-  "generatedAt": "2026-08-06T22:06:43.378Z",
+  "generatedAt": "2026-08-06T22:47:00.137Z",
   "retailers": [
     {
-      "slug": "aldi",
-      "name": "ALDI",
+      "slug": "zooplus",
+      "name": "Zooplus",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-06T22:06:42.755Z",
+      "scrapedAt": "2026-08-06T22:46:59.730Z",
       "folderCount": 1,
       "dealCount": 6,
-      "hasEmbed": true,
+      "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": [
-        {
-          "url": "https://folder.aldi.be/import-folder/2026/2632-nl-mag/?HideStandardUI=true&HideNavigationBars=true",
-          "status": 200,
-          "live": true
-        }
-      ]
+      "probeResults": []
     }
   ],
   "summary": {

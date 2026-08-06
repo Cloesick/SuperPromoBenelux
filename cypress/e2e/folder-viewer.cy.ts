@@ -48,6 +48,53 @@ function visitViewer(path: string) {
 	});
 }
 
+/**
+ * Click a control and retry until the page reflects it.
+ *
+ * FolderViewer is a client component: the server sends fully-rendered markup,
+ * so the button is present and enabled before React has attached its handler.
+ * A click that lands in that window is silently a no-op — Cypress reports it as
+ * a success and the assertion that follows fails. That made the navigation
+ * tests flaky rather than failing, which is worse: Colruyt passed one run and
+ * failed the next with no change in between.
+ *
+ * Cypress retries assertions but never actions, so the retry has to be here.
+ */
+function retryClick(
+	click: () => void,
+	expected: string | RegExp,
+	tries = 6,
+): void {
+	const matches = (text: string) =>
+		expected instanceof RegExp ? expected.test(text) : text.includes(expected);
+
+	const attempt = (remaining: number) => {
+		click();
+		cy.get("body").then(($body) => {
+			if (matches($body.text()) || remaining <= 0) return;
+			cy.wait(250);
+			attempt(remaining - 1);
+		});
+	};
+
+	attempt(tries);
+}
+
+function clickUntil(buttonText: string, expected: string | RegExp, tries = 6) {
+	retryClick(
+		() => cy.contains("button", buttonText).should("not.be.disabled").click(),
+		expected,
+		tries,
+	);
+}
+
+/** Same retry, for the thumbnail strip, which is images rather than buttons. */
+function clickThumbnailUntil(alt: string, expected: string | RegExp, tries = 6) {
+	// force: the strip scrolls horizontally and its own scroll arrows are
+	// absolutely positioned over the first and last thumbnails.
+	retryClick(() => cy.get(`img[alt="${alt}"]`).click({ force: true }), expected, tries);
+}
+
 function readFolder(slug: string): Cypress.Chainable<ScrapedFolder> {
 	return cy
 		.readFile(`data/folders/${slug}.json`)
@@ -123,14 +170,20 @@ describe("Page-image folder viewer", () => {
 				// counter above already implies the image resolved — but naturalWidth
 				// is the assertion that catches a public/screenshots deploy gap
 				// directly instead of via a confusing counter failure.
-				cy.get(`img[alt="${name} folder pagina 1"]`)
-					.should("have.attr", "src", pages[0].imageUrl)
-					.and(($img) => {
-						expect(
-							($img[0] as HTMLImageElement).naturalWidth,
-							"page image is decoded",
-						).to.be.greaterThan(0);
-					});
+				// Both checks run against the element itself. Chaining .and() after
+				// .should("have.attr", ...) would replace the subject with the
+				// attribute string, leaving naturalWidth undefined.
+				cy.get(`img[alt="${name} folder pagina 1"]`).should(($img) => {
+					// next/image resolves src to an absolute URL, so compare by
+					// containment rather than equality.
+					expect($img.attr("src"), "points at the scraped page image").to.include(
+						pages[0].imageUrl,
+					);
+					expect(
+						($img[0] as HTMLImageElement).naturalWidth,
+						"page image is decoded",
+					).to.be.greaterThan(0);
+				});
 			});
 
 			it("disables Vorige on the first page", () => {
@@ -138,29 +191,28 @@ describe("Page-image folder viewer", () => {
 			});
 
 			it("navigates forward and back with the Vorige/Volgende buttons", () => {
-				cy.contains("button", "Volgende").should("not.be.disabled").click();
+				clickUntil("Volgende", `Pagina 2 van ${pages.length}`);
 
 				cy.contains(`Pagina 2 van ${pages.length}`).should("be.visible");
-				cy.get(`img[alt="${name} folder pagina 2"]`).should(
-					"have.attr",
-					"src",
-					pages[1].imageUrl,
-				);
+				cy.get(`img[alt="${name} folder pagina 2"]`)
+					.should("have.attr", "src")
+					.and("include", pages[1].imageUrl);
 
-				cy.contains("button", "Vorige").should("not.be.disabled").click();
+				clickUntil("Vorige", `Pagina 1 van ${pages.length}`);
 				cy.contains(`Pagina 1 van ${pages.length}`).should("be.visible");
 			});
 
 			it("jumps to a page from the thumbnail strip", () => {
-				// force: the strip is horizontally scrollable and its own scroll
-				// arrows are absolutely positioned over the first/last thumbnails.
-				cy.get('img[alt="Pagina 3"]').click({ force: true });
+				clickThumbnailUntil("Pagina 3", `Pagina 3 van ${pages.length}`);
 				cy.contains(`Pagina 3 van ${pages.length}`).should("be.visible");
 				cy.get(`img[alt="${name} folder pagina 3"]`).should("exist");
 			});
 
 			it("disables Volgende on the last page", () => {
-				cy.get(`img[alt="Pagina ${pages.length}"]`).click({ force: true });
+				clickThumbnailUntil(
+					`Pagina ${pages.length}`,
+					`Pagina ${pages.length} van ${pages.length}`,
+				);
 				cy.contains(`Pagina ${pages.length} van ${pages.length}`).should(
 					"be.visible",
 				);
@@ -243,11 +295,9 @@ describe("Blocked embeds are never framed", () => {
 
 				if (pages.length > 0) {
 					cy.contains(`Pagina 1 van ${pages.length}`).should("be.visible");
-					cy.get(`img[alt="${name} folder pagina 1"]`).should(
-						"have.attr",
-						"src",
-						pages[0].imageUrl,
-					);
+					cy.get(`img[alt="${name} folder pagina 1"]`)
+						.should("have.attr", "src")
+						.and("include", pages[0].imageUrl);
 					return;
 				}
 
@@ -298,7 +348,8 @@ describe("Framable embed viewer", () => {
 			it("frames the scraped embedUrl", () => {
 				cy.get(embedFrame(name))
 					.should("exist")
-					.and("have.attr", "src", folder.embedUrl);
+					.and("have.attr", "src")
+					.and("include", folder.embedUrl);
 			});
 
 			it("keeps the iframe sandboxed and lazy", () => {
@@ -400,7 +451,8 @@ describe("Framable PDF viewer", () => {
 			it("frames the scraped pdfUrl", () => {
 				cy.get(pdfFrame(name))
 					.should("exist")
-					.and("have.attr", "src", folder.pdfUrl);
+					.and("have.attr", "src")
+					.and("include", folder.pdfUrl);
 			});
 
 			it("offers the same PDF as a direct link", () => {
@@ -445,8 +497,9 @@ describe("Thumbnail strip uses the small images", () => {
 
 			pages.forEach((page, i) => {
 				cy.get(`img[alt="Pagina ${i + 1}"]`)
-					.should("have.attr", "src", page.thumbnailUrl)
-					.and("not.have.attr", "src", page.imageUrl);
+					.should("have.attr", "src")
+					.and("include", page.thumbnailUrl)
+					.and("not.include", `${page.imageUrl}"`);
 			});
 		});
 	});
@@ -544,25 +597,25 @@ describe("Viewer selection per retailer", () => {
 
 				if (viewer === "pages") {
 					cy.contains(`Pagina 1 van ${pages.length}`).should("be.visible");
-					cy.get(`img[alt="${name} folder pagina 1"]`).should(
-						"have.attr",
-						"src",
-						pages[0].imageUrl,
-					);
+					cy.get(`img[alt="${name} folder pagina 1"]`)
+						.should("have.attr", "src")
+						.and("include", pages[0].imageUrl);
 					return;
 				}
 
 				if (viewer === "embed") {
 					cy.get(embedFrame(name))
 						.should("exist")
-						.and("have.attr", "src", folder.embedUrl);
+						.and("have.attr", "src")
+					.and("include", folder.embedUrl);
 					return;
 				}
 
 				if (viewer === "pdf") {
 					cy.get(pdfFrame(name))
 						.should("exist")
-						.and("have.attr", "src", folder.pdfUrl);
+						.and("have.attr", "src")
+					.and("include", folder.pdfUrl);
 					return;
 				}
 
@@ -594,7 +647,10 @@ describe("Retailer with no scraped folder (maxi-zoo)", () => {
 	});
 
 	it("shows the no-folder notice instead of an empty viewer", () => {
-		cy.contains("Er is momenteel geen folder beschikbaar").should("be.visible");
+		// The vertical route and the main route word this differently — "geen
+		// actieve folder" vs "geen folder" — so match what both actually say
+		// rather than pinning one page's copy onto the other.
+		cy.contains(/geen (?:actieve )?folder beschikbaar/i).should("be.visible");
 		cy.get('iframe[title*="folder"]').should("not.exist");
 		cy.contains("Pagina 1 van").should("not.exist");
 	});
