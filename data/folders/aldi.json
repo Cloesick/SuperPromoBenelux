@@ -7,26 +7,227 @@
       "title": "ALDI folder van de week",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "pageCount": 1,
-      "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p1.webp",
+      "pageCount": 34,
+      "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p1.jpg",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p1.webp",
-          "deals": []
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p1.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p1-thumb.webp"
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p2.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p2-thumb.webp"
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p3.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p3-thumb.webp"
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p4.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p4-thumb.webp"
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p5.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p5-thumb.webp"
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p6.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p6-thumb.webp"
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p7.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p7-thumb.webp"
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p8.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p8-thumb.webp"
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p9.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p9-thumb.webp"
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p10.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p10-thumb.webp"
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p11.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p11-thumb.webp"
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p12.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p12-thumb.webp"
+        },
+        {
+          "pageNumber": 13,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p13.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p13-thumb.webp"
+        },
+        {
+          "pageNumber": 14,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p14.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p14-thumb.webp"
+        },
+        {
+          "pageNumber": 15,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p15.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p15-thumb.webp"
+        },
+        {
+          "pageNumber": 16,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p16.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p16-thumb.webp"
+        },
+        {
+          "pageNumber": 17,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p17.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p17-thumb.webp"
+        },
+        {
+          "pageNumber": 18,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p18.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p18-thumb.webp"
+        },
+        {
+          "pageNumber": 19,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p19.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p19-thumb.webp"
+        },
+        {
+          "pageNumber": 20,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p20.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p20-thumb.webp"
+        },
+        {
+          "pageNumber": 21,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p21.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p21-thumb.webp"
+        },
+        {
+          "pageNumber": 22,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p22.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p22-thumb.webp"
+        },
+        {
+          "pageNumber": 23,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p23.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p23-thumb.webp"
+        },
+        {
+          "pageNumber": 24,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p24.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p24-thumb.webp"
+        },
+        {
+          "pageNumber": 25,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p25.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p25-thumb.webp"
+        },
+        {
+          "pageNumber": 26,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p26.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p26-thumb.webp"
+        },
+        {
+          "pageNumber": 27,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p27.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p27-thumb.webp"
+        },
+        {
+          "pageNumber": 28,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p28.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p28-thumb.webp"
+        },
+        {
+          "pageNumber": 29,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p29.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p29-thumb.webp"
+        },
+        {
+          "pageNumber": 30,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p30.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p30-thumb.webp"
+        },
+        {
+          "pageNumber": 31,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p31.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p31-thumb.webp"
+        },
+        {
+          "pageNumber": 32,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p32.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p32-thumb.webp"
+        },
+        {
+          "pageNumber": 33,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p33.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p33-thumb.webp"
+        },
+        {
+          "pageNumber": 34,
+          "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p34.jpg",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p34-thumb.webp"
         }
       ],
-      "contentSource": "screenshot",
-      "scrapedAt": "2026-08-06T17:09:16.681Z"
+      "embedUrl": "",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-08-06T17:28:28.498Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-06T17:09:55.566Z",
+  "scrapedAt": "2026-08-06T17:28:41.365Z",
   "sourceUrls": [
-    "https://www.aldi.be/nl/onze-folders/folder-van-deze-week.html",
-    "https://www.aldi.be/onze-folders/folder-van-deze-week.html#content"
+    "https://www.aldi.be/folders/folder-van-deze-week.html",
+    "https://folder.aldi.be/import-folder/2026/2632-nl-mag/"
   ],
   "methods": [
+    "unknown",
     "screenshot"
   ]
 }

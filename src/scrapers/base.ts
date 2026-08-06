@@ -1007,23 +1007,35 @@ export abstract class BaseScraper {
 	 * fallback for dialogs that offer no refusal at all, and a bare "ok" is last
 	 * so it cannot win over a more specific choice.
 	 */
-	protected static readonly CONSENT_TEXTS = [
-		// Refuse / essential-only.
-		"alles weigeren",
-		"alle cookies weigeren",
-		"alleen noodzakelijke",
-		"alleen noodzakelijke cookies",
+	protected static readonly CONSENT_REFUSE_TEXTS = [
 		"weigeren",
-		"alle ablehnen",
+		"alleen noodzakelijke",
 		"ablehnen",
-		"tout refuser",
 		"refuser",
 		"reject all",
 		"only necessary",
 		"necessary only",
-		// Accept, when refusal is not offered.
+	];
+
+	/**
+	 * Accept-button labels, matched EXACTLY.
+	 *
+	 * Substring matching is unsafe here: "ok" appears inside plenty of unrelated
+	 * labels, and a false-positive accept opts the scrape into tracking. A
+	 * false-positive refusal merely declines cookies, so the refuse list above is
+	 * matched as a substring instead — ALDI Belgium labels its refuse button
+	 * "Alle niet strikt noodzakelijke cookies en/of andere technologieën
+	 * weigeren", which no exact match could ever cover.
+	 *
+	 * "aanvaarden" is the Belgian-Dutch form ALDI uses; "accepteren" alone missed
+	 * it entirely.
+	 */
+	protected static readonly CONSENT_ACCEPT_TEXTS = [
 		"alles accepteren",
 		"alle cookies accepteren",
+		"alle cookies aanvaarden",
+		"alles aanvaarden",
+		"aanvaarden",
 		"alles akzeptieren",
 		"tout accepter",
 		"accept all cookies",
@@ -1034,6 +1046,12 @@ export abstract class BaseScraper {
 		"accepter",
 		"i accept",
 		"ok",
+		// Locale/interstitial gates. Several BE/NL retailers raise one of these
+		// after the cookie choice — bol's "Hoe wil jij bollen?" picker covered the
+		// top of every screenshot until it was dismissed.
+		"doorgaan",
+		"continuer",
+		"continue",
 	];
 
 	/**
@@ -1062,7 +1080,11 @@ export abstract class BaseScraper {
 					// where tsx's keepNames transform references a `__name` helper that
 					// does not exist, so a named inner function throws at runtime. The
 					// visibility test is therefore repeated inline.
-					function (selectors: string[], texts: string[]) {
+					function (
+						selectors: string[],
+						refuseTexts: string[],
+						acceptTexts: string[],
+					) {
 						// Walk the document AND every shadow root. Usercentrics — which
 						// Douglas, bol and ALDI all use — renders its dialog inside a
 						// closed-off shadow tree, so document.querySelectorAll cannot see
@@ -1130,7 +1152,10 @@ export abstract class BaseScraper {
 							return { clicked: "selector", dialogPresent: true };
 						}
 
-						for (let ti = 0; ti < texts.length; ti++) {
+						// Refusals are matched as substrings so sentence-length labels
+						// still resolve; accepts are matched exactly so a bare "ok"
+						// cannot fire on "cookiebeleid".
+						for (let ti = 0; ti < refuseTexts.length; ti++) {
 							for (let ci = 0; ci < visible.length; ci++) {
 								const el = visible[ci];
 								const label = (
@@ -1141,10 +1166,33 @@ export abstract class BaseScraper {
 									.trim()
 									.replace(/\s+/g, " ")
 									.toLowerCase();
-								// Exact match: a bare "ok" must not fire on "cookiebeleid".
-								if (label && label === texts[ti]) {
+								if (label && label.indexOf(refuseTexts[ti]) !== -1) {
 									(el as HTMLElement).click();
-									return { clicked: "text:" + texts[ti], dialogPresent: true };
+									return {
+										clicked: "refuse:" + refuseTexts[ti],
+										dialogPresent: true,
+									};
+								}
+							}
+						}
+
+						for (let ti = 0; ti < acceptTexts.length; ti++) {
+							for (let ci = 0; ci < visible.length; ci++) {
+								const el = visible[ci];
+								const label = (
+									el.textContent ||
+									(el as HTMLInputElement).value ||
+									""
+								)
+									.trim()
+									.replace(/\s+/g, " ")
+									.toLowerCase();
+								if (label && label === acceptTexts[ti]) {
+									(el as HTMLElement).click();
+									return {
+										clicked: "accept:" + acceptTexts[ti],
+										dialogPresent: true,
+									};
 								}
 							}
 						}
@@ -1153,6 +1201,11 @@ export abstract class BaseScraper {
 						// caller can stop early instead of polling a page that has none.
 						// Searched across the same roots: a shadow-hosted dialog would
 						// otherwise read as absent and end the wait immediately.
+						// Requiring a consent-looking word means an unrelated modal does
+						// not count: bol raises a locale picker ("Hoe wil jij bollen?")
+						// after the cookie choice, which matched [role="dialog"] and made
+						// every navigation burn the full wait while logging a misleading
+						// "cookie dialog still present".
 						const dialogSelector =
 							'[id*="onetrust"], [class*="cookie"], [class*="consent"], [class*="gdpr"], [id*="usercentrics"], [role="dialog"]';
 						let dialogPresent = false;
@@ -1161,16 +1214,26 @@ export abstract class BaseScraper {
 							if (!dialog) continue;
 							const style = window.getComputedStyle(dialog);
 							const rect = dialog.getBoundingClientRect();
+							if (
+								style.display === "none" ||
+								style.visibility === "hidden" ||
+								rect.width <= 0 ||
+								rect.height <= 0
+							) {
+								continue;
+							}
+							const text = (dialog.textContent || "").toLowerCase();
 							dialogPresent =
-								style.display !== "none" &&
-								style.visibility !== "hidden" &&
-								rect.width > 0 &&
-								rect.height > 0;
+								text.indexOf("cookie") !== -1 ||
+								text.indexOf("consent") !== -1 ||
+								text.indexOf("toestemming") !== -1 ||
+								text.indexOf("privacy") !== -1;
 						}
 						return { clicked: null as string | null, dialogPresent };
 					},
 						configured,
-						BaseScraper.CONSENT_TEXTS,
+						BaseScraper.CONSENT_REFUSE_TEXTS,
+						BaseScraper.CONSENT_ACCEPT_TEXTS,
 					)
 					.catch(() => null);
 			} catch {
@@ -1192,7 +1255,9 @@ export abstract class BaseScraper {
 			await new Promise((r) => setTimeout(r, 500));
 		}
 
-		this.log("Cookie dialog still present after consent handling");
+		this.log(
+			`Consent dialog unresolved after ${BaseScraper.CONSENT_WAIT_MS}ms`,
+		);
 	}
 
 	// ---- Step 1: Find folder-specific link ---------------------------------
@@ -2351,31 +2416,51 @@ export abstract class BaseScraper {
 		} catch {
 			// ignore and fall back to single screenshot
 		}
-		if (genericPages.length > 1) {
+		// One page is a real result, not a failure. This used to require >1, which
+		// was harmless while duplicate captures inflated every folder past the
+		// ceiling — but once near-duplicates collapse, a single-page leaflet is a
+		// normal outcome. Falling through discarded that page AND overwrote its
+		// file with the raw single-screenshot below, which on Douglas produced a
+		// zero-byte image the folder still pointed at.
+		if (genericPages.length >= 1) {
 			this.log(
 				`Screenshots saved (generic viewer): ${genericPages.length} page(s)`,
 			);
 			return { pages: genericPages };
 		}
 
-		try {
-			await waitForViewer();
-			const clip = await getViewerClip();
-			if (clip) {
-				await page.screenshot({ path: filepath, clip });
-			} else {
-				await page.screenshot({ path: filepath, fullPage: true });
-			}
-		} catch {
-			await page.screenshot({ path: filepath, fullPage: true });
+		// Last resort: one capture of whatever is on screen. Routed through
+		// captureDedupedPage so it gets the same empty/blank rejection, resizing
+		// and thumbnail as every other path — writing straight to disk here is
+		// what let a zero-byte file be recorded as a page.
+		let single = await this.captureDedupedPage(
+			page,
+			filepath,
+			await getViewerClip().catch(() => null),
+			new Set<string>(),
+		);
+		if (single.status !== "written") {
+			single = await this.captureDedupedPage(
+				page,
+				filepath,
+				null,
+				new Set<string>(),
+			);
 		}
+
+		if (single.status !== "written") {
+			this.log("No usable screenshot could be captured");
+			return { pages: [] };
+		}
+
 		this.log(`Screenshot saved: ${filepath}`);
 
 		return {
 			pages: [
 				{
 					pageNumber: 1,
-					imagePath: `/screenshots/${filename}`,
+					imagePath: single.url,
+					thumbPath: single.thumbUrl,
 				},
 			],
 		};
