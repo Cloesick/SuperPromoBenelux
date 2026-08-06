@@ -13,12 +13,14 @@
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/tom-co-2026-w32-viewerimg-p1.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p1-thumb.webp"
         },
         {
           "pageNumber": 2,
           "imageUrl": "/screenshots/tom-co-2026-w32-viewerimg-p2.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p2-thumb.webp"
         }
       ],
       "contentSource": "issuu",

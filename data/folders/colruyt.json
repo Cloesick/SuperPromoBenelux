@@ -7,108 +7,68 @@
       "title": "Colruyt folder van de week",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "pageCount": 20,
+      "pageCount": 10,
       "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p1.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p1-thumb.webp"
         },
         {
           "pageNumber": 2,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p2.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p2-thumb.webp"
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p3.webp",
-          "deals": []
+          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p4.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p4-thumb.webp"
         },
         {
           "pageNumber": 4,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p4.webp",
-          "deals": []
+          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p6.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p6-thumb.webp"
         },
         {
           "pageNumber": 5,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p5.webp",
-          "deals": []
+          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p8.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p8-thumb.webp"
         },
         {
           "pageNumber": 6,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p6.webp",
-          "deals": []
+          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p10.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p10-thumb.webp"
         },
         {
           "pageNumber": 7,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p7.webp",
-          "deals": []
+          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p12.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p12-thumb.webp"
         },
         {
           "pageNumber": 8,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p8.webp",
-          "deals": []
+          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p16.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p16-thumb.webp"
         },
         {
           "pageNumber": 9,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p9.webp",
-          "deals": []
+          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p18.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p18-thumb.webp"
         },
         {
           "pageNumber": 10,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p10.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 11,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p11.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 12,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p12.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 13,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p13.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 14,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p14.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 15,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p15.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 16,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p16.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 17,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p17.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 18,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p18.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 19,
-          "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p19.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 20,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p20.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p20-thumb.webp"
         }
       ],
       "contentSource": "issuu",

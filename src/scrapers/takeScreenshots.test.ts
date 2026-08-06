@@ -20,10 +20,15 @@ describe("BaseScraper.takeScreenshots", () => {
 		vi.spyOn(Date, "now").mockReturnValue(
 			new Date("2026-04-04T12:00:00.000Z").valueOf(),
 		);
+		// takeScreenshots waits politeDelay() between pages — 1500ms by default,
+		// which puts a 4-page capture past the 5s test timeout. Rate limiting is
+		// not what these tests are asserting.
+		process.env.SCRAPE_DELAY_MS = "0";
 	});
 
 	afterEach(() => {
 		Date.now = realDateNow;
+		delete process.env.SCRAPE_DELAY_MS;
 		vi.restoreAllMocks();
 	});
 

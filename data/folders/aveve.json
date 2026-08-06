@@ -13,17 +13,20 @@
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/aveve-2026-w32-viewerimg-p1.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aveve-2026-w32-viewerimg-p1-thumb.webp"
         },
         {
           "pageNumber": 2,
           "imageUrl": "/screenshots/aveve-2026-w32-viewerimg-p2.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aveve-2026-w32-viewerimg-p2-thumb.webp"
         },
         {
           "pageNumber": 3,
           "imageUrl": "/screenshots/aveve-2026-w32-viewerimg-p3.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aveve-2026-w32-viewerimg-p3-thumb.webp"
         }
       ],
       "contentSource": "screenshot",

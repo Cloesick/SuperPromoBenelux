@@ -10,7 +10,7 @@ import { storePageImage } from "./pageStorage";
  *  blank     — nothing painted; skip this page but keep going
  */
 type CaptureResult =
-	| { status: "written"; url: string }
+	| { status: "written"; url: string; thumbUrl?: string }
 	| { status: "duplicate" }
 	| { status: "blank" };
 // rebrowser-puppeteer is a drop-in Puppeteer fork that patches the CDP
@@ -50,7 +50,7 @@ export interface DealResult {
 }
 
 export interface ScreenshotResult {
-	pages: { pageNumber: number; imagePath: string }[];
+	pages: { pageNumber: number; imagePath: string; thumbPath?: string }[];
 }
 
 export interface ScrapeContext {
@@ -656,6 +656,7 @@ export abstract class BaseScraper {
 					? screenshots.pages.map((p) => ({
 							pageNumber: p.pageNumber,
 							imageUrl: p.imagePath,
+							thumbnailUrl: p.thumbPath,
 							deals: [] as Deal[],
 						}))
 					: [];
@@ -717,6 +718,7 @@ export abstract class BaseScraper {
 						const folderPages = screenshots.pages.map((p) => ({
 							pageNumber: p.pageNumber,
 							imageUrl: p.imagePath,
+							thumbnailUrl: p.thumbPath,
 							deals: [] as Deal[],
 						}));
 
@@ -907,6 +909,7 @@ export abstract class BaseScraper {
 							primaryFolder.pages = screenshots.pages.map((p) => ({
 								pageNumber: p.pageNumber,
 								imageUrl: p.imagePath,
+								thumbnailUrl: p.thumbPath,
 								deals: [] as Deal[],
 							}));
 							primaryFolder.pageCount = primaryFolder.pages.length;
@@ -1722,7 +1725,7 @@ export abstract class BaseScraper {
 		// This is a best-effort fallback to avoid broken "publication offline" embeds.
 		const currentUrl = overrideUrl ?? page.url();
 		if (currentUrl && isPdfUrl(currentUrl)) {
-			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 			const view = page.viewport();
 			const width = view?.width ?? 1440;
 			const height = view?.height ?? 900;
@@ -1784,7 +1787,7 @@ export abstract class BaseScraper {
 					`iPaper detected (paperId=${paperId}). Fetching pages directly...`,
 				);
 
-				const pages: { pageNumber: number; imagePath: string }[] = [];
+				const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 				const max = Number.isFinite(maxPages) ? maxPages : 12;
 				for (let i = 1; i <= max; i++) {
 					const url = `${base}${i}${suffix}${query}`;
@@ -1934,7 +1937,7 @@ export abstract class BaseScraper {
 
 		if (isIssuuEmbed) {
 			const baseUrl = overrideUrl ?? page.url();
-			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 			const seenPageHashes = new Set<string>();
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
@@ -1986,7 +1989,11 @@ export abstract class BaseScraper {
 				// A blank page is skipped entirely: recording it would point the
 				// folder at a file that was never written.
 				if (captured.status === "blank") continue;
-				pages.push({ pageNumber: pages.length + 1, imagePath: captured.url });
+				pages.push({
+					pageNumber: pages.length + 1,
+					imagePath: captured.url,
+					thumbPath: captured.thumbUrl,
+				});
 			}
 
 			if (pages.length > 0) {
@@ -1998,7 +2005,7 @@ export abstract class BaseScraper {
 		if (isPublitasEmbed) {
 			const baseUrl = overrideUrl ?? page.url();
 			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
-			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 			const seenPageHashes = new Set<string>();
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
@@ -2054,7 +2061,11 @@ export abstract class BaseScraper {
 				// A blank page is skipped entirely: recording it would point the
 				// folder at a file that was never written.
 				if (captured.status === "blank") continue;
-				pages.push({ pageNumber: pages.length + 1, imagePath: captured.url });
+				pages.push({
+					pageNumber: pages.length + 1,
+					imagePath: captured.url,
+					thumbPath: captured.thumbUrl,
+				});
 			}
 
 			if (pages.length > 0) {
@@ -2072,7 +2083,7 @@ export abstract class BaseScraper {
 			);
 		}
 
-		const genericPages: { pageNumber: number; imagePath: string }[] = [];
+		const genericPages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 		const clickNext = async (): Promise<boolean> => {
 			const candidates = [
 				"button[aria-label*='Volgende']",
@@ -2326,6 +2337,94 @@ export abstract class BaseScraper {
 	protected static readonly PAGE_IMAGE_QUALITY = 78;
 
 	/**
+	 * Width of the thumbnail-strip images.
+	 *
+	 * The strip draws one entry per page in a 64x88 box, and next/image runs
+	 * `unoptimized`, so without a separate small file a 60-page folder makes the
+	 * visitor download every full-size page to render its thumbnails — 26 MB on
+	 * IKEA. 160px covers a 2x display at that box size.
+	 */
+	protected static readonly THUMB_IMAGE_WIDTH = 160;
+
+	/** WebP quality for thumbnails — they are never seen above 64px wide. */
+	protected static readonly THUMB_IMAGE_QUALITY = 65;
+
+	/**
+	 * How many of the 64 fingerprint bits may differ before two captures are
+	 * treated as the same page. Calibrated against folders whose true page count
+	 * is known: at 4, Action keeps 18 distinct spreads of 60 captures and Colruyt
+	 * resolves to 10 (its cover plus nine Issuu spreads). Raising it starts
+	 * merging genuinely different leaflet pages.
+	 */
+	protected static readonly DUPLICATE_HAMMING_THRESHOLD = 4;
+
+	/**
+	 * Number of bits that differ between two 64-bit fingerprints.
+	 *
+	 * Fingerprints are 16-character hex strings rather than bigints: this file
+	 * compiles below an ES2020 target, where BigInt literals are unavailable.
+	 * Comparing a nibble at a time keeps it to plain numbers.
+	 */
+	protected static hammingDistance(a: string, b: string): number {
+		if (a.length !== b.length) return Number.MAX_SAFE_INTEGER;
+		let count = 0;
+		for (let i = 0; i < a.length; i++) {
+			let nibble = parseInt(a[i], 16) ^ parseInt(b[i], 16);
+			while (nibble > 0) {
+				count += nibble & 1;
+				nibble >>= 1;
+			}
+		}
+		return count;
+	}
+
+	/**
+	 * 64-bit difference hash of an image.
+	 *
+	 * Reduces to 9x8 greyscale and records, for each pixel, whether it is
+	 * brighter than its right-hand neighbour. That encodes coarse layout while
+	 * discarding the rendering noise that defeats byte-level comparison.
+	 *
+	 * Returned as a 16-character hex string, one nibble per four pixels. Returns
+	 * null when the image cannot be read, so the caller can fall back to exact
+	 * hashing rather than treat an unreadable capture as unique.
+	 */
+	protected async perceptualHash(bytes: Buffer): Promise<string | null> {
+		try {
+			const sharp = (await import("sharp")).default;
+			const px = await sharp(bytes, { limitInputPixels: false })
+				.resize(9, 8, { fit: "fill" })
+				.greyscale()
+				.raw()
+				.toBuffer();
+
+			let hex = "";
+			let nibble = 0;
+			let bitsInNibble = 0;
+			for (let y = 0; y < 8; y++) {
+				for (let x = 0; x < 8; x++) {
+					const i = y * 9 + x;
+					nibble = (nibble << 1) | (px[i] > px[i + 1] ? 1 : 0);
+					if (++bitsInNibble === 4) {
+						hex += nibble.toString(16);
+						nibble = 0;
+						bitsInNibble = 0;
+					}
+				}
+			}
+			return hex;
+		} catch {
+			return null;
+		}
+	}
+
+	/** Thumbnail filename for a page image: `foo.webp` -> `foo-thumb.webp`. */
+	protected static thumbFilename(filename: string): string {
+		const ext = path.extname(filename);
+		return `${filename.slice(0, -ext.length || undefined)}-thumb.webp`;
+	}
+
+	/**
 	 * Prepare a captured page for delivery to visitors.
 	 *
 	 * next.config.ts sets `images.unoptimized: true`, so Next does not resize or
@@ -2406,6 +2505,16 @@ export abstract class BaseScraper {
 
 		const raw = Buffer.from(buffer as Uint8Array);
 
+		// An empty buffer would be written as a zero-byte file and recorded as a
+		// real page: the viewer then renders its full chrome around an image that
+		// can never load, which is how zooplus shipped a one-page folder showing
+		// nothing at all. isBlankCapture cannot judge this — sharp rejects the
+		// buffer before any statistics exist.
+		if (raw.length === 0) {
+			this.log("Skipped an empty page capture");
+			return { status: "blank" };
+		}
+
 		// Skip blank pages. A viewer that hasn't finished painting yields a flat
 		// image, which is stored as a real page and shows the visitor an empty
 		// slot in the thumbnail strip. Uniform images have almost no per-channel
@@ -2418,11 +2527,33 @@ export abstract class BaseScraper {
 
 		const bytes = await this.optimizePageImage(raw);
 
-		// Hash the delivered bytes so duplicate detection matches what is stored.
-		const hash = crypto.createHash("sha1").update(bytes).digest("hex");
-		if (seenHashes.has(hash)) return { status: "duplicate" };
+		// Detect a repeated page perceptually rather than byte-for-byte. Viewers
+		// re-render the same spread with sub-pixel differences, and pages with
+		// lazy-loaded carousels differ on every capture, so an exact hash almost
+		// never matches: IKEA produced 60 "pages" that were 3 distinct images, and
+		// Colruyt captured every Issuu spread twice. A downscaled luminance
+		// fingerprint ignores that noise while still separating real leaflet pages
+		// — measured against known-good folders, Action keeps 18 of 60 distinct
+		// spreads and Colruyt resolves to its true cover-plus-nine-spreads.
+		const fingerprint = await this.perceptualHash(bytes);
+		if (fingerprint !== null) {
+			for (const seen of seenHashes) {
+				// Only compare against other fingerprints; the set also holds SHA1
+				// fallbacks, which are a different length and not bit-comparable.
+				if (!seen.startsWith("p:")) continue;
+				const distance = BaseScraper.hammingDistance(seen.slice(2), fingerprint);
+				if (distance <= BaseScraper.DUPLICATE_HAMMING_THRESHOLD) {
+					return { status: "duplicate" };
+				}
+			}
+			seenHashes.add(`p:${fingerprint}`);
+		} else {
+			// Fingerprinting failed; fall back to exact bytes rather than nothing.
+			const hash = crypto.createHash("sha1").update(bytes).digest("hex");
+			if (seenHashes.has(hash)) return { status: "duplicate" };
+			seenHashes.add(hash);
+		}
 
-		seenHashes.add(hash);
 		fs.writeFileSync(filepath, bytes);
 
 		// Keep the full-resolution capture for OCR only. Serving it would cost
@@ -2442,7 +2573,27 @@ export abstract class BaseScraper {
 		const stored = await storePageImage(path.basename(filepath), bytes, (m) =>
 			this.log(m),
 		);
-		return { status: "written", url: stored.url };
+
+		// A missing thumbnail costs bytes, not correctness — the viewer falls back
+		// to the full page image — so a failure here must never drop the page.
+		let thumbUrl: string | undefined;
+		try {
+			const thumbName = BaseScraper.thumbFilename(path.basename(filepath));
+			const sharp = (await import("sharp")).default;
+			const thumbBytes = await sharp(bytes, { limitInputPixels: false })
+				.resize({ width: BaseScraper.THUMB_IMAGE_WIDTH, withoutEnlargement: true })
+				.webp({ quality: BaseScraper.THUMB_IMAGE_QUALITY })
+				.toBuffer();
+			fs.writeFileSync(path.join(path.dirname(filepath), thumbName), thumbBytes);
+			const storedThumb = await storePageImage(thumbName, thumbBytes, (m) =>
+				this.log(m),
+			);
+			thumbUrl = storedThumb.url;
+		} catch {
+			// Fall through: page.thumbnailUrl stays undefined.
+		}
+
+		return { status: "written", url: stored.url, thumbUrl };
 	}
 
 	/**

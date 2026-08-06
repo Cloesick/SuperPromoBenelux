@@ -68,12 +68,23 @@ jobs:
             if (s.missing > 0) { console.error(s.missing + ' retailer(s) have NO data!'); process.exit(1); }
           "
 
+      # Screenshots are committed, so unreferenced ones would accumulate in git
+      # history forever. The scraper writes every capture it takes, but duplicate
+      # collapsing and blank detection mean most are never referenced: before
+      # this step existed, public/screenshots held 1233 files of which 122 were
+      # in use. Pruning first keeps the committed set at single-digit MB.
+      - name: Prune unreferenced screenshots
+        run: node scripts/prune-screenshots.mjs
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -f data/folders data/health.json public/screenshots || true
+          # -A so the prune's deletions are staged too, not just new captures;
+          # -f because public/ was historically gitignored and some clones still
+          # carry that rule.
+          git add -A -f data/folders data/health.json public/screenshots || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit."

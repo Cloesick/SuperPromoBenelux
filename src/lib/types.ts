@@ -250,6 +250,15 @@ export interface Folder {
 export interface FolderPage {
 	pageNumber: number;
 	imageUrl: string;
+	/**
+	 * Small image for the thumbnail strip.
+	 *
+	 * The strip renders one entry per page at 64x88. Without this the viewer
+	 * falls back to `imageUrl`, and because next/image runs `unoptimized`, a
+	 * 60-page folder downloads every full-size page just to draw its thumbnails.
+	 * Optional so folders scraped before thumbnails existed still render.
+	 */
+	thumbnailUrl?: string;
 	deals: Deal[];
 }
 

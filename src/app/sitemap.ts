@@ -3,6 +3,7 @@ import path from "node:path";
 import { MetadataRoute } from "next";
 import { retailers } from "@/lib/retailers";
 import { getScrapedAt, getCurrentFolder } from "@/lib/folders";
+import { hasUsableEmbed, hasUsablePdf } from "@/lib/folderRenderability";
 import { getSiteBaseUrl } from "@/lib/site";
 
 /**
@@ -37,6 +38,20 @@ function getBrokenSlugs(): Set<string> {
 }
 
 /**
+ * Fewest image pages an image-only folder needs before it is worth submitting.
+ *
+ * A leaflet capture that yields exactly one distinct page did not capture a
+ * leaflet. Once near-duplicate pages are collapsed, every single-page folder in
+ * the current data is a failed capture: muller is a German 404, etos is an
+ * "Oeps!" error page, mediamarkt is the flyer landing page rather than the
+ * flyer, douglas is a cookie dialog, and bol, aldi and krefel are ordinary shop
+ * pages. Real leaflets run to spreads — the genuine ones here hold 3 to 18
+ * pages. Folders with an embed or PDF are exempt: those render real content
+ * regardless of how the screenshot fallback fared.
+ */
+const MIN_INDEXABLE_PAGES = 2;
+
+/**
  * A folder page is worth submitting only if it shows real leaflet content.
  * Retailers that render nothing — maxi-zoo has no data file — or that render a
  * bot challenge invite Google to index empty pages.
@@ -45,8 +60,13 @@ function isWorthIndexing(slug: string, broken: Set<string>): boolean {
 	if (broken.has(slug)) return false;
 	const folder = getCurrentFolder(slug);
 	if (!folder) return false;
-	const hasPages = Array.isArray(folder.pages) && folder.pages.length > 0;
-	return hasPages || !!folder.embedUrl || !!folder.pdfUrl;
+	// Apply the viewer's own rules rather than merely checking the fields exist:
+	// albert-heijn's embed is a Publitas URL the viewer refuses to frame and its
+	// PDF is attachment-disposition, so the page renders nothing at all.
+	if (hasUsableEmbed(folder.embedUrl, slug)) return true;
+	if (hasUsablePdf(folder.pdfUrl)) return true;
+	const pageCount = Array.isArray(folder.pages) ? folder.pages.length : 0;
+	return pageCount >= MIN_INDEXABLE_PAGES;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {

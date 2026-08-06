@@ -379,6 +379,61 @@ describe("FolderViewer — silent failure modes", () => {
 		expect(container.querySelector("iframe")).toBeNull();
 	});
 
+	it("draws the thumbnail strip from thumbnailUrl, not the full page image", () => {
+		// next/image runs unoptimized, so a strip entry pointing at imageUrl makes
+		// the visitor download the full-size page to fill a 64x88 box — 26 MB to
+		// render IKEA's 60 thumbnails.
+		const folder = makeFolder({
+			pages: [
+				{
+					pageNumber: 1,
+					imageUrl: "/p1.webp",
+					thumbnailUrl: "/p1-thumb.webp",
+					deals: [],
+				},
+				{
+					pageNumber: 2,
+					imageUrl: "/p2.webp",
+					thumbnailUrl: "/p2-thumb.webp",
+					deals: [],
+				},
+			],
+			validUntil: "2999-01-01",
+		});
+
+		const { container } = render(
+			<FolderViewer folder={folder} retailer={baseRetailer} />,
+		);
+		const srcs = [...container.querySelectorAll("img")].map((img) =>
+			img.getAttribute("src"),
+		);
+
+		expect(srcs).toContain("/p1-thumb.webp");
+		expect(srcs).toContain("/p2-thumb.webp");
+		// The page being read is still the full-resolution image.
+		expect(srcs).toContain("/p1.webp");
+		expect(srcs).not.toContain("/p2.webp");
+	});
+
+	it("falls back to the full page image when a page has no thumbnail", () => {
+		// Folders scraped before thumbnails existed must still render a strip.
+		const folder = makeFolder({
+			pages: [
+				{ pageNumber: 1, imageUrl: "/p1.webp", deals: [] },
+				{ pageNumber: 2, imageUrl: "/p2.webp", deals: [] },
+			],
+			validUntil: "2999-01-01",
+		});
+
+		const { container } = render(
+			<FolderViewer folder={folder} retailer={baseRetailer} />,
+		);
+		const srcs = [...container.querySelectorAll("img")].map((img) =>
+			img.getAttribute("src"),
+		);
+		expect(srcs).toContain("/p2.webp");
+	});
+
 	it("survives a folder JSON with no pages key at all", () => {
 		const folder = makeFolder({ validUntil: "2999-01-01" });
 		// Simulates malformed scraper output reaching a client component.

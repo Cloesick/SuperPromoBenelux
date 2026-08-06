@@ -13,7 +13,8 @@
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/zalando-2026-w32-viewerimg-p1.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/zalando-2026-w32-viewerimg-p1-thumb.webp"
         }
       ],
       "embedUrl": "https://app.eu.usercentrics.eu/browser-sdk/4.62.3/cross-domain-bridge.html",

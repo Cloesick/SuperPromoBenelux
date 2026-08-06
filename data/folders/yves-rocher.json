@@ -13,7 +13,8 @@
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/yves-rocher-2026-w32-viewerimg-p1.webp",
-          "deals": []
+          "deals": [],
+          "thumbnailUrl": "/screenshots/yves-rocher-2026-w32-viewerimg-p1-thumb.webp"
         }
       ],
       "contentSource": "screenshot",

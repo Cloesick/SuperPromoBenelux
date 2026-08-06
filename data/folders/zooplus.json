@@ -8,14 +8,7 @@
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/zooplus-2026-w32-viewerimg-p1.webp",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "/screenshots/zooplus-2026-w32-viewerimg-p1.webp",
-          "deals": []
-        }
-      ],
+      "pages": [],
       "contentSource": "screenshot",
       "scrapedAt": "2026-08-05T21:34:20.942Z"
     }

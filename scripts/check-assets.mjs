@@ -37,6 +37,14 @@ function assertExists(relUrl, source, { advisory = false } = {}) {
 	const onDisk = path.join(publicDir, relUrl.replace(/^\//, ""));
 	if (!fs.existsSync(onDisk)) {
 		(advisory ? warnings : failures).push(`${source} -> ${relUrl}`);
+		return;
+	}
+	// A zero-byte file exists but renders exactly like a 404. zooplus shipped a
+	// single-page folder whose only page was empty, so the viewer drew "Pagina 1
+	// van 1" around nothing. Always a hard failure: unlike a missing page image,
+	// this is never an expected mid-migration state.
+	if (fs.statSync(onDisk).size === 0) {
+		failures.push(`${source} -> ${relUrl} (file is empty)`);
 	}
 }
 

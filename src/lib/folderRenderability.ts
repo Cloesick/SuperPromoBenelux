@@ -1,0 +1,93 @@
+// ---------------------------------------------------------------------------
+// Whether a folder can actually be rendered.
+//
+// FolderViewer and the sitemap were deciding this separately, and disagreed.
+// The sitemap counted any folder with an `embedUrl` or `pdfUrl` as renderable,
+// while the viewer refuses both in specific cases — so Google was invited to
+// index pages that render nothing:
+//
+//   lidl     no pages, no embed, PDF is attachment-disposition -> empty page
+//   zalando  embedUrl points at a Usercentrics consent bridge  -> blank iframe
+//
+// These predicates are the single source of truth for both.
+// ---------------------------------------------------------------------------
+
+/**
+ * Hosts that are not leaflet viewers at all: consent managers, CDN client
+ * storage and tracking bridges that earlier scrapes recorded as an embedUrl.
+ * coolblue carried an Optimizely client_storage URL and aldi a Usercentrics
+ * cross-domain-bridge — both render a blank white iframe. New scrapes reject
+ * these via the iframe size check in base.ts findEmbed; this covers folder JSON
+ * already written.
+ */
+const JUNK_EMBED_HOSTS =
+	/(?:^|\.)(?:usercentrics\.eu|optimizely\.com|cookielaw\.org|onetrust\.com|cookiebot\.com|consensu\.org|googletagmanager\.com|doubleclick\.net|pinterest\.com)$/i;
+
+/** True when an embed URL points at something that is not a leaflet viewer. */
+export function isJunkEmbedUrl(embedUrl?: string | null): boolean {
+	if (!embedUrl) return false;
+	try {
+		return JUNK_EMBED_HOSTS.test(new URL(embedUrl).hostname);
+	} catch {
+		// An unparseable URL cannot be framed either.
+		return true;
+	}
+}
+
+/**
+ * Hosts that serve a real leaflet but refuse to be framed
+ * (X-Frame-Options: SAMEORIGIN/DENY), so the iframe stays blank.
+ */
+function isFrameRefusingHost(host: string): boolean {
+	return (
+		host === "ah.be" ||
+		host.endsWith(".ah.be") ||
+		host === "folder.aldi.be" ||
+		host.endsWith(".folder.aldi.be") ||
+		host === "view.publitas.com" ||
+		host.endsWith(".publitas.com")
+	);
+}
+
+/**
+ * True when an embed cannot be rendered — either it is not a viewer at all, or
+ * the host refuses framing. Delhaize is blocked wholesale regardless of host.
+ */
+export function isEmbedBlocked(
+	embedUrl?: string | null,
+	retailerSlug?: string,
+): boolean {
+	if (!embedUrl) return false;
+	if (retailerSlug === "delhaize") return true;
+	if (isJunkEmbedUrl(embedUrl)) return true;
+	try {
+		return isFrameRefusingHost(new URL(embedUrl).hostname);
+	} catch {
+		return true;
+	}
+}
+
+/** True when an embed URL is present and can actually be rendered. */
+export function hasUsableEmbed(
+	embedUrl?: string | null,
+	retailerSlug?: string,
+): boolean {
+	return !!embedUrl && !isEmbedBlocked(embedUrl, retailerSlug);
+}
+
+/**
+ * True when a PDF URL forces a download instead of rendering.
+ *
+ * albert-heijn, gamma, kruidvat, treac and lidl all sign their PDF links with
+ * `response-content-disposition=attachment`, which an iframe cannot display —
+ * the visitor gets a grey box. The download link still works, so the URL is
+ * kept; it just cannot stand in for renderable content.
+ */
+export function isPdfForcedDownload(pdfUrl?: string | null): boolean {
+	return !!pdfUrl && /response-content-disposition=attachment/i.test(pdfUrl);
+}
+
+/** True when a PDF URL is present and can be framed. */
+export function hasUsablePdf(pdfUrl?: string | null): boolean {
+	return !!pdfUrl && !isPdfForcedDownload(pdfUrl);
+}

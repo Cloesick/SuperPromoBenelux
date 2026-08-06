@@ -3,6 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
+	isEmbedBlocked as isEmbedBlockedShared,
+	isPdfForcedDownload as isPdfForcedDownloadShared,
+} from "@/lib/folderRenderability";
+import {
 	ChevronLeft,
 	ChevronRight,
 	Calendar,
@@ -53,47 +57,12 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 	const [dataAgeHours, setDataAgeHours] = useState<number | null>(null);
 	const isStale = dataAgeHours !== null && dataAgeHours > 72; // > 3 days
 
-	// Detect embed host for X-Frame-Options / CSP blocking
-	const embedHost = (() => {
-		if (!folder.embedUrl) return null;
-		try {
-			return new URL(folder.embedUrl).hostname;
-		} catch {
-			return null;
-		}
-	})();
-
-	// Hosts that are not leaflet viewers at all: consent managers, CDN client
-	// storage and tracking bridges that earlier scrapes recorded as embedUrl.
-	// coolblue carried an Optimizely client_storage URL and aldi a Usercentrics
-	// cross-domain-bridge — both render a blank white iframe. New scrapes reject
-	// these via the iframe size check in base.ts findEmbed; this covers folder
-	// JSON already written.
-	const isJunkEmbedHost =
-		!!embedHost &&
-		/(?:^|\.)(?:usercentrics\.eu|optimizely\.com|cookielaw\.org|onetrust\.com|cookiebot\.com|consensu\.org|googletagmanager\.com|doubleclick\.net|pinterest\.com)$/i.test(
-			embedHost,
-		);
-
-	// Block embeds from hosts known to reject iframes (X-Frame-Options: SAMEORIGIN/DENY)
-	const isEmbedBlocked =
-		!!embedHost &&
-		(isJunkEmbedHost ||
-			retailer.slug === "delhaize" ||
-			embedHost === "ah.be" ||
-			embedHost.endsWith(".ah.be") ||
-			embedHost === "folder.aldi.be" ||
-			embedHost.endsWith(".folder.aldi.be") ||
-			embedHost === "view.publitas.com" ||
-			embedHost.endsWith(".publitas.com"));
-
-	// A PDF served with response-content-disposition=attachment cannot render in
-	// an iframe — the browser downloads it and the frame stays grey. Several
-	// retailers (albert-heijn, gamma, kruidvat, treac, lidl) sign S3 URLs this
-	// way. Keep the download link, drop the embedded viewer.
-	const isPdfForcedDownload =
-		!!folder.pdfUrl &&
-		/response-content-disposition=attachment/i.test(folder.pdfUrl);
+	// These rules live in src/lib/folderRenderability.ts so the sitemap applies
+	// exactly the same ones. When they were duplicated the two drifted, and the
+	// sitemap submitted albert-heijn and lidl — which render nothing at all — to
+	// Google as weekly priority-0.8 pages.
+	const isEmbedBlocked = isEmbedBlockedShared(folder.embedUrl, retailer.slug);
+	const isPdfForcedDownload = isPdfForcedDownloadShared(folder.pdfUrl);
 
 	// When expired, treat embed/PDF from known-offline hosts as unavailable
 	const isEmbedOfflineRisk =
@@ -711,10 +680,15 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								}`}
 							>
 								<Image
-									src={page.imageUrl}
+									// next/image is unoptimized here, so whatever this points
+									// at is downloaded at full size to fill a 64x88 box. Folders
+									// scraped before thumbnails existed have no thumbnailUrl and
+									// still fall back to the full page.
+									src={page.thumbnailUrl ?? page.imageUrl}
 									alt={`Pagina ${i + 1}`}
 									width={64}
 									height={88}
+									loading="lazy"
 									className="object-cover w-full h-full"
 									unoptimized
 									suppressHydrationWarning
