@@ -24,6 +24,11 @@ import { dealsFromWords, type OcrWord } from "./ocrLayout";
 
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
 
+// Full-resolution captures written alongside the optimised, served copies.
+// Preferred when present: the served images are resized for page weight, which
+// costs recognition accuracy.
+const OCR_SOURCE_DIR = path.join(process.cwd(), "data", "ocr-src");
+
 /** Directory holding eng/fra/nld .traineddata (repo root). */
 const LANG_PATH = process.cwd();
 
@@ -77,14 +82,17 @@ export function rankScreenshotCandidates(filenames: string[]): string[] {
  * which is what backfilling historical weeks relies on.
  */
 export function findScreenshots(retailerSlug: string, week?: string): string[] {
-	if (!fs.existsSync(SCREENSHOT_DIR)) return [];
-
 	const prefix = week ? `${retailerSlug}-${week}-` : `${retailerSlug}-`;
-	const all = fs
-		.readdirSync(SCREENSHOT_DIR)
-		.filter((f) => f.startsWith(prefix) && /\.(webp|png|jpe?g)$/i.test(f));
+	const matching = (dir: string): string[] => {
+		if (!fs.existsSync(dir)) return [];
+		return fs
+			.readdirSync(dir)
+			.filter((f) => f.startsWith(prefix) && /\.(webp|png|jpe?g)$/i.test(f));
+	};
 
-	return rankScreenshotCandidates(all).map((f) => path.join(SCREENSHOT_DIR, f));
+	// Prefer full-resolution OCR sources; fall back to the served images.
+	const dir = matching(OCR_SOURCE_DIR).length > 0 ? OCR_SOURCE_DIR : SCREENSHOT_DIR;
+	return rankScreenshotCandidates(matching(dir)).map((f) => path.join(dir, f));
 }
 
 // ---------------------------------------------------------------------------

@@ -12,6 +12,10 @@ import { extractDealsFromPdf } from "./extractDealsFromText";
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
 
+// Full-resolution captures kept for OCR only. Deliberately outside public/ so
+// they are never served: visitors get the optimised copy in SCREENSHOT_DIR.
+const OCR_SOURCE_DIR = path.join(process.cwd(), "data", "ocr-src");
+
 const DEFAULT_USER_AGENT =
 	"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
@@ -1838,19 +1842,29 @@ export abstract class BaseScraper {
 
 			for (const sel of candidates) {
 				try {
-					const el = await page.$(sel);
-					if (!el) continue;
-					const box = await el.boundingBox();
-					if (!box) continue;
-					const area = Math.max(0, box.width) * Math.max(0, box.height);
-					if (!best || area > best.area) {
-						best = {
-							x: box.x,
-							y: box.y,
-							width: box.width,
-							height: box.height,
-							area,
-						};
+					// $$ not $: the leaflet is rarely the *first* element of its kind
+					// — viewers put logos and controls before it — so considering
+					// only one match per selector produced a loose crop that kept the
+					// viewer's own toolbar and arrows in the saved page image.
+					const els =
+						typeof (page as any).$$ === "function"
+							? await page.$$(sel)
+							: [await page.$(sel)].filter(Boolean);
+
+					for (const el of els) {
+						if (!el) continue;
+						const box = await el.boundingBox();
+						if (!box) continue;
+						const area = Math.max(0, box.width) * Math.max(0, box.height);
+						if (!best || area > best.area) {
+							best = {
+								x: box.x,
+								y: box.y,
+								width: box.width,
+								height: box.height,
+								area,
+							};
+						}
 					}
 				} catch {
 					// ignore
@@ -2284,6 +2298,71 @@ export abstract class BaseScraper {
 		return `${this.retailerSlug}-${now.getFullYear()}-w${week}-${suffix}`;
 	}
 
+	/** Below this mean per-channel standard deviation an image carries no content. */
+	protected static readonly BLANK_STDDEV_THRESHOLD = 3;
+
+	/** Width folder page images are served at. */
+	protected static readonly PAGE_IMAGE_WIDTH = 1800;
+
+	/** WebP quality for folder page images. */
+	protected static readonly PAGE_IMAGE_QUALITY = 78;
+
+	/**
+	 * Prepare a captured page for delivery to visitors.
+	 *
+	 * next.config.ts sets `images.unoptimized: true`, so Next does not resize or
+	 * re-encode anything: whatever is written here is exactly what a visitor
+	 * downloads, and page one is rendered with `priority`. A raw
+	 * deviceScaleFactor-3 capture is ~4300px wide and hundreds of KB, which is a
+	 * poor LCP on the pages meant to earn traffic.
+	 *
+	 * Resizing to a sensible display width and re-encoding as WebP keeps enough
+	 * detail to zoom into leaflet prices while cutting the bytes substantially.
+	 * The full-resolution capture is not retained: OCR reads these same files and
+	 * 1800px still exceeds the ~1200px per leaflet page it needs.
+	 *
+	 * Returns the original bytes on any failure — a broken optimiser must never
+	 * cost a page.
+	 */
+	protected async optimizePageImage(bytes: Buffer): Promise<Buffer> {
+		try {
+			const sharp = (await import("sharp")).default;
+			const meta = await sharp(bytes, { limitInputPixels: false }).metadata();
+			if (!meta.width) return bytes;
+
+			const out = await sharp(bytes, { limitInputPixels: false })
+				.resize({
+					width: Math.min(meta.width, BaseScraper.PAGE_IMAGE_WIDTH),
+					withoutEnlargement: true,
+				})
+				.webp({ quality: BaseScraper.PAGE_IMAGE_QUALITY })
+				.toBuffer();
+
+			return out.length > 0 && out.length < bytes.length ? out : bytes;
+		} catch {
+			return bytes;
+		}
+	}
+
+	/**
+	 * True when a capture is a flat, contentless image.
+	 *
+	 * Returns false on any error: a detection failure must never discard a real
+	 * leaflet page.
+	 */
+	protected async isBlankCapture(bytes: Buffer): Promise<boolean> {
+		try {
+			const sharp = (await import("sharp")).default;
+			const { channels } = await sharp(bytes, { limitInputPixels: false }).stats();
+			if (!channels || channels.length === 0) return false;
+			const meanStdev =
+				channels.reduce((sum, c) => sum + c.stdev, 0) / channels.length;
+			return meanStdev < BaseScraper.BLANK_STDDEV_THRESHOLD;
+		} catch {
+			return false;
+		}
+	}
+
 	/**
 	 * Capture one viewer page, skipping it if it duplicates one already taken.
 	 *
@@ -2307,12 +2386,41 @@ export abstract class BaseScraper {
 		// possible duplicate is far cheaper than truncating the leaflet.
 		if (!buffer) return true;
 
-		const bytes = Buffer.from(buffer as Uint8Array);
+		const raw = Buffer.from(buffer as Uint8Array);
+
+		// Skip blank pages. A viewer that hasn't finished painting yields a flat
+		// image, which is stored as a real page and shows the visitor an empty
+		// slot in the thumbnail strip. Uniform images have almost no per-channel
+		// variance, so standard deviation separates them from leaflet content
+		// far more reliably than file size.
+		if (await this.isBlankCapture(raw)) {
+			this.log("Skipped a blank page capture");
+			return true;
+		}
+
+		const bytes = await this.optimizePageImage(raw);
+
+		// Hash the delivered bytes so duplicate detection matches what is stored.
 		const hash = crypto.createHash("sha1").update(bytes).digest("hex");
 		if (seenHashes.has(hash)) return false;
 
 		seenHashes.add(hash);
 		fs.writeFileSync(filepath, bytes);
+
+		// Keep the full-resolution capture for OCR only. Serving it would cost
+		// visitors ~4300px of image on a page rendered with `priority`, but
+		// downscaling before OCR loses recognition — Colruyt fell from 60 deals to
+		// 21 when the optimised image was the only copy. This directory is not
+		// under public/ and is never served.
+		try {
+			if (!fs.existsSync(OCR_SOURCE_DIR)) {
+				fs.mkdirSync(OCR_SOURCE_DIR, { recursive: true });
+			}
+			fs.writeFileSync(path.join(OCR_SOURCE_DIR, path.basename(filepath)), raw);
+		} catch {
+			// OCR source is an optimisation; failing to keep it must not fail a page.
+		}
+
 		return true;
 	}
 
