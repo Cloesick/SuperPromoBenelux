@@ -6,6 +6,7 @@ import {
 	salvageDeal,
 	validateDeal,
 	sanitizeDeals,
+	parsePriceElementText,
 } from "./dealValidation";
 import { Deal } from "./types";
 
@@ -357,5 +358,53 @@ describe("implausible discounts", () => {
 		expect(
 			validateDeal({ product: "Nectarines", promoPrice: 2.5 } as never).ok,
 		).toBe(true);
+	});
+});
+
+describe("parsePriceElementText", () => {
+	// Element text is not a sentence. parseEuroPrice leans on parseFloat, which
+	// returns 2 for "2 voor1.40" — Etos stored that as a EUR 2.00 promo on a
+	// "2 voor 1,40" offer, i.e. the quantity instead of the price.
+	it("parses a clean price element", () => {
+		expect(parsePriceElementText("€ 2,39")).toBe(2.39);
+		expect(parsePriceElementText("2,39")).toBe(2.39);
+		expect(parsePriceElementText("1.499,00")).toBe(1499);
+		expect(parsePriceElementText(" 12.50 ")).toBe(12.5);
+	});
+
+	it("refuses text that is not simply a price", () => {
+		expect(parsePriceElementText("2 voor1.40")).toBeUndefined();
+		expect(parsePriceElementText("2 voor 1,40")).toBeUndefined();
+		expect(parsePriceElementText("vanaf 5,99")).toBeUndefined();
+		expect(parsePriceElementText("50%korting")).toBeUndefined();
+	});
+
+	it("refuses a third decimal group", () => {
+		// "2.392" came from a price span and a superscript-cents span read as one.
+		expect(parsePriceElementText("2.392")).toBeUndefined();
+		expect(parsePriceElementText("1.851")).toBeUndefined();
+	});
+
+	it("refuses implausible and empty values", () => {
+		expect(parsePriceElementText("")).toBeUndefined();
+		expect(parsePriceElementText(null)).toBeUndefined();
+		expect(parsePriceElementText("0")).toBeUndefined();
+		expect(parsePriceElementText("999999")).toBeUndefined();
+	});
+});
+
+describe("bare-price discount labels", () => {
+	it("treats a label that is only a price as the promo price", () => {
+		// Albert Heijn shipped "Liefmans On the rocks" with originalPrice 1.49 and
+		// a discount label of "0.99"; the promo price was simply lost.
+		expect(salvagePricesFromLabel("0.99")).toEqual({ promoPrice: 0.99 });
+		expect(salvagePricesFromLabel("€ 1,49")).toEqual({ promoPrice: 1.49 });
+	});
+
+	it("still refuses reductions that only state a saving", () => {
+		// "7.00korting" is EUR 7 off, not a EUR 7 price.
+		expect(salvagePricesFromLabel("7.00korting")).toEqual({});
+		expect(salvagePricesFromLabel("50%korting")).toEqual({});
+		expect(salvagePricesFromLabel("1+1gratis")).toEqual({});
 	});
 });

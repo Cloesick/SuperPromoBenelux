@@ -1,4 +1,5 @@
 import { Deal } from "./types";
+import { isNavigationNoise } from "./htmlNoise";
 
 // ---------------------------------------------------------------------------
 // Deal salvage + validation
@@ -83,6 +84,44 @@ export function isPlausiblePrice(v: number | undefined | null): boolean {
 	return typeof v === "number" && Number.isFinite(v) && v >= MIN_PRICE && v <= MAX_PRICE;
 }
 
+/**
+ * Parse the text content of a dedicated price element.
+ *
+ * Stricter than parseEuroPrice, which is built for salvaging a price out of a
+ * sentence and therefore leans on parseFloat. That is wrong for element text:
+ * parseFloat("2 voor1.40") returns 2, so Etos stored a EUR 2.00 promo for a
+ * "2 voor 1,40" offer — the quantity, not the price. Element text that is not
+ * simply a price is rejected instead of guessed; the discount label still gets
+ * its chance through salvageDeal().
+ *
+ * Also rejects more than two decimals: "2.392" came from two spans (price and
+ * superscript cents) being read as one number.
+ */
+export function parsePriceElementText(
+	raw: string | undefined | null,
+): number | undefined {
+	if (!raw) return undefined;
+	const s = String(raw)
+		.replace(/\s+/g, " ")
+		.replace(/^[\s€]+|[\s€*]+$/g, "")
+		.trim();
+	if (!s) return undefined;
+
+	// A price element holds a price, optionally with a currency symbol or a
+	// trailing unit marker. Anything wordier is a sentence that happens to
+	// contain digits.
+	if (!/^€?\s*\d{1,4}(?:[.,]\d{1,3})?(?:[.,]\d{1,2})?\s*€?$/.test(s)) {
+		return undefined;
+	}
+
+	// Reject a third decimal group: real shelf prices have at most two.
+	const decimals = s.match(/[.,](\d+)\s*€?$/);
+	if (decimals && decimals[1].length > 2) return undefined;
+
+	const value = parseEuroPrice(s);
+	return isPlausiblePrice(value) ? value : undefined;
+}
+
 // ---------------------------------------------------------------------------
 // Salvage: recover prices stranded in the discount label
 // ---------------------------------------------------------------------------
@@ -141,6 +180,17 @@ export function salvagePricesFromLabel(label: string | undefined | null): Salvag
 	const single = s.match(new RegExp(`^(?:voor|pour|for)\\s*€?\\s*(${NUM})$`));
 	if (single) {
 		const promoPrice = parseEuroPrice(single[1]);
+		if (isPlausiblePrice(promoPrice)) return { promoPrice };
+	}
+
+	// A label that is nothing but a price is the promo price. Albert Heijn emits
+	// these bare — "Liefmans On the rocks" carried an original of EUR 1.49 and a
+	// label of "0.99", and without this the promo price was simply lost. Safe
+	// because the reduction guard above has already returned for anything
+	// containing "korting", "gratis" or a percentage.
+	const bare = s.match(new RegExp(`^€?\\s*(${NUM})$`));
+	if (bare) {
+		const promoPrice = parseEuroPrice(bare[1]);
 		if (isPlausiblePrice(promoPrice)) return { promoPrice };
 	}
 
@@ -235,6 +285,11 @@ export function validateDeal(deal: Deal): ValidationResult {
 	if (!/\p{L}/u.test(name)) return { ok: false, reason: "name_has_no_letters" };
 	if (CSS_RE.test(name)) return { ok: false, reason: "name_is_css" };
 	if (UI_NOISE_RE.test(name)) return { ok: false, reason: "name_is_ui_noise" };
+	// Page furniture the wildcard HTML card selector harvests: cookie panels,
+	// category tiles, viewer chrome. UI_NOISE_RE is anchored and narrow, so it
+	// misses "Noodzakelijke cookies", "Klantenservice" and "Pagina 3 van 21".
+	if (isNavigationNoise(name))
+		return { ok: false, reason: "name_is_navigation_noise" };
 	if (LEGAL_RE.test(name)) return { ok: false, reason: "name_is_legal_boilerplate" };
 	if (looksLikeOcrNoise(name)) return { ok: false, reason: "name_is_ocr_noise" };
 	if (isLeafletFragment(name)) return { ok: false, reason: "name_is_leaflet_fragment" };

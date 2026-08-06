@@ -20,6 +20,8 @@ import puppeteer, { Page, Browser } from "rebrowser-puppeteer";
 import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 import { syncDealsToDb } from "../lib/productsDb";
 import { normalizeSchemaImage } from "../lib/schemaImage";
+import { isNavigationNoise } from "../lib/htmlNoise";
+import { parsePriceElementText } from "../lib/dealValidation";
 import { looksLikeBotChallenge } from "./botChallenge";
 import { extractDealsFromPdf } from "./extractDealsFromText";
 
@@ -846,7 +848,38 @@ export abstract class BaseScraper {
 			// For viewer-only retailers (Colruyt, Delhaize, ALDI) there is no PDF
 			// text layer and no product markup, so every earlier fallback returns
 			// nothing and the leaflet images are the only content that exists.
-			if (allDeals.length === 0 && (folders[0]?.pages?.length ?? 0) > 0) {
+			//
+			// Restricted to pages that actually came from a leaflet viewer. When the
+			// capture is a screenshot of the retailer's own website, the spatial
+			// clusterer has no product cards to find and instead turns price-label
+			// chips and banners into deals that pass validation — measured output
+			// included "Adviesprijs*" at EUR 45.45, "Laagste prijs" at EUR 3.08 and
+			// "Smaak - Wortel" at EUR 2.17 down from EUR 20.79. Those are invented
+			// price claims, which is the one failure this database must not have.
+			const leafletSources: ContentSource[] = [
+				"issuu",
+				"publitas",
+				"ipaper",
+				"yumpu",
+				"pdf",
+			];
+			const isLeafletCapture = leafletSources.includes(
+				folders[0]?.contentSource as ContentSource,
+			);
+			if (
+				allDeals.length === 0 &&
+				(folders[0]?.pages?.length ?? 0) > 0 &&
+				!isLeafletCapture
+			) {
+				this.log(
+					`Skipping OCR: pages are a ${folders[0]?.contentSource} capture, not a leaflet viewer`,
+				);
+			}
+			if (
+				allDeals.length === 0 &&
+				(folders[0]?.pages?.length ?? 0) > 0 &&
+				isLeafletCapture
+			) {
 				this.log("Trying OCR of leaflet screenshots...");
 				try {
 					const dates = this.getCurrentWeekDates();
@@ -1664,7 +1697,13 @@ export abstract class BaseScraper {
 
 		const fnSrc = `(
 			function (cardSel, nameSel, origPriceSel, promoPriceSel, discountSel, imageSel, descSel, catSel, retailerSlug, validFrom, validUntil) {
-				const cards = document.querySelectorAll(cardSel);
+				// Sixteen retailers share a wildcard card selector whose "article, li"
+				// arms match navigation lists, cookie panels and footer menus. Try the
+				// conventional product-card class names first and only fall back to the
+				// configured selector when the page uses none of them.
+				const PREFERRED = '[class*="product-card"], [class*="productCard"], [class*="product-tile"], [class*="productTile"], [class*="product-item"], [class*="productItem"], [data-testid*="product-card"], [data-product-id], [data-item-id]';
+				let cards = document.querySelectorAll(PREFERRED);
+				if (cards.length === 0) cards = document.querySelectorAll(cardSel);
 				const results = [];
 				for (let i = 0; i < cards.length; i++) {
 					const card = cards[i];
@@ -1672,11 +1711,16 @@ export abstract class BaseScraper {
 					const name = nameEl && nameEl.textContent ? nameEl.textContent.trim() : "";
 					if (!name) continue;
 
-					const parsePrice = (el) => {
+					// Return the raw text and parse on the Node side. The parser that
+					// used to live here stripped separators and called parseFloat, so
+					// "1.499,00" became "1.499.00" and then 1.499 — a silent
+					// thousand-fold error waiting for the price selectors to start
+					// matching. parseEuroPrice already handles every European form and
+					// is unit-tested.
+					const priceText = (el) => {
 						if (!el) return undefined;
-						const text = String(el.textContent || "").replace(/[^\d.,]/g, "").replace(",", ".");
-						const val = parseFloat(text);
-						return isNaN(val) ? undefined : val;
+						const t = String(el.textContent || "").trim();
+						return t ? t : undefined;
 					};
 
 					const origEl = origPriceSel ? card.querySelector(origPriceSel) : null;
@@ -1689,8 +1733,8 @@ export abstract class BaseScraper {
 					results.push({
 						id: 'html-' + i,
 						product: name,
-						originalPrice: parsePrice(origEl),
-						promoPrice: parsePrice(promoEl),
+						originalPriceText: priceText(origEl),
+						promoPriceText: priceText(promoEl),
 						discount: discountEl && discountEl.textContent ? discountEl.textContent.trim() : undefined,
 						description: descEl && descEl.textContent ? descEl.textContent.trim() : undefined,
 						category: catEl && catEl.textContent ? catEl.textContent.trim() : undefined,
@@ -1725,10 +1769,39 @@ export abstract class BaseScraper {
 			],
 		);
 
-		if (deals.length > 0)
-			this.log(`Extracted ${deals.length} deal(s) from HTML`);
+		// Parse prices here rather than in the browser: one tested implementation
+		// that understands European separators, instead of a second one that
+		// silently divided by a thousand.
+		type RawHtmlDeal = Deal & {
+			originalPriceText?: string;
+			promoPriceText?: string;
+		};
+		const parsed: Deal[] = (deals as RawHtmlDeal[]).map((raw) => {
+			const { originalPriceText, promoPriceText, ...rest } = raw;
+			return {
+				...rest,
+				promoPrice: parsePriceElementText(promoPriceText),
+				originalPrice: parsePriceElementText(originalPriceText),
+			};
+		});
 
-		return { deals: deals as Deal[], source: "html" };
+		// Drop page furniture before it is counted. These rows are rejected at
+		// validation anyway, but they are counted first: the PDF-text, page-text
+		// and OCR fallbacks only run when the HTML pass yielded nothing, so a
+		// handful of cookie-panel entries used to suppress every better extractor
+		// for the whole run.
+		const cleaned = parsed.filter((deal) => !isNavigationNoise(deal.product));
+		const dropped = parsed.length - cleaned.length;
+
+		if (cleaned.length > 0)
+			this.log(
+				`Extracted ${cleaned.length} deal(s) from HTML` +
+					(dropped > 0 ? ` (${dropped} navigation/UI element(s) ignored)` : ""),
+			);
+		else if (dropped > 0)
+			this.log(`HTML yielded only ${dropped} navigation/UI element(s); ignoring`);
+
+		return { deals: cleaned, source: "html" };
 	}
 
 	// ---- Step 6: API response extraction -----------------------------------
@@ -2582,6 +2655,20 @@ export abstract class BaseScraper {
 		if (url.includes("ipaper")) return "ipaper";
 		if (url.includes("yumpu")) return "yumpu";
 		if (url.includes("issuu")) return "issuu";
+
+		// White-labelled viewers. Retailers front these platforms on their own
+		// domain, so the vendor name never appears in the URL: folder.aldi.be and
+		// folder.kruidvat.be are both iPaper, flyer.maxizoo.be likewise. Leaving
+		// them "unknown" mattered once contentSource began gating OCR — ALDI's 34
+		// genuine leaflet pages would have been treated as website screenshots and
+		// skipped.
+		try {
+			const host = new URL(url).hostname.toLowerCase();
+			if (/^(?:folder|flyer|folders|leaflet)\./.test(host)) return "ipaper";
+		} catch {
+			// Not a parseable URL; fall through.
+		}
+
 		return "unknown";
 	}
 
