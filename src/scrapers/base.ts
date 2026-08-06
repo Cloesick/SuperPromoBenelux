@@ -21,7 +21,7 @@ import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 import { syncDealsToDb } from "../lib/productsDb";
 import { normalizeSchemaImage } from "../lib/schemaImage";
 import { isNavigationNoise } from "../lib/htmlNoise";
-import { parsePriceElementText } from "../lib/dealValidation";
+import { parsePriceElementText, sanitizeDeals } from "../lib/dealValidation";
 import { looksLikeBotChallenge } from "./botChallenge";
 import { extractDealsFromPdf } from "./extractDealsFromText";
 
@@ -787,7 +787,16 @@ export abstract class BaseScraper {
 			}
 
 			// ---- Alternative extraction fallbacks ----
-			if (allDeals.length === 0) {
+			// Gate on deals that would actually survive validation, not the raw
+			// count. A handful of unusable rows used to suppress every better
+			// extractor for the whole run: PDF text, page text and OCR only fire
+			// when the earlier pass yielded "nothing", and a cookie-panel entry
+			// counted as something. Safe to widen now that OCR is restricted to
+			// leaflet captures, so opening the gate cannot invent prices from a
+			// screenshot of a retailer's own website.
+			const usableDealCount = () => sanitizeDeals(allDeals).kept.length;
+
+			if (usableDealCount() === 0) {
 				// Fallback A: PDF text extraction (if a PDF URL was found)
 				const pdfUrl = folders[0]?.pdfUrl;
 				if (pdfUrl) {
@@ -814,7 +823,7 @@ export abstract class BaseScraper {
 				}
 			}
 
-			if (allDeals.length === 0) {
+			if (usableDealCount() === 0) {
 				// Fallback B: Generic page text extraction from dealUrls
 				const dealPages = this.config.dealUrls ?? [this.config.folderUrls[0]];
 				for (const dealUrl of dealPages) {
@@ -867,7 +876,7 @@ export abstract class BaseScraper {
 				folders[0]?.contentSource as ContentSource,
 			);
 			if (
-				allDeals.length === 0 &&
+				usableDealCount() === 0 &&
 				(folders[0]?.pages?.length ?? 0) > 0 &&
 				!isLeafletCapture
 			) {
@@ -876,7 +885,7 @@ export abstract class BaseScraper {
 				);
 			}
 			if (
-				allDeals.length === 0 &&
+				usableDealCount() === 0 &&
 				(folders[0]?.pages?.length ?? 0) > 0 &&
 				isLeafletCapture
 			) {

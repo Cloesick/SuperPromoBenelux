@@ -1,27 +1,22 @@
 {
-  "generatedAt": "2026-08-06T21:07:46.574Z",
+  "generatedAt": "2026-08-06T22:06:43.378Z",
   "retailers": [
     {
-      "slug": "albert-heijn",
-      "name": "Albert Heijn",
+      "slug": "aldi",
+      "name": "ALDI",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-06T21:06:10.232Z",
+      "scrapedAt": "2026-08-06T22:06:42.755Z",
       "folderCount": 1,
-      "dealCount": 5,
+      "dealCount": 6,
       "hasEmbed": true,
-      "hasPdf": true,
-      "hasPages": false,
+      "hasPdf": false,
+      "hasPages": true,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://view.publitas.com/ah/bonus-week-32-2026/page/1?publitas_embed=embedded",
-          "status": 200,
-          "live": true
-        },
-        {
-          "url": "https://view.publitas.com/126/3263258/pdfs/c18d53a5-5905-46a2-bf97-6a1d029966cc.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-%2520week-32-2026.pdf",
+          "url": "https://folder.aldi.be/import-folder/2026/2632-nl-mag/?HideStandardUI=true&HideNavigationBars=true",
           "status": 200,
           "live": true
         }

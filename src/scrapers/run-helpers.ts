@@ -184,8 +184,33 @@ export async function probeUrl(
 			},
 		});
 		clearTimeout(timer);
-		const live = res.status < 400;
-		return { url, status: res.status, live };
+		if (res.status < 400) return { url, status: res.status, live: true };
+
+		// Plenty of servers answer HEAD with 404 or 405 while serving the same URL
+		// perfectly well over GET — the leaflet viewers do exactly this. ALDI's
+		// working embed was being stripped to "" on a HEAD 404, so confirm with a
+		// GET before calling anything dead.
+		const confirmController = new AbortController();
+		const confirmTimer = setTimeout(() => confirmController.abort(), timeoutMs);
+		try {
+			const confirm = await fetch(url, {
+				method: "GET",
+				redirect: "follow",
+				signal: confirmController.signal,
+				headers: {
+					"User-Agent":
+						"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+					// Only the first bytes are needed to learn the status.
+					Range: "bytes=0-2047",
+				},
+			});
+			clearTimeout(confirmTimer);
+			return { url, status: confirm.status, live: confirm.status < 400 };
+		} catch {
+			clearTimeout(confirmTimer);
+			// GET failed too, but the HEAD status is the one we can actually cite.
+			return { url, status: res.status, live: false };
+		}
 	} catch (err) {
 		// Network errors / timeouts → treat as live (don't strip)
 		return {

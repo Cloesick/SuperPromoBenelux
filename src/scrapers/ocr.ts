@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
@@ -90,9 +91,60 @@ export function findScreenshots(retailerSlug: string, week?: string): string[] {
 			.filter((f) => f.startsWith(prefix) && /\.(webp|png|jpe?g)$/i.test(f));
 	};
 
-	// Prefer full-resolution OCR sources; fall back to the served images.
-	const dir = matching(OCR_SOURCE_DIR).length > 0 ? OCR_SOURCE_DIR : SCREENSHOT_DIR;
-	return rankScreenshotCandidates(matching(dir)).map((f) => path.join(dir, f));
+	// Merge both directories rather than picking one. The old rule took OCR
+	// sources whenever the directory had *any* match, so a single stale file
+	// shadowed everything else: ALDI's 34 leaflet pages are .jpg written by the
+	// iPaper direct-fetch path, which keeps no full-resolution copy, and one
+	// leftover .webp in data/ocr-src meant OCR saw one page instead of 34.
+	//
+	// Keyed by filename stem so the same page is never queued twice; the
+	// full-resolution copy wins when both exist, because the served image is
+	// downscaled for page weight and that costs recognition accuracy.
+	const candidates = new Map<string, string>();
+	for (const [dir, files] of [
+		[SCREENSHOT_DIR, matching(SCREENSHOT_DIR)],
+		[OCR_SOURCE_DIR, matching(OCR_SOURCE_DIR)],
+	] as [string, string[]][]) {
+		for (const file of files) {
+			// Thumbnails are downscaled derivatives; OCR must never read them.
+			if (/-thumb\.[a-z]+$/i.test(file)) continue;
+			const stem = file.replace(/\.[^.]+$/, "");
+			candidates.set(stem, path.join(dir, file));
+		}
+	}
+
+	// Rank on the real basenames — the scoring patterns match on the extension
+	// boundary, so stems alone would score everything as unknown and be dropped.
+	const byBasename = new Map<string, string>();
+	for (const full of candidates.values()) byBasename.set(path.basename(full), full);
+	const ranked = rankScreenshotCandidates([...byBasename.keys()]).map(
+		(base) => byBasename.get(base)!,
+	);
+
+	// Drop byte-identical files before the MAX_OCR_PAGES slice. data/ocr-src
+	// accumulated captures written before duplicate collapsing existed — douglas
+	// held 72 files with 6 distinct images, lidl 83 with 6 — so without this the
+	// page budget is spent OCRing the same image a dozen times at seconds apiece.
+	// Ranking runs first so the survivor of each duplicate set is the
+	// best-named candidate, not an arbitrary one.
+	const seen = new Set<string>();
+	const unique: string[] = [];
+	for (const full of ranked) {
+		let digest: string;
+		try {
+			digest = crypto.createHash("md5").update(fs.readFileSync(full)).digest("hex");
+		} catch {
+			// Unreadable here means unreadable for OCR too; keep it and let the
+			// recognition step report the failure.
+			unique.push(full);
+			continue;
+		}
+		if (seen.has(digest)) continue;
+		seen.add(digest);
+		unique.push(full);
+	}
+
+	return unique;
 }
 
 // ---------------------------------------------------------------------------
