@@ -50,8 +50,29 @@ function isFrameRefusingHost(host: string): boolean {
 }
 
 /**
- * True when an embed cannot be rendered — either it is not a viewer at all, or
- * the host refuses framing. Delhaize is blocked wholesale regardless of host.
+ * True when an embed URL addresses a viewer's homepage rather than a specific
+ * leaflet — no path and no query, so nothing identifies a publication.
+ *
+ * Gamma recorded `https://folder.gamma.be/` because its navigation links the
+ * bare viewer homepage and that matched the same pattern as a real folder link.
+ * The page then rendered full chrome around a permanently empty iframe, while
+ * Kruidvat's deep link on the identical platform loads its leaflet fine.
+ */
+export function isBareViewerHomepage(embedUrl?: string | null): boolean {
+	if (!embedUrl) return false;
+	try {
+		const u = new URL(embedUrl);
+		const hasPath = u.pathname.replace(/\/+$/, "").length > 0;
+		return !hasPath && !u.search;
+	} catch {
+		return false;
+	}
+}
+
+/**
+ * True when an embed cannot be rendered — it is not a viewer at all, it points
+ * at a viewer homepage rather than a leaflet, or the host refuses framing.
+ * Delhaize is blocked wholesale regardless of host.
  */
 export function isEmbedBlocked(
 	embedUrl?: string | null,
@@ -60,6 +81,7 @@ export function isEmbedBlocked(
 	if (!embedUrl) return false;
 	if (retailerSlug === "delhaize") return true;
 	if (isJunkEmbedUrl(embedUrl)) return true;
+	if (isBareViewerHomepage(embedUrl)) return true;
 	try {
 		return isFrameRefusingHost(new URL(embedUrl).hostname);
 	} catch {

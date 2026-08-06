@@ -5,6 +5,10 @@
  * have valid structure, and that the site can render them.
  */
 
+import { isRecord } from "../support/folderData";
+
+// Retailers with a data/folders/<slug>.json file. maxi-zoo is a retailer without
+// a scrape, and cy.readFile on a missing file fails the test outright.
 const dealRetailers = [
 	// Shared (general)
 	{ slug: "albert-heijn", name: "Albert Heijn" },
@@ -14,7 +18,6 @@ const dealRetailers = [
 	{ slug: "aldi", name: "ALDI" },
 	{ slug: "action", name: "Action" },
 	// Pet
-	{ slug: "maxi-zoo", name: "Maxi Zoo" },
 	{ slug: "tom-co", name: "Tom&Co" },
 	{ slug: "zooplus", name: "Zooplus" },
 	{ slug: "aveve", name: "AVEVE" },
@@ -50,10 +53,6 @@ type DealsFile = {
 	deals: unknown[];
 	folders: unknown[];
 };
-
-function isRecord(v: unknown): v is Record<string, unknown> {
-	return typeof v === "object" && v !== null;
-}
 
 describe("Deals data validation", () => {
 	dealRetailers.forEach(({ slug, name }) => {
@@ -131,8 +130,8 @@ describe("Deals data validation", () => {
 				data.deals.forEach((deal: unknown, i: number) => {
 					if (!isRecord(deal)) return;
 					if (
-						deal.promoPrice !== undefined &&
-						deal.originalPrice !== undefined
+						typeof deal.promoPrice === "number" &&
+						typeof deal.originalPrice === "number"
 					) {
 						expect(
 							deal.promoPrice,

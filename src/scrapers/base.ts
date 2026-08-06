@@ -990,69 +990,209 @@ export abstract class BaseScraper {
 
 	// ---- Step 0: Cookie consent dismissal ----------------------------------
 
+	/** How long to keep looking for a consent dialog before giving up. */
+	protected static readonly CONSENT_WAIT_MS = 8000;
+
+	/**
+	 * Consent-dialog button labels, lowercased, in the order they are tried.
+	 *
+	 * Matching is case-insensitive because these are frequently uppercase in the
+	 * markup, not just via CSS — Douglas ships "ACCEPTEREN", which the previous
+	 * case-sensitive `includes("Accepteren")` could never match, so its dialog
+	 * survived every capture and the folder shipped 60 screenshots of the modal.
+	 *
+	 * Refusal comes first deliberately. Declining non-essential cookies dismisses
+	 * the dialog just as effectively as accepting, so there is no reason to opt a
+	 * scraper into tracking on the site owner's behalf. Accept variants are the
+	 * fallback for dialogs that offer no refusal at all, and a bare "ok" is last
+	 * so it cannot win over a more specific choice.
+	 */
+	protected static readonly CONSENT_TEXTS = [
+		// Refuse / essential-only.
+		"alles weigeren",
+		"alle cookies weigeren",
+		"alleen noodzakelijke",
+		"alleen noodzakelijke cookies",
+		"weigeren",
+		"alle ablehnen",
+		"ablehnen",
+		"tout refuser",
+		"refuser",
+		"reject all",
+		"only necessary",
+		"necessary only",
+		// Accept, when refusal is not offered.
+		"alles accepteren",
+		"alle cookies accepteren",
+		"alles akzeptieren",
+		"tout accepter",
+		"accept all cookies",
+		"accept all",
+		"akkoord",
+		"accepteren",
+		"akzeptieren",
+		"accepter",
+		"i accept",
+		"ok",
+	];
+
+	/**
+	 * Dismiss a cookie/consent dialog.
+	 *
+	 * Consent managers inject their dialog asynchronously, so a single pass
+	 * immediately after load usually runs before the dialog exists — which is why
+	 * this silently did nothing for Douglas, bol and ALDI. This polls until the
+	 * dialog appears, only clicks elements that are actually visible, and
+	 * verifies the dialog is gone rather than assuming the first click worked.
+	 */
 	protected async dismissCookieConsent(page: Page): Promise<void> {
-		const selectors = [
-			...(this.config.cookieSelectors || []),
-			// Generic consent button selectors (Dutch, French, English)
-			'button[id*="accept"]',
-			'button[class*="accept"]',
-			'a[id*="accept"]',
-			'[data-testid*="accept"]',
-			'button:has-text("Accepteren")',
-			'button:has-text("Alles accepteren")',
-			'button:has-text("Tout accepter")',
-			'button:has-text("Accept all")',
-			'button:has-text("Akkoord")',
-			'button:has-text("OK")',
-			"#onetrust-accept-btn-handler",
-			".cookie-accept",
-			'[class*="cookie"] button:first-of-type',
-			'[class*="consent"] button',
-			'[class*="gdpr"] button',
-		];
+		const configured = this.config.cookieSelectors || [];
+		const deadline = Date.now() + BaseScraper.CONSENT_WAIT_MS;
 
-		for (const selector of selectors) {
+		while (Date.now() < deadline) {
+			// page.evaluate can throw synchronously — a page object without it (as in
+			// the screenshot unit tests) raises TypeError before any promise exists,
+			// so `.catch()` alone would not contain it. Consent handling must never
+			// be able to fail a scrape.
+			let result: { clicked: string | null; dialogPresent?: boolean } | null;
 			try {
-				// :has-text is not standard CSS; handle with page.evaluate text matching
-				if (selector.includes(":has-text(")) {
-					const text = selector.match(/:has-text\("(.+?)"\)/)?.[1];
-					const tag = selector.split(":")[0] || "button";
-					if (text) {
-						const clicked = await page.evaluate(
-							function (tagName: string, searchText: string) {
-								const els = document.querySelectorAll(tagName);
-								for (let i = 0; i < els.length; i++) {
-									const el = els[i];
-									if (el.textContent && el.textContent.includes(searchText)) {
-										(el as HTMLElement).click();
-										return true;
-									}
+				result = await page
+					.evaluate(
+					// No inner functions: this body is serialised into the browser,
+					// where tsx's keepNames transform references a `__name` helper that
+					// does not exist, so a named inner function throws at runtime. The
+					// visibility test is therefore repeated inline.
+					function (selectors: string[], texts: string[]) {
+						// Walk the document AND every shadow root. Usercentrics — which
+						// Douglas, bol and ALDI all use — renders its dialog inside a
+						// closed-off shadow tree, so document.querySelectorAll cannot see
+						// its buttons at all and no selector list would ever have matched.
+						// Traversal is an explicit stack because a named recursive helper
+						// would hit the __name problem described above.
+						const roots: (Document | ShadowRoot)[] = [document];
+						const all: Element[] = [];
+						const configuredHits: Element[] = [];
+						for (let r = 0; r < roots.length && r < 200; r++) {
+							const scoped = roots[r].querySelectorAll("*");
+							for (let i = 0; i < scoped.length; i++) {
+								const el = scoped[i];
+								if ((el as HTMLElement).shadowRoot) {
+									roots.push((el as HTMLElement).shadowRoot as ShadowRoot);
 								}
-								return false;
-							},
-							tag,
-							text,
-						);
-						if (clicked) {
-							this.log(`Dismissed cookie consent via text: "${text}"`);
-							await page.waitForNetworkIdle({ timeout: 3000 }).catch(() => {});
-							return;
+								const tag = el.tagName;
+								const role = el.getAttribute("role");
+								if (
+									tag === "BUTTON" ||
+									tag === "A" ||
+									role === "button" ||
+									tag === "INPUT"
+								) {
+									all.push(el);
+								}
+							}
+							// Retailer-specific selectors must also be searched per root.
+							for (let s = 0; s < selectors.length; s++) {
+								const hit = roots[r].querySelector(selectors[s]);
+								if (hit) configuredHits.push(hit);
+							}
 						}
-					}
-					continue;
-				}
 
-				const el = await page.$(selector);
-				if (el) {
-					await el.click();
-					this.log(`Dismissed cookie consent via: ${selector}`);
-					await page.waitForNetworkIdle({ timeout: 3000 }).catch(() => {});
-					return;
-				}
+						const visible: Element[] = [];
+						for (let i = 0; i < all.length; i++) {
+							const style = window.getComputedStyle(all[i]);
+							if (
+								style.display === "none" ||
+								style.visibility === "hidden" ||
+								parseFloat(style.opacity || "1") === 0
+							) {
+								continue;
+							}
+							const rect = all[i].getBoundingClientRect();
+							if (rect.width > 0 && rect.height > 0) visible.push(all[i]);
+						}
+
+						// Configured selectors first — they are retailer-specific and exact.
+						for (let i = 0; i < configuredHits.length; i++) {
+							const el = configuredHits[i];
+							// A hidden match is a pre-rendered dialog that has not opened
+							// yet; clicking it does nothing and would end the search.
+							const style = window.getComputedStyle(el);
+							if (
+								style.display === "none" ||
+								style.visibility === "hidden" ||
+								parseFloat(style.opacity || "1") === 0
+							) {
+								continue;
+							}
+							const rect = el.getBoundingClientRect();
+							if (rect.width <= 0 || rect.height <= 0) continue;
+							(el as HTMLElement).click();
+							return { clicked: "selector", dialogPresent: true };
+						}
+
+						for (let ti = 0; ti < texts.length; ti++) {
+							for (let ci = 0; ci < visible.length; ci++) {
+								const el = visible[ci];
+								const label = (
+									el.textContent ||
+									(el as HTMLInputElement).value ||
+									""
+								)
+									.trim()
+									.replace(/\s+/g, " ")
+									.toLowerCase();
+								// Exact match: a bare "ok" must not fire on "cookiebeleid".
+								if (label && label === texts[ti]) {
+									(el as HTMLElement).click();
+									return { clicked: "text:" + texts[ti], dialogPresent: true };
+								}
+							}
+						}
+
+						// Nothing to click. Report whether a dialog is even present, so the
+						// caller can stop early instead of polling a page that has none.
+						// Searched across the same roots: a shadow-hosted dialog would
+						// otherwise read as absent and end the wait immediately.
+						const dialogSelector =
+							'[id*="onetrust"], [class*="cookie"], [class*="consent"], [class*="gdpr"], [id*="usercentrics"], [role="dialog"]';
+						let dialogPresent = false;
+						for (let r = 0; r < roots.length && !dialogPresent; r++) {
+							const dialog = roots[r].querySelector(dialogSelector);
+							if (!dialog) continue;
+							const style = window.getComputedStyle(dialog);
+							const rect = dialog.getBoundingClientRect();
+							dialogPresent =
+								style.display !== "none" &&
+								style.visibility !== "hidden" &&
+								rect.width > 0 &&
+								rect.height > 0;
+						}
+						return { clicked: null as string | null, dialogPresent };
+					},
+						configured,
+						BaseScraper.CONSENT_TEXTS,
+					)
+					.catch(() => null);
 			} catch {
-				// Selector didn't match, try next
+				return;
 			}
+
+			if (result?.clicked) {
+				this.log(`Dismissed cookie consent via ${result.clicked}`);
+				await page.waitForNetworkIdle({ timeout: 3000 }).catch(() => {});
+				// Some managers reopen a second layer; loop again to catch it.
+				await new Promise((r) => setTimeout(r, 500));
+				continue;
+			}
+
+			// No dialog on the page and nothing clicked: there is nothing to wait
+			// for. Keep polling only while a dialog is visible but unmatched.
+			if (result && !result.dialogPresent) return;
+
+			await new Promise((r) => setTimeout(r, 500));
 		}
+
+		this.log("Cookie dialog still present after consent handling");
 	}
 
 	// ---- Step 1: Find folder-specific link ---------------------------------
@@ -1072,15 +1212,37 @@ export abstract class BaseScraper {
 			];
 			const links = Array.from(document.querySelectorAll("a[href]"));
 
+			// A viewer's homepage matches the same pattern as a specific leaflet:
+			// `^https://folder.gamma.be/` matches both `folder.gamma.be/` and
+			// `folder.gamma.be/gamma-week-32/`. Gamma's navigation links the bare
+			// homepage, so returning the first match recorded that as the embed and
+			// the folder page rendered an empty iframe. Kruidvat only worked because
+			// its first match happened to carry a path. Prefer a deep link, and fall
+			// back to a bare origin only when nothing better exists.
+			//
+			// The path test is inlined rather than extracted into a helper: this
+			// body is serialised into the browser, where tsx's keepNames transform
+			// references a `__name` helper that does not exist there, so any named
+			// inner function throws "__name is not defined" at runtime.
 			if (patterns.length > 0) {
+				let shallowMatch: string | null = null;
 				for (let i = 0; i < links.length; i++) {
 					const link = links[i];
 					const href = (link as HTMLAnchorElement).href;
 					for (let pi = 0; pi < patterns.length; pi++) {
 						const p = patterns[pi];
-						if (new RegExp(p).test(href)) return href;
+						if (!new RegExp(p).test(href)) continue;
+						let hasPath = false;
+						try {
+							hasPath = new URL(href).pathname.replace(/\/+$/, "").length > 0;
+						} catch {
+							hasPath = false;
+						}
+						if (hasPath) return href;
+						if (!shallowMatch) shallowMatch = href;
 					}
 				}
+				if (shallowMatch) return shallowMatch;
 			}
 
 			for (let i = 0; i < links.length; i++) {
@@ -2149,20 +2311,38 @@ export abstract class BaseScraper {
 
 		try {
 			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
+			// Route through captureDedupedPage like the Issuu and Publitas paths.
+			// This branch used to call page.screenshot() directly, so it skipped
+			// blank detection, duplicate collapsing, resizing, thumbnails and the
+			// OCR-source copy — which is why Douglas shipped 60 full-size captures
+			// of the same cookie dialog while the other paths stopped at the real
+			// end of the leaflet.
+			const seenPageHashes = new Set<string>();
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				await waitForViewer();
 				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const perPageFilepath = path.join(SCREENSHOT_DIR, perPageFilename);
 				const clip = await getViewerClip();
-				if (clip) {
-					await page.screenshot({ path: perPageFilepath, clip });
-				} else {
-					await page.screenshot({ path: perPageFilepath, fullPage: true });
+				const captured = await this.captureDedupedPage(
+					page,
+					perPageFilepath,
+					clip ?? null,
+					seenPageHashes,
+				);
+
+				if (captured.status === "duplicate") {
+					this.log(`Reached end of folder at page ${i}`);
+					break;
 				}
-				genericPages.push({
-					pageNumber: i,
-					imagePath: `/screenshots/${perPageFilename}`,
-				});
+				if (captured.status === "written") {
+					genericPages.push({
+						pageNumber: genericPages.length + 1,
+						imagePath: captured.url,
+						thumbPath: captured.thumbUrl,
+					});
+				}
+				// A blank page is skipped but the viewer keeps advancing: some
+				// viewers render an empty slot mid-leaflet.
 
 				if (i >= (Number.isFinite(maxPages) ? maxPages : 12)) break;
 				const didClick = await clickNext();

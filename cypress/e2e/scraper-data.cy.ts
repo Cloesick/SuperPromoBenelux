@@ -5,6 +5,12 @@
  * and contain the required content for each retailer.
  */
 
+import { isRecord } from "../support/folderData";
+
+// Slugs with a data/folders/<slug>.json file. maxi-zoo is a retailer in
+// src/lib/retailers.ts that has never produced a scrape, so listing it here only
+// made cy.readFile fail on a missing file — it says nothing about the scraper's
+// output format, which is what this spec is for.
 const retailerSlugs = [
 	// Shared (general)
 	"albert-heijn",
@@ -14,7 +20,6 @@ const retailerSlugs = [
 	"aldi",
 	"action",
 	// Pet
-	"maxi-zoo",
 	"tom-co",
 	"zooplus",
 	"aveve",
@@ -66,10 +71,6 @@ type ScrapedFile = {
 	sourceUrls: unknown[];
 	methods: unknown[];
 };
-
-function isRecord(v: unknown): v is Record<string, unknown> {
-	return typeof v === "object" && v !== null;
-}
 
 describe("Scraped data files", () => {
 	retailerSlugs.forEach((slug) => {
@@ -215,6 +216,19 @@ describe("Scraped data files", () => {
 								`page[${j}].imageUrl not empty`,
 							).to.not.equal("");
 							expect(page.deals, `page[${j}].deals`).to.be.an("array");
+
+							// The thumbnail strip renders next/image unoptimized, so a
+							// thumbnailUrl that merely repeats imageUrl silently reinstates
+							// the full-size download it was added to avoid.
+							if (page.thumbnailUrl !== undefined) {
+								expect(page.thumbnailUrl, `page[${j}].thumbnailUrl`).to.be.a(
+									"string",
+								);
+								expect(
+									page.thumbnailUrl,
+									`page[${j}].thumbnailUrl differs from imageUrl`,
+								).to.not.equal(page.imageUrl);
+							}
 						});
 					});
 				});

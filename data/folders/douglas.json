@@ -5,45 +5,167 @@
       "id": "douglas-2026-w32-folder",
       "retailerSlug": "douglas",
       "title": "Douglas promoties",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "pageCount": 1,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 2,
       "thumbnailUrl": "/screenshots/douglas-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/douglas-2026-w32-viewerimg-p1.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/douglas-2026-w32-viewerimg-p1-thumb.webp"
+          "thumbnailUrl": "/screenshots/douglas-2026-w32-viewerimg-p1-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/douglas-2026-w32-viewerimg-p2.webp",
+          "thumbnailUrl": "/screenshots/douglas-2026-w32-viewerimg-p2-thumb.webp",
+          "deals": []
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-08-05T22:17:24.732Z"
+      "scrapedAt": "2026-08-06T17:07:22.674Z"
     }
   ],
   "deals": [
     {
       "id": "html-15",
-      "product": "Onze aanbevelingen voor jou",
-      "discount": "cadeau",
-      "imageUrl": "https://media.douglas.be/medias/JbujFT1220479-0-global.jpg?context=bWFzdGVyfGltYWdlc3w3MzI3NnxpbWFnZS9qcGVnfGFESmxMMmhsTmk4Mk5ETXdOREF3TkRVMk1qazNOQzlLWW5WcVJsUXhNakl3TkRjNVh6QmZaMnh2WW1Gc0xtcHdad3w3MzVkOGNjMTI3MDIwMmI4NzVmOTI5YjMwZmNjNWRmODNjNjVlN2M2YjdiZjNiOTQ5ZjkzNGMzZmU2NGM2ZDg5&grid=true&imPolicy=grayScaled",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
+      "product": "beauty sale",
+      "discount": "Adviesprijs*€ 52,00€ 20,99",
+      "imageUrl": "https://beauty-content.douglas.de//67c59391769095003babeb9c/zYxhAl-Beauty_sale_nieuwe_header_ROZE.png",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-24",
+      "product": "PARFUM DEALS",
+      "discount": "Adviesprijs*€ 52,00€ 20,99",
+      "imageUrl": "https://media.douglas.be/medias/GTy2Vc611129-0-global.jpg?context=bWFzdGVyfGltYWdlc3wzMzY4NHxpbWFnZS9qcGVnfGFEYzRMMmcyWVM4M09UZzRPVE01TURJek9UYzNOQzlIVkhreVZtTTJNVEV4TWpsZk1GOW5iRzlpWVd3dWFuQm58ZTdiMGFkN2M0ZTQwOTcxZjE0MjkwOTUzZTA4OWY4NWU0MzFlZWE5ZjJiNmM0ZDIyMmNiOTYyMDYxOGRlMGM5Mw&grid=true&imPolicy=grayScaled",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-682",
+      "product": "Pagina 1 van 21",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-683",
+      "product": "Pagina 2 van 21",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-684",
+      "product": "Pagina 3 van 21",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-685",
+      "product": "Pagina 4 van 21",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-686",
+      "product": "Pagina 5 van 21",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-687",
+      "product": "Pagina 6 van 21",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-688",
+      "product": "Beauty Sale – geselecteerde beauty-highlights in de aanbieding",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "douglas"
     },
     {
       "id": "html-15",
-      "product": "Wäre das etwas für dich?",
-      "discount": "cadeau",
-      "imageUrl": "https://media.douglas.be/medias/JbujFT1220479-0-global.jpg?context=bWFzdGVyfGltYWdlc3w3MzI3NnxpbWFnZS9qcGVnfGFESmxMMmhsTmk4Mk5ETXdOREF3TkRVMk1qazNOQzlLWW5WcVJsUXhNakl3TkRjNVh6QmZaMnh2WW1Gc0xtcHdad3w3MzVkOGNjMTI3MDIwMmI4NzVmOTI5YjMwZmNjNWRmODNjNjVlN2M2YjdiZjNiOTQ5ZjkzNGMzZmU2NGM2ZDg5&grid=true&imPolicy=grayScaled",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
+      "product": "DOUGLAS OUTLET",
+      "discount": "Adviesprijs*€ 146,00€ 105,00",
+      "imageUrl": "https://beauty-content.douglas.de//650c41b789b4e3003b0a5477/b8PrV4-Outlet_omslag.png",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-21",
+      "product": "Nieuw in onze outlet",
+      "discount": "Adviesprijs*€ 146,00€ 105,00",
+      "imageUrl": "https://media.douglas.be/medias/9YRv9V691031-0-global.jpg?context=bWFzdGVyfGltYWdlc3wxMzk0MzV8aW1hZ2UvanBlZ3xhR05pTDJobU1DODJPRFUxTkRZME5USTBNVGc0Tmk4NVdWSjJPVlkyT1RFd016RmZNRjluYkc5aVlXd3VhbkJufGY0NmZhZGFlOTBmYWNhZWQxNzZmNDY1N2RhMzQ2ZGFiMzUyNjUyMjZiMTUxOGRhYTJjMTA1ZmUyNDQyNzZjZGU&grid=true&imPolicy=grayScaled",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-701",
+      "product": "Pagina 1 van 13",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-702",
+      "product": "Pagina 2 van 13",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-703",
+      "product": "Pagina 3 van 13",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-704",
+      "product": "Pagina 4 van 13",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-705",
+      "product": "Pagina 5 van 13",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-706",
+      "product": "Pagina 6 van 13",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "douglas"
+    },
+    {
+      "id": "html-707",
+      "product": "Sale op parfum, make-up en meer van trending beautymerken",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
       "retailerSlug": "douglas"
     }
   ],
-  "scrapedAt": "2026-08-05T22:17:39.013Z",
+  "scrapedAt": "2026-08-06T17:07:51.645Z",
   "sourceUrls": [
-    "https://www.douglas.be/nl/c/promoties/"
+    "https://www.douglas.be/nl/c/beauty-sale/05"
   ],
   "methods": [
     "html",

@@ -13,16 +13,15 @@
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/aldi-2026-w32-viewerimg-p1.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/aldi-2026-w32-viewerimg-p1-thumb.webp"
+          "deals": []
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-08-05T21:27:09.333Z"
+      "scrapedAt": "2026-08-06T17:09:16.681Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-05T21:28:13.658Z",
+  "scrapedAt": "2026-08-06T17:09:55.566Z",
   "sourceUrls": [
     "https://www.aldi.be/nl/onze-folders/folder-van-deze-week.html",
     "https://www.aldi.be/onze-folders/folder-van-deze-week.html#content"

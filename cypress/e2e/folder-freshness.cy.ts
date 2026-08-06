@@ -9,8 +9,15 @@
  * 5. Matches the JSON data to what's rendered on the page
  */
 
+import { expectedViewer, type FolderFile } from "../support/folderData";
+
 const MAX_DATA_AGE_HOURS = 168; // 7 days
 
+// Retailers with a data/folders/<slug>.json file. maxi-zoo is intentionally
+// absent: it is a real retailer in src/lib/retailers.ts that has never been
+// scraped, and listing it here made every `cy.readFile` in this suite fail on a
+// missing file instead of reporting anything about freshness. Its page (empty
+// state, no viewer) is covered in folder-viewer.cy.ts.
 const allRetailers = [
 	// General
 	{ slug: "albert-heijn", path: "/folders/albert-heijn" },
@@ -20,7 +27,6 @@ const allRetailers = [
 	{ slug: "aldi", path: "/folders/aldi" },
 	{ slug: "action", path: "/folders/action" },
 	// Pet
-	{ slug: "maxi-zoo", path: "/pet/folders/maxi-zoo" },
 	{ slug: "tom-co", path: "/pet/folders/tom-co" },
 	{ slug: "zooplus", path: "/pet/folders/zooplus" },
 	{ slug: "aveve", path: "/pet/folders/aveve" },
@@ -47,6 +53,7 @@ const allRetailers = [
 	{ slug: "muller", path: "/beauty/folders/muller" },
 	{ slug: "rossmann", path: "/beauty/folders/rossmann" },
 	{ slug: "treac", path: "/beauty/folders/treac" },
+	{ slug: "rituals", path: "/beauty/folders/rituals" },
 	{ slug: "yves-rocher", path: "/beauty/folders/yves-rocher" },
 	{ slug: "the-body-shop", path: "/beauty/folders/the-body-shop" },
 ];
@@ -55,20 +62,7 @@ const retailerPaths = Object.fromEntries(
 	allRetailers.map((r) => [r.slug, r.path]),
 );
 
-interface FolderData {
-	retailer: string;
-	scrapedAt: string;
-	folders: {
-		id: string;
-		title: string;
-		validFrom: string;
-		validUntil: string;
-		pageCount: number;
-		pages: { pageNumber: number; imageUrl: string }[];
-		embedUrl?: string;
-		pdfUrl?: string;
-	}[];
-}
+type FolderData = FolderFile;
 
 describe("Folder freshness & rendering", () => {
 	allRetailers
@@ -122,21 +116,30 @@ describe("Folder freshness & rendering", () => {
 				it("folder page renders content (viewer or empty state)", () => {
 					cy.visit(retailerPaths[slug]);
 
+					// This used to demand an iframe from any folder carrying an
+					// embedUrl. Most embedUrls are now refused by the viewer — Publitas
+					// and ah.be send X-Frame-Options, gamma recorded a bare viewer
+					// homepage, zalando a consent bridge — so that branch failed for
+					// exactly the retailers whose embed is broken. Ask instead for the
+					// viewer the data actually calls for.
 					const latestFolder = data.folders[0];
-					const hasPages = latestFolder?.pages?.length > 0;
-					const hasEmbed =
-						!!latestFolder?.embedUrl &&
-						latestFolder.embedUrl.startsWith("http");
 
-					if (hasPages) {
-						// Should render page images or thumbnails
-						cy.get("img").should("have.length.at.least", 1);
-					} else if (hasEmbed) {
-						// Should render an iframe embed
-						cy.get("iframe").should("have.length.at.least", 1);
-					} else {
-						// Should show the "no folder" amber state or PDF link
-						cy.get("body").should("exist");
+					switch (expectedViewer(latestFolder, slug)) {
+						case "pages":
+							cy.contains("Pagina 1 van").should("be.visible");
+							break;
+						case "embed":
+						case "pdf":
+							cy.get('iframe[title*="folder"]').should(
+								"have.length.at.least",
+								1,
+							);
+							break;
+						default:
+							// Nothing framable: the viewer must admit it rather than wrap
+							// its chrome around an empty box.
+							cy.contains("binnenkort").should("be.visible");
+							cy.get('iframe[title*="folder"]').should("not.exist");
 					}
 				});
 
