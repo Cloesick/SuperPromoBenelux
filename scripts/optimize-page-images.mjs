@@ -66,6 +66,37 @@ function referencedImages() {
 
 const mb = (bytes) => (bytes / 1024 / 1024).toFixed(1);
 
+/** Absolute path under public/ back to the site-relative URL folder data uses. */
+const toUrl = (abs) => "/" + path.relative(publicDir, abs).split(path.sep).join("/");
+
+/** Old URL -> new URL, for images whose extension changed during re-encoding. */
+const renames = new Map();
+
+/**
+ * Point folder data at the renamed files.
+ *
+ * Re-encoding a JPEG to WebP changes the filename, and a folder JSON still
+ * naming the old one would render a 404 behind full viewer chrome — the exact
+ * silent failure this pipeline is built to avoid.
+ */
+function applyRenames() {
+	if (renames.size === 0) return 0;
+	const foldersDir = path.join(root, "data", "folders");
+	let touched = 0;
+
+	for (const file of fs.readdirSync(foldersDir).filter((f) => f.endsWith(".json"))) {
+		const full = path.join(foldersDir, file);
+		const before = fs.readFileSync(full, "utf-8");
+		let after = before;
+		for (const [from, to] of renames) after = after.split(`"${from}"`).join(`"${to}"`);
+		if (after !== before) {
+			fs.writeFileSync(full, after);
+			touched++;
+		}
+	}
+	return touched;
+}
+
 async function main() {
 	const files = referencedImages();
 	if (files.length === 0) {
@@ -99,7 +130,12 @@ async function main() {
 			continue;
 		}
 
-		if (!meta.width || meta.width <= PAGE_IMAGE_WIDTH) {
+		// Being narrow enough is not the same as being encoded efficiently. This
+		// guard used to skip on width alone, which left ALDI's 34 iPaper pages as
+		// raw 1029px JPEGs at ~590 KB each — 16 MB, more than every other retailer
+		// combined — because they were already under the width target. Only a file
+		// that is *both* WebP and small enough has nothing left to gain.
+		if (!meta.width || (meta.format === "webp" && meta.width <= PAGE_IMAGE_WIDTH)) {
 			after += size;
 			skipped++;
 			continue;
@@ -127,7 +163,14 @@ async function main() {
 
 			// Never make a page heavier than it already was.
 			if (out.length > 0 && out.length < size) {
-				fs.writeFileSync(file, out);
+				// The bytes are WebP now, so the filename has to say so — serving
+				// WebP from a .jpg path gets the Content-Type wrong.
+				const target = file.replace(/\.[a-z0-9]+$/i, ".webp");
+				fs.writeFileSync(target, out);
+				if (target !== file) {
+					renames.set(toUrl(file), toUrl(target));
+					fs.unlinkSync(file);
+				}
 				after += out.length;
 				resized++;
 			} else {
@@ -148,6 +191,12 @@ async function main() {
 	);
 	if (preserved > 0) {
 		console.log(`Preserved ${preserved} full-resolution original(s) to data/ocr-src/.`);
+	}
+	if (!dryRun && renames.size > 0) {
+		const touched = applyRenames();
+		console.log(
+			`Re-encoded ${renames.size} image(s) to WebP; updated ${touched} folder JSON file(s).`,
+		);
 	}
 	if (dryRun) {
 		console.log(`Current total: ${mb(before)} MB (run without --dry-run to shrink).`);

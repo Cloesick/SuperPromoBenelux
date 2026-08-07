@@ -2146,6 +2146,9 @@ export abstract class BaseScraper {
 
 				const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 				const max = Number.isFinite(maxPages) ? maxPages : 12;
+				// iPaper numbers pages past the end of the leaflet and keeps serving
+				// bytes, so dedupe here as every other capture path does.
+				const seenHashes = new Set<string>();
 				for (let i = 1; i <= max; i++) {
 					const url = `${base}${i}${suffix}${query}`;
 					const controller = new AbortController();
@@ -2160,12 +2163,15 @@ export abstract class BaseScraper {
 						const buf = Buffer.from(await resp.arrayBuffer());
 						if (buf.length < 1000) break;
 
-						const filename = `${this.generateFolderId("viewerimg-p" + i)}.jpg`;
+						const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 						const filepath = path.join(SCREENSHOT_DIR, filename);
-						fs.writeFileSync(filepath, buf);
+						const stored = await this.storeCapturedPage(buf, filepath, seenHashes);
+						if (stored.status === "duplicate") break;
+						if (stored.status !== "written" || !stored.url) continue;
 						pages.push({
-							pageNumber: i,
-							imagePath: `/screenshots/${filename}`,
+							pageNumber: pages.length + 1,
+							imagePath: stored.url,
+							thumbPath: stored.thumbUrl,
 						});
 					} catch {
 						break;
@@ -2893,6 +2899,15 @@ export abstract class BaseScraper {
 	 * Returns the original bytes on any failure — a broken optimiser must never
 	 * cost a page.
 	 */
+	/** WebP magic: "RIFF" .... "WEBP". */
+	protected static isWebp(bytes: Buffer): boolean {
+		return (
+			bytes.length >= 12 &&
+			bytes.toString("ascii", 0, 4) === "RIFF" &&
+			bytes.toString("ascii", 8, 12) === "WEBP"
+		);
+	}
+
 	protected async optimizePageImage(bytes: Buffer): Promise<Buffer> {
 		try {
 			const sharp = (await import("sharp")).default;
@@ -2977,7 +2992,34 @@ export abstract class BaseScraper {
 			return { status: "blank" };
 		}
 
+		return this.storeCapturedPage(raw, filepath, seenHashes);
+	}
+
+	/**
+	 * Optimise, deduplicate and store one page image that has already been
+	 * obtained, whatever produced it.
+	 *
+	 * Split out of captureDedupedPage because not every page comes from a
+	 * screenshot: iPaper serves its page JPEGs over plain HTTP, and that path
+	 * used to write the fetched bytes straight to disk. It therefore skipped
+	 * resizing, WebP encoding, thumbnails and the OCR original — ALDI shipped 34
+	 * pages at ~590 KB each, 16 MB for one folder, more than every other retailer
+	 * combined. Anything holding page bytes goes through here now.
+	 */
+	protected async storeCapturedPage(
+		raw: Buffer,
+		requestedPath: string,
+		seenHashes: Set<string>,
+	): Promise<CaptureResult> {
 		const bytes = await this.optimizePageImage(raw);
+
+		// optimizePageImage returns the input untouched when encoding fails or
+		// would grow the file, so the caller's extension is a request, not a fact.
+		// Serving JPEG bytes as .webp gets the Content-Type wrong; name the file
+		// after what it actually contains.
+		const filepath = BaseScraper.isWebp(bytes)
+			? requestedPath.replace(/\.[a-z0-9]+$/i, ".webp")
+			: requestedPath;
 
 		// Detect a repeated page perceptually rather than byte-for-byte. Viewers
 		// re-render the same spread with sub-pixel differences, and pages with
