@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getRetailersForVertical, getRetailerBySlug } from "@/lib/retailers";
 import { getCurrentFolder } from "@/lib/folders";
+import { hasUsableEmbed, hasUsablePdf } from "@/lib/folderRenderability";
 import { FolderViewer } from "@/components/FolderViewer";
 import {
 	JsonLd,
@@ -32,16 +33,52 @@ export async function generateMetadata({
 	const retailer = getRetailerBySlug(slug);
 	if (!retailer) return {};
 
+	const folder = getCurrentFolder(slug);
+	const cover = folder?.pages?.[0]?.imageUrl;
+	const renderable =
+		hasUsableEmbed(folder?.embedUrl, slug) ||
+		hasUsablePdf(folder?.pdfUrl) ||
+		(folder?.pages?.length ?? 0) >= 2;
+
+	// The validity range is what makes this page specific rather than an
+	// evergreen "folder deze week" that reads identically all year.
+	const validity =
+		folder?.validFrom && folder?.validUntil
+			? ` (${folder.validFrom} t/m ${folder.validUntil})`
+			: "";
+	const description = folder
+		? `Bekijk de ${retailer.name} folder van deze week${validity} en ontdek alle promoties. ${retailer.description}`
+		: retailer.description;
+
 	return {
 		title: `${retailer.name} folder deze week`,
-		description: retailer.description,
+		description,
 		alternates: {
 			canonical: `/folders/${slug}`,
 		},
+		// Keep the sitemap and the page itself telling the same story. The sitemap
+		// already omits folders that render nothing; without this, those pages stay
+		// indexable through internal links and Google gets exactly the thin content
+		// the sitemap was filtered to avoid.
+		...(renderable ? {} : { robots: { index: false, follow: true } }),
 		openGraph: {
 			title: `${retailer.name} folder deze week | SuperPromo België`,
-			description: retailer.description,
+			description,
+			type: "article",
+			locale: "nl_BE",
+			...(folder?.scrapedAt ? { modifiedTime: folder.scrapedAt } : {}),
+			...(cover ? { images: [{ url: cover, alt: `${retailer.name} folder` }] } : {}),
 		},
+		...(cover
+			? {
+					twitter: {
+						card: "summary_large_image" as const,
+						title: `${retailer.name} folder deze week`,
+						description,
+						images: [cover],
+					},
+				}
+			: {}),
 	};
 }
 
@@ -106,12 +143,14 @@ export default async function RetailerPage({ params }: PageProps) {
 	return (
 		<div className="max-w-6xl mx-auto px-4 py-12">
 			<JsonLd
-				data={createRetailerFolderJsonLd(
-					retailer.name,
-					slug,
-					currentFolder?.validFrom,
-					currentFolder?.validUntil,
-				)}
+				data={createRetailerFolderJsonLd(retailer.name, slug, {
+					validFrom: currentFolder?.validFrom,
+					validUntil: currentFolder?.validUntil,
+					scrapedAt: currentFolder?.scrapedAt,
+					coverImageUrl: currentFolder?.pages?.[0]?.imageUrl,
+					pageCount: currentFolder?.pages?.length,
+					retailerWebsite: retailer.website,
+				})}
 			/>
 			<JsonLd data={createFAQJsonLd(faqItems)} />
 			<JsonLd

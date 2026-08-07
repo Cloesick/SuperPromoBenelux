@@ -113,9 +113,9 @@ describe("BaseScraper.takeScreenshots", () => {
 			"https://e.issuu.com/embed.html?u=x&d=y&pageNumber=1",
 		);
 
-		// Three distinct pages, then repeats until MAX_CONSECUTIVE_DUPLICATES.
+		// Three distinct pages, then repeats until MAX_CONSECUTIVE_DUPLICATES (6).
 		expect(result.pages).toHaveLength(3);
-		expect(screenshot).toHaveBeenCalledTimes(6);
+		expect(screenshot).toHaveBeenCalledTimes(9);
 		// Longer timeout than the 5s default: every capture runs three sharp
 		// operations that reject these non-image buffers, and this case now makes
 		// six of them before the duplicate run ends the loop.

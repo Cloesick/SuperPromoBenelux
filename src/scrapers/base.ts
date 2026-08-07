@@ -2792,9 +2792,14 @@ export abstract class BaseScraper {
 	 * One repeat is normal: Publitas and Issuu render two-page spreads, so
 	 * /page/2 and /page/3 are the same image by design. Treating the first
 	 * repeat as the end truncated albert-heijn to 2 captures of an 18-page
-	 * leaflet. Three in a row is not a spread.
+	 * leaflet.
+	 *
+	 * Six rather than three: a viewer that has not finished rendering repeats the
+	 * previous frame, and those stalls come in runs. At three, Colruyt stopped at
+	 * page 15 and lost three real spreads. Overshooting costs a few captures that
+	 * duplicate detection discards anyway; stopping early loses leaflet pages.
 	 */
-	protected static readonly MAX_CONSECUTIVE_DUPLICATES = 3;
+	protected static readonly MAX_CONSECUTIVE_DUPLICATES = 6;
 
 	/**
 	 * How many of the 64 fingerprint bits may differ before two captures are
