@@ -11,6 +11,7 @@ import {
 	ChevronRight,
 	Calendar,
 	FileText,
+	ExternalLink,
 	Maximize2,
 } from "lucide-react";
 import { Folder, Retailer } from "@/lib/types";
@@ -635,11 +636,67 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 						</a>
 					)}
 				</div>
-			) : (
-				<div className="bg-gray-50 border border-gray-200 rounded-xl p-12 text-center">
-					<p className="text-gray-500">
-						De folderpagina&apos;s worden binnenkort geladen.
+			) : folder.embedUrl || folder.pdfUrl ? (
+				/*
+				 * A folder exists but nothing in it can be shown here: the viewer
+				 * refuses to be framed, or the PDF is served as a download. Saying
+				 * "worden binnenkort geladen" was untrue — nothing is loading and
+				 * nothing will. Point the visitor at the real leaflet instead, which
+				 * is the useful thing we can actually offer.
+				 */
+				<div className="bg-gray-50 border border-gray-200 rounded-xl p-8 sm:p-12 text-center">
+					<p className="text-gray-700 font-medium mb-2">
+						Deze folder kunnen we hier niet tonen
 					</p>
+					<p className="text-gray-500 text-sm mb-4">
+						{retailer.name} publiceert de folder in een viewer die niet op andere
+						sites getoond mag worden. Je kan hem wel rechtstreeks bekijken.
+					</p>
+					<div className="flex flex-wrap items-center justify-center gap-3">
+						{folder.embedUrl && (
+							<a
+								href={folder.embedUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 transition"
+							>
+								<ExternalLink className="w-4 h-4" suppressHydrationWarning />
+								Open de folder van {retailer.name}
+							</a>
+						)}
+						{folder.pdfUrl && (
+							<a
+								href={folder.pdfUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+							>
+								<FileText className="w-4 h-4" suppressHydrationWarning />
+								Download de PDF
+							</a>
+						)}
+					</div>
+				</div>
+			) : (
+				<div className="bg-gray-50 border border-gray-200 rounded-xl p-8 sm:p-12 text-center">
+					<p className="text-gray-700 font-medium mb-2">
+						Nog geen folder beschikbaar
+					</p>
+					<p className="text-gray-500 text-sm mb-4">
+						We controleren elke dag of {retailer.name} een nieuwe folder heeft
+						gepubliceerd. Zodra die er is, staat hij hier.
+					</p>
+					{retailer.website && (
+						<a
+							href={retailer.website}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+						>
+							<ExternalLink className="w-4 h-4" suppressHydrationWarning />
+							Bekijk de website van {retailer.name}
+						</a>
+					)}
 				</div>
 			)}
 

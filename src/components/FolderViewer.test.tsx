@@ -260,7 +260,7 @@ describe("FolderViewer fallback scenarios", () => {
 		expect(document.querySelector("iframe")).toBeNull();
 	});
 
-	it("shows loading placeholder when no pages, no embed, not expired", () => {
+	it("says no folder is available yet when there is nothing at all", () => {
 		const futureDate = new Date(Date.now() + 7 * 24 * 3_600_000);
 		const dateStr = futureDate.toISOString().split("T")[0];
 		const folder = makeFolder({
@@ -271,9 +271,39 @@ describe("FolderViewer fallback scenarios", () => {
 
 		render(<FolderViewer folder={folder} retailer={baseRetailer} />);
 
+		// The old copy claimed the pages "worden binnenkort geladen" — nothing was
+		// loading and nothing would. With no embed and no PDF there is genuinely
+		// no folder yet, and the notice says so.
+		expect(screen.getByText(/nog geen folder beschikbaar/i)).toBeInTheDocument();
 		expect(
-			screen.getByText(/folderpagina.s worden binnenkort geladen/i),
+			screen.queryByText(/binnenkort geladen/i),
+		).not.toBeInTheDocument();
+	});
+
+	it("offers the real leaflet when the folder cannot be framed here", () => {
+		// albert-heijn's embed is a Publitas URL the viewer refuses to frame and
+		// its PDF is attachment-disposition, so nothing renders inline. Telling
+		// the visitor it is loading was untrue; linking the actual leaflet is the
+		// useful thing we can offer.
+		const folder = makeFolder({
+			pages: [],
+			pageCount: 0,
+			validUntil: "2999-01-01",
+			embedUrl: "https://view.publitas.com/ah/bonus/page/1",
+			pdfUrl: "https://s3.example.com/ah.pdf?response-content-disposition=attachment",
+		});
+
+		render(<FolderViewer folder={folder} retailer={baseRetailer} />);
+
+		expect(
+			screen.getByText(/kunnen we hier niet tonen/i),
 		).toBeInTheDocument();
+		const openLink = screen.getByRole("link", { name: /open de folder/i });
+		expect(openLink).toHaveAttribute(
+			"href",
+			"https://view.publitas.com/ah/bonus/page/1",
+		);
+		expect(screen.queryByText(/binnenkort geladen/i)).not.toBeInTheDocument();
 	});
 });
 
@@ -306,7 +336,7 @@ describe("FolderViewer — silent failure modes", () => {
 		await waitFor(() => {
 			expect(screen.queryByText(/Pagina 1 van 2/)).not.toBeInTheDocument();
 		});
-		expect(screen.getByText(/worden binnenkort geladen/i)).toBeInTheDocument();
+		expect(screen.getByText(/nog geen folder beschikbaar/i)).toBeInTheDocument();
 	});
 
 	it("prefers a working embed over pages whose images all failed", async () => {

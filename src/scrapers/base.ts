@@ -23,6 +23,10 @@ import { normalizeSchemaImage } from "../lib/schemaImage";
 import { isNavigationNoise } from "../lib/htmlNoise";
 import { parsePriceElementText, sanitizeDeals } from "../lib/dealValidation";
 import { looksLikeBotChallenge } from "./botChallenge";
+import {
+	isEmbedBlocked,
+	isPdfForcedDownload,
+} from "../lib/folderRenderability";
 import { extractDealsFromPdf } from "./extractDealsFromText";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
@@ -448,15 +452,47 @@ export abstract class BaseScraper {
 
 				// Step 3a: If the embed exists but is not embeddable (X-Frame-Options/CSP),
 				//          generate renderable pages[] so the frontend does not show a broken iframe.
+				// Capture pages whenever the frontend would otherwise render nothing.
+				//
+				// This used to ask only "does the embed send X-Frame-Options?", which
+				// left two holes. Publitas passed the header check while
+				// folderRenderability blocks the host outright, so albert-heijn
+				// captured no pages and its folder page showed a placeholder over a
+				// perfectly good leaflet. And a retailer with a PDF but no embed never
+				// entered this branch at all — lidl publishes only a PDF, so it had
+				// nothing to show either.
+				//
+				// The question is now the one that matters: after every rule the
+				// viewer applies, is there anything left to display? The blocklist is
+				// the same module the viewer and sitemap use, so the three cannot
+				// drift apart again.
 				let screenshots: ScreenshotResult | null = null;
 				let embedNotEmbeddable = false;
-				if (embed?.url) {
-					const embeddable = await this.isEmbeddableViewerUrl(embed.url);
-					if (!embeddable) {
-						embedNotEmbeddable = true;
-						const candidateUrl = pdf?.url || embed.url;
+
+				const embedBlockedByApp =
+					!!embed?.url && isEmbedBlocked(embed.url, this.retailerSlug);
+				const embedFramable =
+					!!embed?.url &&
+					!embedBlockedByApp &&
+					(await this.isEmbeddableViewerUrl(embed.url));
+				const pdfFramable = !!pdf?.url && !isPdfForcedDownload(pdf.url);
+
+				if (!embedFramable && !pdfFramable) {
+					embedNotEmbeddable = !!embed?.url;
+					// A PDF renders into cleaner pages than a viewer capture, which also
+					// picks up surrounding site chrome — but only if the browser will
+					// display it. albert-heijn's PDF is attachment-disposition, so
+					// pointing the capture at it downloaded a file and produced nothing,
+					// while its Publitas viewer screenshots exactly as Action's and
+					// Delhaize's do. Prefer a displayable PDF, then the viewer, and fall
+					// back to the PDF only when there is no viewer at all.
+					const displayablePdf = pdf?.url && !isPdfForcedDownload(pdf.url);
+					const candidateUrl = displayablePdf
+						? pdf!.url
+						: (embed?.url ?? pdf?.url);
+					if (candidateUrl) {
 						this.log(
-							`Embed is not embeddable; falling back to screenshots from ${candidateUrl}`,
+							`Nothing framable for the viewer; capturing pages from ${candidateUrl.slice(0, 90)}`,
 						);
 						try {
 							screenshots = await this.takeScreenshots(ctx, candidateUrl);
@@ -2260,6 +2296,7 @@ export abstract class BaseScraper {
 			const baseUrl = overrideUrl ?? page.url();
 			const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 			const seenPageHashes = new Set<string>();
+				let consecutiveDuplicates = 0;
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				let u: URL;
@@ -2304,9 +2341,17 @@ export abstract class BaseScraper {
 					seenPageHashes,
 				);
 				if (captured.status === "duplicate") {
-					this.log(`Reached end of folder at page ${i}`);
-					break;
+					// A single repeat does not mean the end. Publitas and Issuu serve
+					// two-page spreads, so /page/2 and /page/3 render the same image by
+					// design — albert-heijn stopped after 2 captures of an 18-page
+					// leaflet. Only a run of repeats means the viewer has clamped.
+					if (++consecutiveDuplicates >= BaseScraper.MAX_CONSECUTIVE_DUPLICATES) {
+						this.log(`Reached end of folder at page ${i}`);
+						break;
+					}
+					continue;
 				}
+				consecutiveDuplicates = 0;
 				// A blank page is skipped entirely: recording it would point the
 				// folder at a file that was never written.
 				if (captured.status === "blank") continue;
@@ -2328,6 +2373,7 @@ export abstract class BaseScraper {
 			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
 			const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 			const seenPageHashes = new Set<string>();
+				let consecutiveDuplicates = 0;
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				let u: URL;
@@ -2376,9 +2422,17 @@ export abstract class BaseScraper {
 					seenPageHashes,
 				);
 				if (captured.status === "duplicate") {
-					this.log(`Reached end of folder at page ${i}`);
-					break;
+					// A single repeat does not mean the end. Publitas and Issuu serve
+					// two-page spreads, so /page/2 and /page/3 render the same image by
+					// design — albert-heijn stopped after 2 captures of an 18-page
+					// leaflet. Only a run of repeats means the viewer has clamped.
+					if (++consecutiveDuplicates >= BaseScraper.MAX_CONSECUTIVE_DUPLICATES) {
+						this.log(`Reached end of folder at page ${i}`);
+						break;
+					}
+					continue;
 				}
+				consecutiveDuplicates = 0;
 				// A blank page is skipped entirely: recording it would point the
 				// folder at a file that was never written.
 				if (captured.status === "blank") continue;
@@ -2477,6 +2531,7 @@ export abstract class BaseScraper {
 			// of the same cookie dialog while the other paths stopped at the real
 			// end of the leaflet.
 			const seenPageHashes = new Set<string>();
+				let consecutiveDuplicates = 0;
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				await waitForViewer();
 				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
@@ -2490,9 +2545,19 @@ export abstract class BaseScraper {
 				);
 
 				if (captured.status === "duplicate") {
-					this.log(`Reached end of folder at page ${i}`);
-					break;
+					// A single repeat does not mean the end — viewers serve two-page
+					// spreads, so consecutive positions render the same image by design.
+					// Unlike the URL-driven loops above this one must NOT `continue`:
+					// advancing happens via clickNext() at the bottom, so skipping it
+					// would leave the viewer parked and every later capture identical.
+					if (++consecutiveDuplicates >= BaseScraper.MAX_CONSECUTIVE_DUPLICATES) {
+						this.log(`Reached end of folder at page ${i}`);
+						break;
+					}
+				} else {
+					consecutiveDuplicates = 0;
 				}
+
 				if (captured.status === "written") {
 					genericPages.push({
 						pageNumber: genericPages.length + 1,
@@ -2695,9 +2760,8 @@ export abstract class BaseScraper {
 	}
 
 	protected generateFolderId(suffix: string): string {
-		const now = new Date();
-		const week = this.getWeekNumber(now);
-		return `${this.retailerSlug}-${now.getFullYear()}-w${week}-${suffix}`;
+		const { year, week } = this.getIsoWeek(new Date());
+		return `${this.retailerSlug}-${year}-w${week}-${suffix}`;
 	}
 
 	/** Below this mean per-channel standard deviation an image carries no content. */
@@ -2721,6 +2785,16 @@ export abstract class BaseScraper {
 
 	/** WebP quality for thumbnails — they are never seen above 64px wide. */
 	protected static readonly THUMB_IMAGE_QUALITY = 65;
+
+	/**
+	 * Consecutive repeated captures that mean the viewer has stopped advancing.
+	 *
+	 * One repeat is normal: Publitas and Issuu render two-page spreads, so
+	 * /page/2 and /page/3 are the same image by design. Treating the first
+	 * repeat as the end truncated albert-heijn to 2 captures of an 18-page
+	 * leaflet. Three in a row is not a spread.
+	 */
+	protected static readonly MAX_CONSECUTIVE_DUPLICATES = 3;
 
 	/**
 	 * How many of the 64 fingerprint bits may differ before two captures are
@@ -2973,8 +3047,9 @@ export abstract class BaseScraper {
 	 * Week tag used in screenshot filenames, e.g. "2026-w32".
 	 * Mirrors generateFolderId() so OCR can locate this week's leaflet images.
 	 */
-	protected currentWeekTag(date: Date = new Date()): string {
-		return `${date.getFullYear()}-w${this.getWeekNumber(date)}`;
+	public currentWeekTag(date: Date = new Date()): string {
+		const { year, week } = this.getIsoWeek(date);
+		return `${year}-w${week}`;
 	}
 
 	/**
@@ -3002,13 +3077,37 @@ export abstract class BaseScraper {
 	}
 
 	protected getWeekNumber(date: Date): number {
+		return this.getIsoWeek(date).week;
+	}
+
+	/**
+	 * ISO-8601 week number together with the year that week belongs to.
+	 *
+	 * The two must travel together. Pairing an ISO week with the calendar year
+	 * mislabels every week that straddles New Year, in both directions:
+	 *
+	 *   2026-12-28 (Mon) -> ISO 2026-W53, calendar year 2026  ->  "2026-w53"
+	 *   2027-01-01 (Fri) -> ISO 2026-W53, calendar year 2027  ->  "2027-w53"
+	 *
+	 * One leaflet week, two different file prefixes: the scrape would abandon
+	 * Monday's captures mid-week and start a fresh set. Worse in the other
+	 * direction — 2025-12-29 is ISO 2026-W01 but produced "2025-w1", colliding
+	 * with the images from the first week of January 2025 and letting a
+	 * year-old capture be picked up as the current week's leaflet.
+	 */
+	public getIsoWeek(date: Date): { year: number; week: number } {
 		const d = new Date(
 			Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
 		);
 		const dayNum = d.getUTCDay() || 7;
+		// Shift to the Thursday of this week: ISO defines the week's year by it.
 		d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-		const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-		return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+		const year = d.getUTCFullYear();
+		const yearStart = new Date(Date.UTC(year, 0, 1));
+		const week = Math.ceil(
+			((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7,
+		);
+		return { year, week };
 	}
 
 	protected getCurrentWeekDates(): { from: string; until: string } {

@@ -88,10 +88,12 @@ describe("BaseScraper.takeScreenshots", () => {
 		expect(screenshot).toHaveBeenCalledTimes(3);
 	});
 
-	it("stops capturing once the viewer repeats a page", async () => {
-		// Viewers clamp navigation past the final page and re-render the last
-		// one. Three distinct pages then a repeat means the folder has 3 pages,
-		// however high the ceiling is set.
+	it("stops capturing after a run of repeats, not the first one", async () => {
+		// Viewers clamp navigation past the final page and re-render the last one,
+		// so a run of repeats means the folder has ended. A *single* repeat does
+		// not: Publitas and Issuu serve two-page spreads, where consecutive
+		// positions render the same image by design. Treating the first repeat as
+		// the end truncated albert-heijn to 2 captures of an 18-page leaflet.
 		const goto = vi.fn(async () => undefined);
 		let shot = 0;
 		const screenshot = vi.fn(async () => {
@@ -111,9 +113,13 @@ describe("BaseScraper.takeScreenshots", () => {
 			"https://e.issuu.com/embed.html?u=x&d=y&pageNumber=1",
 		);
 
+		// Three distinct pages, then repeats until MAX_CONSECUTIVE_DUPLICATES.
 		expect(result.pages).toHaveLength(3);
-		expect(screenshot).toHaveBeenCalledTimes(4);
-	});
+		expect(screenshot).toHaveBeenCalledTimes(6);
+		// Longer timeout than the 5s default: every capture runs three sharp
+		// operations that reject these non-image buffers, and this case now makes
+		// six of them before the duplicate run ends the loop.
+	}, 20_000);
 
 	it("iterates Publitas /page/<n> when overrideUrl is a publitas viewer", async () => {
 		const goto = vi.fn(async () => undefined);
