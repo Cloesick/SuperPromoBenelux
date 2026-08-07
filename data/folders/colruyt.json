@@ -13,90 +13,99 @@
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p1.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p1-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p1-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 2,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p2.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p2-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p2-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 3,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p4.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p4-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p4-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 4,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p6.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p6-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p6-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 5,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p8.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p8-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p8-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 6,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p10.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p10-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p10-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 7,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p12.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p12-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p12-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 8,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p16.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p16-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p16-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 9,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p18.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p18-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p18-thumb.webp",
+          "deals": []
         },
         {
           "pageNumber": 10,
           "imageUrl": "/screenshots/colruyt-2026-w32-viewerimg-p20.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p20-thumb.webp"
+          "thumbnailUrl": "/screenshots/colruyt-2026-w32-viewerimg-p20-thumb.webp",
+          "deals": []
         }
       ],
       "contentSource": "issuu",
-      "scrapedAt": "2026-08-06T00:58:03.364Z"
+      "scrapedAt": "2026-08-07T04:13:38.551Z"
     }
   ],
   "deals": [
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p2-0",
-      "product": "d'Aix-en-Provence",
-      "promoPrice": 5.89,
+      "product": "flessen",
+      "promoPrice": 4.49,
+      "originalPrice": 5.98,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p2-1",
-      "product": "Groene",
-      "promoPrice": 2.59,
+      "product": "Filliers chocoladejenever 70d",
+      "promoPrice": 14.99,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p2-2",
-      "product": "identieke",
-      "promoPrice": 40.75,
-      "originalPrice": 56.94,
+      "product": "Kentucky Bourbon Whiskey d",
+      "promoPrice": 25.99,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p2-3",
+      "product": "Jimmy's gof g",
+      "promoPrice": 2.57,
+      "originalPrice": 2.96,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
@@ -151,33 +160,56 @@
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-1",
-      "product": "Stel Artois vol ik in",
-      "promoPrice": 19.33,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-2",
-      "product": "|vanaf blikken",
+      "product": "verpakkingen",
       "promoPrice": 16.79,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-3",
-      "product": "Pacha Instant oploschicorei",
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-2",
+      "product": "bokalen",
       "promoPrice": 9.08,
-      "originalPrice": 42.4,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-3",
+      "product": "Acatenango Guatemala g gemalen koffie",
+      "promoPrice": 30.37,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-4",
-      "product": "blikken",
-      "promoPrice": 30.57,
+      "product": "Nescafé Dolce Gusto",
+      "promoPrice": 5.39,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-5",
+      "product": "schaadt",
+      "promoPrice": 3.09,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-6",
+      "product": "tuis verpakkingen",
+      "promoPrice": 5.93,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p4-7",
+      "product": "verpakkingen",
+      "promoPrice": 14.85,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
@@ -199,17 +231,17 @@
       "retailerSlug": "colruyt"
     },
     {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p5-2",
-      "product": "verpakkingen",
-      "promoPrice": 16.79,
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p5-3",
+      "product": "biken verpakkingen",
+      "promoPrice": 18.36,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p5-3",
-      "product": "biken verpakkingen",
-      "promoPrice": 18.36,
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p5-4",
+      "product": "Pacha Instant oploschicorei",
+      "promoPrice": 9.08,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
@@ -240,7 +272,7 @@
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-0",
-      "product": "Pampers alle Pants Baby Dry",
+      "product": "alle Pants Baby Dry",
       "promoPrice": 0.39,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
@@ -248,9 +280,8 @@
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-1",
-      "product": "koude ude sauzen sau",
-      "promoPrice": 1.17,
-      "originalPrice": 5.09,
+      "product": "230g",
+      "promoPrice": 1.69,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
@@ -258,65 +289,7 @@
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-2",
       "product": "bokalen",
-      "promoPrice": 5.09,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-3",
-      "product": "Me eieren",
       "promoPrice": 5.98,
-      "originalPrice": 8.97,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-4",
-      "product": "Boni selection Verdure gegrilde alla g",
-      "promoPrice": 2.87,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-5",
-      "product": "Amora alle mosterd Met",
-      "promoPrice": 5.54,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-6",
-      "product": "70e verpakkingen",
-      "promoPrice": 3.74,
-      "originalPrice": 4.98,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-7",
-      "product": "bokalen",
-      "promoPrice": 13.17,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-8",
-      "product": "Supreme Mature Cheddar",
-      "promoPrice": 4.95,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p6-9",
-      "product": "Gold Mousse Konijn",
-      "promoPrice": 30.38,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
@@ -331,9 +304,8 @@
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p8-0",
-      "product": "verpakkingen",
-      "promoPrice": 4.19,
-      "originalPrice": 5.58,
+      "product": "Wor, verpakkingen en pre",
+      "promoPrice": 4.2,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
@@ -373,56 +345,65 @@
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p10-0",
-      "product": "15Lof25L dl",
-      "promoPrice": 16.83,
+      "product": "Herkomst: Belgie",
+      "promoPrice": 2.69,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p10-1",
-      "product": "gedroogde vruchten 300g",
-      "promoPrice": 5.6,
+      "product": "Boni Selection",
+      "promoPrice": 1.39,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p10-2",
-      "product": "verpakkingen keuze",
-      "promoPrice": 6.78,
+      "product": "voledig assortiment vb",
+      "promoPrice": 10.13,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p10-3",
-      "product": "oni Select selection",
-      "promoPrice": 5.1,
+      "product": "verpakkingen",
+      "promoPrice": 16.83,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p10-4",
-      "product": "Dr. Oekter GO!",
-      "promoPrice": 1.19,
+      "product": "naar keuze",
+      "promoPrice": 32.9,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p10-5",
-      "product": "verpakking",
-      "promoPrice": 3.84,
+      "product": "Yoplait Skyr ode vruchten-blauwe bessen",
+      "promoPrice": 5.4,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p10-6",
-      "product": "producten",
-      "promoPrice": 10.54,
+      "product": "capsules septische putten",
+      "promoPrice": 15.74,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "colruyt"
+    },
+    {
+      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p10-7",
+      "product": "verpakkingen",
+      "promoPrice": 10.78,
+      "originalPrice": 16.58,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
@@ -485,42 +466,25 @@
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p12-0",
-      "product": "Platinum Plus Bries",
-      "promoPrice": 18.99,
-      "originalPrice": 32.98,
+      "product": "velen",
+      "promoPrice": 20.06,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     },
     {
       "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p12-1",
-      "product": "Veet voledig assortiment Gevoelige huid",
-      "promoPrice": 15.98,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p12-2",
-      "product": "Men mi",
-      "promoPrice": 24.54,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "colruyt"
-    },
-    {
-      "id": "colruyt-ocr-colruyt-2026-w32-viewerimg-p12-3",
-      "product": "ai voledig Baby",
+      "product": "producten",
       "promoPrice": 14.54,
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "retailerSlug": "colruyt"
     }
   ],
-  "scrapedAt": "2026-08-06T01:00:05.894Z",
+  "scrapedAt": "2026-08-07T04:15:38.122Z",
   "sourceUrls": [
     "https://www.colruyt.be/nl/promoties",
-    "https://e.issuu.com/embed.html?d=colruyt_laagste_prijzen_-_alle_acti_40604d32fc09ff&u=colruytgroup&pageNumber=1&backgroundColor=%23353535&backgroundColorFullscreen=%23353535&pageLayout=doublePage&hideIssuuLogo=true&allowDownload=true&hideShareButton=true&ts=1785977695429"
+    "https://e.issuu.com/embed.html?d=colruyt_laagste_prijzen_-_alle_acti_40604d32fc09ff&u=colruytgroup&pageNumber=1&backgroundColor=%23353535&backgroundColorFullscreen=%23353535&pageLayout=doublePage&hideIssuuLogo=true&allowDownload=true&hideShareButton=true&ts=1786075749712"
   ],
   "methods": [
     "issuu",

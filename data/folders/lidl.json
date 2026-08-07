@@ -8,133 +8,65 @@
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "pageCount": 0,
+      "thumbnailUrl": "",
       "pages": [],
+      "embedUrl": "https://folder-nl.lidl.be/nl-folder-03-08-08-08/page/1",
       "pdfUrl": "https://folder-nl.lidl.be/97031/3258474/pdfs/cd8f099e-ff05-43c1-8fba-71621313563c.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252003-08-08-08.pdf",
-      "contentSource": "pdf",
-      "scrapedAt": "2026-08-05T20:59:12.099Z"
+      "contentSource": "publitas",
+      "scrapedAt": "2026-08-07T03:29:22.911Z"
     }
   ],
   "deals": [
     {
-      "id": "lidl-pdf-0-1785963608154",
-      "product": "Ook online  UNDERCOVER Gevulde pennenzak  •   zie p. 18  nr. 516484    BIC Schrijfwaren  •   zie p. 19  nr. 517049    MEPAL  Drinkfles of  brooddoos  •   zie p. 21  nr. 538827  Nergens goedkoper       Met Lidl Plus 2 voor  Mango  •   los  nr. 80711  •   zie p. 30  nr. 1800195 - 1800196  Een sappig  tussendoortje delen,  dat kan tellen.  FORMIL  Wasmiddel  •   Marseille wit •   100 wasbeurten  nr. 225125  Boeren-  brood  •   verschillende soorten •   800 g -  EUR/kg  nr. 1537 - 1546 - 6604152 - 6604153   per  wasbeurt  Met Lidl Plus  Actie  1+1 GRATIS    -50%          Met Lidl Plus  -50% NL 32/2026 Meer op www.lidl.be  Vanaf ma. 03/08 t.e.m. za. 08/08  Dat kan tellen.  Vanaf woensdag 05/08 Vanaf vrijdag 07/08",
-      "promoPrice": 0.05,
-      "discount": "1+1",
+      "id": "html-0",
+      "product": "Vuilwater dompelpomp PARKSIDE® PETPS400",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
+      "retailerSlug": "lidl",
+      "originalPrice": 34.99
     },
     {
-      "id": "lidl-pdf-1-1785963608155",
-      "product": "2,5 kg  IJsbergsla  •   los •   per stuk  nr. 82031  Bramen XXL  •   voorverpakt  •   250 g -  EUR/kg  nr. 80792  Mango  •   los  •    -   voor 2 stuks  nr. 80711  *YouGov Fresh Report 2026  Verkozen tot beste supermarkt in groenten & fruit  Frietaardappelen  •   voorverpakt  •   2,5 kg -  EUR/kg  nr. 83317  Pitloze druivenmix  •   voorverpakt  •   500 g -  EUR/kg  nr. 83317        Met Lidl Plus  -32%  Met Lidl Plus  Actie  1+1 GRATIS       Met Lidl Plus  -40%       Met Lidl Plus  -44%    -36%     Vanaf ma. 03/08 t.e.m. za. 08/08",
-      "originalPrice": 3.78,
-      "promoPrice": 1.89,
-      "discount": "-32%",
+      "id": "html-7",
+      "product": "Meubel- en tapijtreiniger »SPR 450 A1«",
+      "discount": "Ook in de winkel van 31/07 - 13/08",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
+      "retailerSlug": "lidl",
+      "promoPrice": 44.99
     },
     {
-      "id": "lidl-pdf-2-1785963608155",
-      "product": "Trostomaat  •   los  nr. 82465  Piel de sapo-meloen  •   los •   Een piel de sapo heeft wit vruchtvlees en smaakt heerlijk zoet.  nr. 80580  Bolcourgette  •   los •   per stuk  nr. 82349  Physalis  •   voorverpakt  •   100 g -  EUR/kg  nr. 80735    Actie    -40%     /kg    Actie    -27%     /kg  Nectarine  •   los  nr. 80380  Groene kiwi  •   los  •      per stuk  •    -    voor 6 stuks  nr. 80676    -41%     /kg  Actie  4+2 GRATIS NL 32/2026  Vanaf ma. 03/08 t.e.m. za. 08/08",
-      "originalPrice": 3.9,
-      "promoPrice": 0.65,
-      "discount": "-40%",
+      "id": "html-15",
+      "product": "Clogs voor heren",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
+      "retailerSlug": "lidl",
+      "promoPrice": 12.99
     },
     {
-      "id": "lidl-pdf-3-1785963608155",
-      "product": "Kalkoenschnitzel  •   voorgegaard  •   375 g -  EUR/kg  nr. 7406510    -30%     Kippenblokjes XXL  •   800 g -  EUR/kg  nr. 7401102       Met Lidl Plus  -20% VEMONDO Falafel •      per stuk  •    -    voor 2 stuks •   2 x 200 g -  EUR/kg  nr. 1001682   -50%  2e aan Al ons vers rundvlees is Belgisch  en draagt het Belbeef-keurmerk.  Vanaf ma. 03/08 t.e.m. za. 08/08  Elke dag vers  op je bord,  dat kan tellen",
-      "originalPrice": 2.98,
-      "promoPrice": 1.49,
-      "discount": "-30%",
+      "id": "html-21",
+      "product": "Beschermhoes voor tuinmeubelen",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
+      "retailerSlug": "lidl",
+      "originalPrice": 16.99
     },
     {
-      "id": "lidl-pdf-4-1785963608155",
-      "product": "Kalkoenschnitzel  •   voorgegaard  •   375 g -  EUR/kg  nr. 7406510    -30%     Kippenblokjes XXL  •   800 g -  EUR/kg  nr. 7401102       Met Lidl Plus  -20% VEMONDO Falafel •      per stuk  •    -    voor 2 stuks •   2 x 200 g -  EUR/kg  nr. 1001682   -50%  2e aan Al ons vers rundvlees is Belgisch  en draagt het Belbeef-keurmerk.  Vanaf ma. 03/08 t.e.m. za. 08/08  Elke dag vers  op je bord,  dat kan tellen",
-      "discount": "-33%",
+      "id": "html-28",
+      "product": "Reciprozaagbladen",
+      "discount": "Ook in de winkel van 07/08 - 20/08",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
-    },
-    {
-      "id": "lidl-pdf-5-1785963608155",
-      "product": "NAUTICA Garnalen  •   gekookt en gepeld  •   100 g -  EUR/kg  nr. 08473  Pangasiusfilet  •   350 g -  EUR/kg  nr. 186271  Actie  3+1 GRATIS    -35%     • I N D I C A T I O N G É O G R A P H I Q U E P R O T É G É E •  Hollandse  maatjesharing  met ui  •      per promopack  •   4 stuks  nr. 01811    Actie       Met Lidl Plus  -24%    Actie  Zalmburger XXL  •   360 g -  EUR/kg  nr. 6608998  Zalm gemarineerd  •   citroensmaak   of   pikant   zoet  •   300 g -  EUR/kg  nr. 6613915 Al onze verse vis is duurzaam gekweekt of gevangen.  Vanaf ma. 03/08 t.e.m. za. 08/08  Vangst van de dag,  dat kan tellen. Nieuw seizoen",
-      "promoPrice": 2.99,
-      "discount": "3+1",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
-    },
-    {
-      "id": "lidl-pdf-6-1785963608155",
-      "product": "4 voor          Met Lidl Plus  -50%  Franse baguette  •   2 x 400 g -  EUR/kg  nr. 27986  Chocoladebroodje XXL  •   4 x 130 g -  EUR/kg  nr. 1015442  Boerenbrood  •   verschillende soorten •   wit of bruin •   800 g -  EUR/kg  nr. 1537 - 1546 - 6604152 - 6604153       Met Lidl Plus 2 voor  Met Lidl Plus  Actie  3+1 GRATIS  Chocodonut  •      per stuk  •    -    voor 4 stuks •   4 x 53 g -  EUR/kg  nr. 208880  Verkozen tot beste supermarkt  in brood & bakkerij  *YouGov Fresh Report 2026 NL 32/2026  Vanaf ma. 03/08 t.e.m. za. 08/08  Ter plaatse gebakken",
-      "originalPrice": 2.48,
-      "promoPrice": 0.62,
-      "discount": "-50%",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
-    },
-    {
-      "id": "lidl-pdf-7-1785963608155",
-      "product": "FORMIL  Wasmiddel  •   Marseille wit •   100 wasbeurten -  per wasbeurt  nr. 225125  SAN PELLEGRINO  Limonade  •   verschillende soorten •   vanaf      tot     per pack •   2 x 6 x 33 cl  nr. 215752 - 1800026 - 1800027 - 1800028 - 1800788 - 1800789  LU  Prince-koeken  •   vanille- of chocoladesmaak  •      per promopack •   4 x 300 g -  EUR/kg  nr. 225360 - 225361  LIPTON  Ice tea zero  •   peach, green of sparkling •   vanaf      tot     per   fles  •   2 x 1,5 l  nr. 01352 - 02141 - 1800105  Actie  1+1 GRATIS   per wasbeurt  -50%  2e aan Pick & Mix  Actie  3+1 GRATIS  Pick & Mix    -50%    Actie Vanaf ma. 03/08 t.e.m. za. 08/08",
-      "originalPrice": 6.39,
-      "promoPrice": 0.05,
-      "discount": "1+1",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
-    },
-    {
-      "id": "lidl-pdf-8-1785963608155",
-      "product": "FLORALYS  Toiletpapier XXL  •   4-lagig •   20 rollen  nr. 179373  SCHWEPPES  Limonade  •   verschillende soorten •   vanaf      tot     per pack •   2 x 6 x 33 cl  nr. 7402423 - 7408198 - 7409115 - 7409877  AIR WICK  Luchtverfrisser of  navulling  •   verschillende soorten •   vanaf      tot     per stuk •   verschillende inhouden  nr. 186318 - 1800682 - 1800683 - 1800684 - 1800685 - 1800686 - 1800687  AOSTE -  MARCASSOU  Salami  •   verschillende soorten •   vanaf      tot     per stuk •   3 x 150 g - 3 x 250 g  nr. 7401637 - 7401641 - 7401643 - 7403760 - 7403764  KIDIBUL  Partydrink  •   appel, appel-aardbei  of   appel-tropical  •      per promopack •   4 x 25 cl -  EUR/l  nr. 7406506 - 7407777 - 7407778  OASIS  Icetea  •   vanaf     tot      per stuk •   2 x 1,5 l - 2 x 6 x 33 cl  nr. 7407608 - 7408261 - 7408263 - 7409996 - 7411151  COSHIDA  Kattenbakkorrels XXL  •   8 l -  EUR/l  nr. 128507     Actie  8 l  Actie  1+1 GRATIS  Actie  2+1 GRATIS  Pick & Mix Pick & Mix  Actie  1+1 GRATIS  Pick & Mix  Actie  3+1 GRATIS  -50%  2e aan Pick & Mix    Actie  20 rollen NL 32/2026  Vanaf ma. 03/08 t.e.m. za. 08/08",
-      "originalPrice": 9.59,
-      "promoPrice": 2.79,
-      "discount": "1+1",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
-    },
-    {
-      "id": "lidl-pdf-9-1785963608155",
-      "product": "ITALIAMO  Alcoholvrije aperitief  •   rosso of biondo  •   6 x 98 ml -  EUR/l  nr. 110983 - 110985  ITALIAMO  Bruschettabrood  •   500 g -  EUR/kg  nr. 22621  ITALIAMO  Voorgebakken  platbrood  •   240 g -  EUR/kg  nr. 1014476  ITALIAMO  Minigrissini  •   tomaat-basilicum  of   knoflook-  peterselie  •   100 g -  EUR/kg  nr. 1014360  ITALIAMO  Grissini  olijfolie  •   rozemarijn,  ajuin of sesam •   250 g -  EUR/kg  nr. 116673      ITALIAMO  Crackers  •   rozemarijn,   tomaat-olijfolie   of  gedroogde tomaat-olijf •   100 g -  EUR/kg  nr. 6004709 Vanaf wo. 05/08 t.e.m. di. 11/08  Meer dan 170  specialiteiten op  Italiaanse wijze",
-      "originalPrice": 17.9,
-      "promoPrice": 1.49,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
-    },
-    {
-      "id": "lidl-pdf-10-1785963608155",
-      "product": "ITALIAMO  Verse kaas op mediterraanse  wijze  •   zongedroogde tomaten, groenten of pesto •   150 g -  EUR/kg  nr. 201940  ITALIAMO  Antipasti  •   gedroogde tomaten, champignons  of   artisjokken  •   280 g - 285 g - vanaf  EUR/kg  nr. 39135  ITALIAMO  Passata  gezeefde  tomaten  •   720 ml -  EUR/l  nr. 109317  ITALIAMO  Miniburrata  •   4 x 50 g -  EUR/kg  nr. 6012305  ITALIAMO  Halfgedroogde  cherry-  tomaten  •   180 g -  EUR/kg  nr. 6000727  ITALIAMO  Kroketjes op Italiaanse wijze  •   mozzarella- halfgedroogde tomaat of  parmezaan  •   20 x 14 g -  EUR/kg  nr. 7402567  ITALIAMO  Olijven ontpit  •   uitgelekt gewicht: 180 g -  EUR/kg  nr. 6009949  ITALIAMO  Bruschettabeleg  •   paprika   of  tomaat  •   190 g -  EUR/kg  nr. 61617     ITALIAMO  Pistachepesto  op Siciliaanse  wijze  •   190 g -  EUR/kg  nr. 162809 NL 32/2026  Vanaf wo. 05/08 t.e.m. di. 11/08",
-      "originalPrice": 17.45,
-      "promoPrice": 1.49,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
-    },
-    {
-      "id": "lidl-pdf-11-1785963608155",
-      "product": "ITALIAMO Puccia  alla Salentina  tarwebroodjes  •   2 x 115 g -  EUR/kg  nr. 6003109  ITALIAMO  Pizza met burrata  •   350 g -  EUR/kg  nr. 6009878  ITALIAMO  Appelkappertjes  •   uitgelekt gewicht: 180 g -  EUR/kg  nr. 88427  ITALIAMO  Notenmix  •   parmezaan   of   pesto  •   150 g -  EUR/kg  nr. 212164  ITALIAMO  Pikante  salami  •   320 g -  EUR/kg  nr. 6000218     ITALIAMO  Balsamicosaus  •   klassiek, sinaas of  framboos  •   250 ml -  EUR/l  nr. 39128  Vanaf wo. 05/08 t.e.m. di. 11/08",
-      "originalPrice": 19.93,
-      "promoPrice": 1.29,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "lidl"
+      "retailerSlug": "lidl",
+      "originalPrice": 2.99
     }
   ],
-  "scrapedAt": "2026-08-05T21:00:08.155Z",
+  "scrapedAt": "2026-08-07T03:29:28.239Z",
   "sourceUrls": [
-    "https://www.lidl.be/c/nl-BE/folders-magazines/s10008101"
+    "https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
+    "https://folder-nl.lidl.be/nl-folder-03-08-08-08/page/1"
   ],
   "methods": [
-    "pdf",
-    "pdf-text"
+    "publitas",
+    "pdf"
   ]
 }

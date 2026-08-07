@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-08-06T22:47:00.137Z",
+  "generatedAt": "2026-08-07T04:34:32.398Z",
   "retailers": [
     {
-      "slug": "zooplus",
-      "name": "Zooplus",
+      "slug": "tom-co",
+      "name": "Tom&Co",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-06T22:46:59.730Z",
+      "scrapedAt": "2026-08-07T04:34:31.992Z",
       "folderCount": 1,
-      "dealCount": 6,
+      "dealCount": 5,
       "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,

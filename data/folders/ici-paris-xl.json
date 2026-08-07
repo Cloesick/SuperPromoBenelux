@@ -5,155 +5,28 @@
       "id": "ici-paris-xl-2026-w32-folder",
       "retailerSlug": "ici-paris-xl",
       "title": "ICI PARIS XL promoties",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "pageCount": 3,
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 1,
       "thumbnailUrl": "/screenshots/ici-paris-xl-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
           "imageUrl": "/screenshots/ici-paris-xl-2026-w32-viewerimg-p1.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/ici-paris-xl-2026-w32-viewerimg-p1-thumb.webp"
-        },
-        {
-          "pageNumber": 2,
-          "imageUrl": "/screenshots/ici-paris-xl-2026-w32-viewerimg-p3.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/ici-paris-xl-2026-w32-viewerimg-p3-thumb.webp"
-        },
-        {
-          "pageNumber": 3,
-          "imageUrl": "/screenshots/ici-paris-xl-2026-w32-viewerimg-p55.webp",
-          "deals": [],
-          "thumbnailUrl": "/screenshots/ici-paris-xl-2026-w32-viewerimg-p55-thumb.webp"
+          "thumbnailUrl": "/screenshots/ici-paris-xl-2026-w32-viewerimg-p1-thumb.webp",
+          "deals": []
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-08-05T22:08:48.133Z"
+      "scrapedAt": "2026-08-07T04:04:48.273Z"
     }
   ],
-  "deals": [
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p1-0",
-      "product": "VANAF",
-      "promoPrice": 90,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p1-1",
-      "product": "vanaf min",
-      "promoPrice": 25,
-      "originalPrice": 90,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p1-2",
-      "product": "Word Beauty Member en ontvang een",
-      "promoPrice": 5,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p1-3",
-      "product": "Ontvang een biotherm collagen fit intensive hydro body cream miniatuur bij aankoop",
-      "promoPrice": 65,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-0",
-      "product": "VANAF",
-      "promoPrice": 25,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-1",
-      "product": "(e) VANAF",
-      "promoPrice": 90,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-4",
-      "product": "aan Biotherm producten",
-      "promoPrice": 65,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-5",
-      "product": "bij aankoop min",
-      "promoPrice": 90,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-6",
-      "product": "min. aan Saint Laurent producten",
-      "promoPrice": 90,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-7",
-      "product": "aan Laura Mercier producten",
-      "promoPrice": 59,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-8",
-      "product": "toilette eau miniatuur bij aankoop",
-      "promoPrice": 80,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-9",
-      "product": "aan Armani producten",
-      "promoPrice": 90,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p3-10",
-      "product": "aan Armani producten",
-      "promoPrice": 120,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    },
-    {
-      "id": "ici-paris-xl-ocr-ici-paris-xl-2026-w32-viewerimg-p4-10",
-      "product": "bij aankoop",
-      "promoPrice": 80,
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "ici-paris-xl"
-    }
-  ],
-  "scrapedAt": "2026-08-05T22:10:59.999Z",
+  "deals": [],
+  "scrapedAt": "2026-08-07T04:04:59.257Z",
   "sourceUrls": [
     "https://www.iciparisxl.be/nl/promotions"
   ],
   "methods": [
-    "screenshot",
-    "ocr"
+    "screenshot"
   ]
 }

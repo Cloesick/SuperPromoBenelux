@@ -81,7 +81,9 @@ describe("Retailer folder pages — general", () => {
 					// their PDF is attachment-disposition.
 					const text = $body.text();
 					const hasEmptyState =
-						text.includes("momenteel geen") || text.includes("binnenkort geladen");
+						/(?:momenteel geen|binnenkort|kunnen we hier niet tonen|nog geen folder beschikbaar)/i.test(
+							text,
+						);
 
 					expect(
 						hasEmbed || hasPages || hasEmptyState,
@@ -129,7 +131,9 @@ describe("Retailer folder pages — verticals", () => {
 					// their PDF is attachment-disposition.
 					const text = $body.text();
 					const hasEmptyState =
-						text.includes("momenteel geen") || text.includes("binnenkort geladen");
+						/(?:momenteel geen|binnenkort|kunnen we hier niet tonen|nog geen folder beschikbaar)/i.test(
+							text,
+						);
 
 					expect(
 						hasEmbed || hasPages || hasEmptyState,

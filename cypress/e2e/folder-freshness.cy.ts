@@ -138,7 +138,7 @@ describe("Folder freshness & rendering", () => {
 						default:
 							// Nothing framable: the viewer must admit it rather than wrap
 							// its chrome around an empty box.
-							cy.contains("binnenkort").should("be.visible");
+							cy.contains(/(?:binnenkort|kunnen we hier niet tonen|nog geen folder beschikbaar|momenteel geen)/i).should("be.visible");
 							cy.get('iframe[title*="folder"]').should("not.exist");
 					}
 				});

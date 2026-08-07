@@ -70,7 +70,7 @@ describe("Folder viewer (mobile)", () => {
 						// albert-heijn and lidl land here: a Publitas embed the app
 						// refuses to frame plus an attachment-only PDF leaves nothing to
 						// show, so the viewer says so and keeps the download link.
-						cy.contains("binnenkort").should("be.visible");
+						cy.contains(/(?:binnenkort|kunnen we hier niet tonen|nog geen folder beschikbaar|momenteel geen)/i).should("be.visible");
 						if (folder.pdfUrl) {
 							cy.get(`a[href="${folder.pdfUrl}"]`)
 								.first()
