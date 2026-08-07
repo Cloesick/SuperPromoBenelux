@@ -249,13 +249,13 @@ const blockedEmbedRetailers = [
 	{
 		slug: "gamma",
 		name: "Gamma",
-		path: "/home-garden/folders/gamma",
+		path: "/folders/gamma",
 		reason: "folder.gamma.be is the bare viewer homepage, not a leaflet",
 	},
 	{
 		slug: "zalando",
 		name: "Zalando",
-		path: "/fashion/folders/zalando",
+		path: "/folders/zalando",
 		reason: "the embedUrl is a Usercentrics consent bridge",
 	},
 ];
@@ -326,8 +326,8 @@ describe("Blocked embeds are never framed", () => {
 // ---------------------------------------------------------------------------
 
 const framableEmbedRetailers = [
-	{ slug: "kruidvat", name: "Kruidvat", path: "/beauty/folders/kruidvat" },
-	{ slug: "treac", name: "Trekpleister", path: "/beauty/folders/treac" },
+	{ slug: "kruidvat", name: "Kruidvat", path: "/folders/kruidvat" },
+	{ slug: "treac", name: "Trekpleister", path: "/folders/treac" },
 ];
 
 describe("Framable embed viewer", () => {
@@ -396,8 +396,8 @@ describe("Framable embed viewer", () => {
 const attachmentPdfRetailers = [
 	{ slug: "albert-heijn", name: "Albert Heijn", path: "/folders/albert-heijn" },
 	{ slug: "lidl", name: "Lidl", path: "/folders/lidl" },
-	{ slug: "gamma", name: "Gamma", path: "/home-garden/folders/gamma" },
-	{ slug: "kruidvat", name: "Kruidvat", path: "/beauty/folders/kruidvat" },
+	{ slug: "gamma", name: "Gamma", path: "/folders/gamma" },
+	{ slug: "kruidvat", name: "Kruidvat", path: "/folders/kruidvat" },
 ];
 
 describe("Attachment PDFs stay downloadable but are never framed", () => {
@@ -426,11 +426,11 @@ describe("Attachment PDFs stay downloadable but are never framed", () => {
 });
 
 const framablePdfRetailers = [
-	{ slug: "coolblue", name: "Coolblue", path: "/electro/folders/coolblue" },
+	{ slug: "coolblue", name: "Coolblue", path: "/folders/coolblue" },
 	{
 		slug: "vanden-borre",
 		name: "Vanden Borre",
-		path: "/electro/folders/vanden-borre",
+		path: "/folders/vanden-borre",
 	},
 ];
 
@@ -515,7 +515,7 @@ describe("Thumbnail strip uses the small images", () => {
 			const pages = folder.pages ?? [];
 			expect(pages.length, "douglas pages").to.be.greaterThan(1);
 
-			visitViewer("/beauty/folders/douglas");
+			visitViewer("/folders/douglas");
 
 			// Data-driven rather than hard-coded: whichever pages have thumbnails by
 			// the time this runs must use them, and the rest must still render.
@@ -545,50 +545,50 @@ const viewerRetailers = [
 	{ slug: "colruyt", name: "Colruyt", path: "/folders/colruyt" },
 	{ slug: "aldi", name: "ALDI", path: "/folders/aldi" },
 	{ slug: "action", name: "Action", path: "/folders/action" },
-	{ slug: "tom-co", name: "Tom&Co", path: "/pet/folders/tom-co" },
-	{ slug: "zooplus", name: "Zooplus", path: "/pet/folders/zooplus" },
-	{ slug: "aveve", name: "AVEVE", path: "/pet/folders/aveve" },
-	{ slug: "medpets", name: "Medpets", path: "/pet/folders/medpets" },
+	{ slug: "tom-co", name: "Tom&Co", path: "/folders/tom-co" },
+	{ slug: "zooplus", name: "Zooplus", path: "/folders/zooplus" },
+	{ slug: "aveve", name: "AVEVE", path: "/folders/aveve" },
+	{ slug: "medpets", name: "Medpets", path: "/folders/medpets" },
 	{
 		slug: "mediamarkt",
 		name: "MediaMarkt",
-		path: "/electro/folders/mediamarkt",
+		path: "/folders/mediamarkt",
 	},
-	{ slug: "coolblue", name: "Coolblue", path: "/electro/folders/coolblue" },
+	{ slug: "coolblue", name: "Coolblue", path: "/folders/coolblue" },
 	{
 		slug: "vanden-borre",
 		name: "Vanden Borre",
-		path: "/electro/folders/vanden-borre",
+		path: "/folders/vanden-borre",
 	},
-	{ slug: "krefel", name: "Krëfel", path: "/electro/folders/krefel" },
-	{ slug: "bol", name: "bol", path: "/electro/folders/bol" },
-	{ slug: "hm", name: "H&M", path: "/fashion/folders/hm" },
-	{ slug: "zalando", name: "Zalando", path: "/fashion/folders/zalando" },
-	{ slug: "ikea", name: "IKEA", path: "/home-garden/folders/ikea" },
-	{ slug: "gamma", name: "Gamma", path: "/home-garden/folders/gamma" },
-	{ slug: "kruidvat", name: "Kruidvat", path: "/beauty/folders/kruidvat" },
+	{ slug: "krefel", name: "Krëfel", path: "/folders/krefel" },
+	{ slug: "bol", name: "bol", path: "/folders/bol" },
+	{ slug: "hm", name: "H&M", path: "/folders/hm" },
+	{ slug: "zalando", name: "Zalando", path: "/folders/zalando" },
+	{ slug: "ikea", name: "IKEA", path: "/folders/ikea" },
+	{ slug: "gamma", name: "Gamma", path: "/folders/gamma" },
+	{ slug: "kruidvat", name: "Kruidvat", path: "/folders/kruidvat" },
 	{
 		slug: "ici-paris-xl",
 		name: "ICI PARIS XL",
-		path: "/beauty/folders/ici-paris-xl",
+		path: "/folders/ici-paris-xl",
 	},
-	{ slug: "douglas", name: "Douglas", path: "/beauty/folders/douglas" },
-	{ slug: "di", name: "Di", path: "/beauty/folders/di" },
-	{ slug: "etos", name: "Etos", path: "/beauty/folders/etos" },
-	{ slug: "boots", name: "Boots", path: "/beauty/folders/boots" },
-	{ slug: "muller", name: "Müller", path: "/beauty/folders/muller" },
-	{ slug: "rossmann", name: "Rossmann", path: "/beauty/folders/rossmann" },
-	{ slug: "treac", name: "Trekpleister", path: "/beauty/folders/treac" },
-	{ slug: "rituals", name: "Rituals", path: "/beauty/folders/rituals" },
+	{ slug: "douglas", name: "Douglas", path: "/folders/douglas" },
+	{ slug: "di", name: "Di", path: "/folders/di" },
+	{ slug: "etos", name: "Etos", path: "/folders/etos" },
+	{ slug: "boots", name: "Boots", path: "/folders/boots" },
+	{ slug: "muller", name: "Müller", path: "/folders/muller" },
+	{ slug: "rossmann", name: "Rossmann", path: "/folders/rossmann" },
+	{ slug: "treac", name: "Trekpleister", path: "/folders/treac" },
+	{ slug: "rituals", name: "Rituals", path: "/folders/rituals" },
 	{
 		slug: "yves-rocher",
 		name: "Yves Rocher",
-		path: "/beauty/folders/yves-rocher",
+		path: "/folders/yves-rocher",
 	},
 	{
 		slug: "the-body-shop",
 		name: "The Body Shop",
-		path: "/beauty/folders/the-body-shop",
+		path: "/folders/the-body-shop",
 	},
 ];
 
@@ -645,7 +645,7 @@ describe("Viewer selection per retailer", () => {
 
 describe("Retailer with no scraped folder (maxi-zoo)", () => {
 	beforeEach(() => {
-		visitViewer("/pet/folders/maxi-zoo");
+		visitViewer("/folders/maxi-zoo");
 	});
 
 	it("renders the retailer page rather than a 404", () => {
