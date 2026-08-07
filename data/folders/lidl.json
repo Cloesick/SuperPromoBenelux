@@ -5,19 +5,19 @@
       "id": "lidl-3258474-folder",
       "retailerSlug": "lidl",
       "title": "Lidl BE NL - nl folder 03-08-08-08",
-      "validFrom": "2026-08-06",
-      "validUntil": "2026-08-16",
+      "validFrom": "2026-08-07",
+      "validUntil": "2026-08-17",
       "pageCount": 40,
       "thumbnailUrl": "https://view.publitas.com/97031/3258474/pages/312720bc-f5b1-47c3-899e-19634ec26119-at800.jpg",
       "pages": [],
       "embedUrl": "https://folder-nl.lidl.be/nl-folder-03-08-08-08?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/97031/3258474/pdfs/cd8f099e-ff05-43c1-8fba-71621313563c.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-06T06:12:37.697Z"
+      "scrapedAt": "2026-08-07T05:51:25.219Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-06T06:12:37.697Z",
+  "scrapedAt": "2026-08-07T05:51:25.219Z",
   "sourceUrls": [
     "https://folder-nl.lidl.be/nl-folder-03-08-08-08"
   ],
