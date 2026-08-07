@@ -2,24 +2,68 @@
   "retailer": "lidl",
   "folders": [
     {
-      "id": "lidl-3258474-folder",
+      "id": "lidl-2026-w32-folder",
       "retailerSlug": "lidl",
-      "title": "Lidl BE NL - nl folder 03-08-08-08",
-      "validFrom": "2026-08-07",
-      "validUntil": "2026-08-17",
-      "pageCount": 40,
-      "thumbnailUrl": "https://view.publitas.com/97031/3258474/pages/312720bc-f5b1-47c3-899e-19634ec26119-at800.jpg",
+      "title": "Lidl folder van de week",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 0,
+      "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://folder-nl.lidl.be/nl-folder-03-08-08-08?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/97031/3258474/pdfs/cd8f099e-ff05-43c1-8fba-71621313563c.pdf",
+      "embedUrl": "https://folder-nl.lidl.be/nl-folder-03-08-08-08/page/1",
+      "pdfUrl": "https://folder-nl.lidl.be/97031/3258474/pdfs/cd8f099e-ff05-43c1-8fba-71621313563c.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252003-08-08-08.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-07T05:51:25.219Z"
+      "scrapedAt": "2026-08-07T03:29:22.911Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-08-07T05:51:25.219Z",
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "Vuilwater dompelpomp PARKSIDE® PETPS400",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "lidl",
+      "originalPrice": 34.99
+    },
+    {
+      "id": "html-7",
+      "product": "Meubel- en tapijtreiniger »SPR 450 A1«",
+      "discount": "Ook in de winkel van 31/07 - 13/08",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "lidl",
+      "promoPrice": 44.99
+    },
+    {
+      "id": "html-15",
+      "product": "Clogs voor heren",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "lidl",
+      "promoPrice": 12.99
+    },
+    {
+      "id": "html-21",
+      "product": "Beschermhoes voor tuinmeubelen",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "lidl",
+      "originalPrice": 16.99
+    },
+    {
+      "id": "html-28",
+      "product": "Reciprozaagbladen",
+      "discount": "Ook in de winkel van 07/08 - 20/08",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "lidl",
+      "originalPrice": 2.99
+    }
+  ],
+  "scrapedAt": "2026-08-07T03:29:28.239Z",
   "sourceUrls": [
-    "https://folder-nl.lidl.be/nl-folder-03-08-08-08"
+    "https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
+    "https://folder-nl.lidl.be/nl-folder-03-08-08-08/page/1"
   ],
   "methods": [
     "publitas",

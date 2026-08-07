@@ -25,10 +25,20 @@ describe("Navigation", () => {
 
     cy.get("footer").within(() => {
       cy.contains("a", "Home").should("have.attr", "href", "/");
-      cy.contains("a", "Alle Folders").should("have.attr", "href", "/folders");
-      cy.contains("a", "Over Ons").should("have.attr", "href", "/over-ons");
-      cy.contains("a", "Privacy").should("have.attr", "href", "/privacy");
-      cy.contains("a", "Contact").should("have.attr", "href", "/contact");
+      // trailingSlash is on, so the href renders as "/folders/".
+      cy.contains("a", "Alle Folders")
+        .should("have.attr", "href")
+        .and("match", /^\/folders\/?$/);
+      // Same trailingSlash caveat for the remaining footer routes.
+      cy.contains("a", "Over Ons")
+        .should("have.attr", "href")
+        .and("match", /^\/over-ons\/?$/);
+      cy.contains("a", "Privacy")
+        .should("have.attr", "href")
+        .and("match", /^\/privacy\/?$/);
+      cy.contains("a", "Contact")
+        .should("have.attr", "href")
+        .and("match", /^\/contact\/?$/);
     });
   });
 

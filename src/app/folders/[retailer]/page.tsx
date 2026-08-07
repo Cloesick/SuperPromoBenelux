@@ -1,7 +1,12 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { retailers, getRetailerBySlug } from "@/lib/retailers";
-import { getCurrentFolder, getFoldersForRetailer } from "@/lib/folders";
+import {
+	getCurrentFolder,
+	getFoldersForRetailer,
+	getScrapedAt,
+} from "@/lib/folders";
+import { isFolderIndexable } from "@/lib/folderRenderability";
 import { FolderSwitcher } from "@/components/FolderSwitcher";
 import { AdBanner } from "@/components/AdBanner";
 import {
@@ -97,12 +102,20 @@ export async function generateMetadata({
 		}
 	})();
 
+	// A folder page with no pages, no framable embed and no inline PDF renders
+	// an empty state. Keep it reachable and crawlable for its internal links,
+	// but keep it out of the index — and out of the sitemap, which uses this
+	// same predicate. Advertising a page that shows nothing is worse than not
+	// advertising it at all.
+	const rendersSomething = isFolderIndexable(currentFolder, slug);
+
 	return {
 		title: `${retailer.name} folder deze week`,
 		description,
 		alternates: {
 			canonical: `/folders/${slug}`,
 		},
+		...(rendersSomething ? {} : { robots: { index: false, follow: true } }),
 		openGraph: {
 			title: `${retailer.name} folder deze week | SuperPromo België`,
 			description,
@@ -198,12 +211,17 @@ export default async function RetailerPage({ params }: PageProps) {
 	return (
 		<div className="max-w-6xl mx-auto px-4 py-12">
 			<JsonLd
-				data={createRetailerFolderJsonLd(
-					retailer.name,
-					slug,
-					currentFolder?.validFrom,
-					currentFolder?.validUntil,
-				)}
+				data={createRetailerFolderJsonLd(retailer.name, slug, {
+					validFrom: currentFolder?.validFrom,
+					validUntil: currentFolder?.validUntil,
+					// Leaflets turn over weekly, so freshness and the cover image
+					// are the two signals that actually earn a click.
+					scrapedAt: getScrapedAt(slug)?.toISOString(),
+					coverImageUrl:
+						currentFolder?.thumbnailUrl ?? currentFolder?.pages?.[0]?.imageUrl,
+					pageCount: currentFolder?.pages?.length,
+					retailerWebsite: retailer.website,
+				})}
 			/>
 			<JsonLd data={createFAQJsonLd(faqItems)} />
 			<JsonLd

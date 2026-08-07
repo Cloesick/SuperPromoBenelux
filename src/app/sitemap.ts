@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { retailers } from "@/lib/retailers";
-import { getScrapedAt } from "@/lib/folders";
+import { getCurrentFolder, getScrapedAt } from "@/lib/folders";
+import { isFolderIndexable } from "@/lib/folderRenderability";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -8,12 +9,23 @@ export const revalidate = 0;
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const baseUrl = getSiteBaseUrl();
-	const retailerPages = retailers.map((r) => ({
-		url: `${baseUrl}/folders/${r.slug}`,
-		lastModified: getScrapedAt(r.slug) ?? new Date(),
-		changeFrequency: "weekly" as const,
-		priority: 0.8,
-	}));
+	// Only submit folder pages that actually render something. This is the same
+	// predicate the page itself uses to decide `robots: noindex`, so the two can
+	// never disagree — a URL in the sitemap is always one we want indexed.
+	//
+	// The `?? new Date()` fallback is deliberately gone: it stamped *today* on
+	// exactly the pages with no scraped data, giving the emptiest pages the
+	// strongest freshness signal on the site.
+	const retailerPages = retailers
+		.map((r) => ({ retailer: r, folder: getCurrentFolder(r.slug), scrapedAt: getScrapedAt(r.slug) }))
+		.filter(({ retailer, folder }) => isFolderIndexable(folder, retailer.slug))
+		.filter(({ scrapedAt }) => scrapedAt !== null)
+		.map(({ retailer, scrapedAt }) => ({
+			url: `${baseUrl}/folders/${retailer.slug}`,
+			lastModified: scrapedAt as Date,
+			changeFrequency: "weekly" as const,
+			priority: 0.8,
+		}));
 
 	const latestScrape = retailerPages.reduce<Date>((latest, p) => {
 		const d =

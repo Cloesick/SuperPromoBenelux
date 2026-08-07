@@ -2,192 +2,136 @@
   "retailer": "action",
   "folders": [
     {
-      "id": "action-2026-w24-folder",
+      "id": "action-2026-w32-folder",
       "retailerSlug": "action",
       "title": "Action folder van de week",
-      "validFrom": "2026-06-09",
-      "validUntil": "2026-06-15",
-      "pageCount": 33,
-      "thumbnailUrl": "https://view.publitas.com/94536/3138062/pages/5bb990c9-bc0d-457b-a89d-4265c316b0f1-at1600.jpg",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 18,
+      "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/5bb990c9-bc0d-457b-a89d-4265c316b0f1-at1600.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p1-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/814ab1f3-0f8d-44da-8825-ce6d08181e3c-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p2.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p2-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/4c34b911-21ab-4aad-bb78-f216dff5ab21-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p3.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p3-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/3ce7ada8-e873-4817-8eea-926c39b702d0-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p4.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p4-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/4ee75387-ae27-4529-b452-70b2ce3b307d-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p6.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p6-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/c0a66631-f3be-49dd-89f0-cf5e60fbc37c-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p7.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p7-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 7,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/c506e494-dc95-4945-aee1-dc24b6103816-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p8.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p8-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 8,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/9b0b2af2-832d-49fa-b82d-2c1160c495fc-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p9.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p9-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 9,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/70ce04b9-5985-4eed-a961-1aaba161ec59-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p10.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p10-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 10,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/e53b4afa-38b8-444e-ac28-5df9a11078f3-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p11.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p11-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 11,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/4cc2770f-294d-41ae-b54c-65de1c94d788-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p12.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p12-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 12,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/a047c353-2945-4cc1-8642-573de0d3139d-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p13.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p13-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 13,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/f8379ea5-8f83-480f-af74-80df39c25ab8-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p14.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p14-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 14,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/f03e0490-ffa1-4fe8-9da1-7f9344f80506-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p15.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p15-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 15,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/3002614f-1d14-45e0-81a6-3adc33c8233a-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p16.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p16-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 16,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/c5c766b9-79fb-4dcd-a379-733ceeb0e83a-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p17.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p17-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 17,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/844f5ad3-065b-4da9-9daa-5f829834bd24-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p18.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p18-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 18,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/5ac74f8f-76c0-4176-9bcd-3f01d8825379-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 19,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/0c75e791-35b0-4c1f-80cd-5195ad463e5e-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 20,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/81e0eb75-d0fb-40b0-857a-e409160eab09-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 21,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/bf83c479-5457-45c5-844b-87b16e627228-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 22,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/b5245995-51e9-43f9-a886-320fcc15916c-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 23,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/932fd5c5-f844-4834-a48d-4b4557fa0190-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 24,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/6925b8d6-63f3-458a-b467-ea793c6b86d5-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 25,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/4678aada-fd85-478f-80c4-38355f812cf6-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 26,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/30c6576b-907e-4dab-a776-a55784cc0ad0-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 27,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/0592fc8e-52dd-4cf3-9cc8-1c09c35189c6-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 28,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/7cbc73c2-411c-43ea-8c47-81c6b0305e71-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 29,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/ee438df1-7df3-4f02-8d90-61e270c49d81-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 30,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/997539eb-6caf-430a-b247-0f7712f8d156-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 31,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/27295baa-23f3-4c84-8e57-3f3d889b0adf-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 32,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/bf6fe19e-1150-41b1-ac8c-5889886c1c01-at800.jpg",
-          "deals": []
-        },
-        {
-          "pageNumber": 33,
-          "imageUrl": "https://view.publitas.com/94536/3138062/pages/e151aaef-f2ab-4613-bd10-cbff0e3418d7-at800.jpg",
+          "imageUrl": "/screenshots/action-2026-w32-viewerimg-p19.webp",
+          "thumbnailUrl": "/screenshots/action-2026-w32-viewerimg-p19-thumb.webp",
           "deals": []
         }
       ],
-      "embedUrl": "https://view.publitas.com/action-benl/action-week-24-2026/page/1",
+      "embedUrl": "https://be.publications.action.com/?publitas_embed=embedded",
       "contentSource": "publitas",
-      "scrapedAt": "2026-06-11T17:25:00.000Z"
+      "scrapedAt": "2026-08-07T03:55:04.640Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-06-11T17:25:00.000Z",
+  "scrapedAt": "2026-08-07T03:55:36.121Z",
   "sourceUrls": [
-    "https://www.action.com/nl-be/weekactie/",
-    "https://view.publitas.com/action-benl/action-week-24-2026/page/1"
+    "https://www.action.com/nl-be/folder/",
+    "https://be.publications.action.com/?publitas_embed=embedded"
   ],
   "methods": [
-    "publitas"
+    "publitas",
+    "screenshot"
   ]
 }

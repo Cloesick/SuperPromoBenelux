@@ -5,30 +5,9 @@
  * without trying to introspect cross-origin iframe/PDF contents.
  */
 
+import { expectedViewer, type FolderFile } from "../support/folderData";
+
 describe("Folder viewer (mobile)", () => {
-	function dismissCookieBanners(attemptsLeft = 8): void {
-		cy.get("body").then(($body) => {
-			const candidates = [
-				"Alle cookies accepteren",
-				"Aanvaarden",
-				"Accepteren",
-			];
-
-			let clicked = false;
-			for (const label of candidates) {
-				const selector = `button:contains('${label}')`;
-				if ($body.find(selector).length > 0) {
-					clicked = true;
-					cy.contains("button", label).click({ force: true });
-				}
-			}
-
-			if (!clicked && attemptsLeft > 0) {
-				cy.wait(250).then(() => dismissCookieBanners(attemptsLeft - 1));
-			}
-		});
-	}
-
 	function visitAsIphone(path: string) {
 		cy.viewport(390, 844); // iPhone 12/13/14-ish
 
@@ -42,53 +21,62 @@ describe("Folder viewer (mobile)", () => {
 					() =>
 						"Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
 				);
+
+				// Seed the cookie choice rather than chasing the banner: it is fixed to
+				// the bottom of the viewport, which on a 390x844 screen covers most of
+				// the mobile fallback links this spec clicks.
+				win.localStorage.setItem("sp_cookie_consent", "declined");
 			},
 		});
-
-		dismissCookieBanners();
 	}
 
 	const slugs = ["albert-heijn", "action", "aldi", "lidl"];
 
 	slugs.forEach((slug) => {
-		it(`${slug}: renders the correct iPhone fallback path (PDF if available, else embed link)`, () => {
-			cy.readFile(`data/folders/${slug}.json`).then((data) => {
+		it(`${slug}: renders the correct iPhone fallback path`, () => {
+			cy.readFile(`data/folders/${slug}.json`).then((data: FolderFile) => {
 				const folder = data.folders?.[0];
 				expect(folder, "folder should exist").to.not.equal(undefined);
 
 				visitAsIphone(`/folders/${slug}`);
 
-				// FolderViewer prefers pages mode whenever pages exist.
-				if (folder?.pages && folder.pages.length > 0) {
-					cy.get("img[alt*='folder']").should("exist");
-					cy.contains("Pagina 1 van").should("be.visible");
-					return;
+				switch (expectedViewer(folder, slug)) {
+					case "pages":
+						cy.get("img[alt*='folder pagina']").should("exist");
+						cy.contains("Pagina 1 van").should("be.visible");
+						break;
+
+					case "pdf":
+						// The PDF mode button only exists when the PDF can be framed at
+						// all; albert-heijn and lidl sign theirs with
+						// response-content-disposition=attachment, which is why this
+						// branch no longer runs for them.
+						cy.contains("button", "PDF").should("be.visible").click();
+						cy.contains("a", "Open PDF")
+							.should("be.visible")
+							.and("have.attr", "href", folder.pdfUrl)
+							.and("have.attr", "target", "_blank");
+						break;
+
+					case "embed":
+						cy.contains("a", "Open in nieuw tabblad")
+							.should("be.visible")
+							.and("have.attr", "href", folder.embedUrl)
+							.and("have.attr", "target", "_blank");
+						cy.get("iframe").should("exist");
+						break;
+
+					default:
+						// albert-heijn and lidl land here: a Publitas embed the app
+						// refuses to frame plus an attachment-only PDF leaves nothing to
+						// show, so the viewer says so and keeps the download link.
+						cy.contains(/(?:binnenkort|kunnen we hier niet tonen|nog geen folder beschikbaar|momenteel geen)/i).should("be.visible");
+						if (folder.pdfUrl) {
+							cy.get(`a[href="${folder.pdfUrl}"]`)
+								.first()
+								.should("have.attr", "target", "_blank");
+						}
 				}
-
-				if (folder?.pdfUrl) {
-					cy.contains("button", "PDF").should("be.visible").click();
-					cy.contains("Open PDF")
-						.should("be.visible")
-						.closest("a")
-						.should("have.attr", "href", folder.pdfUrl)
-						.and("have.attr", "target", "_blank");
-					return;
-				}
-
-				if (folder?.embedUrl) {
-					cy.contains("Open in nieuw tabblad").should("be.visible");
-					cy.get('a[target="_blank"]')
-						.contains("Open in nieuw tabblad")
-						.should(($a) => {
-							const href = $a.attr("href");
-							expect(href).to.equal(folder.embedUrl);
-						});
-
-					cy.get("iframe").should("exist");
-					return;
-				}
-
-				cy.contains("binnenkort").should("be.visible");
 			});
 		});
 	});

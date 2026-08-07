@@ -1,8 +1,9 @@
 name: Tests
 
 on:
+  push:
+    branches: [main]
   pull_request: {}
-  workflow_dispatch: {}
 
 jobs:
   test:
@@ -10,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
@@ -22,6 +23,17 @@ jobs:
         env:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: npm ci --legacy-peer-deps
+
+      # Catches the class of failure that took every retailer logo offline for
+      # months: assets referenced by data but absent from the repository. The
+      # unit suite mocks next/image, so broken image URLs are invisible to it.
+      #
+      # Page images are committed again: duplicate collapsing and orphan pruning
+      # cut public/screenshots from 298 MB to single-digit MB, which is small
+      # enough to track. The advisory flag is therefore gone — a referenced page
+      # image that is missing or empty now fails the build, same as a logo.
+      - name: Referenced assets exist
+        run: node scripts/check-assets.mjs
 
       - name: Unit + component tests
         run: npm test

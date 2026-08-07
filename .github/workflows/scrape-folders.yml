@@ -2,14 +2,8 @@ name: Scrape folders
 
 on:
   schedule:
-    # Morning + afternoon for redundancy (UTC)
+    # Daily (UTC). Adjust if you want retailer-day-specific runs.
     - cron: "30 4 * * *"
-    - cron: "30 14 * * *"
-  push:
-    branches: [main]
-    paths:
-      - "src/scrapers/**"
-      - ".github/workflows/scrape-folders.yml"
   workflow_dispatch: {}
 
 permissions:
@@ -25,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -34,9 +28,9 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -49,8 +43,13 @@ jobs:
           # GitHub-hosted runners have Chrome installed.
           # We use it because puppeteer_skip_download=true disables bundled Chromium.
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
-          NODE_TLS_REJECT_UNAUTHORIZED: "0"
-        run: npm run scrape -- albert-heijn lidl delhaize colruyt aldi action
+          # Optional. When this secret exists, src/scrapers/pageStorage.ts
+          # uploads each page image and records the absolute URL, so captures
+          # stop being committed to git. When it is absent the scraper falls
+          # back to /screenshots paths and the commit step below still works —
+          # so setting the secret is the only action needed to switch over.
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: npm run scrape
 
       - name: Health check
         run: |
@@ -75,17 +74,32 @@ jobs:
             if (s.missing > 0) { console.error(s.missing + ' retailer(s) have NO data!'); process.exit(1); }
           "
 
+      # Screenshots are committed, so unreferenced ones would accumulate in git
+      # history forever. The scraper writes every capture it takes, but duplicate
+      # collapsing and blank detection mean most are never referenced: before
+      # this step existed, public/screenshots held 1233 files of which 122 were
+      # in use. Pruning first keeps the committed set at single-digit MB.
+      - name: Prune unreferenced screenshots
+        run: node scripts/prune-screenshots.mjs
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -f data/folders data/health.json public/screenshots || true
+          # -A so the prune's deletions are staged too, not just new captures;
+          # -f because public/ was historically gitignored and some clones still
+          # carry that rule. Paths are listed explicitly (never a bare `git add
+          # -A`) so the scrape's other byproducts stay out of history — notably
+          # data/products.db, the SQLite archive that is rewritten wholesale on
+          # every run and is gitignored for exactly that reason. Do not add it
+          # here: nothing at runtime reads it, and it recreates its own schema.
+          git add -A -f data/folders data/health.json public/screenshots || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
 
-          git commit -m "chore: update scraped folders and screenshots [skip ci]"
+          git commit -m "chore: update scraped folders and screenshots"
           git push

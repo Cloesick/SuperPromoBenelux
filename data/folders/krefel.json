@@ -1,0 +1,204 @@
+{
+  "retailer": "krefel",
+  "folders": [
+    {
+      "id": "krefel-2026-w32-folder",
+      "retailerSlug": "krefel",
+      "title": "Krëfel promoties",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/krefel-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/krefel-2026-w32-viewerimg-p1.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/krefel-2026-w32-viewerimg-p1-thumb.webp"
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-05T21:39:45.427Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "pagetext-0",
+      "product": "5Gratis ProductDe'Longhi Nespresso Koffiemachine Inissia Black",
+      "originalPrice": 69.95,
+      "promoPrice": 59,
+      "discount": "-16%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-1",
+      "product": "Siemens Diepvries GS36NVICG iQ300 antiFingerprint",
+      "originalPrice": 1169,
+      "promoPrice": 999,
+      "discount": "-15%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-2",
+      "product": "ActieMoulinex Blender LM46EN10 Eco Respect",
+      "originalPrice": 79,
+      "promoPrice": 74.95,
+      "discount": "-5%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-3",
+      "product": "ActieWhirlpool Inbouw oven WOI5S8PM1SX Airfry",
+      "originalPrice": 799,
+      "promoPrice": 499,
+      "discount": "-38%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-4",
+      "product": "ActieAEG Inbouw vaatwasser GI7212A2SN 7000",
+      "originalPrice": 899,
+      "promoPrice": 849,
+      "discount": "-6%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-5",
+      "product": "Oral-B Elektrische tandenborstel  iO5S Wit",
+      "originalPrice": 189,
+      "promoPrice": 94.95,
+      "discount": "-50%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-6",
+      "product": "Oral-B Monddouche Aquacare 4Power",
+      "originalPrice": 84.99,
+      "promoPrice": 68,
+      "discount": "-20%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-7",
+      "product": "Bosch Wasmachine WGG244ZPFG Serie 6 Iron Assist 9 kg",
+      "originalPrice": 849,
+      "promoPrice": 599,
+      "discount": "-29%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-8",
+      "product": "AEG Wasmachine LR76C1144 ProSteam®",
+      "originalPrice": 949,
+      "promoPrice": 749,
+      "discount": "-21%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-9",
+      "product": "Siemens Diepvries GS58NAWCV iQ500 No-frost  191 cm",
+      "originalPrice": 1339,
+      "promoPrice": 1027,
+      "discount": "-23%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-10",
+      "product": "JBL Xtreme 4 - Zwart",
+      "originalPrice": 249,
+      "promoPrice": 199,
+      "discount": "-20%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-11",
+      "product": "Samsung Wasmachine WW91CGC04AAE EcoBubble",
+      "originalPrice": 699,
+      "promoPrice": 499,
+      "discount": "-29%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-12",
+      "product": "AEG Wasmachine LR73R864 ProSteam",
+      "originalPrice": 799,
+      "promoPrice": 699,
+      "discount": "-13%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-13",
+      "product": "Belkin Powerbank 26 000mAh - Zwart",
+      "originalPrice": 39.95,
+      "promoPrice": 34.95,
+      "discount": "-13%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-14",
+      "product": "AEG Wasmachine LR63R84VB ProSense",
+      "originalPrice": 699,
+      "promoPrice": 549,
+      "discount": "-21%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-15",
+      "product": "Whirlpool Vaatwasser W8F HS61BS",
+      "originalPrice": 899,
+      "promoPrice": 599,
+      "discount": "-33%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    },
+    {
+      "id": "pagetext-16",
+      "product": "5Philips Senseo Original Eco HD6552/38",
+      "originalPrice": 89.95,
+      "promoPrice": 59.95,
+      "discount": "-33%",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "krefel"
+    }
+  ],
+  "scrapedAt": "2026-08-05T21:40:16.943Z",
+  "sourceUrls": [
+    "https://www.krefel.be/nl/promoties"
+  ],
+  "methods": [
+    "screenshot",
+    "page-text"
+  ]
+}

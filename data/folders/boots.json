@@ -1,0 +1,46 @@
+{
+  "retailer": "boots",
+  "folders": [
+    {
+      "id": "boots-2026-w32-folder",
+      "retailerSlug": "boots",
+      "title": "Boots promoties",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/boots-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/boots-2026-w32-viewerimg-p1.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/boots-2026-w32-viewerimg-p1-thumb.webp"
+        }
+      ],
+      "embedUrl": "",
+      "contentSource": "unknown",
+      "scrapedAt": "2026-08-05T22:19:33.508Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "boots-ocr-boots-2026-w32-viewerimg-p1-0",
+      "product": "What happened? This blocked by security service request was our Your IP",
+      "promoPrice": 45.6,
+      "originalPrice": 193.74,
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "boots"
+    }
+  ],
+  "scrapedAt": "2026-08-05T22:19:45.749Z",
+  "sourceUrls": [
+    "https://www.boots.com/offers",
+    "https://www.boots.com/_Incapsula_Resource?CWUDNSAI=23&xinfo=53-293644754-0%20PNNN%20RT%281785968357841%20685%29%20q%280%20-1%20-1%20-1%29%20r%281%20-1%29%20B15%2814%2c0%2c0%29%20U5&incident_id=567000140858897773-1368878348687049653&edet=15&cinfo=0e00000000c3&rpinfo=0&cip=193.74.248.194&mth=GET"
+  ],
+  "methods": [
+    "unknown",
+    "screenshot",
+    "ocr"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "retailer": "hm",
+  "folders": [
+    {
+      "id": "hm-2026-w32-folder",
+      "retailerSlug": "hm",
+      "title": "H&M sale",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/hm-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/hm-2026-w32-viewerimg-p1.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/hm-2026-w32-viewerimg-p1-thumb.webp"
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-05T21:42:26.369Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-8",
+      "product": "Je winkelmandje is leeg.",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "hm"
+    }
+  ],
+  "scrapedAt": "2026-08-05T21:42:58.146Z",
+  "sourceUrls": [
+    "https://www2.hm.com/nl_be/sale/heren/view-all.html"
+  ],
+  "methods": [
+    "screenshot"
+  ]
+}

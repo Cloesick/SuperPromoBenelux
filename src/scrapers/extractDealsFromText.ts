@@ -1,6 +1,4 @@
-// pdfjs-dist 3.x legacy CJS build — tsx/esbuild-safe (no top-level await, which
-// the 4.x/5.x ESM legacy builds use and tsx cannot transpile to CJS).
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import { Deal } from "../lib/types";
 
 // ---------------------------------------------------------------------------
@@ -65,12 +63,19 @@ interface TextBlock {
 	discount?: string;
 }
 
-function parseTextToDeals(
+/**
+ * Turn a flat block of text into deals.
+ *
+ * Shared by the PDF text layer and by OCR of leaflet screenshots — both
+ * produce the same shape of output (product names and prices interleaved
+ * with layout noise), so they use the same block parser.
+ */
+export function parseTextToDeals(
 	rawText: string,
 	retailerSlug: string,
 	validFrom: string,
 	validUntil: string,
-	source: "pdf",
+	source: "pdf" | "ocr",
 ): Deal[] {
 	const lines = rawText
 		.split(/\n/)

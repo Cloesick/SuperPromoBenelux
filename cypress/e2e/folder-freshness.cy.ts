@@ -9,123 +9,164 @@
  * 5. Matches the JSON data to what's rendered on the page
  */
 
+import { expectedViewer, type FolderFile } from "../support/folderData";
+
 const MAX_DATA_AGE_HOURS = 168; // 7 days
 
-const retailerSlugs = [
-	"albert-heijn",
-	"lidl",
-	"delhaize",
-	"colruyt",
-	"aldi",
-	"action",
+// Retailers with a data/folders/<slug>.json file. maxi-zoo is intentionally
+// absent: it is a real retailer in src/lib/retailers.ts that has never been
+// scraped, and listing it here made every `cy.readFile` in this suite fail on a
+// missing file instead of reporting anything about freshness. Its page (empty
+// state, no viewer) is covered in folder-viewer.cy.ts.
+const allRetailers = [
+	// General
+	{ slug: "albert-heijn", path: "/folders/albert-heijn" },
+	{ slug: "lidl", path: "/folders/lidl" },
+	{ slug: "delhaize", path: "/folders/delhaize" },
+	{ slug: "colruyt", path: "/folders/colruyt" },
+	{ slug: "aldi", path: "/folders/aldi" },
+	{ slug: "action", path: "/folders/action" },
+	// Pet
+	{ slug: "tom-co", path: "/pet/folders/tom-co" },
+	{ slug: "zooplus", path: "/pet/folders/zooplus" },
+	{ slug: "aveve", path: "/pet/folders/aveve" },
+	{ slug: "medpets", path: "/pet/folders/medpets" },
+	// Electro
+	{ slug: "mediamarkt", path: "/electro/folders/mediamarkt" },
+	{ slug: "coolblue", path: "/electro/folders/coolblue" },
+	{ slug: "vanden-borre", path: "/electro/folders/vanden-borre" },
+	{ slug: "krefel", path: "/electro/folders/krefel" },
+	{ slug: "bol", path: "/electro/folders/bol" },
+	// Fashion
+	{ slug: "hm", path: "/fashion/folders/hm" },
+	{ slug: "zalando", path: "/fashion/folders/zalando" },
+	// Home & Garden
+	{ slug: "ikea", path: "/home-garden/folders/ikea" },
+	{ slug: "gamma", path: "/home-garden/folders/gamma" },
+	// Beauty
+	{ slug: "kruidvat", path: "/beauty/folders/kruidvat" },
+	{ slug: "ici-paris-xl", path: "/beauty/folders/ici-paris-xl" },
+	{ slug: "douglas", path: "/beauty/folders/douglas" },
+	{ slug: "di", path: "/beauty/folders/di" },
+	{ slug: "etos", path: "/beauty/folders/etos" },
+	{ slug: "boots", path: "/beauty/folders/boots" },
+	{ slug: "muller", path: "/beauty/folders/muller" },
+	{ slug: "rossmann", path: "/beauty/folders/rossmann" },
+	{ slug: "treac", path: "/beauty/folders/treac" },
+	{ slug: "rituals", path: "/beauty/folders/rituals" },
+	{ slug: "yves-rocher", path: "/beauty/folders/yves-rocher" },
+	{ slug: "the-body-shop", path: "/beauty/folders/the-body-shop" },
 ];
 
-interface FolderData {
-	retailer: string;
-	scrapedAt: string;
-	folders: {
-		id: string;
-		title: string;
-		validFrom: string;
-		validUntil: string;
-		pageCount: number;
-		pages: { pageNumber: number; imageUrl: string }[];
-		embedUrl?: string;
-		pdfUrl?: string;
-	}[];
-}
+const retailerPaths = Object.fromEntries(
+	allRetailers.map((r) => [r.slug, r.path]),
+);
+
+type FolderData = FolderFile;
 
 describe("Folder freshness & rendering", () => {
-	retailerSlugs.forEach((slug) => {
-		describe(`${slug}`, () => {
-			let data: FolderData;
+	allRetailers
+		.map((r) => r.slug)
+		.forEach((slug) => {
+			describe(`${slug}`, () => {
+				let data: FolderData;
 
-			before(() => {
-				cy.readFile(`data/folders/${slug}.json`).then((json) => {
-					data = json as FolderData;
-				});
-			});
-
-			it("has data scraped within the last 7 days", () => {
-				const scrapedAt = new Date(data.scrapedAt).getTime();
-				const now = Date.now();
-				const ageHours = (now - scrapedAt) / (1000 * 60 * 60);
-
-				expect(ageHours, `${slug} data is ${Math.round(ageHours)}h old`).to.be.lessThan(
-					MAX_DATA_AGE_HOURS,
-				);
-			});
-
-			it("has at least one non-expired folder", () => {
-				const now = new Date();
-				const hasActive = data.folders.some((f) => {
-					const until = new Date(f.validUntil + "T23:59:59");
-					return until >= now;
-				});
-				// Allow recently expired (within 3 days) as fallback
-				const hasRecent = data.folders.some((f) => {
-					const until = new Date(f.validUntil + "T23:59:59");
-					const daysExpired =
-						(now.getTime() - until.getTime()) / (1000 * 60 * 60 * 24);
-					return daysExpired < 3;
-				});
-
-				expect(
-					hasActive || hasRecent,
-					`${slug} should have a current or recently expired folder`,
-				).to.equal(true);
-			});
-
-			it("folder page loads and shows retailer name in heading", () => {
-				cy.visit(`/folders/${slug}`);
-				cy.get("h1").should("exist").and("contain.text", "folder");
-			});
-
-			it("folder page renders content (viewer or empty state)", () => {
-				cy.visit(`/folders/${slug}`);
-
-				const latestFolder = data.folders[0];
-				const hasPages = latestFolder?.pages?.length > 0;
-				const hasEmbed =
-					!!latestFolder?.embedUrl &&
-					latestFolder.embedUrl.startsWith("http");
-
-				if (hasPages) {
-					// Should render page images or thumbnails
-					cy.get("img").should("have.length.at.least", 1);
-				} else if (hasEmbed) {
-					// Should render an iframe embed
-					cy.get("iframe").should("have.length.at.least", 1);
-				} else {
-					// Should show the "no folder" amber state or PDF link
-					cy.get("body").should("exist");
-				}
-			});
-
-			it("folder page has correct page title", () => {
-				cy.visit(`/folders/${slug}`);
-				cy.title().should("include", "folder");
-			});
-
-			it("folder page has valid dates displayed or in JSON-LD", () => {
-				cy.visit(`/folders/${slug}`);
-
-				cy.get('script[type="application/ld+json"]')
-					.should("exist")
-					.first()
-					.then(($script) => {
-						const json = JSON.parse($script[0]?.textContent || "{}");
-						// The retailer folder JSON-LD should exist
-						expect(json).to.be.an("object");
+				before(() => {
+					cy.readFile(`data/folders/${slug}.json`).then((json) => {
+						data = json as FolderData;
 					});
+				});
+
+				it("has data scraped within the last 7 days", () => {
+					const scrapedAt = new Date(data.scrapedAt).getTime();
+					const now = Date.now();
+					const ageHours = (now - scrapedAt) / (1000 * 60 * 60);
+
+					expect(
+						ageHours,
+						`${slug} data is ${Math.round(ageHours)}h old`,
+					).to.be.lessThan(MAX_DATA_AGE_HOURS);
+				});
+
+				it("has at least one non-expired folder", () => {
+					const now = new Date();
+					const hasActive = data.folders.some((f) => {
+						const until = new Date(f.validUntil + "T23:59:59");
+						return until >= now;
+					});
+					// Allow recently expired (within 3 days) as fallback
+					const hasRecent = data.folders.some((f) => {
+						const until = new Date(f.validUntil + "T23:59:59");
+						const daysExpired =
+							(now.getTime() - until.getTime()) / (1000 * 60 * 60 * 24);
+						return daysExpired < 3;
+					});
+
+					expect(
+						hasActive || hasRecent,
+						`${slug} should have a current or recently expired folder`,
+					).to.equal(true);
+				});
+
+				it("folder page loads and shows retailer name in heading", () => {
+					cy.visit(retailerPaths[slug]);
+					cy.get("h1").should("exist").and("contain.text", "folder");
+				});
+
+				it("folder page renders content (viewer or empty state)", () => {
+					cy.visit(retailerPaths[slug]);
+
+					// This used to demand an iframe from any folder carrying an
+					// embedUrl. Most embedUrls are now refused by the viewer — Publitas
+					// and ah.be send X-Frame-Options, gamma recorded a bare viewer
+					// homepage, zalando a consent bridge — so that branch failed for
+					// exactly the retailers whose embed is broken. Ask instead for the
+					// viewer the data actually calls for.
+					const latestFolder = data.folders[0];
+
+					switch (expectedViewer(latestFolder, slug)) {
+						case "pages":
+							cy.contains("Pagina 1 van").should("be.visible");
+							break;
+						case "embed":
+						case "pdf":
+							cy.get('iframe[title*="folder"]').should(
+								"have.length.at.least",
+								1,
+							);
+							break;
+						default:
+							// Nothing framable: the viewer must admit it rather than wrap
+							// its chrome around an empty box.
+							cy.contains(/(?:binnenkort|kunnen we hier niet tonen|nog geen folder beschikbaar|momenteel geen)/i).should("be.visible");
+							cy.get('iframe[title*="folder"]').should("not.exist");
+					}
+				});
+
+				it("folder page has correct page title", () => {
+					cy.visit(retailerPaths[slug]);
+					cy.title().should("include", "folder");
+				});
+
+				it("folder page has valid dates displayed or in JSON-LD", () => {
+					cy.visit(retailerPaths[slug]);
+
+					cy.get('script[type="application/ld+json"]')
+						.should("exist")
+						.first()
+						.then(($script) => {
+							const json = JSON.parse($script[0]?.textContent || "{}");
+							// The retailer folder JSON-LD should exist
+							expect(json).to.be.an("object");
+						});
+				});
 			});
 		});
-	});
 });
 
 describe("Cross-retailer content health", () => {
 	it("all retailers have folder data files", () => {
-		retailerSlugs.forEach((slug) => {
+		allRetailers.forEach(({ slug }) => {
 			cy.readFile(`data/folders/${slug}.json`).should("exist");
 		});
 	});
@@ -133,7 +174,7 @@ describe("Cross-retailer content health", () => {
 	it("no retailer has data older than 7 days", () => {
 		const now = Date.now();
 
-		retailerSlugs.forEach((slug) => {
+		allRetailers.forEach(({ slug }) => {
 			cy.readFile(`data/folders/${slug}.json`).then((data: FolderData) => {
 				const ageHours =
 					(now - new Date(data.scrapedAt).getTime()) / (1000 * 60 * 60);
@@ -146,8 +187,8 @@ describe("Cross-retailer content health", () => {
 	});
 
 	it("every retailer folder page returns 200", () => {
-		retailerSlugs.forEach((slug) => {
-			cy.request(`/folders/${slug}`).its("status").should("equal", 200);
+		allRetailers.forEach(({ path }) => {
+			cy.request(path).its("status").should("equal", 200);
 		});
 	});
 });

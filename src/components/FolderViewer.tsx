@@ -3,12 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
+	isEmbedBlocked as isEmbedBlockedShared,
+	isPdfForcedDownload as isPdfForcedDownloadShared,
+	isFolderExpired,
+} from "@/lib/folderRenderability";
+import {
 	ChevronLeft,
 	ChevronRight,
 	Calendar,
 	FileText,
-	Maximize2,
 	ExternalLink,
+	Maximize2,
 } from "lucide-react";
 import { Folder, Retailer } from "@/lib/types";
 
@@ -18,48 +23,42 @@ interface FolderViewerProps {
 }
 
 export function FolderViewer({ folder, retailer }: FolderViewerProps) {
+	// Guard the array: a folder JSON written without `pages` would otherwise
+	// throw inside a client component and blank the route.
+	const folderPages = folder.pages ?? [];
+
 	const hasEmbed = !!folder.embedUrl;
 	const hasPdf = !!folder.pdfUrl;
-	const hasPages = folder.pages.length > 0;
+	const hasPages = folderPages.length > 0;
 	const forcePagesOnly = retailer.slug === "colruyt" && hasPages;
 
-	// Detect expired folders — Publitas embeds go offline after validUntil
-	const isExpired = (() => {
-		try {
-			const until = new Date(folder.validUntil + "T23:59:59");
-			return until < new Date();
-		} catch {
-			return false;
-		}
-	})();
+	// Page images that 404'd. Without this a missing screenshot renders the full
+	// chrome — page counter, thumbnails, arrows — around an invisible image,
+	// which looks like a working folder containing nothing.
+	//
+	// The folder is judged unusable on the *first* page failing rather than on
+	// every page failing: when images are missing they are missing wholesale
+	// (public/ absent from the deploy), page one is what every visitor sees
+	// first, and onError only fires for images actually rendered — so waiting
+	// for all of them would never trigger.
+	const [failedPages, setFailedPages] = useState<Set<string>>(new Set());
+	const firstPageFailed =
+		hasPages && failedPages.has(folderPages[0]?.imageUrl ?? "");
+
+	// Expiry lives in folderRenderability so the viewer, the page's robots
+	// tag and the sitemap all agree on when a leaflet has run out.
+	const isExpired = isFolderExpired(folder.validUntil);
 
 	// Detect stale data — warn users when scraped data is old
 	const [dataAgeHours, setDataAgeHours] = useState<number | null>(null);
 	const isStale = dataAgeHours !== null && dataAgeHours > 72; // > 3 days
 
-	// Detect embed host for X-Frame-Options / CSP blocking
-	const embedHost = (() => {
-		if (!folder.embedUrl) return null;
-		try {
-			return new URL(folder.embedUrl).hostname;
-		} catch {
-			return null;
-		}
-	})();
-
-	// Block embeds from hosts known to reject iframes (X-Frame-Options: SAMEORIGIN/DENY)
-	const isEmbedBlocked =
-		!!embedHost &&
-		(retailer.slug === "delhaize" ||
-			embedHost === "ah.be" ||
-			embedHost.endsWith(".ah.be") ||
-			embedHost === "folder.aldi.be" ||
-			embedHost.endsWith(".folder.aldi.be") ||
-			embedHost === "view.publitas.com" ||
-			embedHost.endsWith(".publitas.com"));
-
-	// Lidl (folder-nl.lidl.be) may block embeds behind a consent wall; prefer PDF when available
-	const preferPdf = hasPdf && embedHost === "folder-nl.lidl.be";
+	// These rules live in src/lib/folderRenderability.ts so the sitemap applies
+	// exactly the same ones. When they were duplicated the two drifted, and the
+	// sitemap submitted albert-heijn and lidl — which render nothing at all — to
+	// Google as weekly priority-0.8 pages.
+	const isEmbedBlocked = isEmbedBlockedShared(folder.embedUrl, retailer.slug);
+	const isPdfForcedDownload = isPdfForcedDownloadShared(folder.pdfUrl);
 
 	// When expired, treat embed/PDF from known-offline hosts as unavailable
 	const isEmbedOfflineRisk =
@@ -71,16 +70,23 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		!!folder.pdfUrl &&
 		/publitas\.com|folderz\.be/i.test(folder.pdfUrl);
 
-	const hasEmbedEffective = forcePagesOnly
-		? false
-		: isEmbedBlocked || isEmbedOfflineRisk
+	// forcePagesOnly and hasPages only suppress the embed while the page images
+	// actually load. When every image 404s, falling back to a working embed or
+	// PDF is better than showing an empty viewer.
+	const pagesUsable = hasPages && !firstPageFailed;
+
+	const hasEmbedEffective =
+		forcePagesOnly && pagesUsable
 			? false
-			: hasEmbed;
-	const hasPdfEffective = forcePagesOnly
-		? false
-		: isPdfOfflineRisk
+			: isEmbedBlocked || isEmbedOfflineRisk
+				? false
+				: hasEmbed;
+	const hasPdfEffective =
+		forcePagesOnly && pagesUsable
 			? false
-			: hasPdf;
+			: isPdfOfflineRisk || isPdfForcedDownload
+				? false
+				: hasPdf;
 	const thumbsRef = useRef<HTMLDivElement | null>(null);
 
 	const [trackingEnabled, setTrackingEnabled] = useState(false);
@@ -89,28 +95,20 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 	const [currentPage, setCurrentPage] = useState(0);
 	const [isFullscreen, setIsFullscreen] = useState(false);
 	const [mode, setMode] = useState<"embed" | "pdf" | "pages">(() => {
-		if (forcePagesOnly) return "pages";
-		if (hasPages) return "pages";
-		if (preferPdf && hasPdfEffective) return "pdf";
+		if (forcePagesOnly && pagesUsable) return "pages";
+		if (pagesUsable) return "pages";
 		if (hasEmbedEffective) return "embed";
 		if (hasPdfEffective) return "pdf";
 		return "pdf";
 	});
 
 	useEffect(() => {
-		setCurrentPage(0);
-		setIsFullscreen(false);
-
-		if (forcePagesOnly) {
+		if (forcePagesOnly && pagesUsable) {
 			setMode("pages");
 			return;
 		}
-		if (hasPages) {
+		if (pagesUsable) {
 			setMode("pages");
-			return;
-		}
-		if (preferPdf && hasPdfEffective) {
-			setMode("pdf");
 			return;
 		}
 		if (hasEmbedEffective) {
@@ -128,9 +126,16 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		forcePagesOnly,
 		hasEmbedEffective,
 		hasPdfEffective,
-		hasPages,
-		preferPdf,
+		pagesUsable,
 	]);
+
+	// Reset paging separately from mode selection: mode now also re-evaluates
+	// when images fail, and that must not yank the reader back to page 1.
+	useEffect(() => {
+		setCurrentPage(0);
+		setIsFullscreen(false);
+		setFailedPages(new Set());
+	}, [folder.id, retailer.slug]);
 
 	useEffect(() => {
 		try {
@@ -256,11 +261,11 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 	});
 
 	const canGoPrev = currentPage > 0;
-	const canGoNext = currentPage < folder.pages.length - 1;
+	const canGoNext = currentPage < folderPages.length - 1;
 
 	const goPrev = () => setCurrentPage((p) => Math.max(0, p - 1));
 	const goNext = () =>
-		setCurrentPage((p) => Math.min(folder.pages.length - 1, p + 1));
+		setCurrentPage((p) => Math.min(folderPages.length - 1, p + 1));
 
 	const scrollThumbs = (dir: "left" | "right") => {
 		const el = thumbsRef.current;
@@ -298,23 +303,37 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 				</div>
 			</div>
 
-			{isExpired && (hasEmbedEffective || hasPdfEffective || hasPages) && (
-				<div className="mb-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl px-4 py-3 text-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+			{/* Expiry notice, rendered above the viewer regardless of mode.
+			    The expired card further down is only reachable when there is
+			    nothing to show; a folder with page images wins the mode race and
+			    would otherwise present last week's prices as current. */}
+			{isExpired && (
+				<div className="flex items-center gap-2 mb-4 px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
+					<Calendar className="w-4 h-4 shrink-0" suppressHydrationWarning />
 					<span>
-						Dit is de laatst beschikbare folder. {retailer.name} heeft mogelijk
-						al een nieuwere online.
+						Deze folder is verlopen op{" "}
+						{(() => {
+							try {
+								return new Date(folder.validUntil).toLocaleDateString("nl-BE", {
+									day: "numeric",
+									month: "long",
+								});
+							} catch {
+								return folder.validUntil;
+							}
+						})()}
+						. De prijzen kunnen niet meer geldig zijn.{" "}
+						{retailer.website && (
+							<a
+								href={retailer.website}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="font-medium underline hover:text-amber-900"
+							>
+								Bekijk {retailer.name} voor de actuele aanbiedingen
+							</a>
+						)}
 					</span>
-					{retailer.website && (
-						<a
-							href={retailer.website}
-							target="_blank"
-							rel="noopener noreferrer sponsored"
-							className="inline-flex items-center gap-1 font-medium underline whitespace-nowrap hover:text-amber-950"
-						>
-							Bekijk de actuele folder
-							<ExternalLink className="w-3.5 h-3.5" suppressHydrationWarning />
-						</a>
-					)}
 				</div>
 			)}
 
@@ -493,20 +512,18 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 						</a>
 					</div>
 
-					<div className="hidden sm:block bg-gradient-to-b from-slate-100 to-slate-200 px-3 py-6 sm:px-8 sm:py-9">
-						<iframe
-							src={folder.pdfUrl}
-							title={`${retailer.name} folder PDF`}
-							className="w-full h-[760px] lg:h-[900px] border-0 rounded-xl bg-white ring-1 ring-black/5 shadow-[0_16px_44px_-16px_rgba(15,23,42,0.5)]"
-							loading="lazy"
-						/>
-					</div>
+					<iframe
+						src={folder.pdfUrl}
+						title={`${retailer.name} folder PDF`}
+						className="hidden sm:block w-full h-[750px] lg:h-[900px] border-0"
+						loading="lazy"
+					/>
 				</div>
-			) : mode === "pages" && hasPages ? (
+			) : mode === "pages" && pagesUsable ? (
 				/* Fallback: Image page viewer */
 				<div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-					<div className="bg-gradient-to-b from-slate-100 to-slate-200 px-3 py-6 sm:px-8 sm:py-9">
-						<div className="relative mx-auto w-full max-w-[880px] overflow-hidden rounded-xl bg-white ring-1 ring-black/5 shadow-[0_16px_44px_-16px_rgba(15,23,42,0.5)]">
+					<div className="bg-gray-50 px-4 py-5 sm:px-6 sm:py-6">
+						<div className="mx-auto w-full max-w-[900px] rounded-lg border border-gray-200 bg-white shadow-sm overflow-hidden relative">
 							<button
 								type="button"
 								onClick={goPrev}
@@ -526,7 +543,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								type="button"
 								onClick={goPrev}
 								disabled={!canGoPrev}
-								className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10 grid place-items-center w-11 h-11 sm:w-12 sm:h-12 bg-white/85 backdrop-blur border border-white/60 rounded-full shadow-lg hover:bg-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none transition"
+								className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-200 rounded-full p-2 shadow-sm disabled:opacity-30 disabled:hover:bg-white/90 disabled:cursor-not-allowed transition"
 								aria-label="Vorige pagina"
 							>
 								<ChevronLeft
@@ -538,7 +555,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								type="button"
 								onClick={goNext}
 								disabled={!canGoNext}
-								className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-10 grid place-items-center w-11 h-11 sm:w-12 sm:h-12 bg-white/85 backdrop-blur border border-white/60 rounded-full shadow-lg hover:bg-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none transition"
+								className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-200 rounded-full p-2 shadow-sm disabled:opacity-30 disabled:hover:bg-white/90 disabled:cursor-not-allowed transition"
 								aria-label="Volgende pagina"
 							>
 								<ChevronRight
@@ -547,15 +564,29 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								/>
 							</button>
 							<Image
-								src={folder.pages[currentPage].imageUrl}
+								src={folderPages[currentPage].imageUrl}
 								alt={`${retailer.name} folder pagina ${currentPage + 1}`}
 								width={1200}
 								height={1600}
 								sizes="(max-width: 768px) 100vw, 900px"
-								className="w-full h-auto max-w-full object-contain bg-white"
+								className="w-full h-auto object-contain bg-white"
 								priority={currentPage === 0}
 								unoptimized
 								suppressHydrationWarning
+								onError={() => {
+									// Record the failure so pagesUsable can fall through to the
+									// embed, the PDF, or an honest placeholder. Without this a
+									// 404 leaves the counter, thumbnails and arrows wrapped
+									// around nothing.
+									const src = folderPages[currentPage]?.imageUrl;
+									if (!src) return;
+									setFailedPages((prev) => {
+										if (prev.has(src)) return prev;
+										const next = new Set(prev);
+										next.add(src);
+										return next;
+									});
+								}}
 							/>
 						</div>
 						<div className="flex items-center justify-between px-6 py-4 border-t border-gray-100">
@@ -568,7 +599,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								Vorige
 							</button>
 							<span className="text-sm text-gray-500">
-								Pagina {currentPage + 1} van {folder.pages.length}
+								Pagina {currentPage + 1} van {folderPages.length}
 							</span>
 							<button
 								onClick={goNext}
@@ -582,36 +613,90 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 					</div>
 				</div>
 			) : isExpired ? (
-				<div className="bg-white border border-gray-200 rounded-xl p-8 sm:p-12 text-center">
-					<p className="text-gray-900 font-semibold text-lg mb-2">
-						De nieuwe {retailer.name} folder komt eraan
+				<div className="bg-amber-50 border border-amber-200 rounded-xl p-8 sm:p-12 text-center">
+					<p className="text-amber-800 font-medium mb-2">
+						Deze folder is verlopen
 					</p>
-					<p className="text-gray-600 text-sm mb-6 max-w-md mx-auto">
-						We werken de folder van {retailer.name} bij. Bekijk intussen de
-						actuele aanbiedingen rechtstreeks bij {retailer.name}.
+					<p className="text-amber-700 text-sm mb-4">
+						De nieuwe {retailer.name} folder wordt binnenkort verwacht.
 					</p>
 					{retailer.website && (
 						<a
 							href={retailer.website}
 							target="_blank"
-							rel="noopener noreferrer sponsored"
-							className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-medium px-6 py-3 rounded-lg transition"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
 						>
-							Bekijk de actuele {retailer.name} folder
-							<ExternalLink className="w-4 h-4" suppressHydrationWarning />
+							Bekijk de website van {retailer.name}
 						</a>
 					)}
 				</div>
-			) : (
-				<div className="bg-gray-50 border border-gray-200 rounded-xl p-12 text-center">
-					<p className="text-gray-500">
-						De folderpagina&apos;s worden binnenkort geladen.
+			) : folder.embedUrl || folder.pdfUrl ? (
+				/*
+				 * A folder exists but nothing in it can be shown here: the viewer
+				 * refuses to be framed, or the PDF is served as a download. Saying
+				 * "worden binnenkort geladen" was untrue — nothing is loading and
+				 * nothing will. Point the visitor at the real leaflet instead, which
+				 * is the useful thing we can actually offer.
+				 */
+				<div className="bg-gray-50 border border-gray-200 rounded-xl p-8 sm:p-12 text-center">
+					<p className="text-gray-700 font-medium mb-2">
+						Deze folder kunnen we hier niet tonen
 					</p>
+					<p className="text-gray-500 text-sm mb-4">
+						{retailer.name} publiceert de folder in een viewer die niet op andere
+						sites getoond mag worden. Je kan hem wel rechtstreeks bekijken.
+					</p>
+					<div className="flex flex-wrap items-center justify-center gap-3">
+						{folder.embedUrl && (
+							<a
+								href={folder.embedUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 transition"
+							>
+								<ExternalLink className="w-4 h-4" suppressHydrationWarning />
+								Open de folder van {retailer.name}
+							</a>
+						)}
+						{folder.pdfUrl && (
+							<a
+								href={folder.pdfUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+							>
+								<FileText className="w-4 h-4" suppressHydrationWarning />
+								Download de PDF
+							</a>
+						)}
+					</div>
+				</div>
+			) : (
+				<div className="bg-gray-50 border border-gray-200 rounded-xl p-8 sm:p-12 text-center">
+					<p className="text-gray-700 font-medium mb-2">
+						Nog geen folder beschikbaar
+					</p>
+					<p className="text-gray-500 text-sm mb-4">
+						We controleren elke dag of {retailer.name} een nieuwe folder heeft
+						gepubliceerd. Zodra die er is, staat hij hier.
+					</p>
+					{retailer.website && (
+						<a
+							href={retailer.website}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800 transition"
+						>
+							<ExternalLink className="w-4 h-4" suppressHydrationWarning />
+							Bekijk de website van {retailer.name}
+						</a>
+					)}
 				</div>
 			)}
 
 			{/* Page thumbnails (only for image mode) */}
-			{mode === "pages" && folder.pages.length > 1 && (
+			{mode === "pages" && folderPages.length > 1 && (
 				<div className="mt-4 relative">
 					<button
 						type="button"
@@ -636,7 +721,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 						/>
 					</button>
 					<div ref={thumbsRef} className="flex gap-2 overflow-x-auto pb-2 px-8">
-						{folder.pages.map((page, i) => (
+						{folderPages.map((page, i) => (
 							<button
 								key={page.pageNumber}
 								onClick={() => setCurrentPage(i)}
@@ -647,10 +732,15 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 								}`}
 							>
 								<Image
-									src={page.imageUrl}
+									// next/image is unoptimized here, so whatever this points
+									// at is downloaded at full size to fill a 64x88 box. Folders
+									// scraped before thumbnails existed have no thumbnailUrl and
+									// still fall back to the full page.
+									src={page.thumbnailUrl ?? page.imageUrl}
 									alt={`Pagina ${i + 1}`}
 									width={64}
 									height={88}
+									loading="lazy"
 									className="object-cover w-full h-full"
 									unoptimized
 									suppressHydrationWarning

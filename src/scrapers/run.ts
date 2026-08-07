@@ -195,10 +195,47 @@ function printSummary(
 	};
 
 	console.log("=== Scrape Summary ===");
+
+	// A retailer can scrape "successfully" and still render nothing: a bot
+	// challenge captured as a folder, or a folder with no pages and no embed.
+	// Showing a tick for those hides the only failure that costs traffic, so
+	// render state is reported alongside freshness rather than folded into it.
+	const byslug = new Map(manifest.retailers.map((e) => [e.slug, e]));
+
 	for (const r of results) {
 		const age = r.dataAge ? ` [${r.dataAge} old]` : "";
 		const err = r.error ? ` — ${r.error}` : "";
-		console.log(`  ${icons[r.status]} ${r.name}${age}${err}`);
+		const entry = byslug.get(r.slug);
+		const blocking = (entry?.validationIssues ?? []).filter(
+			(i) => i.severity === "error",
+		);
+		const renders = entry ? entry.hasPages || entry.hasEmbed || entry.hasPdf : true;
+
+		let flag = "";
+		if (blocking.some((i) => i.message.includes("Bot-protection"))) {
+			flag = "  ⛔ BLOCKED — renders a bot challenge, not a leaflet";
+		} else if (!renders) {
+			flag = "  ⛔ NOTHING RENDERS — no pages, no embed, no pdf";
+		} else if (blocking.length > 0) {
+			flag = `  ⚠ ${blocking.length} validation error(s)`;
+		}
+
+		console.log(`  ${icons[r.status]} ${r.name}${age}${err}${flag}`);
+	}
+
+	const unrenderable = results.filter((r) => {
+		const e = byslug.get(r.slug);
+		return e && !(e.hasPages || e.hasEmbed || e.hasPdf);
+	});
+	const blocked = results.filter((r) =>
+		(byslug.get(r.slug)?.validationIssues ?? []).some((i) =>
+			i.message.includes("Bot-protection"),
+		),
+	);
+	if (unrenderable.length > 0 || blocked.length > 0) {
+		console.error(
+			`\n  ⛔ ${blocked.length} blocked, ${unrenderable.length} render nothing — these folder pages are empty for visitors`,
+		);
 	}
 
 	const { summary } = manifest;
