@@ -78,7 +78,10 @@ export interface RenderedPdf {
 export async function renderPdfToImages(
 	page: Page,
 	pdfUrl: string,
-	maxPages = 40,
+	// 80 covers the longest leaflet observed (alvo, 76 pages). Unlike the
+	// screenshot loop, which probes for the end of a folder, a PDF states its
+	// own page count — so a cap here only ever truncates real content.
+	maxPages = 80,
 	log: (msg: string) => void = () => {},
 ): Promise<RenderedPdf> {
 	const { pdf, worker } = pdfJsSources();

@@ -26,6 +26,7 @@ import { looksLikeBotChallenge } from "./botChallenge";
 import {
 	isEmbedBlocked,
 	isPdfForcedDownload,
+	isBareViewerHomepage,
 } from "../lib/folderRenderability";
 import { extractDealsFromPdf } from "./extractDealsFromText";
 import { renderPdfToImages } from "./pdfRender";
@@ -728,6 +729,19 @@ export abstract class BaseScraper {
 				break; // First successful URL wins
 			}
 
+			// Before giving up on the configured URLs, go to the retailer's own
+			// site and look for the folder there. Configured URLs go stale —
+			// maxi-zoo's flyer host now 404s, and a retailer reorganising its
+			// promotions section silently costs us a folder. The official site is
+			// the one address that does not change.
+			if (folders.length === 0) {
+				const recovered = await this.scrapeFromOfficialSite(ctx);
+				if (recovered) {
+					folders.push(recovered);
+					if (!ctx.methods.includes("screenshot")) ctx.methods.push("screenshot");
+				}
+			}
+
 			// If no folder URL succeeded, still emit a folder via screenshot rendering.
 			if (folders.length === 0) {
 				const url = this.config.folderUrls[0];
@@ -1408,7 +1422,184 @@ export abstract class BaseScraper {
 
 	// ---- Step 2: Embed detection -------------------------------------------
 
+	/**
+	 * Last-resort discovery: find the folder on the retailer's own website.
+	 *
+	 * Configured folder URLs rot. maxi-zoo's flyer host returns 404, retailers
+	 * reorganise their promotions section, and a white-label viewer moves. When
+	 * that happens the retailer still publishes a folder — we have simply
+	 * stopped looking in the right place, and the page shows "geen folder
+	 * beschikbaar" while the leaflet sits one click away.
+	 *
+	 * The retailer's homepage is the one address that does not change, so it is
+	 * the backup: follow the links a shopper would follow, then run the normal
+	 * embed/PDF/screenshot discovery on whatever that lands on.
+	 *
+	 * Returns null rather than throwing — this runs only when everything else
+	 * already failed, so a failure here must not lose the run.
+	 */
+	protected async scrapeFromOfficialSite(ctx: ScrapeContext): Promise<Folder | null> {
+		const { page } = ctx;
+		const retailer = getRetailerBySlug(this.retailerSlug);
+		const website = retailer?.website;
+		if (!website) return null;
+
+		try {
+			this.log(`Falling back to the official site: ${website}`);
+			await page.goto(website, { waitUntil: "domcontentloaded", timeout: 30000 });
+			await this.dismissCookieConsent(page);
+			if (await this.isBotChallengePage(page)) {
+				this.log("  Official site returns a bot challenge; skipping");
+				return null;
+			}
+
+			// The words a Dutch- or French-speaking shopper would click.
+			const candidates: string[] = await page.evaluate(() => {
+				const wanted =
+					/folder|flyer|reclame|aanbieding|promotie|promo|acties|weekaanbieding|depliant|prospectus/i;
+				const seen = new Set<string>();
+				const out: string[] = [];
+				for (const a of Array.from(document.querySelectorAll("a[href]"))) {
+					const href = (a as HTMLAnchorElement).href;
+					if (!href || !/^https?:/i.test(href)) continue;
+					const text = (a.textContent ?? "").trim();
+					if (!wanted.test(href) && !wanted.test(text)) continue;
+					if (seen.has(href)) continue;
+					seen.add(href);
+					out.push(href);
+				}
+				return out.slice(0, 12);
+			});
+
+			if (candidates.length === 0) {
+				this.log("  No folder-looking links on the official site");
+				return null;
+			}
+
+			// A link whose host is a dedicated viewer (folder.retailer.be) is far
+			// more likely to be the leaflet than a generic /promoties page.
+			const looksLikeViewer = (u: string) =>
+				/^(?:folder|flyer|folders|leaflet|prospectus)\./i.test(
+					(() => {
+						try {
+							return new URL(u).hostname;
+						} catch {
+							return "";
+						}
+					})(),
+				);
+			candidates.sort((a, b) => Number(looksLikeViewer(b)) - Number(looksLikeViewer(a)));
+
+			for (const candidate of candidates.slice(0, 5)) {
+				try {
+					this.log(`  Trying ${candidate}`);
+					await page.goto(candidate, { waitUntil: "networkidle2", timeout: 30000 });
+					await this.dismissCookieConsent(page);
+					if (await this.isBotChallengePage(page)) continue;
+
+					const embed = await this.findEmbed(ctx);
+					const pdf = await this.findPdf(ctx);
+					const shots = await this.takeScreenshots(ctx, embed?.url);
+					if (shots.pages.length === 0 && !embed?.url && !pdf?.url) continue;
+
+					ctx.sourceUrls.push(candidate);
+					const dates = this.getCurrentWeekDates();
+					const pages = shots.pages.map((p) => ({
+						pageNumber: p.pageNumber,
+						imageUrl: p.imagePath,
+						thumbnailUrl: p.thumbPath,
+						deals: [] as Deal[],
+					}));
+
+					this.log(
+						`  Recovered from the official site: ${pages.length} page(s)` +
+							`${embed?.url ? ", embed" : ""}${pdf?.url ? ", pdf" : ""}`,
+					);
+
+					return {
+						id: this.generateFolderId("folder"),
+						retailerSlug: this.retailerSlug,
+						title:
+							this.config.folderTitle || `${this.retailerName} folder van de week`,
+						validFrom: dates.from,
+						validUntil: dates.until,
+						pageCount: pages.length,
+						thumbnailUrl: pages[0]?.imageUrl || "",
+						pages,
+						embedUrl: embed?.url,
+						pdfUrl: pdf?.url,
+						contentSource: "screenshot",
+						scrapedAt: new Date().toISOString(),
+					};
+				} catch {
+					// Try the next candidate.
+				}
+			}
+
+			this.log("  Official site had no usable folder");
+			return null;
+		} catch (err) {
+			this.log(`  Official-site fallback failed: ${err}`);
+			return null;
+		}
+	}
+
+	/**
+	 * Find the leaflet viewer, resolving white-label hosts to a real publication.
+	 *
+	 * Retailers on iPaper front it with their own domain — folder.gamma.be,
+	 * folder.kruidvat.be, folder.trekpleister.nl — whose root 302s to the
+	 * current issue. The page links the bare root, so that is what was stored,
+	 * and `isBareViewerHomepage` correctly refused to frame it: a URL with no
+	 * path is a landing page, not a leaflet. The result was three retailers
+	 * with a live folder showing "geen folder beschikbaar".
+	 *
+	 * Following the redirect turns the root into this week's publication, which
+	 * is both framable and something the iPaper page-fetch can work from. The
+	 * redirect target changes weekly, which is exactly why it is resolved at
+	 * scrape time rather than pinned in a config.
+	 */
 	protected async findEmbed(ctx: ScrapeContext): Promise<EmbedResult | null> {
+		const embed = await this.findEmbedRaw(ctx);
+		if (!embed?.url || !isBareViewerHomepage(embed.url)) return embed;
+
+		const resolved = await this.resolveViewerHomepage(embed.url);
+		if (!resolved || resolved === embed.url) return embed;
+
+		this.log(`Resolved viewer homepage to publication: ${resolved}`);
+		return { ...embed, url: resolved };
+	}
+
+	/**
+	 * Follow a viewer root to the issue it redirects to.
+	 *
+	 * Returns null on anything unexpected — a failure here should leave the
+	 * original URL alone, not lose the embed.
+	 */
+	protected async resolveViewerHomepage(url: string): Promise<string | null> {
+		try {
+			const controller = new AbortController();
+			const timer = setTimeout(() => controller.abort(), 15000);
+			try {
+				const res = await fetch(url, {
+					method: "GET",
+					redirect: "follow",
+					signal: controller.signal,
+				});
+				if (!res.ok) return null;
+				// A protocol-relative Location ("//host/path") resolves against the
+				// original URL, so compare the final URL rather than the header.
+				const final = res.url;
+				return final && !isBareViewerHomepage(final) ? final : null;
+			} finally {
+				clearTimeout(timer);
+			}
+		} catch {
+			return null;
+		}
+	}
+
+	protected async findEmbedRaw(ctx: ScrapeContext): Promise<EmbedResult | null> {
 		const { page, interceptedUrls } = ctx;
 
 		// Actively wait for known embed iframes to appear (handles lazy loading)
@@ -2099,10 +2290,14 @@ export abstract class BaseScraper {
 			// not painted yields a blank frame. pdf.js gives exact page
 			// boundaries. The scroll-slice loop below stays as the fallback for
 			// documents pdf.js cannot read.
+			// Deliberately not MAX_SCREENSHOT_PAGES: that bounds a loop probing for
+			// the end of a viewer, where over-shooting costs captures. A PDF states
+			// its own page count, so the only thing this bound can do is truncate a
+			// real leaflet — and several run past 30.
 			const rendered = await renderPdfToImages(
 				page,
 				currentUrl,
-				Number.isFinite(maxPages) ? maxPages : 40,
+				BaseScraper.MAX_PDF_RENDER_PAGES,
 				(m) => this.log(m),
 			);
 			if (rendered.pages.length > 0) {
@@ -2826,6 +3021,16 @@ export abstract class BaseScraper {
 
 	/** Width folder page images are served at. */
 	protected static readonly PAGE_IMAGE_WIDTH = 1800;
+
+	/**
+	 * Page ceiling when rendering a PDF leaflet.
+	 *
+	 * Separate from MAX_SCREENSHOT_PAGES, which bounds a loop probing for the
+	 * end of a viewer. A PDF reports its own page count, so this bound can only
+	 * ever truncate real content — 80 clears the longest leaflet seen (alvo, 76
+	 * pages) rather than sitting just above the average.
+	 */
+	protected static readonly MAX_PDF_RENDER_PAGES = 80;
 
 	/** WebP quality for folder page images. */
 	protected static readonly PAGE_IMAGE_QUALITY = 78;

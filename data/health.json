@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-08-07T05:09:06.732Z",
+  "generatedAt": "2026-08-08T10:01:02.852Z",
   "retailers": [
     {
-      "slug": "albert-heijn",
-      "name": "Albert Heijn",
+      "slug": "kruidvat",
+      "name": "Kruidvat",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-06T15:18:41.366Z",
+      "scrapedAt": "2026-08-08T10:00:57.225Z",
       "folderCount": 1,
-      "dealCount": 25,
+      "dealCount": 11,
       "hasEmbed": true,
       "hasPdf": true,
       "hasPages": false,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://view.publitas.com/ah/bonus-week-32-2026/page/1?publitas_embed=embedded",
+          "url": "https://folder.kruidvat.be/kruidvat-folder-32-3-augustus-2026-t-m-16-augustus-2026/",
           "status": 200,
           "live": true
         },
         {
-          "url": "https://view.publitas.com/126/3263258/pdfs/c18d53a5-5905-46a2-bf97-6a1d029966cc.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-%2520week-32-2026.pdf",
+          "url": "https://folder.kruidvat.be/190/3241685/pdfs/ef3a1d9c-8fe8-4a72-b0f9-e1088b4a3b66.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Kruidvat-BEvl%2520-%2520Kruidvat%2520folder%252032%2520-%25203%2520augustus%25202026%2520t%252Fm%252016%2520augustus%25202026.pdf",
           "status": 200,
           "live": true
         }

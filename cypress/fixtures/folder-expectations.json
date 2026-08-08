@@ -22,8 +22,8 @@
 		},
 		"alvo": {
 			"mode": "pages",
-			"minPages": 18,
-			"observedPages": 30,
+			"minPages": 45,
+			"observedPages": 76,
 			"expired": false
 		},
 		"aveve": {
@@ -99,9 +99,9 @@
 			"expired": false
 		},
 		"gamma": {
-			"mode": "empty",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 20,
+			"observedPages": 34,
 			"expired": false
 		},
 		"gifi": {
@@ -124,8 +124,8 @@
 		},
 		"hornbach": {
 			"mode": "pages",
-			"minPages": 18,
-			"observedPages": 30,
+			"minPages": 19,
+			"observedPages": 33,
 			"expired": false
 		},
 		"hubo": {
@@ -159,15 +159,15 @@
 			"expired": false
 		},
 		"kruidvat": {
-			"mode": "embed",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 36,
+			"observedPages": 61,
 			"expired": false
 		},
 		"lidl": {
-			"mode": "embed",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 24,
+			"observedPages": 40,
 			"expired": false
 		},
 		"mediamarkt": {
@@ -196,8 +196,8 @@
 		},
 		"plus": {
 			"mode": "pages",
-			"minPages": 18,
-			"observedPages": 30,
+			"minPages": 20,
+			"observedPages": 34,
 			"expired": false
 		},
 		"rituals": {
@@ -237,9 +237,9 @@
 			"expired": false
 		},
 		"treac": {
-			"mode": "embed",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 16,
+			"observedPages": 27,
 			"expired": false
 		},
 		"vanden-borre": {
@@ -250,14 +250,14 @@
 		},
 		"welkoop": {
 			"mode": "pages",
-			"minPages": 18,
-			"observedPages": 30,
+			"minPages": 22,
+			"observedPages": 38,
 			"expired": false
 		},
 		"xenos": {
 			"mode": "pages",
-			"minPages": 18,
-			"observedPages": 30,
+			"minPages": 19,
+			"observedPages": 32,
 			"expired": false
 		},
 		"yves-rocher": {

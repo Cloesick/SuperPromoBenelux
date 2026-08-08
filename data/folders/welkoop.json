@@ -7,7 +7,7 @@
 			"title": "Welkoop - Welkoop week 32 2026",
 			"validFrom": "2026-08-07",
 			"validUntil": "2026-08-17",
-			"pageCount": 30,
+			"pageCount": 38,
 			"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p1.webp",
 			"pages": [
 				{
@@ -188,6 +188,54 @@
 					"pageNumber": 30,
 					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p30.webp",
 					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p30-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 31,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p31.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p31-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 32,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p32.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p32-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 33,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p33.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p33-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 34,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p34.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p34-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 35,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p35.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p35-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 36,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p36.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p36-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 37,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p37.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p37-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 38,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p38.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p38-thumb.webp",
 					"deals": []
 				}
 			],

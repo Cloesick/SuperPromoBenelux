@@ -1,43 +1,249 @@
 {
-  "retailer": "gamma",
-  "folders": [
-    {
-      "id": "gamma-2026-w32-folder",
-      "retailerSlug": "gamma",
-      "title": "Gamma folder",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "pageCount": 0,
-      "pages": [],
-      "embedUrl": "https://folder.gamma.be/",
-      "pdfUrl": "https://folder.gamma.be/93348/3246421/pdfs/d2037e68-2c97-4373-b115-1bdb18ecd52d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27GAMMA%2520BENL%2520-%2520GAMMA%2520BENL%2520week%252031%25202026.pdf",
-      "contentSource": "unknown",
-      "scrapedAt": "2026-08-04T18:40:53.378Z"
-    }
-  ],
-  "deals": [
-    {
-      "id": "html-897",
-      "product": "Assortiment",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "gamma"
-    },
-    {
-      "id": "html-931",
-      "product": "Recent bekeken",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "gamma"
-    }
-  ],
-  "scrapedAt": "2026-08-04T18:40:56.909Z",
-  "sourceUrls": [
-    "https://www.gamma.be/nl/promo/acties/folder/folder-deze-week"
-  ],
-  "methods": [
-    "unknown",
-    "pdf",
-    "html"
-  ]
+	"retailer": "gamma",
+	"folders": [
+		{
+			"id": "gamma-2026-w32-folder",
+			"retailerSlug": "gamma",
+			"title": "Gamma folder",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"pageCount": 34,
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p5-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 6,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p6.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p6-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 7,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p7.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p7-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 8,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p8.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p8-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 9,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p9.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p9-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 10,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p10.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p10-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 11,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p11.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p11-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 12,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p12.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p12-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 13,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p13.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p13-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 14,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p14.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p14-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 15,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p15.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p15-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 16,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p16.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p16-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 17,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p17.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p17-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 18,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p18.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p18-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 19,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p19.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p19-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 20,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p20.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p20-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 21,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p21.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p21-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 22,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p22.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p22-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 23,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p23.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p23-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 24,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p24.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p24-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 25,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p25.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p25-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 26,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p26.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p26-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 27,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p27.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p27-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 28,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p28.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p28-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 29,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p29.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p29-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 30,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p30.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p30-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 31,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p31.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p31-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 32,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p32.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p32-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 33,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p33.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p33-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 34,
+					"imageUrl": "/screenshots/gamma-2026-w32-pdfimg-p34.webp",
+					"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p34-thumb.webp",
+					"deals": []
+				}
+			],
+			"embedUrl": "https://folder.gamma.be/",
+			"pdfUrl": "https://folder.gamma.be/93348/3246421/pdfs/d2037e68-2c97-4373-b115-1bdb18ecd52d.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27GAMMA%2520BENL%2520-%2520GAMMA%2520BENL%2520week%252031%25202026.pdf",
+			"contentSource": "unknown",
+			"scrapedAt": "2026-08-04T18:40:53.378Z",
+			"thumbnailUrl": "/screenshots/gamma-2026-w32-pdfimg-p1.webp"
+		}
+	],
+	"deals": [
+		{
+			"id": "html-897",
+			"product": "Assortiment",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "gamma"
+		},
+		{
+			"id": "html-931",
+			"product": "Recent bekeken",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "gamma"
+		}
+	],
+	"scrapedAt": "2026-08-04T18:40:56.909Z",
+	"sourceUrls": [
+		"https://www.gamma.be/nl/promo/acties/folder/folder-deze-week"
+	],
+	"methods": [
+		"unknown",
+		"pdf",
+		"html"
+	]
 }

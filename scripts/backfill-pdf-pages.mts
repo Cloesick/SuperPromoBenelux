@@ -25,7 +25,7 @@ import path from "path";
 import sharp from "sharp";
 import puppeteer from "rebrowser-puppeteer";
 import { renderPdfToImages, pdfOrigin } from "../src/scrapers/pdfRender";
-import { hasUsablePdf } from "../src/lib/folderRenderability";
+
 
 const root = process.cwd();
 const foldersDir = path.join(root, "data", "folders");
@@ -33,8 +33,20 @@ const shotsDir = path.join(root, "public", "screenshots");
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
-const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : null;
-const maxPages = args.includes("--max") ? Number(args[args.indexOf("--max") + 1]) : 40;
+/** Comma-separated slugs, e.g. --only alvo,welkoop */
+const only = args.includes("--only")
+	? new Set((args[args.indexOf("--only") + 1] ?? "").split(",").filter(Boolean))
+	: null;
+/**
+ * Re-render retailers that already have pages.
+ *
+ * Needed when an earlier run truncated a leaflet: alvo's folder is 76 pages
+ * and a --max of 30 stored the first 30, which then looks like "already done".
+ */
+const force = args.includes("--force");
+// 80 covers the longest leaflet seen (alvo, 76 pages). A cap that silently
+// truncates defeats the point of rendering the PDF at all.
+const maxPages = args.includes("--max") ? Number(args[args.indexOf("--max") + 1]) : 80;
 
 /** Matches BaseScraper: 1800px wide, WebP q78, 160px thumbnails at q65. */
 const PAGE_QUALITY = 78;
@@ -66,16 +78,26 @@ interface Candidate {
 const candidates: Candidate[] = [];
 for (const file of fs.readdirSync(foldersDir).filter((f) => f.endsWith(".json"))) {
 	const slug = file.replace(/\.json$/, "");
-	if (only && slug !== only) continue;
+	if (only && !only.has(slug)) continue;
 	const data = JSON.parse(fs.readFileSync(path.join(foldersDir, file), "utf-8"));
 	const folder = (data.folders ?? [])[0];
 	if (!folder) continue;
-	if ((folder.pages ?? []).length > 0) continue;
-	if (!hasUsablePdf(folder.pdfUrl)) continue;
+	if (!force && (folder.pages ?? []).length > 0) continue;
+	// Deliberately NOT hasUsablePdf: that asks "can an iframe display this?",
+	// which is false for the attachment-disposition PDFs albert-heijn, gamma,
+	// kruidvat, treac and lidl sign their links with. Content-Disposition
+	// governs how a browser *presents* a response, not whether it can be read —
+	// fetching those bytes and rendering them ourselves works fine, and it is
+	// the only way those retailers get page images at all.
+	if (!folder.pdfUrl) continue;
 	candidates.push({ slug, pdfUrl: folder.pdfUrl });
 }
 
-console.log(`${candidates.length} retailer(s) with a renderable PDF and no pages:`);
+console.log(
+	`${candidates.length} retailer(s) with a renderable PDF` +
+		(force ? " (--force: re-rendering even where pages exist)" : " and no pages") +
+		":",
+);
 for (const c of candidates) console.log(`  ${c.slug}`);
 if (dryRun || candidates.length === 0) {
 	console.log(dryRun ? "\nDry run — nothing rendered." : "\nNothing to do.");

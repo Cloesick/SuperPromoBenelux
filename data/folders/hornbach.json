@@ -7,7 +7,7 @@
 			"title": "HORNBACH NL | Projectbouwmarkt en Tuincentrum | Keuken",
 			"validFrom": "2026-08-07",
 			"validUntil": "2026-08-17",
-			"pageCount": 30,
+			"pageCount": 33,
 			"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p1.webp",
 			"pages": [
 				{
@@ -188,6 +188,24 @@
 					"pageNumber": 30,
 					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p30.webp",
 					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p30-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 31,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p31.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p31-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 32,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p32.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p32-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 33,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p33.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p33-thumb.webp",
 					"deals": []
 				}
 			],

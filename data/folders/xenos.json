@@ -7,7 +7,7 @@
 			"title": "XENOS - Xenos week 32 2026 (ma 3-8 t/m zo 9-8)",
 			"validFrom": "2026-08-07",
 			"validUntil": "2026-08-17",
-			"pageCount": 30,
+			"pageCount": 32,
 			"thumbnailUrl": "/screenshots/xenos-2026-w32-pdfimg-p1.webp",
 			"pages": [
 				{
@@ -188,6 +188,18 @@
 					"pageNumber": 30,
 					"imageUrl": "/screenshots/xenos-2026-w32-pdfimg-p30.webp",
 					"thumbnailUrl": "/screenshots/xenos-2026-w32-pdfimg-p30-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 31,
+					"imageUrl": "/screenshots/xenos-2026-w32-pdfimg-p31.webp",
+					"thumbnailUrl": "/screenshots/xenos-2026-w32-pdfimg-p31-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 32,
+					"imageUrl": "/screenshots/xenos-2026-w32-pdfimg-p32.webp",
+					"thumbnailUrl": "/screenshots/xenos-2026-w32-pdfimg-p32-thumb.webp",
 					"deals": []
 				}
 			],
