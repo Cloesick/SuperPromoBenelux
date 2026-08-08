@@ -1,27 +1,22 @@
 {
-  "generatedAt": "2026-08-08T10:01:02.852Z",
+  "generatedAt": "2026-08-08T10:22:20.440Z",
   "retailers": [
     {
-      "slug": "kruidvat",
-      "name": "Kruidvat",
+      "slug": "maxi-zoo",
+      "name": "Maxi Zoo",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-08T10:00:57.225Z",
+      "scrapedAt": "2026-08-08T10:22:20.075Z",
       "folderCount": 1,
-      "dealCount": 11,
+      "dealCount": 0,
       "hasEmbed": true,
-      "hasPdf": true,
-      "hasPages": false,
+      "hasPdf": false,
+      "hasPages": true,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://folder.kruidvat.be/kruidvat-folder-32-3-augustus-2026-t-m-16-augustus-2026/",
-          "status": 200,
-          "live": true
-        },
-        {
-          "url": "https://folder.kruidvat.be/190/3241685/pdfs/ef3a1d9c-8fe8-4a72-b0f9-e1088b4a3b66.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Kruidvat-BEvl%2520-%2520Kruidvat%2520folder%252032%2520-%25203%2520augustus%25202026%2520t%252Fm%252016%2520augustus%25202026.pdf",
+          "url": "https://cdn.ipaper.io/Cache/509/509.17.0.0/Frontend-Desktop/desktop.bundle_gzip.css",
           "status": 200,
           "live": true
         }

@@ -242,6 +242,27 @@ function flattenWords(blocks: unknown): OcrWord[] {
 	return out;
 }
 
+/**
+ * Language files present for every requested language.
+ *
+ * tesseract.js reports a missing .traineddata from inside its worker thread,
+ * via `process.nextTick(() => { throw err })` — an asynchronous throw that no
+ * try/catch around the await can intercept. It takes the whole process down.
+ *
+ * That turned a missing optional file into a lost scrape: Maxi Zoo had already
+ * fetched its leaflet from iPaper when OCR crashed the run, so nothing was
+ * saved. The files are not in the repository, so CI has never had them either.
+ *
+ * OCR is an enhancement — it recovers prices from retailers whose pages are
+ * images. It must never cost the folder.
+ */
+export function ocrLanguagesAvailable(langs: string): boolean {
+	return langs
+		.split("+")
+		.filter(Boolean)
+		.every((lang) => fs.existsSync(path.join(LANG_PATH, `${lang}.traineddata`)));
+}
+
 async function createOcrWorker(langs: string): Promise<Worker> {
 	return createWorker(langs, 1, { langPath: LANG_PATH, gzip: false });
 }
@@ -258,6 +279,17 @@ export async function ocrImages(
 	const { langs = DEFAULT_OCR_LANGS, maxPages = MAX_OCR_PAGES, onProgress } = opts;
 	const targets = imagePaths.slice(0, maxPages);
 	if (targets.length === 0) return [];
+
+	// Check before starting: a missing language file surfaces as an async throw
+	// from inside the worker thread, which no try/catch here can contain, and it
+	// kills the process along with any folder already scraped.
+	if (!ocrLanguagesAvailable(langs)) {
+		onProgress?.(
+			`  OCR skipped: no ${langs} .traineddata in ${LANG_PATH}. ` +
+				`Deals from images will be missing, but the folder is unaffected.`,
+		);
+		return [];
+	}
 
 	const worker = await createOcrWorker(langs);
 	const results: OcrPageResult[] = [];

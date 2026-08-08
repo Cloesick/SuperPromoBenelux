@@ -1,5 +1,5 @@
 {
-	"generatedFrom": "46 retailer(s) in data/folders",
+	"generatedFrom": "47 retailer(s) in data/folders",
 	"floorRatio": 0.6,
 	"retailers": {
 		"action": {
@@ -168,6 +168,12 @@
 			"mode": "pages",
 			"minPages": 24,
 			"observedPages": 40,
+			"expired": false
+		},
+		"maxi-zoo": {
+			"mode": "pages",
+			"minPages": 7,
+			"observedPages": 12,
 			"expired": false
 		},
 		"mediamarkt": {
