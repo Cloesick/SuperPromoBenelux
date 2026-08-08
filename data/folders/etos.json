@@ -1,0 +1,141 @@
+{
+  "retailer": "etos",
+  "folders": [
+    {
+      "id": "etos-2026-w32-folder",
+      "retailerSlug": "etos",
+      "title": "Etos promoties",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/etos-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/etos-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "/screenshots/etos-2026-w32-viewerimg-p1-thumb.webp",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-06T21:05:28.907Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "WaterWipes Billendoekjes 12x60 stuks",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw9bec8070/images/120565671/120565671_e7f87e45-001a-45f2-a5a5-4bf45b059e1b.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-12",
+      "product": "Pampers Premium Protection Voordeelbox Luiers Maat 5 11-16 kg 102 stuks + 4 Gratis Luierbroekjes",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw43705453/images/120906667/120906667_5b9a055e-c9dd-4b23-b898-26463ac7a0cc.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-24",
+      "product": "Pampers Premium Protection Voordeelbox Luiers Maat 4 9-14 kg 120 stuks + 4 Gratis Luierbroekjes",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwfe588960/images/120906659/120906659_ee74749f-f6f8-4035-a3ad-ddba4a205bec.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-36",
+      "product": "Etos Baby Waterdoekjes 60 stuks",
+      "discount": "1+1gratis",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwcead5a0c/images/120563457/120563457_MCM_PACK_1371889.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-49",
+      "product": "Pampers Premium Protection Luiers Maat 1 2-5 kg 41 stuks",
+      "discount": "2+2gratis",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw586b9a90/images/120904741/120904741_0a367330-955e-4f25-8e2b-2d7797ee0cf1.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-61",
+      "product": "Entreeticket Ouwehands Dierenpark",
+      "discount": "7.00korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw7c670945/Vouchers/8710198464530_1.jpg?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-71",
+      "product": "Pampers Baby Dry Voordeelbox Luiers Maat 5 11-16 kg 112 stuks",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwfab6ca0e/images/120906544/120906544_912dd620-cdd4-449e-9832-eafef78328a7.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-83",
+      "product": "Umberto Giannini Curl Jelly Scrunching Jelly 200 ML",
+      "discount": "1+1gratis",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw16b46c9f/images/120856057/120856057_MCM_PACK_1373723.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-96",
+      "product": "Etos Maxi Wattenschijfjes 50 stuks",
+      "discount": "2 voor1.40",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwcb17c8c3/images/111183364/111183364_MCM_PACK_1306811.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-107",
+      "product": "Pampers Premium Protection Voordeelbox Luiers Maat 2 4-8 kg 150 stuks + 10 Gratis Billendoekjes",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw7f2125ea/images/120906632/120906632_99032dac-3f62-4ab7-be0c-67279730d5f3.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-119",
+      "product": "Prodent Cool Mint Tandpasta 75 ML",
+      "discount": "2+2gratis",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dwf9f4fafc/images/120117828/120117828_MCM_PACK_1375778.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    },
+    {
+      "id": "html-130",
+      "product": "Pampers Baby Dry Voordeelbox Luiers Maat 6 13-18 kg 94 stuks",
+      "discount": "50%korting",
+      "imageUrl": "https://www.etos.nl/dw/image/v2/BCTN_PRD/on/demandware.static/-/Sites-etos-master-catalog/default/dw4b6c1523/images/120906552/120906552_cbe9eb6a-3ed9-4175-843b-74206feea95d.png?sw=230",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "etos"
+    }
+  ],
+  "scrapedAt": "2026-08-06T21:05:40.670Z",
+  "sourceUrls": [
+    "https://www.etos.nl/aanbiedingen"
+  ],
+  "methods": [
+    "screenshot"
+  ]
+}

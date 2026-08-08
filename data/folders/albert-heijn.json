@@ -7,37 +7,76 @@
       "title": "Albert Heijn Bonusfolder",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "pageCount": 0,
-      "thumbnailUrl": "",
-      "pages": [],
-      "embedUrl": "https://view.publitas.com/ah/bonus-week-32-2026/page/1?publitas_embed=embedded",
+      "pageCount": 10,
+      "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p1-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p2.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p2-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p4.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p4-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p6.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p6-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p8.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p8-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p10.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p10-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p12.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p12-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p14.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p14-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p16.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p16-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p18.webp",
+          "thumbnailUrl": "/screenshots/albert-heijn-2026-w32-viewerimg-p18-thumb.webp",
+          "deals": []
+        }
+      ],
       "pdfUrl": "https://view.publitas.com/126/3263258/pdfs/c18d53a5-5905-46a2-bf97-6a1d029966cc.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-%2520week-32-2026.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-07T14:49:41.192Z"
+      "scrapedAt": "2026-08-07T03:42:19.811Z"
     }
   ],
   "deals": [
-    {
-      "id": "html-6",
-      "product": "Geen alternatieven gevonden voor dit product.",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-11",
-      "product": "Geen producten gevonden",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-16",
-      "product": "Geen combinaties gevonden bij dit product.",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
     {
       "id": "html-0",
       "product": "AH Verse Vlaamse friet met schil",
@@ -48,123 +87,27 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-34",
+      "id": "html-29",
       "product": "AH Kumato tomaten",
       "discount": "25%  korting",
       "imageUrl": "https://static.ah.nl/dam/product/AHI_704b6f3543633979514e616946423848673063484b51?revLabel=1&rendition=200x200_WEBP&fileType=binary",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
+      "retailerSlug": "albert-heijn",
+      "originalPrice": 4.99
     },
     {
-      "id": "html-66",
-      "product": "uitgelicht",
-      "discount": "5.39",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-91",
-      "product": "AH Verse pizza's",
-      "discount": "2 voor  12.00",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-162",
-      "product": "AH Gerookte zalm",
-      "discount": "25%  korting",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_376656684f623739536d53493233504e716547524751?revLabel=1&rendition=200x200_WEBP&fileType=binary",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-175",
+      "id": "html-132",
       "product": "AH Mosseldipsaus",
       "discount": "50%  korting",
       "imageUrl": "https://static.ah.nl/dam/product/AHI_376656684f623739536d53493233504e716547524751?revLabel=1&rendition=200x200_WEBP&fileType=binary",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
+      "retailerSlug": "albert-heijn",
+      "originalPrice": 1.99
     },
     {
-      "id": "html-207",
-      "product": "AH Paté kleinverpakking",
-      "discount": "2 voor  2.50",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-220",
-      "product": "Arla, Melkunie, Starbucks en Apetina: gratis levering bij 11 euro",
-      "discount": "gratis levering bij 11 euro",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-281",
-      "product": "AH Petit Patisserie banket (ongekoeld)",
-      "discount": "2 voor  6.00",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-294",
-      "product": "Doritos party packs en Lay's Gourmet",
-      "discount": "2 voor  4.49",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-329",
-      "product": "Heinz: gratis levering bij 12 euro",
-      "discount": "gratis levering bij 12 euro",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-338",
-      "product": "Carapelli: gratis levering bij 10 euro",
-      "discount": "gratis levering bij 10 euro",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-358",
-      "product": "Mars, M&M's, Maltesers, Snickers, Twix, Bounty, Milky Way, BE-Kind e.a: gratis levering bij 11 euro",
-      "discount": "gratis levering bij 11 euro",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-390",
-      "product": "De Ruijter en Venz: gratis levering bij 12 euro",
-      "discount": "gratis levering bij 12 euro",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-406",
-      "product": "Ola: gratis levering bij 3 stuks",
-      "discount": "gratis levering bij 3 stuks",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_70554f476e6e7a6253324362364a32776b7437566751?revLabel=1&rendition=200x200_WEBP&fileType=binary",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-459",
+      "id": "html-323",
       "product": "Jude's Chocolate guinness cake",
       "discount": "1+1  gratis",
       "imageUrl": "https://static.ah.nl/dam/product/AHI_70554f476e6e7a6253324362364a32776b7437566751?revLabel=1&rendition=200x200_WEBP&fileType=binary",
@@ -173,63 +116,24 @@
       "retailerSlug": "albert-heijn"
     },
     {
-      "id": "html-491",
-      "product": "Nescafé Espresso concentraat: gratis levering bij 2 stuks",
-      "discount": "gratis levering bij 2 stuks",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-507",
-      "product": "Spa intense en finesse: gratis levering bij 12 euro",
-      "discount": "gratis levering bij 12 euro",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-545",
-      "product": "Heineken, Affligem, Desperados, Apple Bandit 0.0: gratis levering bij 2 stuks",
-      "discount": "gratis levering bij 2 stuks",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_426e53575078654f5337656739687a493750576e4141?revLabel=1&rendition=400x400_WEBP&fileType=binary",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-566",
+      "id": "html-397",
       "product": "Liefmans On the rocks",
       "discount": "0.99",
       "imageUrl": "https://static.ah.nl/dam/product/AHI_705f5032754a56725157436365383066326d34586141?revLabel=1&rendition=200x200_WEBP&fileType=binary",
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-616",
-      "product": "Ambre Solaire: gratis levering bij 25 euro",
-      "discount": "gratis levering bij 25 euro",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-716",
-      "product": "Nutrilon: gratis levering bij 1 stuk",
-      "discount": "gratis levering bij 1 stuk",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
+      "retailerSlug": "albert-heijn",
+      "originalPrice": 1.49
     }
   ],
-  "scrapedAt": "2026-08-07T14:49:46.119Z",
+  "scrapedAt": "2026-08-07T03:42:26.612Z",
   "sourceUrls": [
-    "https://www.ah.be/bonus/folder"
+    "https://www.ah.be/bonus/folder",
+    "https://view.publitas.com/ah/bonus-week-32-2026/page/1?publitas_embed=embedded"
   ],
   "methods": [
     "publitas",
     "pdf",
-    "html"
+    "screenshot"
   ]
 }

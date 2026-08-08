@@ -1,0 +1,62 @@
+{
+  "retailer": "bol",
+  "folders": [
+    {
+      "id": "bol-2026-w32-folder",
+      "retailerSlug": "bol",
+      "title": "bol promoties",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/bol-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/bol-2026-w32-viewerimg-p1.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/bol-2026-w32-viewerimg-p1-thumb.webp"
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-06T17:20:04.769Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-107",
+      "product": "Klantenservice",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "bol"
+    },
+    {
+      "id": "html-137",
+      "product": "Over bol",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "bol"
+    },
+    {
+      "id": "html-146",
+      "product": "Zakendoen met bol",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "bol"
+    },
+    {
+      "id": "html-152",
+      "product": "Wil je ons volgen?",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "bol"
+    }
+  ],
+  "scrapedAt": "2026-08-06T17:20:17.179Z",
+  "sourceUrls": [
+    "https://www.bol.com/be/nl/deals/"
+  ],
+  "methods": [
+    "html",
+    "screenshot"
+  ]
+}

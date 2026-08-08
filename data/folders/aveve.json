@@ -1,0 +1,97 @@
+{
+  "retailer": "aveve",
+  "folders": [
+    {
+      "id": "aveve-2026-w32-folder",
+      "retailerSlug": "aveve",
+      "title": "AVEVE promoties",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 3,
+      "thumbnailUrl": "/screenshots/aveve-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/aveve-2026-w32-viewerimg-p1.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aveve-2026-w32-viewerimg-p1-thumb.webp"
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/aveve-2026-w32-viewerimg-p2.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aveve-2026-w32-viewerimg-p2-thumb.webp"
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/aveve-2026-w32-viewerimg-p3.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/aveve-2026-w32-viewerimg-p3-thumb.webp"
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-05T21:35:20.205Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "Zoeken",
+      "imageUrl": "https://www.aveve.be/static/version1784121445/frontend/Arvesta/Hyva/nl_BE/images/logo.svg",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-29",
+      "product": "Stem voor Aveve en win !",
+      "imageUrl": "https://www.aveve.be/media/catalog/product/P/0/P060034738_1.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=242&width=242&canvas=242:242&format=jpeg",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-132",
+      "product": "Uw privacy",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-133",
+      "product": "Strikt noodzakelijke cookies",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-134",
+      "product": "Functionele cookies",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-135",
+      "product": "Prestatiecookies",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "aveve"
+    },
+    {
+      "id": "html-136",
+      "product": "Doelgroepgerichte cookies",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "aveve"
+    }
+  ],
+  "scrapedAt": "2026-08-05T21:35:21.591Z",
+  "sourceUrls": [
+    "https://www.aveve.be/nl/promoties"
+  ],
+  "methods": [
+    "html",
+    "screenshot"
+  ]
+}

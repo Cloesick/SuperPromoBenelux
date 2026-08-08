@@ -1,28 +1,257 @@
 {
-  "retailer": "welkoop",
-  "folders": [
-    {
-      "id": "welkoop-3277035-folder",
-      "retailerSlug": "welkoop",
-      "title": "Welkoop - Welkoop week 32 2026",
-      "validFrom": "2026-08-07",
-      "validUntil": "2026-08-17",
-      "pageCount": 38,
-      "thumbnailUrl": "",
-      "pages": [],
-      "embedUrl": "https://view.publitas.com/welkoop/welkoop-week-32-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/395/3277035/pdfs/86034a91-928b-435a-9585-434692f0bca0.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-08-07T05:51:22.822Z"
-    }
-  ],
-  "deals": [],
-  "scrapedAt": "2026-08-07T05:51:22.822Z",
-  "sourceUrls": [
-    "https://view.publitas.com/welkoop/welkoop-week-32-2026/page/1"
-  ],
-  "methods": [
-    "publitas",
-    "pdf"
-  ]
+	"retailer": "welkoop",
+	"folders": [
+		{
+			"id": "welkoop-3277035-folder",
+			"retailerSlug": "welkoop",
+			"title": "Welkoop - Welkoop week 32 2026",
+			"validFrom": "2026-08-07",
+			"validUntil": "2026-08-17",
+			"pageCount": 38,
+			"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p1.webp",
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p5-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 6,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p6.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p6-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 7,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p7.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p7-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 8,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p8.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p8-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 9,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p9.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p9-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 10,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p10.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p10-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 11,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p11.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p11-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 12,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p12.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p12-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 13,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p13.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p13-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 14,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p14.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p14-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 15,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p15.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p15-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 16,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p16.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p16-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 17,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p17.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p17-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 18,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p18.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p18-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 19,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p19.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p19-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 20,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p20.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p20-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 21,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p21.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p21-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 22,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p22.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p22-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 23,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p23.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p23-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 24,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p24.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p24-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 25,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p25.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p25-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 26,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p26.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p26-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 27,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p27.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p27-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 28,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p28.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p28-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 29,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p29.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p29-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 30,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p30.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p30-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 31,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p31.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p31-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 32,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p32.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p32-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 33,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p33.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p33-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 34,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p34.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p34-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 35,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p35.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p35-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 36,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p36.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p36-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 37,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p37.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p37-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 38,
+					"imageUrl": "/screenshots/welkoop-2026-w32-pdfimg-p38.webp",
+					"thumbnailUrl": "/screenshots/welkoop-2026-w32-pdfimg-p38-thumb.webp",
+					"deals": []
+				}
+			],
+			"embedUrl": "https://view.publitas.com/welkoop/welkoop-week-32-2026/page/1?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/395/3277035/pdfs/86034a91-928b-435a-9585-434692f0bca0.pdf",
+			"contentSource": "publitas",
+			"scrapedAt": "2026-08-07T05:51:22.822Z"
+		}
+	],
+	"deals": [],
+	"scrapedAt": "2026-08-07T05:51:22.822Z",
+	"sourceUrls": [
+		"https://view.publitas.com/welkoop/welkoop-week-32-2026/page/1"
+	],
+	"methods": [
+		"publitas",
+		"pdf"
+	]
 }

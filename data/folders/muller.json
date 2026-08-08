@@ -1,0 +1,41 @@
+{
+  "retailer": "muller",
+  "folders": [
+    {
+      "id": "muller-2026-w32-folder",
+      "retailerSlug": "muller",
+      "title": "Müller promoties",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/muller-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/muller-2026-w32-viewerimg-p1.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/muller-2026-w32-viewerimg-p1-thumb.webp"
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-05T22:20:05.181Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-35",
+      "product": "Die aufgerufene Seite konnte leider nicht gefunden werden",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "muller"
+    }
+  ],
+  "scrapedAt": "2026-08-05T22:20:11.143Z",
+  "sourceUrls": [
+    "https://www.mueller.de/angebote/"
+  ],
+  "methods": [
+    "html",
+    "screenshot"
+  ]
+}

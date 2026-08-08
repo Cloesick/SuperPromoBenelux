@@ -13,7 +13,7 @@
 // TLS note: this machine sits behind a cert-intercepting proxy; callers set
 // NODE_TLS_REJECT_UNAUTHORIZED=0 (see harvest-all.mjs).
 
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -100,6 +100,42 @@ export function buildScrapedData(manifest, slug, viewerUrl, html, opts = {}) {
     sourceUrls: [viewerUrl],
     methods: ['publitas', pdfUrl ? 'pdf' : 'html'],
   };
+}
+
+/**
+ * Carry rendered page images across a harvest of the same issue.
+ *
+ * The harvest sets `pages: []` because Publitas page images are signed and
+ * lazy-loaded — it cannot produce them. But scripts/backfill-pdf-pages.mts
+ * renders them from the PDF afterwards, and the harvest then overwrote the
+ * whole folder JSON, deleting every one. Fourteen retailers get their folder
+ * this way, so a twice-daily harvest silently emptied hundreds of pages.
+ *
+ * Pages are kept only when the folder is unmistakably the same publication —
+ * same id and same PDF. A new issue must start empty, because last week's
+ * pages are the wrong content, and the backfill will render the new ones.
+ */
+export function preserveRenderedPages(existing, next) {
+  const prev = existing?.folders?.[0];
+  const fresh = next?.folders?.[0];
+  if (!prev?.pages?.length || !fresh) return next;
+  if (prev.id !== fresh.id || prev.pdfUrl !== fresh.pdfUrl) return next;
+
+  fresh.pages = prev.pages;
+  fresh.pageCount = prev.pages.length;
+  // The cover the harvest picked is a remote Publitas URL; a locally rendered
+  // first page is the one the viewer actually shows.
+  if (prev.thumbnailUrl) fresh.thumbnailUrl = prev.thumbnailUrl;
+  return next;
+}
+
+/** Read the folder JSON already on disk, or null when there is none. */
+export function readExistingFolder(path) {
+  try {
+    return JSON.parse(readFileSync(path, 'utf-8'));
+  } catch {
+    return null;
+  }
 }
 
 // CLI

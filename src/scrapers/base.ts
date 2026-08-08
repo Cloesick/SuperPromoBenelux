@@ -1,13 +1,43 @@
 import fs from "fs";
 import path from "path";
-import puppeteer, { Page, Browser } from "puppeteer";
+import crypto from "node:crypto";
+import { storePageImage } from "./pageStorage";
+
+/**
+ * Outcome of capturing one viewer page.
+ *  written   — a new page; `url` is what the folder JSON should render
+ *  duplicate — the viewer clamped past the last page; stop capturing
+ *  blank     — nothing painted; skip this page but keep going
+ */
+type CaptureResult =
+	| { status: "written"; url: string; thumbUrl?: string }
+	| { status: "duplicate" }
+	| { status: "blank" };
+// rebrowser-puppeteer is a drop-in Puppeteer fork that patches the CDP
+// `Runtime.Enable` leak — the main signal modern anti-bot services use to
+// detect automation, and one that navigator.webdriver patching cannot hide.
+import puppeteer, { Page, Browser } from "rebrowser-puppeteer";
 import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 import { syncDealsToDb } from "../lib/productsDb";
+import { normalizeSchemaImage } from "../lib/schemaImage";
+import { isNavigationNoise } from "../lib/htmlNoise";
+import { parsePriceElementText, sanitizeDeals } from "../lib/dealValidation";
+import { looksLikeBotChallenge } from "./botChallenge";
+import {
+	isEmbedBlocked,
+	isPdfForcedDownload,
+	isBareViewerHomepage,
+	isNonLeafletPdf,
+} from "../lib/folderRenderability";
 import { extractDealsFromPdf } from "./extractDealsFromText";
-import { writeJsonAtomic } from "./atomic-write";
+import { renderPdfToImages } from "./pdfRender";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
+
+// Full-resolution captures kept for OCR only. Deliberately outside public/ so
+// they are never served: visitors get the optimised copy in SCREENSHOT_DIR.
+const OCR_SOURCE_DIR = path.join(process.cwd(), "data", "ocr-src");
 
 const DEFAULT_USER_AGENT =
 	"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
@@ -31,7 +61,7 @@ export interface DealResult {
 }
 
 export interface ScreenshotResult {
-	pages: { pageNumber: number; imagePath: string }[];
+	pages: { pageNumber: number; imagePath: string; thumbPath?: string }[];
 }
 
 export interface ScrapeContext {
@@ -107,6 +137,24 @@ export abstract class BaseScraper {
 		return this.config.slug;
 	}
 
+	/**
+	 * Pause between sequential navigations.
+	 *
+	 * Request *rate* is a stronger blocking signal than fingerprint for most
+	 * retailers — bursts of back-to-back `networkidle2` loads look nothing like
+	 * a human. Applied before each navigation in a multi-request loop.
+	 *
+	 * Configure with SCRAPE_DELAY_MS (default 1500). Set to 0 to disable,
+	 * e.g. in tests. Actual delay is randomised ±40% to avoid a fixed cadence.
+	 */
+	protected async politeDelay(): Promise<void> {
+		const base = parseInt(process.env.SCRAPE_DELAY_MS ?? "1500", 10);
+		if (!Number.isFinite(base) || base <= 0) return;
+		const jitter = base * 0.4;
+		const ms = Math.round(base - jitter + Math.random() * jitter * 2);
+		await new Promise((r) => setTimeout(r, ms));
+	}
+
 	protected async preparePage(page: Page): Promise<void> {
 		await page.setUserAgent(DEFAULT_USER_AGENT);
 		await page.setViewport({ width: 1440, height: 900 });
@@ -173,15 +221,15 @@ export abstract class BaseScraper {
 	protected async isBotChallengePage(page: Page): Promise<boolean> {
 		try {
 			const text = await page.evaluate(() => document.body?.innerText ?? "");
-			const t = String(text).toLowerCase();
-			return (
-				t.includes("sorry voor de onderbreking") ||
-				t.includes("click to verify") ||
-				t.includes("captcha") ||
-				t.includes("colruytgroup") ||
-				t.includes("je een bot") ||
-				t.includes("onmiddellijk weer toegang")
-			);
+			// The URL matters as much as the body: Imperva serves its block from
+			// _Incapsula_Resource, which no leaflet URL ever contains.
+			let url = "";
+			try {
+				url = page.url();
+			} catch {
+				// A closed or crashed page has no URL; the body test still applies.
+			}
+			return looksLikeBotChallenge(String(text), url);
 		} catch {
 			return false;
 		}
@@ -294,6 +342,7 @@ export abstract class BaseScraper {
 
 			for (const url of this.config.folderUrls) {
 				this.log(`Navigating to ${url}`);
+				await this.politeDelay();
 				try {
 					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 				} catch {
@@ -342,6 +391,7 @@ export abstract class BaseScraper {
 					);
 
 					this.log(`Following folder link: ${folderLink}`);
+					await this.politeDelay();
 					try {
 						await page.goto(folderLink, {
 							waitUntil: "networkidle2",
@@ -405,15 +455,47 @@ export abstract class BaseScraper {
 
 				// Step 3a: If the embed exists but is not embeddable (X-Frame-Options/CSP),
 				//          generate renderable pages[] so the frontend does not show a broken iframe.
+				// Capture pages whenever the frontend would otherwise render nothing.
+				//
+				// This used to ask only "does the embed send X-Frame-Options?", which
+				// left two holes. Publitas passed the header check while
+				// folderRenderability blocks the host outright, so albert-heijn
+				// captured no pages and its folder page showed a placeholder over a
+				// perfectly good leaflet. And a retailer with a PDF but no embed never
+				// entered this branch at all — lidl publishes only a PDF, so it had
+				// nothing to show either.
+				//
+				// The question is now the one that matters: after every rule the
+				// viewer applies, is there anything left to display? The blocklist is
+				// the same module the viewer and sitemap use, so the three cannot
+				// drift apart again.
 				let screenshots: ScreenshotResult | null = null;
 				let embedNotEmbeddable = false;
-				if (embed?.url) {
-					const embeddable = await this.isEmbeddableViewerUrl(embed.url);
-					if (!embeddable) {
-						embedNotEmbeddable = true;
-						const candidateUrl = pdf?.url || embed.url;
+
+				const embedBlockedByApp =
+					!!embed?.url && isEmbedBlocked(embed.url, this.retailerSlug);
+				const embedFramable =
+					!!embed?.url &&
+					!embedBlockedByApp &&
+					(await this.isEmbeddableViewerUrl(embed.url));
+				const pdfFramable = !!pdf?.url && !isPdfForcedDownload(pdf.url);
+
+				if (!embedFramable && !pdfFramable) {
+					embedNotEmbeddable = !!embed?.url;
+					// A PDF renders into cleaner pages than a viewer capture, which also
+					// picks up surrounding site chrome — but only if the browser will
+					// display it. albert-heijn's PDF is attachment-disposition, so
+					// pointing the capture at it downloaded a file and produced nothing,
+					// while its Publitas viewer screenshots exactly as Action's and
+					// Delhaize's do. Prefer a displayable PDF, then the viewer, and fall
+					// back to the PDF only when there is no viewer at all.
+					const displayablePdf = pdf?.url && !isPdfForcedDownload(pdf.url);
+					const candidateUrl = displayablePdf
+						? pdf!.url
+						: (embed?.url ?? pdf?.url);
+					if (candidateUrl) {
 						this.log(
-							`Embed is not embeddable; falling back to screenshots from ${candidateUrl}`,
+							`Nothing framable for the viewer; capturing pages from ${candidateUrl.slice(0, 90)}`,
 						);
 						try {
 							screenshots = await this.takeScreenshots(ctx, candidateUrl);
@@ -617,6 +699,7 @@ export abstract class BaseScraper {
 					? screenshots.pages.map((p) => ({
 							pageNumber: p.pageNumber,
 							imageUrl: p.imagePath,
+							thumbnailUrl: p.thumbPath,
 							deals: [] as Deal[],
 						}))
 					: [];
@@ -645,6 +728,19 @@ export abstract class BaseScraper {
 
 				folders.push(folder);
 				break; // First successful URL wins
+			}
+
+			// Before giving up on the configured URLs, go to the retailer's own
+			// site and look for the folder there. Configured URLs go stale —
+			// maxi-zoo's flyer host now 404s, and a retailer reorganising its
+			// promotions section silently costs us a folder. The official site is
+			// the one address that does not change.
+			if (folders.length === 0) {
+				const recovered = await this.scrapeFromOfficialSite(ctx);
+				if (recovered) {
+					folders.push(recovered);
+					if (!ctx.methods.includes("screenshot")) ctx.methods.push("screenshot");
+				}
 			}
 
 			// If no folder URL succeeded, still emit a folder via screenshot rendering.
@@ -678,6 +774,7 @@ export abstract class BaseScraper {
 						const folderPages = screenshots.pages.map((p) => ({
 							pageNumber: p.pageNumber,
 							imageUrl: p.imagePath,
+							thumbnailUrl: p.thumbPath,
 							deals: [] as Deal[],
 						}));
 
@@ -705,6 +802,7 @@ export abstract class BaseScraper {
 			if (this.config.dealUrls) {
 				for (const dealUrl of this.config.dealUrls) {
 					this.log(`Scraping deals from ${dealUrl}`);
+					await this.politeDelay();
 					try {
 						await page.setExtraHTTPHeaders({
 							// Add some basic anti-bot headers
@@ -741,7 +839,16 @@ export abstract class BaseScraper {
 			}
 
 			// ---- Alternative extraction fallbacks ----
-			if (allDeals.length === 0) {
+			// Gate on deals that would actually survive validation, not the raw
+			// count. A handful of unusable rows used to suppress every better
+			// extractor for the whole run: PDF text, page text and OCR only fire
+			// when the earlier pass yielded "nothing", and a cookie-panel entry
+			// counted as something. Safe to widen now that OCR is restricted to
+			// leaflet captures, so opening the gate cannot invent prices from a
+			// screenshot of a retailer's own website.
+			const usableDealCount = () => sanitizeDeals(allDeals).kept.length;
+
+			if (usableDealCount() === 0) {
 				// Fallback A: PDF text extraction (if a PDF URL was found)
 				const pdfUrl = folders[0]?.pdfUrl;
 				if (pdfUrl) {
@@ -768,11 +875,12 @@ export abstract class BaseScraper {
 				}
 			}
 
-			if (allDeals.length === 0) {
+			if (usableDealCount() === 0) {
 				// Fallback B: Generic page text extraction from dealUrls
 				const dealPages = this.config.dealUrls ?? [this.config.folderUrls[0]];
 				for (const dealUrl of dealPages) {
 					this.log(`Trying generic text extraction from ${dealUrl}`);
+					await this.politeDelay();
 					try {
 						await page.goto(dealUrl, {
 							waitUntil: "networkidle2",
@@ -794,6 +902,67 @@ export abstract class BaseScraper {
 					} catch {
 						this.log(`Generic text extraction failed for ${dealUrl}`);
 					}
+				}
+			}
+
+			// Fallback C: OCR the leaflet screenshots.
+			// For viewer-only retailers (Colruyt, Delhaize, ALDI) there is no PDF
+			// text layer and no product markup, so every earlier fallback returns
+			// nothing and the leaflet images are the only content that exists.
+			//
+			// Restricted to pages that actually came from a leaflet viewer. When the
+			// capture is a screenshot of the retailer's own website, the spatial
+			// clusterer has no product cards to find and instead turns price-label
+			// chips and banners into deals that pass validation — measured output
+			// included "Adviesprijs*" at EUR 45.45, "Laagste prijs" at EUR 3.08 and
+			// "Smaak - Wortel" at EUR 2.17 down from EUR 20.79. Those are invented
+			// price claims, which is the one failure this database must not have.
+			const leafletSources: ContentSource[] = [
+				"issuu",
+				"publitas",
+				"ipaper",
+				"yumpu",
+				"pdf",
+			];
+			const isLeafletCapture = leafletSources.includes(
+				folders[0]?.contentSource as ContentSource,
+			);
+			if (
+				usableDealCount() === 0 &&
+				(folders[0]?.pages?.length ?? 0) > 0 &&
+				!isLeafletCapture
+			) {
+				this.log(
+					`Skipping OCR: pages are a ${folders[0]?.contentSource} capture, not a leaflet viewer`,
+				);
+			}
+			if (
+				usableDealCount() === 0 &&
+				(folders[0]?.pages?.length ?? 0) > 0 &&
+				isLeafletCapture
+			) {
+				this.log("Trying OCR of leaflet screenshots...");
+				try {
+					const dates = this.getCurrentWeekDates();
+					const { extractDealsFromScreenshots } = await import("./ocr");
+					const ocrResult = await extractDealsFromScreenshots(
+						this.retailerSlug,
+						dates.from,
+						dates.until,
+						{
+							week: this.currentWeekTag(),
+							onProgress: (msg) => this.log(msg),
+						},
+					);
+					if (ocrResult.deals.length > 0) {
+						allDeals.push(...ocrResult.deals);
+						if (!ctx.methods.includes("ocr")) ctx.methods.push("ocr");
+						this.log(
+							`OCR yielded ${ocrResult.deals.length} deal(s) from ${ocrResult.pagesProcessed} page(s)`,
+						);
+					}
+				} catch (e) {
+					this.log(`OCR fallback skipped: ${e}`);
 				}
 			}
 
@@ -836,6 +1005,7 @@ export abstract class BaseScraper {
 							primaryFolder.pages = screenshots.pages.map((p) => ({
 								pageNumber: p.pageNumber,
 								imageUrl: p.imagePath,
+								thumbnailUrl: p.thumbPath,
 								deals: [] as Deal[],
 							}));
 							primaryFolder.pageCount = primaryFolder.pages.length;
@@ -856,7 +1026,7 @@ export abstract class BaseScraper {
 				this.log(
 					"No folders/deals extracted (likely blocked). Skipping JSON write to avoid overwriting existing data.",
 				);
-				throw new Error("No folders/deals extracted");
+				return;
 			}
 
 			const data: ScrapedData = {
@@ -882,20 +1052,24 @@ export abstract class BaseScraper {
 				}
 			}
 
-			writeJsonAtomic(filePath, data);
+			fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
 			this.log(`Saved to ${filePath}`);
 
 			// ---- Sync deals to database ----
 			if (uniqueDeals.length > 0) {
 				try {
 					const vertical = process.env.NEXT_PUBLIC_RETAIL_VERTICAL ?? "general";
+					// Awaited: syncDealsToDb is async, and without this the log read
+					// "Synced [object Promise]/22 deal(s)", the surrounding catch could
+					// not see a rejection, and the process could exit before the write
+					// finished.
 					const synced = await syncDealsToDb({
 						retailerSlug: this.retailerSlug,
 						retailerName: this.retailerName,
 						vertical,
 						deals: uniqueDeals,
 						scrapedAt: data.scrapedAt,
-						sourceMethod: ctx.methods[0],
+						sourceMethod: this.dealExtractionMethod(ctx.methods),
 						sourceUrl: ctx.sourceUrls[0],
 						folderTitle: folders[0]?.title,
 					});
@@ -916,69 +1090,274 @@ export abstract class BaseScraper {
 
 	// ---- Step 0: Cookie consent dismissal ----------------------------------
 
+	/** How long to keep looking for a consent dialog before giving up. */
+	protected static readonly CONSENT_WAIT_MS = 8000;
+
+	/**
+	 * Consent-dialog button labels, lowercased, in the order they are tried.
+	 *
+	 * Matching is case-insensitive because these are frequently uppercase in the
+	 * markup, not just via CSS — Douglas ships "ACCEPTEREN", which the previous
+	 * case-sensitive `includes("Accepteren")` could never match, so its dialog
+	 * survived every capture and the folder shipped 60 screenshots of the modal.
+	 *
+	 * Refusal comes first deliberately. Declining non-essential cookies dismisses
+	 * the dialog just as effectively as accepting, so there is no reason to opt a
+	 * scraper into tracking on the site owner's behalf. Accept variants are the
+	 * fallback for dialogs that offer no refusal at all, and a bare "ok" is last
+	 * so it cannot win over a more specific choice.
+	 */
+	protected static readonly CONSENT_REFUSE_TEXTS = [
+		"weigeren",
+		"alleen noodzakelijke",
+		"ablehnen",
+		"refuser",
+		"reject all",
+		"only necessary",
+		"necessary only",
+	];
+
+	/**
+	 * Accept-button labels, matched EXACTLY.
+	 *
+	 * Substring matching is unsafe here: "ok" appears inside plenty of unrelated
+	 * labels, and a false-positive accept opts the scrape into tracking. A
+	 * false-positive refusal merely declines cookies, so the refuse list above is
+	 * matched as a substring instead — ALDI Belgium labels its refuse button
+	 * "Alle niet strikt noodzakelijke cookies en/of andere technologieën
+	 * weigeren", which no exact match could ever cover.
+	 *
+	 * "aanvaarden" is the Belgian-Dutch form ALDI uses; "accepteren" alone missed
+	 * it entirely.
+	 */
+	protected static readonly CONSENT_ACCEPT_TEXTS = [
+		"alles accepteren",
+		"alle cookies accepteren",
+		"alle cookies aanvaarden",
+		"alles aanvaarden",
+		"aanvaarden",
+		"alles akzeptieren",
+		"tout accepter",
+		"accept all cookies",
+		"accept all",
+		"akkoord",
+		"accepteren",
+		"akzeptieren",
+		"accepter",
+		"i accept",
+		"ok",
+		// Locale/interstitial gates. Several BE/NL retailers raise one of these
+		// after the cookie choice — bol's "Hoe wil jij bollen?" picker covered the
+		// top of every screenshot until it was dismissed.
+		"doorgaan",
+		"continuer",
+		"continue",
+	];
+
+	/**
+	 * Dismiss a cookie/consent dialog.
+	 *
+	 * Consent managers inject their dialog asynchronously, so a single pass
+	 * immediately after load usually runs before the dialog exists — which is why
+	 * this silently did nothing for Douglas, bol and ALDI. This polls until the
+	 * dialog appears, only clicks elements that are actually visible, and
+	 * verifies the dialog is gone rather than assuming the first click worked.
+	 */
 	protected async dismissCookieConsent(page: Page): Promise<void> {
-		const selectors = [
-			...(this.config.cookieSelectors || []),
-			// Generic consent button selectors (Dutch, French, English)
-			'button[id*="accept"]',
-			'button[class*="accept"]',
-			'a[id*="accept"]',
-			'[data-testid*="accept"]',
-			'button:has-text("Accepteren")',
-			'button:has-text("Alles accepteren")',
-			'button:has-text("Tout accepter")',
-			'button:has-text("Accept all")',
-			'button:has-text("Akkoord")',
-			'button:has-text("OK")',
-			"#onetrust-accept-btn-handler",
-			".cookie-accept",
-			'[class*="cookie"] button:first-of-type',
-			'[class*="consent"] button',
-			'[class*="gdpr"] button',
-		];
+		const configured = this.config.cookieSelectors || [];
+		const deadline = Date.now() + BaseScraper.CONSENT_WAIT_MS;
 
-		for (const selector of selectors) {
+		while (Date.now() < deadline) {
+			// page.evaluate can throw synchronously — a page object without it (as in
+			// the screenshot unit tests) raises TypeError before any promise exists,
+			// so `.catch()` alone would not contain it. Consent handling must never
+			// be able to fail a scrape.
+			let result: { clicked: string | null; dialogPresent?: boolean } | null;
 			try {
-				// :has-text is not standard CSS; handle with page.evaluate text matching
-				if (selector.includes(":has-text(")) {
-					const text = selector.match(/:has-text\("(.+?)"\)/)?.[1];
-					const tag = selector.split(":")[0] || "button";
-					if (text) {
-						const clicked = await page.evaluate(
-							function (tagName: string, searchText: string) {
-								const els = document.querySelectorAll(tagName);
-								for (let i = 0; i < els.length; i++) {
-									const el = els[i];
-									if (el.textContent && el.textContent.includes(searchText)) {
-										(el as HTMLElement).click();
-										return true;
-									}
+				result = await page
+					.evaluate(
+					// No inner functions: this body is serialised into the browser,
+					// where tsx's keepNames transform references a `__name` helper that
+					// does not exist, so a named inner function throws at runtime. The
+					// visibility test is therefore repeated inline.
+					function (
+						selectors: string[],
+						refuseTexts: string[],
+						acceptTexts: string[],
+					) {
+						// Walk the document AND every shadow root. Usercentrics — which
+						// Douglas, bol and ALDI all use — renders its dialog inside a
+						// closed-off shadow tree, so document.querySelectorAll cannot see
+						// its buttons at all and no selector list would ever have matched.
+						// Traversal is an explicit stack because a named recursive helper
+						// would hit the __name problem described above.
+						const roots: (Document | ShadowRoot)[] = [document];
+						const all: Element[] = [];
+						const configuredHits: Element[] = [];
+						for (let r = 0; r < roots.length && r < 200; r++) {
+							const scoped = roots[r].querySelectorAll("*");
+							for (let i = 0; i < scoped.length; i++) {
+								const el = scoped[i];
+								if ((el as HTMLElement).shadowRoot) {
+									roots.push((el as HTMLElement).shadowRoot as ShadowRoot);
 								}
-								return false;
-							},
-							tag,
-							text,
-						);
-						if (clicked) {
-							this.log(`Dismissed cookie consent via text: "${text}"`);
-							await page.waitForNetworkIdle({ timeout: 3000 }).catch(() => {});
-							return;
+								const tag = el.tagName;
+								const role = el.getAttribute("role");
+								if (
+									tag === "BUTTON" ||
+									tag === "A" ||
+									role === "button" ||
+									tag === "INPUT"
+								) {
+									all.push(el);
+								}
+							}
+							// Retailer-specific selectors must also be searched per root.
+							for (let s = 0; s < selectors.length; s++) {
+								const hit = roots[r].querySelector(selectors[s]);
+								if (hit) configuredHits.push(hit);
+							}
 						}
-					}
-					continue;
-				}
 
-				const el = await page.$(selector);
-				if (el) {
-					await el.click();
-					this.log(`Dismissed cookie consent via: ${selector}`);
-					await page.waitForNetworkIdle({ timeout: 3000 }).catch(() => {});
-					return;
-				}
+						const visible: Element[] = [];
+						for (let i = 0; i < all.length; i++) {
+							const style = window.getComputedStyle(all[i]);
+							if (
+								style.display === "none" ||
+								style.visibility === "hidden" ||
+								parseFloat(style.opacity || "1") === 0
+							) {
+								continue;
+							}
+							const rect = all[i].getBoundingClientRect();
+							if (rect.width > 0 && rect.height > 0) visible.push(all[i]);
+						}
+
+						// Configured selectors first — they are retailer-specific and exact.
+						for (let i = 0; i < configuredHits.length; i++) {
+							const el = configuredHits[i];
+							// A hidden match is a pre-rendered dialog that has not opened
+							// yet; clicking it does nothing and would end the search.
+							const style = window.getComputedStyle(el);
+							if (
+								style.display === "none" ||
+								style.visibility === "hidden" ||
+								parseFloat(style.opacity || "1") === 0
+							) {
+								continue;
+							}
+							const rect = el.getBoundingClientRect();
+							if (rect.width <= 0 || rect.height <= 0) continue;
+							(el as HTMLElement).click();
+							return { clicked: "selector", dialogPresent: true };
+						}
+
+						// Refusals are matched as substrings so sentence-length labels
+						// still resolve; accepts are matched exactly so a bare "ok"
+						// cannot fire on "cookiebeleid".
+						for (let ti = 0; ti < refuseTexts.length; ti++) {
+							for (let ci = 0; ci < visible.length; ci++) {
+								const el = visible[ci];
+								const label = (
+									el.textContent ||
+									(el as HTMLInputElement).value ||
+									""
+								)
+									.trim()
+									.replace(/\s+/g, " ")
+									.toLowerCase();
+								if (label && label.indexOf(refuseTexts[ti]) !== -1) {
+									(el as HTMLElement).click();
+									return {
+										clicked: "refuse:" + refuseTexts[ti],
+										dialogPresent: true,
+									};
+								}
+							}
+						}
+
+						for (let ti = 0; ti < acceptTexts.length; ti++) {
+							for (let ci = 0; ci < visible.length; ci++) {
+								const el = visible[ci];
+								const label = (
+									el.textContent ||
+									(el as HTMLInputElement).value ||
+									""
+								)
+									.trim()
+									.replace(/\s+/g, " ")
+									.toLowerCase();
+								if (label && label === acceptTexts[ti]) {
+									(el as HTMLElement).click();
+									return {
+										clicked: "accept:" + acceptTexts[ti],
+										dialogPresent: true,
+									};
+								}
+							}
+						}
+
+						// Nothing to click. Report whether a dialog is even present, so the
+						// caller can stop early instead of polling a page that has none.
+						// Searched across the same roots: a shadow-hosted dialog would
+						// otherwise read as absent and end the wait immediately.
+						// Requiring a consent-looking word means an unrelated modal does
+						// not count: bol raises a locale picker ("Hoe wil jij bollen?")
+						// after the cookie choice, which matched [role="dialog"] and made
+						// every navigation burn the full wait while logging a misleading
+						// "cookie dialog still present".
+						const dialogSelector =
+							'[id*="onetrust"], [class*="cookie"], [class*="consent"], [class*="gdpr"], [id*="usercentrics"], [role="dialog"]';
+						let dialogPresent = false;
+						for (let r = 0; r < roots.length && !dialogPresent; r++) {
+							const dialog = roots[r].querySelector(dialogSelector);
+							if (!dialog) continue;
+							const style = window.getComputedStyle(dialog);
+							const rect = dialog.getBoundingClientRect();
+							if (
+								style.display === "none" ||
+								style.visibility === "hidden" ||
+								rect.width <= 0 ||
+								rect.height <= 0
+							) {
+								continue;
+							}
+							const text = (dialog.textContent || "").toLowerCase();
+							dialogPresent =
+								text.indexOf("cookie") !== -1 ||
+								text.indexOf("consent") !== -1 ||
+								text.indexOf("toestemming") !== -1 ||
+								text.indexOf("privacy") !== -1;
+						}
+						return { clicked: null as string | null, dialogPresent };
+					},
+						configured,
+						BaseScraper.CONSENT_REFUSE_TEXTS,
+						BaseScraper.CONSENT_ACCEPT_TEXTS,
+					)
+					.catch(() => null);
 			} catch {
-				// Selector didn't match, try next
+				return;
 			}
+
+			if (result?.clicked) {
+				this.log(`Dismissed cookie consent via ${result.clicked}`);
+				await page.waitForNetworkIdle({ timeout: 3000 }).catch(() => {});
+				// Some managers reopen a second layer; loop again to catch it.
+				await new Promise((r) => setTimeout(r, 500));
+				continue;
+			}
+
+			// No dialog on the page and nothing clicked: there is nothing to wait
+			// for. Keep polling only while a dialog is visible but unmatched.
+			if (result && !result.dialogPresent) return;
+
+			await new Promise((r) => setTimeout(r, 500));
 		}
+
+		this.log(
+			`Consent dialog unresolved after ${BaseScraper.CONSENT_WAIT_MS}ms`,
+		);
 	}
 
 	// ---- Step 1: Find folder-specific link ---------------------------------
@@ -998,15 +1377,37 @@ export abstract class BaseScraper {
 			];
 			const links = Array.from(document.querySelectorAll("a[href]"));
 
+			// A viewer's homepage matches the same pattern as a specific leaflet:
+			// `^https://folder.gamma.be/` matches both `folder.gamma.be/` and
+			// `folder.gamma.be/gamma-week-32/`. Gamma's navigation links the bare
+			// homepage, so returning the first match recorded that as the embed and
+			// the folder page rendered an empty iframe. Kruidvat only worked because
+			// its first match happened to carry a path. Prefer a deep link, and fall
+			// back to a bare origin only when nothing better exists.
+			//
+			// The path test is inlined rather than extracted into a helper: this
+			// body is serialised into the browser, where tsx's keepNames transform
+			// references a `__name` helper that does not exist there, so any named
+			// inner function throws "__name is not defined" at runtime.
 			if (patterns.length > 0) {
+				let shallowMatch: string | null = null;
 				for (let i = 0; i < links.length; i++) {
 					const link = links[i];
 					const href = (link as HTMLAnchorElement).href;
 					for (let pi = 0; pi < patterns.length; pi++) {
 						const p = patterns[pi];
-						if (new RegExp(p).test(href)) return href;
+						if (!new RegExp(p).test(href)) continue;
+						let hasPath = false;
+						try {
+							hasPath = new URL(href).pathname.replace(/\/+$/, "").length > 0;
+						} catch {
+							hasPath = false;
+						}
+						if (hasPath) return href;
+						if (!shallowMatch) shallowMatch = href;
 					}
 				}
+				if (shallowMatch) return shallowMatch;
 			}
 
 			for (let i = 0; i < links.length; i++) {
@@ -1026,7 +1427,184 @@ export abstract class BaseScraper {
 
 	// ---- Step 2: Embed detection -------------------------------------------
 
+	/**
+	 * Last-resort discovery: find the folder on the retailer's own website.
+	 *
+	 * Configured folder URLs rot. maxi-zoo's flyer host returns 404, retailers
+	 * reorganise their promotions section, and a white-label viewer moves. When
+	 * that happens the retailer still publishes a folder — we have simply
+	 * stopped looking in the right place, and the page shows "geen folder
+	 * beschikbaar" while the leaflet sits one click away.
+	 *
+	 * The retailer's homepage is the one address that does not change, so it is
+	 * the backup: follow the links a shopper would follow, then run the normal
+	 * embed/PDF/screenshot discovery on whatever that lands on.
+	 *
+	 * Returns null rather than throwing — this runs only when everything else
+	 * already failed, so a failure here must not lose the run.
+	 */
+	protected async scrapeFromOfficialSite(ctx: ScrapeContext): Promise<Folder | null> {
+		const { page } = ctx;
+		const retailer = getRetailerBySlug(this.retailerSlug);
+		const website = retailer?.website;
+		if (!website) return null;
+
+		try {
+			this.log(`Falling back to the official site: ${website}`);
+			await page.goto(website, { waitUntil: "domcontentloaded", timeout: 30000 });
+			await this.dismissCookieConsent(page);
+			if (await this.isBotChallengePage(page)) {
+				this.log("  Official site returns a bot challenge; skipping");
+				return null;
+			}
+
+			// The words a Dutch- or French-speaking shopper would click.
+			const candidates: string[] = await page.evaluate(() => {
+				const wanted =
+					/folder|flyer|reclame|aanbieding|promotie|promo|acties|weekaanbieding|depliant|prospectus/i;
+				const seen = new Set<string>();
+				const out: string[] = [];
+				for (const a of Array.from(document.querySelectorAll("a[href]"))) {
+					const href = (a as HTMLAnchorElement).href;
+					if (!href || !/^https?:/i.test(href)) continue;
+					const text = (a.textContent ?? "").trim();
+					if (!wanted.test(href) && !wanted.test(text)) continue;
+					if (seen.has(href)) continue;
+					seen.add(href);
+					out.push(href);
+				}
+				return out.slice(0, 12);
+			});
+
+			if (candidates.length === 0) {
+				this.log("  No folder-looking links on the official site");
+				return null;
+			}
+
+			// A link whose host is a dedicated viewer (folder.retailer.be) is far
+			// more likely to be the leaflet than a generic /promoties page.
+			const looksLikeViewer = (u: string) =>
+				/^(?:folder|flyer|folders|leaflet|prospectus)\./i.test(
+					(() => {
+						try {
+							return new URL(u).hostname;
+						} catch {
+							return "";
+						}
+					})(),
+				);
+			candidates.sort((a, b) => Number(looksLikeViewer(b)) - Number(looksLikeViewer(a)));
+
+			for (const candidate of candidates.slice(0, 5)) {
+				try {
+					this.log(`  Trying ${candidate}`);
+					await page.goto(candidate, { waitUntil: "networkidle2", timeout: 30000 });
+					await this.dismissCookieConsent(page);
+					if (await this.isBotChallengePage(page)) continue;
+
+					const embed = await this.findEmbed(ctx);
+					const pdf = await this.findPdf(ctx);
+					const shots = await this.takeScreenshots(ctx, embed?.url);
+					if (shots.pages.length === 0 && !embed?.url && !pdf?.url) continue;
+
+					ctx.sourceUrls.push(candidate);
+					const dates = this.getCurrentWeekDates();
+					const pages = shots.pages.map((p) => ({
+						pageNumber: p.pageNumber,
+						imageUrl: p.imagePath,
+						thumbnailUrl: p.thumbPath,
+						deals: [] as Deal[],
+					}));
+
+					this.log(
+						`  Recovered from the official site: ${pages.length} page(s)` +
+							`${embed?.url ? ", embed" : ""}${pdf?.url ? ", pdf" : ""}`,
+					);
+
+					return {
+						id: this.generateFolderId("folder"),
+						retailerSlug: this.retailerSlug,
+						title:
+							this.config.folderTitle || `${this.retailerName} folder van de week`,
+						validFrom: dates.from,
+						validUntil: dates.until,
+						pageCount: pages.length,
+						thumbnailUrl: pages[0]?.imageUrl || "",
+						pages,
+						embedUrl: embed?.url,
+						pdfUrl: pdf?.url,
+						contentSource: "screenshot",
+						scrapedAt: new Date().toISOString(),
+					};
+				} catch {
+					// Try the next candidate.
+				}
+			}
+
+			this.log("  Official site had no usable folder");
+			return null;
+		} catch (err) {
+			this.log(`  Official-site fallback failed: ${err}`);
+			return null;
+		}
+	}
+
+	/**
+	 * Find the leaflet viewer, resolving white-label hosts to a real publication.
+	 *
+	 * Retailers on iPaper front it with their own domain — folder.gamma.be,
+	 * folder.kruidvat.be, folder.trekpleister.nl — whose root 302s to the
+	 * current issue. The page links the bare root, so that is what was stored,
+	 * and `isBareViewerHomepage` correctly refused to frame it: a URL with no
+	 * path is a landing page, not a leaflet. The result was three retailers
+	 * with a live folder showing "geen folder beschikbaar".
+	 *
+	 * Following the redirect turns the root into this week's publication, which
+	 * is both framable and something the iPaper page-fetch can work from. The
+	 * redirect target changes weekly, which is exactly why it is resolved at
+	 * scrape time rather than pinned in a config.
+	 */
 	protected async findEmbed(ctx: ScrapeContext): Promise<EmbedResult | null> {
+		const embed = await this.findEmbedRaw(ctx);
+		if (!embed?.url || !isBareViewerHomepage(embed.url)) return embed;
+
+		const resolved = await this.resolveViewerHomepage(embed.url);
+		if (!resolved || resolved === embed.url) return embed;
+
+		this.log(`Resolved viewer homepage to publication: ${resolved}`);
+		return { ...embed, url: resolved };
+	}
+
+	/**
+	 * Follow a viewer root to the issue it redirects to.
+	 *
+	 * Returns null on anything unexpected — a failure here should leave the
+	 * original URL alone, not lose the embed.
+	 */
+	protected async resolveViewerHomepage(url: string): Promise<string | null> {
+		try {
+			const controller = new AbortController();
+			const timer = setTimeout(() => controller.abort(), 15000);
+			try {
+				const res = await fetch(url, {
+					method: "GET",
+					redirect: "follow",
+					signal: controller.signal,
+				});
+				if (!res.ok) return null;
+				// A protocol-relative Location ("//host/path") resolves against the
+				// original URL, so compare the final URL rather than the header.
+				const final = res.url;
+				return final && !isBareViewerHomepage(final) ? final : null;
+			} finally {
+				clearTimeout(timer);
+			}
+		} catch {
+			return null;
+		}
+	}
+
+	protected async findEmbedRaw(ctx: ScrapeContext): Promise<EmbedResult | null> {
 		const { page, interceptedUrls } = ctx;
 
 		// Actively wait for known embed iframes to appear (handles lazy loading)
@@ -1055,7 +1633,34 @@ export abstract class BaseScraper {
 				"hotjar",
 				"tealium",
 				"utag",
+				// Conversion pixels. Colruyt shipped ct.pinterest.com/ct.html as its
+				// folder embed, so the site iframed a tracking beacon instead of the
+				// leaflet.
+				"pinterest",
+				"criteo",
+				"taboola",
+				"outbrain",
+				"tiktok",
+				"snapchat",
+				"linkedin",
+				"bing.com",
+				"clarity.ms",
+				"adnxs",
+				"adsrvr",
+				"adservice",
+				"segment.",
+				"mixpanel",
+				"amplitude",
+				"/pixel",
+				"/beacon",
+				"/ct.html",
+				"/track",
 			];
+
+			// Size is the reliable discriminator: a conversion pixel renders at 0x0
+			// or 1x1, a leaflet viewer fills the page. Keyword lists never keep up
+			// with new ad networks; geometry does not need to.
+			const MIN_VIEWER_PX = 300;
 			const iframes = document.querySelectorAll("iframe[src]");
 
 			for (let i = 0; i < iframes.length; i++) {
@@ -1077,13 +1682,22 @@ export abstract class BaseScraper {
 				const src = iframe.src;
 				if (!src.startsWith("http")) continue;
 				let isTracking = false;
+				const lower = src.toLowerCase();
 				for (let k = 0; k < trackingKeywords.length; k++) {
-					if (src.includes(trackingKeywords[k])) {
+					if (lower.includes(trackingKeywords[k])) {
 						isTracking = true;
 						break;
 					}
 				}
-				if (!isTracking) return src;
+				if (isTracking) continue;
+
+				// Must be large enough to be a viewer rather than a pixel.
+				const rect = iframe.getBoundingClientRect();
+				const w = Math.max(rect.width, iframe.offsetWidth || 0);
+				const h = Math.max(rect.height, iframe.offsetHeight || 0);
+				if (w < MIN_VIEWER_PX || h < MIN_VIEWER_PX) continue;
+
+				return src;
 			}
 
 			return null;
@@ -1216,6 +1830,14 @@ export abstract class BaseScraper {
 		});
 
 		if (pdfUrl) {
+			// Discovery takes the first plausible PDF on the page, and retailers
+			// host plenty that are not leaflets. Coolblue's folder recorded an EU
+			// energy label for one appliance, and Brico's its warranty terms —
+			// both offered to visitors as "download the folder".
+			if (isNonLeafletPdf(pdfUrl)) {
+				this.log(`Ignoring non-leaflet PDF: ${pdfUrl}`);
+				return null;
+			}
 			this.log(`Found PDF link: ${pdfUrl}`);
 			if (!ctx.methods.includes("pdf")) ctx.methods.push("pdf");
 			return { url: pdfUrl };
@@ -1250,7 +1872,9 @@ export abstract class BaseScraper {
 									promoPrice: offer.price ? parseFloat(offer.price) : undefined,
 									discount: offer.discount || undefined,
 									description: item.description || undefined,
-									imageUrl: item.image || undefined,
+									// Raw schema.org image value; normalised after the evaluate
+									// boundary by normalizeSchemaImage.
+									imageUrl: item.image,
 									validFrom,
 									validUntil,
 									retailerSlug,
@@ -1268,7 +1892,7 @@ export abstract class BaseScraper {
 											originalPrice: offer.highPrice ? parseFloat(offer.highPrice) : undefined,
 											promoPrice: offer.price ? parseFloat(offer.price) : undefined,
 											description: product.description || undefined,
-											imageUrl: product.image || undefined,
+											imageUrl: product.image,
 											validFrom,
 											validUntil,
 											retailerSlug,
@@ -1294,9 +1918,17 @@ export abstract class BaseScraper {
 			[this.retailerSlug, dates.from, dates.until],
 		);
 
-		const deals = Array.isArray(dealsRaw)
-			? (dealsRaw as Deal[])
-			: ([] as Deal[]);
+		// schema.org `image` may be a string, an ImageObject, or an array of
+		// either — and the value crosses the evaluate boundary as `any`, so the
+		// declared `imageUrl: string` was never enforced. Normalising here rather
+		// than inside the browser body keeps it unit-testable and avoids the
+		// __name problem that named inner functions hit in evaluated code.
+		const deals = (Array.isArray(dealsRaw) ? (dealsRaw as Deal[]) : []).map(
+			(deal) => ({
+				...deal,
+				imageUrl: normalizeSchemaImage((deal as { imageUrl?: unknown }).imageUrl),
+			}),
+		);
 		if (deals.length > 0)
 			this.log(`Extracted ${deals.length} deal(s) from JSON-LD`);
 		return { deals, source: "html" };
@@ -1315,7 +1947,13 @@ export abstract class BaseScraper {
 
 		const fnSrc = `(
 			function (cardSel, nameSel, origPriceSel, promoPriceSel, discountSel, imageSel, descSel, catSel, retailerSlug, validFrom, validUntil) {
-				const cards = document.querySelectorAll(cardSel);
+				// Sixteen retailers share a wildcard card selector whose "article, li"
+				// arms match navigation lists, cookie panels and footer menus. Try the
+				// conventional product-card class names first and only fall back to the
+				// configured selector when the page uses none of them.
+				const PREFERRED = '[class*="product-card"], [class*="productCard"], [class*="product-tile"], [class*="productTile"], [class*="product-item"], [class*="productItem"], [data-testid*="product-card"], [data-product-id], [data-item-id]';
+				let cards = document.querySelectorAll(PREFERRED);
+				if (cards.length === 0) cards = document.querySelectorAll(cardSel);
 				const results = [];
 				for (let i = 0; i < cards.length; i++) {
 					const card = cards[i];
@@ -1323,11 +1961,16 @@ export abstract class BaseScraper {
 					const name = nameEl && nameEl.textContent ? nameEl.textContent.trim() : "";
 					if (!name) continue;
 
-					const parsePrice = (el) => {
+					// Return the raw text and parse on the Node side. The parser that
+					// used to live here stripped separators and called parseFloat, so
+					// "1.499,00" became "1.499.00" and then 1.499 — a silent
+					// thousand-fold error waiting for the price selectors to start
+					// matching. parseEuroPrice already handles every European form and
+					// is unit-tested.
+					const priceText = (el) => {
 						if (!el) return undefined;
-						const text = String(el.textContent || "").replace(/[^\d.,]/g, "").replace(",", ".");
-						const val = parseFloat(text);
-						return isNaN(val) ? undefined : val;
+						const t = String(el.textContent || "").trim();
+						return t ? t : undefined;
 					};
 
 					const origEl = origPriceSel ? card.querySelector(origPriceSel) : null;
@@ -1340,8 +1983,8 @@ export abstract class BaseScraper {
 					results.push({
 						id: 'html-' + i,
 						product: name,
-						originalPrice: parsePrice(origEl),
-						promoPrice: parsePrice(promoEl),
+						originalPriceText: priceText(origEl),
+						promoPriceText: priceText(promoEl),
 						discount: discountEl && discountEl.textContent ? discountEl.textContent.trim() : undefined,
 						description: descEl && descEl.textContent ? descEl.textContent.trim() : undefined,
 						category: catEl && catEl.textContent ? catEl.textContent.trim() : undefined,
@@ -1376,10 +2019,39 @@ export abstract class BaseScraper {
 			],
 		);
 
-		if (deals.length > 0)
-			this.log(`Extracted ${deals.length} deal(s) from HTML`);
+		// Parse prices here rather than in the browser: one tested implementation
+		// that understands European separators, instead of a second one that
+		// silently divided by a thousand.
+		type RawHtmlDeal = Deal & {
+			originalPriceText?: string;
+			promoPriceText?: string;
+		};
+		const parsed: Deal[] = (deals as RawHtmlDeal[]).map((raw) => {
+			const { originalPriceText, promoPriceText, ...rest } = raw;
+			return {
+				...rest,
+				promoPrice: parsePriceElementText(promoPriceText),
+				originalPrice: parsePriceElementText(originalPriceText),
+			};
+		});
 
-		return { deals: deals as Deal[], source: "html" };
+		// Drop page furniture before it is counted. These rows are rejected at
+		// validation anyway, but they are counted first: the PDF-text, page-text
+		// and OCR fallbacks only run when the HTML pass yielded nothing, so a
+		// handful of cookie-panel entries used to suppress every better extractor
+		// for the whole run.
+		const cleaned = parsed.filter((deal) => !isNavigationNoise(deal.product));
+		const dropped = parsed.length - cleaned.length;
+
+		if (cleaned.length > 0)
+			this.log(
+				`Extracted ${cleaned.length} deal(s) from HTML` +
+					(dropped > 0 ? ` (${dropped} navigation/UI element(s) ignored)` : ""),
+			);
+		else if (dropped > 0)
+			this.log(`HTML yielded only ${dropped} navigation/UI element(s); ignoring`);
+
+		return { deals: cleaned, source: "html" };
 	}
 
 	// ---- Step 6: API response extraction -----------------------------------
@@ -1427,6 +2099,7 @@ export abstract class BaseScraper {
 					if (text.length < 15 || text.length > 300) continue;
 
 					// MUST have at least one euro price — this is the key quality gate
+					// Supports European format: €1.499,00 and simple: €49,99 or €49.99
 					const euroMatch = text.match(/€\\s*(\\d{1,3}(?:\\.\\d{3})*,\\d{2}|\\d+[,.]\\d{2})/g);
 					if (!euroMatch || euroMatch.length === 0) continue;
 
@@ -1439,8 +2112,12 @@ export abstract class BaseScraper {
 					for (const line of lines) {
 						const cleaned = line
 							.replace(/€\\s*\\d{1,3}(?:\\.\\d{3})*[,.]\\d{2}/g, "")
-							.replace(/\\b\\d{1,3}[.,]\\d{2}\\b/g, "")
+							.replace(/\\b\\d{1,3}(?:\\.\\d{3})*[,.]\\d{2}\\b/g, "")
 							.replace(/-?\\d+\\s*%/g, "")
+							// Strip rating/badge noise: "Promo4.7Cashback" prefix
+							.replace(/^(Promo|Sale|Actie|Nieuw|New|Aanbieding)\\s*/i, "")
+							.replace(/^\\d[.,]\\d\\s*/g, "")
+							.replace(/^(Cashback|Gratis|Korting|Bonus|Cadeau)\\s*/i, "")
 							.trim();
 						if (cleaned.length >= 5 && !cleaned.match(/^[\\d\\s%€,.+-]+$/) && !NOISE_RE.test(cleaned)) {
 							productName = cleaned.slice(0, 100);
@@ -1455,10 +2132,18 @@ export abstract class BaseScraper {
 					if (seen.has(key)) continue;
 					seen.add(key);
 
-					// Parse prices
-					const prices = euroMatch.map(p =>
-						parseFloat(p.replace("€", "").replace(",", ".").trim())
-					).filter(p => !isNaN(p) && p > 0.01 && p < 50000);
+					// Parse prices — handle European format (1.499,00 = 1499)
+					const prices = euroMatch.map(p => {
+						let s = p.replace("€", "").trim();
+						if (s.includes(",") && s.indexOf(".") < s.indexOf(",")) {
+							// European: dots are thousands, comma is decimal (1.499,00)
+							s = s.replace(/\\./g, "").replace(",", ".");
+						} else if (s.includes(",") && !s.includes(".")) {
+							// Comma only: comma is decimal (49,99)
+							s = s.replace(",", ".");
+						}
+						return parseFloat(s);
+					}).filter(p => !isNaN(p) && p > 0.01 && p < 50000);
 
 					if (prices.length === 0) continue;
 
@@ -1552,6 +2237,25 @@ export abstract class BaseScraper {
 			throw new Error("Blocked by bot/captcha challenge");
 		}
 
+		// Leaflet captures are the only content source for viewer-only retailers,
+		// and they feed OCR rather than just the UI. At deviceScaleFactor 1 a
+		// 1440x900 capture of a double-page spread renders price text a few pixels
+		// tall, which OCRs at ~48% confidence — unusable. Raising the pixel ratio
+		// is what makes those retailers extractable at all.
+		const shotScale = (() => {
+			const n = parseInt(process.env.SCREENSHOT_SCALE ?? "3", 10);
+			return Number.isFinite(n) && n >= 1 && n <= 4 ? n : 3;
+		})();
+		try {
+			await page.setViewport({
+				width: 1440,
+				height: 900,
+				deviceScaleFactor: shotScale,
+			});
+		} catch {
+			// Non-fatal: fall back to whatever viewport is already set.
+		}
+
 		if (!fs.existsSync(SCREENSHOT_DIR))
 			fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
 
@@ -1576,17 +2280,59 @@ export abstract class BaseScraper {
 			return s.includes(".pdf") || s.includes("/pdfs/");
 		};
 
-		const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
+		const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
 
 		// If we're looking at a PDF URL, try to generate page-like screenshots by
 		// scrolling the browser PDF renderer and capturing viewport slices.
 		// This is a best-effort fallback to avoid broken "publication offline" embeds.
 		const currentUrl = overrideUrl ?? page.url();
 		if (currentUrl && isPdfUrl(currentUrl)) {
-			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 			const view = page.viewport();
 			const width = view?.width ?? 1440;
 			const height = view?.height ?? 900;
+			// This branch was the last one still calling page.screenshot() straight
+			// to disk, so it skipped blank rejection, deduplication, resizing and
+			// thumbnails. Zalando shipped a single 1440x900 page whose pixels had a
+			// standard deviation of 0.0 — a uniformly blank image — as its entire
+			// folder, and the page was indexed on the strength of it.
+			const seenHashes = new Set<string>();
+
+			// Render the PDF properly first. Screenshotting Chrome's PDF plugin
+			// slices by viewport, so pages get cut in half and a plugin that has
+			// not painted yields a blank frame. pdf.js gives exact page
+			// boundaries. The scroll-slice loop below stays as the fallback for
+			// documents pdf.js cannot read.
+			// Deliberately not MAX_SCREENSHOT_PAGES: that bounds a loop probing for
+			// the end of a viewer, where over-shooting costs captures. A PDF states
+			// its own page count, so the only thing this bound can do is truncate a
+			// real leaflet — and several run past 30.
+			const rendered = await renderPdfToImages(
+				page,
+				currentUrl,
+				BaseScraper.MAX_PDF_RENDER_PAGES,
+				(m) => this.log(m),
+			);
+			if (rendered.pages.length > 0) {
+				for (const raw of rendered.pages) {
+					const filename = `${this.generateFolderId("pdfimg-p" + (pages.length + 1))}.webp`;
+					const filepath = path.join(SCREENSHOT_DIR, filename);
+					const stored = await this.storeCapturedPage(raw, filepath, seenHashes);
+					if (stored.status === "duplicate") continue;
+					if (stored.status !== "written" || !stored.url) continue;
+					pages.push({
+						pageNumber: pages.length + 1,
+						imagePath: stored.url,
+						thumbPath: stored.thumbUrl,
+					});
+				}
+				if (pages.length > 0) {
+					this.log(
+						`PDF rendered: ${pages.length} page(s) of ${rendered.totalPages}`,
+					);
+					return { pages };
+				}
+			}
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				const y = (i - 1) * height;
@@ -1610,11 +2356,23 @@ export abstract class BaseScraper {
 
 				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
-				await page.screenshot({
-					path: filepath,
-					clip: { x: 0, y: scrollY, width, height },
+				const captured = await this.captureDedupedPage(
+					page,
+					filepath,
+					{ x: 0, y: scrollY, width, height },
+					seenHashes,
+				);
+				// A blank slice means the renderer has not painted this region;
+				// a duplicate means the document has stopped scrolling. Either way
+				// there is nothing further down worth capturing.
+				if (captured.status === "blank") continue;
+				if (captured.status === "duplicate") break;
+				if (!captured.url) continue;
+				pages.push({
+					pageNumber: pages.length + 1,
+					imagePath: captured.url,
+					thumbPath: captured.thumbUrl,
 				});
-				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
 			}
 
 			return { pages };
@@ -1645,8 +2403,11 @@ export abstract class BaseScraper {
 					`iPaper detected (paperId=${paperId}). Fetching pages directly...`,
 				);
 
-				const pages: { pageNumber: number; imagePath: string }[] = [];
+				const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 				const max = Number.isFinite(maxPages) ? maxPages : 12;
+				// iPaper numbers pages past the end of the leaflet and keeps serving
+				// bytes, so dedupe here as every other capture path does.
+				const seenHashes = new Set<string>();
 				for (let i = 1; i <= max; i++) {
 					const url = `${base}${i}${suffix}${query}`;
 					const controller = new AbortController();
@@ -1661,12 +2422,15 @@ export abstract class BaseScraper {
 						const buf = Buffer.from(await resp.arrayBuffer());
 						if (buf.length < 1000) break;
 
-						const filename = `${this.generateFolderId("viewerimg-p" + i)}.jpg`;
+						const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 						const filepath = path.join(SCREENSHOT_DIR, filename);
-						fs.writeFileSync(filepath, buf);
+						const stored = await this.storeCapturedPage(buf, filepath, seenHashes);
+						if (stored.status === "duplicate") break;
+						if (stored.status !== "written" || !stored.url) continue;
 						pages.push({
-							pageNumber: i,
-							imagePath: `/screenshots/${filename}`,
+							pageNumber: pages.length + 1,
+							imagePath: stored.url,
+							thumbPath: stored.thumbUrl,
 						});
 					} catch {
 						break;
@@ -1715,19 +2479,29 @@ export abstract class BaseScraper {
 
 			for (const sel of candidates) {
 				try {
-					const el = await page.$(sel);
-					if (!el) continue;
-					const box = await el.boundingBox();
-					if (!box) continue;
-					const area = Math.max(0, box.width) * Math.max(0, box.height);
-					if (!best || area > best.area) {
-						best = {
-							x: box.x,
-							y: box.y,
-							width: box.width,
-							height: box.height,
-							area,
-						};
+					// $$ not $: the leaflet is rarely the *first* element of its kind
+					// — viewers put logos and controls before it — so considering
+					// only one match per selector produced a loose crop that kept the
+					// viewer's own toolbar and arrows in the saved page image.
+					const els =
+						typeof (page as any).$$ === "function"
+							? await page.$$(sel)
+							: [await page.$(sel)].filter(Boolean);
+
+					for (const el of els) {
+						if (!el) continue;
+						const box = await el.boundingBox();
+						if (!box) continue;
+						const area = Math.max(0, box.width) * Math.max(0, box.height);
+						if (!best || area > best.area) {
+							best = {
+								x: box.x,
+								y: box.y,
+								width: box.width,
+								height: box.height,
+								area,
+							};
+						}
 					}
 				} catch {
 					// ignore
@@ -1785,7 +2559,9 @@ export abstract class BaseScraper {
 
 		if (isIssuuEmbed) {
 			const baseUrl = overrideUrl ?? page.url();
-			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
+			const seenPageHashes = new Set<string>();
+				let consecutiveDuplicates = 0;
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				let u: URL;
@@ -1796,9 +2572,17 @@ export abstract class BaseScraper {
 				}
 
 				u.searchParams.set("pageNumber", String(i));
+				// Deliberately keep Issuu's two-page spread. These captures are what
+				// the site renders to visitors: a spread fills the frame, and with
+				// MAX_SCREENSHOT_PAGES captures it covers roughly twice as much of
+				// the leaflet. Forcing singlePage shrank the content to ~40% of the
+				// frame, cut coverage, and doubled the bytes served. At
+				// deviceScaleFactor 3 each half of a spread is still ~2000px wide,
+				// which is ample for OCR.
 				const url = u.toString();
 
 				try {
+					await this.politeDelay();
 					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 					await waitForViewer();
 				} catch {
@@ -1814,12 +2598,33 @@ export abstract class BaseScraper {
 				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
-				if (clip) {
-					await page.screenshot({ path: filepath, clip });
-				} else {
-					await page.screenshot({ path: filepath, fullPage: true });
+				// A repeated image means the viewer clamped past the last page.
+				const captured = await this.captureDedupedPage(
+					page,
+					filepath,
+					clip ?? null,
+					seenPageHashes,
+				);
+				if (captured.status === "duplicate") {
+					// A single repeat does not mean the end. Publitas and Issuu serve
+					// two-page spreads, so /page/2 and /page/3 render the same image by
+					// design — albert-heijn stopped after 2 captures of an 18-page
+					// leaflet. Only a run of repeats means the viewer has clamped.
+					if (++consecutiveDuplicates >= BaseScraper.MAX_CONSECUTIVE_DUPLICATES) {
+						this.log(`Reached end of folder at page ${i}`);
+						break;
+					}
+					continue;
 				}
-				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
+				consecutiveDuplicates = 0;
+				// A blank page is skipped entirely: recording it would point the
+				// folder at a file that was never written.
+				if (captured.status === "blank") continue;
+				pages.push({
+					pageNumber: pages.length + 1,
+					imagePath: captured.url,
+					thumbPath: captured.thumbUrl,
+				});
 			}
 
 			if (pages.length > 0) {
@@ -1830,8 +2635,10 @@ export abstract class BaseScraper {
 
 		if (isPublitasEmbed) {
 			const baseUrl = overrideUrl ?? page.url();
-			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
-			const pages: { pageNumber: number; imagePath: string }[] = [];
+			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
+			const pages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
+			const seenPageHashes = new Set<string>();
+				let consecutiveDuplicates = 0;
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				let u: URL;
@@ -1856,6 +2663,7 @@ export abstract class BaseScraper {
 				const url = u.toString();
 
 				try {
+					await this.politeDelay();
 					await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 					await waitForViewer();
 				} catch {
@@ -1871,12 +2679,33 @@ export abstract class BaseScraper {
 				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
 				const clip = await getViewerClip();
-				if (clip) {
-					await page.screenshot({ path: filepath, clip });
-				} else {
-					await page.screenshot({ path: filepath, fullPage: true });
+				// A repeated image means the viewer clamped past the last page.
+				const captured = await this.captureDedupedPage(
+					page,
+					filepath,
+					clip ?? null,
+					seenPageHashes,
+				);
+				if (captured.status === "duplicate") {
+					// A single repeat does not mean the end. Publitas and Issuu serve
+					// two-page spreads, so /page/2 and /page/3 render the same image by
+					// design — albert-heijn stopped after 2 captures of an 18-page
+					// leaflet. Only a run of repeats means the viewer has clamped.
+					if (++consecutiveDuplicates >= BaseScraper.MAX_CONSECUTIVE_DUPLICATES) {
+						this.log(`Reached end of folder at page ${i}`);
+						break;
+					}
+					continue;
 				}
-				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
+				consecutiveDuplicates = 0;
+				// A blank page is skipped entirely: recording it would point the
+				// folder at a file that was never written.
+				if (captured.status === "blank") continue;
+				pages.push({
+					pageNumber: pages.length + 1,
+					imagePath: captured.url,
+					thumbPath: captured.thumbUrl,
+				});
 			}
 
 			if (pages.length > 0) {
@@ -1894,7 +2723,7 @@ export abstract class BaseScraper {
 			);
 		}
 
-		const genericPages: { pageNumber: number; imagePath: string }[] = [];
+		const genericPages: { pageNumber: number; imagePath: string; thumbPath?: string }[] = [];
 		const clickNext = async (): Promise<boolean> => {
 			const candidates = [
 				"button[aria-label*='Volgende']",
@@ -1959,21 +2788,50 @@ export abstract class BaseScraper {
 		};
 
 		try {
-			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "12", 10);
+			const maxPages = parseInt(process.env.MAX_SCREENSHOT_PAGES ?? "60", 10);
+			// Route through captureDedupedPage like the Issuu and Publitas paths.
+			// This branch used to call page.screenshot() directly, so it skipped
+			// blank detection, duplicate collapsing, resizing, thumbnails and the
+			// OCR-source copy — which is why Douglas shipped 60 full-size captures
+			// of the same cookie dialog while the other paths stopped at the real
+			// end of the leaflet.
+			const seenPageHashes = new Set<string>();
+				let consecutiveDuplicates = 0;
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				await waitForViewer();
 				const perPageFilename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const perPageFilepath = path.join(SCREENSHOT_DIR, perPageFilename);
 				const clip = await getViewerClip();
-				if (clip) {
-					await page.screenshot({ path: perPageFilepath, clip });
+				const captured = await this.captureDedupedPage(
+					page,
+					perPageFilepath,
+					clip ?? null,
+					seenPageHashes,
+				);
+
+				if (captured.status === "duplicate") {
+					// A single repeat does not mean the end — viewers serve two-page
+					// spreads, so consecutive positions render the same image by design.
+					// Unlike the URL-driven loops above this one must NOT `continue`:
+					// advancing happens via clickNext() at the bottom, so skipping it
+					// would leave the viewer parked and every later capture identical.
+					if (++consecutiveDuplicates >= BaseScraper.MAX_CONSECUTIVE_DUPLICATES) {
+						this.log(`Reached end of folder at page ${i}`);
+						break;
+					}
 				} else {
-					await page.screenshot({ path: perPageFilepath, fullPage: true });
+					consecutiveDuplicates = 0;
 				}
-				genericPages.push({
-					pageNumber: i,
-					imagePath: `/screenshots/${perPageFilename}`,
-				});
+
+				if (captured.status === "written") {
+					genericPages.push({
+						pageNumber: genericPages.length + 1,
+						imagePath: captured.url,
+						thumbPath: captured.thumbUrl,
+					});
+				}
+				// A blank page is skipped but the viewer keeps advancing: some
+				// viewers render an empty slot mid-leaflet.
 
 				if (i >= (Number.isFinite(maxPages) ? maxPages : 12)) break;
 				const didClick = await clickNext();
@@ -1982,31 +2840,51 @@ export abstract class BaseScraper {
 		} catch {
 			// ignore and fall back to single screenshot
 		}
-		if (genericPages.length > 1) {
+		// One page is a real result, not a failure. This used to require >1, which
+		// was harmless while duplicate captures inflated every folder past the
+		// ceiling — but once near-duplicates collapse, a single-page leaflet is a
+		// normal outcome. Falling through discarded that page AND overwrote its
+		// file with the raw single-screenshot below, which on Douglas produced a
+		// zero-byte image the folder still pointed at.
+		if (genericPages.length >= 1) {
 			this.log(
 				`Screenshots saved (generic viewer): ${genericPages.length} page(s)`,
 			);
 			return { pages: genericPages };
 		}
 
-		try {
-			await waitForViewer();
-			const clip = await getViewerClip();
-			if (clip) {
-				await page.screenshot({ path: filepath, clip });
-			} else {
-				await page.screenshot({ path: filepath, fullPage: true });
-			}
-		} catch {
-			await page.screenshot({ path: filepath, fullPage: true });
+		// Last resort: one capture of whatever is on screen. Routed through
+		// captureDedupedPage so it gets the same empty/blank rejection, resizing
+		// and thumbnail as every other path — writing straight to disk here is
+		// what let a zero-byte file be recorded as a page.
+		let single = await this.captureDedupedPage(
+			page,
+			filepath,
+			await getViewerClip().catch(() => null),
+			new Set<string>(),
+		);
+		if (single.status !== "written") {
+			single = await this.captureDedupedPage(
+				page,
+				filepath,
+				null,
+				new Set<string>(),
+			);
 		}
+
+		if (single.status !== "written") {
+			this.log("No usable screenshot could be captured");
+			return { pages: [] };
+		}
+
 		this.log(`Screenshot saved: ${filepath}`);
 
 		return {
 			pages: [
 				{
 					pageNumber: 1,
-					imagePath: `/screenshots/${filename}`,
+					imagePath: single.url,
+					thumbPath: single.thumbUrl,
 				},
 			],
 		};
@@ -2116,6 +2994,20 @@ export abstract class BaseScraper {
 		if (url.includes("ipaper")) return "ipaper";
 		if (url.includes("yumpu")) return "yumpu";
 		if (url.includes("issuu")) return "issuu";
+
+		// White-labelled viewers. Retailers front these platforms on their own
+		// domain, so the vendor name never appears in the URL: folder.aldi.be and
+		// folder.kruidvat.be are both iPaper, flyer.maxizoo.be likewise. Leaving
+		// them "unknown" mattered once contentSource began gating OCR — ALDI's 34
+		// genuine leaflet pages would have been treated as website screenshots and
+		// skipped.
+		try {
+			const host = new URL(url).hostname.toLowerCase();
+			if (/^(?:folder|flyer|folders|leaflet)\./.test(host)) return "ipaper";
+		} catch {
+			// Not a parseable URL; fall through.
+		}
+
 		return "unknown";
 	}
 
@@ -2133,19 +3025,405 @@ export abstract class BaseScraper {
 	}
 
 	protected generateFolderId(suffix: string): string {
-		const now = new Date();
-		const week = this.getWeekNumber(now);
-		return `${this.retailerSlug}-${now.getFullYear()}-w${week}-${suffix}`;
+		const { year, week } = this.getIsoWeek(new Date());
+		return `${this.retailerSlug}-${year}-w${week}-${suffix}`;
+	}
+
+	/** Below this mean per-channel standard deviation an image carries no content. */
+	protected static readonly BLANK_STDDEV_THRESHOLD = 3;
+
+	/** Width folder page images are served at. */
+	protected static readonly PAGE_IMAGE_WIDTH = 1800;
+
+	/**
+	 * Page ceiling when rendering a PDF leaflet.
+	 *
+	 * Separate from MAX_SCREENSHOT_PAGES, which bounds a loop probing for the
+	 * end of a viewer. A PDF reports its own page count, so this bound can only
+	 * ever truncate real content — 80 clears the longest leaflet seen (alvo, 76
+	 * pages) rather than sitting just above the average.
+	 */
+	protected static readonly MAX_PDF_RENDER_PAGES = 80;
+
+	/** WebP quality for folder page images. */
+	protected static readonly PAGE_IMAGE_QUALITY = 78;
+
+	/**
+	 * Width of the thumbnail-strip images.
+	 *
+	 * The strip draws one entry per page in a 64x88 box, and next/image runs
+	 * `unoptimized`, so without a separate small file a 60-page folder makes the
+	 * visitor download every full-size page to render its thumbnails — 26 MB on
+	 * IKEA. 160px covers a 2x display at that box size.
+	 */
+	protected static readonly THUMB_IMAGE_WIDTH = 160;
+
+	/** WebP quality for thumbnails — they are never seen above 64px wide. */
+	protected static readonly THUMB_IMAGE_QUALITY = 65;
+
+	/**
+	 * Consecutive repeated captures that mean the viewer has stopped advancing.
+	 *
+	 * One repeat is normal: Publitas and Issuu render two-page spreads, so
+	 * /page/2 and /page/3 are the same image by design. Treating the first
+	 * repeat as the end truncated albert-heijn to 2 captures of an 18-page
+	 * leaflet.
+	 *
+	 * Six rather than three: a viewer that has not finished rendering repeats the
+	 * previous frame, and those stalls come in runs. At three, Colruyt stopped at
+	 * page 15 and lost three real spreads. Overshooting costs a few captures that
+	 * duplicate detection discards anyway; stopping early loses leaflet pages.
+	 */
+	protected static readonly MAX_CONSECUTIVE_DUPLICATES = 6;
+
+	/**
+	 * How many of the 64 fingerprint bits may differ before two captures are
+	 * treated as the same page. Calibrated against folders whose true page count
+	 * is known: at 4, Action keeps 18 distinct spreads of 60 captures and Colruyt
+	 * resolves to 10 (its cover plus nine Issuu spreads). Raising it starts
+	 * merging genuinely different leaflet pages.
+	 */
+	protected static readonly DUPLICATE_HAMMING_THRESHOLD = 4;
+
+	/**
+	 * Number of bits that differ between two 64-bit fingerprints.
+	 *
+	 * Fingerprints are 16-character hex strings rather than bigints: this file
+	 * compiles below an ES2020 target, where BigInt literals are unavailable.
+	 * Comparing a nibble at a time keeps it to plain numbers.
+	 */
+	protected static hammingDistance(a: string, b: string): number {
+		if (a.length !== b.length) return Number.MAX_SAFE_INTEGER;
+		let count = 0;
+		for (let i = 0; i < a.length; i++) {
+			let nibble = parseInt(a[i], 16) ^ parseInt(b[i], 16);
+			while (nibble > 0) {
+				count += nibble & 1;
+				nibble >>= 1;
+			}
+		}
+		return count;
+	}
+
+	/**
+	 * 64-bit difference hash of an image.
+	 *
+	 * Reduces to 9x8 greyscale and records, for each pixel, whether it is
+	 * brighter than its right-hand neighbour. That encodes coarse layout while
+	 * discarding the rendering noise that defeats byte-level comparison.
+	 *
+	 * Returned as a 16-character hex string, one nibble per four pixels. Returns
+	 * null when the image cannot be read, so the caller can fall back to exact
+	 * hashing rather than treat an unreadable capture as unique.
+	 */
+	protected async perceptualHash(bytes: Buffer): Promise<string | null> {
+		try {
+			const sharp = (await import("sharp")).default;
+			const px = await sharp(bytes, { limitInputPixels: false })
+				.resize(9, 8, { fit: "fill" })
+				.greyscale()
+				.raw()
+				.toBuffer();
+
+			let hex = "";
+			let nibble = 0;
+			let bitsInNibble = 0;
+			for (let y = 0; y < 8; y++) {
+				for (let x = 0; x < 8; x++) {
+					const i = y * 9 + x;
+					nibble = (nibble << 1) | (px[i] > px[i + 1] ? 1 : 0);
+					if (++bitsInNibble === 4) {
+						hex += nibble.toString(16);
+						nibble = 0;
+						bitsInNibble = 0;
+					}
+				}
+			}
+			return hex;
+		} catch {
+			return null;
+		}
+	}
+
+	/** Thumbnail filename for a page image: `foo.webp` -> `foo-thumb.webp`. */
+	protected static thumbFilename(filename: string): string {
+		const ext = path.extname(filename);
+		return `${filename.slice(0, -ext.length || undefined)}-thumb.webp`;
+	}
+
+	/**
+	 * Prepare a captured page for delivery to visitors.
+	 *
+	 * next.config.ts sets `images.unoptimized: true`, so Next does not resize or
+	 * re-encode anything: whatever is written here is exactly what a visitor
+	 * downloads, and page one is rendered with `priority`. A raw
+	 * deviceScaleFactor-3 capture is ~4300px wide and hundreds of KB, which is a
+	 * poor LCP on the pages meant to earn traffic.
+	 *
+	 * Resizing to a sensible display width and re-encoding as WebP keeps enough
+	 * detail to zoom into leaflet prices while cutting the bytes substantially.
+	 * The full-resolution capture is not retained: OCR reads these same files and
+	 * 1800px still exceeds the ~1200px per leaflet page it needs.
+	 *
+	 * Returns the original bytes on any failure — a broken optimiser must never
+	 * cost a page.
+	 */
+	/** WebP magic: "RIFF" .... "WEBP". */
+	protected static isWebp(bytes: Buffer): boolean {
+		return (
+			bytes.length >= 12 &&
+			bytes.toString("ascii", 0, 4) === "RIFF" &&
+			bytes.toString("ascii", 8, 12) === "WEBP"
+		);
+	}
+
+	protected async optimizePageImage(bytes: Buffer): Promise<Buffer> {
+		try {
+			const sharp = (await import("sharp")).default;
+			const meta = await sharp(bytes, { limitInputPixels: false }).metadata();
+			if (!meta.width) return bytes;
+
+			const out = await sharp(bytes, { limitInputPixels: false })
+				.resize({
+					width: Math.min(meta.width, BaseScraper.PAGE_IMAGE_WIDTH),
+					withoutEnlargement: true,
+				})
+				.webp({ quality: BaseScraper.PAGE_IMAGE_QUALITY })
+				.toBuffer();
+
+			return out.length > 0 && out.length < bytes.length ? out : bytes;
+		} catch {
+			return bytes;
+		}
+	}
+
+	/**
+	 * True when a capture is a flat, contentless image.
+	 *
+	 * Returns false on any error: a detection failure must never discard a real
+	 * leaflet page.
+	 */
+	protected async isBlankCapture(bytes: Buffer): Promise<boolean> {
+		try {
+			const sharp = (await import("sharp")).default;
+			const { channels } = await sharp(bytes, { limitInputPixels: false }).stats();
+			if (!channels || channels.length === 0) return false;
+			const meanStdev =
+				channels.reduce((sum, c) => sum + c.stdev, 0) / channels.length;
+			return meanStdev < BaseScraper.BLANK_STDDEV_THRESHOLD;
+		} catch {
+			return false;
+		}
+	}
+
+	/**
+	 * Capture one viewer page, skipping it if it duplicates one already taken.
+	 *
+	 * Leaflet viewers clamp navigation past the final page: requesting page 30
+	 * of an 18-page folder re-renders page 18. Hashing the pixels detects that,
+	 * so capture can run to a generous ceiling and stop at the true end instead
+	 * of a hardcoded page count. Returns false once the folder is exhausted.
+	 */
+	protected async captureDedupedPage(
+		page: Page,
+		filepath: string,
+		clip: { x: number; y: number; width: number; height: number } | null,
+		seenHashes: Set<string>,
+	): Promise<CaptureResult> {
+		const buffer = clip
+			? await page.screenshot({ clip })
+			: await page.screenshot({ fullPage: true });
+
+		// Defensive: a screenshot backend that returns nothing cannot be hashed.
+		// Treat the page as new rather than aborting the folder — capturing a
+		// possible duplicate is far cheaper than truncating the leaflet.
+		if (!buffer) return { status: "blank" };
+
+		const raw = Buffer.from(buffer as Uint8Array);
+
+		// An empty buffer would be written as a zero-byte file and recorded as a
+		// real page: the viewer then renders its full chrome around an image that
+		// can never load, which is how zooplus shipped a one-page folder showing
+		// nothing at all. isBlankCapture cannot judge this — sharp rejects the
+		// buffer before any statistics exist.
+		if (raw.length === 0) {
+			this.log("Skipped an empty page capture");
+			return { status: "blank" };
+		}
+
+		// Skip blank pages. A viewer that hasn't finished painting yields a flat
+		// image, which is stored as a real page and shows the visitor an empty
+		// slot in the thumbnail strip. Uniform images have almost no per-channel
+		// variance, so standard deviation separates them from leaflet content
+		// far more reliably than file size.
+		if (await this.isBlankCapture(raw)) {
+			this.log("Skipped a blank page capture");
+			return { status: "blank" };
+		}
+
+		return this.storeCapturedPage(raw, filepath, seenHashes);
+	}
+
+	/**
+	 * Optimise, deduplicate and store one page image that has already been
+	 * obtained, whatever produced it.
+	 *
+	 * Split out of captureDedupedPage because not every page comes from a
+	 * screenshot: iPaper serves its page JPEGs over plain HTTP, and that path
+	 * used to write the fetched bytes straight to disk. It therefore skipped
+	 * resizing, WebP encoding, thumbnails and the OCR original — ALDI shipped 34
+	 * pages at ~590 KB each, 16 MB for one folder, more than every other retailer
+	 * combined. Anything holding page bytes goes through here now.
+	 */
+	protected async storeCapturedPage(
+		raw: Buffer,
+		requestedPath: string,
+		seenHashes: Set<string>,
+	): Promise<CaptureResult> {
+		const bytes = await this.optimizePageImage(raw);
+
+		// optimizePageImage returns the input untouched when encoding fails or
+		// would grow the file, so the caller's extension is a request, not a fact.
+		// Serving JPEG bytes as .webp gets the Content-Type wrong; name the file
+		// after what it actually contains.
+		const filepath = BaseScraper.isWebp(bytes)
+			? requestedPath.replace(/\.[a-z0-9]+$/i, ".webp")
+			: requestedPath;
+
+		// Detect a repeated page perceptually rather than byte-for-byte. Viewers
+		// re-render the same spread with sub-pixel differences, and pages with
+		// lazy-loaded carousels differ on every capture, so an exact hash almost
+		// never matches: IKEA produced 60 "pages" that were 3 distinct images, and
+		// Colruyt captured every Issuu spread twice. A downscaled luminance
+		// fingerprint ignores that noise while still separating real leaflet pages
+		// — measured against known-good folders, Action keeps 18 of 60 distinct
+		// spreads and Colruyt resolves to its true cover-plus-nine-spreads.
+		const fingerprint = await this.perceptualHash(bytes);
+		if (fingerprint !== null) {
+			for (const seen of seenHashes) {
+				// Only compare against other fingerprints; the set also holds SHA1
+				// fallbacks, which are a different length and not bit-comparable.
+				if (!seen.startsWith("p:")) continue;
+				const distance = BaseScraper.hammingDistance(seen.slice(2), fingerprint);
+				if (distance <= BaseScraper.DUPLICATE_HAMMING_THRESHOLD) {
+					return { status: "duplicate" };
+				}
+			}
+			seenHashes.add(`p:${fingerprint}`);
+		} else {
+			// Fingerprinting failed; fall back to exact bytes rather than nothing.
+			const hash = crypto.createHash("sha1").update(bytes).digest("hex");
+			if (seenHashes.has(hash)) return { status: "duplicate" };
+			seenHashes.add(hash);
+		}
+
+		fs.writeFileSync(filepath, bytes);
+
+		// Keep the full-resolution capture for OCR only. Serving it would cost
+		// visitors ~4300px of image on a page rendered with `priority`, but
+		// downscaling before OCR loses recognition — Colruyt fell from 60 deals to
+		// 21 when the optimised image was the only copy. This directory is not
+		// under public/ and is never served.
+		try {
+			if (!fs.existsSync(OCR_SOURCE_DIR)) {
+				fs.mkdirSync(OCR_SOURCE_DIR, { recursive: true });
+			}
+			fs.writeFileSync(path.join(OCR_SOURCE_DIR, path.basename(filepath)), raw);
+		} catch {
+			// OCR source is an optimisation; failing to keep it must not fail a page.
+		}
+
+		const stored = await storePageImage(path.basename(filepath), bytes, (m) =>
+			this.log(m),
+		);
+
+		// A missing thumbnail costs bytes, not correctness — the viewer falls back
+		// to the full page image — so a failure here must never drop the page.
+		let thumbUrl: string | undefined;
+		try {
+			const thumbName = BaseScraper.thumbFilename(path.basename(filepath));
+			const sharp = (await import("sharp")).default;
+			const thumbBytes = await sharp(bytes, { limitInputPixels: false })
+				.resize({ width: BaseScraper.THUMB_IMAGE_WIDTH, withoutEnlargement: true })
+				.webp({ quality: BaseScraper.THUMB_IMAGE_QUALITY })
+				.toBuffer();
+			fs.writeFileSync(path.join(path.dirname(filepath), thumbName), thumbBytes);
+			const storedThumb = await storePageImage(thumbName, thumbBytes, (m) =>
+				this.log(m),
+			);
+			thumbUrl = storedThumb.url;
+		} catch {
+			// Fall through: page.thumbnailUrl stays undefined.
+		}
+
+		return { status: "written", url: stored.url, thumbUrl };
+	}
+
+	/**
+	 * Week tag used in screenshot filenames, e.g. "2026-w32".
+	 * Mirrors generateFolderId() so OCR can locate this week's leaflet images.
+	 */
+	public currentWeekTag(date: Date = new Date()): string {
+		const { year, week } = this.getIsoWeek(date);
+		return `${year}-w${week}`;
+	}
+
+	/**
+	 * Which method actually produced the deals, for provenance in the database.
+	 *
+	 * ctx.methods mixes two kinds of entry: how the folder was *found* (issuu,
+	 * publitas, screenshot) and how deals were *extracted* (html, pdf-text,
+	 * ocr). Recording the first entry attributed OCR-derived rows to "issuu",
+	 * which matters because confidence in a price depends on how it was read.
+	 * The last extraction method wins: fallbacks run in ascending order of
+	 * desperation, so the final one is the one that yielded the deals.
+	 */
+	protected dealExtractionMethod(methods: ContentSource[]): ContentSource {
+		const extraction: ContentSource[] = [
+			"html",
+			"api",
+			"pdf-text",
+			"page-text",
+			"ocr",
+		];
+		for (let i = methods.length - 1; i >= 0; i--) {
+			if (extraction.includes(methods[i])) return methods[i];
+		}
+		return methods[0] ?? "unknown";
 	}
 
 	protected getWeekNumber(date: Date): number {
+		return this.getIsoWeek(date).week;
+	}
+
+	/**
+	 * ISO-8601 week number together with the year that week belongs to.
+	 *
+	 * The two must travel together. Pairing an ISO week with the calendar year
+	 * mislabels every week that straddles New Year, in both directions:
+	 *
+	 *   2026-12-28 (Mon) -> ISO 2026-W53, calendar year 2026  ->  "2026-w53"
+	 *   2027-01-01 (Fri) -> ISO 2026-W53, calendar year 2027  ->  "2027-w53"
+	 *
+	 * One leaflet week, two different file prefixes: the scrape would abandon
+	 * Monday's captures mid-week and start a fresh set. Worse in the other
+	 * direction — 2025-12-29 is ISO 2026-W01 but produced "2025-w1", colliding
+	 * with the images from the first week of January 2025 and letting a
+	 * year-old capture be picked up as the current week's leaflet.
+	 */
+	public getIsoWeek(date: Date): { year: number; week: number } {
 		const d = new Date(
 			Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
 		);
 		const dayNum = d.getUTCDay() || 7;
+		// Shift to the Thursday of this week: ISO defines the week's year by it.
 		d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-		const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-		return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+		const year = d.getUTCFullYear();
+		const yearStart = new Date(Date.UTC(year, 0, 1));
+		const week = Math.ceil(
+			((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7,
+		);
+		return { year, week };
 	}
 
 	protected getCurrentWeekDates(): { from: string; until: string } {

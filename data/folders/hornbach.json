@@ -1,28 +1,227 @@
 {
-  "retailer": "hornbach",
-  "folders": [
-    {
-      "id": "hornbach-3259871-folder",
-      "retailerSlug": "hornbach",
-      "title": "HORNBACH NL | Projectbouwmarkt en Tuincentrum | Keuken",
-      "validFrom": "2026-08-07",
-      "validUntil": "2026-08-17",
-      "pageCount": 33,
-      "thumbnailUrl": "https://view.publitas.com/88064/3259871/pages/338933f0-1e09-4e14-9dc9-a6dc9c1c9d33-at800.jpg",
-      "pages": [],
-      "embedUrl": "https://view.publitas.com/hornbach-nl/wh_0826_nl_kw34/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/88064/3259871/pdfs/148b075c-f0f8-47d4-b77c-c86256aed9f5.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-08-07T05:51:22.707Z"
-    }
-  ],
-  "deals": [],
-  "scrapedAt": "2026-08-07T05:51:22.707Z",
-  "sourceUrls": [
-    "https://view.publitas.com/hornbach-nl/wh_0826_nl_kw34/"
-  ],
-  "methods": [
-    "publitas",
-    "pdf"
-  ]
+	"retailer": "hornbach",
+	"folders": [
+		{
+			"id": "hornbach-3259871-folder",
+			"retailerSlug": "hornbach",
+			"title": "HORNBACH NL | Projectbouwmarkt en Tuincentrum | Keuken",
+			"validFrom": "2026-08-07",
+			"validUntil": "2026-08-17",
+			"pageCount": 33,
+			"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p1.webp",
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p5-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 6,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p6.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p6-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 7,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p7.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p7-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 8,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p8.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p8-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 9,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p9.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p9-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 10,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p10.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p10-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 11,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p11.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p11-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 12,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p12.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p12-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 13,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p13.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p13-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 14,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p14.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p14-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 15,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p15.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p15-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 16,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p16.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p16-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 17,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p17.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p17-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 18,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p18.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p18-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 19,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p19.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p19-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 20,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p20.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p20-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 21,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p21.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p21-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 22,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p22.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p22-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 23,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p23.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p23-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 24,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p24.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p24-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 25,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p25.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p25-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 26,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p26.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p26-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 27,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p27.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p27-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 28,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p28.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p28-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 29,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p29.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p29-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 30,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p30.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p30-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 31,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p31.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p31-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 32,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p32.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p32-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 33,
+					"imageUrl": "/screenshots/hornbach-2026-w32-pdfimg-p33.webp",
+					"thumbnailUrl": "/screenshots/hornbach-2026-w32-pdfimg-p33-thumb.webp",
+					"deals": []
+				}
+			],
+			"embedUrl": "https://view.publitas.com/hornbach-nl/wh_0826_nl_kw34/?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/88064/3259871/pdfs/148b075c-f0f8-47d4-b77c-c86256aed9f5.pdf",
+			"contentSource": "publitas",
+			"scrapedAt": "2026-08-07T05:51:22.707Z"
+		}
+	],
+	"deals": [],
+	"scrapedAt": "2026-08-07T05:51:22.707Z",
+	"sourceUrls": [
+		"https://view.publitas.com/hornbach-nl/wh_0826_nl_kw34/"
+	],
+	"methods": [
+		"publitas",
+		"pdf"
+	]
 }

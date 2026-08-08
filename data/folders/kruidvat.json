@@ -1,0 +1,507 @@
+{
+	"retailer": "kruidvat",
+	"folders": [
+		{
+			"id": "kruidvat-2026-w32-folder",
+			"retailerSlug": "kruidvat",
+			"title": "Kruidvat folder",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"pageCount": 61,
+			"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p1.webp",
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p5-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 6,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p6.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p6-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 7,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p7.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p7-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 8,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p8.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p8-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 9,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p9.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p9-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 10,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p10.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p10-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 11,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p11.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p11-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 12,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p12.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p12-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 13,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p13.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p13-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 14,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p14.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p14-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 15,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p15.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p15-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 16,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p16.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p16-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 17,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p17.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p17-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 18,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p18.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p18-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 19,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p19.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p19-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 20,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p20.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p20-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 21,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p21.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p21-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 22,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p22.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p22-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 23,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p23.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p23-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 24,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p24.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p24-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 25,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p25.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p25-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 26,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p26.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p26-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 27,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p27.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p27-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 28,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p28.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p28-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 29,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p29.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p29-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 30,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p30.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p30-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 31,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p31.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p31-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 32,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p32.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p32-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 33,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p33.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p33-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 34,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p34.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p34-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 35,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p35.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p35-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 36,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p36.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p36-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 37,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p37.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p37-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 38,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p38.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p38-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 39,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p39.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p39-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 40,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p40.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p40-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 41,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p41.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p41-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 42,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p42.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p42-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 43,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p43.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p43-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 44,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p44.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p44-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 45,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p45.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p45-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 46,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p46.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p46-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 47,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p47.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p47-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 48,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p48.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p48-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 49,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p49.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p49-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 50,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p50.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p50-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 51,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p51.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p51-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 52,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p52.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p52-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 53,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p53.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p53-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 54,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p54.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p54-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 55,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p55.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p55-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 56,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p56.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p56-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 57,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p57.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p57-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 58,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p58.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p58-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 59,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p59.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p59-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 60,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p60.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p60-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 61,
+					"imageUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p61.webp",
+					"thumbnailUrl": "/screenshots/kruidvat-2026-w32-pdfimg-p61-thumb.webp",
+					"deals": []
+				}
+			],
+			"embedUrl": "https://folder.kruidvat.be/kruidvat-folder-32-3-augustus-2026-t-m-16-augustus-2026/",
+			"pdfUrl": "https://folder.kruidvat.be/190/3241685/pdfs/ef3a1d9c-8fe8-4a72-b0f9-e1088b4a3b66.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Kruidvat-BEvl%2520-%2520Kruidvat%2520folder%252032%2520-%25203%2520augustus%25202026%2520t%252Fm%252016%2520augustus%25202026.pdf",
+			"contentSource": "ipaper",
+			"scrapedAt": "2026-08-08T10:00:05.159Z"
+		}
+	],
+	"deals": [
+		{
+			"id": "kruidvat-pdf-0-1786183248998",
+			"product": "Kruidvat   Steeds verrassend, altijd voordelig!  KIES MIX  & BIJ AANKOOP VAN 2 DEELNEMENDE PRODUCTEN *  M.u.v. mini’s, voordeelpakken, multipakken, Dove Refill en Sunlight 250 ml Fresh varianten.  NIEUW!  bĳ Kruidvat   NIEUW!  bĳ Kruidvat  NIEUW!  bĳ Kruidvat  NIEUW!  bĳ Kruidvat  t.w.v.  9. 99  bij 2 stuks *  GRATIS  set glazen rietjes  * Deelnemende merken:  =  Dove Body Love Rich Nourishment bodycrème 150 ml     Dove Advanced Care anti-transpirant Original deodorant spray 150 ml     + +   7. 88 2 VOOR  Pr ij svoorbeeld:  t.w.v.     GRATIS",
+			"originalPrice": 9.99,
+			"promoPrice": 3.89,
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-1-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  18. 87   v  10. 00 3 VOOR  26. 97   v  10. 00 3 VOOR  14. 97   v  10. 00 3 VOOR Elmex en Meridol tandpasta  75 ml  M.u.v. Professional, Sensitivity + Gum care, Repair & Prevent en multipakken. Prijsvoorbeeld: 3 x tandpasta Sensitive 75 ml  Fixodent kleefpasta  Prijsvoorbeeld: 3 x Complete Frisse Smaak 70 gram  Labello  Prijsvoorbeeld: 3 x Bridgerton Vanilla 4.8 gram  3   VOOR  10. 00  met je kaart  3   VOOR  10. 00  met je kaart  3   VOOR  10. 00  met je kaart",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-2-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  4   VOOR  10. 00  met je kaart  2   VOOR  10. 00  met je kaart  4   VOOR  10. 00  met je kaart  17. 16   v  10. 00 4 VOOR  23. 96   v  10. 00 4 VOOR  19. 98   v  10. 00 2 VOOR  Prijsvoorbeeld: 4 x shampoo 7 Kruiden 400 ml  Schauma en Schwarzkopf shampoo, conditioner en droogshampoo  Prijsvoorbeeld: 4 x handzeep Lily Grapefruit 500 ml  Marcel’s Green Soap handzeep  M.u.v. multipakken. Prijsvoorbeeld: 2 x micellair water Derma Skin Clear 400 ml  Nivea micellair water",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-3-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  17. 07   11. 44 3 VOOR  24. 99   18. 74  7. 98   5. 99 2 VOOR Taft haar- wax, gel en mousse  Prijsvoorbeeld: 3 x Wax Matt 75 ml  House Of Thêom  75 ml  Eau de parfum voor dames en heren.  Catrice foundation en concealer  Prijsvoorbeeld: 2 x concealer Liquid Camouflage  Kruidvat Merk fotoboeken  Alleen online verkrijgbaar.  25% KORTING  met je kaart  1+1 GRATIS * met je kaart met je kaart  2 e HALVE PRIJS *  2+1 GRATIS * met je kaart",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-4-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  18. 76   v  9. 38 4 VOOR  25. 96   12. 98 4 VOOR  27. 56   13. 78 4 VOOR  17. 96   8. 98 4 VOOR  2+2 DEALS? 2+2 DEALS? Zo doe je dat! Zo doe je dat!  Oral-B mondverzorging  M.u.v. elektrisch poetsen, mini’s en multipakken. Prijsvoorbeeld: 4 x tandpasta 3D White Arctic Fresh 75 ml  Colgate Max White  M.u.v. White Crystals, mini’s en multipakken. Prijsvoorbeeld: 4 x tandpasta Charcoal 75 ml  2TH mondverzorging  Prijsvoorbeeld: 4 x rager Coniflex 10 stuks  Jordan mondverzorging  Prijsvoorbeeld: 4 x flosser 3-in-1 36 stuks  2 + 2 GRATIS *   2 + 2 GRATIS * Gratis verzending +  2 + 2 GRATIS *   2 + 2 GRATIS",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-5-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  2+2 DEALS? 2+2 DEALS? Zo doe je dat! Zo doe je dat!  17. 56   8. 78 4 VOOR  17. 96   8. 98 4 VOOR  15. 96   v  7. 98 4 VOOR  17. 56   8. 78 4 VOOR Palmolive (Men) douche en zeep  M.u.v. multipakken en geschenksets. Prijsvoorbeeld: 4 x douche Thermal Spa Massage 250 ml  Fa (Men) bad, douche en deodorant  M.u.v. multipakken. Prijsvoorbeeld: 4 x Fa Pink Passion 150 ml  Tahiti douche  M.u.v. multipakken. Prijsvoorbeeld: 4 x douche Yuzu & Mint 250 ml  Odorex (Men) deodorant en douche  Prijsvoorbeeld: 4 x Odorex deoroller Marine Fresh 55 ml  2 + 2 GRATIS *  2 + 2 GRATIS *   2 + 2 GRATIS * + KANS OP  reisvoucher  t.w.v.  €2500. 00  2 + 2 GRATIS *  **  **Ga met je unieke code naar www.kruidvat.be/tahitiwinkans",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-6-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  2+2 DEALS? 2+2 DEALS? Zo doe je dat Zo doe je dat! !  19. 96   9. 98 4 VOOR  34. 76   v  17. 38 4 VOOR  71. 96   35. 98 4 VOOR  Prijsvoorbeeld: 4 x conditioner Repair & Protect 230 ml  Pantene haarverzorging  M.u.v. multipakken. Prijsvoorbeeld: 4 x Swiffer Duster navul 7 stuks  Swiffer, Ambi Pur en Antikal  Prijsvoorbeeld: 4 x mesjes Intimate 3 stuks  Gillette Venus navulmesjes  3-8 stuks  2 + 2 GRATIS *  2 + 2 GRATIS *  2 + 2 GRATIS * Gratis verzending",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-7-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Beauty  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  Eentje van ons voor jou.  Kruidvat kwaliteit , nóg   voordeliger prijsje!  11. 97   v  8. 02 3 VOOR  2. 37   v  1. 59 3 VOOR  17. 97   v  12. 04 3 VOOR Kruidvat haarstyling  M.u.v. mini’s en multipakken.  Kruidvat wattenschijfjes en -staafjes Kruidvat gezichtsproducten  Prijsvoorbeeld: 3 x Korean Hydration Cream 50 ml Prijsvoorbeeld: 3 x Powder Volume 10 gram Prijsvoorbeeld: 3 x wattenstaafjes Classic box 200 stuks  2 + 1  2 + 1  2 + 1",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-8-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  2. 97   1. 98 3 VOOR  3. 87   2. 58 3 VOOR  8. 97   5. 98 3 VOOR  2. 97   1. 98 3 VOOR Kruidvat tandpasta  Prijsvoorbeeld: 3 x Cool Mint 125 ml  Kruidvat reinigings- tabletten kunstgebit  30 stuks  Prijsvoorbeeld: 3 x Original 30 stuks  Kruidvat tandenstokers, floss en interdentale borstels  Prijsvoorbeeld: 3 x interdentale borstels iso1 6 stuks  Kruidvat tandenborstel  M.u.v. elektrische tandenborstel. Prijsvoorbeeld: 3 x Sensitive Extra Soft  2 + 1 GRATIS *   2 + 1 GRATIS *  2 + 1 GRATIS *   2 + 1 GRATIS",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-9-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  5. 97   v  3. 98 3 VOOR  34. 47   22. 98 3 VOOR  26. 97   17. 98 3 VOOR  20. 97   13. 98 3 VOOR Kruidvat wondverzorging  Prijsvoorbeeld: 3 x gaaskompressen 16 stuks ** Het vervangen van 2 maaltijden per dag van een energie beperkt dieet helpt bij het afvallen. Lees voor het kopen de informatie op de verpakking.  Kruidvat afslank en bewuste voeding **  Prijsvoorbeeld: 3 x maaltijdshake Vanille 434 gram  Kruidvat sportvoeding  Prijsvoorbeeld: 3 x creatine Monohydraat 300 gram  Kruidvat magnesium en vitamine C  Prijsvoorbeeld: 3 x Magnesium Citraat 60 stuks  2 + 1  2 + 1  2 + 1  2 + 1",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		},
+		{
+			"id": "kruidvat-pdf-10-1786183248998",
+			"product": "1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Baby  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Baby  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Baby  *   1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen. * 1+1 en 2+2 wordt verrekend als 50% kassakorting. 2+1 als 33%, 2 e  halve prijs als 25%. Bij 2 e  artikel voor  kost het laagst geprijsde artikel . Per combinatie kan de prijs verschillen.  Kruidvat   Steeds verrassend, altijd voordelig!  16. 17   v  10. 78 3 VOOR  8. 37   5. 58 3 VOOR  11. 97   8. 97 3 VOOR  8. 97   5. 98 3 VOOR Kruidvat ontharing  Prijsvoorbeeld: 3 x ontharingsstrips Gezicht 20 stuks  Kruidvat babyaccessoires en mamaverzorging  Prijsvoorbeeld: 3 x Mama zoogcompressen 30 stuks  Kruidvat babytextiel  Prijsvoorbeeld: 3 x hydrofiele luiers 3-pak  Kruidvat ondermode en panty  Prijsvoorbeeld: 3 x sneakersok 35/38 Zwart 2 stuks  2 + 1 GRATIS *   2 + 1 GRATIS *  2 + 1 GRATIS *  2 + 1 GRATIS",
+			"originalPrice": 1,
+			"promoPrice": 1,
+			"discount": "1+1",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "kruidvat"
+		}
+	],
+	"scrapedAt": "2026-08-08T10:00:57.225Z",
+	"sourceUrls": [
+		"https://www.kruidvat.be/nl/folder",
+		"https://folder.kruidvat.be/kruidvat-folder-32-3-augustus-2026-t-m-16-augustus-2026/"
+	],
+	"methods": [
+		"ipaper",
+		"pdf",
+		"pdf-text"
+	]
+}

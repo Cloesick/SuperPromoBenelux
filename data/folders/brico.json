@@ -2,27 +2,171 @@
   "retailer": "brico",
   "folders": [
     {
-      "id": "brico-3131030-folder",
+      "id": "brico-2026-w32-folder",
       "retailerSlug": "brico",
-      "title": "02. Brico Folder Extra NL - BRICO BENL F10 2026 bathroom",
-      "validFrom": "2026-06-14",
-      "validUntil": "2026-06-24",
-      "pageCount": 37,
-      "thumbnailUrl": "https://view.publitas.com/95978/3131030/pages/2586b4b9-6b9c-4cc8-b2f6-0c4dfed63d61-at800.jpg",
-      "pages": [],
-      "embedUrl": "https://view.publitas.com/brico-folder-extra-nl/brico-benl-f10-2026-bathroom/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/95978/3131030/pdfs/38e4a82c-5558-4597-854e-abbb5d98e3df.pdf",
+      "title": "Brico folder",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 21,
+      "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p1-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p2.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p2-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p4.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p4-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p6.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p6-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p8.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p8-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p10.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p10-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p12.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p12-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p14.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p14-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p16.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p16-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 10,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p18.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p18-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 11,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p20.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p20-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 12,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p24.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p24-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 13,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p26.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p26-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 14,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p28.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p28-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 15,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p30.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p30-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 16,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p32.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p32-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 17,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p34.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p34-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 18,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p36.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p36-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 19,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p38.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p38-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 20,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p40.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p40-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 21,
+          "imageUrl": "/screenshots/brico-2026-w32-viewerimg-p42.webp",
+          "thumbnailUrl": "/screenshots/brico-2026-w32-viewerimg-p42-thumb.webp",
+          "deals": []
+        }
+      ],
+      "pdfUrl": "https://view.publitas.com/93962/3258658/pdfs/d2f41ca8-06ce-40df-9057-a21366dd02f8.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%2701.%2520Brico%2520folder%2520NL%2520-%2520Brico%2520BENL%2520F14%25202026.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-06-14T23:36:42.704Z"
+      "scrapedAt": "2026-08-08T20:39:51.242Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-06-14T23:36:42.704Z",
+  "deals": [
+    {
+      "id": "html-51",
+      "product": "Onze promo bestsellers in de winkel",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "brico"
+    },
+    {
+      "id": "html-52",
+      "product": "Onze aanbiedingen exclusief online",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "brico"
+    }
+  ],
+  "scrapedAt": "2026-08-08T20:40:13.672Z",
   "sourceUrls": [
-    "https://view.publitas.com/brico-folder-extra-nl/brico-benl-f10-2026-bathroom/"
+    "https://www.brico.be/nl/promotie/folder-en-promoties",
+    "https://folder.brico.be/nl",
+    "https://view.publitas.com/brico-be/brico-benl-f14-2026/page/1?publitas_embed=maximized"
   ],
   "methods": [
     "publitas",
-    "pdf"
+    "pdf",
+    "screenshot"
   ]
 }

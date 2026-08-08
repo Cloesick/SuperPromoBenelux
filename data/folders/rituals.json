@@ -1,0 +1,130 @@
+{
+  "retailer": "rituals",
+  "folders": [
+    {
+      "id": "rituals-2026-w32-folder",
+      "retailerSlug": "rituals",
+      "title": "Rituals promoties",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/rituals-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/rituals-2026-w32-viewerimg-p1.webp",
+          "deals": [],
+          "thumbnailUrl": "/screenshots/rituals-2026-w32-viewerimg-p1-thumb.webp"
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-05T22:28:48.954Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "html-19",
+      "product": "Ontvang een cadeau naar keuze als je nog €50,00 besteedt.",
+      "imageUrl": "https://www.rituals.com/assets/1122538/packshot/product:3-by-4?fmt=webp-alpha&hei=680&resMode=sharp2&wid=454",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-16",
+      "product": "Special offer",
+      "imageUrl": "https://www.rituals.com/assets/1122248/packshot/product:Square?fmt=webp-alpha&hei=480&resMode=sharp2&wid=400",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-211",
+      "product": "Koop 3 of meer doucheschuimen en ontvang 10% korting",
+      "imageUrl": "https://www.rituals.com/assets/1123076/packshot/product:Square?fmt=webp-alpha&hei=480&resMode=sharp2&wid=400",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-405",
+      "product": "Koop er 2 voor €32,90",
+      "imageUrl": "https://www.rituals.com/assets/1115207/packshot/product:Square?fmt=webp-alpha&hei=480&resMode=sharp2&wid=400",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-587",
+      "product": "Combineer je actieve ingrediënten",
+      "imageUrl": "https://www.rituals.com/assets/1121344/packshot/product:Square?fmt=webp-alpha&hei=480&resMode=sharp2&wid=400",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-717",
+      "product": "Kleine luxe voor in je handtas",
+      "imageUrl": "https://www.rituals.com/assets/1122167/packshot/product:Square?fmt=webp-alpha&hei=480&resMode=sharp2&wid=400",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-894",
+      "product": "Samen voor € 132,90",
+      "imageUrl": "https://www.rituals.com/assets/1119948/packshot/product:Square?fmt=webp-alpha&hei=480&resMode=sharp2&wid=400",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-1063",
+      "product": "Koop er 3 voor €34,90",
+      "imageUrl": "https://www.rituals.com/assets/1121928/packshot/product-with-open-pack:Square?fmt=webp-alpha&hei=480&resMode=sharp2&wid=400",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-1183",
+      "product": "One week only: free gift!",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/rituals-q323064-classic-2023-giftbag:3-by-4?fmt=webp-alpha&hei=800&resMode=sharp2&wid=684",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-1185",
+      "product": "Sale",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/winter-sale-2024:3-by-4?fmt=webp-alpha&hei=800&resMode=sharp2&wid=684",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-1187",
+      "product": "Join My Rituals",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/rituals-cr24001-crm-2025-key-1:3-by-4?fmt=webp-alpha&hei=800&resMode=sharp2&wid=684",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    },
+    {
+      "id": "html-1189",
+      "product": "10% off your first order",
+      "imageUrl": "https://rituals.scene7.com/is/image/rituals/rituals-cr24017-crm-2025-smartphone-in-store2:3-by-4?fmt=webp-alpha&hei=800&resMode=sharp2&wid=684",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "rituals"
+    }
+  ],
+  "scrapedAt": "2026-08-05T22:29:01.877Z",
+  "sourceUrls": [
+    "https://www.rituals.com/nl-be/sale"
+  ],
+  "methods": [
+    "html",
+    "screenshot"
+  ]
+}

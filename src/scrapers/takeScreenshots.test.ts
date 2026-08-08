@@ -20,10 +20,15 @@ describe("BaseScraper.takeScreenshots", () => {
 		vi.spyOn(Date, "now").mockReturnValue(
 			new Date("2026-04-04T12:00:00.000Z").valueOf(),
 		);
+		// takeScreenshots waits politeDelay() between pages — 1500ms by default,
+		// which puts a 4-page capture past the 5s test timeout. Rate limiting is
+		// not what these tests are asserting.
+		process.env.SCRAPE_DELAY_MS = "0";
 	});
 
 	afterEach(() => {
 		Date.now = realDateNow;
+		delete process.env.SCRAPE_DELAY_MS;
 		vi.restoreAllMocks();
 	});
 
@@ -47,7 +52,8 @@ describe("BaseScraper.takeScreenshots", () => {
 
 	it("iterates Issuu pageNumber when overrideUrl is an issuu embed", async () => {
 		const goto = vi.fn(async () => undefined);
-		const screenshot = vi.fn(async () => undefined);
+		let shot = 0;
+		const screenshot = vi.fn(async () => Buffer.from(`issuu-page-${++shot}`));
 		const url = vi.fn(
 			() => "https://e.issuu.com/embed.html?u=x&d=y&pageNumber=1",
 		);
@@ -82,9 +88,43 @@ describe("BaseScraper.takeScreenshots", () => {
 		expect(screenshot).toHaveBeenCalledTimes(3);
 	});
 
+	it("stops capturing after a run of repeats, not the first one", async () => {
+		// Viewers clamp navigation past the final page and re-render the last one,
+		// so a run of repeats means the folder has ended. A *single* repeat does
+		// not: Publitas and Issuu serve two-page spreads, where consecutive
+		// positions render the same image by design. Treating the first repeat as
+		// the end truncated albert-heijn to 2 captures of an 18-page leaflet.
+		const goto = vi.fn(async () => undefined);
+		let shot = 0;
+		const screenshot = vi.fn(async () => {
+			shot++;
+			return Buffer.from(`page-${Math.min(shot, 3)}`);
+		});
+		const url = vi.fn(
+			() => "https://e.issuu.com/embed.html?u=x&d=y&pageNumber=1",
+		);
+		const page = { goto, screenshot, url } as any;
+
+		process.env.MAX_SCREENSHOT_PAGES = "20";
+
+		const scraper = new TestScraper();
+		const result = await scraper.takeScreenshotsPublic(
+			makeCtx(page),
+			"https://e.issuu.com/embed.html?u=x&d=y&pageNumber=1",
+		);
+
+		// Three distinct pages, then repeats until MAX_CONSECUTIVE_DUPLICATES (6).
+		expect(result.pages).toHaveLength(3);
+		expect(screenshot).toHaveBeenCalledTimes(9);
+		// Longer timeout than the 5s default: every capture runs three sharp
+		// operations that reject these non-image buffers, and this case now makes
+		// six of them before the duplicate run ends the loop.
+	}, 20_000);
+
 	it("iterates Publitas /page/<n> when overrideUrl is a publitas viewer", async () => {
 		const goto = vi.fn(async () => undefined);
-		const screenshot = vi.fn(async () => undefined);
+		let shot = 0;
+		const screenshot = vi.fn(async () => Buffer.from(`publitas-page-${++shot}`));
 		const url = vi.fn(
 			() => "https://view.publitas.com/x/y/page/1?publitas_embed=embedded",
 		);

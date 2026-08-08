@@ -1,0 +1,250 @@
+{
+  "retailer": "coolblue",
+  "folders": [
+    {
+      "id": "coolblue-2026-w32-folder",
+      "retailerSlug": "coolblue",
+      "title": "Coolblue promoties",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "pageCount": 4,
+      "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/coolblue-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p1-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "/screenshots/coolblue-2026-w32-viewerimg-p2.webp",
+          "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p2-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "/screenshots/coolblue-2026-w32-viewerimg-p3.webp",
+          "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p3-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "/screenshots/coolblue-2026-w32-viewerimg-p7.webp",
+          "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p7-thumb.webp",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-08T20:52:25.134Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "jsonld-0",
+      "product": "Wisberg WBWC127FDZ",
+      "promoPrice": 599,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1964308259",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-1",
+      "product": "Eufy Home Alarm Kit 7-delig",
+      "promoPrice": 198,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1590686",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-2",
+      "product": "TP-Link TL-WPA8635P Kit WiFi 1300 Mbps 3 adapters",
+      "promoPrice": 196,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1563764",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-3",
+      "product": "Braun Silk-épil 7 7-011 Zilver",
+      "promoPrice": 69,
+      "imageUrl": "https://image.coolblue.be/500x500/products/599773651",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-4",
+      "product": "BlueBuilt Power Bank 20.000 mAh met Snelladen Zwart",
+      "promoPrice": 49.99,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2236028",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-5",
+      "product": "Oral-B iO Series 6N Wit + extra iO Gentle Care opzetborstel",
+      "promoPrice": 109,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1859981521",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-6",
+      "product": "Oral-B iO 9n Onyx Zwart Speciale Editie",
+      "promoPrice": 185,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1038403972",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-7",
+      "product": "Dreame H15 Pro Heat",
+      "promoPrice": 399,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2174872",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-8",
+      "product": "Rowenta Clean It IN5020",
+      "promoPrice": 149,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2117114",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-9",
+      "product": "Braun Series 8 8617S Zilver",
+      "promoPrice": 199,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2205201",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-10",
+      "product": "Lenovo ThinkPad Hybride Usb C en Usb A Docking Station",
+      "promoPrice": 169,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1380735",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-11",
+      "product": "Bosch KWK36ABGA",
+      "promoPrice": 1799,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1756317",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-12",
+      "product": "Braun Silk-épil 9 9-080 Zilver",
+      "promoPrice": 136,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1521551647",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-13",
+      "product": "Karcher WD 6 P S V-30/6/22/T *EU III incl. boorstofopvanger + stofzuigerzakken (4x)",
+      "promoPrice": 263,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2035266",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-14",
+      "product": "Veripart VPVR143NFCW",
+      "promoPrice": 439,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2230940",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-15",
+      "product": "DJI Mini 4 Pro Fly More Combo + Smart Controller",
+      "promoPrice": 799,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2070791",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-16",
+      "product": "Philips PerfectCare 7000 Series PSG7300/20",
+      "promoPrice": 269,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2181100",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-17",
+      "product": "Braun Silk-épil 9 9-061 Zilver",
+      "promoPrice": 119,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1115926645",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-18",
+      "product": "Oral-B iO Series 6N Duo Pack Zwart + Roze",
+      "promoPrice": 189,
+      "imageUrl": "https://image.coolblue.be/500x500/products/1797614",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-19",
+      "product": "Wisberg WBTTVR55DFBW",
+      "promoPrice": 399,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2180849",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-20",
+      "product": "Oral-B Pro Cross Action Zwart (10 stuks)",
+      "promoPrice": 24.99,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2160511",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    },
+    {
+      "id": "jsonld-21",
+      "product": "Dreame H14 Pro",
+      "promoPrice": 259,
+      "imageUrl": "https://image.coolblue.be/500x500/products/2088805",
+      "validFrom": "2026-08-03",
+      "validUntil": "2026-08-09",
+      "retailerSlug": "coolblue"
+    }
+  ],
+  "scrapedAt": "2026-08-08T20:52:34.886Z",
+  "sourceUrls": [
+    "https://www.coolblue.be/nl/aanbieding"
+  ],
+  "methods": [
+    "html",
+    "screenshot"
+  ]
+}

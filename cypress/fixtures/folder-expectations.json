@@ -1,0 +1,288 @@
+{
+	"generatedFrom": "47 retailer(s) in data/folders",
+	"floorRatio": 0.6,
+	"retailers": {
+		"action": {
+			"mode": "pages",
+			"minPages": 10,
+			"observedPages": 18,
+			"expired": false
+		},
+		"albert-heijn": {
+			"mode": "pages",
+			"minPages": 6,
+			"observedPages": 10,
+			"expired": false
+		},
+		"aldi": {
+			"mode": "pages",
+			"minPages": 20,
+			"observedPages": 34,
+			"expired": false
+		},
+		"alvo": {
+			"mode": "pages",
+			"minPages": 45,
+			"observedPages": 76,
+			"expired": false
+		},
+		"aveve": {
+			"mode": "pages",
+			"minPages": 1,
+			"observedPages": 3,
+			"expired": false
+		},
+		"bauhaus": {
+			"mode": "pages",
+			"minPages": 16,
+			"observedPages": 27,
+			"expired": false
+		},
+		"bol": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"boots": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"brico": {
+			"mode": "pages",
+			"minPages": 12,
+			"observedPages": 21,
+			"expired": false
+		},
+		"colruyt": {
+			"mode": "pages",
+			"minPages": 6,
+			"observedPages": 10,
+			"expired": false
+		},
+		"coolblue": {
+			"mode": "pages",
+			"minPages": 2,
+			"observedPages": 4,
+			"expired": false
+		},
+		"delhaize": {
+			"mode": "pages",
+			"minPages": 12,
+			"observedPages": 20,
+			"expired": false
+		},
+		"di": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"douglas": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 2,
+			"expired": false
+		},
+		"e5": {
+			"mode": "pages",
+			"minPages": 12,
+			"observedPages": 20,
+			"expired": false
+		},
+		"etos": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"gamma": {
+			"mode": "pages",
+			"minPages": 20,
+			"observedPages": 34,
+			"expired": false
+		},
+		"gifi": {
+			"mode": "pages",
+			"minPages": 14,
+			"observedPages": 24,
+			"expired": false
+		},
+		"hm": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"hoogvliet": {
+			"mode": "pages",
+			"minPages": 18,
+			"observedPages": 30,
+			"expired": false
+		},
+		"hornbach": {
+			"mode": "pages",
+			"minPages": 19,
+			"observedPages": 33,
+			"expired": false
+		},
+		"hubo": {
+			"mode": "pages",
+			"minPages": 6,
+			"observedPages": 10,
+			"expired": false
+		},
+		"ici-paris-xl": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"ikea": {
+			"mode": "pages",
+			"minPages": 1,
+			"observedPages": 3,
+			"expired": false
+		},
+		"jumbo": {
+			"mode": "pages",
+			"minPages": 16,
+			"observedPages": 27,
+			"expired": false
+		},
+		"krefel": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"kruidvat": {
+			"mode": "pages",
+			"minPages": 36,
+			"observedPages": 61,
+			"expired": false
+		},
+		"lidl": {
+			"mode": "pages",
+			"minPages": 24,
+			"observedPages": 40,
+			"expired": false
+		},
+		"maxi-zoo": {
+			"mode": "pages",
+			"minPages": 7,
+			"observedPages": 12,
+			"expired": false
+		},
+		"mediamarkt": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"medpets": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"mr-bricolage": {
+			"mode": "pages",
+			"minPages": 14,
+			"observedPages": 24,
+			"expired": false
+		},
+		"muller": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"plus": {
+			"mode": "pages",
+			"minPages": 20,
+			"observedPages": 34,
+			"expired": false
+		},
+		"rituals": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"rossmann": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 2,
+			"expired": false
+		},
+		"spar": {
+			"mode": "pages",
+			"minPages": 9,
+			"observedPages": 16,
+			"expired": false
+		},
+		"supra-bazar": {
+			"mode": "pages",
+			"minPages": 15,
+			"observedPages": 25,
+			"expired": false
+		},
+		"the-body-shop": {
+			"mode": "pages",
+			"minPages": 3,
+			"observedPages": 5,
+			"expired": false
+		},
+		"tom-co": {
+			"mode": "pages",
+			"minPages": 3,
+			"observedPages": 6,
+			"expired": false
+		},
+		"treac": {
+			"mode": "pages",
+			"minPages": 16,
+			"observedPages": 27,
+			"expired": false
+		},
+		"vanden-borre": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"welkoop": {
+			"mode": "pages",
+			"minPages": 22,
+			"observedPages": 38,
+			"expired": false
+		},
+		"xenos": {
+			"mode": "pages",
+			"minPages": 19,
+			"observedPages": 32,
+			"expired": false
+		},
+		"yves-rocher": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		},
+		"zalando": {
+			"mode": "empty",
+			"minPages": null,
+			"observedPages": 0,
+			"expired": false
+		},
+		"zooplus": {
+			"mode": "pages",
+			"minPages": null,
+			"observedPages": 1,
+			"expired": false
+		}
+	}
+}

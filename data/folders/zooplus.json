@@ -1,0 +1,87 @@
+{
+  "retailer": "zooplus",
+  "folders": [
+    {
+      "id": "zooplus-2026-w32-folder",
+      "retailerSlug": "zooplus",
+      "title": "Zooplus promoties",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "pageCount": 1,
+      "thumbnailUrl": "/screenshots/zooplus-2026-w32-viewerimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "/screenshots/zooplus-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "/screenshots/zooplus-2026-w32-viewerimg-p1-thumb.webp",
+          "deals": []
+        }
+      ],
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-08-06T22:46:50.675Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "pagetext-0",
+      "product": "Économisez IAMS Advanced Nutrition Adult Sterilised poulet pour chatPrix conseillé    € / kgThis is ",
+      "originalPrice": 30.49,
+      "promoPrice": 3.05,
+      "discount": "-10%",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-1",
+      "product": "Économisez Lot économique animonda Carny Adult 12 x 400 g23,99  € / kgThis is a stars rating area fr",
+      "promoPrice": 5,
+      "discount": "-10%",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-2",
+      "product": "Meowee ! Lamelles de filet de thon pour chat1,99  € / kg",
+      "promoPrice": 56.86,
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-3",
+      "product": "Économisez Concept for Life Sterilised Cats saumon pour chat61,99  € / kgThis is a stars rating area",
+      "promoPrice": 6.2,
+      "discount": "-15%",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-4",
+      "product": "Sélection zooplusÉconomisez Wild Freedom Adult 6 x 85 g pour chat8,99  € / kgThis is a stars rating ",
+      "promoPrice": 17.63,
+      "discount": "-15%",
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "zooplus"
+    },
+    {
+      "id": "pagetext-5",
+      "product": "Smilla Soft Sticks 50 g pour chat1,99  € / kgThis is a stars rating area from zero to 5: 4.8/5(165)",
+      "promoPrice": 39.8,
+      "validFrom": "2026-08-02",
+      "validUntil": "2026-08-08",
+      "retailerSlug": "zooplus"
+    }
+  ],
+  "scrapedAt": "2026-08-06T22:46:59.730Z",
+  "sourceUrls": [
+    "https://www.zooplus.be/shop/acties"
+  ],
+  "methods": [
+    "screenshot",
+    "page-text"
+  ]
+}
