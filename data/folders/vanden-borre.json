@@ -1,184 +1,192 @@
 {
-  "retailer": "vanden-borre",
-  "folders": [
-    {
-      "id": "vanden-borre-2026-w32-folder",
-      "retailerSlug": "vanden-borre",
-      "title": "Vanden Borre promoties",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "pageCount": 0,
-      "pages": [],
-      "pdfUrl": "https://www.vandenborre.be/web/pdf/Bebat_Affiche_Artikel%2074_A4%20-%20NL.pdf",
-      "contentSource": "pdf",
-      "scrapedAt": "2026-08-04T18:36:03.487Z"
-    }
-  ],
-  "deals": [
-    {
-      "id": "html-1",
-      "product": "Tv en audio",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-65",
-      "product": "Groot elektro en inbouw",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-128",
-      "product": "Keuken",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-210",
-      "product": "Huishouden en wonen",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-282",
-      "product": "Beauty en gezondheid",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-323",
-      "product": "Multimedia",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-407",
-      "product": "Telefonie",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-466",
-      "product": "Foto en video",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-531",
-      "product": "Sport en outdoor",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-568",
-      "product": "Accessoires",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-647",
-      "product": "Populaire zoekresultaten",
-      "discount": "|Reviews",
-      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/delonghi_hfx65v20_8506914_1.jpg",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-648",
-      "product": "DELONGHI HFX65V20",
-      "discount": "|Reviews",
-      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/delonghi_hfx65v20_8506914_1.jpg",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-693",
-      "product": "PHILIPS Daily Collection HD7461/20",
-      "discount": "|Reviews",
-      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/philips_hd7461-20_8721912_1.jpg",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-715",
-      "product": "ADLER MINIWASH CR-8054",
-      "discount": "",
-      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/adler_miniwash-cr-8054_7815395_7.jpg",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-738",
-      "product": "ROWENTA UNIVERSELE RAAMKIT",
-      "discount": "|Reviews",
-      "imageUrl": "https://image.vandenborre.be/WEB/images/products/300/rowenta_kit-de-calfeutrage-airco_8037760_1.jpg",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-974",
-      "product": "Je privacy",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-975",
-      "product": "Strikt noodzakelijke cookies",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-976",
-      "product": "Functionele cookies",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-977",
-      "product": "Prestatiecookies",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-978",
-      "product": "Doelgroepgerichte cookies",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    },
-    {
-      "id": "html-979",
-      "product": "Conversationele cookies",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "vanden-borre"
-    }
-  ],
-  "scrapedAt": "2026-08-04T18:36:12.063Z",
-  "sourceUrls": [
-    "https://www.vandenborre.be/nl/promoties"
-  ],
-  "methods": [
-    "pdf",
-    "html"
-  ]
+	"retailer": "vanden-borre",
+	"folders": [
+		{
+			"id": "vanden-borre-2026-w32-folder",
+			"retailerSlug": "vanden-borre",
+			"title": "Vanden Borre promoties",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"pageCount": 1,
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "/screenshots/vanden-borre-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "/screenshots/vanden-borre-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				}
+			],
+			"pdfUrl": "https://www.vandenborre.be/web/pdf/Bebat_Affiche_Artikel%2074_A4%20-%20NL.pdf",
+			"contentSource": "pdf",
+			"scrapedAt": "2026-08-04T18:36:03.487Z",
+			"thumbnailUrl": "/screenshots/vanden-borre-2026-w32-pdfimg-p1.webp"
+		}
+	],
+	"deals": [
+		{
+			"id": "html-1",
+			"product": "Tv en audio",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-65",
+			"product": "Groot elektro en inbouw",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-128",
+			"product": "Keuken",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-210",
+			"product": "Huishouden en wonen",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-282",
+			"product": "Beauty en gezondheid",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-323",
+			"product": "Multimedia",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-407",
+			"product": "Telefonie",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-466",
+			"product": "Foto en video",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-531",
+			"product": "Sport en outdoor",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-568",
+			"product": "Accessoires",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-647",
+			"product": "Populaire zoekresultaten",
+			"discount": "|Reviews",
+			"imageUrl": "https://image.vandenborre.be/WEB/images/products/300/delonghi_hfx65v20_8506914_1.jpg",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-648",
+			"product": "DELONGHI HFX65V20",
+			"discount": "|Reviews",
+			"imageUrl": "https://image.vandenborre.be/WEB/images/products/300/delonghi_hfx65v20_8506914_1.jpg",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-693",
+			"product": "PHILIPS Daily Collection HD7461/20",
+			"discount": "|Reviews",
+			"imageUrl": "https://image.vandenborre.be/WEB/images/products/300/philips_hd7461-20_8721912_1.jpg",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-715",
+			"product": "ADLER MINIWASH CR-8054",
+			"discount": "",
+			"imageUrl": "https://image.vandenborre.be/WEB/images/products/300/adler_miniwash-cr-8054_7815395_7.jpg",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-738",
+			"product": "ROWENTA UNIVERSELE RAAMKIT",
+			"discount": "|Reviews",
+			"imageUrl": "https://image.vandenborre.be/WEB/images/products/300/rowenta_kit-de-calfeutrage-airco_8037760_1.jpg",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-974",
+			"product": "Je privacy",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-975",
+			"product": "Strikt noodzakelijke cookies",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-976",
+			"product": "Functionele cookies",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-977",
+			"product": "Prestatiecookies",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-978",
+			"product": "Doelgroepgerichte cookies",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		},
+		{
+			"id": "html-979",
+			"product": "Conversationele cookies",
+			"validFrom": "2026-08-03",
+			"validUntil": "2026-08-09",
+			"retailerSlug": "vanden-borre"
+		}
+	],
+	"scrapedAt": "2026-08-04T18:36:12.063Z",
+	"sourceUrls": [
+		"https://www.vandenborre.be/nl/promoties"
+	],
+	"methods": [
+		"pdf",
+		"html"
+	]
 }

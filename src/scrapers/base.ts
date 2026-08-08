@@ -28,6 +28,7 @@ import {
 	isPdfForcedDownload,
 } from "../lib/folderRenderability";
 import { extractDealsFromPdf } from "./extractDealsFromText";
+import { renderPdfToImages } from "./pdfRender";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
@@ -2092,6 +2093,38 @@ export abstract class BaseScraper {
 			// standard deviation of 0.0 — a uniformly blank image — as its entire
 			// folder, and the page was indexed on the strength of it.
 			const seenHashes = new Set<string>();
+
+			// Render the PDF properly first. Screenshotting Chrome's PDF plugin
+			// slices by viewport, so pages get cut in half and a plugin that has
+			// not painted yields a blank frame. pdf.js gives exact page
+			// boundaries. The scroll-slice loop below stays as the fallback for
+			// documents pdf.js cannot read.
+			const rendered = await renderPdfToImages(
+				page,
+				currentUrl,
+				Number.isFinite(maxPages) ? maxPages : 40,
+				(m) => this.log(m),
+			);
+			if (rendered.pages.length > 0) {
+				for (const raw of rendered.pages) {
+					const filename = `${this.generateFolderId("pdfimg-p" + (pages.length + 1))}.webp`;
+					const filepath = path.join(SCREENSHOT_DIR, filename);
+					const stored = await this.storeCapturedPage(raw, filepath, seenHashes);
+					if (stored.status === "duplicate") continue;
+					if (stored.status !== "written" || !stored.url) continue;
+					pages.push({
+						pageNumber: pages.length + 1,
+						imagePath: stored.url,
+						thumbPath: stored.thumbUrl,
+					});
+				}
+				if (pages.length > 0) {
+					this.log(
+						`PDF rendered: ${pages.length} page(s) of ${rendered.totalPages}`,
+					);
+					return { pages };
+				}
+			}
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				const y = (i - 1) * height;

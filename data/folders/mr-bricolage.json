@@ -1,28 +1,173 @@
 {
-  "retailer": "mr-bricolage",
-  "folders": [
-    {
-      "id": "mr-bricolage-3258597-folder",
-      "retailerSlug": "mr-bricolage",
-      "title": "Mr Bricolage Belgique - Folder 12 - du 11 août au 06 septembre 2026",
-      "validFrom": "2026-08-07",
-      "validUntil": "2026-08-17",
-      "pageCount": 24,
-      "thumbnailUrl": "",
-      "pages": [],
-      "embedUrl": "https://view.publitas.com/mr-bricolage/folder-12-2026/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/23787/3258597/pdfs/834dcaa4-b73d-4151-9ef3-4cd765b916fd.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-08-07T05:51:21.038Z"
-    }
-  ],
-  "deals": [],
-  "scrapedAt": "2026-08-07T05:51:21.038Z",
-  "sourceUrls": [
-    "https://view.publitas.com/mr-bricolage/folder-12-2026/"
-  ],
-  "methods": [
-    "publitas",
-    "pdf"
-  ]
+	"retailer": "mr-bricolage",
+	"folders": [
+		{
+			"id": "mr-bricolage-3258597-folder",
+			"retailerSlug": "mr-bricolage",
+			"title": "Mr Bricolage Belgique - Folder 12 - du 11 août au 06 septembre 2026",
+			"validFrom": "2026-08-07",
+			"validUntil": "2026-08-17",
+			"pageCount": 24,
+			"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p1.webp",
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p5-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 6,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p6.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p6-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 7,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p7.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p7-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 8,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p8.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p8-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 9,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p9.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p9-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 10,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p10.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p10-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 11,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p11.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p11-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 12,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p12.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p12-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 13,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p13.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p13-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 14,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p14.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p14-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 15,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p15.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p15-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 16,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p16.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p16-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 17,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p17.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p17-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 18,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p18.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p18-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 19,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p19.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p19-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 20,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p20.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p20-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 21,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p21.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p21-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 22,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p22.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p22-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 23,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p23.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p23-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 24,
+					"imageUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p24.webp",
+					"thumbnailUrl": "/screenshots/mr-bricolage-2026-w32-pdfimg-p24-thumb.webp",
+					"deals": []
+				}
+			],
+			"embedUrl": "https://view.publitas.com/mr-bricolage/folder-12-2026/?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/23787/3258597/pdfs/834dcaa4-b73d-4151-9ef3-4cd765b916fd.pdf",
+			"contentSource": "publitas",
+			"scrapedAt": "2026-08-07T05:51:21.038Z"
+		}
+	],
+	"deals": [],
+	"scrapedAt": "2026-08-07T05:51:21.038Z",
+	"sourceUrls": [
+		"https://view.publitas.com/mr-bricolage/folder-12-2026/"
+	],
+	"methods": [
+		"publitas",
+		"pdf"
+	]
 }

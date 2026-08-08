@@ -1,107 +1,139 @@
 {
-  "retailer": "the-body-shop",
-  "folders": [
-    {
-      "id": "the-body-shop-2026-w32-folder",
-      "retailerSlug": "the-body-shop",
-      "title": "The Body Shop promoties",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "pageCount": 0,
-      "pages": [],
-      "pdfUrl": "https://cdn.shopify.com/s/files/1/0840/6679/5785/files/The_Body_Shop_Gender_Pay_Gap_Report_2025.pdf?v=1775131633",
-      "contentSource": "pdf",
-      "scrapedAt": "2026-08-05T22:30:34.086Z"
-    }
-  ],
-  "deals": [
-    {
-      "id": "html-2",
-      "product": "Ginger Anti-dandruff Shampoo",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/ginger_temp_1.jpg?crop=center&height=1024&v=1758616917&width=1024",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-15",
-      "product": "Hemp Hand Protector",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1025247_Hemp_Hand_Protector_30ml_BRNZ_INAEHPS050.jpg?crop=center&height=2048&v=1735923921&width=2048",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-27",
-      "product": "Vitamin E Moisture Day Cream",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1026966_VITAMIN_E_DAY_CREAM_50ML_BRONZE_INAEHPS063_d99cc21f-6d8d-48d2-880f-4fb28cc8e015.jpg?crop=center&height=2048&v=1770047372&width=2048",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-39",
-      "product": "Camomile Sumptuous Makeup Cleansing Butter",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1027049_CLEANSING_BUTTER_CAMOMILE_90ML_BRZ_INAEUPS014_FAFAFA_dfb3621a-7f51-4c69-999a-ba73582c7c9d.jpg?crop=center&height=2048&v=1756916412&width=2048",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-102",
-      "product": "Shea Body Butter",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/RESIZED_1097370_SHEA_BODY_BUTTER_200ml_BRONZE_INECMPS090_7c48c3ba-6611-483b-bb8e-dfce53db150a.jpg?crop=center&height=2048&v=1770047372&width=2048",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-114",
-      "product": "We think you might like",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1047176_BORN_LIPPY_CARAMEL_CREAM_10ML_A0X_FAFAFA_INAKNPS010_377bd432-e440-463e-aa16-55c4af2b899e.jpg?crop=center&height=240&v=1783333570&width=240",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-115",
-      "product": "Born Lippy Lip Balm",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1047176_BORN_LIPPY_CARAMEL_CREAM_10ML_A0X_FAFAFA_INAKNPS010_377bd432-e440-463e-aa16-55c4af2b899e.jpg?crop=center&height=240&v=1783333570&width=240",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-130",
-      "product": "Caramel Cuddle Hand Balm",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1046825_HAND_BALM_TOFFEE_BONBON_30ML_CARAMEL_INAJMPS361_FAFAFA_Front.jpg?crop=center&height=240&v=1760302609&width=240",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-142",
-      "product": "Sugarplum Passion Hand Balm",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1047143_HAND_BALM_PLUM_30ML_INAJMPS362_FAFAFA_Front_97e962d8-3268-4669-820a-219dca621190.jpg?crop=center&height=240&v=1760302609&width=240",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    },
-    {
-      "id": "html-154",
-      "product": "Cranberry Crush Hand Cream",
-      "imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1046838_HAND_CREAM_CRANBERRY_30ML_INAJMPS360_FAFAFA_Front.jpg?crop=center&height=240&v=1760302609&width=240",
-      "validFrom": "2026-08-02",
-      "validUntil": "2026-08-08",
-      "retailerSlug": "the-body-shop"
-    }
-  ],
-  "scrapedAt": "2026-08-05T22:30:52.127Z",
-  "sourceUrls": [
-    "https://www.thebodyshop.com/en-gb/sale/c/c00005"
-  ],
-  "methods": [
-    "pdf",
-    "html"
-  ]
+	"retailer": "the-body-shop",
+	"folders": [
+		{
+			"id": "the-body-shop-2026-w32-folder",
+			"retailerSlug": "the-body-shop",
+			"title": "The Body Shop promoties",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"pageCount": 5,
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p5-thumb.webp",
+					"deals": []
+				}
+			],
+			"pdfUrl": "https://cdn.shopify.com/s/files/1/0840/6679/5785/files/The_Body_Shop_Gender_Pay_Gap_Report_2025.pdf?v=1775131633",
+			"contentSource": "pdf",
+			"scrapedAt": "2026-08-05T22:30:34.086Z",
+			"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p1.webp"
+		}
+	],
+	"deals": [
+		{
+			"id": "html-2",
+			"product": "Ginger Anti-dandruff Shampoo",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/ginger_temp_1.jpg?crop=center&height=1024&v=1758616917&width=1024",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-15",
+			"product": "Hemp Hand Protector",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1025247_Hemp_Hand_Protector_30ml_BRNZ_INAEHPS050.jpg?crop=center&height=2048&v=1735923921&width=2048",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-27",
+			"product": "Vitamin E Moisture Day Cream",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1026966_VITAMIN_E_DAY_CREAM_50ML_BRONZE_INAEHPS063_d99cc21f-6d8d-48d2-880f-4fb28cc8e015.jpg?crop=center&height=2048&v=1770047372&width=2048",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-39",
+			"product": "Camomile Sumptuous Makeup Cleansing Butter",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1027049_CLEANSING_BUTTER_CAMOMILE_90ML_BRZ_INAEUPS014_FAFAFA_dfb3621a-7f51-4c69-999a-ba73582c7c9d.jpg?crop=center&height=2048&v=1756916412&width=2048",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-102",
+			"product": "Shea Body Butter",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/RESIZED_1097370_SHEA_BODY_BUTTER_200ml_BRONZE_INECMPS090_7c48c3ba-6611-483b-bb8e-dfce53db150a.jpg?crop=center&height=2048&v=1770047372&width=2048",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-114",
+			"product": "We think you might like",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1047176_BORN_LIPPY_CARAMEL_CREAM_10ML_A0X_FAFAFA_INAKNPS010_377bd432-e440-463e-aa16-55c4af2b899e.jpg?crop=center&height=240&v=1783333570&width=240",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-115",
+			"product": "Born Lippy Lip Balm",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1047176_BORN_LIPPY_CARAMEL_CREAM_10ML_A0X_FAFAFA_INAKNPS010_377bd432-e440-463e-aa16-55c4af2b899e.jpg?crop=center&height=240&v=1783333570&width=240",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-130",
+			"product": "Caramel Cuddle Hand Balm",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1046825_HAND_BALM_TOFFEE_BONBON_30ML_CARAMEL_INAJMPS361_FAFAFA_Front.jpg?crop=center&height=240&v=1760302609&width=240",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-142",
+			"product": "Sugarplum Passion Hand Balm",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1047143_HAND_BALM_PLUM_30ML_INAJMPS362_FAFAFA_Front_97e962d8-3268-4669-820a-219dca621190.jpg?crop=center&height=240&v=1760302609&width=240",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		},
+		{
+			"id": "html-154",
+			"product": "Cranberry Crush Hand Cream",
+			"imageUrl": "https://www.thebodyshop.com/cdn/shop/files/1046838_HAND_CREAM_CRANBERRY_30ML_INAJMPS360_FAFAFA_Front.jpg?crop=center&height=240&v=1760302609&width=240",
+			"validFrom": "2026-08-02",
+			"validUntil": "2026-08-08",
+			"retailerSlug": "the-body-shop"
+		}
+	],
+	"scrapedAt": "2026-08-05T22:30:52.127Z",
+	"sourceUrls": [
+		"https://www.thebodyshop.com/en-gb/sale/c/c00005"
+	],
+	"methods": [
+		"pdf",
+		"html"
+	]
 }

@@ -1,28 +1,125 @@
 {
-  "retailer": "spar",
-  "folders": [
-    {
-      "id": "spar-3274721-folder",
-      "retailerSlug": "spar",
-      "title": "SPAR - SPAR folder wk20263132",
-      "validFrom": "2026-08-07",
-      "validUntil": "2026-08-17",
-      "pageCount": 16,
-      "thumbnailUrl": "",
-      "pages": [],
-      "embedUrl": "https://view.publitas.com/spar/spar-folder-wk20263132/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/237/3274721/pdfs/9b91bea5-f8d2-4e55-9521-23f50eace50d.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-08-07T05:51:22.073Z"
-    }
-  ],
-  "deals": [],
-  "scrapedAt": "2026-08-07T05:51:22.073Z",
-  "sourceUrls": [
-    "https://view.publitas.com/spar/spar-folder-wk20263132/"
-  ],
-  "methods": [
-    "publitas",
-    "pdf"
-  ]
+	"retailer": "spar",
+	"folders": [
+		{
+			"id": "spar-3274721-folder",
+			"retailerSlug": "spar",
+			"title": "SPAR - SPAR folder wk20263132",
+			"validFrom": "2026-08-07",
+			"validUntil": "2026-08-17",
+			"pageCount": 16,
+			"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p1.webp",
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p5-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 6,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p6.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p6-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 7,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p7.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p7-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 8,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p8.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p8-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 9,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p9.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p9-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 10,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p10.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p10-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 11,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p11.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p11-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 12,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p12.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p12-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 13,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p13.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p13-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 14,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p14.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p14-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 15,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p15.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p15-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 16,
+					"imageUrl": "/screenshots/spar-2026-w32-pdfimg-p16.webp",
+					"thumbnailUrl": "/screenshots/spar-2026-w32-pdfimg-p16-thumb.webp",
+					"deals": []
+				}
+			],
+			"embedUrl": "https://view.publitas.com/spar/spar-folder-wk20263132/?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/237/3274721/pdfs/9b91bea5-f8d2-4e55-9521-23f50eace50d.pdf",
+			"contentSource": "publitas",
+			"scrapedAt": "2026-08-07T05:51:22.073Z"
+		}
+	],
+	"deals": [],
+	"scrapedAt": "2026-08-07T05:51:22.073Z",
+	"sourceUrls": [
+		"https://view.publitas.com/spar/spar-folder-wk20263132/"
+	],
+	"methods": [
+		"publitas",
+		"pdf"
+	]
 }

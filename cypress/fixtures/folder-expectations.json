@@ -21,9 +21,9 @@
 			"expired": false
 		},
 		"alvo": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 18,
+			"observedPages": 30,
 			"expired": false
 		},
 		"aveve": {
@@ -33,9 +33,9 @@
 			"expired": false
 		},
 		"bauhaus": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 16,
+			"observedPages": 27,
 			"expired": false
 		},
 		"bol": {
@@ -87,9 +87,9 @@
 			"expired": false
 		},
 		"e5": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 12,
+			"observedPages": 20,
 			"expired": false
 		},
 		"etos": {
@@ -105,9 +105,9 @@
 			"expired": false
 		},
 		"gifi": {
-			"mode": "embed",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 14,
+			"observedPages": 24,
 			"expired": false
 		},
 		"hm": {
@@ -117,21 +117,21 @@
 			"expired": false
 		},
 		"hoogvliet": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 18,
+			"observedPages": 30,
 			"expired": false
 		},
 		"hornbach": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 18,
+			"observedPages": 30,
 			"expired": false
 		},
 		"hubo": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 6,
+			"observedPages": 10,
 			"expired": false
 		},
 		"ici-paris-xl": {
@@ -147,9 +147,9 @@
 			"expired": false
 		},
 		"jumbo": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 16,
+			"observedPages": 27,
 			"expired": false
 		},
 		"krefel": {
@@ -183,9 +183,9 @@
 			"expired": false
 		},
 		"mr-bricolage": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 14,
+			"observedPages": 24,
 			"expired": false
 		},
 		"muller": {
@@ -195,9 +195,9 @@
 			"expired": false
 		},
 		"plus": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 18,
+			"observedPages": 30,
 			"expired": false
 		},
 		"rituals": {
@@ -213,21 +213,21 @@
 			"expired": false
 		},
 		"spar": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 9,
+			"observedPages": 16,
 			"expired": false
 		},
 		"supra-bazar": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 15,
+			"observedPages": 25,
 			"expired": false
 		},
 		"the-body-shop": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 3,
+			"observedPages": 5,
 			"expired": false
 		},
 		"tom-co": {
@@ -243,21 +243,21 @@
 			"expired": false
 		},
 		"vanden-borre": {
-			"mode": "pdf",
+			"mode": "pages",
 			"minPages": null,
-			"observedPages": 0,
+			"observedPages": 1,
 			"expired": false
 		},
 		"welkoop": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 18,
+			"observedPages": 30,
 			"expired": false
 		},
 		"xenos": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 18,
+			"observedPages": 30,
 			"expired": false
 		},
 		"yves-rocher": {
