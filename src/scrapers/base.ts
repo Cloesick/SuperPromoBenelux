@@ -2086,6 +2086,12 @@ export abstract class BaseScraper {
 			const view = page.viewport();
 			const width = view?.width ?? 1440;
 			const height = view?.height ?? 900;
+			// This branch was the last one still calling page.screenshot() straight
+			// to disk, so it skipped blank rejection, deduplication, resizing and
+			// thumbnails. Zalando shipped a single 1440x900 page whose pixels had a
+			// standard deviation of 0.0 — a uniformly blank image — as its entire
+			// folder, and the page was indexed on the strength of it.
+			const seenHashes = new Set<string>();
 
 			for (let i = 1; i <= (Number.isFinite(maxPages) ? maxPages : 12); i++) {
 				const y = (i - 1) * height;
@@ -2109,11 +2115,23 @@ export abstract class BaseScraper {
 
 				const filename = `${this.generateFolderId("viewerimg-p" + i)}.webp`;
 				const filepath = path.join(SCREENSHOT_DIR, filename);
-				await page.screenshot({
-					path: filepath,
-					clip: { x: 0, y: scrollY, width, height },
+				const captured = await this.captureDedupedPage(
+					page,
+					filepath,
+					{ x: 0, y: scrollY, width, height },
+					seenHashes,
+				);
+				// A blank slice means the renderer has not painted this region;
+				// a duplicate means the document has stopped scrolling. Either way
+				// there is nothing further down worth capturing.
+				if (captured.status === "blank") continue;
+				if (captured.status === "duplicate") break;
+				if (!captured.url) continue;
+				pages.push({
+					pageNumber: pages.length + 1,
+					imagePath: captured.url,
+					thumbPath: captured.thumbUrl,
 				});
-				pages.push({ pageNumber: i, imagePath: `/screenshots/${filename}` });
 			}
 
 			return { pages };
