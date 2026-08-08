@@ -79,6 +79,15 @@ jobs:
       # collapsing and blank detection mean most are never referenced: before
       # this step existed, public/screenshots held 1233 files of which 122 were
       # in use. Pruning first keeps the committed set at single-digit MB.
+      # Safety net: the scraper renders a PDF to pages when it lands on one,
+      # but a retailer whose folder is only reachable as a PDF link still ends
+      # up framing it. This catches those without a second scrape.
+      - name: Render PDF-only folders to page images
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: npx tsx scripts/backfill-pdf-pages.mts
+
       - name: Prune unreferenced screenshots
         run: node scripts/prune-screenshots.mjs
 

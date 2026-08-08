@@ -14,7 +14,7 @@
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { extractManifest, buildScrapedData, pdfUrlFromManifest } from './harvest-publitas.mjs';
+import { extractManifest, buildScrapedData, pdfUrlFromManifest, preserveRenderedPages, readExistingFolder } from './harvest-publitas.mjs';
 import { harvestIssuu } from './harvest-issuu.mjs';
 
 const UA = {
@@ -132,8 +132,15 @@ async function harvest(slug, cfg) {
   for (const url of candidates) {
     const res = await tryUrl(url);
     if (res.ok) {
-      const data = buildScrapedData(res.manifest, slug, res.finalUrl, res.html);
-      writeFileSync(resolve(OUT_DIR, `${slug}.json`), JSON.stringify(data, null, 2));
+      const outPath = resolve(OUT_DIR, `${slug}.json`);
+      // A harvest must never delete page images rendered from the PDF: it
+      // cannot produce them itself, and overwriting wholesale emptied 14
+      // retailers' folders twice a day.
+      const data = preserveRenderedPages(
+        readExistingFolder(outPath),
+        buildScrapedData(res.manifest, slug, res.finalUrl, res.html),
+      );
+      writeFileSync(outPath, JSON.stringify(data, null, 2));
       const f = data.folders[0];
       return { slug, ok: true, via: url.replace('https://view.publitas.com/', ''), title: f.title, pages: f.pageCount };
     }
@@ -158,8 +165,12 @@ for (const [slug, cfg] of entries) {
 }
 for (const [slug, docUrl] of issuuEntries) {
   try {
-    const data = await harvestIssuu(docUrl, slug);
-    writeFileSync(resolve(OUT_DIR, `${slug}.json`), JSON.stringify(data, null, 2));
+    const outPath = resolve(OUT_DIR, `${slug}.json`);
+    const data = preserveRenderedPages(
+      readExistingFolder(outPath),
+      await harvestIssuu(docUrl, slug),
+    );
+    writeFileSync(outPath, JSON.stringify(data, null, 2));
     const f = data.folders[0];
     results.push({ slug, ok: true });
     console.log(`✓ ${slug.padEnd(14)} ${f.pageCount}p  ${f.title}  [issuu]`);

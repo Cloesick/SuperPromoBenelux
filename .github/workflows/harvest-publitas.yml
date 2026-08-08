@@ -39,7 +39,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Harvest folders
         shell: bash
@@ -49,15 +49,37 @@ jobs:
           echo "Harvesting Publitas folders: ${RETAILERS:-<all>}"
           node apify/harvest-all.mjs ${RETAILERS}
 
+      # The harvest can read Publitas' manifest but not its page images —
+      # those are signed and lazy-loaded — so it writes pages: []. Rendering
+      # the PDF here is what actually gives these 14 retailers page images;
+      # without it they only ever frame a PDF.
+      - name: Install dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
+        run: npm ci --legacy-peer-deps
+
+      - name: Setup Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Render harvested PDFs to page images
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: npx tsx scripts/backfill-pdf-pages.mts
+
+      - name: Prune unreferenced screenshots
+        run: node scripts/prune-screenshots.mjs
+
       - name: Commit and push changes
         shell: bash
         run: |
-          if git diff --quiet -- data/folders; then
+          if git diff --quiet -- data/folders public/screenshots; then
             echo "No folder changes to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/folders
+          git add -A -f data/folders public/screenshots
           git commit -m "chore(harvest): refresh Publitas folders [skip ci]"
           git push
