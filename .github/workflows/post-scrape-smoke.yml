@@ -9,7 +9,11 @@ name: Post-scrape smoke test
 
 on:
   workflow_run:
-    workflows: ["Scrape folders"]
+    # The harvest is listed too: it rewrites the folder data for the fourteen
+    # retailers that have no scraper, so a bad harvest could empty their pages
+    # without the scrape ever running. Checking only after a scrape left that
+    # half of the site unverified.
+    workflows: ["Scrape folders", "Harvest Publitas folders"]
     types: [completed]
   workflow_dispatch: {}
 
