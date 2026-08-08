@@ -109,9 +109,44 @@ export function isPdfForcedDownload(pdfUrl?: string | null): boolean {
 	return !!pdfUrl && /response-content-disposition=attachment/i.test(pdfUrl);
 }
 
-/** True when a PDF URL is present and can be framed. */
+/**
+ * True when a PDF is something other than a leaflet.
+ *
+ * PDF discovery takes the first plausible PDF on the page, and retailers put
+ * plenty of other PDFs there. Two real cases:
+ *
+ *  - Coolblue's folder pointed at
+ *    product-energy-label-specifications.coolblue.de/…/produkt_daten_blatt_9….pdf,
+ *    the EU energy label for one appliance. Rendering it would have produced a
+ *    one-page "folder" showing a washing machine's efficiency rating.
+ *  - Brico's pointed at Legal_guarantee_notice_NLN.pdf, its warranty terms.
+ *
+ * Both name themselves plainly in the URL, in one of the languages this region
+ * publishes in. Matching on that is far safer than guessing from page count.
+ */
+export function isNonLeafletPdf(pdfUrl?: string | null): boolean {
+	if (!pdfUrl) return false;
+	const url = pdfUrl.toLowerCase();
+	// Product specification sheets and energy labels.
+	if (
+		/energy-?label|energielabel|specifications?\./.test(url) ||
+		/produkt_?daten_?blatt|product_?data_?sheet|productfiche|fiche-?produit|productblad/.test(
+			url,
+		)
+	) {
+		return true;
+	}
+	// Legal notices, warranty and terms documents.
+	return /legal_?guarantee|guarantee_?notice|garantie|warranty|terms|voorwaarden|conditions-?generales|privacy/.test(
+		url,
+	);
+}
+
+/** True when a PDF URL is present and can be framed as a leaflet. */
 export function hasUsablePdf(pdfUrl?: string | null): boolean {
-	return !!pdfUrl && !isPdfForcedDownload(pdfUrl);
+	return (
+		!!pdfUrl && !isPdfForcedDownload(pdfUrl) && !isNonLeafletPdf(pdfUrl)
+	);
 }
 
 /**

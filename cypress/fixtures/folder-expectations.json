@@ -51,10 +51,10 @@
 			"expired": false
 		},
 		"brico": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
-			"expired": true
+			"mode": "pages",
+			"minPages": 12,
+			"observedPages": 21,
+			"expired": false
 		},
 		"colruyt": {
 			"mode": "pages",
@@ -63,9 +63,9 @@
 			"expired": false
 		},
 		"coolblue": {
-			"mode": "pdf",
-			"minPages": null,
-			"observedPages": 0,
+			"mode": "pages",
+			"minPages": 2,
+			"observedPages": 4,
 			"expired": false
 		},
 		"delhaize": {

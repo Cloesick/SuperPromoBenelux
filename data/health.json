@@ -1,26 +1,20 @@
 {
-  "generatedAt": "2026-08-08T10:22:20.440Z",
+  "generatedAt": "2026-08-08T20:52:35.465Z",
   "retailers": [
     {
-      "slug": "maxi-zoo",
-      "name": "Maxi Zoo",
+      "slug": "coolblue",
+      "name": "Coolblue",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-08T10:22:20.075Z",
+      "scrapedAt": "2026-08-08T20:52:34.886Z",
       "folderCount": 1,
-      "dealCount": 0,
-      "hasEmbed": true,
+      "dealCount": 22,
+      "hasEmbed": false,
       "hasPdf": false,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": [
-        {
-          "url": "https://cdn.ipaper.io/Cache/509/509.17.0.0/Frontend-Desktop/desktop.bundle_gzip.css",
-          "status": 200,
-          "live": true
-        }
-      ]
+      "probeResults": []
     }
   ],
   "summary": {

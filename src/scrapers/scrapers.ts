@@ -19,6 +19,7 @@ import { MedpetsScraper } from "./medpets";
 
 // ── Electro ──────────────────────────────────────────────────────────────
 import { MediaMarktScraper } from "./mediamarkt";
+import { BricoScraper } from "./brico";
 import { CoolblueScraper } from "./coolblue";
 import { VandenBorreScraper } from "./vanden-borre";
 import { KrefelScraper } from "./krefel";
@@ -66,6 +67,7 @@ export const allScrapers: BaseScraper[] = [
 	new MedpetsScraper(),
 	// Electro
 	new MediaMarktScraper(),
+	new BricoScraper(),
 	new CoolblueScraper(),
 	new VandenBorreScraper(),
 	new KrefelScraper(),

@@ -25,6 +25,7 @@ import path from "path";
 import sharp from "sharp";
 import puppeteer from "rebrowser-puppeteer";
 import { renderPdfToImages, pdfOrigin } from "../src/scrapers/pdfRender";
+import { isNonLeafletPdf } from "../src/lib/folderRenderability";
 
 
 const root = process.cwd();
@@ -90,6 +91,10 @@ for (const file of fs.readdirSync(foldersDir).filter((f) => f.endsWith(".json"))
 	// fetching those bytes and rendering them ourselves works fine, and it is
 	// the only way those retailers get page images at all.
 	if (!folder.pdfUrl) continue;
+	// ...but a product spec sheet is not a leaflet. Coolblue pointed at an EU
+	// energy label for a single appliance, which would have rendered as a
+	// one-page "folder" showing a washing machine's efficiency rating.
+	if (isNonLeafletPdf(folder.pdfUrl)) continue;
 	candidates.push({ slug, pdfUrl: folder.pdfUrl });
 }
 

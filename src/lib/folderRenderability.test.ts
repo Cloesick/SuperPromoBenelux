@@ -7,6 +7,7 @@ import {
 	isPdfForcedDownload,
 	isFolderExpired,
 	isFolderIndexable,
+	isNonLeafletPdf,
 } from "./folderRenderability";
 
 // ---------------------------------------------------------------------------
@@ -185,5 +186,39 @@ describe("isFolderIndexable", () => {
 
 	it("refuses a missing folder", () => {
 		expect(isFolderIndexable(null, "aldi")).toBe(false);
+	});
+});
+
+describe("isNonLeafletPdf", () => {
+	it("rejects the legal guarantee notice brico was serving as its folder", () => {
+		const url =
+			"https://assets.ctfassets.net/0nvfg2/Legal_guarantee_notice_NLN.pdf";
+		expect(isNonLeafletPdf(url)).toBe(true);
+		expect(hasUsablePdf(url)).toBe(false);
+	});
+
+	it("rejects the EU energy label coolblue was serving as its folder", () => {
+		const url =
+			"https://product-energy-label-specifications.coolblue.de/7e/produkt_daten_blatt_9.pdf";
+		expect(isNonLeafletPdf(url)).toBe(true);
+		// It reached the folder because it was simply the first PDF on the page.
+		expect(hasUsablePdf(url)).toBe(false);
+	});
+
+	it("rejects the other names these go by in this region", () => {
+		for (const u of [
+			"https://x.be/fiche-produit-123.pdf",
+			"https://x.be/productfiche.pdf",
+			"https://x.nl/energielabel-abc.pdf",
+			"https://x.nl/product_data_sheet.pdf",
+		]) {
+			expect(isNonLeafletPdf(u), u).toBe(true);
+		}
+	});
+
+	it("leaves a real leaflet PDF alone", () => {
+		const url = "https://view.publitas.com/171/3276357/pdfs/b273beeb.pdf";
+		expect(isNonLeafletPdf(url)).toBe(false);
+		expect(hasUsablePdf(url)).toBe(true);
 	});
 });

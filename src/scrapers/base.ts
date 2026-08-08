@@ -27,6 +27,7 @@ import {
 	isEmbedBlocked,
 	isPdfForcedDownload,
 	isBareViewerHomepage,
+	isNonLeafletPdf,
 } from "../lib/folderRenderability";
 import { extractDealsFromPdf } from "./extractDealsFromText";
 import { renderPdfToImages } from "./pdfRender";
@@ -1058,7 +1059,11 @@ export abstract class BaseScraper {
 			if (uniqueDeals.length > 0) {
 				try {
 					const vertical = process.env.NEXT_PUBLIC_RETAIL_VERTICAL ?? "general";
-					const synced = syncDealsToDb({
+					// Awaited: syncDealsToDb is async, and without this the log read
+					// "Synced [object Promise]/22 deal(s)", the surrounding catch could
+					// not see a rejection, and the process could exit before the write
+					// finished.
+					const synced = await syncDealsToDb({
 						retailerSlug: this.retailerSlug,
 						retailerName: this.retailerName,
 						vertical,
@@ -1825,6 +1830,14 @@ export abstract class BaseScraper {
 		});
 
 		if (pdfUrl) {
+			// Discovery takes the first plausible PDF on the page, and retailers
+			// host plenty that are not leaflets. Coolblue's folder recorded an EU
+			// energy label for one appliance, and Brico's its warranty terms —
+			// both offered to visitors as "download the folder".
+			if (isNonLeafletPdf(pdfUrl)) {
+				this.log(`Ignoring non-leaflet PDF: ${pdfUrl}`);
+				return null;
+			}
 			this.log(`Found PDF link: ${pdfUrl}`);
 			if (!ctx.methods.includes("pdf")) ctx.methods.push("pdf");
 			return { url: pdfUrl };
