@@ -8,13 +8,13 @@
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/medpets-2026-w32-viewerimg-p1.webp",
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/medpets-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/medpets-2026-w32-viewerimg-p1.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/medpets-2026-w32-viewerimg-p1.webp",
           "deals": [],
-          "thumbnailUrl": "/screenshots/medpets-2026-w32-viewerimg-p1-thumb.webp"
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/medpets-2026-w32-viewerimg-p1-thumb.webp"
         }
       ],
       "contentSource": "screenshot",

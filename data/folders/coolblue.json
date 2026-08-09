@@ -8,30 +8,30 @@
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "pageCount": 4,
-      "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p1.webp",
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/coolblue-2026-w32-viewerimg-p1.webp",
-          "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p1-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p1-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "/screenshots/coolblue-2026-w32-viewerimg-p2.webp",
-          "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p2-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p2.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p2-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/coolblue-2026-w32-viewerimg-p3.webp",
-          "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p3-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p3.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p3-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "/screenshots/coolblue-2026-w32-viewerimg-p7.webp",
-          "thumbnailUrl": "/screenshots/coolblue-2026-w32-viewerimg-p7-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p7.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/coolblue-2026-w32-viewerimg-p7-thumb.webp",
           "deals": []
         }
       ],

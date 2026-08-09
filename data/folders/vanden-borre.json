@@ -11,15 +11,15 @@
 			"pages": [
 				{
 					"pageNumber": 1,
-					"imageUrl": "/screenshots/vanden-borre-2026-w32-pdfimg-p1.webp",
-					"thumbnailUrl": "/screenshots/vanden-borre-2026-w32-pdfimg-p1-thumb.webp",
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/vanden-borre-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/vanden-borre-2026-w32-pdfimg-p1-thumb.webp",
 					"deals": []
 				}
 			],
 			"pdfUrl": "https://www.vandenborre.be/web/pdf/Bebat_Affiche_Artikel%2074_A4%20-%20NL.pdf",
 			"contentSource": "pdf",
 			"scrapedAt": "2026-08-04T18:36:03.487Z",
-			"thumbnailUrl": "/screenshots/vanden-borre-2026-w32-pdfimg-p1.webp"
+			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/vanden-borre-2026-w32-pdfimg-p1.webp"
 		}
 	],
 	"deals": [

@@ -45,12 +45,19 @@ for (const { slug, pages, embed, pdf } of folders) {
 
   // ALDI's captures are .jpg; everything else is .webp. Match both.
   const imgs = [...new Set(
-    [...html.matchAll(/\/screenshots\/[a-z0-9-]+\.(?:webp|jpg|png)/g)].map(m => m[0]),
+    // Absolute (blob storage) first, then site-relative. Matching only the
+    // relative form silently stripped the origin off a blob URL and tested a
+    // local file instead — a green run that proved nothing about production.
+    [
+      ...html.matchAll(
+        /https?:\/\/[^"'\s]+?\/screenshots\/[a-z0-9-]+\.(?:webp|jpg|png)|(?<![\w:/])\/screenshots\/[a-z0-9-]+\.(?:webp|jpg|png)/g,
+      ),
+    ].map((m) => m[0]),
   )].filter(u => !u.includes("-thumb"));
 
   let served = 0, bytes = 0;
   for (const u of imgs) {
-    const r = await fetch(BASE + u);
+    const r = await fetch(u.startsWith("http") ? u : BASE + u);
     if (r.ok) { const b = await r.arrayBuffer(); if (b.byteLength > 1000) { served++; bytes += b.byteLength; } }
   }
 
