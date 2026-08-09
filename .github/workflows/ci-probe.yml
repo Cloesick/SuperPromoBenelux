@@ -1,0 +1,21 @@
+# Minimal probe: does ANY workflow start in this repository?
+#
+# Every run since 2026-08-07 14:49 ended in startup_failure with zero jobs,
+# across all seven workflows, while the files themselves validate and Actions
+# is enabled. That pattern points at something above the workflow layer —
+# billing, a spending limit, or the runner allocation itself.
+#
+# This does nothing but echo. If it also fails to start, the cause is
+# account-level and no change to our workflows can fix it. If it succeeds,
+# the problem is specific to the other files and we look there.
+name: CI probe
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "Runner allocated. Actions can start."
