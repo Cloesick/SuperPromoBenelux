@@ -69,6 +69,11 @@ const RETAILERS = {
   gifi: { account: 'gifi' },
   alvo: { account: 'alvo' },
   'supra-bazar': { account: 'suprabazar' },
+  // batch 5 — found by scripts/discover-folder-sources.mts, which crawls the
+  // retailer's own site for a leaflet platform. Both were rendering a
+  // screenshot of a promo page instead of the folder they actually publish.
+  etos: { account: 'etos', tpl: (w, y) => `https://view.publitas.com/etos/etos-week-${w}-${y}/page/1` },
+  mediamarkt: { account: 'mediamarkt-be' },
   // Lidl runs a white-labeled Publitas on folder-nl.lidl.be with a date-range
   // slug (nl-folder-DD-MM-DD-MM). No account root; generate plausible ranges for
   // the current week (Mon–Sat main + Thu–Wed non-food) and harvest the first hit.

@@ -1,20 +1,26 @@
 {
-  "generatedAt": "2026-08-08T20:52:35.465Z",
+  "generatedAt": "2026-08-09T10:35:07.002Z",
   "retailers": [
     {
-      "slug": "coolblue",
-      "name": "Coolblue",
+      "slug": "etos",
+      "name": "Etos",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-08T20:52:34.886Z",
+      "scrapedAt": "2026-08-09T10:35:06.622Z",
       "folderCount": 1,
-      "dealCount": 22,
+      "dealCount": 12,
       "hasEmbed": false,
-      "hasPdf": false,
+      "hasPdf": true,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": []
+      "probeResults": [
+        {
+          "url": "https://view.publitas.com/28/3261309/pdfs/d4139031-197b-4cb8-87a7-eab66c122994.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Etos%2520-%2520ETOS%2520Week%252032%25202026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
     }
   ],
   "summary": {
