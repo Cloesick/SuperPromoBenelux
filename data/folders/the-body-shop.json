@@ -11,39 +11,39 @@
 			"pages": [
 				{
 					"pageNumber": 1,
-					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p1.webp",
-					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p1-thumb.webp",
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p1-thumb.webp",
 					"deals": []
 				},
 				{
 					"pageNumber": 2,
-					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p2.webp",
-					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p2-thumb.webp",
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p2-thumb.webp",
 					"deals": []
 				},
 				{
 					"pageNumber": 3,
-					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p3.webp",
-					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p3-thumb.webp",
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p3-thumb.webp",
 					"deals": []
 				},
 				{
 					"pageNumber": 4,
-					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p4.webp",
-					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p4-thumb.webp",
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p4-thumb.webp",
 					"deals": []
 				},
 				{
 					"pageNumber": 5,
-					"imageUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p5.webp",
-					"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p5-thumb.webp",
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p5-thumb.webp",
 					"deals": []
 				}
 			],
 			"pdfUrl": "https://cdn.shopify.com/s/files/1/0840/6679/5785/files/The_Body_Shop_Gender_Pay_Gap_Report_2025.pdf?v=1775131633",
 			"contentSource": "pdf",
 			"scrapedAt": "2026-08-05T22:30:34.086Z",
-			"thumbnailUrl": "/screenshots/the-body-shop-2026-w32-pdfimg-p1.webp"
+			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/the-body-shop-2026-w32-pdfimg-p1.webp"
 		}
 	],
 	"deals": [

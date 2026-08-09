@@ -59,3 +59,8 @@ next-env.d.ts
 
 # Nested checkout of the DIY sibling site; kept from the live repo.
 diysuperpromobelgiebram/
+
+# Leaflet page images live in Vercel Blob, not git. The scraper uploads them
+# and folder JSON stores absolute URLs; committing them added ~200 MB per run
+# for files regenerated weekly and never diffed.
+/public/screenshots

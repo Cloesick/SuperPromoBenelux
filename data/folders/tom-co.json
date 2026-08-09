@@ -8,42 +8,42 @@
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "pageCount": 6,
-      "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p1.webp",
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/tom-co-2026-w32-viewerimg-p1.webp",
-          "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p1-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p1-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "/screenshots/tom-co-2026-w32-viewerimg-p2.webp",
-          "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p2-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p2.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p2-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/tom-co-2026-w32-viewerimg-p4.webp",
-          "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p4-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p4.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p4-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "/screenshots/tom-co-2026-w32-viewerimg-p6.webp",
-          "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p6-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p6.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p6-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "/screenshots/tom-co-2026-w32-viewerimg-p8.webp",
-          "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p8-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p8.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p8-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "/screenshots/tom-co-2026-w32-viewerimg-p10.webp",
-          "thumbnailUrl": "/screenshots/tom-co-2026-w32-viewerimg-p10-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p10.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p10-thumb.webp",
           "deals": []
         }
       ],

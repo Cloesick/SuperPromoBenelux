@@ -103,7 +103,7 @@ jobs:
           # data/products.db, the SQLite archive that is rewritten wholesale on
           # every run and is gitignored for exactly that reason. Do not add it
           # here: nothing at runtime reads it, and it recreates its own schema.
-          git add -A -f data/folders data/health.json public/screenshots || true
+          git add -A -f data/folders data/health.json || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit."

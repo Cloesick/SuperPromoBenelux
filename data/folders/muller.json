@@ -8,13 +8,13 @@
       "validFrom": "2026-08-02",
       "validUntil": "2026-08-08",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/muller-2026-w32-viewerimg-p1.webp",
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/muller-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/muller-2026-w32-viewerimg-p1.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/muller-2026-w32-viewerimg-p1.webp",
           "deals": [],
-          "thumbnailUrl": "/screenshots/muller-2026-w32-viewerimg-p1-thumb.webp"
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/muller-2026-w32-viewerimg-p1-thumb.webp"
         }
       ],
       "contentSource": "screenshot",

@@ -8,25 +8,25 @@
       "validFrom": "2026-08-03",
       "validUntil": "2026-08-09",
       "pageCount": 3,
-      "thumbnailUrl": "/screenshots/ikea-2026-w32-viewerimg-p1.webp",
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/ikea-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p1.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/ikea-2026-w32-viewerimg-p1.webp",
           "deals": [],
-          "thumbnailUrl": "/screenshots/ikea-2026-w32-viewerimg-p1-thumb.webp"
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/ikea-2026-w32-viewerimg-p1-thumb.webp"
         },
         {
           "pageNumber": 2,
-          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p2.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/ikea-2026-w32-viewerimg-p2.webp",
           "deals": [],
-          "thumbnailUrl": "/screenshots/ikea-2026-w32-viewerimg-p2-thumb.webp"
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/ikea-2026-w32-viewerimg-p2-thumb.webp"
         },
         {
           "pageNumber": 3,
-          "imageUrl": "/screenshots/ikea-2026-w32-viewerimg-p14.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/ikea-2026-w32-viewerimg-p14.webp",
           "deals": [],
-          "thumbnailUrl": "/screenshots/ikea-2026-w32-viewerimg-p14-thumb.webp"
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/ikea-2026-w32-viewerimg-p14-thumb.webp"
         }
       ],
       "contentSource": "screenshot",

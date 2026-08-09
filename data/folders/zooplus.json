@@ -8,12 +8,12 @@
       "validFrom": "2026-08-02",
       "validUntil": "2026-08-08",
       "pageCount": 1,
-      "thumbnailUrl": "/screenshots/zooplus-2026-w32-viewerimg-p1.webp",
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/zooplus-2026-w32-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "/screenshots/zooplus-2026-w32-viewerimg-p1.webp",
-          "thumbnailUrl": "/screenshots/zooplus-2026-w32-viewerimg-p1-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/zooplus-2026-w32-viewerimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/zooplus-2026-w32-viewerimg-p1-thumb.webp",
           "deals": []
         }
       ],
