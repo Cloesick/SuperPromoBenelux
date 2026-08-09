@@ -18,7 +18,7 @@
 			"mode": "pages",
 			"minPages": 20,
 			"observedPages": 34,
-			"expired": false
+			"expired": true
 		},
 		"alvo": {
 			"mode": "pages",
@@ -48,7 +48,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"brico": {
 			"mode": "pages",
@@ -78,7 +78,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"douglas": {
 			"mode": "pages",
@@ -94,8 +94,8 @@
 		},
 		"etos": {
 			"mode": "pages",
-			"minPages": null,
-			"observedPages": 1,
+			"minPages": 18,
+			"observedPages": 31,
 			"expired": false
 		},
 		"gamma": {
@@ -178,8 +178,8 @@
 		},
 		"mediamarkt": {
 			"mode": "pages",
-			"minPages": null,
-			"observedPages": 1,
+			"minPages": 16,
+			"observedPages": 27,
 			"expired": false
 		},
 		"medpets": {
@@ -198,7 +198,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"plus": {
 			"mode": "pages",
@@ -210,7 +210,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"rossmann": {
 			"mode": "pages",
@@ -234,7 +234,7 @@
 			"mode": "pages",
 			"minPages": 3,
 			"observedPages": 5,
-			"expired": false
+			"expired": true
 		},
 		"tom-co": {
 			"mode": "pages",
@@ -270,7 +270,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"zalando": {
 			"mode": "empty",
@@ -282,7 +282,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		}
 	}
 }

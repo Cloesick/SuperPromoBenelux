@@ -6,6 +6,10 @@ export class EtosScraper extends BaseScraper {
 		name: "Etos",
 		folderTitle: "Etos promoties",
 		folderUrls: [
+			// Etos publishes a real leaflet on Publitas — found by
+			// scripts/discover-folder-sources.mts. Its own /folder page 403s to
+			// automation, which is why this was only ever a promo-page screenshot.
+			"https://view.publitas.com/etos/",
 			"https://www.etos.nl/aanbiedingen",
 			"https://www.etos.nl/folder",
 			"https://www.etos.nl/acties",

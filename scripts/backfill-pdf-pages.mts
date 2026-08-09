@@ -25,6 +25,7 @@ import path from "path";
 import sharp from "sharp";
 import puppeteer from "rebrowser-puppeteer";
 import { renderPdfToImages, pdfOrigin } from "../src/scrapers/pdfRender";
+import { storePageImage } from "../src/scrapers/pageStorage";
 import { isNonLeafletPdf } from "../src/lib/folderRenderability";
 
 
@@ -168,12 +169,20 @@ for (const { slug, pdfUrl } of candidates) {
 				.webp({ quality: THUMB_QUALITY })
 				.toBuffer();
 
+			// Local copies stay for OCR and offline development; the URL recorded
+			// is whatever storePageImage returns. This used to hardcode
+			// /screenshots/… — which was fine while images were committed, and
+			// silently wrong the moment they moved to blob storage and
+			// public/screenshots was gitignored: every page this script produced
+			// would 404 in production while looking perfect locally.
 			fs.writeFileSync(path.join(shotsDir, `${base}.webp`), img);
 			fs.writeFileSync(path.join(shotsDir, `${base}-thumb.webp`), thumb);
+			const storedPage = await storePageImage(`${base}.webp`, img, (m) => console.log(m));
+			const storedThumb = await storePageImage(`${base}-thumb.webp`, thumb, (m) => console.log(m));
 			written.push({
 				pageNumber: n,
-				imageUrl: `/screenshots/${base}.webp`,
-				thumbnailUrl: `/screenshots/${base}-thumb.webp`,
+				imageUrl: storedPage.url,
+				thumbnailUrl: storedThumb.url,
 				deals: [],
 			});
 		}

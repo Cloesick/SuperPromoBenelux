@@ -1,45 +1,191 @@
 {
-  "retailer": "mediamarkt",
-  "folders": [
-    {
-      "id": "mediamarkt-2026-w32-folder",
-      "retailerSlug": "mediamarkt",
-      "title": "MediaMarkt folder",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "pageCount": 1,
-      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-viewerimg-p1.webp",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-viewerimg-p1.webp",
-          "deals": [],
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-viewerimg-p1-thumb.webp"
-        }
-      ],
-      "contentSource": "publitas",
-      "scrapedAt": "2026-08-05T21:36:37.895Z"
-    }
-  ],
-  "deals": [
-    {
-      "id": "html-0",
-      "product": "Digitale flyer bij MediaMarkt",
-      "imageUrl": "https://cms-images.mmst.eu/nzwrdbjwhn3t/2BXXBGTUp2Mq7yFhx9NnVG/68a46a37adf5d12bbf5d290c8fe1aa36/mediamarkt-digitale-flyer.png?q=70&fm=webp&w=640&h=360",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "mediamarkt"
-    }
-  ],
-  "scrapedAt": "2026-08-05T21:36:59.428Z",
-  "sourceUrls": [
-    "https://www.mediamarkt.be/nl/shop/folder.html",
-    "https://www.mediamarkt.be/nl/campaign/folder#main-content",
-    "https://www.mediamarkt.be/nl/campaign/folder#main-content"
-  ],
-  "methods": [
-    "publitas",
-    "screenshot",
-    "html"
-  ]
+	"retailer": "mediamarkt",
+	"folders": [
+		{
+			"id": "mediamarkt-3044383-folder",
+			"retailerSlug": "mediamarkt",
+			"title": "A Media Markt BE - 26MM_Inspiratiemagazine_WK_NL",
+			"validFrom": "2026-08-09",
+			"validUntil": "2026-08-19",
+			"pageCount": 27,
+			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p1.webp",
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p1.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p2.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p3.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p4.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p5.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p5-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 6,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p6.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p6-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 7,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p7.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p7-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 8,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p8.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p8-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 9,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p9.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p9-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 10,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p10.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p10-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 11,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p11.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p11-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 12,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p12.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p12-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 13,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p13.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p13-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 14,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p14.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p14-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 15,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p15.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p15-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 16,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p16.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p16-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 17,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p17.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p17-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 18,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p18.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p18-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 19,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p19.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p19-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 20,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p20.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p20-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 21,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p21.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p21-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 22,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p22.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p22-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 23,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p23.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p23-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 24,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p24.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p24-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 25,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p25.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p25-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 26,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p26.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p26-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 27,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p27.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w32-pdfimg-p27-thumb.webp",
+					"deals": []
+				}
+			],
+			"embedUrl": "https://view.publitas.com/mediamarkt-be/26mm_inspiratiemagazine_wk_nl/?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/2411/3044383/pdfs/d6f78163-1e3a-45ad-b7f5-0673b7560e55.pdf",
+			"contentSource": "publitas",
+			"scrapedAt": "2026-08-09T10:26:20.901Z"
+		}
+	],
+	"deals": [],
+	"scrapedAt": "2026-08-09T10:26:20.901Z",
+	"sourceUrls": [
+		"https://view.publitas.com/mediamarkt-be/26mm_inspiratiemagazine_wk_nl/"
+	],
+	"methods": [
+		"publitas",
+		"pdf"
+	]
 }
