@@ -1,0 +1,129 @@
+# One-off (re-runnable) migration of committed page images into Vercel Blob.
+#
+# The images live in git today: ~210 MB, rewritten by every scrape. Blob moves
+# them out. The upload needs BLOB_READ_WRITE_TOKEN, which exists as a repository
+# secret — visible only to a workflow run, never to the API or to a laptop. So
+# the migration runs here rather than on someone's machine, and nobody has to
+# copy the credential anywhere.
+#
+# Run it from the Actions tab: "Migrate images to Vercel Blob" -> Run workflow.
+# Start with mode=dry-run to see what would be uploaded.
+#
+# Safe to re-run: filenames carry the ISO week, uploads overwrite the same key,
+# and URLs already absolute are skipped. A partial failure leaves the folders
+# that did not migrate still pointing at the committed images, so the site keeps
+# working throughout.
+#
+# This deliberately does NOT delete public/screenshots. Removing them is a
+# separate commit, made only once production is confirmed rendering from Blob.
+
+name: Migrate images to Vercel Blob
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run (report only) or migrate (upload and rewrite)"
+        required: true
+        default: dry-run
+        type: choice
+        options:
+          - dry-run
+          - migrate
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
+        run: npm ci --legacy-peer-deps
+
+      - name: Fail early if the token is missing
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: |
+          if [ -z "$BLOB_READ_WRITE_TOKEN" ]; then
+            echo "BLOB_READ_WRITE_TOKEN is not set as a repository secret."
+            echo "Settings -> Secrets and variables -> Actions -> New repository secret."
+            exit 1
+          fi
+          echo "Token present (${#BLOB_READ_WRITE_TOKEN} characters)."
+
+      # A round trip before touching any folder data: prove the store accepts a
+      # write and serves it back publicly. A token that exists but addresses a
+      # store the project cannot write to would otherwise fail 742 times.
+      - name: Round-trip test the Blob store
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: |
+          node --input-type=module -e '
+            const { put, del } = await import("@vercel/blob");
+            const body = Buffer.from("superpromo blob round-trip");
+            const res = await put("_healthcheck/round-trip.txt", body, {
+              access: "public",
+              addRandomSuffix: false,
+              allowOverwrite: true,
+            });
+            const back = await fetch(res.url);
+            if (!back.ok) throw new Error(`read back failed: ${back.status}`);
+            const text = await back.text();
+            if (text !== body.toString()) throw new Error("content mismatch");
+            console.log("Round trip OK:", res.url);
+            await del(res.url);
+            console.log("Cleaned up the health-check blob.");
+          '
+
+      - name: Migrate
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: |
+          if [ "${{ inputs.mode }}" = "dry-run" ]; then
+            node scripts/migrate-images-to-blob.mjs --dry-run
+          else
+            node scripts/migrate-images-to-blob.mjs
+          fi
+
+      # Every page image should now be an absolute Blob URL. Checking here means
+      # a bad rewrite is caught before it is committed, not after it ships.
+      - name: Report what the folder data now points at
+        if: inputs.mode == 'migrate'
+        run: |
+          node -e "
+            const fs = require('fs');
+            let local = 0, remote = 0;
+            for (const f of fs.readdirSync('data/folders').filter(n => n.endsWith('.json'))) {
+              const d = JSON.parse(fs.readFileSync('data/folders/' + f, 'utf8'));
+              for (const folder of d.folders ?? [])
+                for (const p of folder.pages ?? [])
+                  (p.imageUrl?.startsWith('/') ? local++ : remote++);
+            }
+            console.log('page images -> blob:', remote, '| still local:', local);
+            if (remote === 0) { console.error('Nothing migrated.'); process.exit(1); }
+          "
+
+      - name: Commit rewritten folder data
+        if: inputs.mode == 'migrate'
+        run: |
+          if git diff --quiet -- data/folders; then
+            echo "No folder data changed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/folders
+          git commit -m "chore(blob): point folder pages at Vercel Blob [skip ci]"
+          git push
