@@ -20,11 +20,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		.map((r) => ({ retailer: r, folder: getCurrentFolder(r.slug), scrapedAt: getScrapedAt(r.slug) }))
 		.filter(({ retailer, folder }) => isFolderIndexable(folder, retailer.slug))
 		.filter(({ scrapedAt }) => scrapedAt !== null)
-		.map(({ retailer, scrapedAt }) => ({
+		.map(({ retailer, folder, scrapedAt }) => ({
 			url: `${baseUrl}/folders/${retailer.slug}`,
 			lastModified: scrapedAt as Date,
 			changeFrequency: "weekly" as const,
 			priority: 0.8,
+			// Leaflet pages are the site's only original imagery, and "aldi folder"
+			// is as often an image search as a web one. Without <image:image> entries
+			// Google has to discover 798 blob-hosted images by crawling alone, and
+			// they live on a different origin to the page that shows them.
+			images: (folder?.pages ?? [])
+				.map((page) => page.imageUrl)
+				.filter((url): url is string => !!url)
+				.map((url) => (url.startsWith("/") ? `${baseUrl}${url}` : url))
+				// 1,000 images per URL is the sitemap limit; no leaflet approaches it,
+				// but a runaway scrape should not produce an invalid sitemap.
+				.slice(0, 1000),
 		}));
 
 	const latestScrape = retailerPages.reduce<Date>((latest, p) => {
