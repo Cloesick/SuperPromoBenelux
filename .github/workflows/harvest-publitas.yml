@@ -8,7 +8,12 @@ name: Harvest Publitas folders
 
 on:
   schedule:
-    - cron: "20 5 * * *" # daily 05:20 UTC
+    # The harvested retailers publish weekly too, so this follows the same
+    # days as the scrape (an hour later, so the two never contend for the
+    # same folder files). Daily meant six wasted runs in seven.
+    - cron: "20 5 * * 1" # Monday
+    - cron: "20 5 * * 3" # Wednesday
+    - cron: "20 5 * * 4" # Thursday
   push:
     branches: [main]
     paths:

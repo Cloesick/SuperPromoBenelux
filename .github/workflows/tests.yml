@@ -3,7 +3,21 @@ name: Tests
 on:
   push:
     branches: [main]
+    # The scrape and harvest commit folder data and nothing else. Running
+    # the full suite — build plus 1000+ Cypress tests — on data that no test
+    # asserts against was the single largest avoidable cost in CI.
+    paths-ignore:
+      - "data/folders/**"
+      - "data/health.json"
+      - "public/screenshots/**"
   pull_request: {}
+
+# Each push to a pull request starts a fresh run and the previous one keeps
+# going to completion. Ten pushes in an evening meant ten full suites, most
+# of them already superseded. Cancel the stale ones.
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:

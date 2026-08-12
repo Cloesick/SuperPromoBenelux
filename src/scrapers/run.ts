@@ -25,14 +25,30 @@ const DATA_DIR = path.resolve(process.cwd(), "data", "folders");
 // ---------------------------------------------------------------------------
 
 async function main() {
-	const target = process.argv[2];
+	// Accepts several slugs, space- or comma-separated, so a scheduled run can
+	// scrape one publication-day group in a single process. Launching a browser
+	// per retailer costs more than the scraping does.
+	const requested = process.argv
+		.slice(2)
+		.flatMap((arg) => arg.split(","))
+		.map((s) => s.trim())
+		.filter(Boolean);
 
-	const toRun = target
-		? scrapers.filter((s) => s.retailerSlug === target)
-		: scrapers;
+	const known = new Set(scrapers.map((s) => s.retailerSlug));
+	const unknown = requested.filter((s) => !known.has(s));
+	if (unknown.length > 0) {
+		// Warn rather than abort: a group list that names a retailer harvested by
+		// Apify rather than scraped here should not cost the whole run.
+		console.warn(`Ignoring ${unknown.length} unknown slug(s): ${unknown.join(", ")}`);
+	}
+
+	const toRun =
+		requested.length > 0
+			? scrapers.filter((s) => requested.includes(s.retailerSlug))
+			: scrapers;
 
 	if (toRun.length === 0) {
-		console.error(`Unknown retailer: ${target}`);
+		console.error(`No known retailer in: ${requested.join(", ") || "(none given)"}`);
 		console.log(`Available: ${scrapers.map((s) => s.retailerSlug).join(", ")}`);
 		process.exit(1);
 	}

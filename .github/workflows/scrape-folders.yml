@@ -2,9 +2,26 @@ name: Scrape folders
 
 on:
   schedule:
-    # Daily (UTC). Adjust if you want retailer-day-specific runs.
-    - cron: "30 4 * * *"
-  workflow_dispatch: {}
+    # Scrape on the days retailers actually publish, not every day.
+    #
+    # Every retailer with a named folderDay in retailers.ts turns over once
+    # a week, so a daily full scrape re-read 45 retailers six times over to
+    # find nothing changed. scripts/scrape-targets.mts derives each day's
+    # group from that field, so adding a retailer puts it in the right group
+    # without touching this file.
+    - cron: "30 4 * * 1" # Monday    — 15 retailers (incl. weekly-but-unstated)
+    - cron: "30 4 * * 3" # Wednesday —  3
+    - cron: "30 4 * * 4" # Thursday  —  1
+    # The `doorlopend` group: 14 retailers with rolling promotions and no
+    # folder at all — their median page count is 1, against 20-34 for every
+    # retailer with a named day. Monthly, for deals and in case one appears.
+    - cron: "0 3 1 * *"  # 1st of the month — 14
+  workflow_dispatch:
+    inputs:
+      retailers:
+        description: "Slugs to scrape (space-separated). Empty = today's group."
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -38,7 +55,21 @@ jobs:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: npm ci --legacy-peer-deps
 
+      - name: Choose which retailers to scrape
+        id: targets
+        run: |
+          if [ -n "${{ github.event.inputs.retailers }}" ]; then
+            TARGETS="${{ github.event.inputs.retailers }}"
+          elif [ "${{ github.event.schedule }}" = "0 3 1 * *" ]; then
+            TARGETS=$(npx tsx scripts/scrape-targets.mts --monthly)
+          else
+            TARGETS=$(npx tsx scripts/scrape-targets.mts)
+          fi
+          echo "Scraping: ${TARGETS:-<none>}"
+          echo "targets=$TARGETS" >> "$GITHUB_OUTPUT"
+
       - name: Scrape
+        if: steps.targets.outputs.targets != ''
         env:
           # GitHub-hosted runners have Chrome installed.
           # We use it because puppeteer_skip_download=true disables bundled Chromium.
@@ -49,7 +80,7 @@ jobs:
           # back to /screenshots paths and the commit step below still works —
           # so setting the secret is the only action needed to switch over.
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
-        run: npm run scrape
+        run: npm run scrape -- ${{ steps.targets.outputs.targets }}
 
       - name: Health check
         run: |
