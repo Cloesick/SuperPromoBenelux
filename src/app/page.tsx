@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { retailers } from "@/lib/retailers";
 import { RetailerCard } from "@/components/RetailerCard";
+import { getFolderPreview } from "@/lib/folders";
 import { AdBanner } from "@/components/AdBanner";
 import { Facebook, TrendingDown, Bell, Zap } from "lucide-react";
 import Link from "next/link";
@@ -94,7 +95,11 @@ export default function HomePage() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {retailers.map((retailer) => (
-            <RetailerCard key={retailer.slug} retailer={retailer} />
+            <RetailerCard
+              key={retailer.slug}
+              retailer={retailer}
+              preview={getFolderPreview(retailer.slug) ?? undefined}
+            />
           ))}
         </div>
       </section>

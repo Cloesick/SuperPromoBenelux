@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getFolderPreviews } from "@/lib/folders";
 import { retailers } from "@/lib/retailers";
 import {
 	JsonLd,
@@ -68,7 +69,10 @@ export default function FoldersPage() {
 				Elke week bijgewerkt.
 			</p>
 
-			<FoldersClient retailers={retailers} />
+			<FoldersClient
+				retailers={retailers}
+				previews={getFolderPreviews(retailers.map((r) => r.slug))}
+			/>
 
 			{/* SEO content */}
 			<section className="mt-8 mb-12">
