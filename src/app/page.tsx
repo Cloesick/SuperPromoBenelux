@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { retailers } from "@/lib/retailers";
 import { RetailerCard } from "@/components/RetailerCard";
 import { getFolderPreview } from "@/lib/folders";
-import { AdBanner } from "@/components/AdBanner";
+import { AdPlacements } from "@/components/AdPlacements";
 import { Facebook, TrendingDown, Bell, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -104,10 +104,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Ad Banner */}
-      <div className="max-w-6xl mx-auto px-4">
-        <AdBanner adSlot="0000000000" />
-      </div>
+      {/* Ads. Slot ids come from NEXT_PUBLIC_ADSENSE_SLOTS_* so they can be
+          set without a deploy; renders nothing until they are. */}
+      <AdPlacements position="mid" />
 
       {/* CTA Facebook */}
       <section className="bg-blue-50 border-y border-blue-100">

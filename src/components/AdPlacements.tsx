@@ -127,7 +127,12 @@ export function AdPlacements({ position }: { position: AdPlacementPosition }) {
 		};
 	}, []);
 
-	const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+	// Same baked publisher id AdSenseGate uses. Without this fallback a live
+	// site with valid slot ids still showed nothing, because the env var was
+	// never set — two places disagreeing about where the publisher id comes
+	// from is how ads end up silently absent.
+	const client =
+		process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-3766515514893974";
 
 	const slotIds = useMemo(() => pickSlotIds(pathname, position), [pathname, position]);
 
