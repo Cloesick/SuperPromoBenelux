@@ -12,6 +12,8 @@
 // These predicates are the single source of truth for both.
 // ---------------------------------------------------------------------------
 
+import { getRetailerBySlug } from "./retailers";
+
 /**
  * Hosts that are not leaflet viewers at all: consent managers, CDN client
  * storage and tracking bridges that earlier scrapes recorded as an embedUrl.
@@ -177,6 +179,43 @@ export interface IndexableFolder {
 	embedUrl?: string | null;
 	pdfUrl?: string | null;
 	validUntil?: string | null;
+	/** How the folder was obtained — see isPromoPageScreenshot. */
+	contentSource?: string | null;
+}
+
+/**
+ * Sources that mean "a real leaflet from a publishing platform".
+ *
+ * Everything else — chiefly `screenshot` — means the scraper photographed a
+ * promotions web page because it could not find a folder.
+ */
+const LEAFLET_SOURCES = new Set(["publitas", "ipaper", "issuu", "yumpu", "pdf"]);
+
+/**
+ * True when a "folder" is really a screenshot of a promotions page.
+ *
+ * Fourteen retailers publish no leaflet at all — Zalando, Coolblue, bol, H&M,
+ * IKEA, Douglas among them. Their retailers.ts cadence says `doorlopend`
+ * (rolling promotions), and their median page count is 1 against 20-34 for
+ * every retailer with a named publication day.
+ *
+ * Those pages render honestly, but they are thin: one screenshot of a webpage,
+ * on a site whose other 32 pages are 20-to-76-page leaflets. Submitting them
+ * dilutes what Google sees of a site that is genuinely strong on the rest.
+ *
+ * The test is the content, not the retailer: a `doorlopend` retailer that
+ * starts publishing a real leaflet — the-body-shop already serves a 5-page PDF
+ * — is indexed like any other. Nothing needs updating when that changes.
+ */
+export function isPromoPageScreenshot(
+	folder?: IndexableFolder | null,
+	retailerSlug?: string,
+): boolean {
+	if (!folder || !retailerSlug) return false;
+	const retailer = getRetailerBySlug(retailerSlug);
+	const cadence = (retailer?.seo?.folderDay ?? "").toLowerCase().trim();
+	if (cadence !== "doorlopend") return false;
+	return !LEAFLET_SOURCES.has((folder.contentSource ?? "").toLowerCase());
 }
 
 /**
@@ -198,6 +237,8 @@ export function isFolderIndexable(
 ): boolean {
 	if (!folder) return false;
 	if (isFolderExpired(folder.validUntil)) return false;
+	// A photograph of a promo page is not a folder worth submitting.
+	if (isPromoPageScreenshot(folder, retailerSlug)) return false;
 	return (
 		(folder.pages?.length ?? 0) > 0 ||
 		hasUsableEmbed(folder.embedUrl, retailerSlug) ||

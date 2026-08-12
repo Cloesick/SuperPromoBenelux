@@ -8,6 +8,7 @@ import {
 	isFolderExpired,
 	isFolderIndexable,
 	isNonLeafletPdf,
+	isPromoPageScreenshot,
 } from "./folderRenderability";
 
 // ---------------------------------------------------------------------------
@@ -220,5 +221,40 @@ describe("isNonLeafletPdf", () => {
 		const url = "https://view.publitas.com/171/3276357/pdfs/b273beeb.pdf";
 		expect(isNonLeafletPdf(url)).toBe(false);
 		expect(hasUsablePdf(url)).toBe(true);
+	});
+});
+
+describe("isPromoPageScreenshot", () => {
+	const future = "2099-01-01";
+
+	it("rejects a screenshot folder from a retailer with no leaflet", () => {
+		// Coolblue's cadence is `doorlopend` — rolling promotions, no folder —
+		// and its four "pages" are screenshots of its aanbieding page.
+		const folder = { pages: [{}, {}, {}, {}], contentSource: "screenshot", validUntil: future };
+		expect(isPromoPageScreenshot(folder, "coolblue")).toBe(true);
+		expect(isFolderIndexable(folder, "coolblue")).toBe(false);
+	});
+
+	it("keeps a doorlopend retailer that does publish a real leaflet", () => {
+		// the-body-shop is doorlopend too, but serves a genuine 5-page PDF. The
+		// test is the content, not the retailer, so nothing needs updating when
+		// one of these starts publishing.
+		const folder = { pages: [{}, {}, {}, {}, {}], contentSource: "pdf", validUntil: future };
+		expect(isPromoPageScreenshot(folder, "the-body-shop")).toBe(false);
+		expect(isFolderIndexable(folder, "the-body-shop")).toBe(true);
+	});
+
+	it("leaves retailers with a named publication day alone", () => {
+		// Aveve's scrape currently falls back to a screenshot, but Aveve does
+		// publish a weekly folder. Excluding it would hide a real page over a
+		// scraping gap.
+		const folder = { pages: [{}, {}, {}], contentSource: "screenshot", validUntil: future };
+		expect(isPromoPageScreenshot(folder, "aveve")).toBe(false);
+		expect(isFolderIndexable(folder, "aveve")).toBe(true);
+	});
+
+	it("is a no-op without a retailer or folder", () => {
+		expect(isPromoPageScreenshot(null, "coolblue")).toBe(false);
+		expect(isPromoPageScreenshot({ pages: [{}] }, undefined)).toBe(false);
 	});
 });
