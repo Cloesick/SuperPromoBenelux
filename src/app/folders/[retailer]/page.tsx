@@ -247,15 +247,18 @@ export default async function RetailerPage({ params }: PageProps) {
 				<span className="text-gray-900">{retailer.name}</span>
 			</nav>
 
-			{/* Retailer header */}
-			<div className="flex items-center gap-4 mb-8">
+			{/* Retailer header.
+			    items-start, not items-center: on a phone the h1 wraps to two lines
+			    and the description adds a third, so centring left the logo floating
+			    beside the middle of the text block instead of its first line. */}
+			<div className="mb-8 flex items-start gap-4">
 				{isSvgLogo ? (
 					<Image
 						src={retailer.logo}
 						alt={`${retailer.name} logo`}
 						width={56}
 						height={56}
-						className="w-14 h-14 rounded-xl object-cover"
+						className="h-14 w-14 shrink-0 rounded-xl object-cover"
 						unoptimized
 						suppressHydrationWarning
 					/>
@@ -265,7 +268,7 @@ export default async function RetailerPage({ params }: PageProps) {
 						alt={`${retailer.name} logo`}
 						width={56}
 						height={56}
-						className="w-14 h-14 rounded-xl object-cover"
+						className="h-14 w-14 shrink-0 rounded-xl object-cover"
 						suppressHydrationWarning
 					/>
 				)}
@@ -275,28 +278,6 @@ export default async function RetailerPage({ params }: PageProps) {
 					</h1>
 					<p className="text-gray-600">{retailer.description}</p>
 				</div>
-			</div>
-
-			{/* Actions */}
-			<div className="flex flex-col sm:flex-row gap-4 mb-8">
-				<a
-					href={outboundUrl}
-					target="_blank"
-					rel="noopener noreferrer sponsored"
-					className="inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-lg transition"
-				>
-					<ExternalLink className="w-4 h-4" suppressHydrationWarning />
-					Bekijk promoties bij {retailer.name}
-				</a>
-				<a
-					href="https://www.facebook.com/groups/superpromobelgie"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-medium px-6 py-3 rounded-lg transition"
-				>
-					<Facebook className="w-4 h-4" suppressHydrationWarning />
-					Bekijk de beste deals in onze groep
-				</a>
 			</div>
 
 			{/* Folder viewer */}
@@ -313,6 +294,32 @@ export default async function RetailerPage({ params }: PageProps) {
 					</p>
 				</div>
 			)}
+
+			{/* Actions.
+			    These sit *below* the viewer deliberately. Both links leave the
+			    site, and above the fold on a phone they pushed the leaflet — the
+			    only reason anyone is on this page — some 800px down, behind two
+			    exits and the consent banner. */}
+			<div className="mt-8 flex flex-col gap-4 sm:flex-row">
+				<a
+					href={outboundUrl}
+					target="_blank"
+					rel="noopener noreferrer sponsored"
+					className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-100 px-6 py-3 font-medium text-gray-800 transition hover:bg-gray-200"
+				>
+					<ExternalLink className="w-4 h-4" suppressHydrationWarning />
+					Bekijk promoties bij {retailer.name}
+				</a>
+				<a
+					href="https://www.facebook.com/groups/superpromobelgie"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-6 py-3 font-medium text-white transition hover:bg-blue-800"
+				>
+					<Facebook className="w-4 h-4" suppressHydrationWarning />
+					Bekijk de beste deals in onze groep
+				</a>
+			</div>
 
 			{/* Ad Banner */}
 			<AdBanner adSlot="0000000000" />

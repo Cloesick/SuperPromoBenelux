@@ -70,3 +70,48 @@ export function getCurrentFoldersForVertical(
 	const slugs = new Set(getRetailerSlugsForVertical(vertical));
 	return getAllCurrentFolders().filter(({ slug }) => slugs.has(slug));
 }
+
+/**
+ * The bits of a folder a listing card needs, safe to hand to a client component.
+ *
+ * The index pages listed retailers as logo + category + a generic sentence and
+ * showed no leaflet at all — asking visitors to click on faith, on a site whose
+ * entire product is the leaflet. The cover, the page count and the validity
+ * window are all already in the scraped data; this is what carries them across
+ * the server/client boundary without shipping whole folder objects.
+ */
+export interface FolderPreview {
+	/** Absolute (blob) or site-relative cover image URL. */
+	coverUrl?: string;
+	pageCount: number;
+	validFrom?: string;
+	validUntil?: string;
+	expired: boolean;
+}
+
+/** Preview for one retailer, or null when it has no current folder. */
+export function getFolderPreview(retailerSlug: string): FolderPreview | null {
+	const folder = getCurrentFolder(retailerSlug);
+	if (!folder) return null;
+
+	const pages = folder.pages ?? [];
+	return {
+		// The folder thumbnail is the scraper's own choice of cover; page one is
+		// the fallback, because a folder that renders always has a first page.
+		coverUrl: folder.thumbnailUrl || pages[0]?.thumbnailUrl || pages[0]?.imageUrl,
+		pageCount: pages.length,
+		validFrom: folder.validFrom,
+		validUntil: folder.validUntil,
+		expired: isFolderExpired(folder.validUntil),
+	};
+}
+
+/** Previews keyed by slug, for the listing pages. */
+export function getFolderPreviews(slugs: string[]): Record<string, FolderPreview> {
+	const out: Record<string, FolderPreview> = {};
+	for (const slug of slugs) {
+		const preview = getFolderPreview(slug);
+		if (preview) out[slug] = preview;
+	}
+	return out;
+}

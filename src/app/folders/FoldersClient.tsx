@@ -3,11 +3,19 @@
 import { useCallback, useMemo, useState } from "react";
 import { RetailerCard } from "@/components/RetailerCard";
 import type { Retailer } from "@/lib/types";
+import type { FolderPreview } from "@/lib/folders";
 import type { LatLng } from "@/lib/geo";
 import { getNearestStoreDistanceKm, getNearestStores } from "@/lib/stores";
 import { NearMeFilter } from "@/components/NearMeFilter";
 
-export function FoldersClient({ retailers }: { retailers: Retailer[] }) {
+export function FoldersClient({
+  retailers,
+  previews = {},
+}: {
+  retailers: Retailer[];
+  /** Cover, page count and validity per slug, built on the server. */
+  previews?: Record<string, FolderPreview>;
+}) {
   const [userLocation, setUserLocation] = useState<{ label: string; location: LatLng } | null>(
     null
   );
@@ -76,7 +84,7 @@ export function FoldersClient({ retailers }: { retailers: Retailer[] }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {supermarkten.map((retailer: Retailer) => (
             <div key={retailer.slug}>
-              <RetailerCard retailer={retailer} />
+              <RetailerCard retailer={retailer} preview={previews[retailer.slug]} />
             </div>
           ))}
         </div>
@@ -88,7 +96,7 @@ export function FoldersClient({ retailers }: { retailers: Retailer[] }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {discounters.map((retailer: Retailer) => (
               <div key={retailer.slug}>
-                <RetailerCard retailer={retailer} />
+                <RetailerCard retailer={retailer} preview={previews[retailer.slug]} />
               </div>
             ))}
           </div>
