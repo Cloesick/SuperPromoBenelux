@@ -6,13 +6,13 @@
 			"mode": "pages",
 			"minPages": 10,
 			"observedPages": 18,
-			"expired": false
+			"expired": true
 		},
 		"albert-heijn": {
 			"mode": "pages",
 			"minPages": 6,
 			"observedPages": 10,
-			"expired": false
+			"expired": true
 		},
 		"aldi": {
 			"mode": "pages",
@@ -30,7 +30,7 @@
 			"mode": "pages",
 			"minPages": 1,
 			"observedPages": 3,
-			"expired": false
+			"expired": true
 		},
 		"bauhaus": {
 			"mode": "pages",
@@ -42,7 +42,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"boots": {
 			"mode": "pages",
@@ -54,19 +54,19 @@
 			"mode": "pages",
 			"minPages": 12,
 			"observedPages": 21,
-			"expired": false
+			"expired": true
 		},
 		"colruyt": {
 			"mode": "pages",
 			"minPages": 6,
 			"observedPages": 10,
-			"expired": false
+			"expired": true
 		},
 		"coolblue": {
 			"mode": "pages",
 			"minPages": 2,
 			"observedPages": 4,
-			"expired": false
+			"expired": true
 		},
 		"delhaize": {
 			"mode": "pages",
@@ -84,7 +84,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 2,
-			"expired": false
+			"expired": true
 		},
 		"e5": {
 			"mode": "pages",
@@ -96,13 +96,13 @@
 			"mode": "pages",
 			"minPages": 18,
 			"observedPages": 31,
-			"expired": false
+			"expired": true
 		},
 		"gamma": {
 			"mode": "pages",
 			"minPages": 20,
 			"observedPages": 34,
-			"expired": false
+			"expired": true
 		},
 		"gifi": {
 			"mode": "pages",
@@ -114,7 +114,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"hoogvliet": {
 			"mode": "pages",
@@ -138,13 +138,13 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"ikea": {
 			"mode": "pages",
 			"minPages": 1,
 			"observedPages": 3,
-			"expired": false
+			"expired": true
 		},
 		"jumbo": {
 			"mode": "pages",
@@ -156,25 +156,25 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"kruidvat": {
 			"mode": "pages",
 			"minPages": 36,
 			"observedPages": 61,
-			"expired": false
+			"expired": true
 		},
 		"lidl": {
 			"mode": "pages",
 			"minPages": 24,
 			"observedPages": 40,
-			"expired": false
+			"expired": true
 		},
 		"maxi-zoo": {
 			"mode": "pages",
 			"minPages": 7,
 			"observedPages": 12,
-			"expired": false
+			"expired": true
 		},
 		"mediamarkt": {
 			"mode": "pages",
@@ -186,7 +186,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"mr-bricolage": {
 			"mode": "pages",
@@ -216,7 +216,7 @@
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 2,
-			"expired": false
+			"expired": true
 		},
 		"spar": {
 			"mode": "pages",
@@ -240,19 +240,19 @@
 			"mode": "pages",
 			"minPages": 3,
 			"observedPages": 6,
-			"expired": false
+			"expired": true
 		},
 		"treac": {
 			"mode": "pages",
 			"minPages": 16,
 			"observedPages": 27,
-			"expired": false
+			"expired": true
 		},
 		"vanden-borre": {
 			"mode": "pages",
 			"minPages": null,
 			"observedPages": 1,
-			"expired": false
+			"expired": true
 		},
 		"welkoop": {
 			"mode": "pages",
@@ -276,7 +276,7 @@
 			"mode": "empty",
 			"minPages": null,
 			"observedPages": 0,
-			"expired": false
+			"expired": true
 		},
 		"zooplus": {
 			"mode": "pages",

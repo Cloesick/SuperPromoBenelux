@@ -2,335 +2,303 @@
   "retailer": "delhaize",
   "folders": [
     {
-      "id": "delhaize-2026-w32-folder",
+      "id": "delhaize-2026-w33-folder",
       "retailerSlug": "delhaize",
       "title": "Delhaize folder van de week",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "pageCount": 20,
-      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p1.webp",
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p1.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p1-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p1-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p2.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p2-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p2.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p2-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p4.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p4-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p4.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p4-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p6.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p6-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p6.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p6-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p8.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p8-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p8.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p8-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p10.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p10-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p10.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p10-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 7,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p12.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p12-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p12.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p12-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 8,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p14.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p14-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p14.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p14-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 9,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p16.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p16-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p16.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p16-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 10,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p18.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p18-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p18.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p18-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 11,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p22.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p22-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p22.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p22-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 12,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p24.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p24-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p24.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p24-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 13,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p26.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p26-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p26.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p26-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 14,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p28.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p28-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p28.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p28-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 15,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p30.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p30-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p30.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p30-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 16,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p34.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p34-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p34.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p34-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 17,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p36.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p36-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p36.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p36-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 18,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p38.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p38-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p38.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p38-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 19,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p40.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p40-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p40.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p40-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 20,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p44.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w32-viewerimg-p44-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p44.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/delhaize-2026-w33-viewerimg-p44-thumb.webp",
           "deals": []
         }
       ],
       "pdfUrl": "https://view.publitas.com/11013/3279495/pdfs/61b65885-0102-44c2-8811-ad8e4bb4f19b.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Delhaize%2520Belgium%2520NL%2520-%2520W32-2026-NL.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-07T04:24:34.331Z"
+      "scrapedAt": "2026-08-12T16:01:42.561Z"
     }
   ],
   "deals": [
     {
       "id": "html-0",
-      "product": "Delhaize Gele nectarine",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/ha6/h54/13734048890910.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Aardbei | Promopack",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/ha1/he0/13891580035102.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-2",
-      "product": "Tropicana Multivitamins  | Sap | Fruit",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hb0/h89/13464617779230.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Kokosnoot",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/haf/h8d/13784621088798.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-4",
-      "product": "Tropicana Vers sap | Citroen | Framboos | Hibiscus",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h45/h72/13839750692894.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Granaatappelpitjes",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h92/hf8/13784687345694.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-6",
-      "product": "Tropicana Vers sap | Sicilian citroen",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h87/hcd/13840052387870.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize FB mini | Ananas",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h67/hca/13785247481886.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-8",
-      "product": "Delhaize Kerstomaten | Rood",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/ha8/h84/13725914726430.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Witte perzik",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h8d/h7a/13735406239774.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-10",
-      "product": "Delhaize Kokosnoot",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/haf/h8d/13784621088798.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Witte druif met pit",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h29/h42/13464510627870.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-12",
-      "product": "Delhaize Mango",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hc0/hb2/13784677187614.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Tropicana Lemonade | Ananas",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hd1/h79/13464605786142.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-14",
-      "product": "Delhaize Granaatappelpitjes",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h92/hf8/13784687345694.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Platte perzik",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h13/hd0/13180425207838.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-16",
-      "product": "Delhaize Fruities mango passie",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h4b/hb1/13735118077982.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Radijsmix | Snack",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h06/h77/13716727398430.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-18",
-      "product": "Tropicana Sap | Multivitamines green",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h77/h8f/13617414799390.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Komkommer | Snack",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hde/h32/13714732974110.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-20",
-      "product": "Delhaize Radijsmix | Snack",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h06/h77/13716727398430.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Tropicana Multivitamins  | Sap | Fruit",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hb0/h89/13464617779230.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-22",
-      "product": "Delhaize Kerstomaten | Mix",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/he1/ha9/13716180434974.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Paprika | Snack",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hbc/hb8/13726938169374.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-24",
-      "product": "Delhaize Paprika | Snack",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hbc/hb8/13726938169374.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Taste of Inspirations Nectarines in schaaltje",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h88/h08/13760173277214.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-26",
-      "product": "Delhaize Braambes",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/he4/ha4/13735483899934.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Paprika | Rood | Snack | Pitloos",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h2b/ha3/13842252660766.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-28",
-      "product": "Delhaize Komkommer | Snack",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hde/h32/13714732974110.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Witte nectarine",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h4e/h62/13784996380702.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-30",
-      "product": "Delhaize Fruitsalade watermeloen",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hcd/hfb/13785281757214.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Druiven | Wit | Pitloos",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h77/h92/13878457532446.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-32",
-      "product": "Tropicana Lemonade | Ananas",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hd1/h79/13464605786142.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Braambes",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/he4/ha4/13735483899934.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-34",
-      "product": "Delhaize FB mini | Ananas",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h67/hca/13785247481886.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Fruitsalade watermeloen",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hcd/hfb/13785281757214.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-36",
-      "product": "Delhaize Druiven | Wit | Pitloos",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h77/h92/13878457532446.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Druif | Rood | Pitloos",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h5d/h67/13878573137950.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     },
     {
       "id": "html-38",
-      "product": "Delhaize Druif | Rood | Pitloos",
-      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/h5d/h67/13878573137950.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "delhaize"
-    },
-    {
-      "id": "delhaize-ocr-delhaize-2026-w32-viewerimg-p4-0",
-      "product": "vaatwastabletten, tot Ultra Power, g",
-      "promoPrice": 0.24,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "delhaize"
-    },
-    {
-      "id": "delhaize-ocr-delhaize-2026-w32-viewerimg-p8-0",
-      "product": "Combineer",
-      "promoPrice": 5.93,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "delhaize"
-    },
-    {
-      "id": "delhaize-ocr-delhaize-2026-w32-viewerimg-p10-0",
-      "product": "ALCOHOLMISBRUIK SCHAADT GEZONDHEID",
-      "promoPrice": 0.8,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "delhaize"
-    },
-    {
-      "id": "delhaize-ocr-delhaize-2026-w32-viewerimg-p14-0",
-      "product": "clof flessen Bijv",
-      "promoPrice": 13.2,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "product": "Delhaize Tomatenbesjes",
+      "imageUrl": "https://static.delhaize.be/medias/sys_master/products/hb7/h1a/13784962367518.jpg?buildNumber=7691d8d8b8728c74fe0ce9949c0831e5b800b3c46b38e6e104d512248813b650&imwidth=300",
+      "validFrom": "2026-08-10",
+      "validUntil": "2026-08-16",
       "retailerSlug": "delhaize"
     }
   ],
-  "scrapedAt": "2026-08-07T04:25:40.944Z",
+  "scrapedAt": "2026-08-12T16:02:12.850Z",
   "sourceUrls": [
     "https://www.delhaize.be/nl/folder",
     "https://view.publitas.com/delhaize-belgium-nl/w32-2026-nl/page/1?publitas_embed=embedded"
@@ -338,7 +306,6 @@
   "methods": [
     "publitas",
     "pdf",
-    "screenshot",
-    "ocr"
+    "screenshot"
   ]
 }
