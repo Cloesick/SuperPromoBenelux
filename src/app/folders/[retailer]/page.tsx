@@ -8,7 +8,7 @@ import {
 } from "@/lib/folders";
 import { isFolderIndexable } from "@/lib/folderRenderability";
 import { FolderSwitcher } from "@/components/FolderSwitcher";
-import { AdBanner } from "@/components/AdBanner";
+import { AdPlacements } from "@/components/AdPlacements";
 import {
 	JsonLd,
 	createRetailerFolderJsonLd,
@@ -321,8 +321,9 @@ export default async function RetailerPage({ params }: PageProps) {
 				</a>
 			</div>
 
-			{/* Ad Banner */}
-			<AdBanner adSlot="0000000000" />
+			{/* Ads. Slot ids come from NEXT_PUBLIC_ADSENSE_SLOTS_* so they can be
+			    set without a deploy; renders nothing until they are. */}
+			<AdPlacements position="mid" />
 
 			<div className="mt-12">
 				<h2 className="text-xl font-bold text-gray-900 mb-4">Bekijk ook</h2>

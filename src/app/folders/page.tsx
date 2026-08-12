@@ -7,7 +7,7 @@ import {
 	createFAQJsonLd,
 } from "@/components/JsonLd";
 import { FoldersClient } from "./FoldersClient";
-import { AdBanner } from "@/components/AdBanner";
+import { AdPlacements } from "@/components/AdPlacements";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -96,8 +96,9 @@ export default function FoldersPage() {
 				</div>
 			</section>
 
-			{/* Ad Banner */}
-			<AdBanner adSlot="0000000000" />
+			{/* Ads. Slot ids come from NEXT_PUBLIC_ADSENSE_SLOTS_* so they can be
+			    set without a deploy; renders nothing until they are. */}
+			<AdPlacements position="mid" />
 
 			{/* FAQ */}
 			<section>
