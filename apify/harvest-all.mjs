@@ -134,22 +134,42 @@ async function harvest(slug, cfg) {
   if (cfg.urls) candidates.push(...cfg.urls());
   for (const acct of [].concat(cfg.account || [])) candidates.push(`https://view.publitas.com/${acct}`);
 
+  // Keep going after the first hit rather than returning. WEEKS is
+  // [current, next], so a retailer that has already published next week's
+  // leaflet — Delhaize posts its Thursday folder mid-week — yields two
+  // distinct publications. This used to stop at the first and throw the
+  // second away, while ~20% of the site's search impressions are people
+  // asking for "folder volgende week".
+  const found = [];
+  const seenIds = new Set();
   for (const url of candidates) {
     const res = await tryUrl(url);
-    if (res.ok) {
-      const outPath = resolve(OUT_DIR, `${slug}.json`);
-      // A harvest must never delete page images rendered from the PDF: it
-      // cannot produce them itself, and overwriting wholesale emptied 14
-      // retailers' folders twice a day.
-      const data = preserveRenderedPages(
-        readExistingFolder(outPath),
-        buildScrapedData(res.manifest, slug, res.finalUrl, res.html),
-      );
-      writeFileSync(outPath, JSON.stringify(data, null, 2));
-      const f = data.folders[0];
-      return { slug, ok: true, via: url.replace('https://view.publitas.com/', ''), title: f.title, pages: f.pageCount };
-    }
+    if (!res.ok) continue;
+    const built = buildScrapedData(res.manifest, slug, res.finalUrl, res.html);
+    const folder = built.folders[0];
+    if (!folder || seenIds.has(folder.id)) continue;
+    seenIds.add(folder.id);
+    found.push({ built, folder, url });
+    // Two is the whole point: this week and next. More would be last week's.
+    if (found.length >= 2) break;
   }
+
+  if (found.length > 0) {
+    const outPath = resolve(OUT_DIR, `${slug}.json`);
+    // A harvest must never delete page images rendered from the PDF: it
+    // cannot produce them itself, and overwriting wholesale emptied 14
+    // retailers' folders twice a day.
+    const data = preserveRenderedPages(readExistingFolder(outPath), found[0].built);
+    // Earliest first, so folders[0] stays the current one every reader expects.
+    data.folders = found
+      .map((f, i) => (i === 0 ? data.folders[0] : f.folder))
+      .sort((a, b) => String(a.validFrom).localeCompare(String(b.validFrom)));
+    writeFileSync(outPath, JSON.stringify(data, null, 2));
+    const f = data.folders[0];
+    const extra = data.folders.length > 1 ? ` (+${data.folders.length - 1} upcoming)` : '';
+    return { slug, ok: true, via: found[0].url.replace('https://view.publitas.com/', ''), title: f.title + extra, pages: f.pageCount };
+  }
+
   return { slug, ok: false, tried: candidates.length };
 }
 

@@ -5,6 +5,7 @@ import {
 	getCurrentFolder,
 	getFoldersForRetailer,
 	getScrapedAt,
+	getNextFolder,
 } from "@/lib/folders";
 import { isFolderIndexable } from "@/lib/folderRenderability";
 import { FolderSwitcher } from "@/components/FolderSwitcher";
@@ -88,7 +89,7 @@ export async function generateMetadata({
 
 	const description = (() => {
 		if (!range || !weekInfo) return retailer.description;
-		return `${retailer.name} folder week ${weekInfo.week} (${range.fromStr}–${range.untilStr}) — bekijk alle aanbiedingen gratis.`;
+		return `${retailer.name} folder week ${weekInfo.week} (${range.fromStr}–${range.untilStr}) — bekijk alle aanbiedingen en de folder van volgende week.`;
 	})();
 
 	const ogImage = (() => {
@@ -150,6 +151,7 @@ export default async function RetailerPage({ params }: PageProps) {
 
 	const currentFolder = getCurrentFolder(slug);
 	const folders = getFoldersForRetailer(slug);
+	const nextFolder = getNextFolder(slug);
 	const outboundUrl = `/out/${slug}`;
 
 	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".webp");
@@ -279,6 +281,32 @@ export default async function RetailerPage({ params }: PageProps) {
 					<p className="text-gray-600">{retailer.description}</p>
 				</div>
 			</div>
+
+			{/* Next week.
+			    Roughly 2,660 of this site's 13,500 quarterly search impressions are
+			    "folder volgende week" queries — "delhaize folder volgende week pdf"
+			    alone draws 1,809 — and the page answered none of them.
+			    When the retailer has published early we show it. When they have not,
+			    we say when it lands, which is real information from retailers.ts
+			    rather than a placeholder pretending to be content. */}
+			<section className="mb-8 rounded-xl border border-blue-100 bg-blue-50/60 p-5">
+				<h2 className="mb-1 font-semibold text-gray-900">
+					{retailer.name} folder volgende week
+				</h2>
+				{nextFolder ? (
+					<p className="text-sm text-gray-700">
+						De folder voor volgende week staat al online — kies hem hieronder bij{" "}
+						<span className="font-medium">{nextFolder.title}</span> (geldig vanaf{" "}
+						{new Date(nextFolder.validFrom).toLocaleDateString("nl-BE", {
+							day: "numeric",
+							month: "long",
+						})}
+						).
+					</p>
+				) : (
+					<p className="text-sm text-gray-700">{seo.folderDayDetail}</p>
+				)}
+			</section>
 
 			{/* Folder viewer */}
 			{folders.length > 0 ? (
