@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd, createWebsiteJsonLd } from "@/components/JsonLd";
 import { CookieConsent } from "@/components/CookieConsent";
+import { ConsentBridge } from "@/components/ConsentBridge";
 import { AnalyticsGate } from "@/components/AnalyticsGate";
 import { ClickTracker } from "@/components/ClickTracker";
 import { AdSenseGate } from "@/components/AdSenseGate";
@@ -49,6 +50,7 @@ export default function RootLayout({
 				<Header />
 				<main className="flex-1">{children}</main>
 				<Footer />
+				<ConsentBridge />
 				<CookieConsent />
 				<AnalyticsGate />
 				<ClickTracker />

@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { X } from "lucide-react";
-
-const CONSENT_KEY = "sp_cookie_consent";
+import { CONSENT_KEY, isCmpPresent, persistConsentChoice } from "@/lib/consent";
 
 type ConsentValue = "accepted" | "declined" | null;
 
@@ -58,41 +57,20 @@ function captureAttributionFromUrlIfPresent() {
 	fetch(`/api/attribution${qs}`, { credentials: "include" }).catch(() => {});
 }
 
-function setConsentCookie(value: Exclude<ConsentValue, null>) {
-	if (typeof window === "undefined") return;
-	const secure = window.location.protocol === "https:" ? "; Secure" : "";
-	document.cookie = `sp_cookie_consent=${value}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax${secure}`;
-	window.dispatchEvent(new Event("sp_consent_changed"));
-}
+/* How long to wait for Google's CMP to announce itself before falling back to
+ * this banner. The CMP normally installs `__tcfapi` before hydration, so this
+ * only covers a slow third-party load. */
+const CMP_GRACE_PERIOD_MS = 1500;
 
 export function CookieConsent() {
 	const [visible, setVisible] = useState(false);
 
-	useEffect(() => {
-		const stored = getStoredConsent();
-
-		if (stored === null) {
-			setVisible(true);
-		}
-
-		if (stored === "accepted") {
-			setConsentCookie("accepted");
-			const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
-			if (clarityId) loadClarity(clarityId);
-
-			captureAttributionFromUrlIfPresent();
-		}
-
-		if (stored === "declined") {
-			setConsentCookie("declined");
-		}
-	}, []);
-
-	const handleAccept = useCallback(() => {
-		localStorage.setItem(CONSENT_KEY, "accepted");
-		setVisible(false);
-
-		setConsentCookie("accepted");
+	/* loadClarity is idempotent but the attribution POST is not, and consent can
+	 * be announced more than once (our own click, then the bridge's event). */
+	const appliedRef = useRef(false);
+	const applyAccepted = useCallback(() => {
+		if (appliedRef.current) return;
+		appliedRef.current = true;
 
 		const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 		if (clarityId) loadClarity(clarityId);
@@ -100,11 +78,53 @@ export function CookieConsent() {
 		captureAttributionFromUrlIfPresent();
 	}, []);
 
-	const handleDecline = useCallback(() => {
-		localStorage.setItem(CONSENT_KEY, "declined");
-		setVisible(false);
+	useEffect(() => {
+		const stored = getStoredConsent();
 
-		setConsentCookie("declined");
+		if (stored === "accepted") {
+			persistConsentChoice("accepted");
+			applyAccepted();
+		}
+
+		if (stored === "declined") {
+			persistConsentChoice("declined");
+		}
+
+		/* Google's CMP owns the dialog wherever it runs, so this banner has to
+		 * stay down when one is present — two consent dialogs are worse than
+		 * one. Only fall back to it if no CMP has appeared in time. */
+		let graceTimer: ReturnType<typeof setTimeout> | undefined;
+		if (stored === null) {
+			graceTimer = setTimeout(() => {
+				if (!isCmpPresent()) setVisible(true);
+			}, CMP_GRACE_PERIOD_MS);
+		}
+
+		/* When the CMP answers, ConsentBridge records the decision and fires
+		 * this. Without listening, Clarity and attribution would not start until
+		 * the next page load. */
+		const onConsentChanged = () => {
+			if (getStoredConsent() !== "accepted") return;
+			setVisible(false);
+			applyAccepted();
+		};
+		window.addEventListener("sp_consent_changed", onConsentChanged);
+
+		return () => {
+			if (graceTimer) clearTimeout(graceTimer);
+			window.removeEventListener("sp_consent_changed", onConsentChanged);
+		};
+	}, [applyAccepted]);
+
+	const handleAccept = useCallback(() => {
+		setVisible(false);
+		persistConsentChoice("accepted");
+		applyAccepted();
+	}, [applyAccepted]);
+
+	const handleDecline = useCallback(() => {
+		setVisible(false);
+		persistConsentChoice("declined");
 	}, []);
 
 	if (!visible) return null;
