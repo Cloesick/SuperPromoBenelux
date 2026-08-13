@@ -337,8 +337,12 @@ export interface OcrExtractionResult {
 /**
  * OCR a retailer's leaflet screenshots and parse deals from the result.
  *
- * Output still passes through sanitizeDeals() in productsDb before storage,
- * so OCR noise that survives the confidence gate is filtered there.
+ * Output passes through sanitizeDeals() in base.ts before storage, so OCR noise
+ * that survives the confidence gate is filtered there.
+ *
+ * This previously named productsDb, which has never sanitized -- and base.ts
+ * only ever counted sanitizeDeals() without persisting its output. In practice
+ * nothing filtered this at all, and salvaged prices were computed and dropped.
  */
 export async function extractDealsFromScreenshots(
 	retailerSlug: string,

@@ -938,6 +938,15 @@ export abstract class BaseScraper {
 			const isLeafletCapture = leafletSources.includes(
 				folders[0]?.contentSource as ContentSource,
 			);
+
+			// Log the decision inputs unconditionally. A silently skipped OCR pass is
+			// what left albert-heijn, delhaize and spar shipping zero prices for
+			// months: the run looked successful, the summary said "Fresh", and
+			// nothing recorded that the step which finds prices had been bypassed.
+			this.log(
+				`OCR gate: priced=${pricedDealCount()} pages=${folders[0]?.pages?.length ?? 0} source=${folders[0]?.contentSource} leaflet=${isLeafletCapture}`,
+			);
+
 			if (
 				pricedDealCount() === 0 &&
 				(folders[0]?.pages?.length ?? 0) > 0 &&
@@ -977,8 +986,25 @@ export abstract class BaseScraper {
 				}
 			}
 
-			// ---- Deduplicate deals ----
-			const uniqueDeals = this.deduplicateDeals(allDeals);
+			// ---- Sanitize, then deduplicate ----
+			// sanitizeDeals() salvages prices out of discount labels and drops rows
+			// validateDeal() rejects. Until now its output was only ever measured
+			// (usableDealCount/pricedDealCount) and never persisted, so every
+			// salvaged price was computed and thrown away and every invalid row was
+			// saved regardless: albert-heijn reached this point with 6 recoverable
+			// prices and wrote 0. The comments in ocr.ts and ocrLayout.ts claiming
+			// "output still passes through sanitizeDeals() before storage" described
+			// this line, which did not exist.
+			//
+			// Sanitize before deduplicating: salvage rewrites promoPrice, which is
+			// part of the dedup key.
+			const sanitized = sanitizeDeals(allDeals);
+			if (sanitized.salvagedCount > 0 || sanitized.rejected.length > 0) {
+				this.log(
+					`Sanitize: ${sanitized.kept.length} kept, ${sanitized.rejected.length} rejected, ${sanitized.salvagedCount} price(s) salvaged`,
+				);
+			}
+			const uniqueDeals = this.deduplicateDeals(sanitized.kept);
 
 			// Instance 2 fallback: if no deals/products could be extracted, render pages
 			// so the UI can still show "folder products" from rendered folder pages.
