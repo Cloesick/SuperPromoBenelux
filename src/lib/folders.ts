@@ -115,3 +115,37 @@ export function getFolderPreviews(slugs: string[]): Record<string, FolderPreview
 	}
 	return out;
 }
+
+/**
+ * Next week's folder, when a retailer has already published it.
+ *
+ * ~2,660 of superpromobelgie.com's 13,500 quarterly search impressions are
+ * "folder volgende week" queries — "delhaize folder volgende week pdf" alone
+ * draws 1,809 — and the site served none of that intent, because it only ever
+ * showed the folder valid today.
+ *
+ * Retailers routinely publish days ahead: Delhaize's Thursday leaflet appears
+ * mid-week, and the Publitas harvest already probes next week's slug. What was
+ * missing is somewhere to put it and something to show it.
+ *
+ * "Next" means validFrom is still in the future — not merely "the second entry"
+ * — so a stale extra folder in the array cannot masquerade as next week's.
+ */
+export function getNextFolder(retailerSlug: string): Folder | null {
+	const folders = getFoldersForRetailer(retailerSlug);
+	if (folders.length === 0) return null;
+
+	const now = new Date();
+	const upcoming = folders
+		.filter((f) => {
+			if (!f.validFrom) return false;
+			const from = new Date(f.validFrom);
+			return !Number.isNaN(from.getTime()) && from > now;
+		})
+		// Not yet expired either: a folder from a future year that has somehow
+		// already lapsed is not "next week".
+		.filter((f) => !isFolderExpired(f.validUntil, now))
+		.sort((a, b) => new Date(a.validFrom).getTime() - new Date(b.validFrom).getTime());
+
+	return upcoming[0] ?? null;
+}
