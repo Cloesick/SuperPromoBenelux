@@ -94,11 +94,16 @@ remains sound and is retained as the guard.
 Six grocery chains whose leaflets are already captured: **Albert Heijn, ALDI,
 Colruyt, Delhaize, Lidl, Spar**.
 
-Spar is included even though its text scraper currently yields zero deals: the
-vision pipeline reads leaflet *page images*, not scraper text output, so any
-retailer whose folders are captured is covered without new scraper work. That is
-a property worth relying on — extraction coverage is bounded by folder capture,
-not by per-retailer parser quality.
+Spar is included even though **it has no scraper at all** — it is not among the
+33 registered in `src/scrapers/scrapers.ts`, and `npm run scrape spar` answers
+`Ignoring 1 unknown slug(s): spar`. Its 16 captured pages arrive by another route
+(Apify, per `docs/CONNECTORS.md`).
+
+That is the clearest demonstration of the property this design leans on: the
+vision pipeline reads leaflet *page images*, not scraper output, so a retailer
+with pages and no parser is fully covered. **Extraction coverage is bounded by
+folder capture, not by per-retailer parser quality** — which is why adding a
+retailer costs a capture route rather than a new bespoke parser.
 
 **Carrefour is out of scope for v1.** It has no scraper and no captured folders
 (`data/folders/` has no entry), so including it would require new folder-capture

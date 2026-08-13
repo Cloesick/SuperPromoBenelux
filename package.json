@@ -29,6 +29,7 @@
 	"license": "ISC",
 	"description": "SuperPromo België - Alle folders en promoties van je favoriete winkels",
 	"dependencies": {
+		"@anthropic-ai/sdk": "^0.116.0",
 		"@neondatabase/serverless": "^1.0.2",
 		"@supabase/supabase-js": "^2.57.4",
 		"@vercel/analytics": "^2.0.0",
