@@ -848,6 +848,17 @@ export abstract class BaseScraper {
 			// screenshot of a retailer's own website.
 			const usableDealCount = () => sanitizeDeals(allDeals).kept.length;
 
+			// A deal without a price is not a deal a shopper can act on, and it is
+			// not something the folder pages or a price comparison can use. The PDF
+			// pass reliably returns name-only rows for the publitas retailers, which
+			// counted as "usable" and closed the OCR gate below -- so albert-heijn,
+			// delhaize and spar shipped 0 priced deals while colruyt and aldi, whose
+			// PDF pass found nothing and therefore fell through to OCR, shipped 100%.
+			// Gate the leaflet OCR on prices instead, so finding names never blocks
+			// the step that finds prices.
+			const pricedDealCount = () =>
+				sanitizeDeals(allDeals).kept.filter((d) => d.promoPrice != null).length;
+
 			if (usableDealCount() === 0) {
 				// Fallback A: PDF text extraction (if a PDF URL was found)
 				const pdfUrl = folders[0]?.pdfUrl;
@@ -928,7 +939,7 @@ export abstract class BaseScraper {
 				folders[0]?.contentSource as ContentSource,
 			);
 			if (
-				usableDealCount() === 0 &&
+				pricedDealCount() === 0 &&
 				(folders[0]?.pages?.length ?? 0) > 0 &&
 				!isLeafletCapture
 			) {
@@ -937,7 +948,7 @@ export abstract class BaseScraper {
 				);
 			}
 			if (
-				usableDealCount() === 0 &&
+				pricedDealCount() === 0 &&
 				(folders[0]?.pages?.length ?? 0) > 0 &&
 				isLeafletCapture
 			) {
