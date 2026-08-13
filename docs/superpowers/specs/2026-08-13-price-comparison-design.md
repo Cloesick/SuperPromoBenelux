@@ -28,19 +28,49 @@ and no brand, size, or unit. Comparison fundamentally requires deciding that a
 product at one retailer is the same product at another; nothing in the current
 model supports that.
 
-### Root cause of the extraction failure
+### Root cause — corrected 2026-08-13
 
-`src/scrapers/extractDealsFromText.ts` flattens each PDF with
-`content.items.map(str).join(" ")`. A leaflet is visual: the product name sits
-spatially next to its price, not textually next to it. Flattening destroys that
-adjacency, so the parser pairs whichever tokens happen to land near each other —
-which is how `"flessen"` ("bottles") becomes a product name. It also caps
-extraction at `Math.min(doc.numPages, 12)`, so most of each leaflet is never
-read.
+An earlier draft of this spec blamed PDF text flattening in
+`extractDealsFromText.ts` (`content.items.map(str).join(" ")` destroying the
+spatial adjacency between a product and its price) plus its
+`Math.min(doc.numPages, 12)` page cap. That explains why PDF-derived *names* are
+poor. **It is not why Albert Heijn, Delhaize and Spar have zero prices.**
 
-`src/lib/dealValidation.ts` already catches much of the resulting mess
-(`looksLikeOcrNoise`, `isLeafletFragment`, `salvageDeal`). The validation layer
-is sound; the extraction upstream of it is what fails.
+The operative cause is a gate in the `base.ts` fallback chain:
+
+```ts
+const usableDealCount = () => sanitizeDeals(allDeals).kept.length;
+if (usableDealCount() === 0 && pages > 0 && isLeafletCapture) { /* run OCR */ }
+```
+
+`usableDealCount()` counts deals that survive sanitization **regardless of
+whether any carry a price**. For the publitas retailers the PDF pass reliably
+returns name-only rows; those rows are "usable", so the counter is non-zero, the
+gate closes, and the leaflet OCR that would have read the prices never runs.
+
+The evidence is a clean split rather than a hunch:
+
+| Retailer | methods | OCR ran | Priced |
+| --- | --- | --- | ---: |
+| Colruyt | issuu, screenshot, ocr | yes | 50/50 |
+| ALDI | ipaper, screenshot, ocr | yes | 6/6 |
+| Albert Heijn | publitas, pdf, screenshot | no | 0 |
+| Delhaize | publitas, pdf, screenshot | no | 0 |
+| Spar | publitas, pdf | no | 0 |
+
+Colruyt and ALDI are not better configured — they are the two whose PDF pass
+found *nothing*, which is what let them fall through to OCR. Succeeding at PDF is
+what costs a retailer its prices.
+
+Fixed in `dd8294b` by gating on priced deals instead. Finding names should never
+block the step that finds prices. One gap remains: Lidl has 2 priced deals across
+40 pages, so its count is non-zero and OCR stays blocked there — a ratio-based
+gate would catch it, at the risk of re-running OCR over good data.
+
+This does not change the design below. It raises the floor the vision pipeline
+starts from, and makes the vision work a quality upgrade rather than a rescue.
+`dealValidation.ts` (`looksLikeOcrNoise`, `isLeafletFragment`, `salvageDeal`)
+remains sound and is retained as the guard.
 
 ## Goals
 
