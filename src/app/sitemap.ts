@@ -3,12 +3,27 @@ import { retailers } from "@/lib/retailers";
 import { getCurrentFolder, getScrapedAt } from "@/lib/folders";
 import { isFolderIndexable } from "@/lib/folderRenderability";
 import { getSiteBaseUrl } from "@/lib/site";
+import { getComparableProducts } from "@/lib/catalogDb";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const baseUrl = getSiteBaseUrl();
+
+	// Comparison pages are only listed when they carry offers from two or more
+	// retailers, which getComparableProducts() enforces in SQL. Same principle as
+	// isFolderIndexable below: a URL in the sitemap is always one worth indexing,
+	// and a single-price "comparison" is not.
+	//
+	// Returns [] when no database is configured, so the sitemap keeps working
+	// without one rather than failing the build.
+	const priceRoutes = (await getComparableProducts()).map((p) => ({
+		url: `${baseUrl}/prijzen/${p.slug}`,
+		lastModified: new Date(),
+		changeFrequency: "weekly" as const,
+		priority: 0.7,
+	}));
 	// Only submit folder pages that actually render something. This is the same
 	// predicate the page itself uses to decide `robots: noindex`, so the two can
 	// never disagree — a URL in the sitemap is always one we want indexed.
@@ -93,5 +108,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			changeFrequency: "yearly",
 			priority: 0.4,
 		},
+		...priceRoutes,
 	];
 }
