@@ -7,6 +7,7 @@ import {
 	validateDeal,
 	sanitizeDeals,
 	parsePriceElementText,
+	isLeafletFragment,
 } from "./dealValidation";
 import { Deal } from "./types";
 
@@ -406,5 +407,43 @@ describe("bare-price discount labels", () => {
 		expect(salvagePricesFromLabel("7.00korting")).toEqual({});
 		expect(salvagePricesFromLabel("50%korting")).toEqual({});
 		expect(salvagePricesFromLabel("1+1gratis")).toEqual({});
+	});
+});
+
+// ---------------------------------------------------------------------------
+// Price disclaimers read as products.
+//
+// An albert-heijn run stored "actieprijzen variëren" ("promotional prices
+// vary") four times as a product, at EUR 2.29, 2.09, 1.44 and 12.99. The
+// spatial clusterer pairs text with the price beside it, and nothing rejected
+// the result: the phrase is real words, so not OCR noise, and its tokens are
+// not container nouns. A sentence saying prices vary, attached to one price, is
+// exactly the invented-price claim this guard exists to stop.
+// ---------------------------------------------------------------------------
+
+describe("isLeafletFragment — price disclaimers", () => {
+	it("rejects the disclaimer that reached the database", () => {
+		expect(isLeafletFragment("actieprijzen variëren")).toBe(true);
+	});
+
+	it("rejects the OCR corruptions of the same phrase seen in that run", () => {
+		// The diaeresis in "variëren" is read as l or dropped entirely.
+		expect(isLeafletFragment("actieprijzen varleren")).toBe(true);
+		expect(isLeafletFragment("varieren")).toBe(true);
+	});
+
+	it("rejects other Dutch and French leaflet small print", () => {
+		expect(isLeafletFragment("zolang de voorraad strekt")).toBe(true);
+		expect(isLeafletFragment("prijzen kunnen afwijken")).toBe(true);
+		expect(isLeafletFragment("les prix varient")).toBe(true);
+	});
+
+	it("still accepts real product names", () => {
+		// The guard must not widen into rejecting products that merely mention
+		// price-adjacent words.
+		expect(isLeafletFragment("AH Komkommer")).toBe(false);
+		expect(isLeafletFragment("Alle Listerine")).toBe(false);
+		expect(isLeafletFragment("Plukon Kipfiletblokjes")).toBe(false);
+		expect(isLeafletFragment("Coca-Cola Zero 1,5 L")).toBe(false);
 	});
 });

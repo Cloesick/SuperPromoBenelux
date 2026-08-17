@@ -354,6 +354,26 @@ const SPEND_THRESHOLD_RE =
 	/^(?:aan\b|bij\s+aankoop|min\.?\s|minimum|vanaf\s+€|à\s+partir|dès\s+€|pour\s+tout\s+achat)/i;
 
 /**
+ * Small print about pricing, read as a product.
+ *
+ * Leaflets carry disclaimers beside the price blocks — "actieprijzen variëren"
+ * (promotional prices vary), "zolang de voorraad strekt" (while stocks last).
+ * The spatial clusterer sees text next to a price and pairs the two, so one
+ * albert-heijn run stored "actieprijzen variëren" four times, at EUR 2.29, 2.09,
+ * 1.44 and 12.99.
+ *
+ * Nothing else rejected it: the phrase is made of real words so it is not OCR
+ * noise, and its tokens are not container nouns. A sentence saying prices vary,
+ * attached to one specific price, is the invented-price failure this database
+ * must not have.
+ *
+ * Matches the wording rather than the layout, including the OCR corruptions of
+ * the diaeresis in "variëren" seen in the same run ("varleren", "varieren").
+ */
+const PRICE_DISCLAIMER_RE =
+	/(?:var[iïl][eë]ren|kunnen\s+afwijken|voorraad\s+strekt|prix\s+varient|sous\s+r[ée]serve)/i;
+
+/**
  * Container and packaging nouns. On their own these are the unit a promo is
  * sold in, not the product — a card reading "bakken" is the tail of a promo
  * whose brand sits in an image the OCR never saw.
@@ -398,6 +418,7 @@ export function isLeafletFragment(name: string): boolean {
 
 	if (FRAGMENT_PREFIX_RE.test(trimmed)) return true;
 	if (SPEND_THRESHOLD_RE.test(trimmed)) return true;
+	if (PRICE_DISCLAIMER_RE.test(trimmed)) return true;
 
 	// Every token is a generic container noun -> no product identity present.
 	const tokens = trimmed.toLowerCase().split(/\s+/).filter(Boolean);
