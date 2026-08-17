@@ -1003,6 +1003,23 @@ export abstract class BaseScraper {
 				this.log(
 					`Sanitize: ${sanitized.kept.length} kept, ${sanitized.rejected.length} rejected, ${sanitized.salvagedCount} price(s) salvaged`,
 				);
+
+				// Break the rejections down by reason. Half of albert-heijn's rows were
+				// being dropped and the count alone could not say whether that was the
+				// guard working (leaflet furniture) or extraction losing real products.
+				// The raw deals only exist here, so this is the one place it can be
+				// asked.
+				if (sanitized.rejected.length > 0) {
+					const byReason = new Map<string, number>();
+					for (const r of sanitized.rejected) {
+						byReason.set(r.reason, (byReason.get(r.reason) ?? 0) + 1);
+					}
+					const summary = [...byReason.entries()]
+						.sort((a, b) => b[1] - a[1])
+						.map(([reason, n]) => `${n}x ${reason}`)
+						.join(", ");
+					this.log(`  rejected: ${summary}`);
+				}
 			}
 			const uniqueDeals = this.deduplicateDeals(sanitized.kept);
 
