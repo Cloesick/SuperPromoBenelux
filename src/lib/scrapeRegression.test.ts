@@ -106,11 +106,29 @@ describe("findScrapeRegression", () => {
     expect(findScrapeRegression(before, after, TODAY)).toMatch(/page/i);
   });
 
-  it("allows a thinner run when the stored folder has expired", () => {
-    // A dead folder is worse than a thin live one: the site would otherwise
-    // serve last month's prices forever rather than accept a weak week.
+  it("still blocks a collapse when the stored folder has expired", () => {
+    // The first version of this guard let expiry wave everything through, on the
+    // reasoning that expired prices are worthless. The hatch opens at every week
+    // boundary -- exactly when re-scrapes run -- and colruyt's 50 priced deals
+    // were replaced by 4. Recency alone does not make a run trustworthy.
     const before = data({ deals: { priced: 50 }, pages: 10, validUntil: "2026-08-09" });
-    const after = data({ deals: { priced: 3 }, pages: 10 });
+    const after = data({ deals: { priced: 4 }, pages: 10 });
+    expect(findScrapeRegression(before, after, TODAY)).toMatch(/priced/i);
+  });
+
+  it("says so in the reason when the stored data is expired", () => {
+    // An operator needs to tell "protecting live data" from "stale data that
+    // still needs a good run", because the second one wants attention.
+    const before = data({ deals: { priced: 50 }, pages: 10, validUntil: "2026-08-09" });
+    const after = data({ deals: { priced: 4 }, pages: 10 });
+    expect(findScrapeRegression(before, after, TODAY)).toMatch(/expired/i);
+  });
+
+  it("allows a healthy fresh run to replace expired data", () => {
+    // Tightening must not freeze stale data: a run that holds its ground still
+    // replaces an expired folder.
+    const before = data({ deals: { priced: 50 }, pages: 10, validUntil: "2026-08-09" });
+    const after = data({ deals: { priced: 45 }, pages: 12 });
     expect(findScrapeRegression(before, after, TODAY)).toBeNull();
   });
 

@@ -47,9 +47,14 @@ function isStoredDataExpired(data: ScrapedData, now: Date): boolean {
  * file holding 24 deals and 20 page images, and reported success -- so a single
  * flaky run silently erased a good week.
  *
- * Expiry is the deliberate escape hatch: once the stored folder is out of date,
- * a thin fresh scrape is better than serving last month's prices, so nothing is
- * blocked. Guarding data integrity must not mean freezing stale data in place.
+ * A first version of this guard treated expiry as a blanket escape hatch, on the
+ * reasoning that expired prices are worthless so fresh-and-thin beats
+ * stale-and-rich. That was wrong in practice: the hatch opens at every week
+ * boundary, which is exactly when re-scrapes run, and it let colruyt's 50 priced
+ * deals be replaced by 4. Recency does not by itself make a run trustworthy, so
+ * a collapse is now refused whether or not the stored folder has expired --
+ * `staleness` only changes how the refusal reads, so an operator can tell
+ * "protecting live data" from "stored data is stale and this needs a look".
  */
 export function findScrapeRegression(
   existing: ScrapedData | null,
@@ -57,23 +62,26 @@ export function findScrapeRegression(
   now: Date = new Date(),
 ): string | null {
   if (!existing) return null;
-  if (isStoredDataExpired(existing, now)) return null;
+
+  const staleness = isStoredDataExpired(existing, now)
+    ? " (stored data has expired and still needs a good run)"
+    : "";
 
   const wasPriced = pricedCount(existing);
   const nowPriced = pricedCount(next);
 
   if (wasPriced > 0 && nowPriced === 0) {
-    return `would lose all ${wasPriced} priced deal(s)`;
+    return `would lose all ${wasPriced} priced deal(s)${staleness}`;
   }
   if (wasPriced > 0 && nowPriced < wasPriced * COLLAPSE_RATIO) {
-    return `priced deals would fall from ${wasPriced} to ${nowPriced}`;
+    return `priced deals would fall from ${wasPriced} to ${nowPriced}${staleness}`;
   }
 
   const wasPages = pageCount(existing);
   const nowPages = pageCount(next);
 
   if (wasPages > 0 && nowPages < wasPages * COLLAPSE_RATIO) {
-    return `page images would fall from ${wasPages} to ${nowPages}`;
+    return `page images would fall from ${wasPages} to ${nowPages}${staleness}`;
   }
 
   return null;
