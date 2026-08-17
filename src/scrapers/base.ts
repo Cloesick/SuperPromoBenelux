@@ -1113,8 +1113,12 @@ export abstract class BaseScraper {
 				// deals to a run that extracted 6.
 				const regression = findScrapeRegression(existing, data);
 				if (regression) {
+					// The reason already says whether the stored folder has expired, so
+					// this must not assert validity on top of it -- an earlier version
+					// appended "Stored folder is still valid" unconditionally and printed
+					// it directly after "(stored data has expired)".
 					this.log(
-						`⚠ Keeping existing data: this run ${regression}. Stored folder is still valid, so the thinner result is treated as a failed run rather than a quieter week.`,
+						`⚠ Keeping existing data: this run ${regression}. Treating the thinner result as a failed run rather than a quieter week.`,
 					);
 					return;
 				}
