@@ -22,6 +22,7 @@ import { syncDealsToDb } from "../lib/productsDb";
 import { normalizeSchemaImage } from "../lib/schemaImage";
 import { isNavigationNoise } from "../lib/htmlNoise";
 import { parsePriceElementText, sanitizeDeals } from "../lib/dealValidation";
+import { findScrapeRegression } from "../lib/scrapeRegression";
 import { looksLikeBotChallenge } from "./botChallenge";
 import {
 	isEmbedBlocked,
@@ -1102,6 +1103,19 @@ export abstract class BaseScraper {
 					JSON.stringify(this.normalizeForComparison(data));
 				if (same) {
 					this.log("No changes detected; skipping JSON write");
+					return;
+				}
+
+				// Refuse to trade good data for a bad run. The guard above only
+				// skipped the write when folders and deals were BOTH empty, so a run
+				// with a folder and no deals overwrote a file holding 24 deals and 20
+				// page images -- and printed a success tick. Colruyt lost 50 priced
+				// deals to a run that extracted 6.
+				const regression = findScrapeRegression(existing, data);
+				if (regression) {
+					this.log(
+						`⚠ Keeping existing data: this run ${regression}. Stored folder is still valid, so the thinner result is treated as a failed run rather than a quieter week.`,
+					);
 					return;
 				}
 			}
