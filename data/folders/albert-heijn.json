@@ -2,138 +2,27 @@
   "retailer": "albert-heijn",
   "folders": [
     {
-      "id": "albert-heijn-2026-w32-folder",
+      "id": "albert-heijn-3295787-folder",
       "retailerSlug": "albert-heijn",
-      "title": "Albert Heijn Bonusfolder",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "pageCount": 10,
-      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p1.webp",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p1.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p1-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 2,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p2.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p2-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 3,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p4.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p4-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 4,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p6.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p6-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 5,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p8.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p8-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 6,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p10.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p10-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 7,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p12.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p12-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 8,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p14.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p14-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 9,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p16.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p16-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 10,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p18.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w32-viewerimg-p18-thumb.webp",
-          "deals": []
-        }
-      ],
-      "pdfUrl": "https://view.publitas.com/126/3263258/pdfs/c18d53a5-5905-46a2-bf97-6a1d029966cc.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-%2520week-32-2026.pdf",
+      "title": "AH - Bonus-week-34-2026",
+      "validFrom": "2026-08-20",
+      "validUntil": "2026-08-30",
+      "pageCount": 25,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/ah/bonus-week-34-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/126/3295787/pdfs/0bec170e-d52c-4c2a-8dce-a8d35a16d9c4.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-07T03:42:19.811Z"
+      "scrapedAt": "2026-08-20T05:51:41.051Z"
     }
   ],
-  "deals": [
-    {
-      "id": "html-0",
-      "product": "AH Verse Vlaamse friet met schil",
-      "discount": "1+1  gratis",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_79377873464b316a52532d684534764c426f4b665967?revLabel=1&rendition=200x200_WEBP&fileType=binary",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-29",
-      "product": "AH Kumato tomaten",
-      "discount": "25%  korting",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_704b6f3543633979514e616946423848673063484b51?revLabel=1&rendition=200x200_WEBP&fileType=binary",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn",
-      "originalPrice": 4.99
-    },
-    {
-      "id": "html-132",
-      "product": "AH Mosseldipsaus",
-      "discount": "50%  korting",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_376656684f623739536d53493233504e716547524751?revLabel=1&rendition=200x200_WEBP&fileType=binary",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn",
-      "originalPrice": 1.99
-    },
-    {
-      "id": "html-323",
-      "product": "Jude's Chocolate guinness cake",
-      "discount": "1+1  gratis",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_70554f476e6e7a6253324362364a32776b7437566751?revLabel=1&rendition=200x200_WEBP&fileType=binary",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn"
-    },
-    {
-      "id": "html-397",
-      "product": "Liefmans On the rocks",
-      "discount": "0.99",
-      "imageUrl": "https://static.ah.nl/dam/product/AHI_705f5032754a56725157436365383066326d34586141?revLabel=1&rendition=200x200_WEBP&fileType=binary",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "albert-heijn",
-      "originalPrice": 1.49
-    }
-  ],
-  "scrapedAt": "2026-08-07T03:42:26.612Z",
+  "deals": [],
+  "scrapedAt": "2026-08-20T05:51:41.051Z",
   "sourceUrls": [
-    "https://www.ah.be/bonus/folder",
-    "https://view.publitas.com/ah/bonus-week-32-2026/page/1?publitas_embed=embedded"
+    "https://view.publitas.com/ah/bonus-week-34-2026/page/1"
   ],
   "methods": [
     "publitas",
-    "pdf",
-    "screenshot"
+    "pdf"
   ]
 }

@@ -1,89 +1,28 @@
 {
-	"retailer": "hubo",
-	"folders": [
-		{
-			"id": "hubo-3263386-folder",
-			"retailerSlug": "hubo",
-			"title": "2633_NL",
-			"validFrom": "2026-08-07",
-			"validUntil": "2026-08-17",
-			"pageCount": 10,
-			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p1.webp",
-			"pages": [
-				{
-					"pageNumber": 1,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p1.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p1-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 2,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p2.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p2-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 3,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p3.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p3-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 4,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p4.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p4-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 5,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p5.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p5-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 6,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p6.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p6-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 7,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p7.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p7-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 8,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p8.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p8-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 9,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p9.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p9-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 10,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p10.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hubo-2026-w32-pdfimg-p10-thumb.webp",
-					"deals": []
-				}
-			],
-			"embedUrl": "https://view.publitas.com/hubo-belgie-vl/2633_nl/page/1?publitas_embed=embedded",
-			"pdfUrl": "https://view.publitas.com/128/3263386/pdfs/abf51c02-2df6-464d-b2a7-5ccacf50ac5a.pdf",
-			"contentSource": "publitas",
-			"scrapedAt": "2026-08-07T05:51:19.308Z"
-		}
-	],
-	"deals": [],
-	"scrapedAt": "2026-08-07T05:51:19.308Z",
-	"sourceUrls": [
-		"https://view.publitas.com/hubo-belgie-vl/2633_nl/page/1"
-	],
-	"methods": [
-		"publitas",
-		"pdf"
-	]
+  "retailer": "hubo",
+  "folders": [
+    {
+      "id": "hubo-3263386-folder",
+      "retailerSlug": "hubo",
+      "title": "2633_NL",
+      "validFrom": "2026-08-20",
+      "validUntil": "2026-08-30",
+      "pageCount": 10,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/hubo-belgie-vl/2633_nl/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/128/3263386/pdfs/ea891109-a848-4639-8fce-9805b634070c.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-08-20T05:51:44.951Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-08-20T05:51:44.951Z",
+  "sourceUrls": [
+    "https://view.publitas.com/hubo-belgie-vl/2633_nl/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
 }
