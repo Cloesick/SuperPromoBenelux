@@ -2,24 +2,24 @@
   "retailer": "gamma",
   "folders": [
     {
-      "id": "gamma-3303949-folder",
+      "id": "gamma-3305069-folder",
       "retailerSlug": "gamma",
-      "title": "GAMMA  - GAMMA week 34 2026",
-      "validFrom": "2026-08-20",
-      "validUntil": "2026-08-30",
+      "title": "GAMMA  - GAMMA week 35 2026",
+      "validFrom": "2026-08-24",
+      "validUntil": "2026-09-03",
       "pageCount": 57,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/gamma/gamma-week-34-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/66019/3303949/pdfs/c469739f-bc60-4457-a87d-0f31d31a6a6d.pdf",
+      "embedUrl": "https://view.publitas.com/gamma/gamma-week-35-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/66019/3305069/pdfs/077ba287-ea39-4b71-9262-c397645df3a7.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-20T05:51:45.635Z"
+      "scrapedAt": "2026-08-24T05:56:44.440Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-20T05:51:45.635Z",
+  "scrapedAt": "2026-08-24T05:56:44.440Z",
   "sourceUrls": [
-    "https://view.publitas.com/gamma/gamma-week-34-2026/page/1"
+    "https://view.publitas.com/gamma/gamma-week-35-2026/page/1"
   ],
   "methods": [
     "publitas",

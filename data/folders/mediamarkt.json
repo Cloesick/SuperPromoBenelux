@@ -2,24 +2,24 @@
   "retailer": "mediamarkt",
   "folders": [
     {
-      "id": "mediamarkt-3289683-folder",
+      "id": "mediamarkt-3296441-folder",
       "retailerSlug": "mediamarkt",
-      "title": "A Media Markt BE - 26W34 B2S NL",
-      "validFrom": "2026-08-20",
-      "validUntil": "2026-08-30",
+      "title": "A Media Markt BE - 26W35 B2S NL",
+      "validFrom": "2026-08-24",
+      "validUntil": "2026-09-03",
       "pageCount": 14,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/mediamarkt-be/26w34-b2s-nl/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/2411/3289683/pdfs/7d9ca43f-667c-4ae7-a722-5431b3d4ce8f.pdf",
+      "embedUrl": "https://view.publitas.com/mediamarkt-be/26w35-b2s-nl-ap_jmjvmoll9/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/2411/3296441/pdfs/de8ea3b8-3915-4165-b56c-1806425d30a1.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-20T05:51:57.853Z"
+      "scrapedAt": "2026-08-24T05:56:55.413Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-20T05:51:57.853Z",
+  "scrapedAt": "2026-08-24T05:56:55.413Z",
   "sourceUrls": [
-    "https://view.publitas.com/mediamarkt-be/26w34-b2s-nl/"
+    "https://view.publitas.com/mediamarkt-be/26w35-b2s-nl-ap_jmjvmoll9/"
   ],
   "methods": [
     "publitas",

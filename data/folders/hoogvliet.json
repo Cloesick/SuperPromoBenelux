@@ -2,24 +2,24 @@
   "retailer": "hoogvliet",
   "folders": [
     {
-      "id": "hoogvliet-3290114-folder",
+      "id": "hoogvliet-3292955-folder",
       "retailerSlug": "hoogvliet",
-      "title": "Hoogvliet folder week 34",
-      "validFrom": "2026-08-20",
-      "validUntil": "2026-08-30",
+      "title": "Hoogvliet folder week 35",
+      "validFrom": "2026-08-24",
+      "validUntil": "2026-09-03",
       "pageCount": 32,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/hoogvliet/folder_2026_34/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/19292/3290114/pdfs/57dd90b2-f767-49ec-a459-350e6a8c6241.pdf",
+      "embedUrl": "https://view.publitas.com/hoogvliet/folder_2026_35/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/19292/3292955/pdfs/60b4b060-25c2-4a9b-8e14-14bd08bbe48e.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-20T05:51:52.525Z"
+      "scrapedAt": "2026-08-24T05:56:49.983Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-20T05:51:52.525Z",
+  "scrapedAt": "2026-08-24T05:56:49.983Z",
   "sourceUrls": [
-    "https://view.publitas.com/hoogvliet/folder_2026_34/page/1"
+    "https://view.publitas.com/hoogvliet/folder_2026_35/page/1"
   ],
   "methods": [
     "publitas",
