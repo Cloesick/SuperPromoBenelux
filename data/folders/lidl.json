@@ -5,33 +5,33 @@
       "id": "lidl-2395591-folder",
       "retailerSlug": "lidl",
       "title": "Lidl BE NL - Week 34 2025",
-      "validFrom": "2026-08-24",
-      "validUntil": "2026-09-03",
+      "validFrom": "2026-08-26",
+      "validUntil": "2026-09-05",
       "pageCount": 59,
       "thumbnailUrl": "https://view.publitas.com/97031/2395591/pages/7bb74e6b-6bfd-4d34-b22a-262a926e7e78-at800.jpg",
       "pages": [],
       "embedUrl": "https://folder-nl.lidl.be/nl-folder-20-08-26-08?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/97031/2395591/pdfs/af2a81e1-2e11-4fc2-a37b-c1c44b1698b7.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-24T05:56:56.215Z"
+      "scrapedAt": "2026-08-26T05:53:49.106Z"
     },
     {
       "id": "lidl-3304634-folder",
       "retailerSlug": "lidl",
       "title": "Lidl BE NL - nl folder 24-08-29-08",
-      "validFrom": "2026-08-24",
-      "validUntil": "2026-09-03",
+      "validFrom": "2026-08-26",
+      "validUntil": "2026-09-05",
       "pageCount": 39,
       "thumbnailUrl": "",
       "pages": [],
       "embedUrl": "https://folder-nl.lidl.be/nl-folder-24-08-29-08?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/97031/3304634/pdfs/ca092975-a47c-469a-9dd7-e3102761be49.pdf",
+      "pdfUrl": "https://view.publitas.com/97031/3304634/pdfs/e9da1c08-0232-43ff-b344-3ed7cdd923c9.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-24T05:56:56.834Z"
+      "scrapedAt": "2026-08-26T05:53:49.716Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-24T05:56:56.215Z",
+  "scrapedAt": "2026-08-26T05:53:49.106Z",
   "sourceUrls": [
     "https://folder-nl.lidl.be/nl-folder-20-08-26-08"
   ],
