@@ -2,24 +2,24 @@
   "retailer": "welkoop",
   "folders": [
     {
-      "id": "welkoop-3308482-folder",
+      "id": "welkoop-3308483-folder",
       "retailerSlug": "welkoop",
-      "title": "Welkoop - Welkoop week 35 2026",
-      "validFrom": "2026-08-27",
-      "validUntil": "2026-09-06",
+      "title": "Welkoop - Welkoop week 36 2026",
+      "validFrom": "2026-08-31",
+      "validUntil": "2026-09-10",
       "pageCount": 34,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/welkoop/welkoop-week-35-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/395/3308482/pdfs/2ccad421-c7f0-42ce-a9dc-aa35e98106fe.pdf",
+      "embedUrl": "https://view.publitas.com/welkoop/welkoop-week-36-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/395/3308483/pdfs/b6779797-da0b-4df8-a00e-8b5eb704ba6e.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-27T08:03:33.257Z"
+      "scrapedAt": "2026-08-31T05:29:17.044Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-27T08:03:33.257Z",
+  "scrapedAt": "2026-08-31T05:29:17.044Z",
   "sourceUrls": [
-    "https://view.publitas.com/welkoop/welkoop-week-35-2026/page/1"
+    "https://view.publitas.com/welkoop/welkoop-week-36-2026/page/1"
   ],
   "methods": [
     "publitas",

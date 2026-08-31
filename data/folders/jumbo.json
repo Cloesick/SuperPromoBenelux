@@ -2,24 +2,24 @@
   "retailer": "jumbo",
   "folders": [
     {
-      "id": "jumbo-3317160-folder",
+      "id": "jumbo-3332286-folder",
       "retailerSlug": "jumbo",
-      "title": "Jumbo actiefolder - week 35 - 26 augustus t/m 1 september 2026",
-      "validFrom": "2026-08-27",
-      "validUntil": "2026-09-06",
-      "pageCount": 32,
+      "title": "Jumbo actiefolder - week 36 - 2 september t/m 8 september 2026",
+      "validFrom": "2026-08-31",
+      "validUntil": "2026-09-10",
+      "pageCount": 36,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-zqhm-35/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/171/3317160/pdfs/181a2af7-caf0-4fe3-8630-4987cfb4e2f3.pdf",
+      "embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-bwtk-36/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/171/3332286/pdfs/6722815a-9ee1-42ee-9c62-8407902d118b.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-27T08:03:19.160Z"
+      "scrapedAt": "2026-08-31T05:29:04.765Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-27T08:03:19.160Z",
+  "scrapedAt": "2026-08-31T05:29:04.765Z",
   "sourceUrls": [
-    "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-zqhm-35/"
+    "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-bwtk-36/"
   ],
   "methods": [
     "publitas",

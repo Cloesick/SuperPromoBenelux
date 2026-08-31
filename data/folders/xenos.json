@@ -2,24 +2,24 @@
   "retailer": "xenos",
   "folders": [
     {
-      "id": "xenos-3309098-folder",
+      "id": "xenos-3318974-folder",
       "retailerSlug": "xenos",
       "title": "XENOS - Xenos week 35-36 2026 (ma 24-8 t/m zo 6-9)",
-      "validFrom": "2026-08-27",
-      "validUntil": "2026-09-06",
-      "pageCount": 21,
+      "validFrom": "2026-08-31",
+      "validUntil": "2026-09-10",
+      "pageCount": 22,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/xenos/xenos-week-35-36-2026/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/7981/3309098/pdfs/0cc15867-5ff6-4f6e-9288-78c4559a11cf.pdf",
+      "embedUrl": "https://view.publitas.com/xenos/xenos-week-35-36-2026-2/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/7981/3318974/pdfs/e1ce2a67-4500-43d9-8423-7e7290b2330d.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-27T08:03:32.165Z"
+      "scrapedAt": "2026-08-31T05:29:15.938Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-27T08:03:32.165Z",
+  "scrapedAt": "2026-08-31T05:29:15.938Z",
   "sourceUrls": [
-    "https://view.publitas.com/xenos/xenos-week-35-36-2026/"
+    "https://view.publitas.com/xenos/xenos-week-35-36-2026-2/"
   ],
   "methods": [
     "publitas",

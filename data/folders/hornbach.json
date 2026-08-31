@@ -5,8 +5,8 @@
       "id": "hornbach-3259871-folder",
       "retailerSlug": "hornbach",
       "title": "HORNBACH NL | Projectbouwmarkt en Tuincentrum | Keuken",
-      "validFrom": "2026-08-27",
-      "validUntil": "2026-09-06",
+      "validFrom": "2026-08-31",
+      "validUntil": "2026-09-10",
       "pageCount": 33,
       "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/hornbach-2026-w32-pdfimg-p1.webp",
       "pages": [
@@ -212,11 +212,11 @@
       "embedUrl": "https://view.publitas.com/hornbach-nl/wh_0826_nl_kw34/?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/88064/3259871/pdfs/148b075c-f0f8-47d4-b77c-c86256aed9f5.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-27T08:03:32.802Z"
+      "scrapedAt": "2026-08-31T05:29:16.839Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-27T08:03:32.802Z",
+  "scrapedAt": "2026-08-31T05:29:16.839Z",
   "sourceUrls": [
     "https://view.publitas.com/hornbach-nl/wh_0826_nl_kw34/"
   ],

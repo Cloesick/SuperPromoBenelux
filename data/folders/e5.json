@@ -5,19 +5,19 @@
       "id": "e5-3305516-folder",
       "retailerSlug": "e5",
       "title": "the refive journal",
-      "validFrom": "2026-08-27",
-      "validUntil": "2026-09-06",
+      "validFrom": "2026-08-31",
+      "validUntil": "2026-09-10",
       "pageCount": 12,
       "thumbnailUrl": "",
       "pages": [],
       "embedUrl": "https://view.publitas.com/e5-mode/krant-refive/?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/63014/3305516/pdfs/b0e27db8-969a-4bb7-80f6-aa7232f667ec.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-27T08:03:34.787Z"
+      "scrapedAt": "2026-08-31T05:29:18.769Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-27T08:03:34.787Z",
+  "scrapedAt": "2026-08-31T05:29:18.769Z",
   "sourceUrls": [
     "https://view.publitas.com/e5-mode/krant-refive/"
   ],

@@ -2,24 +2,24 @@
   "retailer": "spar",
   "folders": [
     {
-      "id": "spar-3313906-folder",
+      "id": "spar-3331162-folder",
       "retailerSlug": "spar",
-      "title": "SPAR - SPAR digitale tariefkaart 2026 ",
-      "validFrom": "2026-08-27",
-      "validUntil": "2026-09-06",
-      "pageCount": 24,
+      "title": "SPAR - spar folder wk20263536",
+      "validFrom": "2026-08-31",
+      "validUntil": "2026-09-10",
+      "pageCount": 16,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/spar/spar-digitale-tariefkaart-2026/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/237/3313906/pdfs/2d6ca80b-83b1-49df-9c7b-5e26e24217ad.pdf",
+      "embedUrl": "https://view.publitas.com/spar/spar-folder-wk20263536/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/237/3331162/pdfs/f7851a0c-3601-4a6c-be3f-0297fd6b1db9.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-27T08:03:29.894Z"
+      "scrapedAt": "2026-08-31T05:29:13.914Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-27T08:03:29.894Z",
+  "scrapedAt": "2026-08-31T05:29:13.914Z",
   "sourceUrls": [
-    "https://view.publitas.com/spar/spar-digitale-tariefkaart-2026/"
+    "https://view.publitas.com/spar/spar-folder-wk20263536/"
   ],
   "methods": [
     "publitas",
