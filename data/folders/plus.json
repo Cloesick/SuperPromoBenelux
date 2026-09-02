@@ -2,24 +2,24 @@
   "retailer": "plus",
   "folders": [
     {
-      "id": "plus-3308912-folder",
+      "id": "plus-3320507-folder",
       "retailerSlug": "plus",
-      "title": "PLUS - PLUS week 35 2026",
-      "validFrom": "2026-08-31",
-      "validUntil": "2026-09-10",
-      "pageCount": 41,
+      "title": "PLUS - PLUS week 36 2026",
+      "validFrom": "2026-09-02",
+      "validUntil": "2026-09-12",
+      "pageCount": 46,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/plus-folder-nl/plus-week-35-2026/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/96298/3308912/pdfs/9bf1da57-33a7-490d-b94c-4df9ba637b72.pdf",
+      "embedUrl": "https://view.publitas.com/plus-folder-nl/plus-week-36-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/96298/3320507/pdfs/ddee767d-8c37-420e-85ed-1b35be710b71.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-31T05:29:11.064Z"
+      "scrapedAt": "2026-09-02T05:32:52.173Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-31T05:29:11.064Z",
+  "scrapedAt": "2026-09-02T05:32:52.173Z",
   "sourceUrls": [
-    "https://view.publitas.com/plus-folder-nl/plus-week-35-2026/"
+    "https://view.publitas.com/plus-folder-nl/plus-week-36-2026/page/1"
   ],
   "methods": [
     "publitas",
