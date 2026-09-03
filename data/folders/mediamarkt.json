@@ -5,19 +5,19 @@
       "id": "mediamarkt-3044383-folder",
       "retailerSlug": "mediamarkt",
       "title": "A Media Markt BE - 26MM_Inspiratiemagazine_WK_NL",
-      "validFrom": "2026-09-02",
-      "validUntil": "2026-09-12",
+      "validFrom": "2026-09-03",
+      "validUntil": "2026-09-13",
       "pageCount": 52,
       "thumbnailUrl": "https://view.publitas.com/2411/3044383/pages/aec9df94-640e-4e53-9cd9-b5acdf7ebab2-at800.jpg",
       "pages": [],
       "embedUrl": "https://view.publitas.com/mediamarkt-be/26mm_inspiratiemagazine_wk_nl/?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/2411/3044383/pdfs/d6f78163-1e3a-45ad-b7f5-0673b7560e55.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-02T05:33:06.383Z"
+      "scrapedAt": "2026-09-03T05:50:45.862Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-02T05:33:06.383Z",
+  "scrapedAt": "2026-09-03T05:50:45.862Z",
   "sourceUrls": [
     "https://view.publitas.com/mediamarkt-be/26mm_inspiratiemagazine_wk_nl/"
   ],

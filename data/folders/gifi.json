@@ -2,24 +2,24 @@
   "retailer": "gifi",
   "folders": [
     {
-      "id": "gifi-3316219-folder",
+      "id": "gifi-3342908-folder",
       "retailerSlug": "gifi",
       "title": "Gifi - Gifi Bi-monthly",
-      "validFrom": "2026-08-31",
-      "validUntil": "2026-09-10",
-      "pageCount": 32,
+      "validFrom": "2026-09-03",
+      "validUntil": "2026-09-13",
+      "pageCount": 22,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.promozilla.com/gifi/gifi-bi-monthly-xgddjz86dezo/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/103778/3316219/pdfs/064991fb-73c2-482a-82eb-60a90730db93.pdf",
+      "embedUrl": "https://view.promozilla.com/gifi/gifi-bi-monthly-6x8olmglklv9/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/103778/3342908/pdfs/c5c2ab06-5c02-4bb5-9536-4ebce4cc5ae3.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-08-31T05:29:20.006Z"
+      "scrapedAt": "2026-09-03T05:50:43.440Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-31T05:29:20.006Z",
+  "scrapedAt": "2026-09-03T05:50:43.440Z",
   "sourceUrls": [
-    "https://view.promozilla.com/gifi/gifi-bi-monthly-xgddjz86dezo/"
+    "https://view.promozilla.com/gifi/gifi-bi-monthly-6x8olmglklv9/"
   ],
   "methods": [
     "publitas",
