@@ -6,10 +6,10 @@ export class KrefelScraper extends BaseScraper {
 		name: "Krëfel",
 		folderTitle: "Krëfel promoties",
 		folderUrls: [
-			"https://www.krefel.be/nl/promoties",
-			"https://www.krefel.be/nl/acties",
+			"https://www.krefel.be/nl/deals-van-het-moment",
+			"https://www.krefel.be/nl/ecodeals",
 		],
-		dealUrls: ["https://www.krefel.be/nl/promoties"],
+		dealUrls: ["https://www.krefel.be/nl/deals-van-het-moment"],
 		cookieSelectors: [
 			"#onetrust-accept-btn-handler",
 			'button[class*="accept"]',

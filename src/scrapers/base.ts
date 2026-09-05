@@ -19,7 +19,11 @@ type CaptureResult =
 import puppeteer, { Page, Browser } from "rebrowser-puppeteer";
 import { Folder, Deal, ScrapedData, ContentSource } from "../lib/types";
 import { syncDealsToDb } from "../lib/productsDb";
-import { normalizeSchemaImage } from "../lib/schemaImage";
+import { dealsFromJsonLd } from "./jsonLdDeals";
+import {
+	dealsFromEmbeddedJson,
+	embeddedJsonBlocks,
+} from "./embeddedProductDeals";
 import { isNavigationNoise } from "../lib/htmlNoise";
 import { parsePriceElementText, sanitizeDeals } from "../lib/dealValidation";
 import { findScrapeRegression } from "../lib/scrapeRegression";
@@ -1924,86 +1928,55 @@ export abstract class BaseScraper {
 		const { page } = ctx;
 		const dates = this.getCurrentWeekDates();
 
-		const fnSrc = `(
-			function (retailerSlug, validFrom, validUntil) {
-				const results = [];
-				const scripts = document.querySelectorAll('script[type="application/ld+json"]');
-				for (let si = 0; si < scripts.length; si++) {
-					const script = scripts[si];
-					try {
-						const data = JSON.parse(script.textContent || "");
-						const items = Array.isArray(data) ? data : [data];
-						for (let ii = 0; ii < items.length; ii++) {
-							const item = items[ii];
-							if (item["@type"] === "Product" || item["@type"] === "Offer") {
-								const offer = item.offers || item;
-								results.push({
-									id: 'jsonld-' + results.length,
-									product: item.name || offer.name || "Unknown",
-									originalPrice: offer.highPrice ? parseFloat(offer.highPrice) : undefined,
-									promoPrice: offer.price ? parseFloat(offer.price) : undefined,
-									discount: offer.discount || undefined,
-									description: item.description || undefined,
-									// Raw schema.org image value; normalised after the evaluate
-									// boundary by normalizeSchemaImage.
-									imageUrl: item.image,
-									validFrom,
-									validUntil,
-									retailerSlug,
-								});
-							}
-							if (item["@type"] === "ItemList" && item.itemListElement) {
-								for (let li = 0; li < item.itemListElement.length; li++) {
-									const listItem = item.itemListElement[li];
-									const product = listItem.item || listItem;
-									const offer = product.offers || product;
-									if (product && product.name) {
-										results.push({
-											id: 'jsonld-' + results.length,
-											product: product.name,
-											originalPrice: offer.highPrice ? parseFloat(offer.highPrice) : undefined,
-											promoPrice: offer.price ? parseFloat(offer.price) : undefined,
-											description: product.description || undefined,
-											imageUrl: product.image,
-											validFrom,
-											validUntil,
-											retailerSlug,
-										});
-									}
-								}
-							}
-						}
-					} catch {
-						// skip
-					}
-				}
-				return results;
-			}
-		)`;
-
-		const dealsRaw = await page.evaluate(
-			(src: string, args: string[]) => {
-				const fn = (0, eval)(src) as (...a: any[]) => any;
-				return fn(args[0], args[1], args[2]);
-			},
-			fnSrc,
-			[this.retailerSlug, dates.from, dates.until],
+		// Only the raw script bodies cross the evaluate boundary. Parsing them in
+		// Node keeps the traversal unit-testable and lets the same code read a
+		// fetched HTML string, which the browser-bound version could not.
+		const blocks: string[] = await page.evaluate(() =>
+			Array.from(
+				document.querySelectorAll('script[type="application/ld+json"]'),
+			).map((s) => s.textContent || ""),
 		);
 
-		// schema.org `image` may be a string, an ImageObject, or an array of
-		// either — and the value crosses the evaluate boundary as `any`, so the
-		// declared `imageUrl: string` was never enforced. Normalising here rather
-		// than inside the browser body keeps it unit-testable and avoids the
-		// __name problem that named inner functions hit in evaluated code.
-		const deals = (Array.isArray(dealsRaw) ? (dealsRaw as Deal[]) : []).map(
-			(deal) => ({
-				...deal,
-				imageUrl: normalizeSchemaImage((deal as { imageUrl?: unknown }).imageUrl),
-			}),
-		);
+		const deals = dealsFromJsonLd(blocks, {
+			retailerSlug: this.retailerSlug,
+			validFrom: dates.from,
+			validUntil: dates.until,
+		});
+
 		if (deals.length > 0)
 			this.log(`Extracted ${deals.length} deal(s) from JSON-LD`);
 		return { deals, source: "html" };
+	}
+
+	/**
+	 * Merges deals parsed out of the page's embedded product JSON into a base
+	 * pass. Retailers opt in by overriding extractJsonLd and calling this; the
+	 * shared home is here because the merge rules — dedupe by product name, keep
+	 * the base pass first — are the same wherever the payload comes from.
+	 */
+	protected async mergeEmbeddedDeals(
+		ctx: ScrapeContext,
+		base: DealResult,
+	): Promise<DealResult> {
+		const html = await ctx.page.content();
+		const dates = this.getCurrentWeekDates();
+		const embedded = dealsFromEmbeddedJson(embeddedJsonBlocks(html), {
+			retailerSlug: this.retailerSlug,
+			validFrom: dates.from,
+			validUntil: dates.until,
+		});
+
+		if (embedded.length > 0)
+			this.log(`Extracted ${embedded.length} deal(s) from embedded product JSON`);
+
+		const seen = new Set(base.deals.map((d) => d.product.toLowerCase()));
+		return {
+			deals: [
+				...base.deals,
+				...embedded.filter((d) => !seen.has(d.product.toLowerCase())),
+			],
+			source: base.source,
+		};
 	}
 
 	// ---- Step 5: HTML deal extraction --------------------------------------

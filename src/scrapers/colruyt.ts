@@ -7,9 +7,9 @@ export class ColruytScraper extends BaseScraper {
 		folderTitle: "Colruyt folder van de week",
 		folderUrls: [
 			"https://www.colruyt.be/nl/folders",
-			"https://www.colruyt.be/nl/promoties",
+			"https://www.colruyt.be/nl/acties",
 		],
-		dealUrls: ["https://www.colruyt.be/nl/promoties"],
+		dealUrls: ["https://www.colruyt.be/nl/acties"],
 		cookieSelectors: [
 			"#onetrust-accept-btn-handler",
 			'button[class*="accept"]',

@@ -1,4 +1,4 @@
-import { BaseScraper, RetailerConfig } from "./base";
+import { BaseScraper, RetailerConfig, ScrapeContext, DealResult } from "./base";
 
 export class DiScraper extends BaseScraper {
 	config: RetailerConfig = {
@@ -6,10 +6,10 @@ export class DiScraper extends BaseScraper {
 		name: "Di",
 		folderTitle: "Di promoties",
 		folderUrls: [
-			"https://www.di.be/nl/promoties",
-			"https://www.di.be/nl/aanbiedingen",
+			"https://www.di.be/promotions.html",
+			"https://www.di.be/promotions/",
 		],
-		dealUrls: ["https://www.di.be/nl/promoties"],
+		dealUrls: ["https://www.di.be/promotions.html"],
 		cookieSelectors: [
 			"#onetrust-accept-btn-handler",
 			'button[class*="accept"]',
@@ -23,4 +23,11 @@ export class DiScraper extends BaseScraper {
 			image: "img",
 		},
 	};
+
+	// Di runs Proximis, which serves the grid as inline product JSON and paints
+	// it client-side; the wildcard selectors above match the shell, not prices.
+	// The payload has the was-price and the discount label the shell never shows.
+	protected async extractJsonLd(ctx: ScrapeContext): Promise<DealResult> {
+		return this.mergeEmbeddedDeals(ctx, await super.extractJsonLd(ctx));
+	}
 }
