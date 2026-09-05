@@ -82,29 +82,6 @@ jobs:
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
         run: npm run scrape -- ${{ steps.targets.outputs.targets }}
 
-      - name: Health check
-        run: |
-          if [ ! -f data/health.json ]; then
-            echo "⚠ No health manifest found"
-            exit 0
-          fi
-
-          echo "=== Data Health Report ==="
-          node -e "
-            const h = require('./data/health.json');
-            const s = h.summary;
-            console.log('Fresh: ' + s.fresh + ' | Fallback: ' + s.fallback + ' | Stale: ' + s.stale + ' | Missing: ' + s.missing);
-            if (s.withDeadUrls > 0) console.log('⚠ Dead URLs stripped: ' + s.withDeadUrls + ' retailer(s)');
-            if (s.withErrors > 0) console.log('⚠ Validation errors: ' + s.withErrors + ' retailer(s)');
-            for (const r of h.retailers) {
-              const issues = r.validationIssues.filter(i => i.severity === 'error');
-              if (issues.length > 0) console.log('  ✗ ' + r.slug + ': ' + issues.map(i => i.message).join('; '));
-              const dead = r.probeResults.filter(p => !p.live);
-              if (dead.length > 0) console.log('  ⚠ ' + r.slug + ': dead URLs — ' + dead.map(d => d.url + ' (' + d.status + ')').join('; '));
-            }
-            if (s.missing > 0) { console.error(s.missing + ' retailer(s) have NO data!'); process.exit(1); }
-          "
-
       # Screenshots are committed, so unreferenced ones would accumulate in git
       # history forever. The scraper writes every capture it takes, but duplicate
       # collapsing and blank detection mean most are never referenced: before
@@ -141,5 +118,45 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore: update scraped folders and screenshots"
+          git commit -m "chore: update scraped folders and screenshots [skip ci]"
           git push
+
+      # Both quality gates run AFTER the commit, on purpose.
+      #
+      # They exist to make a bad week visible, not to decide whether the week's
+      # data is worth keeping. Running them first meant one missing retailer
+      # failed the job before the push and discarded the other 46 retailers'
+      # fresh data along with it. Automated scrape commits stopped on 2026-08-07
+      # while the Publitas harvest kept committing daily, which is exactly the
+      # shape this ordering prevents: a red run should cost a notification, not
+      # a week of data.
+      - name: Health check
+        run: |
+          if [ ! -f data/health.json ]; then
+            echo "⚠ No health manifest found"
+            exit 0
+          fi
+
+          echo "=== Data Health Report ==="
+          node -e "
+            const h = require('./data/health.json');
+            const s = h.summary;
+            console.log('Fresh: ' + s.fresh + ' | Fallback: ' + s.fallback + ' | Stale: ' + s.stale + ' | Missing: ' + s.missing);
+            if (s.withDeadUrls > 0) console.log('⚠ Dead URLs stripped: ' + s.withDeadUrls + ' retailer(s)');
+            if (s.withErrors > 0) console.log('⚠ Validation errors: ' + s.withErrors + ' retailer(s)');
+            for (const r of h.retailers) {
+              const issues = r.validationIssues.filter(i => i.severity === 'error');
+              if (issues.length > 0) console.log('  ✗ ' + r.slug + ': ' + issues.map(i => i.message).join('; '));
+              const dead = r.probeResults.filter(p => !p.live);
+              if (dead.length > 0) console.log('  ⚠ ' + r.slug + ': dead URLs — ' + dead.map(d => d.url + ' (' + d.status + ')').join('; '));
+            }
+            if (s.missing > 0) { console.error(s.missing + ' retailer(s) have NO data!'); process.exit(1); }
+          "
+
+      # Catches the failure the health manifest cannot see: a scraper that
+      # completed, returned deals, and priced none of them. Runs even when the
+      # health check above failed, because "expired" and "missing" are separate
+      # problems and seeing only the first one hides the second.
+      - name: Staleness audit
+        if: always()
+        run: npm run audit:staleness

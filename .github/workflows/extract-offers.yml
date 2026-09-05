@@ -1,0 +1,91 @@
+name: Extract offers
+
+# The scrape and the harvest keep folder *pages* fresh. Neither one turns those
+# pages into comparable offers — `npm run extract:offers` does, and until now
+# nothing ever called it on a schedule, so the producer side of the price
+# comparison ran only when someone remembered to run it by hand. That is the
+# same gap the feature had before extract-offers.mts existed: a /prijzen page
+# reading a table nothing writes.
+#
+# Runs an hour after the harvest on each publish day, so it sees the week's
+# folders rather than last week's. Extraction targets only folders that have
+# page images and no prices — the ~34 retailers whose leaflets are images with
+# no text layer, where a parser can never find a price and a vision model is
+# the only path to one. Folders the text pass already priced are skipped, so
+# this does not re-buy what the scraper got for free.
+
+on:
+  schedule:
+    - cron: "0 7 * * 1" # Monday    — after the 04:30 scrape and 05:20 harvest
+    - cron: "0 7 * * 3" # Wednesday
+    - cron: "0 7 * * 4" # Thursday
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Single retailer slug (optional). Empty = every eligible folder."
+        required: false
+        default: ""
+      dry_run:
+        description: "Extract but write nothing"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: extract-offers
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    # The Batch API is not latency-sensitive and the script polls for up to 30
+    # minutes before giving up and printing the batch id for a later collect.
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
+        run: npm ci --legacy-peer-deps
+
+      # Idempotent (`IF NOT EXISTS`), so running it every time is how a fresh
+      # or migrated database comes up to date without a manual step.
+      - name: Apply schema
+        env:
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: |
+          if [ -z "$POSTGRES_URL" ]; then
+            echo "POSTGRES_URL is not set — skipping migration."
+            exit 0
+          fi
+          npm run db:migrate
+
+      # Both scripts refuse politely and exit 0 when their credential is
+      # absent, so a repository without the secrets gets a green no-op rather
+      # than a weekly red cross for a feature it has not turned on yet.
+      - name: Extract offers from folder pages
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.slug }}" ]; then
+            ARGS="--slug ${{ github.event.inputs.slug }}"
+          fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          npm run extract:offers -- $ARGS
