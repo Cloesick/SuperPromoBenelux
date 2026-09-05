@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import { scrapers } from "./scrapers";
 import {
@@ -17,6 +18,11 @@ import {
 	type ValidationIssue,
 	type ProbeResult,
 } from "./run-helpers";
+import {
+	assessStaleness,
+	formatStalenessReport,
+	type StalenessVerdict,
+} from "./staleness";
 
 const DATA_DIR = path.resolve(process.cwd(), "data", "folders");
 
@@ -193,6 +199,39 @@ async function main() {
 	console.log(
 		`\nHealth manifest written (${manifest.summary.total} retailers)`,
 	);
+
+	// A green tick per retailer says the run completed, not that the data is
+	// usable. Ask that separately and loudly, worst first.
+	const stale: StalenessVerdict[] = manifest.retailers.map((r) => {
+		let validUntil: string | null = null;
+		let deals: { promoPrice?: number; originalPrice?: number }[] = [];
+		try {
+			const raw = JSON.parse(
+				fs.readFileSync(path.join(DATA_DIR, `${r.slug}.json`), "utf-8"),
+			);
+			const folders = Array.isArray(raw.folders) ? raw.folders : [];
+			validUntil =
+				folders
+					.map((f: { validUntil?: string }) => f.validUntil)
+					.filter((v: unknown): v is string => typeof v === "string")
+					.sort()
+					.pop() ?? null;
+			deals = Array.isArray(raw.deals) ? raw.deals : [];
+		} catch {
+			// assessStaleness reports the gap; a read failure is not fatal here.
+		}
+		return assessStaleness({
+			slug: r.slug,
+			validUntil,
+			deals,
+			folderCount: r.folderCount,
+		});
+	});
+
+	console.log("");
+	console.log("=== Data health ===");
+	console.log(formatStalenessReport(stale));
+
 
 	// --- Summary ---
 	printSummary(results, manifest);

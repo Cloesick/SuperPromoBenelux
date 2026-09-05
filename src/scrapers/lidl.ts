@@ -1,4 +1,10 @@
-import { BaseScraper, RetailerConfig } from "./base";
+import {
+	BaseScraper,
+	RetailerConfig,
+	ScrapeContext,
+	DealResult,
+} from "./base";
+import { dealsFromLidlGrid, lidlGridBlocks } from "./lidlGridDeals";
 
 /**
  * Pad a number to 2 digits.
@@ -38,12 +44,20 @@ export class LidlScraper extends BaseScraper {
 		slug: "lidl",
 		name: "Lidl",
 		folderTitle: "Lidl folder van de week",
+		// lidl.be/nl/aanbiedingen has 404'd since at least Aug 2026, so the deal
+		// pass was reading nav links off an error page and the harvest guard threw
+		// the whole run away. The weekly promo page is now /c/nl-BE/acties-deze-week/;
+		// the older aanbiedingen-deze-week slug 301s onto it, kept as a hedge.
 		folderUrls: [
 			"https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
-			"https://www.lidl.be/nl/aanbiedingen",
+			"https://www.lidl.be/c/nl-BE/acties-deze-week/a10082242",
 			...getLidlFolderUrls(),
 		],
-		dealUrls: ["https://www.lidl.be/nl/aanbiedingen"],
+		dealUrls: [
+			"https://www.lidl.be/c/nl-BE/acties-deze-week/a10082242",
+			"https://www.lidl.be/c/nl-BE/aanbiedingen-deze-week/a10082242",
+			"https://www.lidl.be/c/nl-BE/weekenddeals/a10077355",
+		],
 		cookieSelectors: [
 			"#onetrust-accept-btn-handler",
 			'button[class*="cookie-alert--accept"]',
@@ -58,4 +72,32 @@ export class LidlScraper extends BaseScraper {
 			image: 'img[src*="product"], img[class*="product"], picture img',
 		},
 	};
+
+	// Lidl ships no product JSON-LD and keeps prices out of the DOM, so the base
+	// pass finds nothing on the weekly promo page. Read the `data-grid-data`
+	// payload as well and merge, rather than replacing: the base pass still
+	// catches Organization/Offer markup on the folder-landing pages.
+	protected async extractJsonLd(ctx: ScrapeContext): Promise<DealResult> {
+		const base = await super.extractJsonLd(ctx);
+
+		const html = await ctx.page.content();
+		const dates = this.getCurrentWeekDates();
+		const grid = dealsFromLidlGrid(lidlGridBlocks(html), {
+			retailerSlug: this.retailerSlug,
+			validFrom: dates.from,
+			validUntil: dates.until,
+		});
+
+		if (grid.length > 0)
+			this.log(`Extracted ${grid.length} deal(s) from data-grid-data`);
+
+		const seen = new Set(base.deals.map((d) => d.product.toLowerCase()));
+		const merged = [
+			...base.deals,
+			...grid.filter((d) => !seen.has(d.product.toLowerCase())),
+		];
+
+		return { deals: merged, source: base.source };
+	}
+
 }
