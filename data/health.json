@@ -1,31 +1,20 @@
 {
-  "generatedAt": "2026-09-05T07:35:03.969Z",
+  "generatedAt": "2026-09-05T17:44:57.217Z",
   "retailers": [
     {
-      "slug": "lidl",
-      "name": "Lidl",
+      "slug": "di",
+      "name": "Di",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-07T03:29:28.239Z",
+      "scrapedAt": "2026-09-05T17:44:56.965Z",
       "folderCount": 1,
-      "dealCount": 5,
-      "hasEmbed": true,
-      "hasPdf": true,
+      "dealCount": 58,
+      "hasEmbed": false,
+      "hasPdf": false,
       "hasPages": true,
       "validationIssues": [],
-      "probeResults": [
-        {
-          "url": "https://folder-nl.lidl.be/nl-folder-03-08-08-08/page/1",
-          "status": 200,
-          "live": true
-        },
-        {
-          "url": "https://folder-nl.lidl.be/97031/3258474/pdfs/cd8f099e-ff05-43c1-8fba-71621313563c.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252003-08-08-08.pdf",
-          "status": 200,
-          "live": true
-        }
-      ]
+      "probeResults": []
     }
   ],
   "summary": {
