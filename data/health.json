@@ -1,22 +1,27 @@
 {
-  "generatedAt": "2026-08-09T10:35:07.002Z",
+  "generatedAt": "2026-09-05T07:35:03.969Z",
   "retailers": [
     {
-      "slug": "etos",
-      "name": "Etos",
+      "slug": "lidl",
+      "name": "Lidl",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-09T10:35:06.622Z",
+      "scrapedAt": "2026-08-07T03:29:28.239Z",
       "folderCount": 1,
-      "dealCount": 12,
-      "hasEmbed": false,
+      "dealCount": 5,
+      "hasEmbed": true,
       "hasPdf": true,
       "hasPages": true,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://view.publitas.com/28/3261309/pdfs/d4139031-197b-4cb8-87a7-eab66c122994.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Etos%2520-%2520ETOS%2520Week%252032%25202026.pdf",
+          "url": "https://folder-nl.lidl.be/nl-folder-03-08-08-08/page/1",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder-nl.lidl.be/97031/3258474/pdfs/cd8f099e-ff05-43c1-8fba-71621313563c.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252003-08-08-08.pdf",
           "status": 200,
           "live": true
         }

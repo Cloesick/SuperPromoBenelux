@@ -2,31 +2,296 @@
   "retailer": "medpets",
   "folders": [
     {
-      "id": "medpets-2026-w32-folder",
+      "id": "medpets-2026-w35-folder",
       "retailerSlug": "medpets",
       "title": "Medpets promoties",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
       "pageCount": 1,
-      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/medpets-2026-w32-viewerimg-p1.webp",
+      "thumbnailUrl": "/screenshots/medpets-2026-w35-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/medpets-2026-w32-viewerimg-p1.webp",
-          "deals": [],
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/medpets-2026-w32-viewerimg-p1-thumb.webp"
+          "imageUrl": "/screenshots/medpets-2026-w35-viewerimg-p1.webp",
+          "thumbnailUrl": "/screenshots/medpets-2026-w35-viewerimg-p1-thumb.webp",
+          "deals": []
         }
       ],
       "contentSource": "screenshot",
-      "scrapedAt": "2026-08-04T18:33:40.355Z"
+      "scrapedAt": "2026-08-26T23:00:22.889Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-08-04T18:33:46.278Z",
+  "deals": [
+    {
+      "id": "html-0",
+      "product": "Royal Canin Renal Kat - Maaltijdzakje",
+      "discount": "-20% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/ZMSS4kx60COvIHhIfOlNkBicL9zeiy-metaQ0FULVJFTkFMLVdFVC1PdmVyemljaHQuanBn-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 15.15,
+      "originalPrice": 18.95
+    },
+    {
+      "id": "html-1",
+      "product": "Royal Canin Mini Adult Wet - Hondenvoer",
+      "discount": "-30% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/n4HMJ42zaRPwWA3thfyS8rNkzKhZJP-metaUm95YWwtQ2FuaW4tTWluaS1BZHVsdC1XZXQtMS5qcGc=-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 8.6,
+      "originalPrice": 12.3
+    },
+    {
+      "id": "html-2",
+      "product": "Puur Probiotic",
+      "discount": "-10% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/dd1047092ec5a3dd3719090e53f3f0e4e7b829d13bad0681a22e6f4c20a6496b_3_5.jpeg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 27.4,
+      "originalPrice": 30.45
+    },
+    {
+      "id": "html-3",
+      "product": "Royal Canin Urinary S/O Kat - Maaltijdzakje",
+      "discount": "-20% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/wmOomnrKY4n0MfayxwrWaBw5q4GAAV-metaQ0FULVVSSU5BUlktUy1PLUxPQUYtV0VULTkwMDM1NzkwMTA0ODgtTkwtMS5qcGc=-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 15.65,
+      "originalPrice": 19.55
+    },
+    {
+      "id": "html-4",
+      "product": "Royal Canin Mini Puppy Wet - Hondenvoer",
+      "discount": "-30% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/xdr37iidkAt2yQFfuYINiCNCeqK0Q4-metaUm95YWwtQ2FuaW4tUHVwcHktTWluaS1XZXQuanBn-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 9.65,
+      "originalPrice": 13.8
+    },
+    {
+      "id": "html-5",
+      "product": "Royal Canin Mini Ageing 8 Wet - Hondenvoer",
+      "discount": "-30% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/kisf90KCNL8jBFtBOz0MUdc1GAu0Oe-metaUm95YWwtQ2FuaW4tTWluaS1BZ2VpbmctMTIrLVdldC0yMDI0LS0tMS5qcGc=-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 9.75,
+      "originalPrice": 13.95
+    },
+    {
+      "id": "html-6",
+      "product": "Royal Canin Mini Puppy - Hondenvoer",
+      "discount": "Gratis natvoer",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/cJYvpebjRZVRdzjL1tu2Oj4JqQErlZ-metaUm95YWwtQ2FuaW4tUHVwcHktTWluaS5qcGc=-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 8.85,
+      "originalPrice": 11.05
+    },
+    {
+      "id": "html-7",
+      "product": "Royal Canin Medium Puppy - Hondenvoer",
+      "discount": "Gratis natvoer",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/hZDcYcrhUhif5wvDKw5FQMLj6n6vJf-metaUm95YWwtQ2FuaW4tUHVwcHktTWVkaXVtLmpwZw==-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 30.95,
+      "originalPrice": 38.75
+    },
+    {
+      "id": "html-8",
+      "product": "Puur L-Lysine",
+      "discount": "-10% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/9e18475d4edb6d416e8354827b0cfda180536086e7b430fe032425474c39e2e9_3_5.jpeg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 12.8,
+      "originalPrice": 14.2
+    },
+    {
+      "id": "html-9",
+      "product": "Royal Canin Gastrointestinal Kat - Maaltijdzakje",
+      "discount": "-20% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/oRwUAiCDnMoe12CfvupRvIdWdlhkDh-metaQ0FULUdBU1RST0lOVEVTVElOQUwtV0VULTkwMDM1NzkwMTM1NTctRlItMS5qcGc=-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 15.3,
+      "originalPrice": 19.15
+    },
+    {
+      "id": "html-10",
+      "product": "Royal Canin Renal Hond - Maaltijdzakje",
+      "discount": "-20% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/ZGjdtGuVKDL1vzIhCLBfV1wH6svI3z-metaRE9HLS0tUkVOQUwtLS1XRVRfOTAwMzU3OTAxNjgwMF9OTF8xLmpwZw==-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 15.1,
+      "originalPrice": 18.9
+    },
+    {
+      "id": "html-11",
+      "product": "Royal Canin Mini Adult - Hondenvoer",
+      "discount": "-15% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/xiNZtLX2t1oQVspIiUHCJ9kzjy5cZY-metaUm95YWwtQ2FuaW4tTWluaS1BZHVsdC0xLmpwZw==-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 7.8,
+      "originalPrice": 9.15
+    },
+    {
+      "id": "html-12",
+      "product": "Royal Canin Sensitivity Control Kat - Maaltijdzakje",
+      "discount": "-20% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/jgBqCT8kr0G7nRoFW0olGeXi7ght2z-metaQ0FULVNFTlNJVElWSVRZLUNPTlRST0wtS0lQLVdFVC05MDAzNTc5MDExNDIzLU5MLTEuanBn-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 18.2,
+      "originalPrice": 22.75
+    },
+    {
+      "id": "html-13",
+      "product": "Royal Canin British Shorthair Adult - Kattenvoer",
+      "discount": "-15% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/royal_canin_british_shorthair_adult__kattenvoer_140477_1000_none.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 8.85
+    },
+    {
+      "id": "html-14",
+      "product": "Royal Canin FHN Sensory Multipack in Gravy",
+      "discount": "-30% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/y7YWDrT7VyKRqxUQeGnkaxcT9GZXuD-metaUm95YWwtQ2FuaW4tRkhOLVNlbnNvcnktTXVsdGlwYWNrLWluLUdyYXZ5XzAxLmpwZw==-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 12.55,
+      "originalPrice": 17.95
+    },
+    {
+      "id": "html-15",
+      "product": "Royal Canin Sterilised in Gravy - Kattenvoer",
+      "discount": "-30% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/royal_canin_sterilised_in_gravy__kattenvoer_128072_1000_none.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 12.2,
+      "originalPrice": 17.4
+    },
+    {
+      "id": "html-16",
+      "product": "Royal Canin Diabetic Kat - Maaltijdzakje",
+      "discount": "-20% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/EOxW6jvFlww9o4uFahOzmbC4reBDcF-metaQ0FULURJQUJFVElDLVdFVC05MDAzNTc5MTE5ODAtTkwtMS5qcGc=-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 14.85,
+      "originalPrice": 18.55
+    },
+    {
+      "id": "html-17",
+      "product": "Puur Cranberry",
+      "discount": "-10% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/618ada99bba29425a04b5f3c2836f50687eb8a8eeda46ddf507c7f53490b9a54_3_5.jpeg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 23.8,
+      "originalPrice": 26.45
+    },
+    {
+      "id": "html-18",
+      "product": "Royal Canin Satiety Weight Management Kat - Maaltijdzakje",
+      "discount": "-20% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/2Z1Y05efCAsgcb5CO9mXg7jy0vPWFy-metaQ0FULVNBVElFVFktV0VULTkwMDM1NzkwMDYxNDYtTkwtMS5qcGc=-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 15.55,
+      "originalPrice": 19.45
+    },
+    {
+      "id": "html-19",
+      "product": "Royal Canin Sensible 33 - Kattenvoer",
+      "discount": "-15% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/royal_canin_sensible_33__kattenvoer_144713_1000_none.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 6.1,
+      "originalPrice": 7.15
+    },
+    {
+      "id": "html-20",
+      "product": "Royal Canin Kitten - Kattenvoer",
+      "discount": "Gratis natvoer",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/efm8tbdoVGIBN1P40xxUFxOID2Vr5W-metaUm95YWwtQ2FuaW4tS2l0dGVuLURyb29ndm9lci5qcGc=-.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 6.3,
+      "originalPrice": 7.85
+    },
+    {
+      "id": "html-21",
+      "product": "Royal Canin Sterilised 37 - Kattenvoer",
+      "discount": "-15% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/royal_canin_sterilised_37__kattenvoer_144743_1000_none.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 6.1,
+      "originalPrice": 7.2
+    },
+    {
+      "id": "html-22",
+      "product": "Royal Canin Indoor 27 - Kattenvoer",
+      "discount": "-15% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/royal_canin_indoor_27_114212_2000_none.jpg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 6.25,
+      "originalPrice": 7.35
+    },
+    {
+      "id": "html-23",
+      "product": "Puur Hypersex",
+      "discount": "-10% korting",
+      "imageUrl": "https://images.onlinepets.com/product-images/catalog/686a20274a61e793c5b6579e89e17e04275ff34f48a3afbcc721561d81c135f3_3_5.jpeg?auto=format",
+      "validFrom": "2026-08-23",
+      "validUntil": "2026-08-29",
+      "retailerSlug": "medpets",
+      "promoPrice": 21.3,
+      "originalPrice": 23.65
+    }
+  ],
+  "scrapedAt": "2026-08-26T23:00:28.415Z",
   "sourceUrls": [
-    "https://www.medpets.be/acties"
+    "https://www.medpets.be/actie"
   ],
   "methods": [
+    "html",
     "screenshot"
   ]
 }
