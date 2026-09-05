@@ -64,3 +64,6 @@ diysuperpromobelgiebram/
 # and folder JSON stores absolute URLs; committing them added ~200 MB per run
 # for files regenerated weekly and never diffed.
 /public/screenshots
+
+# Semgrep Guardian writes auth state here; never commit it
+.semgrep/
