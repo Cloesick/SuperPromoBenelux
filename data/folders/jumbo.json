@@ -1,191 +1,28 @@
 {
-	"retailer": "jumbo",
-	"folders": [
-		{
-			"id": "jumbo-3276357-folder",
-			"retailerSlug": "jumbo",
-			"title": "Jumbo actiefolder - week 32 - 05 augustus t/m 11 augustus 2026",
-			"validFrom": "2026-08-07",
-			"validUntil": "2026-08-17",
-			"pageCount": 27,
-			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p1.webp",
-			"pages": [
-				{
-					"pageNumber": 1,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p1.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p1-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 2,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p2.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p2-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 3,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p3.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p3-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 4,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p4.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p4-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 5,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p5.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p5-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 6,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p6.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p6-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 7,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p7.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p7-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 8,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p8.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p8-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 9,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p9.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p9-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 10,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p10.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p10-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 11,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p11.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p11-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 12,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p12.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p12-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 13,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p13.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p13-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 14,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p14.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p14-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 15,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p15.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p15-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 16,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p16.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p16-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 17,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p17.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p17-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 18,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p18.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p18-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 19,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p19.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p19-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 20,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p20.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p20-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 21,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p21.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p21-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 22,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p22.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p22-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 23,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p23.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p23-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 24,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p24.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p24-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 25,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p25.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p25-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 26,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p26.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p26-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 27,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p27.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/jumbo-2026-w32-pdfimg-p27-thumb.webp",
-					"deals": []
-				}
-			],
-			"embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-akrb-32/?publitas_embed=embedded",
-			"pdfUrl": "https://view.publitas.com/171/3276357/pdfs/b273beeb-c1bd-44f6-9439-4e36fd6ace93.pdf",
-			"contentSource": "publitas",
-			"scrapedAt": "2026-08-07T05:51:18.732Z"
-		}
-	],
-	"deals": [],
-	"scrapedAt": "2026-08-07T05:51:18.732Z",
-	"sourceUrls": [
-		"https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-akrb-32/"
-	],
-	"methods": [
-		"publitas",
-		"pdf"
-	]
+  "retailer": "jumbo",
+  "folders": [
+    {
+      "id": "jumbo-3345474-folder",
+      "retailerSlug": "jumbo",
+      "title": "Jumbo actiefolder - week 37 - 9 september t/m 15 september 2026",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
+      "pageCount": 56,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-mclz-37/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/171/3345474/pdfs/51d41051-9776-45ea-8ee1-2b717fa3e0e5.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-09-07T05:30:00.049Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-09-07T05:30:00.049Z",
+  "sourceUrls": [
+    "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-mclz-37/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
 }

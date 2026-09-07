@@ -1,0 +1,28 @@
+{
+  "retailer": "blokker",
+  "folders": [
+    {
+      "id": "blokker-3335747-folder",
+      "retailerSlug": "blokker",
+      "title": "Blokker - Blokker week 36 2026",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
+      "pageCount": 12,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.folders.nl/blokker/blokker-week-36-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/105579/3335747/pdfs/d24755d5-5a93-43e0-a1de-2b941268d84a.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-09-07T05:30:08.285Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-09-07T05:30:08.285Z",
+  "sourceUrls": [
+    "https://view.folders.nl/blokker/blokker-week-36-2026/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
+}

@@ -1,221 +1,28 @@
 {
-	"retailer": "xenos",
-	"folders": [
-		{
-			"id": "xenos-3276311-folder",
-			"retailerSlug": "xenos",
-			"title": "XENOS - Xenos week 32 2026 (ma 3-8 t/m zo 9-8)",
-			"validFrom": "2026-08-07",
-			"validUntil": "2026-08-17",
-			"pageCount": 32,
-			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p1.webp",
-			"pages": [
-				{
-					"pageNumber": 1,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p1.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p1-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 2,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p2.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p2-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 3,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p3.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p3-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 4,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p4.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p4-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 5,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p5.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p5-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 6,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p6.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p6-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 7,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p7.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p7-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 8,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p8.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p8-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 9,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p9.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p9-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 10,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p10.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p10-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 11,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p11.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p11-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 12,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p12.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p12-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 13,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p13.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p13-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 14,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p14.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p14-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 15,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p15.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p15-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 16,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p16.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p16-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 17,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p17.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p17-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 18,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p18.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p18-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 19,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p19.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p19-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 20,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p20.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p20-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 21,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p21.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p21-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 22,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p22.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p22-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 23,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p23.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p23-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 24,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p24.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p24-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 25,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p25.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p25-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 26,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p26.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p26-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 27,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p27.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p27-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 28,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p28.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p28-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 29,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p29.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p29-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 30,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p30.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p30-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 31,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p31.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p31-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 32,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p32.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/xenos-2026-w32-pdfimg-p32-thumb.webp",
-					"deals": []
-				}
-			],
-			"embedUrl": "https://view.publitas.com/xenos/xenos-week-32-2026/?publitas_embed=embedded",
-			"pdfUrl": "https://view.publitas.com/7981/3276311/pdfs/630f10a5-3011-46b5-afd1-13630b5b6173.pdf",
-			"contentSource": "publitas",
-			"scrapedAt": "2026-08-07T05:51:22.497Z"
-		}
-	],
-	"deals": [],
-	"scrapedAt": "2026-08-07T05:51:22.497Z",
-	"sourceUrls": [
-		"https://view.publitas.com/xenos/xenos-week-32-2026/"
-	],
-	"methods": [
-		"publitas",
-		"pdf"
-	]
+  "retailer": "xenos",
+  "folders": [
+    {
+      "id": "xenos-3342471-folder",
+      "retailerSlug": "xenos",
+      "title": "XENOS - Xenos week 37-38 2026 (ma 7-9 t/m zo 20-9)",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
+      "pageCount": 22,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/xenos/xenos-week-37-38-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/7981/3342471/pdfs/fca8d741-647c-45d0-ac53-d30cb12a8087.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-09-07T05:30:10.171Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-09-07T05:30:10.171Z",
+  "sourceUrls": [
+    "https://view.publitas.com/xenos/xenos-week-37-38-2026/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
 }

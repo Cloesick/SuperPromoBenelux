@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { retailers } from "@/lib/retailers";
 import { getCurrentFolder, getScrapedAt } from "@/lib/folders";
 import { isFolderIndexable } from "@/lib/folderRenderability";
+import { categories } from "@/lib/catalog";
 import { getSiteBaseUrl } from "@/lib/site";
 import { getComparableProducts } from "@/lib/catalogDb";
 
@@ -10,6 +11,12 @@ export const revalidate = 0;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const baseUrl = getSiteBaseUrl();
+	// next.config.ts sets `trailingSlash: true`, so every route 308-redirects to
+	// its slashed form and the canonical tag points there. Emitting the unslashed
+	// URL turned all but one sitemap entry into a redirect, which Search Console
+	// reports as "Page with redirect" and indexes nothing from. Build every URL
+	// through here so the two can never drift apart again.
+	const url = (path = "") => `${baseUrl}/${path}`;
 
 	// Comparison pages are only listed when they carry offers from two or more
 	// retailers, which getComparableProducts() enforces in SQL. Same principle as
@@ -19,11 +26,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	// Returns [] when no database is configured, so the sitemap keeps working
 	// without one rather than failing the build.
 	const priceRoutes = (await getComparableProducts()).map((p) => ({
-		url: `${baseUrl}/prijzen/${p.slug}`,
+		url: url(`prijzen/${p.slug}/`),
 		lastModified: new Date(),
 		changeFrequency: "weekly" as const,
 		priority: 0.7,
 	}));
+
 	// Only submit folder pages that actually render something. This is the same
 	// predicate the page itself uses to decide `robots: noindex`, so the two can
 	// never disagree — a URL in the sitemap is always one we want indexed.
@@ -36,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		.filter(({ retailer, folder }) => isFolderIndexable(folder, retailer.slug))
 		.filter(({ scrapedAt }) => scrapedAt !== null)
 		.map(({ retailer, folder, scrapedAt }) => ({
-			url: `${baseUrl}/folders/${retailer.slug}`,
+			url: url(`folders/${retailer.slug}/`),
 			lastModified: scrapedAt as Date,
 			changeFrequency: "weekly" as const,
 			priority: 0.8,
@@ -64,46 +72,61 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const today = new Date().toISOString().split("T")[0];
 	const staticPageDate = "2026-06-01";
 
+	// The shop-category hub and its category pages render `index, follow` and
+	// carry the commercial-intent queries ("supermarkt folder", "discounter
+	// folder"), but were never submitted. They are static, so their freshness
+	// tracks the newest scrape rather than a build date.
+	const categoryPages = categories.map((category) => ({
+		url: url(`winkels/${category.key}/`),
+		lastModified: latestScrape.getTime() > 0 ? latestScrape : new Date(),
+		changeFrequency: "weekly" as const,
+		priority: 0.7,
+	}));
+
+	// /nl-grensstreek is deliberately `noindex, nofollow`, so it is not listed:
+	// submitting a noindex URL earns a "Submitted URL marked 'noindex'" error
+	// and spends crawl budget on a page we have told Google to drop.
 	return [
 		{
-			url: baseUrl,
+			url: url(),
 			lastModified: today,
 			changeFrequency: "daily",
 			priority: 1,
 		},
 		{
-			url: `${baseUrl}/folders`,
+			url: url("folders/"),
 			lastModified: latestScrape.getTime() > 0 ? latestScrape : new Date(),
 			changeFrequency: "daily",
 			priority: 0.9,
 		},
 		...retailerPages,
 		{
-			url: `${baseUrl}/nl-grensstreek`,
-			lastModified: today,
+			url: url("winkels/"),
+			lastModified: latestScrape.getTime() > 0 ? latestScrape : new Date(),
 			changeFrequency: "weekly",
-			priority: 0.6,
+			priority: 0.8,
 		},
+		...categoryPages,
 		{
-			url: `${baseUrl}/veelgestelde-vragen`,
+			url: url("veelgestelde-vragen/"),
 			lastModified: staticPageDate,
 			changeFrequency: "monthly",
 			priority: 0.7,
 		},
 		{
-			url: `${baseUrl}/over-ons`,
+			url: url("over-ons/"),
 			lastModified: staticPageDate,
 			changeFrequency: "monthly",
 			priority: 0.3,
 		},
 		{
-			url: `${baseUrl}/privacy`,
+			url: url("privacy/"),
 			lastModified: staticPageDate,
 			changeFrequency: "yearly",
 			priority: 0.2,
 		},
 		{
-			url: `${baseUrl}/contact`,
+			url: url("contact/"),
 			lastModified: staticPageDate,
 			changeFrequency: "yearly",
 			priority: 0.4,
