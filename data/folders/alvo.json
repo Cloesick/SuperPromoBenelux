@@ -5,8 +5,8 @@
       "id": "alvo-3264722-folder",
       "retailerSlug": "alvo",
       "title": "Alvo - 26_ALVO_T08573 Gusto 4 2026_FR_WEB",
-      "validFrom": "2026-09-03",
-      "validUntil": "2026-09-13",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
       "pageCount": 76,
       "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/alvo-2026-w32-pdfimg-p1.webp",
       "pages": [
@@ -470,11 +470,11 @@
       "embedUrl": "https://view.publitas.com/alvo/26_alvo_t08573-gusto-4-2026_fr_web/?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/96075/3264722/pdfs/3f3694bc-bd9e-4e60-8eb0-607056e03d83.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-03T05:50:43.956Z"
+      "scrapedAt": "2026-09-07T05:30:14.711Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-03T05:50:43.956Z",
+  "scrapedAt": "2026-09-07T05:30:14.711Z",
   "sourceUrls": [
     "https://view.publitas.com/alvo/26_alvo_t08573-gusto-4-2026_fr_web/"
   ],

@@ -2,24 +2,24 @@
   "retailer": "mr-bricolage",
   "folders": [
     {
-      "id": "mr-bricolage-3258597-folder",
+      "id": "mr-bricolage-3308747-folder",
       "retailerSlug": "mr-bricolage",
-      "title": "Mr Bricolage Belgique - Folder 12 - du 11 août au 06 septembre 2026",
-      "validFrom": "2026-09-03",
-      "validUntil": "2026-09-13",
-      "pageCount": 24,
+      "title": "Mr Bricolage Belgique - Folder 13 - du 08 septembre au 1er octobre 2026",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
+      "pageCount": 17,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/mr-bricolage/folder-12-2026/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/23787/3258597/pdfs/e25e6bf4-6531-4cf4-873c-2df328212d39.pdf",
+      "embedUrl": "https://view.publitas.com/mr-bricolage/folder-13-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/23787/3308747/pdfs/4932ccf8-9b71-4ca2-90cb-cf02afecd4c2.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-03T05:50:37.021Z"
+      "scrapedAt": "2026-09-07T05:30:06.578Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-03T05:50:37.021Z",
+  "scrapedAt": "2026-09-07T05:30:06.578Z",
   "sourceUrls": [
-    "https://view.publitas.com/mr-bricolage/folder-12-2026/"
+    "https://view.publitas.com/mr-bricolage/folder-13-2026/"
   ],
   "methods": [
     "publitas",

@@ -2,24 +2,24 @@
   "retailer": "mediamarkt",
   "folders": [
     {
-      "id": "mediamarkt-3044383-folder",
+      "id": "mediamarkt-3320721-folder",
       "retailerSlug": "mediamarkt",
-      "title": "A Media Markt BE - 26MM_Inspiratiemagazine_WK_NL",
-      "validFrom": "2026-09-03",
-      "validUntil": "2026-09-13",
-      "pageCount": 52,
-      "thumbnailUrl": "https://view.publitas.com/2411/3044383/pages/aec9df94-640e-4e53-9cd9-b5acdf7ebab2-at800.jpg",
+      "title": "A Media Markt BE - 26W37 B2S BE-FL",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
+      "pageCount": 12,
+      "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/mediamarkt-be/26mm_inspiratiemagazine_wk_nl/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/2411/3044383/pdfs/d6f78163-1e3a-45ad-b7f5-0673b7560e55.pdf",
+      "embedUrl": "https://view.publitas.com/mediamarkt-be/26w37-b2s-be-fl/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/2411/3320721/pdfs/7e6c0d18-b111-4312-ad70-a468d48205d3.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-03T05:50:45.862Z"
+      "scrapedAt": "2026-09-07T05:30:16.790Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-03T05:50:45.862Z",
+  "scrapedAt": "2026-09-07T05:30:16.790Z",
   "sourceUrls": [
-    "https://view.publitas.com/mediamarkt-be/26mm_inspiratiemagazine_wk_nl/"
+    "https://view.publitas.com/mediamarkt-be/26w37-b2s-be-fl/"
   ],
   "methods": [
     "publitas",

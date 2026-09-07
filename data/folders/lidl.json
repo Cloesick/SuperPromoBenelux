@@ -2,38 +2,38 @@
   "retailer": "lidl",
   "folders": [
     {
-      "id": "lidl-3315025-folder",
-      "retailerSlug": "lidl",
-      "title": "Lidl BE NL - nl folder 31-08-05-09",
-      "validFrom": "2026-09-03",
-      "validUntil": "2026-09-13",
-      "pageCount": 39,
-      "thumbnailUrl": "",
-      "pages": [],
-      "embedUrl": "https://folder-nl.lidl.be/nl-folder-31-08-05-09?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/97031/3315025/pdfs/f7609ab0-40ce-4ded-9867-c6388d8a9e86.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-09-03T05:50:47.047Z"
-    },
-    {
       "id": "lidl-2418618-folder",
       "retailerSlug": "lidl",
       "title": "Lidl BE NL - Week 36 2025",
-      "validFrom": "2026-09-03",
-      "validUntil": "2026-09-13",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
       "pageCount": 61,
       "thumbnailUrl": "https://view.publitas.com/97031/2418618/pages/43a2e729-d021-497e-a53d-ee32835f205b-at800.jpg",
       "pages": [],
       "embedUrl": "https://folder-nl.lidl.be/nl-folder-03-09-09-09?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/97031/2418618/pdfs/c6a42fdd-04d5-4d57-8e38-03ba99d6f4fe.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-03T05:50:47.692Z"
+      "scrapedAt": "2026-09-07T05:30:17.830Z"
+    },
+    {
+      "id": "lidl-3331107-folder",
+      "retailerSlug": "lidl",
+      "title": "Lidl BE NL - nl folder 07-09-12-09",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
+      "pageCount": 37,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://folder-nl.lidl.be/nl-folder-07-09-12-09?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/97031/3331107/pdfs/3c163363-7ccf-42cc-ada1-0a18f27e890d.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-09-07T05:30:18.447Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-03T05:50:47.047Z",
+  "scrapedAt": "2026-09-07T05:30:17.830Z",
   "sourceUrls": [
-    "https://folder-nl.lidl.be/nl-folder-31-08-05-09"
+    "https://folder-nl.lidl.be/nl-folder-03-09-09-09"
   ],
   "methods": [
     "publitas",

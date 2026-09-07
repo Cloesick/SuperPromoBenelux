@@ -2,24 +2,24 @@
   "retailer": "etos",
   "folders": [
     {
-      "id": "etos-3320573-folder",
+      "id": "etos-3334902-folder",
       "retailerSlug": "etos",
-      "title": "Etos - ETOS Week 36 2026",
-      "validFrom": "2026-09-03",
-      "validUntil": "2026-09-13",
-      "pageCount": 71,
+      "title": "Etos - ETOS Week 37 2026",
+      "validFrom": "2026-09-07",
+      "validUntil": "2026-09-17",
+      "pageCount": 69,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.publitas.com/etos/etos-week-36-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/28/3320573/pdfs/cd8bb5aa-f64c-41ba-a0ca-ac144cc8833c.pdf",
+      "embedUrl": "https://view.publitas.com/etos/etos-week-37-2026/page/1?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/28/3334902/pdfs/aae4d403-8e3d-44cb-93ae-b80f4dae65a2.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-03T05:50:44.874Z"
+      "scrapedAt": "2026-09-07T05:30:15.653Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-03T05:50:44.874Z",
+  "scrapedAt": "2026-09-07T05:30:15.653Z",
   "sourceUrls": [
-    "https://view.publitas.com/etos/etos-week-36-2026/page/1"
+    "https://view.publitas.com/etos/etos-week-37-2026/page/1"
   ],
   "methods": [
     "publitas",
