@@ -21,8 +21,16 @@ jobs:
           node-version: '20'
           cache: 'npm'
       
+      # --legacy-peer-deps matches every other workflow in this repository.
+      # This was the one place installing strictly, and npm ci exits on a peer
+      # conflict rather than warning, so the job died in the install step long
+      # before Cypress ever started. PUPPETEER_SKIP_DOWNLOAD for the same reason
+      # it is set elsewhere: this job never drives a browser through Puppeteer,
+      # and the bundled Chromium download is 150 MB of nothing.
       - name: Install dependencies
-        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
+        run: npm ci --legacy-peer-deps
       
       - name: Run Cypress tests (against a live app server)
         id: cypress
