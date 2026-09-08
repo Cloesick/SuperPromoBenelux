@@ -25,7 +25,7 @@ import path from "path";
 import sharp from "sharp";
 import puppeteer from "rebrowser-puppeteer";
 import { renderPdfToImages, pdfOrigin } from "../src/scrapers/pdfRender";
-import { storePageImage } from "../src/scrapers/pageStorage";
+import { storePageImage, isBlobConfigured } from "../src/scrapers/pageStorage";
 import { isNonLeafletPdf } from "../src/lib/folderRenderability";
 
 
@@ -120,6 +120,8 @@ const week = isoWeekTag();
 let totalPages = 0;
 const succeeded: string[] = [];
 const failed: string[] = [];
+/** Pages recorded as a local path while blob storage was configured. */
+let fellBackToLocal = 0;
 
 for (const { slug, pdfUrl } of candidates) {
 	const page = await browser.newPage();
@@ -179,6 +181,12 @@ for (const { slug, pdfUrl } of candidates) {
 			fs.writeFileSync(path.join(shotsDir, `${base}-thumb.webp`), thumb);
 			const storedPage = await storePageImage(`${base}.webp`, img, (m) => console.log(m));
 			const storedThumb = await storePageImage(`${base}-thumb.webp`, thumb, (m) => console.log(m));
+			// A local path recorded while blob storage is configured is a guaranteed
+			// 404 in production: public/screenshots is gitignored, so the bytes never
+			// leave the runner. storePageImage deliberately never throws, which makes
+			// this the only place the fallback is visible.
+			if (isBlobConfigured() && (!storedPage.uploaded || !storedThumb.uploaded))
+				fellBackToLocal++;
 			written.push({
 				pageNumber: n,
 				imageUrl: storedPage.url,
@@ -221,7 +229,29 @@ console.log(
 );
 if (failed.length) {
 	console.log(
-		`${failed.length} still framing their PDF: ${failed.join(", ")}. ` +
-			`These are unchanged, not broken.`,
+		`${failed.length} left with no page images: ${failed.join(", ")}.`,
 	);
 }
+
+if (fellBackToLocal > 0) {
+	console.log(
+		`${fellBackToLocal} page(s) fell back to a local path despite blob storage ` +
+			`being configured. Those URLs 404 in production.`,
+	);
+}
+
+// Exiting non-zero is the point of this block.
+//
+// The old message here read "These are unchanged, not broken", and that was
+// true when this script only ever added pages to folders that had none. It
+// stopped being true once it ran inside the harvest: the harvest writes
+// pages: [] first, because Publitas page images are signed and lazy-loaded and
+// it cannot fetch them, and depends on this render to put them back. A failure
+// here therefore leaves a folder claiming to be current with nothing to show.
+//
+// That is what happened. Every harvest commit from 2026-08-20 to 2026-09-07
+// wrote pages=0 for lidl, and the run stayed green and committed anyway, so
+// nineteen retailers reached production as empty folders without one red
+// build. Failing here stops the commit step, which keeps last week's complete
+// folder instead of publishing this week's empty one.
+if (!dryRun && (failed.length > 0 || fellBackToLocal > 0)) process.exit(1);
