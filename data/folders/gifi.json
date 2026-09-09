@@ -2,24 +2,24 @@
   "retailer": "gifi",
   "folders": [
     {
-      "id": "gifi-3344043-folder",
+      "id": "gifi-3347466-folder",
       "retailerSlug": "gifi",
-      "title": "Gifi - Gifi Bi-monthly",
-      "validFrom": "2026-09-07",
-      "validUntil": "2026-09-17",
+      "title": "Gifi - Gifi Week 36-37",
+      "validFrom": "2026-09-09",
+      "validUntil": "2026-09-19",
       "pageCount": 6,
       "thumbnailUrl": "",
       "pages": [],
-      "embedUrl": "https://view.promozilla.com/gifi/gifi-bi-monthly-xgdog7pq7w9o/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/103778/3344043/pdfs/ed556508-393c-4725-8b69-af9ef98a2993.pdf",
+      "embedUrl": "https://view.promozilla.com/gifi/gifi-week-36-37/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/103778/3347466/pdfs/b696e921-5072-438e-a113-a4bfd2ec7bc6.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-07T05:30:14.114Z"
+      "scrapedAt": "2026-09-09T05:29:27.988Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-07T05:30:14.114Z",
+  "scrapedAt": "2026-09-09T05:29:27.988Z",
   "sourceUrls": [
-    "https://view.promozilla.com/gifi/gifi-bi-monthly-xgdog7pq7w9o/"
+    "https://view.promozilla.com/gifi/gifi-week-36-37/"
   ],
   "methods": [
     "publitas",
