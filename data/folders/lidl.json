@@ -2,38 +2,38 @@
   "retailer": "lidl",
   "folders": [
     {
-      "id": "lidl-2418618-folder",
-      "retailerSlug": "lidl",
-      "title": "Lidl BE NL - Week 36 2025",
-      "validFrom": "2026-09-09",
-      "validUntil": "2026-09-19",
-      "pageCount": 61,
-      "thumbnailUrl": "https://view.publitas.com/97031/2418618/pages/43a2e729-d021-497e-a53d-ee32835f205b-at800.jpg",
-      "pages": [],
-      "embedUrl": "https://folder-nl.lidl.be/nl-folder-03-09-09-09?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/97031/2418618/pdfs/c6a42fdd-04d5-4d57-8e38-03ba99d6f4fe.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-09-09T05:29:30.747Z"
-    },
-    {
       "id": "lidl-3331107-folder",
       "retailerSlug": "lidl",
       "title": "Lidl BE NL - nl folder 07-09-12-09",
-      "validFrom": "2026-09-09",
-      "validUntil": "2026-09-19",
+      "validFrom": "2026-09-10",
+      "validUntil": "2026-09-20",
       "pageCount": 37,
       "thumbnailUrl": "",
       "pages": [],
       "embedUrl": "https://folder-nl.lidl.be/nl-folder-07-09-12-09?publitas_embed=embedded",
       "pdfUrl": "https://view.publitas.com/97031/3331107/pdfs/3c163363-7ccf-42cc-ada1-0a18f27e890d.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-09T05:29:31.387Z"
+      "scrapedAt": "2026-09-10T05:29:08.806Z"
+    },
+    {
+      "id": "lidl-2427185-folder",
+      "retailerSlug": "lidl",
+      "title": "Lidl BE NL - Week 37 2025",
+      "validFrom": "2026-09-10",
+      "validUntil": "2026-09-20",
+      "pageCount": 60,
+      "thumbnailUrl": "https://view.publitas.com/97031/2427185/pages/46d0cb87-4081-4f64-853e-52fa11473f81-at800.jpg",
+      "pages": [],
+      "embedUrl": "https://folder-nl.lidl.be/nl-folder-10-09-16-09?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/97031/2427185/pdfs/826c9e3a-9edc-4834-9e15-d2fd43810343.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-09-10T05:29:09.448Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-09T05:29:30.747Z",
+  "scrapedAt": "2026-09-10T05:29:08.806Z",
   "sourceUrls": [
-    "https://folder-nl.lidl.be/nl-folder-03-09-09-09"
+    "https://folder-nl.lidl.be/nl-folder-07-09-12-09"
   ],
   "methods": [
     "publitas",
