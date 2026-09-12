@@ -110,10 +110,22 @@ if (dryRun || candidates.length === 0) {
 	process.exit(0);
 }
 
+// public/screenshots is gitignored (.gitignore:66) and holds nothing tracked, so
+// git never creates it and a fresh actions/checkout has no such directory. Every
+// write below then failed with ENOENT — which is why this script rendered
+// perfectly on a developer machine, where the directory survives from an earlier
+// run, and never once produced a page in CI.
+fs.mkdirSync(shotsDir, { recursive: true });
+
 const browser = await puppeteer.launch({
 	headless: true,
 	executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
 	args: ["--no-sandbox", "--disable-dev-shm-usage"],
+	// Rendering a whole leaflet happens inside one page.evaluate, so the entire
+	// document counts against a single protocol call. etos (31 pages) and jumbo
+	// both exceeded the 180s default and died with Runtime.callFunctionOn timed
+	// out; the 80-page cap needs considerably more headroom than that.
+	protocolTimeout: 600_000,
 });
 
 const week = isoWeekTag();
