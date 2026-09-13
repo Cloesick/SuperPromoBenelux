@@ -17,6 +17,14 @@
 // boundaries, and when the plugin has not painted yet it yields a uniformly
 // blank frame, which is how zalando shipped a blank image as its entire
 // folder. pdf.js gives exact page boundaries and a deterministic result.
+//
+// Pages are rendered ONE PER page.evaluate rather than all inside a single
+// call. Rendering the whole leaflet at once accumulated every page as a base64
+// data URL in one array before returning anything: for etos (69 pages, 62 MB)
+// and jumbo (55 pages, 213 MB) that exhausted the renderer, and the symptom
+// reaching CI was "Runtime.callFunctionOn timed out" — a timeout standing in
+// for memory. One page per call bounds both the memory held at any moment and
+// the time charged to a single protocol call.
 // ---------------------------------------------------------------------------
 
 import fs from "fs";
@@ -28,6 +36,15 @@ const RENDER_WIDTH = 1800;
 
 /** A page that renders smaller than this is a cover stub, not a leaflet page. */
 const MIN_RENDER_WIDTH = 400;
+
+/**
+ * Property on `window` the open document is parked under between calls.
+ *
+ * The document has to outlive a single evaluate, and only a serialisable value
+ * can cross the CDP boundary — so the document stays in the page and each call
+ * looks it up by name.
+ */
+const DOC_HANDLE = "__superpromoPdfDoc";
 
 let cachedSources: { pdf: string; worker: string } | null = null;
 
@@ -87,8 +104,10 @@ export async function renderPdfToImages(
 	const { pdf, worker } = pdfJsSources();
 
 	try {
-		const result = (await page.evaluate(
-			async (pdfSrc: string, workerSrc: string, url: string, max: number, width: number) => {
+		// Open the document and leave it in the page. Nothing is rendered yet, so
+		// the only thing held after this call is the PDF itself.
+		const opened = (await page.evaluate(
+			async (pdfSrc: string, workerSrc: string, url: string, handle: string) => {
 				try {
 					// Blob URLs rather than <script> tags: pdf.js ships as an ES
 					// module, and a dynamic import of a blob is the only way to load
@@ -105,10 +124,48 @@ export async function renderPdfToImages(
 					const data = new Uint8Array(await resp.arrayBuffer());
 
 					const doc = await mod.getDocument({ data }).promise;
-					const out: string[] = [];
-					const count = Math.min(doc.numPages, max);
-					for (let i = 1; i <= count; i++) {
-						const p = await doc.getPage(i);
+					(window as unknown as Record<string, unknown>)[handle] = doc;
+					return { totalPages: doc.numPages as number };
+				} catch (err) {
+					return { error: String(err) };
+				}
+			},
+			pdf,
+			worker,
+			pdfUrl,
+			DOC_HANDLE,
+		)) as { error?: string; totalPages?: number };
+
+		if (opened.error || !opened.totalPages) {
+			log(`  PDF render failed: ${opened.error ?? "document reported no pages"}`);
+			return { pages: [], totalPages: 0 };
+		}
+
+		const totalPages = opened.totalPages;
+		const count = Math.min(totalPages, maxPages);
+		const pages: Buffer[] = [];
+
+		for (let n = 1; n <= count; n++) {
+			const result = (await page.evaluate(
+				async (pageNumber: number, width: number, handle: string) => {
+					try {
+						const doc = (window as unknown as Record<string, unknown>)[handle] as
+							| {
+									getPage: (n: number) => Promise<{
+										getViewport: (o: { scale: number }) => {
+											width: number;
+											height: number;
+										};
+										render: (o: unknown) => { promise: Promise<void> };
+										cleanup: () => void;
+									}>;
+							  }
+							| undefined;
+						// A navigation would have torn down the execution context and
+						// taken the document with it.
+						if (!doc) return { error: "document is no longer on the page" };
+
+						const p = await doc.getPage(pageNumber);
 						const base = p.getViewport({ scale: 1 });
 						const viewport = p.getViewport({ scale: width / base.width });
 						const canvas = document.createElement("canvas");
@@ -117,33 +174,62 @@ export async function renderPdfToImages(
 						const ctx = canvas.getContext("2d");
 						if (!ctx) return { error: "no 2d context" };
 						await p.render({ canvasContext: ctx, viewport, canvas }).promise;
-						out.push(canvas.toDataURL("image/png"));
-					}
-					return { totalPages: doc.numPages, rendered: out };
-				} catch (err) {
-					return { error: String(err) };
-				}
-			},
-			pdf,
-			worker,
-			pdfUrl,
-			maxPages,
-			RENDER_WIDTH,
-		)) as { error?: string; totalPages?: number; rendered?: string[] };
+						const dataUrl = canvas.toDataURL("image/png");
 
-		if (result.error || !result.rendered) {
-			log(`  PDF render failed: ${result.error ?? "no output"}`);
-			return { pages: [], totalPages: 0 };
+						// Hand back the backing store before the next page allocates
+						// its own. Without this the canvases pile up exactly the way
+						// the data URLs used to.
+						canvas.width = 0;
+						canvas.height = 0;
+						p.cleanup();
+
+						return { dataUrl };
+					} catch (err) {
+						return { error: String(err) };
+					}
+				},
+				n,
+				RENDER_WIDTH,
+				DOC_HANDLE,
+			)) as { error?: string; dataUrl?: string };
+
+			if (result.error || !result.dataUrl) {
+				// Stop rather than press on: whatever exhausted the renderer on this
+				// page will do the same on the next. Callers report "N page(s) of M",
+				// so a short folder shows up as short instead of passing silently.
+				log(
+					`  PDF render stopped at page ${n} of ${count}: ` +
+						`${result.error ?? "no output"}`,
+				);
+				break;
+			}
+
+			const bytes = Buffer.from(result.dataUrl.split(",")[1] ?? "", "base64");
+			if (bytes.length > 0) pages.push(bytes);
 		}
 
-		const pages = result.rendered
-			.map((dataUrl) => Buffer.from(dataUrl.split(",")[1] ?? "", "base64"))
-			.filter((b) => b.length > 0);
-
-		return { pages, totalPages: result.totalPages ?? pages.length };
+		return { pages, totalPages };
 	} catch (err) {
 		log(`  PDF render threw: ${err}`);
 		return { pages: [], totalPages: 0 };
+	} finally {
+		// Drop the document whichever way the function left, so a browser reused
+		// across retailers does not carry one leaflet's bytes into the next.
+		await page
+			.evaluate((handle: string) => {
+				const w = window as unknown as Record<string, unknown>;
+				const doc = w[handle] as { destroy?: () => void } | undefined;
+				try {
+					doc?.destroy?.();
+				} catch {
+					// Already gone; nothing to release.
+				}
+				delete w[handle];
+			}, DOC_HANDLE)
+			.catch(() => {
+				// The page can be closed or navigated by now — the context, and the
+				// document with it, is gone either way.
+			});
 	}
 }
 

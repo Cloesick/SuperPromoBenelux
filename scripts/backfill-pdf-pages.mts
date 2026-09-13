@@ -121,10 +121,9 @@ const browser = await puppeteer.launch({
 	headless: true,
 	executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
 	args: ["--no-sandbox", "--disable-dev-shm-usage"],
-	// Rendering a whole leaflet happens inside one page.evaluate, so the entire
-	// document counts against a single protocol call. etos (31 pages) and jumbo
-	// both exceeded the 180s default and died with Runtime.callFunctionOn timed
-	// out; the 80-page cap needs considerably more headroom than that.
+	// A backstop, not the fix: pdfRender renders one page per evaluate, so no
+	// single protocol call carries a whole leaflet any more. This only has to
+	// cover one unusually heavy page.
 	protocolTimeout: 600_000,
 });
 
