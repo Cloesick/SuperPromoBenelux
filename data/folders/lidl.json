@@ -2,11 +2,11 @@
 	"retailer": "lidl",
 	"folders": [
 		{
-			"id": "lidl-2026-w39-folder",
+			"id": "lidl-3355373-folder",
 			"retailerSlug": "lidl",
-			"title": "Lidl folder van de week",
+			"title": "Lidl BE NL - nl folder 21-09-26-09",
 			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
+			"validUntil": "2026-09-26",
 			"pageCount": 40,
 			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p1.webp",
 			"pages": [
@@ -251,135 +251,33 @@
 					"deals": []
 				}
 			],
-			"embedUrl": "https://folder-nl.lidl.be/nl-folder-21-09-26-09/",
-			"pdfUrl": "https://folder-nl.lidl.be/97031/3355373/pdfs/4c4e06ac-5c38-4654-bfe5-d6dbe3f58052.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252021-09-26-09.pdf",
+			"embedUrl": "https://folder-nl.lidl.be/nl-folder-21-09-26-09?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/97031/3355373/pdfs/4c4e06ac-5c38-4654-bfe5-d6dbe3f58052.pdf",
 			"contentSource": "publitas",
-			"scrapedAt": "2026-09-21T13:29:55.215Z"
+			"scrapedAt": "2026-09-21T13:17:52.623Z"
+		},
+		{
+			"id": "lidl-3368916-folder",
+			"retailerSlug": "lidl",
+			"title": "Lidl BE NL - nl folder 28-09-03-10",
+			"validFrom": "2026-09-28",
+			"validUntil": "2026-10-03",
+			"pageCount": 38,
+			"thumbnailUrl": "",
+			"pages": [],
+			"embedUrl": "https://folder-nl.lidl.be/nl-folder-28-09-03-10?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/97031/3368916/pdfs/f2a2fdca-6631-42a0-9f68-ac3e57371f5f.pdf",
+			"contentSource": "publitas",
+			"scrapedAt": "2026-09-21T13:17:53.869Z"
 		}
 	],
-	"deals": [
-		{
-			"id": "lidl-pdf-0-1789997404757",
-			"product": "Met Lidl Plus  Actie  3+3 GRATIS  Ook online  Alleszuiger  •   zie p. 18  nr. 480929  ALESTO Walnoten ongebrand  •   ongezouten •   200 g -  EUR/kg  nr. 26704  MARS - SNICKERS - TWIX Chocolade- repen  •   zie p. 30  nr. 204045 - 204055 - 205453  Gehakte prijzen,  dat kan tellen.       Met Lidl Plus -50%  Met Lidl Plus  Actie  1+1 GRATIS  Rund- en varkens- gehakt XXL  •   met Belgisch varkensvlees •   800 g -  EUR/kg  nr. 7407993     -50%     Pick & Mix       Met Lidl Plus -€ 10  800 g  DASH Pods platinum  •   zie p. 8  nr. 1800754 - 1800755 - 1800756 - 1800757  Met Lidl Plus  Actie  1+2 GRATIS  Keizer- broodje  •      per stuk •      -     voor 6 stuks •   6 x 65 g -  EUR/kg  nr. 56221 NL 39/2026 Meer op www.lidl.be  Vanaf ma. 21/09 t.e.m. za. 26/09  Dat kan tellen.  Vanaf woensdag 23/09   Vanaf vrijdag 25/09",
-			"originalPrice": 1.74,
-			"promoPrice": 0.29,
-			"discount": "3+3",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-1-1789997404757",
-			"product": "Met Lidl Plus  Actie  3+3 GRATIS  Ook online  Alleszuiger  •   zie p. 18  nr. 480929  ALESTO Walnoten ongebrand  •   ongezouten •   200 g -  EUR/kg  nr. 26704  MARS - SNICKERS - TWIX Chocolade- repen  •   zie p. 30  nr. 204045 - 204055 - 205453  Gehakte prijzen,  dat kan tellen.       Met Lidl Plus -50%  Met Lidl Plus  Actie  1+1 GRATIS  Rund- en varkens- gehakt XXL  •   met Belgisch varkensvlees •   800 g -  EUR/kg  nr. 7407993     -50%     Pick & Mix       Met Lidl Plus -€ 10  800 g  DASH Pods platinum  •   zie p. 8  nr. 1800754 - 1800755 - 1800756 - 1800757  Met Lidl Plus  Actie  1+2 GRATIS  Keizer- broodje  •      per stuk •      -     voor 6 stuks •   6 x 65 g -  EUR/kg  nr. 56221 NL 39/2026 Meer op www.lidl.be  Vanaf ma. 21/09 t.e.m. za. 26/09  Dat kan tellen.  Vanaf woensdag 23/09   Vanaf vrijdag 25/09",
-			"discount": "-40%",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-2-1789997404757",
-			"product": "Vastkokende aardappelen  •   voorverpakt •   2 kg -  EUR/kg  nr. 83144  Nicola- aardappelen  •   voorverpakt •   2,5 kg -  EUR/kg  nr. 83385  Frietaardappelen  •   ideaal voor verse frietjes dankzij hun grote formaat •   voorverpakt •   5 kg -  EUR/kg  nr. 83318  Kook- aardappelen  •   voorverpakt •   5 kg -  EUR/kg  nr. 83277  Charlotte-aardappelen  •   blijft stevig en smaakvol na het koken •   voorverpakt •   2,5 kg -  EUR/kg  nr. 83384          5 kg  Krieltjes  •   ideaal om in de schil te bereiden •   voorverpakt •   1 kg  nr. 83242     -40%     5 kg  Vanaf ma. 21/09 t.e.m. za. 26/09  Een aardig  aardappelassortiment, dat kan tellen",
-			"discount": "-35%",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-3-1789997404757",
-			"product": "Dagvers  aan de laagste prijs.  Bloemkool  •   los •   per stuk  nr. 82876        Met Lidl Plus -44%  Courgette  •   los •      per stuk •    -    voor 3 stuks  nr. 82346  Met Lidl Plus  Actie  2+1 GRATIS  Vanaf ma. 21/09 t.e.m. za. 26/09",
-			"originalPrice": 2.25,
-			"promoPrice": 0.75,
-			"discount": "-44%",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-4-1789997404757",
-			"product": "Hokkaidopompoen  •   los •   stevige pompoen •   met eetbare schil die lekker zoet is  nr. 82680  Snackradijzen  •   in schaal  •    -    voor 2 packs •   2 x 450 g -  EUR/kg  nr. 83522    -34%     /kg  Actie  1+1 GRATIS NL 39/2026  Vanaf ma. 21/09 t.e.m. za. 26/09  *YouGov Fresh Report 2026",
-			"originalPrice": 5.3,
-			"promoPrice": 2.65,
-			"discount": "-34%",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-5-1789997404757",
-			"product": "Hokkaidopompoen  •   los •   stevige pompoen •   met eetbare schil die lekker zoet is  nr. 82680  Snackradijzen  •   in schaal  •    -    voor 2 packs •   2 x 450 g -  EUR/kg  nr. 83522    -34%     /kg  Actie  1+1 GRATIS NL 39/2026  Vanaf ma. 21/09 t.e.m. za. 26/09  *YouGov Fresh Report 2026",
-			"discount": "-33%",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-6-1789997404757",
-			"product": "Rund- en varkensgehakt XXL  •   met Belgisch varkensvlees •   800 g -  EUR/kg  nr. 7407993  Kalkoenfiletreepjes  citroengras-chili  •   400 g -  EUR/kg  nr. 1000339  VEMONDO Falafel  •      per stuk •      -      voor 2 packs •   2 x 200 g -  EUR/kg  nr. 1001682  Pitavlees  •   500 g -  EUR/kg  nr. 03460  Rundsburger  •   500 g -  EUR/kg  nr. 08899    Actie  -50%  2e aan  800 g       Met Lidl Plus  -33%       Met Lidl Plus  -20%    -50%    NL 39/2026  Vanaf ma. 21/09 t.e.m. za. 26/09  Al ons vers varkensvlees is Belgisch en  draagt het Beter Leven-keurmerk",
-			"originalPrice": 2.98,
-			"promoPrice": 1.49,
-			"discount": "-50%",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-7-1789997404757",
-			"product": "Zeeuwse mosselen super  •   1 kg  nr. 7408621  Pangasiusfilet  •   ontdooid product •   350 g -  EUR/kg  nr. 186271  NAUTICA Garnalen  •   ontdooid product •   gekookt en gepeld •   100 g -  EUR/kg  nr. 08473  Kabeljauwburger XXL  •   ontdooid product •   6 x 100 g -  EUR/kg  nr. 7401674  CHEF SELECT Mossel- groenten met zakje kruiden  •      per stuk •   400 g -  EUR/kg  nr. 09113  Mossel- saus  •     per stuk •   140 ml -  EUR/l  nr. 00852  Zalmfilet met huid  •   150 g -  EUR/kg  nr. 6613898     Actie 6 stuks       Met Lidl Plus  -32%       Met Lidl Plus  -20%  1 kg    Actie    Actie Al onze verse vis is duurzaam gekweekt of gevangen.  Vanaf ma. 21/09 t.e.m. za. 26/09  Vangst van de dag, dat kan tellen",
-			"originalPrice": 1.55,
-			"promoPrice": 1.19,
-			"discount": "-32%",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-8-1789997404757",
-			"product": "Spekkelbrood  •   licht meergranenbrood op basis van  tarwe met sojagrits, zonnebloem-  en pompoenpitten  •   800 g -  EUR/kg  nr. 6610519 - 6610520  Keizerbroodje  •      per stuk •      -      voor 6 stuks •   6 x 65 g -  EUR/kg  nr. 56221  Worstenbroodje  •   2 x 148 g -  EUR/kg  nr. 1018124 - 7407635  Botersandwiches XXL  •      per promopack •   14 x 45 g -  EUR/kg  nr. 03218    2 voor     Actie  12+2 GRATIS   -31%     Pastel de nata  •   6 x 58 g -  EUR/kg  nr. 128974     6 voor     *YouGov Fresh Report 2026  14 stuks  Met Lidl Plus  Actie  3+3 GRATIS  Special Guest NL 39/2026  Vanaf ma. 21/09 t.e.m. za. 26/09  Ter plaatse gebakken  Ovenvers  aan de laagste prijs",
-			"originalPrice": 1.74,
-			"promoPrice": 0.29,
-			"discount": "2+2",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-9-1789997404757",
-			"product": "DASH Pods platinum  •   original, zeebries,  amber-orchidee of color •   vanaf      tot      per pack •   3 x 26 wasbeurten  nr. 1800754 - 1800755 - 1800756 - 1800757  LISTERINE Mondspoeling  •   verschillende soorten •   vanaf      tot      per stuk •   2 x 500 ml  nr. 199178 - 201239 - 201520 - 201789 - 1800829  ALESTO Walnoten ongebrand  •   ongezouten  •   200 g -  EUR/kg  nr. 26704  W5 Gedeminerali- seerd water  •   5 l -  EUR/l  nr. 09720  Met Lidl Plus  Actie  1+2 GRATIS        Met Lidl Plus -50%  Actie  1+1 GRATIS  Pick & Mix Pick & Mix 5l    Actie Actie Vanaf ma. 21/09 t.e.m. za. 26/09",
-			"originalPrice": 22.99,
-			"promoPrice": 6.39,
-			"discount": "1+2",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-10-1789997404757",
-			"product": "50%  2e aan  ARIZONA Iced tea  •   1 l  nr. 04223  MAREDSOUS Smeerkaas  •   verschillende soorten •      per stuk •      -     voor 2 stuks •   2 x 200 g -  EUR/kg  nr. 01882 - 01967 - 04396 - 1019430  SCOTTEX Toiletpapier clean décor  •      per promopack •   40 rollen -  per rol  nr. 7407789  NALYS Keukenpapier  •      per promopack •   12 rollen -  per rol  nr. 7409363  NALU Energiedrank  •   regular, exotic of zero  •   vanaf      tot     per pack •   2 x 6 x 25 cl  nr. 05937 - 06409 - 1800772  Pick & Mix    Actie  1 l  -50%  2e aan MILKA Leo  •   witte, melkchocolade of GO! •   vanaf      tot      per pack •   2 x 288 g - 2 x 399,6 g  nr. 05625 - 222430 - 222433  Pick & Mix  Actie  6+6 GRATIS  12 rollen  Actie  32+8 GRATIS  40 rollen  -50%  2e aan  Pick & Mix NL 39/2026  Vanaf ma. 21/09 t.e.m. za. 26/09",
-			"originalPrice": 15.99,
-			"promoPrice": 0.4,
-			"discount": "-50%",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		},
-		{
-			"id": "lidl-pdf-11-1789997404757",
-			"product": "SOL & MAR  Knoflook-  teentjes  •   natuur, kruiden of chili •   uitgelekt gewicht: 285 g -  EUR/kg  nr. 36278  SOL & MAR Gedroogde tomaten in zonnebloem- olie  •   uitgelekt gewicht: 190 g -  EUR/kg  nr. 5710834  SOL & MAR Artisjokharten  •   uitgelekt gewicht: 165 g -  EUR/kg  nr. 98695  SOL & MAR Kruidenolie in spray  •   chili-, knoflook-  smaak of extra  olijfolie  •   200 ml -  EUR/l  nr. 5701525  SOL & MAR Gekookte kikkererwten  •   uitgelekt gewicht: 530 g -  EUR/kg  nr. 5718505  SOL & MAR Aioli of salsa brava  •   aioli natuur, aioli mild of salsa brava •   225 ml -  EUR/l  nr. 5800807  SOL & MAR Lupinebonen  •   uitgelekt gewicht: 550 g -  EUR/kg  nr. 5909102  SOL & MAR Tomatensaus  •   3 x 200 g -  EUR/kg  nr. 199414  Meer dan 70 specialiteiten op  zuiderse wijze              Vanaf wo. 23/09 t.e.m. di. 29/09",
-			"originalPrice": 17.45,
-			"promoPrice": 1.29,
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-09-27",
-			"retailerSlug": "lidl"
-		}
-	],
-	"scrapedAt": "2026-09-21T13:30:11.306Z",
+	"deals": [],
+	"scrapedAt": "2026-09-21T13:17:52.623Z",
 	"sourceUrls": [
-		"https://www.lidl.be/c/nl-BE/folders-magazines/s10008101",
-		"https://folder-nl.lidl.be/nl-folder-21-09-26-09/"
+		"https://folder-nl.lidl.be/nl-folder-21-09-26-09"
 	],
 	"methods": [
 		"publitas",
-		"pdf",
-		"pdf-text"
+		"pdf"
 	]
 }

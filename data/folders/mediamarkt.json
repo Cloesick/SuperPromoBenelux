@@ -2,36 +2,27 @@
   "retailer": "mediamarkt",
   "folders": [
     {
-      "id": "mediamarkt-2026-w39-folder",
+      "id": "mediamarkt-3320721-folder",
       "retailerSlug": "mediamarkt",
-      "title": "MediaMarkt folder",
-      "validFrom": "2026-09-21",
-      "validUntil": "2026-09-27",
-      "pageCount": 1,
-      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w39-viewerimg-p1.webp",
-      "pages": [
-        {
-          "pageNumber": 1,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w39-viewerimg-p1.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mediamarkt-2026-w39-viewerimg-p1-thumb.webp",
-          "deals": []
-        }
-      ],
-      "embedUrl": "https://www.mediamarkt.be/nl/campaign/folder#main-content",
-      "pdfUrl": "https://assets.ctfassets.net/nzwrdbjwhn3t/3E9gwADIGkJyJZwgyLJNmv/b61486a2cd4bf491577b596576b19a0b/legal-guarantee-notice-NL.pdf",
+      "title": "A Media Markt BE - 26W37 B2S BE-FL",
+      "validFrom": "2026-09-10",
+      "validUntil": "2026-09-20",
+      "pageCount": 12,
+      "thumbnailUrl": "",
+      "pages": [],
+      "embedUrl": "https://view.publitas.com/mediamarkt-be/26w37-b2s-be-fl/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/2411/3320721/pdfs/7e6c0d18-b111-4312-ad70-a468d48205d3.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-21T13:34:26.326Z"
+      "scrapedAt": "2026-09-10T05:29:07.833Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-21T13:34:54.502Z",
+  "scrapedAt": "2026-09-10T05:29:07.833Z",
   "sourceUrls": [
-    "https://www.mediamarkt.be/nl/shop/folder.html",
-    "https://www.mediamarkt.be/nl/campaign/folder#main-content"
+    "https://view.publitas.com/mediamarkt-be/26w37-b2s-be-fl/"
   ],
   "methods": [
     "publitas",
-    "pdf",
-    "screenshot"
+    "pdf"
   ]
 }
