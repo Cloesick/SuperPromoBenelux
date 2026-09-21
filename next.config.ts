@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
 	// and /folders/[retailer]/p/[page], and a single-star glob matches only one
 	// path segment.
 	outputFileTracingIncludes: {
-		"/**": ["./data/folders/*.json"],
+		"/**": ["./data/folders/*.json", "./data/shorts/*/*/brief.json"],
 	},
 };
 

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Calendar } from "lucide-react";
 import { Folder, Retailer } from "@/lib/types";
 import { FolderViewer } from "./FolderViewer";
+import { folderDisplayTitle } from "@/lib/folderStatus";
 
 interface FolderSwitcherProps {
 	folders: Folder[];
@@ -67,7 +68,7 @@ export function FolderSwitcher({ folders, retailer }: FolderSwitcherProps) {
 										: "bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50"
 								}`}
 							>
-								<span className="text-sm font-semibold">{f.title}</span>
+								<span className="text-sm font-semibold">{folderDisplayTitle(retailer.name, f)}</span>
 								<span
 									className={`flex items-center gap-1 text-xs ${
 										i === active ? "text-blue-100" : "text-gray-500"

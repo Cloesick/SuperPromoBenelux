@@ -15,11 +15,20 @@ import {
 	createRetailerFolderJsonLd,
 	createFAQJsonLd,
 	createBreadcrumbJsonLd,
+	createFolderOffersJsonLd,
 } from "@/components/JsonLd";
+import { folderStatus, folderDisplayTitle, STATUS_CLASSES } from "@/lib/folderStatus";
+import { getBriefForFolder, folderSummary } from "@/lib/briefs";
 import { Facebook, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { getSiteBaseUrl } from "@/lib/site";
+
+/** "september 2026" for the folder's first day, or this month without one. */
+function monthYear(iso?: string): string {
+	const d = iso ? new Date(`${iso.slice(0, 10)}T00:00:00Z`) : new Date();
+	return d.toLocaleDateString("nl-BE", { timeZone: "UTC", month: "long", year: "numeric" });
+}
 
 function getIsoWeek(date: Date): { week: number; year: number } {
 	const d = new Date(date);
@@ -89,10 +98,18 @@ export async function generateMetadata({
 		}
 	})();
 
+	const brief = getBriefForFolder(slug, currentFolder?.id);
 	const description = (() => {
 		if (!range || !weekInfo) return retailer.description;
-		return `${retailer.name} folder week ${weekInfo.week} (${range.fromStr}–${range.untilStr}) — bekijk alle aanbiedingen en de folder van volgende week.`;
+		const hero = brief?.offers[0];
+		const heroText = hero
+			? ` Deze week: ${hero.product}${hero.priceNow ? ` voor €${hero.priceNow}` : hero.mechanic ? ` ${hero.mechanic}` : ""}.`
+			: "";
+		return `${retailer.name} folder week ${weekInfo.week} (${range.fromStr}–${range.untilStr}).${heroText} Bekijk alle aanbiedingen en de folder van volgende week.`;
 	})();
+	// Searches name the month ("lidl folder september 2026") and ask for next
+	// week; the old title answered neither.
+	const title = `${retailer.name} folder ${monthYear(currentFolder?.validFrom)}: deze week & volgende week`;
 
 	const ogImage = (() => {
 		if (!currentFolder) return new URL(retailer.logo, baseUrl).toString();
@@ -113,14 +130,14 @@ export async function generateMetadata({
 	const rendersSomething = isFolderIndexable(currentFolder, slug);
 
 	return {
-		title: `${retailer.name} folder deze week`,
+		title,
 		description,
 		alternates: {
 			canonical: `/folders/${slug}`,
 		},
 		...(rendersSomething ? {} : { robots: { index: false, follow: true } }),
 		openGraph: {
-			title: `${retailer.name} folder deze week | SuperPromo België`,
+			title: `${title} | SuperPromo België`,
 			description,
 			url: `${baseUrl}/folders/${slug}`,
 			type: "website",
@@ -135,7 +152,7 @@ export async function generateMetadata({
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: `${retailer.name} folder deze week | SuperPromo België`,
+			title: `${title} | SuperPromo België`,
 			description,
 			images: [ogImage],
 		},
@@ -155,6 +172,9 @@ export default async function RetailerPage({ params }: PageProps) {
 	const folders = getFoldersForRetailer(slug);
 	const nextFolder = getNextFolder(slug);
 	const outboundUrl = `/out/${slug}`;
+	const brief = getBriefForFolder(slug, currentFolder?.id);
+	const status = folderStatus(currentFolder?.validFrom, currentFolder?.validUntil);
+	const offersJsonLd = brief ? createFolderOffersJsonLd(retailer.name, slug, brief) : null;
 
 	const isSvgLogo = retailer.logo.toLowerCase().endsWith(".webp");
 	const relatedRetailers = (() => {
@@ -228,6 +248,7 @@ export default async function RetailerPage({ params }: PageProps) {
 				})}
 			/>
 			<JsonLd data={createFAQJsonLd(faqItems)} />
+			{offersJsonLd && <JsonLd data={offersJsonLd} />}
 			<JsonLd
 				data={createBreadcrumbJsonLd([
 					{ name: "Home", url: baseUrl },
@@ -281,6 +302,23 @@ export default async function RetailerPage({ params }: PageProps) {
 						{retailer.name} folder deze week
 					</h1>
 					<p className="text-gray-600">{retailer.description}</p>
+					{status && currentFolder && (
+						<p className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-600">
+							<span
+								className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${STATUS_CLASSES[status.tone]}`}
+								suppressHydrationWarning
+							>
+								{status.label}
+							</span>
+							<span>
+								{monthYear(currentFolder.validFrom)} ·{" "}
+								{new Date(`${currentFolder.validFrom}T00:00:00Z`).toLocaleDateString("nl-BE", { timeZone: "UTC", day: "numeric", month: "long" })}
+								{" – "}
+								{new Date(`${currentFolder.validUntil}T00:00:00Z`).toLocaleDateString("nl-BE", { timeZone: "UTC", day: "numeric", month: "long" })}
+							</span>
+						</p>
+					)}
+					{brief && <p className="mt-2 text-gray-700">{folderSummary(brief)}</p>}
 				</div>
 			</div>
 
@@ -298,7 +336,7 @@ export default async function RetailerPage({ params }: PageProps) {
 				{nextFolder ? (
 					<p className="text-sm text-gray-700">
 						De folder voor volgende week staat al online — kies hem hieronder bij{" "}
-						<span className="font-medium">{nextFolder.title}</span> (geldig vanaf{" "}
+						<span className="font-medium">{folderDisplayTitle(retailer.name, nextFolder)}</span> (geldig vanaf{" "}
 						{new Date(nextFolder.validFrom).toLocaleDateString("nl-BE", {
 							timeZone: "UTC",
 							day: "numeric",
@@ -324,6 +362,42 @@ export default async function RetailerPage({ params }: PageProps) {
 						Facebook-groep voor de laatste updates.
 					</p>
 				</div>
+			)}
+
+			{/* This week's offers, as printed on the cover. Below the viewer, so the
+			    leaflet stays the first thing on the page; this is the text a reader
+			    (and a search engine) can use without opening it. */}
+			{brief && (
+				<section className="mt-10 rounded-xl border border-gray-200 bg-white p-6">
+					<h2 className="mb-1 text-xl font-bold text-gray-900">
+						Deze week in de {retailer.name} folder
+					</h2>
+					<p className="mb-4 text-sm text-gray-500">
+						Van de voorpagina, geldig tot en met{" "}
+						{new Date(`${brief.validUntil}T00:00:00Z`).toLocaleDateString("nl-BE", { timeZone: "UTC", day: "numeric", month: "long" })}.
+					</p>
+					<ul className="divide-y divide-gray-100">
+						{brief.offers.map((o) => (
+							<li key={o.product} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3">
+								<div className="min-w-0">
+									<p className="font-medium text-gray-900">{o.product}</p>
+									{o.detail && <p className="text-sm text-gray-500">{o.detail}</p>}
+								</div>
+								<div className="flex items-baseline gap-3">
+									{o.priceNow && <span className="text-lg font-bold text-blue-800">€{o.priceNow}</span>}
+									{o.priceNow && o.priceWas && (
+										<span className="text-sm text-gray-400 line-through">€{o.priceWas}</span>
+									)}
+									{o.mechanic && (
+										<span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">
+											{o.mechanic}
+										</span>
+									)}
+								</div>
+							</li>
+						))}
+					</ul>
+				</section>
 			)}
 
 			{/* Actions.

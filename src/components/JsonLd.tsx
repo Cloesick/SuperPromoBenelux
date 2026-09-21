@@ -115,6 +115,51 @@ export function createRetailerFolderJsonLd(
 	};
 }
 
+/**
+ * This week's folder offers as schema.org Products, from the cover analysis.
+ *
+ * Only offers with a printed price are included: an Offer without a price is
+ * invalid, and a "1+1 gratis" with no number would have to be invented. Prices
+ * are converted from the folder's "4,29" to schema.org's "4.29".
+ */
+export function createFolderOffersJsonLd(
+	retailerName: string,
+	slug: string,
+	brief: {
+		validFrom: string;
+		validUntil: string;
+		offers: { product: string; detail: string | null; priceNow: string | null; mechanic: string | null }[];
+	},
+) {
+	const baseUrl = getSiteBaseUrl();
+	const priced = brief.offers.filter((o) => o.priceNow && /^\d+([.,]\d{1,2})?$/.test(o.priceNow.trim()));
+	if (priced.length === 0) return null;
+	return {
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		name: `Aanbiedingen in de ${retailerName} folder`,
+		itemListElement: priced.map((o, i) => ({
+			"@type": "ListItem",
+			position: i + 1,
+			item: {
+				"@type": "Product",
+				name: o.detail ? `${o.product} ${o.detail}` : o.product,
+				...(o.mechanic ? { description: o.mechanic } : {}),
+				offers: {
+					"@type": "Offer",
+					price: o.priceNow!.trim().replace(",", "."),
+					priceCurrency: "EUR",
+					validFrom: brief.validFrom,
+					priceValidUntil: brief.validUntil,
+					availability: "https://schema.org/InStoreOnly",
+					url: `${baseUrl}/folders/${slug}`,
+					seller: { "@type": "Organization", name: retailerName },
+				},
+			},
+		})),
+	};
+}
+
 export function createBreadcrumbJsonLd(items: { name: string; url: string }[]) {
 	return {
 		"@context": "https://schema.org",

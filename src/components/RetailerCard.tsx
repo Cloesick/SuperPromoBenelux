@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ShoppingBag, FileText } from "lucide-react";
 import { Retailer } from "@/lib/types";
 import type { FolderPreview } from "@/lib/folders";
+import { folderStatus, STATUS_CLASSES } from "@/lib/folderStatus";
 
 interface RetailerCardProps {
 	retailer: Retailer;
@@ -30,6 +31,9 @@ export function RetailerCard({ retailer, folderCount, preview }: RetailerCardPro
 	const cover = preview?.coverUrl;
 	const from = shortDate(preview?.validFrom);
 	const until = shortDate(preview?.validUntil);
+	// "Nog 5 dagen geldig", "Verloopt morgen", "Verlopen": the freshness a
+	// shopper wants before clicking, not only once it is too late.
+	const status = folderStatus(preview?.validFrom, preview?.validUntil);
 
 	return (
 		<Link
@@ -65,11 +69,12 @@ export function RetailerCard({ retailer, folderCount, preview }: RetailerCardPro
 							{preview.pageCount}
 						</span>
 					)}
-					{preview?.expired && (
-						// Say so on the card rather than letting someone open a folder of
-						// last week's prices expecting this week's.
-						<span className="absolute left-2 top-2 rounded-full bg-amber-500 px-2 py-1 text-xs font-medium text-white">
-							Verlopen
+					{status && (
+						<span
+							className={`absolute left-2 top-2 rounded-full px-2 py-1 text-xs font-medium shadow-sm ${STATUS_CLASSES[status.tone]}`}
+							suppressHydrationWarning
+						>
+							{status.label}
 						</span>
 					)}
 				</div>
@@ -92,6 +97,11 @@ export function RetailerCard({ retailer, folderCount, preview }: RetailerCardPro
 						{from && until ? (
 							<p className="text-sm text-gray-500">
 								{from} – {until}
+								{!cover && status && (
+									<span className="ml-2 text-xs font-medium text-gray-700" suppressHydrationWarning>
+										· {status.label}
+									</span>
+								)}
 							</p>
 						) : (
 							<p className="text-sm text-gray-500">{retailer.category}</p>
