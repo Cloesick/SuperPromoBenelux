@@ -108,3 +108,33 @@ jobs:
               }
             }
           "
+
+      # The step above judges data/health.json, which only a successful scrape
+      # writes. From 2026-08-07 to 2026-09-21 every scrape failed before its
+      # commit, so that file stayed frozen at "Fresh: 1 | Stale: 0" and this
+      # job reported all retailers healthy every night while all 47 folders on
+      # the site were expired. This step asks the published folders directly,
+      # so it cannot be fooled by the pipeline it is watching.
+      #
+      # One open issue is kept up to date instead of opening a new one each
+      # night, and the run goes red so GitHub's failure email goes out too.
+      - name: Audit folder expiry
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          npx --yes tsx scripts/audit-staleness.mts > audit.txt 2>&1
+          code=$?
+          set -e
+          cat audit.txt
+          if [ "$code" -eq 0 ]; then exit 0; fi
+
+          title="[Auto] Published folder data is stale"
+          body=$(printf 'Audit of `data/folders/` on %s:\n\n```\n%s\n```\n\nCheck the latest **Scrape folders** and **Harvest Publitas folders** runs.' "$(date -u +%F)" "$(cat audit.txt)")
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi
+          exit 1

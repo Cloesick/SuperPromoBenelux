@@ -10,6 +10,7 @@
 		"lint": "eslint .",
 		"scrape": "tsx src/scrapers/run.ts",
 		"monitor": "tsx src/scrapers/monitor.ts",
+		"audit:staleness": "tsx scripts/audit-staleness.mts",
 		"test": "npm run test:unit && npm run test:components",
 		"test:unit": "vitest run -c vitest.config.ts",
 		"test:components": "vitest run -c vitest.components.config.ts",
