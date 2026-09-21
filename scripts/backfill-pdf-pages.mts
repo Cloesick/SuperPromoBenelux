@@ -142,6 +142,15 @@ const browser = await puppeteer.launch({
 const week = isoWeekTag();
 let totalPages = 0;
 const succeeded: string[] = [];
+async function readableCrossOrigin(url: string): Promise<boolean> {
+	try {
+		const r = await fetch(url, { method: "HEAD", headers: { Origin: "https://superpromobelgie.com" } });
+		return r.headers.get("access-control-allow-origin") === "*";
+	} catch {
+		return false;
+	}
+}
+
 const failed: string[] = [];
 /** Pages recorded as a local path while blob storage was configured. */
 let fellBackToLocal = 0;
@@ -151,7 +160,11 @@ for (const { slug, pdfUrl } of candidates) {
 	try {
 		// Fetch happens in the page, so land on the PDF's own origin first —
 		// otherwise a cross-origin read is blocked and nothing renders.
-		const origin = pdfOrigin(pdfUrl);
+		// Unless the host lets any origin read it: then stay on a blank page.
+		// WePublish's origin sends a CSP without blob:, which blocks the
+		// renderer's own module import, but it also sends
+		// Access-Control-Allow-Origin: *, so a blank page reads it fine.
+		const origin = (await readableCrossOrigin(pdfUrl)) ? null : pdfOrigin(pdfUrl);
 		if (origin) {
 			await page
 				.goto(`${origin}/robots.txt`, { waitUntil: "domcontentloaded", timeout: 30000 })

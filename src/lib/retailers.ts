@@ -96,6 +96,30 @@ export const allRetailers: Retailer[] = [
 		},
 	},
 	{
+		slug: "carrefour",
+		name: "Carrefour",
+		logo: "/retailers/carrefour.webp",
+		color: "#004E9F",
+		website: "https://www.carrefour.be",
+		category: "supermarkt",
+		verticals: SHARED,
+		description:
+			"Bekijk de Carrefour folder van de Hypermarkten met de promoties van deze week en volgende week.",
+		seo: {
+			folderDay: "woensdag",
+			folderDayDetail:
+				"De Carrefour Hypermarkten folder verschijnt om de twee weken op woensdag en is geldig van woensdag tot en met de maandag twee weken later.",
+			storeCount: "Hypermarkten, Carrefour Market en Carrefour Express in heel België",
+			pricePositioning:
+				"Carrefour zet sterk in op mechanismen als 1+1 gratis, 2+2 en 2+3 gratis en -50%, vaak te combineren over merken heen.",
+			loyalty: "Carrefour Bonus Card met vouchers en spaaracties zoals Scanmania.",
+			appName: "Carrefour-app",
+			openingHours: "Openingsuren verschillen per winkel; bekijk je winkel op carrefour.be.",
+			uniqueSellingPoint:
+				"Hypermarkten met een zeer breed assortiment, van vers en droge voeding tot huishouden en drank.",
+		},
+	},
+	{
 		slug: "colruyt",
 		name: "Colruyt",
 		logo: "/retailers/colruyt.webp",
