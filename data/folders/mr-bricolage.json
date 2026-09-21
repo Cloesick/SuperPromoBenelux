@@ -1,83 +1,83 @@
 {
-	"retailer": "mr-bricolage",
-	"folders": [
-		{
-			"id": "mr-bricolage-3308747-folder",
-			"retailerSlug": "mr-bricolage",
-			"title": "Mr Bricolage Belgique - Folder 13 - du 08 septembre au 1er octobre 2026",
-			"validFrom": "2026-09-21",
-			"validUntil": "2026-10-01",
-			"pageCount": 9,
-			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p1.webp",
-			"pages": [
-				{
-					"pageNumber": 1,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p1.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p1-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 2,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p2.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p2-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 3,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p3.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p3-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 4,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p4.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p4-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 5,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p5.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p5-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 6,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p6.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p6-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 7,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p7.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p7-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 8,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p8.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p8-thumb.webp",
-					"deals": []
-				},
-				{
-					"pageNumber": 9,
-					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p9.webp",
-					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p9-thumb.webp",
-					"deals": []
-				}
-			],
-			"embedUrl": "https://view.publitas.com/mr-bricolage/folder-13-2026/?publitas_embed=embedded",
-			"pdfUrl": "https://view.publitas.com/23787/3308747/pdfs/db559495-aeb4-4686-b1c5-43de28dc4ad6.pdf",
-			"contentSource": "publitas",
-			"scrapedAt": "2026-09-21T12:35:26.989Z"
-		}
-	],
-	"deals": [],
-	"scrapedAt": "2026-09-21T12:35:26.989Z",
-	"sourceUrls": [
-		"https://view.publitas.com/mr-bricolage/folder-13-2026/"
-	],
-	"methods": [
-		"publitas",
-		"pdf"
-	]
+  "retailer": "mr-bricolage",
+  "folders": [
+    {
+      "id": "mr-bricolage-3308747-folder",
+      "retailerSlug": "mr-bricolage",
+      "title": "Mr Bricolage Belgique - Folder 13 - du 08 septembre au 1er octobre 2026",
+      "validFrom": "2026-09-08",
+      "validUntil": "2026-10-01",
+      "pageCount": 9,
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p1-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p2.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p2-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p3.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p3-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p4.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p4-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p5.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p5-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p6.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p6-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p7.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p7-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p8.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p8-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 9,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p9.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/mr-bricolage-2026-w39-pdfimg-p9-thumb.webp",
+          "deals": []
+        }
+      ],
+      "embedUrl": "https://view.publitas.com/mr-bricolage/folder-13-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/23787/3308747/pdfs/db559495-aeb4-4686-b1c5-43de28dc4ad6.pdf",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-09-21T13:17:38.013Z"
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-09-21T13:17:38.013Z",
+  "sourceUrls": [
+    "https://view.publitas.com/mr-bricolage/folder-13-2026/"
+  ],
+  "methods": [
+    "publitas",
+    "pdf"
+  ]
 }
