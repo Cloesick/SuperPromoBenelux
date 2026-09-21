@@ -26,7 +26,7 @@ import sharp from "sharp";
 import puppeteer from "rebrowser-puppeteer";
 import { renderPdfToImages, pdfOrigin } from "../src/scrapers/pdfRender";
 import { storePageImage, isBlobConfigured } from "../src/scrapers/pageStorage";
-import { isNonLeafletPdf } from "../src/lib/folderRenderability";
+import { isFolderExpired, isNonLeafletPdf } from "../src/lib/folderRenderability";
 
 
 const root = process.cwd();
@@ -78,6 +78,7 @@ interface Candidate {
 }
 
 const candidates: Candidate[] = [];
+const skippedExpired: string[] = [];
 for (const file of fs.readdirSync(foldersDir).filter((f) => f.endsWith(".json"))) {
 	const slug = file.replace(/\.json$/, "");
 	if (only && !only.has(slug)) continue;
@@ -96,7 +97,18 @@ for (const file of fs.readdirSync(foldersDir).filter((f) => f.endsWith(".json"))
 	// energy label for a single appliance, which would have rendered as a
 	// one-page "folder" showing a washing machine's efficiency rating.
 	if (isNonLeafletPdf(folder.pdfUrl)) continue;
+	// An expired folder is not worth rendering, and its signed PDF link has
+	// usually expired with it. A harvest that skips a retailer (nothing current
+	// published) leaves last week's file in place, and rendering that got a
+	// 403 and failed the whole run, blocking every other retailer's commit.
+	if (isFolderExpired(folder.validUntil)) {
+		skippedExpired.push(slug);
+		continue;
+	}
 	candidates.push({ slug, pdfUrl: folder.pdfUrl });
+}
+if (skippedExpired.length > 0) {
+	console.log(`Skipping ${skippedExpired.length} expired folder(s): ${skippedExpired.join(", ")}`);
 }
 
 console.log(

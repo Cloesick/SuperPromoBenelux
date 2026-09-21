@@ -2,24 +2,73 @@
   "retailer": "blokker",
   "folders": [
     {
-      "id": "blokker-3335747-folder",
+      "id": "blokker-3357122-folder",
       "retailerSlug": "blokker",
-      "title": "Blokker - Blokker week 36 2026",
-      "validFrom": "2026-09-10",
-      "validUntil": "2026-09-20",
-      "pageCount": 12,
-      "thumbnailUrl": "",
-      "pages": [],
-      "embedUrl": "https://view.folders.nl/blokker/blokker-week-36-2026/?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/105579/3335747/pdfs/d24755d5-5a93-43e0-a1de-2b941268d84a.pdf",
+      "title": "Blokker - Blokker week 39 2026",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "pageCount": 8,
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p1.webp",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p1-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 2,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p2.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p2-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 3,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p3.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p3-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 4,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p4.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p4-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 5,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p5.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p5-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 6,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p6.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p6-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 7,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p7.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p7-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 8,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p8.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/blokker-2026-w39-pdfimg-p8-thumb.webp",
+          "deals": []
+        }
+      ],
+      "embedUrl": "https://view.folders.nl/blokker/blokker-week-39-2026/?publitas_embed=embedded",
+      "pdfUrl": "https://view.publitas.com/105579/3357122/pdfs/bb13cea3-bcde-421d-922c-b7e93c04fac4.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-10T05:29:01.599Z"
+      "scrapedAt": "2026-09-21T13:17:40.044Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-10T05:29:01.599Z",
+  "scrapedAt": "2026-09-21T13:17:40.044Z",
   "sourceUrls": [
-    "https://view.folders.nl/blokker/blokker-week-36-2026/"
+    "https://view.folders.nl/blokker/blokker-week-39-2026/"
   ],
   "methods": [
     "publitas",

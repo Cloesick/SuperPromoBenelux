@@ -34,7 +34,11 @@ const dryRun = process.argv.includes("--dry-run");
 
 function referencedFilenames() {
 	const keep = new Set();
-	if (!fs.existsSync(foldersDir)) return keep;
+	// Every page any folder records, wherever its image is hosted. This, not
+	// keep.size, is what tells missing data apart from data that has moved to
+	// blob storage and so references nothing under public/.
+	let pages = 0;
+	if (!fs.existsSync(foldersDir)) return { keep, pages };
 
 	const add = (url) => {
 		if (!url || !url.startsWith("/screenshots/")) return;
@@ -52,12 +56,13 @@ function referencedFilenames() {
 		for (const folder of data.folders ?? []) {
 			add(folder.thumbnailUrl);
 			for (const page of folder.pages ?? []) {
+				if (page.imageUrl) pages++;
 				add(page.imageUrl);
 				add(page.thumbnailUrl);
 			}
 		}
 	}
-	return keep;
+	return { keep, pages };
 }
 
 const mb = (bytes) => (bytes / 1024 / 1024).toFixed(1);
@@ -68,12 +73,17 @@ function main() {
 		return;
 	}
 
-	const keep = referencedFilenames();
-	// A folder set that references nothing means the data is missing, not that
+	const { keep, pages } = referencedFilenames();
+	// A folder set with no pages at all means the data is missing, not that
 	// every image is garbage. Deleting the lot would be unrecoverable.
-	if (keep.size === 0) {
+	//
+	// This used to test keep.size, which is also zero once every page image
+	// is uploaded to blob storage. From 2026-08-07 that failed both the scrape
+	// and the harvest before their commit step on every run, so nothing
+	// they fetched was ever published.
+	if (pages === 0) {
 		console.error(
-			"Refusing to prune: no folder data references any screenshot. " +
+			"Refusing to prune: no folder in data/folders/ records any page. " +
 				"Check data/folders/ before running this again.",
 		);
 		process.exitCode = 1;

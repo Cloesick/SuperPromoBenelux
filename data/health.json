@@ -1,22 +1,311 @@
 {
-  "generatedAt": "2026-08-09T10:35:07.002Z",
+  "generatedAt": "2026-09-21T13:52:38.691Z",
   "retailers": [
     {
-      "slug": "etos",
-      "name": "Etos",
+      "slug": "albert-heijn",
+      "name": "Albert Heijn",
       "status": "fresh",
       "attempts": 1,
       "dataAge": null,
-      "scrapedAt": "2026-08-09T10:35:06.622Z",
+      "scrapedAt": "2026-09-21T13:29:19.441Z",
       "folderCount": 1,
-      "dealCount": 12,
+      "dealCount": 19,
       "hasEmbed": false,
       "hasPdf": true,
       "hasPages": true,
       "validationIssues": [],
       "probeResults": [
         {
-          "url": "https://view.publitas.com/28/3261309/pdfs/d4139031-197b-4cb8-87a7-eab66c122994.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Etos%2520-%2520ETOS%2520Week%252032%25202026.pdf",
+          "url": "https://view.publitas.com/126/3360109/pdfs/f5711f8d-a1f4-4b82-a578-af1631d125e1.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-39-2026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "lidl",
+      "name": "Lidl",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:30:11.306Z",
+      "folderCount": 1,
+      "dealCount": 12,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder-nl.lidl.be/nl-folder-21-09-26-09/",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder-nl.lidl.be/97031/3355373/pdfs/4c4e06ac-5c38-4654-bfe5-d6dbe3f58052.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Lidl%2520BE%2520NL%2520-%2520nl%2520folder%252021-09-26-09.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "aldi",
+      "name": "ALDI",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:31:29.100Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "maxi-zoo",
+      "name": "Maxi Zoo",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:32:37.270Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://cdn.ipaper.io/Cache/509/509.43.0.0/Frontend-Desktop/desktop.bundle_gzip.css",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "tom-co",
+      "name": "Tom&Co",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:33:09.098Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "aveve",
+      "name": "AVEVE",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:33:51.822Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "mediamarkt",
+      "name": "MediaMarkt",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:34:54.502Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://www.mediamarkt.be/nl/campaign/folder#main-content",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://assets.ctfassets.net/nzwrdbjwhn3t/3E9gwADIGkJyJZwgyLJNmv/b61486a2cd4bf491577b596576b19a0b/legal-guarantee-notice-NL.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "vanden-borre",
+      "name": "Vanden Borre",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:35:21.379Z",
+      "folderCount": 1,
+      "dealCount": 18,
+      "hasEmbed": false,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://www.vandenborre.be/web/pdf/Bebat_Affiche_Artikel%2074_A4%20-%20NL.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "krefel",
+      "name": "Krëfel",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:36:12.129Z",
+      "folderCount": 1,
+      "dealCount": 20,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "gamma",
+      "name": "Gamma",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:39:49.349Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder.gamma.be/gamma-benl-week-38-2026/",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder.gamma.be/93348/3354573/pdfs/1edc1f9a-adb8-4900-b562-bb58c935abc2.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27GAMMA%2520BENL%2520-%2520GAMMA%2520BENL%2520week%252038%25202026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "kruidvat",
+      "name": "Kruidvat",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:41:00.036Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder.kruidvat.be/kruidvat-folder-39-21-september-2026-t-m-4-oktober-2026/",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder.kruidvat.be/190/3331092/pdfs/1b363644-b9eb-4bcb-864d-cc95c7e8ad79.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Kruidvat-BEvl%2520-%2520Kruidvat%2520folder%252039%2520-%252021%2520september%25202026%2520t%252Fm%25204%2520oktober%25202026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "di",
+      "name": "Di",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:41:52.657Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": false,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": []
+    },
+    {
+      "slug": "etos",
+      "name": "Etos",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:49:16.593Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://view.publitas.com/28/3359717/pdfs/00108c06-e7df-41d2-adca-7f2b0561eeaf.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Etos%2520-%2520ETOS%2520Week%252039%25202026.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "rossmann",
+      "name": "Rossmann",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:51:23.188Z",
+      "folderCount": 1,
+      "dealCount": 0,
+      "hasEmbed": false,
+      "hasPdf": true,
+      "hasPages": true,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://www.rossmann.de/dam/einkaufsportal/startseite/footer/Bio-Zertifikat.2026-06-16-09-37-12.pdf",
+          "status": 200,
+          "live": true
+        }
+      ]
+    },
+    {
+      "slug": "treac",
+      "name": "Trekpleister",
+      "status": "fresh",
+      "attempts": 1,
+      "dataAge": null,
+      "scrapedAt": "2026-09-21T13:52:33.723Z",
+      "folderCount": 1,
+      "dealCount": 21,
+      "hasEmbed": true,
+      "hasPdf": true,
+      "hasPages": false,
+      "validationIssues": [],
+      "probeResults": [
+        {
+          "url": "https://folder.trekpleister.nl/trekpleister-week-39-21-september-2026-t-m-27-september-2026/",
+          "status": 200,
+          "live": true
+        },
+        {
+          "url": "https://folder.trekpleister.nl/26/3320658/pdfs/128bf577-7d1e-42a9-96ca-af1f28cf7c94.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27Trekpleister%2520-%2520Trekpleister%2520week%252039%2520-%252021%2520september%25202026%2520t%252Fm%252027%2520september%25202026.pdf",
           "status": 200,
           "live": true
         }
@@ -24,8 +313,8 @@
     }
   ],
   "summary": {
-    "total": 1,
-    "fresh": 1,
+    "total": 15,
+    "fresh": 15,
     "fallback": 0,
     "stale": 0,
     "missing": 0,

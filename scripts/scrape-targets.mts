@@ -24,6 +24,8 @@
 
 import { allRetailers } from "../src/lib/retailers";
 import { scrapers } from "../src/scrapers/scrapers";
+// @ts-expect-error plain .mjs shared with the harvester, which has no types
+import { HARVEST_OWNED_SLUGS } from "../apify/harvestedSlugs.mjs";
 
 /** Dutch weekday → JS getUTCDay() number. */
 const WEEKDAY: Record<string, number> = {
@@ -45,8 +47,15 @@ const WEEKDAY: Record<string, number> = {
  */
 const MONTHLY = new Set(["doorlopend", "maandelijks", "tweewekelijks"]);
 
-/** Retailers with a scraper here; the rest come from the Apify harvest. */
-const SCRAPEABLE = new Set(scrapers.map((s) => s.retailerSlug));
+/**
+ * Retailers with a scraper here, minus those the harvest owns. The rest come
+ * from harvest-publitas.yml. Both jobs used to write the owned ones, and the
+ * scraper's version was always the worse; see apify/harvestedSlugs.mjs.
+ */
+const HARVEST_OWNED = new Set<string>(HARVEST_OWNED_SLUGS);
+const SCRAPEABLE = new Set(
+	scrapers.map((s) => s.retailerSlug).filter((slug) => !HARVEST_OWNED.has(slug)),
+);
 
 interface Group {
 	/** 0–6 for a weekday, or "monthly". */

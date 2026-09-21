@@ -113,7 +113,15 @@ jobs:
       # Safety net: the scraper renders a PDF to pages when it lands on one,
       # but a retailer whose folder is only reachable as a PDF link still ends
       # up framing it. This catches those without a second scrape.
+      # continue-on-error because the render is a safety net here, not the
+      # point of the job. harvest-publitas has nothing but this render — its
+      # folders have no pages at all without it — so a failure there must stop
+      # the commit, and since 4436057 it does. This job has already produced
+      # its own folders and page images by now, and failing it over one
+      # PDF-only straggler would throw away a good scrape of every other
+      # retailer in the run.
       - name: Render PDF-only folders to page images
+        continue-on-error: true
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
