@@ -14,7 +14,7 @@ export default function ContactPage() {
     const message = formData.get("message");
     
     // Simple mailto fallback
-    const mailtoLink = `mailto:[EMAIL]?subject=Contact van ${name}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:contact@superpromobelgie.com?subject=${encodeURIComponent(`Contact van ${name}`)}&body=${encodeURIComponent(
       `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`
     )}`;
     
@@ -100,8 +100,8 @@ export default function ContactPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">Andere contactmogelijkheden</h2>
           <p className="text-gray-600 leading-relaxed">
             Je kan ons ook bereiken via{" "}
-            <a href="mailto:[EMAIL]" className="text-blue-700 hover:underline">
-              [EMAIL]
+            <a href="mailto:contact@superpromobelgie.com" className="text-blue-700 hover:underline">
+              contact@superpromobelgie.com
             </a>
             .
           </p>

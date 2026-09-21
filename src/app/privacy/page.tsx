@@ -139,7 +139,7 @@ export default function PrivacyPage() {
             <Link href="/contact" className="text-blue-700 hover:underline">
               contactpagina
             </Link>{" "}
-            of stuur een e-mail naar [EMAIL].
+            of stuur een e-mail naar contact@superpromobelgie.com.
           </p>
         </section>
       </div>
