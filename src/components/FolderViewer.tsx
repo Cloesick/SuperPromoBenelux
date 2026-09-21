@@ -16,6 +16,7 @@ import {
 	Maximize2,
 } from "lucide-react";
 import { Folder, Retailer } from "@/lib/types";
+import { folderDisplayTitle } from "@/lib/folderStatus";
 
 interface FolderViewerProps {
 	folder: Folder;
@@ -283,7 +284,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 		<div>
 			{/* Folder info */}
 			<div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
-				<h2 className="text-lg font-semibold text-gray-900">{folder.title}</h2>
+				<h2 className="text-lg font-semibold text-gray-900">{folderDisplayTitle(retailer.name, folder)}</h2>
 				<div className="flex items-center gap-4">
 					<div className="flex items-center gap-2 text-sm text-gray-500">
 						<Calendar className="w-4 h-4" suppressHydrationWarning />

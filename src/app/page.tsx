@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { retailers } from "@/lib/retailers";
 import { RetailerCard } from "@/components/RetailerCard";
-import { getFolderPreview } from "@/lib/folders";
+import { getFolderPreview, getCurrentFolder } from "@/lib/folders";
+import { getBriefForFolder, longDate } from "@/lib/briefs";
 import { AdPlacements } from "@/components/AdPlacements";
 import { Facebook, TrendingDown, Bell, Zap } from "lucide-react";
 import Link from "next/link";
@@ -12,7 +13,23 @@ export const metadata: Metadata = {
 		"Vergelijk de nieuwste folders van Albert Heijn, Lidl, Colruyt, Delhaize, ALDI en Action. Bespaar elke week op je boodschappen.",
 };
 
+/**
+ * Each retailer's hero offer from its current folder, for "Beste deals deze
+ * week". Read from the cover analysis, and only for the folder the site
+ * shows now.
+ */
+function weeklyDeals() {
+  return retailers.flatMap((retailer) => {
+    const folder = getCurrentFolder(retailer.slug);
+    const brief = getBriefForFolder(retailer.slug, folder?.id);
+    if (!brief) return [];
+    const hero = brief.offers[0];
+    return [{ retailer, hero, validUntil: brief.validUntil }];
+  });
+}
+
 export default function HomePage() {
+  const deals = weeklyDeals();
   return (
     <>
       {/* Hero */}
@@ -86,6 +103,44 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* This week's hero offers side by side: the comparison the site
+          promises, in text rather than only inside the leaflets. */}
+      {deals.length >= 2 && (
+        <section className="max-w-6xl mx-auto px-4 pt-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Beste deals deze week</h2>
+          <p className="text-gray-600 mb-6">
+            De topaanbieding van de voorpagina van elke folder, met de prijs zoals ze erin staat.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {deals.map(({ retailer, hero, validUntil }) => (
+              <Link
+                key={retailer.slug}
+                href={`/folders/${retailer.slug}`}
+                className="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 transition hover:border-blue-300 hover:shadow-md"
+              >
+                <span className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: retailer.color }}>
+                  {retailer.name}
+                </span>
+                <span className="font-semibold text-gray-900 group-hover:text-blue-700">{hero.product}</span>
+                {hero.detail && <span className="text-sm text-gray-500">{hero.detail}</span>}
+                <span className="mt-3 flex flex-wrap items-baseline gap-2">
+                  {hero.priceNow && <span className="text-2xl font-bold text-blue-800">€{hero.priceNow}</span>}
+                  {hero.priceNow && hero.priceWas && (
+                    <span className="text-sm text-gray-400 line-through">€{hero.priceWas}</span>
+                  )}
+                  {hero.mechanic && (
+                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">
+                      {hero.mechanic}
+                    </span>
+                  )}
+                </span>
+                <span className="mt-auto pt-3 text-xs text-gray-500">t.e.m. {longDate(validUntil)}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Retailer cards */}
       <section className="max-w-6xl mx-auto px-4 py-16">
