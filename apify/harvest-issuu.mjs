@@ -43,8 +43,17 @@ export function parseDates(desc) {
 // current doc is found on the publisher's profile, by title, each run.
 //
 // Among docs whose title matches, prefer the one valid today, then the one
-// valid latest. Pure, so it can be checked without the network.
+// valid latest. titleRe may be a list, tried in order: Colruyt does not always
+// title the edition the same way, so the preferred series comes first and a
+// broader pattern catches a rename. Pure, so it can be checked offline.
 export function pickCurrentDoc(candidates, titleRe, today = new Date().toISOString().slice(0, 10)) {
+  if (Array.isArray(titleRe)) {
+    for (const re of titleRe) {
+      const url = pickCurrentDoc(candidates, re, today);
+      if (url) return url;
+    }
+    return null;
+  }
   const scored = candidates
     .filter((c) => titleRe.test(c.title || ''))
     .map((c) => ({ ...c, dates: parseDates(c.description) }))

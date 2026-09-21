@@ -177,7 +177,10 @@ async function harvest(slug, cfg) {
 // series. Each edition gets its own hashed doc name, so the current one is
 // discovered per run (see discoverIssuuDoc).
 const ISSUU = {
-  colruyt: { profile: 'colruytgroup', title: /^Colruyt Laagste Prijzen - Digitale folder/i },
+  colruyt: {
+    profile: 'colruytgroup',
+    title: [/^Colruyt Laagste Prijzen - Digitale folder/i, /^Colruyt Laagste Prijzen(?!.*\(App\))/i],
+  },
 };
 
 const want = process.argv.slice(2);
