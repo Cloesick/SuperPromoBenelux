@@ -1,0 +1,47 @@
+{
+  "retailerSlug": "aldi",
+  "retailerName": "ALDI",
+  "folderId": "aldi-2026-w39-folder",
+  "validFrom": "2026-09-21",
+  "validUntil": "2026-09-26",
+  "coverUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/aldi-2026-w39-viewerimg-p1.webp",
+  "logoBox": {
+    "x": 0.044,
+    "y": 0.025,
+    "w": 0.29,
+    "h": 0.17
+  },
+  "offers": [
+    {
+      "product": "Kippenborstfilet",
+      "detail": "2 x 600 g",
+      "priceNow": null,
+      "priceWas": null,
+      "mechanic": "1+1 gratis",
+      "category": "food",
+      "box": {
+        "x": 0.044,
+        "y": 0.425,
+        "w": 0.29,
+        "h": 0.165
+      }
+    },
+    {
+      "product": "Druiven zonder pitten",
+      "detail": "per kg",
+      "priceNow": "3,50",
+      "priceWas": null,
+      "mechanic": null,
+      "category": "food",
+      "box": {
+        "x": 0.044,
+        "y": 0.25,
+        "w": 0.29,
+        "h": 0.165
+      }
+    }
+  ],
+  "hook": "Kip: 1+1 gratis",
+  "genre": "cooking: pan-seared chicken",
+  "source": "manual"
+}
