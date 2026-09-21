@@ -16,6 +16,9 @@ on:
     - cron: "40 6 * * 1"
     - cron: "40 6 * * 3"
     - cron: "40 6 * * 4"
+  # TEMPORARY: verify on the branch before merge; removed in the next commit.
+  push:
+    branches: [feat/weekly-shorts]
   workflow_dispatch:
     inputs:
       retailers:
