@@ -27,7 +27,7 @@ function pickDefault(folders: Folder[]): number {
 
 function formatRange(folder: Folder): string {
 	try {
-		const opts: Intl.DateTimeFormatOptions = { day: "numeric", month: "short" };
+		const opts: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", timeZone: "UTC" };
 		const from = new Date(folder.validFrom).toLocaleDateString("nl-BE", opts);
 		const until = new Date(folder.validUntil).toLocaleDateString("nl-BE", opts);
 		return `${from} – ${until}`;

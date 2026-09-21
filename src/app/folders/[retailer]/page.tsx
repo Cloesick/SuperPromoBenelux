@@ -63,11 +63,13 @@ export async function generateMetadata({
 			const from = new Date(currentFolder.validFrom);
 			const until = new Date(currentFolder.validUntil);
 			const fromStr = from.toLocaleDateString("nl-BE", {
+				timeZone: "UTC",
 				day: "numeric",
 				month: "short",
 				year: "numeric",
 			});
 			const untilStr = until.toLocaleDateString("nl-BE", {
+				timeZone: "UTC",
 				day: "numeric",
 				month: "short",
 				year: "numeric",
@@ -298,6 +300,7 @@ export default async function RetailerPage({ params }: PageProps) {
 						De folder voor volgende week staat al online — kies hem hieronder bij{" "}
 						<span className="font-medium">{nextFolder.title}</span> (geldig vanaf{" "}
 						{new Date(nextFolder.validFrom).toLocaleDateString("nl-BE", {
+							timeZone: "UTC",
 							day: "numeric",
 							month: "long",
 						})}

@@ -39,5 +39,8 @@ describe("wepublishFolder", () => {
 		expect(f.pdfUrl).toBe("https://api.wepublish.digital/viewer/pdf/download/carrefour-week-38-40-2026");
 		expect(f.pages).toEqual([]);
 		expect(f.id).toBe("carrefour-carrefour-week-38-40-2026-folder");
+		expect(wepublishFolder("carrefour", "carrefour-week-38-40-2026", { from: "2026-09-16", until: "2026-09-28" }, "Carrefour").title).toBe(
+			"Carrefour folder 16/09 – 28/09",
+		);
 	});
 });

@@ -267,7 +267,7 @@ for (const [slug, cfg] of wepublishEntries) {
       console.log(`  ${slug}: skipped ${cand}${rejected ? ` — ${rejected}` : ''}`);
       continue;
     }
-    found.push(wepublishFolder(slug, cand, validity));
+    found.push(wepublishFolder(slug, cand, validity, cfg.name));
   }
   if (found.length === 0) {
     results.push({ slug, ok: false });

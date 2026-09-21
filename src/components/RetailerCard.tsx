@@ -22,7 +22,7 @@ function shortDate(iso?: string): string | null {
 	if (!iso) return null;
 	const d = new Date(iso);
 	if (Number.isNaN(d.getTime())) return null;
-	return d.toLocaleDateString("nl-BE", { day: "numeric", month: "short" });
+	return d.toLocaleDateString("nl-BE", { day: "numeric", month: "short", timeZone: "UTC" });
 }
 
 export function RetailerCard({ retailer, folderCount, preview }: RetailerCardProps) {
