@@ -2,98 +2,134 @@
   "retailer": "maxi-zoo",
   "folders": [
     {
-      "id": "maxi-zoo-2026-w32-folder",
+      "id": "maxi-zoo-2026-w39-folder",
       "retailerSlug": "maxi-zoo",
       "title": "Maxi Zoo promoties",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "pageCount": 12,
-      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p1.webp",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "pageCount": 18,
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p1.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p1-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p1-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p2.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p2-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p2.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p2-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p3.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p3-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p3.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p3-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p4.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p4-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p4.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p4-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p5.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p5-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p5.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p5-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p6.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p6-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p6.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p6-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 7,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p7.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p7-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p7.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p7-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 8,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p8.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p8-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p8.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p8-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 9,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p9.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p9-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p9.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p9-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 10,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p10.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p10-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p10.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p10-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 11,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p11.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p11-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p11.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p11-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 12,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p12.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w32-viewerimg-p12-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p12.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p12-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 13,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p13.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p13-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 14,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p14.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p14-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 15,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p15.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p15-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 16,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p16.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p16-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 17,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p17.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p17-thumb.webp",
+          "deals": []
+        },
+        {
+          "pageNumber": 18,
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p18.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/maxi-zoo-2026-w39-viewerimg-p18-thumb.webp",
           "deals": []
         }
       ],
-      "embedUrl": "https://cdn.ipaper.io/Cache/509/509.17.0.0/Frontend-Desktop/desktop.bundle_gzip.css",
+      "embedUrl": "https://cdn.ipaper.io/Cache/509/509.43.0.0/Frontend-Desktop/desktop.bundle_gzip.css",
       "contentSource": "ipaper",
-      "scrapedAt": "2026-08-08T10:22:11.280Z"
+      "scrapedAt": "2026-09-21T13:32:29.203Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-08-08T10:22:20.075Z",
+  "scrapedAt": "2026-09-21T13:32:37.270Z",
   "sourceUrls": [
     "https://www.maxizoo.be/nl/acties-aanbiedingen/folder/",
     "https://flyer.maxizoo.be/flyer/flyernl/",
-    "https://cdn.ipaper.io/Cache/509/509.17.0.0/Frontend-Desktop/desktop.bundle_gzip.css"
+    "https://cdn.ipaper.io/Cache/509/509.43.0.0/Frontend-Desktop/desktop.bundle_gzip.css"
   ],
   "methods": [
     "ipaper",

@@ -2,110 +2,31 @@
   "retailer": "tom-co",
   "folders": [
     {
-      "id": "tom-co-2026-w32-folder",
+      "id": "tom-co-2026-w39-folder",
       "retailerSlug": "tom-co",
       "title": "Tom&Co promoties",
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "pageCount": 6,
-      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p1.webp",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "pageCount": 1,
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w39-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p1.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p1-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 2,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p2.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p2-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 3,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p4.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p4-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 4,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p6.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p6-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 5,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p8.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p8-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 6,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p10.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w32-viewerimg-p10-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w39-viewerimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/tom-co-2026-w39-viewerimg-p1-thumb.webp",
           "deals": []
         }
       ],
-      "contentSource": "issuu",
-      "scrapedAt": "2026-08-07T04:33:48.319Z"
+      "contentSource": "screenshot",
+      "scrapedAt": "2026-09-21T13:33:02.137Z"
     }
   ],
-  "deals": [
-    {
-      "id": "tom-co-ocr-tom-co-2026-w32-viewerimg-p2-0",
-      "product": "Andere in beschikbaar promotie",
-      "promoPrice": 19.07,
-      "originalPrice": 39.98,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "tom-co"
-    },
-    {
-      "id": "tom-co-ocr-tom-co-2026-w32-viewerimg-p2-1",
-      "product": "VANAF",
-      "promoPrice": 6.95,
-      "originalPrice": 16.55,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "tom-co"
-    },
-    {
-      "id": "tom-co-ocr-tom-co-2026-w32-viewerimg-p2-2",
-      "product": "VANAF",
-      "promoPrice": 5.67,
-      "originalPrice": 16.68,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "tom-co"
-    },
-    {
-      "id": "tom-co-ocr-tom-co-2026-w32-viewerimg-p2-3",
-      "product": "€/kg",
-      "promoPrice": 6.86,
-      "originalPrice": 15.05,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "tom-co"
-    },
-    {
-      "id": "tom-co-ocr-tom-co-2026-w32-viewerimg-p6-0",
-      "product": "€/kg VANAF",
-      "promoPrice": 31.38,
-      "validFrom": "2026-08-03",
-      "validUntil": "2026-08-09",
-      "retailerSlug": "tom-co"
-    }
-  ],
-  "scrapedAt": "2026-08-07T04:34:31.992Z",
+  "deals": [],
+  "scrapedAt": "2026-09-21T13:33:09.098Z",
   "sourceUrls": [
-    "https://www.tomandco.com/nl-be/promoties",
-    "https://www.tomandco.com/nl-be/folder",
-    "https://e.issuu.com/embed.html?d=folder2026_aout1_benl_2&u=tomandco6"
+    "https://www.tomandco.com/nl-be/promoties"
   ],
   "methods": [
-    "issuu",
-    "screenshot",
-    "ocr"
+    "screenshot"
   ]
 }

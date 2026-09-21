@@ -2,220 +2,302 @@
   "retailer": "albert-heijn",
   "folders": [
     {
-      "id": "albert-heijn-3360109-folder",
+      "id": "albert-heijn-2026-w39-folder",
       "retailerSlug": "albert-heijn",
-      "title": "AH - Bonus-week-39-2026",
+      "title": "Albert Heijn Bonusfolder",
       "validFrom": "2026-09-21",
       "validUntil": "2026-09-27",
-      "pageCount": 32,
-      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p1.webp",
+      "pageCount": 18,
+      "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p1.webp",
       "pages": [
         {
           "pageNumber": 1,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p1.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p1-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p1.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p1-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 2,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p2.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p2-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p2.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p2-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 3,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p3.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p3-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p4.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p4-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 4,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p4.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p4-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p6.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p6-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 5,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p5.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p5-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p8.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p8-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 6,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p6.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p6-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p10.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p10-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 7,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p7.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p7-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p12.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p12-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 8,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p8.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p8-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p13.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p13-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 9,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p9.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p9-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p14.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p14-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 10,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p10.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p10-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p16.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p16-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 11,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p11.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p11-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p18.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p18-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 12,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p12.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p12-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p20.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p20-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 13,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p13.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p13-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p22.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p22-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 14,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p14.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p14-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p24.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p24-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 15,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p15.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p15-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p26.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p26-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 16,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p16.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p16-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p28.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p28-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 17,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p17.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p17-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p30.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p30-thumb.webp",
           "deals": []
         },
         {
           "pageNumber": 18,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p18.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p18-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 19,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p19.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p19-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 20,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p20.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p20-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 21,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p21.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p21-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 22,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p22.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p22-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 23,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p23.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p23-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 24,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p24.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p24-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 25,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p25.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p25-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 26,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p26.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p26-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 27,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p27.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p27-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 28,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p28.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p28-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 29,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p29.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p29-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 30,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p30.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p30-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 31,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p31.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p31-thumb.webp",
-          "deals": []
-        },
-        {
-          "pageNumber": 32,
-          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p32.webp",
-          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p32-thumb.webp",
+          "imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p32.webp",
+          "thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-viewerimg-p32-thumb.webp",
           "deals": []
         }
       ],
-      "embedUrl": "https://view.publitas.com/ah/bonus-week-39-2026/page/1?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/126/3360109/pdfs/f5711f8d-a1f4-4b82-a578-af1631d125e1.pdf",
+      "pdfUrl": "https://view.publitas.com/126/3360109/pdfs/f5711f8d-a1f4-4b82-a578-af1631d125e1.pdf?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27AH%2520-%2520Bonus-week-39-2026.pdf",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-21T13:17:29.007Z"
+      "scrapedAt": "2026-09-21T13:29:11.029Z"
     }
   ],
-  "deals": [],
-  "scrapedAt": "2026-09-21T13:17:29.007Z",
+  "deals": [
+    {
+      "id": "html-8",
+      "product": "AH Bimi",
+      "discount": "1+1  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_676d33515f646b465379573964477836336b4f696877?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-53",
+      "product": "AH Kiwibessen",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_344e576e336c7a6f514632494f79754e647466565a67?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-81",
+      "product": "AH Perssinaasappelen",
+      "discount": "1+1  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_43545239393438313636?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-183",
+      "product": "Plukon Kipfilet bel",
+      "discount": "2e  halve prijs",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_6e646b616f345031517a717a4c4b6868305946423341?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-210",
+      "product": "AH Spareribs honing bel",
+      "discount": "25%  korting",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313732363030?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn",
+      "originalPrice": 7.14
+    },
+    {
+      "id": "html-238",
+      "product": "Fish Tales Verse Zeeuwse mosselen",
+      "discount": "1+1  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303839313732?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-265",
+      "product": "AH Zalmfilet op huid",
+      "discount": "100 gram  2.19",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303937383730?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn",
+      "originalPrice": 4.75
+    },
+    {
+      "id": "html-293",
+      "product": "Violife Original plakken",
+      "discount": "1+2  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313836353137?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-365",
+      "product": "Danerolles Pistache croissants",
+      "discount": "1+1  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_3053334c49426474536c474f4c456868673579346777?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-401",
+      "product": "Charles Kip black pepper bel",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313934393730?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-445",
+      "product": "AH Walnoten",
+      "discount": "1+1  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303234333336?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-527",
+      "product": "Guylian The original Belgische chocolade",
+      "discount": "1+1  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130313933323037?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-599",
+      "product": "Super Choice Garnalen L rauw ongepeld bel",
+      "discount": "1+2  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_4354523130303334313538?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-697",
+      "product": "Martini Prosecco doc",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_43545239353432343434?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-739",
+      "product": "Paulaner Hefe-weißbier",
+      "discount": "1+1  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_446f73476e527a425363697a3474684d46544d695a67?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-765",
+      "product": "Weihenstephaner Hefeweissbier",
+      "discount": "1+1  gratis",
+      "imageUrl": "https://static.ah.nl/dam/product/AHI_2d635972427766685443434e774b767462724c6f7977?revLabel=1&rendition=200x200_WEBP&fileType=binary",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-881",
+      "product": "Kies een alternatief",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-885",
+      "product": "Kies een product",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    },
+    {
+      "id": "html-889",
+      "product": "Combineer nu",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-09-27",
+      "retailerSlug": "albert-heijn"
+    }
+  ],
+  "scrapedAt": "2026-09-21T13:29:19.441Z",
   "sourceUrls": [
-    "https://view.publitas.com/ah/bonus-week-39-2026/page/1"
+    "https://www.ah.be/bonus/folder",
+    "https://view.publitas.com/ah/bonus-week-39-2026/page/1?publitas_embed=embedded"
   ],
   "methods": [
     "publitas",
-    "pdf"
+    "pdf",
+    "screenshot"
   ]
 }
