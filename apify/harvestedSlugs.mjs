@@ -11,8 +11,10 @@
 // dates (folderDates.mjs).
 //
 // Only listed here when the harvest is the working source. action and aveve
-// are harvested too, but the harvest finds no PDF for them, so the scraper
-// stays their source. mediamarkt is here even though the harvest currently
+// joined on 2026-09-21: their publications have PDF download switched off,
+// and the harvest now takes the viewer's own page images (spreads.json)
+// instead, 41 pages for Aveve against the scraper's 2-page screenshot.
+// mediamarkt is here even though the harvest currently
 // skips it (its only Publitas folder is December's): no folder is honest,
 // and the scraper's is not a folder.
 //
@@ -20,7 +22,9 @@
 // ---------------------------------------------------------------------------
 
 export const HARVEST_OWNED_SLUGS = [
+	'action',
 	'albert-heijn',
+	'aveve',
 	'brico',
 	'colruyt',
 	'etos',

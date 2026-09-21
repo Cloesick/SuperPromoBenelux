@@ -32,6 +32,7 @@ import {
 import { extractDealsFromPdf } from "./extractDealsFromText";
 import { renderPdfToImages } from "./pdfRender";
 import { getRetailerBySlug } from "../lib/retailers";
+import { weekWindow } from "../lib/folderWeek";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
@@ -3427,17 +3428,13 @@ export abstract class BaseScraper {
 		return { year, week };
 	}
 
+	/**
+	 * The week this capture belongs to, anchored on the retailer's own folder
+	 * day (Colruyt Wednesday, Delhaize Thursday) rather than always Monday.
+	 * See src/lib/folderWeek.ts.
+	 */
 	protected getCurrentWeekDates(): { from: string; until: string } {
-		const now = new Date();
-		const dayOfWeek = now.getDay();
-		const monday = new Date(now);
-		monday.setDate(now.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
-		const sunday = new Date(monday);
-		sunday.setDate(monday.getDate() + 6);
-		return {
-			from: monday.toISOString().split("T")[0],
-			until: sunday.toISOString().split("T")[0],
-		};
+		return weekWindow(getRetailerBySlug(this.retailerSlug)?.seo?.folderDay);
 	}
 
 	private deduplicateDeals(deals: Deal[]): Deal[] {

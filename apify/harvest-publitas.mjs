@@ -54,6 +54,34 @@ export function coverThumbnail(html, size = 800) {
   return m[0].replace(/-at\d+\./, `-at${size}.`);
 }
 
+// Some publications switch PDF download off (Action, Aveve), so the harvest
+// used to report "no PDF" and leave them to a scraper that screenshots a promo
+// page. Their viewer still loads every page from <publication>/spreads.json,
+// as ready-rendered images up to 1823px wide. This turns that into
+// folder.pages, largest size for the page and a small one for the thumbnail.
+const SIZE_ORDER = ['at2400', 'at2000', 'at1600', 'at1200', 'at1000', 'at800', 'at600', 'at400', 'at200'];
+
+export function pagesFromSpreads(spreads, origin = 'https://view.publitas.com') {
+  const pages = (Array.isArray(spreads) ? spreads : []).flatMap((s) => s?.pages ?? []);
+  const abs = (p) => (p && p.startsWith('/') ? origin + p : p);
+  const pick = (images, order) => abs(images[order.find((k) => images[k])]);
+  return pages
+    .map((p) => p?.images ?? {})
+    .filter((images) => Object.keys(images).length > 0)
+    .map((images, i) => ({
+      pageNumber: i + 1,
+      imageUrl: pick(images, SIZE_ORDER),
+      thumbnailUrl: pick(images, [...SIZE_ORDER].reverse().slice(3)),
+      deals: [],
+    }))
+    .filter((p) => p.imageUrl);
+}
+
+export function spreadsUrl(manifest) {
+  if (!manifest?.groupSlug || !manifest?.slug) return null;
+  return `https://view.publitas.com/${manifest.groupSlug}/${manifest.slug}/spreads.json`;
+}
+
 // Public, complete PDF (query stripped so the browser renders it inline rather
 // than forcing a download — matches how the live AH folder is stored).
 export function pdfUrlFromManifest(manifest) {
