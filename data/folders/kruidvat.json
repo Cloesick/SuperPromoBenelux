@@ -4,7 +4,7 @@
     {
       "id": "kruidvat-kruidvat-benl-week-38-2026-folder",
       "retailerSlug": "kruidvat",
-      "title": "kruidvat folder week 38 2026",
+      "title": "Kruidvat folder 15/09 – 27/09",
       "validFrom": "2026-09-15",
       "validUntil": "2026-09-27",
       "pageCount": 73,
@@ -451,12 +451,12 @@
       ],
       "pdfUrl": "https://api.wepublish.digital/viewer/pdf/download/kruidvat-benl-week-38-2026",
       "contentSource": "wepublish",
-      "scrapedAt": "2026-09-21T16:59:50.136Z"
+      "scrapedAt": "2026-09-21T22:56:54.615Z"
     },
     {
       "id": "kruidvat-kruidvat-benl-week-39-2026-folder",
       "retailerSlug": "kruidvat",
-      "title": "kruidvat folder week 39 2026",
+      "title": "Kruidvat folder 22/09 – 04/10",
       "validFrom": "2026-09-22",
       "validUntil": "2026-10-04",
       "pageCount": 0,
@@ -464,11 +464,11 @@
       "pages": [],
       "pdfUrl": "https://api.wepublish.digital/viewer/pdf/download/kruidvat-benl-week-39-2026",
       "contentSource": "wepublish",
-      "scrapedAt": "2026-09-21T16:59:50.497Z"
+      "scrapedAt": "2026-09-21T22:56:55.446Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-21T16:59:50.625Z",
+  "scrapedAt": "2026-09-21T22:56:55.599Z",
   "sourceUrls": [
     "https://api.wepublish.digital/viewer/pdf/download/kruidvat-benl-week-38-2026",
     "https://api.wepublish.digital/viewer/pdf/download/kruidvat-benl-week-39-2026"
