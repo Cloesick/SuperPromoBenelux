@@ -31,6 +31,7 @@ import {
 } from "../lib/folderRenderability";
 import { extractDealsFromPdf } from "./extractDealsFromText";
 import { renderPdfToImages } from "./pdfRender";
+import { getRetailerBySlug } from "../lib/retailers";
 
 const DATA_DIR = path.join(process.cwd(), "data", "folders");
 const SCREENSHOT_DIR = path.join(process.cwd(), "public", "screenshots");
