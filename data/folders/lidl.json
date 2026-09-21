@@ -1,42 +1,391 @@
 {
-  "retailer": "lidl",
-  "folders": [
-    {
-      "id": "lidl-3331107-folder",
-      "retailerSlug": "lidl",
-      "title": "Lidl BE NL - nl folder 07-09-12-09",
-      "validFrom": "2026-09-10",
-      "validUntil": "2026-09-20",
-      "pageCount": 37,
-      "thumbnailUrl": "",
-      "pages": [],
-      "embedUrl": "https://folder-nl.lidl.be/nl-folder-07-09-12-09?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/97031/3331107/pdfs/3c163363-7ccf-42cc-ada1-0a18f27e890d.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-09-10T05:29:08.806Z"
-    },
-    {
-      "id": "lidl-2427185-folder",
-      "retailerSlug": "lidl",
-      "title": "Lidl BE NL - Week 37 2025",
-      "validFrom": "2026-09-10",
-      "validUntil": "2026-09-20",
-      "pageCount": 60,
-      "thumbnailUrl": "https://view.publitas.com/97031/2427185/pages/46d0cb87-4081-4f64-853e-52fa11473f81-at800.jpg",
-      "pages": [],
-      "embedUrl": "https://folder-nl.lidl.be/nl-folder-10-09-16-09?publitas_embed=embedded",
-      "pdfUrl": "https://view.publitas.com/97031/2427185/pdfs/826c9e3a-9edc-4834-9e15-d2fd43810343.pdf",
-      "contentSource": "publitas",
-      "scrapedAt": "2026-09-10T05:29:09.448Z"
-    }
-  ],
-  "deals": [],
-  "scrapedAt": "2026-09-10T05:29:08.806Z",
-  "sourceUrls": [
-    "https://folder-nl.lidl.be/nl-folder-07-09-12-09"
-  ],
-  "methods": [
-    "publitas",
-    "pdf"
-  ]
+	"retailer": "lidl",
+	"folders": [
+		{
+			"id": "lidl-2435640-folder",
+			"retailerSlug": "lidl",
+			"title": "Lidl BE NL - Week 38 2025",
+			"validFrom": "2026-09-21",
+			"validUntil": "2026-10-01",
+			"pageCount": 58,
+			"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p1.webp",
+			"pages": [
+				{
+					"pageNumber": 1,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p1.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p1-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 2,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p2.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p2-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 3,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p3.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p3-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 4,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p4.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p4-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 5,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p5.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p5-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 6,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p6.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p6-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 7,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p7.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p7-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 8,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p8.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p8-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 9,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p9.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p9-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 10,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p10.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p10-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 11,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p11.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p11-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 12,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p12.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p12-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 13,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p13.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p13-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 14,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p14.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p14-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 15,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p15.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p15-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 16,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p16.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p16-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 17,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p17.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p17-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 18,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p18.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p18-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 19,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p19.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p19-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 20,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p20.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p20-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 21,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p21.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p21-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 22,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p22.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p22-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 23,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p23.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p23-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 24,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p24.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p24-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 25,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p25.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p25-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 26,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p26.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p26-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 27,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p27.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p27-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 28,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p28.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p28-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 29,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p29.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p29-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 30,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p30.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p30-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 31,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p31.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p31-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 32,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p32.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p32-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 33,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p33.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p33-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 34,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p34.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p34-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 35,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p35.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p35-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 36,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p36.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p36-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 37,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p37.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p37-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 38,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p38.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p38-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 39,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p39.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p39-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 40,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p40.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p40-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 41,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p41.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p41-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 42,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p42.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p42-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 43,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p43.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p43-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 44,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p44.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p44-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 45,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p45.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p45-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 46,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p46.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p46-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 47,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p47.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p47-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 48,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p48.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p48-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 49,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p49.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p49-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 50,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p50.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p50-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 51,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p51.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p51-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 52,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p52.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p52-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 53,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p53.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p53-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 54,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p54.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p54-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 55,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p55.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p55-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 56,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p56.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p56-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 57,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p57.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p57-thumb.webp",
+					"deals": []
+				},
+				{
+					"pageNumber": 58,
+					"imageUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p58.webp",
+					"thumbnailUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p58-thumb.webp",
+					"deals": []
+				}
+			],
+			"embedUrl": "https://folder-nl.lidl.be/nl-folder-17-09-23-09?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/97031/2435640/pdfs/9e7c80dd-5f68-4363-9dc2-45c112a96a0f.pdf",
+			"contentSource": "publitas",
+			"scrapedAt": "2026-09-21T12:35:36.193Z"
+		},
+		{
+			"id": "lidl-3355373-folder",
+			"retailerSlug": "lidl",
+			"title": "Lidl BE NL - nl folder 21-09-26-09",
+			"validFrom": "2026-09-21",
+			"validUntil": "2026-10-01",
+			"pageCount": 40,
+			"thumbnailUrl": "",
+			"pages": [],
+			"embedUrl": "https://folder-nl.lidl.be/nl-folder-21-09-26-09?publitas_embed=embedded",
+			"pdfUrl": "https://view.publitas.com/97031/3355373/pdfs/4c4e06ac-5c38-4654-bfe5-d6dbe3f58052.pdf",
+			"contentSource": "publitas",
+			"scrapedAt": "2026-09-21T12:35:36.539Z"
+		}
+	],
+	"deals": [],
+	"scrapedAt": "2026-09-21T12:35:36.193Z",
+	"sourceUrls": [
+		"https://folder-nl.lidl.be/nl-folder-17-09-23-09"
+	],
+	"methods": [
+		"publitas",
+		"pdf"
+	]
 }
