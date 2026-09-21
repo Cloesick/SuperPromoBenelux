@@ -27,25 +27,17 @@ import { scrapers } from "../src/scrapers/scrapers";
 // @ts-expect-error plain .mjs shared with the harvester, which has no types
 import { HARVEST_OWNED_SLUGS } from "../apify/harvestedSlugs.mjs";
 
-/** Dutch weekday → JS getUTCDay() number. */
-const WEEKDAY: Record<string, number> = {
-	zondag: 0,
-	maandag: 1,
-	dinsdag: 2,
-	woensdag: 3,
-	donderdag: 4,
-	vrijdag: 5,
-	zaterdag: 6,
-};
+import { WEEKDAY } from "../src/lib/folderWeek";
 
 /**
- * Cadences that mean "no weekly folder".
+ * Cadences scraped monthly rather than weekly.
  *
- * `doorlopend` retailers run rolling promotions — Zalando, Coolblue, bol, H&M.
- * They still get scraped, for deals and in case a folder appears, but monthly
- * rather than weekly.
+ * `doorlopend` (rolling promotions: Zalando, Coolblue, bol, H&M) used to be
+ * here too. But a scraped folder is valid for seven days, so a monthly scrape
+ * left those 14 retailers showing "verlopen" for three weeks of every month.
+ * They now fall through to the Monday group with "wekelijks".
  */
-const MONTHLY = new Set(["doorlopend", "maandelijks", "tweewekelijks"]);
+const MONTHLY = new Set(["maandelijks", "tweewekelijks"]);
 
 /**
  * Retailers with a scraper here, minus those the harvest owns. The rest come

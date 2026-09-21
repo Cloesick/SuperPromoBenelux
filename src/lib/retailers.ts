@@ -1011,31 +1011,6 @@ export const allRetailers: Retailer[] = [
 		},
 	},
 	{
-		slug: "bauhaus",
-		verticals: SHARED,
-		name: "Bauhaus",
-		logo: "/retailers/bauhaus.svg",
-		color: "#E2001A",
-		website: "https://www.bauhaus.be",
-		description:
-			"Bekijk de Bauhaus folder met aanbiedingen in werkplaats, huis, tuin en bouwmaterialen.",
-		category: "doe-het-zelf",
-		seo: {
-			folderDay: "maandag",
-			folderDayDetail:
-				"De Bauhaus folder verschijnt periodiek met acties op gereedschap, tuin, bouwen en sanitair.",
-			storeCount: "vestigingen in België en Nederland",
-			pricePositioning:
-				"Bauhaus is een specialist in werkplaats, huis en tuin met een zeer breed assortiment en lage prijzen.",
-			loyalty: "Bauhaus klantenvoordeel en app.",
-			appName: "Bauhaus app",
-			openingHours:
-				"Maandag t/m zaterdag doorgaans 7:00–20:00; ruime openingsuren.",
-			uniqueSellingPoint:
-				"Zeer breed specialistenassortiment voor werkplaats, huis en tuin onder één dak.",
-		},
-	},
-	{
 		slug: "gifi",
 		verticals: SHARED,
 		name: "Gifi",

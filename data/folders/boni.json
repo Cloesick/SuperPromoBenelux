@@ -1,0 +1,35 @@
+{
+  "retailer": "boni",
+  "folders": [
+    {
+      "id": "boni-1087835-folder",
+      "retailerSlug": "boni",
+      "title": "Boni Supermarkt - Prijsvergelijk Boni Amersfoort",
+      "validFrom": "2026-09-21",
+      "validUntil": "2026-10-01",
+      "pageCount": 1,
+      "thumbnailUrl": "https://view.publitas.com/18655/1087835/pages/d1c780ca-32b7-445b-829c-4c226efe65de-at800.jpg",
+      "pages": [
+        {
+          "pageNumber": 1,
+          "imageUrl": "https://view.publitas.com/18655/1087835/pages/d1c780ca-32b7-445b-829c-4c226efe65de-at2400.jpg",
+          "thumbnailUrl": "https://view.publitas.com/18655/1087835/pages/d1c780ca-32b7-445b-829c-4c226efe65de-at800.jpg",
+          "deals": []
+        }
+      ],
+      "embedUrl": "https://view.publitas.com/boni-supermarkt/prijsvergelijk-boni-amersfoort/?publitas_embed=embedded",
+      "contentSource": "publitas",
+      "scrapedAt": "2026-09-21T15:31:00.845Z",
+      "datesEstimated": true
+    }
+  ],
+  "deals": [],
+  "scrapedAt": "2026-09-21T15:31:00.845Z",
+  "sourceUrls": [
+    "https://view.publitas.com/boni-supermarkt/prijsvergelijk-boni-amersfoort/"
+  ],
+  "methods": [
+    "publitas",
+    "html"
+  ]
+}

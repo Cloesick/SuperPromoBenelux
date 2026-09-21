@@ -14,7 +14,7 @@
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { extractManifest, buildScrapedData, pdfUrlFromManifest, preserveRenderedPages, readExistingFolder } from './harvest-publitas.mjs';
+import { extractManifest, buildScrapedData, pdfUrlFromManifest, preserveRenderedPages, readExistingFolder, pagesFromSpreads, spreadsUrl } from './harvest-publitas.mjs';
 import { harvestIssuu, discoverIssuuDoc } from './harvest-issuu.mjs';
 import { inferValidity, rejectReason } from './folderDates.mjs';
 
@@ -56,7 +56,6 @@ const RETAILERS = {
   'mr-bricolage': { account: 'mr-bricolage' }, // period slug → rely on account-root redirect
   aveve: { account: 'aveve' },
   cora: { account: 'cora' },
-  blokker: { account: ['blokker', 'de-blokker-folder', 'de-blokker-folder-kiosk-be-vl'], tpl: (w, y) => `https://view.publitas.com/blokker/blokker-folder-week-${w}-${y}/page/1` },
   // batch 3 — discovered via account-root probe (discover-accounts.mjs)
   spar: { account: 'spar' },
   hoogvliet: { account: 'hoogvliet', tpl: (w, y) => `https://view.publitas.com/hoogvliet/folder_${y}_${w}/page/1` },
@@ -66,7 +65,6 @@ const RETAILERS = {
   e5: { account: 'e5-mode' },
   // batch 4
   brico: { account: 'brico-folder-extra-nl' },
-  bauhaus: { account: 'bauhaus-nederland' },
   gifi: { account: 'gifi' },
   alvo: { account: 'alvo' },
   'supra-bazar': { account: 'suprabazar' },
@@ -122,10 +120,25 @@ async function tryUrl(url) {
     const manifest = extractManifest(html);
     if (!manifest) return { ok: false, status: 'no-manifest' };
     const pdf = pdfUrlFromManifest(manifest);
-    return { ok: !!pdf, manifest, html, finalUrl: r.url, status: pdf ? 200 : 'no-pdf' };
+    if (pdf) return { ok: true, manifest, html, finalUrl: r.url, status: 200 };
+    // No PDF (download switched off): take the viewer's own page images.
+    const pages = await fetchSpreadPages(manifest);
+    if (pages.length > 0) return { ok: true, manifest, html, finalUrl: r.url, pages, status: 200 };
+    return { ok: false, status: 'no-pdf' };
   } catch (e) {
     clearTimeout(t);
     return { ok: false, status: e.name === 'AbortError' ? 'timeout' : e.message };
+  }
+}
+
+async function fetchSpreadPages(manifest) {
+  const url = spreadsUrl(manifest);
+  if (!url) return [];
+  try {
+    const r = await fetch(url, { headers: UA });
+    return r.status === 200 ? pagesFromSpreads(await r.json()) : [];
+  } catch {
+    return [];
   }
 }
 
@@ -149,6 +162,11 @@ async function harvest(slug, cfg) {
     const built = buildScrapedData(res.manifest, slug, res.finalUrl, res.html);
     const folder = built.folders[0];
     if (!folder || seenIds.has(folder.id)) continue;
+    if (res.pages) {
+      folder.pages = res.pages;
+      folder.pageCount = res.pages.length;
+      folder.thumbnailUrl = res.pages[0].thumbnailUrl || folder.thumbnailUrl;
+    }
     // buildScrapedData can only guess "today + 10 days". Use what the folder
     // states about itself, and skip one whose own dates say it is not this
     // week's or next week's (see folderDates.mjs).
@@ -207,7 +225,7 @@ const results = [];
 for (const [slug, cfg] of entries) {
   const r = await harvest(slug, cfg);
   results.push(r);
-  console.log(r.ok ? `✓ ${slug.padEnd(14)} ${r.pages}p  ${r.title}  [${r.via}]` : `✗ ${slug.padEnd(14)} no PDF (${r.tried} tried)`);
+  console.log(r.ok ? `✓ ${slug.padEnd(14)} ${r.pages}p  ${r.title}  [${r.via}]` : `✗ ${slug.padEnd(14)} no current folder (${r.tried} tried)`);
 }
 for (const [slug, cfg] of issuuEntries) {
   try {

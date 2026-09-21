@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
 	// (/robots.txt, /sitemap.xml, /ads.txt, /api/*, /out/*) that can't be
 	// statically exported. Deploys as a standard Next app on Vercel.
 	trailingSlash: true,
+	// Bauhaus has no Belgian stores. Its page advertised "vestigingen in
+	// België" and linked to bauhaus.be, which is a bar in Bruges. Removed
+	// 2026-09-21; the indexed URL goes to the DIY shops instead.
+	async redirects() {
+		return [
+			{ source: "/folders/bauhaus/:path*", destination: "/winkels/doe-het-zelf/", permanent: true },
+		];
+	},
 	images: {
 		unoptimized: true,
 		dangerouslyAllowSVG: true,
