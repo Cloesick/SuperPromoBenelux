@@ -36,6 +36,42 @@ export function parseDates(desc) {
   return { from: iso(m[1], m[2], fromY), until: iso(m[4], m[5], untilY) };
 }
 
+// Colruyt used to keep one rolling doc slug that always held the current
+// folder. It now publishes each edition under a hashed name
+// (colruyt_laagste_prijzen_-_digitale_507bd5404a0cff) and the rolling slug
+// 404s, which failed every harvest with "oembed failed" from 2026-09. So the
+// current doc is found on the publisher's profile, by title, each run.
+//
+// Among docs whose title matches, prefer the one valid today, then the one
+// valid latest. Pure, so it can be checked without the network.
+export function pickCurrentDoc(candidates, titleRe, today = new Date().toISOString().slice(0, 10)) {
+  const scored = candidates
+    .filter((c) => titleRe.test(c.title || ''))
+    .map((c) => ({ ...c, dates: parseDates(c.description) }))
+    .filter((c) => c.dates);
+  if (!scored.length) return null;
+  const current = scored.filter((c) => c.dates.from <= today && today <= c.dates.until);
+  const pool = current.length ? current : scored;
+  pool.sort((a, b) => b.dates.until.localeCompare(a.dates.until));
+  return pool[0].url;
+}
+
+export async function discoverIssuuDoc(profile, titleRe) {
+  const r = await fetch(`https://issuu.com/${profile}`, { headers: UA });
+  if (r.status !== 200) throw new Error(`profile ${profile} returned ${r.status}`);
+  const html = await r.text();
+  const paths = [...new Set(html.match(new RegExp(`/${profile}/docs/[A-Za-z0-9_-]+`, 'g')) || [])];
+  const candidates = [];
+  for (const path of paths) {
+    const url = `https://issuu.com${path}`;
+    const o = await fetchOembed(url);
+    if (o) candidates.push({ url, title: o.title, description: o.description });
+  }
+  const url = pickCurrentDoc(candidates, titleRe);
+  if (!url) throw new Error(`no doc on ${profile} matching ${titleRe} (${paths.length} checked)`);
+  return url;
+}
+
 async function pageOk(docId, n) {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), 12000);

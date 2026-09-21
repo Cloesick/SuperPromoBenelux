@@ -15,7 +15,7 @@ import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { extractManifest, buildScrapedData, pdfUrlFromManifest, preserveRenderedPages, readExistingFolder } from './harvest-publitas.mjs';
-import { harvestIssuu } from './harvest-issuu.mjs';
+import { harvestIssuu, discoverIssuuDoc } from './harvest-issuu.mjs';
 
 const UA = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
@@ -173,9 +173,11 @@ async function harvest(slug, cfg) {
   return { slug, ok: false, tried: candidates.length };
 }
 
-// Issuu-hosted retailers (rolling doc slug → always the current folder).
+// Issuu-hosted retailers: publisher profile + the title of the folder
+// series. Each edition gets its own hashed doc name, so the current one is
+// discovered per run (see discoverIssuuDoc).
 const ISSUU = {
-  colruyt: 'https://issuu.com/colruytgroup/docs/_colruyt_laagste_prijzen_-_folder',
+  colruyt: { profile: 'colruytgroup', title: /^Colruyt Laagste Prijzen - Digitale folder/i },
 };
 
 const want = process.argv.slice(2);
@@ -188,8 +190,9 @@ for (const [slug, cfg] of entries) {
   results.push(r);
   console.log(r.ok ? `✓ ${slug.padEnd(14)} ${r.pages}p  ${r.title}  [${r.via}]` : `✗ ${slug.padEnd(14)} no PDF (${r.tried} tried)`);
 }
-for (const [slug, docUrl] of issuuEntries) {
+for (const [slug, cfg] of issuuEntries) {
   try {
+    const docUrl = await discoverIssuuDoc(cfg.profile, cfg.title);
     const outPath = resolve(OUT_DIR, `${slug}.json`);
     const data = preserveRenderedPages(
       readExistingFolder(outPath),
