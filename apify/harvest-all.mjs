@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { extractManifest, buildScrapedData, pdfUrlFromManifest, preserveRenderedPages, readExistingFolder } from './harvest-publitas.mjs';
 import { harvestIssuu, discoverIssuuDoc } from './harvest-issuu.mjs';
+import { inferValidity, rejectReason } from './folderDates.mjs';
 
 const UA = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
@@ -148,6 +149,21 @@ async function harvest(slug, cfg) {
     const built = buildScrapedData(res.manifest, slug, res.finalUrl, res.html);
     const folder = built.folders[0];
     if (!folder || seenIds.has(folder.id)) continue;
+    // buildScrapedData can only guess "today + 10 days". Use what the folder
+    // states about itself, and skip one whose own dates say it is not this
+    // week's or next week's (see folderDates.mjs).
+    const validity = inferValidity(folder.title, res.finalUrl);
+    const rejected = rejectReason(validity);
+    if (rejected) {
+      console.log(`  ${slug}: skipped "${folder.title}" — ${rejected}`);
+      continue;
+    }
+    if (validity) {
+      folder.validFrom = validity.from;
+      folder.validUntil = validity.until;
+    } else {
+      folder.datesEstimated = true;
+    }
     seenIds.add(folder.id);
     found.push({ built, folder, url });
     // Two is the whole point: this week and next. More would be last week's.
