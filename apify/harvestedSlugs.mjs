@@ -21,7 +21,12 @@
 // Read by scripts/scrape-targets.mts, which drops these from every group.
 // ---------------------------------------------------------------------------
 
+// carrefour, delhaize and kruidvat come from WePublish (apify/wepublish.mjs).
+// Delhaize's scraper had been stuck on August; Kruidvat's gave a banner strip.
 export const HARVEST_OWNED_SLUGS = [
+	'carrefour',
+	'delhaize',
+	'kruidvat',
 	'action',
 	'albert-heijn',
 	'aveve',

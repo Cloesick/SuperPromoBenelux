@@ -17,6 +17,7 @@ import { dirname, resolve } from 'node:path';
 import { extractManifest, buildScrapedData, pdfUrlFromManifest, preserveRenderedPages, readExistingFolder, pagesFromSpreads, spreadsUrl } from './harvest-publitas.mjs';
 import { harvestIssuu, discoverIssuuDoc } from './harvest-issuu.mjs';
 import { inferValidity, rejectReason } from './folderDates.mjs';
+import { WEPUBLISH, candidateSlugs, validityFromSlug, wepublishFolder, WEPUBLISH_BASE } from './wepublish.mjs';
 
 const UA = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
@@ -244,5 +245,55 @@ for (const [slug, cfg] of issuuEntries) {
     console.log(`✗ ${slug.padEnd(14)} issuu failed: ${e.message}`);
   }
 }
+// WePublish-hosted retailers (see wepublish.mjs). A HEAD per candidate slug:
+// 200 + PDF means the folder exists, 500 means it doesn't.
+async function wepublishExists(slug) {
+  try {
+    const r = await fetch(WEPUBLISH_BASE + slug, { method: 'HEAD', headers: UA });
+    return r.status === 200 && (r.headers.get('content-type') || '').includes('pdf');
+  } catch {
+    return false;
+  }
+}
+
+const wepublishEntries = Object.entries(WEPUBLISH).filter(([s]) => !want.length || want.includes(s));
+for (const [slug, cfg] of wepublishEntries) {
+  const found = [];
+  for (const cand of candidateSlugs(cfg)) {
+    if (!(await wepublishExists(cand))) continue;
+    const validity = validityFromSlug(cand, cfg.folderDay, cfg.days);
+    const rejected = rejectReason(validity);
+    if (!validity || rejected) {
+      console.log(`  ${slug}: skipped ${cand}${rejected ? ` — ${rejected}` : ''}`);
+      continue;
+    }
+    found.push(wepublishFolder(slug, cand, validity));
+  }
+  if (found.length === 0) {
+    results.push({ slug, ok: false });
+    console.log(`✗ ${slug.padEnd(14)} no current folder (wepublish)`);
+    continue;
+  }
+  // Current first, then the next one; more would be last week's or later.
+  const today = new Date().toISOString().slice(0, 10);
+  found.sort((a, b) => a.validFrom.localeCompare(b.validFrom));
+  const current = found.filter((f) => f.validFrom <= today);
+  const folders = [...current.slice(-1), ...found.filter((f) => f.validFrom > today).slice(0, 1)];
+  const outPath = resolve(OUT_DIR, `${slug}.json`);
+  const data = preserveRenderedPages(readExistingFolder(outPath), {
+    retailer: slug,
+    folders,
+    deals: [],
+    scrapedAt: new Date().toISOString(),
+    sourceUrls: folders.map((f) => f.pdfUrl),
+    methods: ['wepublish', 'pdf'],
+  });
+  writeFileSync(outPath, JSON.stringify(data, null, 2));
+  results.push({ slug, ok: true });
+  const f = data.folders[0];
+  const extra = data.folders.length > 1 ? ` (+${data.folders.length - 1} upcoming)` : '';
+  console.log(`✓ ${slug.padEnd(14)} ${f.validFrom}..${f.validUntil}  ${f.pdfUrl.replace(WEPUBLISH_BASE, '')}${extra}  [wepublish]`);
+}
+
 const live = results.filter((r) => r.ok).map((r) => r.slug);
 console.log(`\n${live.length}/${results.length} harvested: ${live.join(', ')}`);

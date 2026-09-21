@@ -26,7 +26,7 @@ export type ShopCategory =
 	| "speelgoed"
 	| "sport";
 
-export type FolderSource = "publitas" | "issuu" | "ipaper" | "own" | null;
+export type FolderSource = "publitas" | "issuu" | "ipaper" | "wepublish" | "own" | null;
 export type Country = "be" | "nl";
 
 export interface CatalogShop {
@@ -134,7 +134,7 @@ export const catalog: CatalogShop[] = [
 	{ slug: "jumbo", name: "Jumbo", category: "supermarkt", countries: ["be", "nl"], website: "https://www.jumbo.com", color: "#FDD800", source: "publitas", live: true },
 	{ slug: "boni", name: "Boni", category: "supermarkt", countries: ["nl", "be"], website: "https://www.boni.nl", color: "#008D36", source: "publitas" },
 	{ slug: "cora", name: "Cora", category: "supermarkt", countries: ["be"], website: "https://www.cora.be", color: "#E2001A", source: "publitas" },
-	{ slug: "carrefour", name: "Carrefour", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#004E9F", source: "own" },
+	{ slug: "carrefour", name: "Carrefour", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#004E9F", source: "wepublish", live: true },
 	{ slug: "carrefour-market", name: "Carrefour Market", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#E2231A", source: "own" },
 	{ slug: "intermarche", name: "Intermarché", category: "supermarkt", countries: ["be"], website: "https://www.intermarche.be", color: "#E2001A", source: null },
 	{ slug: "spar", name: "Spar", category: "supermarkt", countries: ["be", "nl"], website: "https://www.spar.be", color: "#009639", source: "publitas", live: true },
