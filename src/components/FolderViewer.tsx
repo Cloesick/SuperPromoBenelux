@@ -250,11 +250,13 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 	}, [trackingEnabled, mode, currentPage, retailer.slug]);
 
 	const validFrom = new Date(folder.validFrom).toLocaleDateString("nl-BE", {
+		timeZone: "UTC",
 		day: "numeric",
 		month: "long",
 		year: "numeric",
 	});
 	const validUntil = new Date(folder.validUntil).toLocaleDateString("nl-BE", {
+		timeZone: "UTC",
 		day: "numeric",
 		month: "long",
 		year: "numeric",
@@ -315,6 +317,7 @@ export function FolderViewer({ folder, retailer }: FolderViewerProps) {
 						{(() => {
 							try {
 								return new Date(folder.validUntil).toLocaleDateString("nl-BE", {
+									timeZone: "UTC",
 									day: "numeric",
 									month: "long",
 								});

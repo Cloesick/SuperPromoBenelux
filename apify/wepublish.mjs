@@ -33,9 +33,9 @@ export const WEPUBLISH_BASE = 'https://api.wepublish.digital/viewer/pdf/download
  * covers ({w2} = {w} + span).
  */
 export const WEPUBLISH = {
-  carrefour: { patterns: ['carrefour-week-{w}-{w2}-{y}'], span: 2, folderDay: 'woensdag', days: 13 },
-  delhaize: { patterns: ['delhaize-benl-week-{w}-{y}'], span: 0, folderDay: 'donderdag', days: 7 },
-  kruidvat: { patterns: ['kruidvat-benl-week-{w}-{y}'], span: 0, folderDay: 'dinsdag', days: 13 },
+  carrefour: { name: 'Carrefour', patterns: ['carrefour-week-{w}-{w2}-{y}'], span: 2, folderDay: 'woensdag', days: 13 },
+  delhaize: { name: 'Delhaize', patterns: ['delhaize-benl-week-{w}-{y}'], span: 0, folderDay: 'donderdag', days: 7 },
+  kruidvat: { name: 'Kruidvat', patterns: ['kruidvat-benl-week-{w}-{y}'], span: 0, folderDay: 'dinsdag', days: 13 },
 };
 
 function isoWeek(d) {
@@ -74,12 +74,16 @@ export function validityFromSlug(slug, folderDay, days = 7) {
   return { from: from.toISOString().slice(0, 10), until: until.toISOString().slice(0, 10), basis: 'slug + folder day' };
 }
 
-export function wepublishFolder(retailerSlug, slug, validity, nowIso = new Date().toISOString()) {
+/** "16/09" from "2026-09-16". */
+const dm = (iso) => `${iso.slice(8, 10)}/${iso.slice(5, 7)}`;
+
+export function wepublishFolder(retailerSlug, slug, validity, name = retailerSlug, nowIso = new Date().toISOString()) {
   const pdfUrl = WEPUBLISH_BASE + slug;
   return {
     id: `${retailerSlug}-${slug}-folder`,
     retailerSlug,
-    title: `${retailerSlug} folder ${slug.replace(/^.*?week-/, 'week ').replace(/-/g, ' ')}`,
+    // The slug reads "carrefour-week-38-40-2026"; the site shows this title.
+    title: `${name} folder ${dm(validity.from)} – ${dm(validity.until)}`,
     validFrom: validity.from,
     validUntil: validity.until,
     pageCount: 0,
