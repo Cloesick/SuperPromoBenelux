@@ -1,0 +1,47 @@
+{
+  "retailerSlug": "colruyt",
+  "retailerName": "Colruyt",
+  "folderId": "colruyt-260909100046-2a18c3df1fb55ab3697407d66da34180-folder",
+  "validFrom": "2026-09-09",
+  "validUntil": "2026-09-22",
+  "coverUrl": "https://image.isu.pub/260909100046-2a18c3df1fb55ab3697407d66da34180/jpg/page_1.jpg",
+  "logoBox": {
+    "x": 0.56,
+    "y": 0.03,
+    "w": 0.39,
+    "h": 0.105
+  },
+  "offers": [
+    {
+      "product": "Gevulde courgettes",
+      "detail": "recept: kook de folder",
+      "priceNow": null,
+      "priceWas": null,
+      "mechanic": "Recept in de folder",
+      "category": "food",
+      "box": {
+        "x": 0.04,
+        "y": 0.15,
+        "w": 0.91,
+        "h": 0.405
+      }
+    },
+    {
+      "product": "Stimorol, Lotus Confort, Finish",
+      "detail": "TOP promo",
+      "priceNow": null,
+      "priceWas": null,
+      "mechanic": "1+1 gratis",
+      "category": "household",
+      "box": {
+        "x": 0.04,
+        "y": 0.575,
+        "w": 0.91,
+        "h": 0.32
+      }
+    }
+  ],
+  "hook": "Kook de folder",
+  "genre": "cooking: stuffed courgettes",
+  "source": "manual"
+}

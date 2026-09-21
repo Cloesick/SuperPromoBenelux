@@ -1,0 +1,47 @@
+{
+  "retailerSlug": "lidl",
+  "retailerName": "Lidl",
+  "folderId": "lidl-3355373-folder",
+  "validFrom": "2026-09-21",
+  "validUntil": "2026-09-26",
+  "coverUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/lidl-2026-w39-pdfimg-p1.webp",
+  "logoBox": {
+    "x": 0.04,
+    "y": 0.025,
+    "w": 0.25,
+    "h": 0.145
+  },
+  "offers": [
+    {
+      "product": "Rund- en varkensgehakt XXL",
+      "detail": "800 g",
+      "priceNow": "4,29",
+      "priceWas": "8,62",
+      "mechanic": "-50%",
+      "category": "food",
+      "box": {
+        "x": 0.34,
+        "y": 0.12,
+        "w": 0.66,
+        "h": 0.6
+      }
+    },
+    {
+      "product": "Alesto walnoten ongebrand",
+      "detail": "200 g",
+      "priceNow": "1,59",
+      "priceWas": "3,19",
+      "mechanic": "-50%",
+      "category": "food",
+      "box": {
+        "x": 0.0,
+        "y": 0.2,
+        "w": 0.34,
+        "h": 0.26
+      }
+    }
+  ],
+  "hook": "Gehakt aan halve prijs",
+  "genre": "cooking: spaghetti bolognese",
+  "source": "manual"
+}

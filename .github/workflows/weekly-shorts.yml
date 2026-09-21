@@ -1,0 +1,111 @@
+name: Weekly shorts
+
+# 1. pull the folders   -> harvest-publitas.yml and scrape-folders.yml, earlier the same morning
+# 2. analyze the cover  -> scripts/shorts/analyze.mts (Claude reads page 1 into a brief)
+# 3. create the shorts  -> scripts/shorts/render.mts (15 s, 1080x1920, from the real folder)
+# 4. ready for upload   -> the run artifact, plus scripts/shorts/publish.mts through Zernio
+#
+# Publishing is off until the repository variable AUTO_PUBLISH is "true"
+# (Settings → Secrets and variables → Actions → Variables). Until then the
+# publish step is a dry run that prints every post it would make.
+
+on:
+  schedule:
+    # An hour after the harvest (05:20) and two after the scrape (04:30), on the
+    # same days, so the covers it reads are the ones just published.
+    - cron: "40 6 * * 1"
+    - cron: "40 6 * * 3"
+    - cron: "40 6 * * 4"
+  workflow_dispatch:
+    inputs:
+      retailers:
+        description: "Slugs to brief (space-separated). Empty = the default supermarkets."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-shorts
+  cancel-in-progress: false
+
+jobs:
+  shorts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
+        run: npm ci --legacy-peer-deps
+
+      - name: Setup Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Ensure ffmpeg
+        run: command -v ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+
+      - name: Week
+        id: week
+        run: echo "week=$(date -u +%G-w%V)" >> "$GITHUB_OUTPUT"
+
+      - name: Analyze covers
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SHORTS_RETAILERS: ${{ github.event.inputs.retailers }}
+        run: npx tsx scripts/shorts/analyze.mts ${{ steps.week.outputs.week }}
+
+      - name: Render shorts
+        id: render
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+        run: |
+          if [ ! -d "data/shorts/${{ steps.week.outputs.week }}" ]; then
+            echo "No briefs for this week."
+            echo "any=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          npx tsx scripts/shorts/render.mts ${{ steps.week.outputs.week }}
+          echo "any=true" >> "$GITHUB_OUTPUT"
+
+      - name: Keep the videos for review
+        if: steps.render.outputs.any == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: shorts-${{ steps.week.outputs.week }}-${{ github.run_number }}
+          path: data/shorts/${{ steps.week.outputs.week }}/
+          retention-days: 21
+
+      - name: Publish
+        if: steps.render.outputs.any == 'true'
+        env:
+          AUTO_PUBLISH: ${{ vars.AUTO_PUBLISH }}
+          ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
+          SHORTS_PLATFORMS: ${{ vars.SHORTS_PLATFORMS }}
+          SHORTS_REDDIT_SUBREDDIT: ${{ vars.SHORTS_REDDIT_SUBREDDIT }}
+        run: npx tsx scripts/shorts/publish.mts ${{ steps.week.outputs.week }}
+
+      - name: Commit briefs and post records
+        if: always() && steps.render.outputs.any == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/shorts
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore(shorts): briefs and posts for ${{ steps.week.outputs.week }} [skip ci]"
+          git pull --rebase
+          git push

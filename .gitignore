@@ -64,3 +64,7 @@ diysuperpromobelgiebram/
 # and folder JSON stores absolute URLs; committing them added ~200 MB per run
 # for files regenerated weekly and never diffed.
 /public/screenshots
+
+# Rendered shorts are CI artifacts and Zernio uploads, not repo content.
+data/shorts/**/*.mp4
+data/shorts/**/*.jpg

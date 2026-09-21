@@ -1,0 +1,33 @@
+{
+  "retailerSlug": "albert-heijn",
+  "retailerName": "Albert Heijn",
+  "folderId": "albert-heijn-3360109-folder",
+  "validFrom": "2026-09-21",
+  "validUntil": "2026-09-27",
+  "coverUrl": "https://c5njkzpovjfh5wby.public.blob.vercel-storage.com/screenshots/albert-heijn-2026-w39-pdfimg-p1.webp",
+  "logoBox": {
+    "x": 0.02,
+    "y": 0.02,
+    "w": 0.96,
+    "h": 0.13
+  },
+  "offers": [
+    {
+      "product": "Super Choice garnalen",
+      "detail": "800 g, €9,00 per zak bij 3 zakken",
+      "priceNow": "9,00",
+      "priceWas": null,
+      "mechanic": "1+2 gratis",
+      "category": "food",
+      "box": {
+        "x": 0.04,
+        "y": 0.15,
+        "w": 0.93,
+        "h": 0.44
+      }
+    }
+  ],
+  "hook": "Garnalen: 1+2 gratis",
+  "genre": "cooking: garlic prawns",
+  "source": "manual"
+}
