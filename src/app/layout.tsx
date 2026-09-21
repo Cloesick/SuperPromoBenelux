@@ -6,6 +6,7 @@ import { JsonLd, createWebsiteJsonLd } from "@/components/JsonLd";
 import { CookieConsent } from "@/components/CookieConsent";
 import { ConsentBridge } from "@/components/ConsentBridge";
 import { AnalyticsGate } from "@/components/AnalyticsGate";
+import { SocialPixels } from "@/components/SocialPixels";
 import { ClickTracker } from "@/components/ClickTracker";
 import { AdSenseGate } from "@/components/AdSenseGate";
 import { getSiteBaseUrl } from "@/lib/site";
@@ -53,6 +54,7 @@ export default function RootLayout({
 				<ConsentBridge />
 				<CookieConsent />
 				<AnalyticsGate />
+				<SocialPixels />
 				<ClickTracker />
 				<AdSenseGate />
 			</body>

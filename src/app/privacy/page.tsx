@@ -106,6 +106,33 @@ export default function PrivacyPage() {
         </section>
 
         <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">Sociale media (Meta, TikTok, Pinterest)</h2>
+          <p className="text-gray-600 leading-relaxed">
+            Alleen als je toestemming geeft voor advertentiecookies, laden we de meetpixels van Meta
+            (Facebook en Instagram), TikTok en Pinterest. Die registreren welke pagina&apos;s je
+            bekijkt, zodat we kunnen meten welke van onze berichten en advertenties op die
+            platformen bezoekers naar SuperPromo België brengen. We sturen geen naam, e-mailadres
+            of andere contactgegevens mee. Zonder toestemming worden deze pixels niet geladen, en je
+            kunt je keuze op elk moment wijzigen via de cookie-instellingen.
+          </p>
+          <p className="text-gray-600 leading-relaxed mt-3">
+            Meer informatie:{" "}
+            <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
+              Meta
+            </a>
+            ,{" "}
+            <a href="https://www.tiktok.com/legal/privacy-policy-eea" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
+              TikTok
+            </a>{" "}
+            en{" "}
+            <a href="https://policy.pinterest.com/nl/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
+              Pinterest
+            </a>
+            .
+          </p>
+        </section>
+
+        <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">Contact</h2>
           <p className="text-gray-600 leading-relaxed">
             Heb je vragen over dit privacybeleid? Neem dan contact met ons op via de{" "}

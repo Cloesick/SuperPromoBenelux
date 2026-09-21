@@ -9,7 +9,7 @@ import { persistConsentChoice, subscribeToCmpConsent } from "@/lib/consent";
  * Google's CMP owns the consent dialog, but it announces the result on the IAB
  * TCF `__tcfapi` channel, which nothing else in this app speaks. Rather than
  * teach every gate a second protocol, this listens once and writes the answer
- * to the key they already read — so AnalyticsGate, MetaPixelGate, ClickTracker
+ * to the key they already read — so AnalyticsGate, SocialPixels, ClickTracker
  * and the cookie-reading API routes need no changes at all.
  *
  * Renders nothing.
