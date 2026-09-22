@@ -75,6 +75,12 @@ async function meanStdev(buf: Buffer): Promise<number> {
 interface Candidate {
 	slug: string;
 	pdfUrl: string;
+	/**
+	 * Position in data.folders. 0 is the current folder; higher is an upcoming
+	 * one ("volgende week"), which used to be listed with no pages at all until
+	 * it became current, although ~20% of search impressions ask for it.
+	 */
+	folderIndex: number;
 }
 
 const candidates: Candidate[] = [];
@@ -83,8 +89,7 @@ for (const file of fs.readdirSync(foldersDir).filter((f) => f.endsWith(".json"))
 	const slug = file.replace(/\.json$/, "");
 	if (only && !only.has(slug)) continue;
 	const data = JSON.parse(fs.readFileSync(path.join(foldersDir, file), "utf-8"));
-	const folder = (data.folders ?? [])[0];
-	if (!folder) continue;
+	for (const [folderIndex, folder] of ((data.folders ?? []) as Record<string, any>[]).entries()) {
 	if (!force && (folder.pages ?? []).length > 0) continue;
 	// Deliberately NOT hasUsablePdf: that asks "can an iframe display this?",
 	// which is false for the attachment-disposition PDFs albert-heijn, gamma,
@@ -105,7 +110,8 @@ for (const file of fs.readdirSync(foldersDir).filter((f) => f.endsWith(".json"))
 		skippedExpired.push(slug);
 		continue;
 	}
-	candidates.push({ slug, pdfUrl: folder.pdfUrl });
+	candidates.push({ slug, pdfUrl: folder.pdfUrl, folderIndex });
+	}
 }
 if (skippedExpired.length > 0) {
 	console.log(`Skipping ${skippedExpired.length} expired folder(s): ${skippedExpired.join(", ")}`);
@@ -116,7 +122,7 @@ console.log(
 		(force ? " (--force: re-rendering even where pages exist)" : " and no pages") +
 		":",
 );
-for (const c of candidates) console.log(`  ${c.slug}`);
+for (const c of candidates) console.log(`  ${c.slug}${c.folderIndex > 0 ? " (upcoming)" : ""}`);
 if (dryRun || candidates.length === 0) {
 	console.log(dryRun ? "\nDry run — nothing rendered." : "\nNothing to do.");
 	process.exit(0);
@@ -155,7 +161,13 @@ const failed: string[] = [];
 /** Pages recorded as a local path while blob storage was configured. */
 let fellBackToLocal = 0;
 
-for (const { slug, pdfUrl } of candidates) {
+/** Upcoming folders that failed: reported, but never block the commit. */
+const failedUpcoming: string[] = [];
+
+for (const { slug, pdfUrl, folderIndex } of candidates) {
+	// Only the current folder's failure should stop the harvest's commit;
+	// losing next week's pages keeps last state, it doesn't break this week.
+	const fail = () => (folderIndex === 0 ? failed : failedUpcoming).push(slug);
 	const page = await browser.newPage();
 	try {
 		// Fetch happens in the page, so land on the PDF's own origin first —
@@ -181,7 +193,7 @@ for (const { slug, pdfUrl } of candidates) {
 
 		if (pages.length === 0) {
 			console.log("no pages produced, left framing its PDF");
-			failed.push(slug);
+			fail();
 			continue;
 		}
 
@@ -198,7 +210,9 @@ for (const { slug, pdfUrl } of candidates) {
 			if ((await meanStdev(raw)) < BLANK_STDDEV) continue;
 
 			const n = written.length + 1;
-			const base = `${slug}-${week}-pdfimg-p${n}`;
+			// An upcoming folder rendered the same week needs its own names, or
+			// it would overwrite the current folder's page images.
+			const base = `${slug}-${week}${folderIndex > 0 ? `-f${folderIndex}` : ""}-pdfimg-p${n}`;
 			const img = await sharp(raw, { limitInputPixels: false })
 				.webp({ quality: PAGE_QUALITY })
 				.toBuffer();
@@ -233,13 +247,13 @@ for (const { slug, pdfUrl } of candidates) {
 
 		if (written.length === 0) {
 			console.log("every rendered page was blank, left framing its PDF");
-			failed.push(slug);
+			fail();
 			continue;
 		}
 
 		const jsonPath = path.join(foldersDir, `${slug}.json`);
 		const data = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
-		const folder = data.folders[0];
+		const folder = data.folders[folderIndex];
 		folder.pages = written;
 		folder.pageCount = written.length;
 		folder.thumbnailUrl = written[0].imageUrl;
@@ -250,7 +264,7 @@ for (const { slug, pdfUrl } of candidates) {
 		console.log(`${written.length} page(s) of ${docPages}`);
 	} catch (err) {
 		console.log(`failed: ${err}`);
-		failed.push(slug);
+		fail();
 	} finally {
 		await page.close().catch(() => {});
 	}
@@ -267,6 +281,9 @@ if (failed.length) {
 	console.log(
 		`${failed.length} left with no page images: ${failed.join(", ")}.`,
 	);
+}
+if (failedUpcoming.length) {
+	console.log(`Upcoming folders not rendered (not blocking): ${failedUpcoming.join(", ")}.`);
 }
 
 if (fellBackToLocal > 0) {
