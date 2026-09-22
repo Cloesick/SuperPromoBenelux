@@ -174,7 +174,8 @@ export const catalog: CatalogShop[] = [
 	{ slug: "aveve", name: "Aveve", category: "tuin", countries: ["be"], website: "https://www.aveve.be", color: "#84BD00", source: "publitas" },
 	{ slug: "horta", name: "Horta", category: "tuin", countries: ["be"], website: "https://www.horta.be", color: "#76B82A", source: null },
 	{ slug: "oh-green", name: "Oh'Green", category: "tuin", countries: ["be"], website: "https://www.ohgreen.be", color: "#5B9E46", source: null },
-	{ slug: "intratuin", name: "Intratuin", category: "tuin", countries: ["nl", "be"], website: "https://www.intratuin.nl", color: "#5B9E46", source: "publitas" },
+	// NL folder only (Publitas account intratuin-nl); no page on the Belgian site.
+	{ slug: "intratuin", name: "Intratuin", category: "tuin", countries: ["nl"], website: "https://www.intratuin.nl", color: "#5B9E46", source: "publitas" },
 	{ slug: "welkoop", name: "Welkoop", category: "tuin", countries: ["nl"], website: "https://www.welkoop.nl", color: "#E30613", source: "publitas", live: true },
 	{ slug: "groenrijk", name: "GroenRijk", category: "tuin", countries: ["nl"], website: "https://www.groenrijk.nl", color: "#5B9E46", source: null },
 

@@ -34,7 +34,10 @@ const folders = fs.readdirSync(dir).filter(f => f.endsWith(".json")).map(f => {
 const sitemap = await (await fetch(`${BASE}/sitemap.xml`)).text();
 // The sitemap emits bare /folders/<slug> with no trailing slash.
 const sitemapSlugs = new Set(
-  [...sitemap.matchAll(/<loc>[^<]*\/folders\/([a-z0-9-]+)<\/loc>/g)].map(m => m[1]),
+  // Trailing slash optional: with trailingSlash:true the sitemap emits
+  // /folders/lidl/, and matching only the bare form reported every
+  // indexable page as missing from the sitemap.
+  [...sitemap.matchAll(/<loc>[^<]*\/folders\/([a-z0-9-]+)\/?<\/loc>/g)].map(m => m[1]),
 );
 
 let bad = 0;
@@ -50,7 +53,10 @@ for (const { slug, pages, embed, pdf } of folders) {
     // local file instead — a green run that proved nothing about production.
     [
       ...html.matchAll(
-        /https?:\/\/[^"'\s]+?\/screenshots\/[a-z0-9-]+\.(?:webp|jpg|png)|(?<![\w:/])\/screenshots\/[a-z0-9-]+\.(?:webp|jpg|png)/g,
+        // Also the platforms' own page images: Aveve and Action come from
+        // Publitas spreads.json, Colruyt from issuu. Counting only
+        // /screenshots/ read those folders as showing nothing.
+        /https?:\/\/[^"'\s]+?\/screenshots\/[a-z0-9-]+\.(?:webp|jpg|png)|(?<![\w:/])\/screenshots\/[a-z0-9-]+\.(?:webp|jpg|png)|https:\/\/view\.publitas\.com\/resize\/[^"'\s]+?\.(?:jpg|jpeg|webp|png)|https:\/\/image\.isu\.pub\/[^"'\s]+?\.(?:jpg|jpeg|webp|png)/g,
       ),
     ].map((m) => m[0]),
   )].filter(u => !u.includes("-thumb"));

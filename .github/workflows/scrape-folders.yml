@@ -150,4 +150,14 @@ jobs:
           fi
 
           git commit -m "chore: update scraped folders and screenshots"
-          git push
+          # The harvest pushes to main on the same mornings. Without a rebase
+          # the push was rejected ("fetch first") and the whole scrape was
+          # lost, as happened to the 21/09 refresh. The two jobs write
+          # different retailers (apify/harvestedSlugs.mjs), so a rebase
+          # does not conflict.
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            echo "push attempt $attempt failed, retrying"
+            sleep 10
+          done
+          exit 1
