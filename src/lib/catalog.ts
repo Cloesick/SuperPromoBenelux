@@ -132,7 +132,8 @@ export const catalog: CatalogShop[] = [
 	{ slug: "lidl", name: "Lidl", category: "supermarkt", countries: ["be", "nl"], website: "https://www.lidl.be", color: "#0050AA", source: "publitas", live: true },
 	{ slug: "aldi", name: "ALDI", category: "supermarkt", countries: ["be", "nl"], website: "https://www.aldi.be", color: "#0B5AA2", source: "ipaper", live: true },
 	{ slug: "jumbo", name: "Jumbo", category: "supermarkt", countries: ["be", "nl"], website: "https://www.jumbo.com", color: "#FDD800", source: "publitas", live: true },
-	{ slug: "boni", name: "Boni", category: "supermarkt", countries: ["nl", "be"], website: "https://www.boni.nl", color: "#008D36", source: "publitas" },
+	// Dutch chain (boni.nl); no page on the Belgian site.
+	{ slug: "boni", name: "Boni", category: "supermarkt", countries: ["nl"], website: "https://www.boni.nl", color: "#008D36", source: "publitas" },
 	{ slug: "cora", name: "Cora", category: "supermarkt", countries: ["be"], website: "https://www.cora.be", color: "#E2001A", source: "publitas" },
 	{ slug: "carrefour", name: "Carrefour", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#004E9F", source: "wepublish", live: true },
 	{ slug: "carrefour-market", name: "Carrefour Market", category: "supermarkt", countries: ["be"], website: "https://www.carrefour.be", color: "#E2231A", source: "own" },
