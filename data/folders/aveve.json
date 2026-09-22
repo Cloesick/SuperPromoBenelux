@@ -5,8 +5,8 @@
       "id": "aveve-3362493-folder",
       "retailerSlug": "aveve",
       "title": "Aveve - VL P19_FOLDER DIER_2026",
-      "validFrom": "2026-09-21",
-      "validUntil": "2026-10-01",
+      "validFrom": "2026-09-22",
+      "validUntil": "2026-10-02",
       "pageCount": 41,
       "thumbnailUrl": "https://view.publitas.com/resize/rev-95488569/E2gwy6WP0ICd3jxC35dMMVz4K5R9e3i5mtZ2xOI7g9k/fit-in/608x1054/filters:quality(90)/production-revolution-publitas-com/95961/3362493/pages/d020248a-e845-4bda-a5ab-be9263b45657-downscaled.jpg",
       "pages": [
@@ -259,12 +259,12 @@
       ],
       "embedUrl": "https://view.publitas.com/aveve/vl-p19_folder-dier_2026/?publitas_embed=embedded",
       "contentSource": "publitas",
-      "scrapedAt": "2026-09-21T22:56:36.738Z",
+      "scrapedAt": "2026-09-22T00:18:54.173Z",
       "datesEstimated": true
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-21T22:56:36.738Z",
+  "scrapedAt": "2026-09-22T00:18:54.173Z",
   "sourceUrls": [
     "https://view.publitas.com/aveve/vl-p19_folder-dier_2026/"
   ],

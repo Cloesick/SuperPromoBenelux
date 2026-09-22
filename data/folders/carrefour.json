@@ -277,7 +277,7 @@
       ],
       "pdfUrl": "https://api.wepublish.digital/viewer/pdf/download/carrefour-week-38-40-2026",
       "contentSource": "wepublish",
-      "scrapedAt": "2026-09-21T22:56:52.386Z"
+      "scrapedAt": "2026-09-22T00:19:13.736Z"
     },
     {
       "id": "carrefour-carrefour-week-39-41-2026-folder",
@@ -290,11 +290,11 @@
       "pages": [],
       "pdfUrl": "https://api.wepublish.digital/viewer/pdf/download/carrefour-week-39-41-2026",
       "contentSource": "wepublish",
-      "scrapedAt": "2026-09-21T22:56:52.773Z"
+      "scrapedAt": "2026-09-22T00:19:14.532Z"
     }
   ],
   "deals": [],
-  "scrapedAt": "2026-09-21T22:56:52.934Z",
+  "scrapedAt": "2026-09-22T00:19:15.172Z",
   "sourceUrls": [
     "https://api.wepublish.digital/viewer/pdf/download/carrefour-week-38-40-2026",
     "https://api.wepublish.digital/viewer/pdf/download/carrefour-week-39-41-2026"
