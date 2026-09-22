@@ -51,7 +51,6 @@ const RETAILERS = {
   // batch 2 — DIY / garden / general / grocery
   hubo: { account: 'hubo-belgie-vl', tpl: (w, y) => `https://view.publitas.com/hubo-belgie-vl/${String(y).slice(2)}${w}_nl/page/1` },
   gamma: { account: 'gamma', tpl: (w, y) => `https://view.publitas.com/gamma/gamma-week-${w}-${y}/page/1` },
-  intratuin: { account: 'intratuin-nl', tpl: (w, y) => `https://view.publitas.com/intratuin-nl/folder-week-${w}-${y}-nl-dyn/page/1` },
   boni: { account: 'boni-supermarkt', tpl: (w, y) => `https://view.publitas.com/boni-supermarkt/boni-folder-week-${w}-${y}/page/1` },
   plus: { account: 'plus-folder-nl', tpl: (w, y) => `https://view.publitas.com/plus-folder-nl/plus-week-${w}-${y}/page/1` },
   'mr-bricolage': { account: 'mr-bricolage' }, // period slug → rely on account-root redirect

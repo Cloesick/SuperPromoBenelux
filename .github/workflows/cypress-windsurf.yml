@@ -1,10 +1,10 @@
 name: Cypress Tests with Windsurf Auto-Fix
 
+# Manual only. It ran the same Cypress specs as tests.yml on every push, and
+# its custom reporter crashes ("this.mocha._reporter is not a constructor"),
+# so it failed on every run and only duplicated a real signal with noise.
 on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main, develop ]
+  workflow_dispatch:
   workflow_dispatch:
 
 jobs:
