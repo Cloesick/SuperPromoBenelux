@@ -68,3 +68,29 @@ diysuperpromobelgiebram/
 # Rendered shorts are CI artifacts and Zernio uploads, not repo content.
 data/shorts/**/*.mp4
 data/shorts/**/*.jpg
+# --- secrets (claude 2026-09-23) ---
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+ENV_*.txt
+*.pem
+*.key
+*.p12
+service-account*.json
+
+# --- build output (claude 2026-09-23) ---
+node_modules/
+.next/
+.next-*/
+dist/
+out/
+coverage/
+.turbo/
+.venv/
+venv/
+__pycache__/
+*.log
+.DS_Store
+Thumbs.db
