@@ -80,6 +80,10 @@ jobs:
           # back to /screenshots paths and the commit step below still works —
           # so setting the secret is the only action needed to switch over.
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          # Lets syncDealsToDb (src/lib/productsDb.ts) archive each scrape's
+          # deals in Neon. Without it the sync returned 0 silently and only
+          # local runs ever reached the table. Unset secret = same no-op.
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
         run: npm run scrape -- ${{ steps.targets.outputs.targets }}
 
       - name: Health check
